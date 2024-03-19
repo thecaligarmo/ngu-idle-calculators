@@ -4,6 +4,8 @@ import "./ui/globals.css";
 import {  DataWrapper } from "@/helpers/context";
 import Nav from "@/components/nav";
 
+BigInt.prototype.toJSON = function() { return this.toString() }
+
 
 const inter = Inter({ subsets: ["latin"] });
 

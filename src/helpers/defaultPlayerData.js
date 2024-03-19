@@ -1,3 +1,5 @@
+import bigDecimal from "js-big-decimal";
+
 export function defaultPlayerData(playerData, info) {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
     switch(info) {
@@ -22,6 +24,6 @@ export function defaultPlayerData(playerData, info) {
         case 'resource3Active':
             return playerExists ? playerData.res3.res3On : 0;
         default:
-            return 0
+            return 0;
     }
 }

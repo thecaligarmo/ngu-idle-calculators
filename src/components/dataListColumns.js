@@ -1,4 +1,6 @@
 import { useSavedDataContext } from "@/helpers/context";
+import bigDecimal from "js-big-decimal";
+import { pn } from "@/helpers/numbers";
 
 function camelToTitle(text) {
     const result = text.replace(/([A-Z0-9])/g, " $1");
@@ -10,6 +12,10 @@ function camelToTitle(text) {
 */
 function dataToList(d, input=false){
     const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();
+    var val = d.value[0]
+    if (!(val instanceof bigDecimal)) {
+        val = new bigDecimal(val["value"])
+    }
     if (input) {
         return (<li key={'in-'+d.key} id={'in-'+d.key}>
             <label className="block text-white text-sm mt-2 mb-1" htmlFor={d.key}>
@@ -17,19 +23,19 @@ function dataToList(d, input=false){
             </label>
             <input
                 className="text-black font-normal"
-                type="number"
+                type="text"
                 name={d.key}
                 id={d.key}
-                value={d.value[0]}
+                value={val.getValue()}
                 onChange={e => {
                     setPlayerDataUpdated(false);
-                    d.value[1](Number(e.target.value))
+                    d.value[1](new bigDecimal(e.target.value))
                 }}
                 />
         </li>)
     } else {
         return (<li key={d.key}>
-                {camelToTitle(d.key)}: {d.value[0].toLocaleString()}
+                {camelToTitle(d.key)}: {pn(val)}
         </li>)
     }
 }
