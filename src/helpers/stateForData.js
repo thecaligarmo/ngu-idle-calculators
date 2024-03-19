@@ -14,8 +14,9 @@ export default function createStatesForData(data) {
         for (var k of col) {
             var defaultVal = defaultPlayerData(playerData, k)
             var dataState = useLocalStorageNumber(k, defaultVal)
-            if (isPlayerDataUpdated() && dataState[0]['value'] != defaultVal) {
-                dataState[1]({"value": defaultVal})
+            if (isPlayerDataUpdated() && dataState[0] != defaultVal) {
+                // dataState[1]({"value": defaultVal})
+                dataState[1](defaultVal)
             }
             colDr.push({
                 key: k,

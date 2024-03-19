@@ -37,7 +37,7 @@ export default function Page() {
     if (x instanceof bigDecimal) {
       return x
     }
-    return new bigDecimal(x["value"])
+    return new bigDecimal(x)
   }
 
 

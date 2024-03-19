@@ -14,7 +14,7 @@ function dataToList(d, input=false){
     const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();
     var val = d.value[0]
     if (!(val instanceof bigDecimal)) {
-        val = new bigDecimal(val["value"])
+        val = new bigDecimal(val)
     }
     if (input) {
         return (<li key={'in-'+d.key} id={'in-'+d.key}>
@@ -29,7 +29,7 @@ function dataToList(d, input=false){
                 value={val.getValue()}
                 onChange={e => {
                     setPlayerDataUpdated(false);
-                    d.value[1](new bigDecimal(e.target.value))
+                    d.value[1](e.target.value)
                 }}
                 />
         </li>)
