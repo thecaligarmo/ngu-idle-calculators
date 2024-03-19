@@ -1,11 +1,7 @@
 import { useSavedDataContext } from "@/helpers/context";
 import bigDecimal from "js-big-decimal";
 import { pn } from "@/helpers/numbers";
-
-function camelToTitle(text) {
-    const result = text.replace(/([A-Z0-9])/g, " $1");
-    return result.charAt(0).toUpperCase() + result.slice(1);
-}
+import { camelToTitle } from "@/helpers/strings";
 
 /*
  Returns the <li> needed for `dataToCols`
@@ -54,13 +50,15 @@ export function dataToCols(dr, input=false) {
         // We can't do dynamic classnames for tailwind =(
         switch (dr.length) {
             case 1:
-                cc = 'inline-block'
+                cc = 'inline-block align-top'
                 break;
             case 2:
-                cc = 'inline-block w-1/2'
+            case 4:
+            case 6:
+                cc = 'inline-block w-1/2 align-top mb-2'
                 break;
             case 3:
-                cc = 'inline-block w-1/3'
+                cc = 'inline-block w-1/3 align-top'
         }
         
         cols.push (<ul className={cc} key={colKey}>
