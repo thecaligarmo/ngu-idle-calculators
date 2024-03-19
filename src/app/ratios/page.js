@@ -8,6 +8,33 @@ import bigDecimal from 'js-big-decimal';
 import { useState } from 'react';
 
 
+// Get the max and unit based off the ratios
+function getRatMaxAndUnit(base, ratio, mainRatio, oppRatio, thirdRatio) {
+  // Might accidentally divide by 0
+  try{
+    // Get ratio of base power with our ratio (how many units we have of the ratio desired)
+    var rat = base.divide(ratio)
+    // Take our units and multiply by the "opposite" ratio (see what quantity we need)
+    var ratMax = rat.multiply(oppRatio).multiply(thirdRatio)
+    // Take our units and devide by the "same" ratio (smaller unit)
+    var ratUnit = rat.divide(mainRatio)
+    return [ratMax, ratUnit]
+  } catch (error) {
+    return [bd(0), bd(0)]
+  }
+}
+
+// Get numbers desired and for buying
+function getDesiredBuy(maxItem, base, ratMax) {
+  try {
+    var desired = (maxItem.multiply(base).divide(ratMax)).floor()
+  } catch(error) {
+    var desired = bd(0);
+  }
+  var buy = bigdec_max(desired.subtract(base), bd(0));
+  return [desired, buy]
+}
+
 
 export default function Page() {
   const playerData = getPlayerData();
@@ -35,88 +62,19 @@ export default function Page() {
     }
     return bd(x)
   }
-
-
-  // Get ratio of base power with our ratio (how many units we have of the ratio desired)
-  try{
-    var EPowerRat = v("baseEnergyPower").divide(v("energyPowerRatio"))
-    var ECapRat = v("baseEnergyCap").divide(v("energyCapRatio"))
-    var EBarRat = v("baseEnergyBar").divide(v("energyBarRatio"))
-    var MPowerRat = v("baseMagicPower").divide(v("magicPowerRatio"))
-    var MCapRat = v("baseMagicCap").divide(v("magicCapRatio"))
-    var MBarRat = v("baseMagicBar").divide(v("magicBarRatio"))
-  } catch (error) {
-    var EPowerRat = bd(0);
-    var ECapRat = bd(0);
-    var EBarRat = bd(0);
-    var MPowerRat = bd(0);
-    var MCapRat = bd(0);
-    var MBarRat = bd(0);
-  }
-
-  // Take our units and multiply by the "opposite" ratio (see what quantity we need)
-  var EPowerRatMax = EPowerRat.multiply(v("magicRatio"))
-  var ECapRatMax = ECapRat.multiply(v("magicRatio"))
-  var EBarRatMax = EBarRat.multiply(v("magicRatio"))
-  var MPowerRatMax = MPowerRat.multiply(v("energyRatio"))
-  var MCapRatMax = MCapRat.multiply(v("energyRatio"))
-  var MBarRatMax = MBarRat.multiply(v("energyRatio"))
-
-  // Take our units and devide by the "same" ratio (smaller unit)
-  try {
-    var EPowerRatUnit = EPowerRat.divide(v("energyRatio"))
-    var ECapRatUnit = ECapRat.divide(v("energyRatio"))
-    var EBarRatUnit = EBarRat.divide(v("energyRatio"))
-    var MPowerRatUnit = MPowerRat.divide(v("magicRatio"))
-    var MCapRatUnit = MCapRat.divide(v("magicRatio"))
-    var MBarRatUnit = MBarRat.divide(v("magicRatio"))
-  } catch (error) {
-    var EPowerRatUnit = bd(0);
-    var ECapRatUnit = bd(0);
-    var EBarRatUnit = bd(0);
-    var MPowerRatUnit = bd(0);
-    var MCapRatUnit = bd(0);
-    var MBarRatUnit = bd(0);
-  }
-
-
-  // Similar logic as above, but with resource 3 added into the mix
-  if(res3Active) {
-    try {
-      var RPowerRat = v("baseResource3Power").divide(v("resource3PowerRatio"))
-      var RCapRat = v("baseResource3Cap").divide(v("resource3CapRatio"))
-      var RBarRat = v("baseResource3Bar").divide(v("resource3BarRatio"))
-
-      var RPowerRatUnit = RPowerRat.divide(v("resource3Ratio"))
-      var RCapRatUnit = RCapRat.divide(v("resource3Ratio"))
-      var RBarRatUnit = RBarRat.divide(v("resource3Ratio"))
-    } catch (error) {
-      var RPowerRat = bd(0);
-      var RCapRat =  bd(0);
-      var RBarRat =  bd(0);
-
-      var RPowerRatUnit =  bd(0);
-      var RCapRatUnit =  bd(0);
-      var RBarRatUnit =  bd(0);
-    }
-
-    var RPowerRatMax = RPowerRat.multiply(v("magicRatio")).multiply(v("energyRatio"))
-    var RCapRatMax = RCapRat.multiply(v("magicRatio")).multiply(v("energyRatio"))
-    var RBarRatMax = RBarRat.multiply(v("magicRatio")).multiply(v("energyRatio"))
-
-
-
-    // Fix other ones
-    EPowerRatMax = EPowerRatMax.multiply(v("resource3Ratio"))
-    ECapRatMax = ECapRatMax.multiply(v("resource3Ratio"))
-    EBarRatMax = EBarRatMax.multiply(v("resource3Ratio"))
-    MPowerRatMax = MPowerRatMax.multiply(v("resource3Ratio"))
-    MCapRatMax = MCapRatMax.multiply(v("resource3Ratio"))
-    MBarRatMax = MBarRatMax.multiply(v("resource3Ratio"))
-  }
   
 
-
+  var [EPowerRatMax, EPowerRatUnit] = getRatMaxAndUnit(v("baseEnergyPower"), v("energyPowerRatio"), v("energyRatio"), v("magicRatio"), res3Active ? v("resource3Ratio") : bd(1));
+  var [ECapRatMax, ECapRatUnit] = getRatMaxAndUnit(v("baseEnergyCap"), v("energyCapRatio"), v("energyRatio"), v("magicRatio"), res3Active ? v("resource3Ratio") : bd(1));
+  var [EBarRatMax, EBarRatUnit] = getRatMaxAndUnit(v("baseEnergyBar"), v("energyBarRatio"), v("energyRatio"), v("magicRatio"), res3Active ? v("resource3Ratio") : bd(1));
+  var [MPowerRatMax, MPowerRatUnit] = getRatMaxAndUnit(v("baseMagicPower"), v("magicPowerRatio"), v("magicRatio"), v("energyRatio"), res3Active ? v("resource3Ratio") : bd(1));
+  var [MCapRatMax, MCapRatUnit] = getRatMaxAndUnit(v("baseMagicCap"), v("magicCapRatio"), v("magicRatio"), v("energyRatio"), res3Active ? v("resource3Ratio") : bd(1));
+  var [MBarRatMax, MBarRatUnit] = getRatMaxAndUnit(v("baseMagicBar"), v("magicBarRatio"), v("magicRatio"), v("energyRatio"), res3Active ? v("resource3Ratio") : bd(1));
+  if(res3Active) {
+    var [RPowerRatMax, RPowerRatUnit] = getRatMaxAndUnit(v("baseResource3Power"), v("resource3PowerRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
+    var [RCapRatMax, RCapRatUnit] = getRatMaxAndUnit(v("baseResource3Cap"), v("resource3CapRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
+    var [RBarRatMax, RBarRatUnit] = getRatMaxAndUnit(v("baseResource3Bar"), v("resource3BarRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
+  }
   // Calculate desired amount
   // The largest max is where we are trying to be. So take max of all values and
   // do everything relative to that
@@ -127,45 +85,19 @@ export default function Page() {
     minItem = bigdec_min(minItem, RPowerRatUnit, RCapRatUnit, RBarRatUnit)
   }
 
-  try {
-    var EPowerDesired = (maxItem.multiply(v("baseEnergyPower")).divide(EPowerRatMax)).floor()
-    var ECapDesired = (maxItem.multiply(v("baseEnergyCap")).divide(ECapRatMax)).floor()
-    var EBarDesired = (maxItem.multiply(v("baseEnergyBar")).divide(EBarRatMax)).floor()
-    var MPowerDesired = (maxItem.multiply(v("baseMagicPower")).divide(MPowerRatMax)).floor()
-    var MCapDesired = (maxItem.multiply(v("baseMagicCap")).divide(MCapRatMax)).floor()
-    var MBarDesired = (maxItem.multiply(v("baseMagicBar")).divide(MBarRatMax)).floor()
-    if (res3Active) {
-      var RPowerDesired = (maxItem.multiply(v("baseResource3Power")).divide(RPowerRatMax)).floor()
-      var RCapDesired = (maxItem.multiply(v("baseResource3Cap")).divide(RCapRatMax)).floor()
-      var RBarDesired = (maxItem.multiply(v("baseResource3Bar")).divide(RBarRatMax)).floor()
-    }
-  } catch (error) {
-    var EPowerDesired = bd(0);
-    var ECapDesired = bd(0);
-    var EBarDesired = bd(0);
-    var MPowerDesired = bd(0);
-    var MCapDesired = bd(0);
-    var MBarDesired = bd(0);
-    if (res3Active) {
-      var RPowerDesired = bd(0);
-      var RCapDesired = bd(0);
-      var RBarDesired = bd(0);
-    }
-  }
-
-  // Calculate amount to buy to get to desired amount
-  var EPowerBuy = bigdec_max(EPowerDesired.subtract(v("baseEnergyPower")), bd(0))
-  var ECapBuy = bigdec_max(ECapDesired.subtract(v("baseEnergyCap")), bd(0))
-  var EBarBuy = bigdec_max(EBarDesired.subtract(v("baseEnergyBar")), bd(0))
-  var MPowerBuy = bigdec_max(MPowerDesired.subtract(v("baseMagicPower")), bd(0))
-  var MCapBuy = bigdec_max(MCapDesired.subtract(v("baseMagicCap")), bd(0))
-  var MBarBuy = bigdec_max(MBarDesired.subtract(v("baseMagicBar")), bd(0))
-
+  
+  var [EPowerDesired, EPowerBuy] = getDesiredBuy(maxItem, v("baseEnergyPower"), EPowerRatMax)
+  var [ECapDesired, ECapBuy] = getDesiredBuy(maxItem, v("baseEnergyCap"), ECapRatMax)
+  var [EBarDesired, EBarBuy] = getDesiredBuy(maxItem, v("baseEnergyBar"), EBarRatMax)
+  var [MPowerDesired, MPowerBuy] = getDesiredBuy(maxItem, v("baseMagicPower"), MPowerRatMax)
+  var [MCapDesired, MCapBuy] = getDesiredBuy(maxItem, v("baseMagicCap"), MCapRatMax)
+  var [MBarDesired, MBarBuy] = getDesiredBuy(maxItem, v("baseMagicBar"), MBarRatMax)
   if (res3Active) {
-    var RPowerBuy = RPowerDesired.subtract(v("baseResource3Power"))
-    var RCapBuy = RCapDesired.subtract(v("baseResource3Cap"))
-    var RBarBuy = RBarDesired.subtract(v("baseResource3Bar"))
+    var [RPowerDesired, RPowerBuy] = getDesiredBuy(maxItem, v("baseResource3Power"), RPowerRatMax)
+    var [RCapDesired, RCapBuy] = getDesiredBuy(maxItem, v("baseResource3Cap"), RCapRatMax)
+    var [RBarDesired, RBarBuy] = getDesiredBuy(maxItem, v("baseResource3Bar"), RBarRatMax)
   }
+
 
   // Cost to increase all the things
   var EExpCost = EPowerBuy.multiply(bd(15)).add(ECapBuy.multiply(bd(40)).divide(bd(10000))).add(EBarBuy.multiply(bd(80))).ceil()
