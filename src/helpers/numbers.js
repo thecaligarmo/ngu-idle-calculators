@@ -1,4 +1,6 @@
 import bigDecimal from "js-big-decimal";
+import { getNumberFormat } from "./context";
+import { getLargeSuffix } from "./largeNumbers";
 
 export function bigdec_max(...args){
     if (args.length < 1){ 
@@ -26,10 +28,34 @@ export function bigdec_min(...args){
     return m;
 }
 
-// print/pretty number
+// print/pretty number (Only integers supported currently)
 export function pn(num) {
-    return num.getPrettyValue()
+    var n = num.floor().getValue();
+    var nl = n.length
+
+    // We should only start for billions as until then it's pretty human readable
+    if (nl < 10) {
+        return Number(n).toLocaleString()
+    }
+    var numberFormat = getNumberFormat();
+
+    if (numberFormat == 'scientific') {
+        var e = nl - 1
+        var firstFour = n.slice(0,4);
+        return (Number(firstFour) / 1000).toFixed(3).toLocaleString() + "E+" + e
+    }
+    // Number of digits in front
+    var nmod = nl % 3
+    // Number of 3 numbers
+    var e = (nmod == 0) ? Math.floor(nl / 3) - 1 : Math.floor(nl / 3);
+    var firstNum = (nmod == 0) ? n.slice(0, 6) : n.slice(0, nmod + 3);
+    if (numberFormat == 'engineering') {
+        return (Number(firstNum) / 1000).toFixed(3).toLocaleString() + "E+" + (e * 3)
+    }
+    var suffix = getLargeSuffix(e-1)
+    return (Number(firstNum) / 1000).toFixed(3).toLocaleString() + " " + suffix
 }
+
 
 export function bd(num) {
     return new bigDecimal(num)
@@ -51,10 +77,6 @@ export function dn(num){
     var mString = m.getValue().padStart(2, '0') + ":"
     var sString = s.getValue().padStart(2, '0')
     
-    // var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
-    // var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
-    // var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
-    // var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
     var str = mString + sString
     if (h.compareTo(bd(0)) == 1) {
         str = hString + str
@@ -64,3 +86,5 @@ export function dn(num){
     }
     return str
 }
+
+
