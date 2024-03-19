@@ -8,6 +8,7 @@ import bigDecimal from 'js-big-decimal';
 import { useState } from 'react';
 
 
+
 export default function Page() {
   const playerData = getPlayerData();
   var defaultres3 = defaultPlayerData(playerData, "resource3Active") === 1
@@ -212,95 +213,99 @@ export default function Page() {
     extraReq.pop()
   }
 
+  var showres3active = (
+    <button
+      className="bg-transparent hover:bg-blue-500 inline-block py-2 px-4 text-blue-700 hover:text-white font-semibold"
+      onClick={() => setRes3Active(!res3Active)}
+      data-tip={"Show Resource 3"}
+      data-place="bottom"
+      >
+        {res3Active ? "Hide R3" : "Show R3"}
+    </button>
+  )
+
 
   return (
-    <>
-      <Content title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={<button
-            className="bg-transparent hover:bg-blue-500 inline-block py-2 px-4 text-blue-700 hover:text-white font-semibold"
-            onClick={() => setRes3Active(!res3Active)}
-            data-tip={"Show Resource 3"}
-            data-place="bottom"
-        >{res3Active ? "Hide R3" : "Show R3"}</button>}>
-      
-        <div className="flex">
-          <div className="mr-10">
-            <h4 className="text-xl">What it should be:</h4>
-            <table className="table-auto mt-2">
-              <thead>
-                <tr>
-                  <th className="w-32"></th>
-                  <th className="px-2">Energy</th>
-                  <th className="px-2">Magic</th>
-                  {res3Active ? <th className="px-2">Resource 3</th> :null}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="text-right pr-2">Power</td>
-                  <td className="text-center px-2">{pn(EPowerDesired)}</td>
-                  <td className="text-center px-2">{pn(MPowerDesired)}</td>
-                  {res3Active ? <td className="text-center px-2">{pn(RPowerDesired)}</td> : null}
-                </tr>
-                <tr>
-                  <td className="text-right pr-2">Cap</td>
-                  <td className="text-center px-2">{pn(ECapDesired)}</td>
-                  <td className="text-center px-2">{pn(MCapDesired)}</td>
-                  {res3Active ? <td className="text-center px-2">{pn(RCapDesired)}</td> : null }
-                </tr>
-                <tr>
-                  <td className="text-right pr-2">Bar</td>
-                  <td className="text-center px-2">{pn(EBarDesired)}</td>
-                  <td className="text-center px-2">{pn(MBarDesired)}</td>
-                  {res3Active ? <td className="text-center px-2">{pn(RBarDesired)}</td>: null}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="ml-10">
-            <h4 className="text-xl">What you need to buy:</h4>
-            <table className="table-auto mt-2">
-              <thead>
-                <tr>
-                  <th className="w-32"></th>
-                  <th className="px-2">Energy</th>
-                  <th className="px-2">Magic</th>
-                  {res3Active ? <th className="px-2">Resource 3</th> :null}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="text-right pr-2">Power</td>
-                  <td className="text-center px-2">{pn(EPowerBuy)}</td>
-                  <td className="text-center px-2">{pn(MPowerBuy)}</td>
-                  {res3Active ? <td className="text-center px-2">{pn(RPowerBuy)}</td> : null}
-                </tr>
-                <tr>
-                  <td className="text-right pr-2">Cap</td>
-                  <td className="text-center px-2">{pn(ECapBuy)}</td>
-                  <td className="text-center px-2">{pn(MCapBuy)}</td>
-                  {res3Active ? <td className="text-center px-2">{pn(RCapBuy)}</td> : null }
-                </tr>
-                <tr>
-                  <td className="text-right pr-2">Bar</td>
-                  <td className="text-center px-2">{pn(EBarBuy)}</td>
-                  <td className="text-center px-2">{pn(MBarBuy)}</td>
-                  {res3Active ? <td className="text-center px-2">{pn(RBarBuy)}</td>: null}
-                </tr>
-              </tbody>
-            </table>
-          </div>
+    <Content title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={showres3active}>
+    
+      <div className="flex">
+        <div className="mr-10">
+          <h4 className="text-xl">What it should be:</h4>
+          <table className="table-auto mt-2">
+            <thead>
+              <tr>
+                <th className="w-32"></th>
+                <th className="px-2">Energy</th>
+                <th className="px-2">Magic</th>
+                {res3Active ? <th className="px-2">Resource 3</th> :null}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="text-right pr-2">Power</td>
+                <td className="text-center px-2">{pn(EPowerDesired)}</td>
+                <td className="text-center px-2">{pn(MPowerDesired)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RPowerDesired)}</td> : null}
+              </tr>
+              <tr>
+                <td className="text-right pr-2">Cap</td>
+                <td className="text-center px-2">{pn(ECapDesired)}</td>
+                <td className="text-center px-2">{pn(MCapDesired)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RCapDesired)}</td> : null }
+              </tr>
+              <tr>
+                <td className="text-right pr-2">Bar</td>
+                <td className="text-center px-2">{pn(EBarDesired)}</td>
+                <td className="text-center px-2">{pn(MBarDesired)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RBarDesired)}</td>: null}
+              </tr>
+            </tbody>
+          </table>
         </div>
+        <div className="ml-10">
+          <h4 className="text-xl">What you need to buy:</h4>
+          <table className="table-auto mt-2">
+            <thead>
+              <tr>
+                <th className="w-32"></th>
+                <th className="px-2">Energy</th>
+                <th className="px-2">Magic</th>
+                {res3Active ? <th className="px-2">Resource 3</th> :null}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="text-right pr-2">Power</td>
+                <td className="text-center px-2">{pn(EPowerBuy)}</td>
+                <td className="text-center px-2">{pn(MPowerBuy)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RPowerBuy)}</td> : null}
+              </tr>
+              <tr>
+                <td className="text-right pr-2">Cap</td>
+                <td className="text-center px-2">{pn(ECapBuy)}</td>
+                <td className="text-center px-2">{pn(MCapBuy)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RCapBuy)}</td> : null }
+              </tr>
+              <tr>
+                <td className="text-right pr-2">Bar</td>
+                <td className="text-center px-2">{pn(EBarBuy)}</td>
+                <td className="text-center px-2">{pn(MBarBuy)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RBarBuy)}</td>: null}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-        <h4 className="text-xl mt-5">How much EXP do I need?</h4>
-        <ul>
-          <li key="energy"><strong>Energy:</strong> {pn(EExpCost)}</li>
-          <li key="magic"><strong>Magic:</strong> {pn(MExpCost)}</li>
-          {res3Active ? <li key="resource"><strong>Resource 3:</strong> {pn(RExpCost)}</li> : null}
-          <li key="total"><strong>Total:</strong> {pn(TotalExpCost)}</li>
-        </ul>
-        <p><strong>Suggested next thing to buy:</strong> {suggestedBuy}</p>
-      </Content>
-    </>
+      <h4 className="text-xl mt-5">How much EXP do I need?</h4>
+      <ul>
+        <li key="energy"><strong>Energy:</strong> {pn(EExpCost)}</li>
+        <li key="magic"><strong>Magic:</strong> {pn(MExpCost)}</li>
+        {res3Active ? <li key="resource"><strong>Resource 3:</strong> {pn(RExpCost)}</li> : null}
+        <li key="total"><strong>Total:</strong> {pn(TotalExpCost)}</li>
+      </ul>
+      <p><strong>Suggested next thing to buy:</strong> {suggestedBuy}</p>
+    </Content>
   )
 }
 

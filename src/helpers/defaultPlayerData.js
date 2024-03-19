@@ -1,5 +1,3 @@
-import bigDecimal from "js-big-decimal";
-
 export function defaultPlayerData(playerData, info) {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
     switch(info) {

@@ -1,5 +1,4 @@
 // https://upmostly.com/next-js/using-localstorage-in-next-js
-import bigDecimal from "js-big-decimal";
 import { useEffect, useState } from "react";
 
 export function useLocalStorage(key, fallbackValue) {
