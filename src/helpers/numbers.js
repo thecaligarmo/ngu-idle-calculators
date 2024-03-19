@@ -1,3 +1,5 @@
+import bigDecimal from "js-big-decimal";
+
 export function bigdec_max(...args){
     if (args.length < 1){ 
         throw 'Max of empty list';
@@ -27,4 +29,8 @@ export function bigdec_min(...args){
 // print/pretty number
 export function pn(num) {
     return num.getPrettyValue()
+}
+
+export function bd(num) {
+    return new bigDecimal(num)
 }

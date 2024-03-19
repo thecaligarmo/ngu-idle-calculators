@@ -2,8 +2,11 @@ import { useState } from "react";
 import { dataToCols } from "./dataListColumns";
 
 
-export default function ContentSection({children, idKey, title, lists, inputs}) {
+export default function ContentSection({children, idKey, title, data}) {
     const [showInputs, setShowInputs] = useState(false)
+
+    const inputs = dataToCols(data, true)
+    const lists = dataToCols(data)
 
     return (
         <section className="clear-both pt-5">

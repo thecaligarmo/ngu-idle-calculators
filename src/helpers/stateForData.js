@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { defaultPlayerData } from "./defaultPlayerData";
 import { getPlayerData, isPlayerDataUpdated } from "./context";
 import { useLocalStorageNumber } from "./localStorage";
-import bigDecimal from "js-big-decimal";
 
 export default function createStatesForData(data) {
     const playerData = getPlayerData();
