@@ -1,21 +1,22 @@
 import ContentSection from "./contentSection";
+import ContentSectionWithData from "./contentSectionWithData";
 
-export default function Content({children, title, infoRequired, infoChildren, extraRequired, extraChildren}) {
+export default function Content({children, prechildren, title, infoRequired, infoChildren, extraRequired, extraChildren}) {
     return (
         <main className="w-3/4 mx-auto pt-10">
-            <h2 className="text-4xl mb-10 border-b font-bold">{title}</h2>
-            <ContentSection idKey="player" title="Player Info" data={infoRequired}>
+            <h2 className="text-4xl mb-5 border-b border-black dark:border-white font-bold">{title}</h2>
+            {prechildren}
+            <ContentSectionWithData idKey="player" title="Player Info" data={infoRequired}>
                 {infoChildren}
-            </ContentSection>
-            <ContentSection idKey="extra" title="Extra Info" data={extraRequired}>
+            </ContentSectionWithData>
+            <ContentSectionWithData idKey="extra" title="Extra Info" data={extraRequired}>
                 {extraChildren}
-            </ContentSection>
-            <section className="pt-5 clear-both">
-                <h3 className="text-2xl underline">Information</h3>
+            </ContentSectionWithData>
+            <ContentSection title="Information">
                 <div id="content" className="clear-both">
                     {children}
                 </div>
-            </section>
+            </ContentSection>
         </main>
     )
 }

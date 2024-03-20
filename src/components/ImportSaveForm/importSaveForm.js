@@ -8,8 +8,8 @@ const ImportSaveForm = (props) => {
 
     const inputElem = useRef(null);
     
-    const {playerData, setPlayerData} = useDataContext();
-    const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();
+    const {setPlayerData} = useDataContext();
+    const {setPlayerDataUpdated} = useSavedDataContext();
     
     const handleFileRead = (rawSave) => (e) => {
         let data
@@ -47,7 +47,7 @@ const ImportSaveForm = (props) => {
         <div className="float-right mr-1">
             <input ref={inputElem} style={{ display: "none" }} type='file' id='savefileloader' onChange={e => handleFilePick(e)} />
             <button
-                className="bg-transparent hover:bg-blue-500 inline-block py-2 px-4 text-blue-700 hover:text-white font-semibold"
+                className="ml-2 bg-transparent hover:bg-blue-500 inline-block py-2 px-3 text-blue-700 hover:text-white dark:hover:text-black font-semibold"
                 onClick={() => inputElem.current.click()}
                 data-tip={"Supported file types are<br/>(1) raw NGU save files, and<br/>(2) NGUSav.es JSON files."}
                 data-place="bottom"

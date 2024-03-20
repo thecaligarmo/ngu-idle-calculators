@@ -46,19 +46,19 @@ export function dataToCols(dr, input=false) {
         for (var d of col) {
             colKey += d.key
         }
-        var cc = ''
+        var cc = 'inline-block align-top mb-2 '
         // We can't do dynamic classnames for tailwind =(
         switch (dr.length) {
             case 1:
-                cc = 'inline-block align-top'
+                cc += ''
                 break;
             case 2:
             case 4:
             case 6:
-                cc = 'inline-block w-1/2 align-top mb-2'
+                cc += 'w-1/2 '
                 break;
             case 3:
-                cc = 'inline-block w-1/3 align-top'
+                cc += 'w-1/3 '
         }
         
         cols.push (<ul className={cc} key={colKey}>

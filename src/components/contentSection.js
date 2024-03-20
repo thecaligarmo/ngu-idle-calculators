@@ -1,32 +1,19 @@
 import { useState } from "react";
-import { dataToCols } from "./dataListColumns";
+import { CollapseButton } from "./buttons";
 
-
-export default function ContentSection({children, idKey, title, data}) {
-    const [showInputs, setShowInputs] = useState(false)
-
-    const inputs = dataToCols(data, true)
-    const lists = dataToCols(data)
+export default function ContentSection({children, title, titleExtra}) {
+    const [hideInfo, setHideInfo] = useState(false)
 
     return (
         <section className="clear-both pt-5">
             <h3 className="text-2xl">
+                <CollapseButton hidden={hideInfo} onClick={() => {
+                    setHideInfo(!hideInfo)
+                }} />
                 <span className="underline align-bottom">{title}</span>
-                <button
-                    className="bg-transparent inline-block hover:bg-blue-500 text-blue-700 text-sm hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded ml-4"
-                    onClick={() => setShowInputs(!showInputs)}
-                    >
-                        {showInputs ? "Hide Inputs" : "Change Data"}
-                    </button>
+                { hideInfo ? null : titleExtra}
             </h3>
-            <div id={idKey + "-info-lists"} className={!showInputs ? "block" : "hidden"}>
-                {lists}
-            </div>
-            <div id={idKey + "-info-inputs"} className={showInputs ? "block clear-both" : "hidden"}>
-                {inputs}
-            </div>
-            {children}
+            { hideInfo ? null : children}
         </section>
-            
     )
 }

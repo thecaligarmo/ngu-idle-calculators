@@ -1,4 +1,5 @@
 "use client"
+import { ChoiceButton } from '@/components/buttons';
 import Content from '@/components/content';
 import { getPlayerData} from '@/helpers/context';
 import { defaultPlayerData } from '@/helpers/defaultPlayerData';
@@ -146,19 +147,20 @@ export default function Page() {
   }
 
   var showres3active = (
-    <button
-      className="bg-transparent hover:bg-blue-500 inline-block py-2 px-4 text-blue-700 hover:text-white font-semibold"
+    <ChoiceButton
+      text={res3Active ? "Hide R3" : "Show R3"}
       onClick={() => setRes3Active(!res3Active)}
-      data-tip={"Show Resource 3"}
-      data-place="bottom"
-      >
-        {res3Active ? "Hide R3" : "Show R3"}
-    </button>
+       />
   )
 
+  var prechildren = (
+    <>
+      <p>Calculate how much Energy/Magic/Resource 3 you need in order to have the proper ratios.</p>
+    </>
+  )
 
   return (
-    <Content title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={showres3active}>
+    <Content prechildren={prechildren} title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={showres3active}>
     
       <div className="flex">
         <div className="mr-10">

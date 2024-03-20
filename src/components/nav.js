@@ -9,11 +9,11 @@ export default function Nav({ children }) {
     
     const activeTabLi = "-mb-px mr-1"
     const inactiveTabLi = "mr-1"
-    const activeTab = "bg-blue-500 inline-block border-l border-blue-500 border-t border-r rounded-t py-2 px-4 text-white font-semibold"
-    const inactiveTab = "bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+    const activeTab = "bg-blue-500 inline-block border-l border-blue-500 border-t border-r rounded-t py-2 px-4 text-white dark:text-black font-semibold"
+    const inactiveTab = "bg-white dark:bg-black inline-block py-2 px-4 text-blue-500 dark:hover:text-blue-800 hover:text-blue-300 font-semibold"
     return (
       <nav>
-        <ul className="flex border-b">
+        <ul className="flex border-b dark:border-white border-black">
             <li key="ratios" className={(pathname == "/ratios") ? activeTabLi : inactiveTabLi}>
                 <Link className={(pathname == "/ratios") ? activeTab : inactiveTab} href="/ratios">Ratio Calc</Link>
             </li>
@@ -25,10 +25,13 @@ export default function Nav({ children }) {
             </li>
             <li key="save" className="flex-grow">
                 <ImportSaveForm />
-                <form className="float-right">
+                <form className="float-right mt-px">
                     <select
                         value={numberFormat}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="block px-2.5 py-2 bg-gray-50 dark:bg-gray-700
+                                border border-gray-300 dark:border-gray-600 rounded-lg
+                                text-gray-900 text-sm dark:placeholder-gray-400 dark:text-white
+                                "
                         onChange={(e) => {
                             setNumberFormat(e.target.value)
                         }}
