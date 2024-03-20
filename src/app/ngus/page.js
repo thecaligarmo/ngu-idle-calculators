@@ -206,8 +206,6 @@ export default function Page({children}) {
         return timeToLvlLi(secs, magicText[index], targetLvl);
     })
 
-
-    console.log(extraReq.length, infoReq.length)
     if(calcType == NGU_TARGET) {
         extraReq.pop()
         extraReq.pop()

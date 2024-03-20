@@ -14,7 +14,7 @@ export default function Nav({ children }) {
     return (
       <nav>
         <ul className="flex border-b dark:border-white border-black">
-        <li key="ratios" className={(pathname == "/") ? activeTabLi : inactiveTabLi}>
+            <li key="home" className={(pathname == "/") ? activeTabLi : inactiveTabLi}>
                 <Link className={(pathname == "/") ? activeTab : inactiveTab} href="/">Home</Link>
             </li>
             <li key="ratios" className={(pathname == "/ratios") ? activeTabLi : inactiveTabLi}>
