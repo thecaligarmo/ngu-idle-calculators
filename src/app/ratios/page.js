@@ -146,11 +146,13 @@ export default function Page() {
     extraReq.pop()
   }
 
-  var showres3active = (
-    <ChoiceButton
-      text={res3Active ? "Hide R3" : "Show R3"}
-      onClick={() => setRes3Active(!res3Active)}
-       />
+  var extraChildren = (
+    <>
+      <ChoiceButton
+        text={res3Active ? "Hide R3" : "Show R3"}
+        onClick={() => setRes3Active(!res3Active)}
+        />
+    </>
   )
 
   var prechildren = (
@@ -160,15 +162,14 @@ export default function Page() {
   )
 
   return (
-    <Content prechildren={prechildren} title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={showres3active}>
-    
+    <Content prechildren={prechildren} title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren}>
       <div className="flex">
         <div className="mr-10">
-          <h4 className="text-xl">What it should be:</h4>
-          <table className="table-auto mt-2">
+          <h4 className="text-xl">What base amounts should be</h4>
+          <table className="table-auto mt-2 bg-red-500/50">
             <thead>
               <tr>
-                <th className="w-32"></th>
+                <th className="w-24"></th>
                 <th className="px-2">Energy</th>
                 <th className="px-2">Magic</th>
                 {res3Active ? <th className="px-2">Resource 3</th> :null}
@@ -176,19 +177,19 @@ export default function Page() {
             </thead>
             <tbody>
               <tr>
-                <td className="text-right pr-2">Power</td>
+                <td className="text-right pr-2"><strong>Power</strong></td>
                 <td className="text-center px-2">{pn(EPowerDesired)}</td>
                 <td className="text-center px-2">{pn(MPowerDesired)}</td>
                 {res3Active ? <td className="text-center px-2">{pn(RPowerDesired)}</td> : null}
               </tr>
               <tr>
-                <td className="text-right pr-2">Cap</td>
+                <td className="text-right pr-2"><strong>Cap</strong></td>
                 <td className="text-center px-2">{pn(ECapDesired)}</td>
                 <td className="text-center px-2">{pn(MCapDesired)}</td>
                 {res3Active ? <td className="text-center px-2">{pn(RCapDesired)}</td> : null }
               </tr>
               <tr>
-                <td className="text-right pr-2">Bar</td>
+                <td className="text-right pr-2"><strong>Bar</strong></td>
                 <td className="text-center px-2">{pn(EBarDesired)}</td>
                 <td className="text-center px-2">{pn(MBarDesired)}</td>
                 {res3Active ? <td className="text-center px-2">{pn(RBarDesired)}</td>: null}
@@ -197,11 +198,11 @@ export default function Page() {
           </table>
         </div>
         <div className="ml-10">
-          <h4 className="text-xl">What you need to buy:</h4>
-          <table className="table-auto mt-2">
+          <h4 className="text-xl">What to buy to achieve ratio</h4>
+          <table className="table-auto mt-2 bg-blue-500/50">
             <thead>
               <tr>
-                <th className="w-32"></th>
+                <th className="w-24"></th>
                 <th className="px-2">Energy</th>
                 <th className="px-2">Magic</th>
                 {res3Active ? <th className="px-2">Resource 3</th> :null}
@@ -209,19 +210,19 @@ export default function Page() {
             </thead>
             <tbody>
               <tr>
-                <td className="text-right pr-2">Power</td>
+                <td className="text-right pr-2"><strong>Power</strong></td>
                 <td className="text-center px-2">{pn(EPowerBuy)}</td>
                 <td className="text-center px-2">{pn(MPowerBuy)}</td>
                 {res3Active ? <td className="text-center px-2">{pn(RPowerBuy)}</td> : null}
               </tr>
               <tr>
-                <td className="text-right pr-2">Cap</td>
+                <td className="text-right pr-2"><strong>Cap</strong></td>
                 <td className="text-center px-2">{pn(ECapBuy)}</td>
                 <td className="text-center px-2">{pn(MCapBuy)}</td>
                 {res3Active ? <td className="text-center px-2">{pn(RCapBuy)}</td> : null }
               </tr>
               <tr>
-                <td className="text-right pr-2">Bar</td>
+                <td className="text-right pr-2"><strong>Bar</strong></td>
                 <td className="text-center px-2">{pn(EBarBuy)}</td>
                 <td className="text-center px-2">{pn(MBarBuy)}</td>
                 {res3Active ? <td className="text-center px-2">{pn(RBarBuy)}</td>: null}
@@ -231,12 +232,14 @@ export default function Page() {
         </div>
       </div>
 
-      <h4 className="text-xl mt-5">How much EXP do I need?</h4>
+      <h4 className="text-xl mt-5">How much EXP do I need to achieve ratio?</h4>
       <ul>
-        <li key="energy"><strong>Energy:</strong> {pn(EExpCost)}</li>
-        <li key="magic"><strong>Magic:</strong> {pn(MExpCost)}</li>
-        {res3Active ? <li key="resource"><strong>Resource 3:</strong> {pn(RExpCost)}</li> : null}
-        <li key="total"><strong>Total:</strong> {pn(TotalExpCost)}</li>
+        <li key="energy"><strong>Energy:</strong> {pn(EExpCost)} exp</li>
+        <li key="magic"><strong>Magic:</strong> {pn(MExpCost)} exp</li>
+        {res3Active ? <li key="resource"><strong>Resource 3:</strong> {pn(RExpCost)} exp</li> : null}
+        <li key="total">
+          <span className="border-t-2 border-white border-solid"><strong>Total Amount:</strong> {pn(TotalExpCost)} exp</span>
+          </li>
       </ul>
       <p><strong>Suggested next thing to buy:</strong> {suggestedBuy}</p>
     </Content>

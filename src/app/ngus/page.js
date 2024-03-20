@@ -48,6 +48,10 @@ function percentTargetLevel(baseLevel, percentage) {
     return baseLevel.multiply(percentage.add(bd(100))).divide(bd(100))
 }
 
+function timeToLvlLi(secs, txt, targetLvl) {
+    return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{dn(secs)}</span> until level <span className="text-blue-500">{pn(targetLvl)}</span></li>
+}
+
 export default function Page({children}) {
     const [calcType, setCalcType] = useState(NGU_TARGET)
     const playerData = getPlayerData();
@@ -194,10 +198,12 @@ export default function Page({children}) {
 
     // Information retrieval
     var energyLi = energySeconds.map(function(secs, index) {
-        return <li key={energyText[index]}><strong>{camelToTitle(energyText[index])}:</strong> {dn(secs)}</li>
+        var targetLvl = (calcType == NGU_PERCENTAGE) ? percentTargetLevel(v(energyText[index] + "Level"), v("percentageIncrease%")): v(energyText[index] + "Target")
+        return timeToLvlLi(secs, energyText[index], targetLvl);
     })
     var magicLi = magicSeconds.map(function(secs, index) {
-        return <li key={magicText[index]}><strong>{camelToTitle(magicText[index])}:</strong> {dn(secs)}</li>
+        var targetLvl = (calcType == NGU_PERCENTAGE) ? percentTargetLevel(v(magicText[index] + "Level"), v("percentageIncrease%")): v(magicText[index] + "Target")
+        return timeToLvlLi(secs, magicText[index], targetLvl);
     })
 
 
@@ -220,8 +226,8 @@ export default function Page({children}) {
     var topButtons = (
         <>
             <p>How would you like to calculate NGUs?</p>
-            <ChoiceButton text="Using Targets" onClick={() => setCalcType(NGU_TARGET)} />
-            <ChoiceButton text="Using Percentage" onClick={() => setCalcType(NGU_PERCENTAGE)} />
+            <ChoiceButton text="Using Targets" onClick={() => setCalcType(NGU_TARGET)} active={calcType==NGU_TARGET} />
+            <ChoiceButton text="Using Percentage" onClick={() => setCalcType(NGU_PERCENTAGE)}  active={calcType==NGU_PERCENTAGE} />
             {/* <ChoiceButton text="Using Time" onClick={() => setCalcType(NGU_TIME)} /> */}
         </>
     )
@@ -229,14 +235,19 @@ export default function Page({children}) {
 
     return (
         <Content prechildren={topButtons} title="NGUs" infoRequired={infoReq} extraRequired={extraReq}>
+            <h4 className="text-xl mb-2">How long until I reach targets?</h4>
             <ul className="inline-block w-1/2 align-top mb-2">
                 {energyLi}
-                <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> {dn(energyTotalSeconds)}</li>
+                <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{dn(energyTotalSeconds)}</span></li>
             </ul>
             <ul className="inline-block w-1/2 align-top mb-2">
                 {magicLi}
-                <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> {dn(magicTotalSeconds)}</li>
+                <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{dn(magicTotalSeconds)}</span></li>
             </ul>
+
+            <p className="mb-2 text-sm">
+                The time formats are given in D:H:M:S where D stands for days, H for hours, M for minutes, S for seconds. For example: 2:04:16:12 means it will take 2 days, 4 hours, 16 minutes and 12 seconds.
+            </p>
         </Content>
     )
 }
