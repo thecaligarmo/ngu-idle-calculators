@@ -222,7 +222,7 @@ export default function Page({children}) {
             <p>How would you like to calculate NGUs?</p>
             <ChoiceButton text="Using Targets" onClick={() => setCalcType(NGU_TARGET)} />
             <ChoiceButton text="Using Percentage" onClick={() => setCalcType(NGU_PERCENTAGE)} />
-            <ChoiceButton text="Using Time" onClick={() => setCalcType(NGU_TIME)} />
+            {/* <ChoiceButton text="Using Time" onClick={() => setCalcType(NGU_TIME)} /> */}
         </>
     )
         
