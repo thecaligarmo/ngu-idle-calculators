@@ -3,7 +3,7 @@ import { dataToCols } from "./dataListColumns";
 import {  ListInputSwitcher } from "./buttons";
 import ContentSection from "./contentSection";
 
-export default function ContentSectionWithData({children, idKey, title, data}) {
+export default function ContentSectionWithData({children, idKey, title, data, listChildren, inputChildren}) {
     const [showInputs, setShowInputs] = useState(false)
     
     const inputs = dataToCols(data, true)
@@ -20,9 +20,11 @@ export default function ContentSectionWithData({children, idKey, title, data}) {
                 <>
                     <div id={idKey + "-info-lists"} className={!showInputs ? "block" : "hidden"}>
                         {lists}
+                        {listChildren}
                     </div>
                     <div id={idKey + "-info-inputs"} className={showInputs ? "block clear-both" : "hidden"}>
                         {inputs}
+                        {inputChildren}
                     </div>
                     {children}
                 </>

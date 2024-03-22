@@ -3,6 +3,7 @@ import { ChoiceButton } from '@/components/buttons';
 import Content from '@/components/content';
 import { getPlayerData} from '@/helpers/context';
 import { defaultPlayerData } from '@/helpers/defaultPlayerData';
+import { setInputValue } from '@/helpers/inputUpdater';
 import {bigdec_max, bigdec_min, pn, bd } from '@/helpers/numbers';
 import createStatesForData from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
@@ -155,6 +156,57 @@ export default function Page() {
     </>
   )
 
+  var extraInputChildren = (
+    <>
+      <div className="mt-2">
+        <p>Quick Selectors:</p>
+        <select defaultValue='' className='text-black' onChange={(e) => {
+          if (e.target.value){
+            var [energy, magic] = e.target.value.split(":")            
+            setInputValue(document.getElementById('energyRatio'), energy)
+            setInputValue(document.getElementById('magicRatio'), magic)
+
+          }
+        }}>
+          <option value=''>Energy to Magic Ratio</option>
+          <option value="10:1">10:1</option>
+          <option value="5:1">5:1</option>
+          <option value="3:1">3:1</option>
+          <option value="2:1">2:1</option>
+        </select>
+        <br />
+        <div className="inline-block align-top mb-2 w-1/2 ">
+        <select defaultValue='' className='text-black' onChange={(e) => {
+          if (e.target.value){
+            var [power, cap, bar] = e.target.value.split(":")
+            setInputValue(document.getElementById('energyPowerRatio'), power)
+            setInputValue(document.getElementById('energyCapRatio'), cap)
+            setInputValue(document.getElementById('energyBarRatio'), bar)
+          }
+        }}>
+          <option value=''>Energy Ratio quick select</option>
+          <option value="1:37500:1">1:37500:1</option>
+          <option value="5:160000:4">5:160000:4</option>
+        </select>
+        </div>
+        <div className="inline-block align-top mb-2 w-1/2 ">
+        <select defaultValue='' className='text-black' onChange={(e) => {
+          if (e.target.value){
+            var [power, cap, bar] = e.target.value.split(":")
+            setInputValue(document.getElementById('magicPowerRatio'), power)
+            setInputValue(document.getElementById('magicCapRatio'), cap)
+            setInputValue(document.getElementById('magicBarRatio'), bar)
+          }
+        }}>
+          <option value=''>Magic Ratio quick select</option>
+          <option value="1:37500:1">1:37500:1</option>
+          <option value="5:160000:4">5:160000:4</option>
+        </select>
+        </div>
+      </div>
+    </>
+  )
+
   var prechildren = (
     <>
       <p>Calculate how much Energy/Magic/Resource 3 you need in order to have the proper ratios.</p>
@@ -162,7 +214,7 @@ export default function Page() {
   )
 
   return (
-    <Content prechildren={prechildren} title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren}>
+    <Content prechildren={prechildren} title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren} extraInputChildren={extraInputChildren}>
       <div className="flex">
         <div className="mr-10">
           <h4 className="text-xl">What base amounts should be</h4>
