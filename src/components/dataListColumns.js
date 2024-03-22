@@ -14,15 +14,15 @@ function dataToList(d, input=false){
     }
     if (input) {
         return (<li key={'in-'+d.key} id={'in-'+d.key}>
-            <label className="block text-white text-sm mt-2 mb-1" htmlFor={d.key}>
+            <label className="block text-black dark:text-white text-sm mt-2 mb-1" htmlFor={d.key}>
                 {camelToTitle(d.key)}
             </label>
             <input
                 className="text-black font-normal"
-                type="text"
+                type="number"
                 name={d.key}
                 id={d.key}
-                value={val.getValue()}
+                value={val.getValue() === '0' ? '' : val.getValue()}
                 onChange={e => {
                     setPlayerDataUpdated(false);
                     d.value[1](e.target.value)
