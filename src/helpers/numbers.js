@@ -29,7 +29,7 @@ export function bigdec_min(...args){
 }
 
 // print/pretty number (Only integers supported currently)
-export function pn(num) {
+export function pn(num, numberFormat='scientific') {
     var n = num.floor().getValue();
     var nl = n.length
 
@@ -37,8 +37,7 @@ export function pn(num) {
     if (nl < 10) {
         return Number(n).toLocaleString()
     }
-    var numberFormat = getNumberFormat();
-
+    
     if (numberFormat == 'scientific') {
         var e = nl - 1
         var firstFour = n.slice(0,4);

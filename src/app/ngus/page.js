@@ -2,9 +2,9 @@
 
 import { ChoiceButton } from "@/components/buttons";
 import Content from "@/components/content";
-import { getPlayerData } from "@/helpers/context";
+import { getNumberFormat, getPlayerData } from "@/helpers/context";
 import { bd, bigdec_min, dn, pn} from "@/helpers/numbers";
-import createStatesForData from "@/helpers/stateForData";
+import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import { camelToTitle } from "@/helpers/strings";
 import bigDecimal from "js-big-decimal";
 import { useState } from "react";
@@ -65,23 +65,9 @@ function percentTargetLevel(baseLevel, percentage) {
     return baseLevel.multiply(percentage.add(bd(100))).divide(bd(100))
 }
 
-function timeToLvlLi(secs, txt, targetLvl) {
-    return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{dn(secs)}</span> until level <span className="text-blue-500">{pn(targetLvl)}</span></li>
-}
-
-
-function capNeededToMaxTargetLi(cap, txt, targetLvl) {
-    return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{pn(cap)}</span> for level <span className="text-blue-500">{pn(targetLvl)}</span></li>
-}
-
-function capNeededToMaxInDayLi(cap, txt) {
-    return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{pn(cap)}</span></li>
-}
-
 export default function Page({children}) {
     const [calcType, setCalcType] = useState(NGU_TARGET)
-    const playerData = getPlayerData();
-
+    var fmt = getNumberFormat();
     // Set data required (from playerData)
     var infoRequired = [
         ['currentEnergyCap'],
@@ -125,8 +111,6 @@ export default function Page({children}) {
             'magicNGUAdventureBTarget'
         ]
     ]
-  
-    var [infoReq, infoData] = createStatesForData(infoRequired)
 
     // Set extra required (not from playerData)
     var extraRequired = [
@@ -134,17 +118,17 @@ export default function Page({children}) {
         ['totalMagicNGUSpeedFactor%'],
         ['percentageIncrease%', 'timeInSeconds'], []
     ]
-    var [extraReq, extraData] = createStatesForData(extraRequired)
+    const playerStates = createStatesForData(extraRequired);
+
+    // Get required data
+    var infoReq = getRequiredStates(infoRequired, playerStates)
+    var extraReq = getRequiredStates(extraRequired, playerStates)
 
     // Helper function - Needed in every isntance (makes code easier to read too)
     function v(key) {
-        if (key in infoData) {
-            var x = infoData[key][0] 
-        } else if (key in extraData) {
-            var x = extraData[key][0]
-        }
+        var x = playerStates[key][0]
         if (x instanceof bigDecimal) {
-            return x
+        return x
         }
         return bd(x)
     }
@@ -262,22 +246,48 @@ export default function Page({children}) {
 
     // Information retrieval
     var energyLi = energySeconds.map(function(secs, index) {
-        return timeToLvlLi(secs, energyText[index], energyTargets[index]);
+        var txt = energyText[index]
+        var targetLvl = energyTargets[index]
+        return (
+        <li key={txt}>
+            {camelToTitle(txt)}: <span className="text-red-500">{dn(secs)}</span> until level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
+        </li>
+        )
     })
     var magicLi = magicSeconds.map(function(secs, index) {
-        return timeToLvlLi(secs, magicText[index], magicTargets[index]);
+        var txt = magicText[index]
+        var targetLvl = magicTargets[index]
+        return (
+            <li key={txt}>
+                {camelToTitle(txt)}: <span className="text-red-500">{dn(secs)}</span> until level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
+            </li>
+            )
     })
     var energyCapToMaxTargetLi = energyCapToMaxTarget.map(function(cap, index) {
-        return capNeededToMaxTargetLi(cap, energyText[index], energyTargets[index]);
+        var txt = energyText[index];
+        var targetLvl = energyTargets[index];
+        return (
+            <li key={txt}>
+                {camelToTitle(txt)}: <span className="text-red-500">{pn(cap, fmt)}</span> until level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
+            </li>
+        )
     })
     var magicCapToMaxTargetLi = magicCapToMaxTarget.map(function(cap, index) {
-        return capNeededToMaxTargetLi(cap, magicText[index], magicTargets[index]);
+        var txt = magicText[index];
+        var targetLvl = magicTargets[index];
+        return (
+            <li key={txt}>
+                {camelToTitle(txt)}: <span className="text-red-500">{pn(cap, fmt)}</span> until level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
+            </li>
+        )
     })
     var energyCapToMaxInDayLi = energyCapToMaxInDay.map(function(cap, index) {
-        return capNeededToMaxInDayLi(cap, energyText[index]);
+        var txt = energyText[index];
+        return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{pn(cap, fmt)}</span></li>
     })
     var magicCapToMaxInDayLi = magicCapToMaxInDay.map(function(cap, index) {
-        return capNeededToMaxInDayLi(cap, magicText[index]);
+        var txt = magicText[index];
+        return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{pn(cap, fmt)}</span></li>
     })
 
     if(calcType == NGU_TARGET) {

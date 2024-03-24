@@ -1,11 +1,11 @@
 "use client"
 import { ChoiceButton } from '@/components/buttons';
 import Content from '@/components/content';
-import { getPlayerData} from '@/helpers/context';
+import { getNumberFormat, getPlayerData} from '@/helpers/context';
 import { defaultPlayerData } from '@/helpers/defaultPlayerData';
 import { setInputValue } from '@/helpers/inputUpdater';
 import {bigdec_max, bigdec_min, pn, bd } from '@/helpers/numbers';
-import createStatesForData from '@/helpers/stateForData';
+import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
 import { useState } from 'react';
 
@@ -40,25 +40,22 @@ function getDesiredBuy(maxItem, base, ratMax) {
 
 export default function Page() {
   const playerData = getPlayerData();
+  var fmt = getNumberFormat();
   var defaultres3 = defaultPlayerData(playerData, "resource3Active") === 1
   const [res3Active, setRes3Active] = useState(defaultres3)
-
-
   // Set data required (from playerData)
   var infoRequired = [["baseEnergyPower", "baseEnergyCap", "baseEnergyBar"], ["baseMagicPower", "baseMagicCap", "baseMagicBar"],["baseResource3Power", "baseResource3Cap", "baseResource3Bar"]]
-  var [infoReq, infoData] = createStatesForData(infoRequired)
-
   // Set extra required (not from playerData)
   var extraRequired = [["energyRatio", "energyPowerRatio", "energyCapRatio", "energyBarRatio"], ["magicRatio", "magicPowerRatio", "magicCapRatio", "magicBarRatio"],["resource3Ratio", "resource3PowerRatio", "resource3CapRatio", "resource3BarRatio"]]
-  var [extraReq, extraData] = createStatesForData(extraRequired)
+  const playerStates = createStatesForData(extraRequired);
+
+  // Get required data
+  var infoReq = getRequiredStates(infoRequired, playerStates)
+  var extraReq = getRequiredStates(extraRequired, playerStates)
 
   // Helper function - Needed in every isntance (makes code easier to read too)
   function v(key) {
-    if (key in infoData) {
-      var x = infoData[key][0] 
-    } else if (key in extraData) {
-      var x = extraData[key][0]
-    }
+    var x = playerStates[key][0]
     if (x instanceof bigDecimal) {
       return x
     }
@@ -230,21 +227,21 @@ export default function Page() {
             <tbody>
               <tr>
                 <td className="text-right pr-2"><strong>Power</strong></td>
-                <td className="text-center px-2">{pn(EPowerDesired)}</td>
-                <td className="text-center px-2">{pn(MPowerDesired)}</td>
-                {res3Active ? <td className="text-center px-2">{pn(RPowerDesired)}</td> : null}
+                <td className="text-center px-2">{pn(EPowerDesired, fmt)}</td>
+                <td className="text-center px-2">{pn(MPowerDesired, fmt)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RPowerDesired, fmt)}</td> : null}
               </tr>
               <tr>
                 <td className="text-right pr-2"><strong>Cap</strong></td>
-                <td className="text-center px-2">{pn(ECapDesired)}</td>
-                <td className="text-center px-2">{pn(MCapDesired)}</td>
-                {res3Active ? <td className="text-center px-2">{pn(RCapDesired)}</td> : null }
+                <td className="text-center px-2">{pn(ECapDesired, fmt)}</td>
+                <td className="text-center px-2">{pn(MCapDesired, fmt)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RCapDesired, fmt)}</td> : null }
               </tr>
               <tr>
                 <td className="text-right pr-2"><strong>Bar</strong></td>
-                <td className="text-center px-2">{pn(EBarDesired)}</td>
-                <td className="text-center px-2">{pn(MBarDesired)}</td>
-                {res3Active ? <td className="text-center px-2">{pn(RBarDesired)}</td>: null}
+                <td className="text-center px-2">{pn(EBarDesired, fmt)}</td>
+                <td className="text-center px-2">{pn(MBarDesired, fmt)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RBarDesired, fmt)}</td>: null}
               </tr>
             </tbody>
           </table>
@@ -263,21 +260,21 @@ export default function Page() {
             <tbody>
               <tr>
                 <td className="text-right pr-2"><strong>Power</strong></td>
-                <td className="text-center px-2">{pn(EPowerBuy)}</td>
-                <td className="text-center px-2">{pn(MPowerBuy)}</td>
-                {res3Active ? <td className="text-center px-2">{pn(RPowerBuy)}</td> : null}
+                <td className="text-center px-2">{pn(EPowerBuy, fmt)}</td>
+                <td className="text-center px-2">{pn(MPowerBuy, fmt)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RPowerBuy, fmt)}</td> : null}
               </tr>
               <tr>
                 <td className="text-right pr-2"><strong>Cap</strong></td>
-                <td className="text-center px-2">{pn(ECapBuy)}</td>
-                <td className="text-center px-2">{pn(MCapBuy)}</td>
-                {res3Active ? <td className="text-center px-2">{pn(RCapBuy)}</td> : null }
+                <td className="text-center px-2">{pn(ECapBuy, fmt)}</td>
+                <td className="text-center px-2">{pn(MCapBuy, fmt)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RCapBuy, fmt)}</td> : null }
               </tr>
               <tr>
                 <td className="text-right pr-2"><strong>Bar</strong></td>
-                <td className="text-center px-2">{pn(EBarBuy)}</td>
-                <td className="text-center px-2">{pn(MBarBuy)}</td>
-                {res3Active ? <td className="text-center px-2">{pn(RBarBuy)}</td>: null}
+                <td className="text-center px-2">{pn(EBarBuy, fmt)}</td>
+                <td className="text-center px-2">{pn(MBarBuy, fmt)}</td>
+                {res3Active ? <td className="text-center px-2">{pn(RBarBuy, fmt)}</td>: null}
               </tr>
             </tbody>
           </table>
@@ -286,11 +283,11 @@ export default function Page() {
 
       <h4 className="text-xl mt-5">How much EXP do I need to achieve ratio?</h4>
       <ul>
-        <li key="energy"><strong>Energy:</strong> {pn(EExpCost)} exp</li>
-        <li key="magic"><strong>Magic:</strong> {pn(MExpCost)} exp</li>
-        {res3Active ? <li key="resource"><strong>Resource 3:</strong> {pn(RExpCost)} exp</li> : null}
+        <li key="energy"><strong>Energy:</strong> {pn(EExpCost, fmt)} exp</li>
+        <li key="magic"><strong>Magic:</strong> {pn(MExpCost, fmt)} exp</li>
+        {res3Active ? <li key="resource"><strong>Resource 3:</strong> {pn(RExpCost, fmt)} exp</li> : null}
         <li key="total">
-          <span className="border-t-2 border-white border-solid"><strong>Total Amount:</strong> {pn(TotalExpCost)} exp</span>
+          <span className="border-t-2 border-white border-solid"><strong>Total Amount:</strong> {pn(TotalExpCost, fmt)} exp</span>
           </li>
       </ul>
       <p><strong>Suggested next thing to buy:</strong> {suggestedBuy}</p>

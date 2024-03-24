@@ -2,35 +2,41 @@ import { defaultPlayerData, getPlayerOptions } from "./defaultPlayerData";
 import { getPlayerData, isPlayerDataUpdated } from "./context";
 import { useLocalStorageNumber } from "./localStorage";
 
-export default function createStatesForData(data) {
+export function createStatesForData(extraRequired) {
     const playerData = getPlayerData();
     var playerOptions = getPlayerOptions();
-    var receivedKeys = []
-
-    var ir = []
+    for (var col of extraRequired) {
+        for (var key of col) {
+            playerOptions.push(key)
+        }
+    }
     var dataObj = {}
+    for (var key of playerOptions) {
+        var defaultVal = defaultPlayerData(playerData, key)
+        var dataState = useLocalStorageNumber(key, defaultVal)
+        if (isPlayerDataUpdated() && dataState[0] != defaultVal) {
+            // dataState[1]({"value": defaultVal})
+            dataState[1](defaultVal)
+        }
+
+        dataObj[key] = dataState
+    }
+    return dataObj;
+}
+
+export function getRequiredStates(data, states) {
+    var ir = []
     for (var col of data) {
         let colDr = []
         for (var k of col) {
-            receivedKeys.push(k)
-            var defaultVal = defaultPlayerData(playerData, k)
-            var dataState = useLocalStorageNumber(k, defaultVal)
-            if (isPlayerDataUpdated() && dataState[0] != defaultVal) {
-                // dataState[1]({"value": defaultVal})
-                dataState[1](defaultVal)
-            }
+            var dataState = states[k]
             colDr.push({
                 key: k,
                 value: dataState
             })
-            dataObj[k] = dataState
         }
         ir.push(colDr)
     }
-    playerOptions.map((opt) => {
-        if (!(opt in receivedKeys)) {
-            useLocalStorageNumber(opt, 0)
-        }
-    })
-    return [ir, dataObj]
+
+    return ir
 }
