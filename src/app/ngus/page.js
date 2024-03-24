@@ -44,12 +44,38 @@ function calcSeconds(cap, speedFactor, base, level, target) {
 
 }
 
+function capToMaxTarget(speedFactor, base, targetLvl) {
+    if (targetLvl.compareTo(bd(0)) == -1) {
+        return bd(0)
+    }
+    try {
+        var baseTimePerLevel = base.divide(speedFactor)
+    } catch (error) {
+        var baseTimePerLevel = bd(0)
+    }
+    return targetLvl.multiply(baseTimePerLevel).divide(bd(0.0002))
+}
+
+function capToMaxInDay(speedFactor, base, currentLvl) {
+    var targetLvl = currentLvl.add(bd(60 * 60 * 24 * 50)) // 50 ticks per second * seconds
+    return capToMaxTarget(speedFactor, base, targetLvl)
+}
+
 function percentTargetLevel(baseLevel, percentage) {
     return baseLevel.multiply(percentage.add(bd(100))).divide(bd(100))
 }
 
 function timeToLvlLi(secs, txt, targetLvl) {
     return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{dn(secs)}</span> until level <span className="text-blue-500">{pn(targetLvl)}</span></li>
+}
+
+
+function capNeededToMaxTargetLi(cap, txt, targetLvl) {
+    return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{pn(cap)}</span> for level <span className="text-blue-500">{pn(targetLvl)}</span></li>
+}
+
+function capNeededToMaxInDayLi(cap, txt) {
+    return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{pn(cap)}</span></li>
 }
 
 export default function Page({children}) {
@@ -167,6 +193,14 @@ export default function Page({children}) {
         bd("1000000000000000"), // energy ngu
         bd("10000000000000000"), // adv b
     ]
+
+    // shorthand for targets
+    var energyTargets = energyText.map((txt) => {
+        return (calcType == NGU_PERCENTAGE) ? percentTargetLevel (v(txt + "Level"), v("percentageIncrease%")): v(txt + "Target")
+    })
+    var magicTargets = magicText.map((txt) => {
+        return (calcType == NGU_PERCENTAGE) ? percentTargetLevel (v(txt + "Level"), v("percentageIncrease%")): v(txt + "Target")
+    })
     
 
     var energySeconds = energyText.map((txt, index) => {
@@ -175,7 +209,7 @@ export default function Page({children}) {
             v("totalEnergyNGUSpeedFactor%"), // speedFactor
             energyNGUBase[index], // base
             v(txt + "Level"), // level
-            (calcType == NGU_PERCENTAGE) ? percentTargetLevel (v(txt + "Level"), v("percentageIncrease%")): v(txt + "Target")// target
+            energyTargets[index], //target
         )
     })
     var magicSeconds = magicText.map((txt, index) => {
@@ -184,7 +218,7 @@ export default function Page({children}) {
             v("totalMagicNGUSpeedFactor%"), // speedFactor
             magicNGUBase[index], // base
             v(txt + "Level"), // level
-            (calcType == NGU_PERCENTAGE) ? percentTargetLevel(v(txt + "Level"), v("percentageIncrease%")): v(txt + "Target") // target
+            magicTargets[index] // target
         )
     })
 
@@ -195,15 +229,55 @@ export default function Page({children}) {
         return total.add(current)
     }, bd(0))
 
+    var energyCapToMaxTarget = energyText.map((txt, index) => {
+        return capToMaxTarget(
+            v("totalEnergyNGUSpeedFactor%"),
+            energyNGUBase[index],
+            energyTargets[index],
+        )
+    })
+    var magicCapToMaxTarget = magicText.map((txt, index) => {
+        return capToMaxTarget(
+            v("totalMagicNGUSpeedFactor%"),
+            magicNGUBase[index],
+            magicTargets[index],
+        )
+    })
+
+    var energyCapToMaxInDay = energyText.map((txt, index) => {
+        return capToMaxInDay(
+            v("totalEnergyNGUSpeedFactor%"),
+            energyNGUBase[index],
+            v(txt + "Level"),
+        )
+    })
+    var magicCapToMaxInDay = magicText.map((txt, index) => {
+        return capToMaxInDay(
+            v("totalMagicNGUSpeedFactor%"),
+            magicNGUBase[index],
+            v(txt + "Level"),
+        )
+    })
+
 
     // Information retrieval
     var energyLi = energySeconds.map(function(secs, index) {
-        var targetLvl = (calcType == NGU_PERCENTAGE) ? percentTargetLevel(v(energyText[index] + "Level"), v("percentageIncrease%")): v(energyText[index] + "Target")
-        return timeToLvlLi(secs, energyText[index], targetLvl);
+        return timeToLvlLi(secs, energyText[index], energyTargets[index]);
     })
     var magicLi = magicSeconds.map(function(secs, index) {
-        var targetLvl = (calcType == NGU_PERCENTAGE) ? percentTargetLevel(v(magicText[index] + "Level"), v("percentageIncrease%")): v(magicText[index] + "Target")
-        return timeToLvlLi(secs, magicText[index], targetLvl);
+        return timeToLvlLi(secs, magicText[index], magicTargets[index]);
+    })
+    var energyCapToMaxTargetLi = energyCapToMaxTarget.map(function(cap, index) {
+        return capNeededToMaxTargetLi(cap, energyText[index], energyTargets[index]);
+    })
+    var magicCapToMaxTargetLi = magicCapToMaxTarget.map(function(cap, index) {
+        return capNeededToMaxTargetLi(cap, magicText[index], magicTargets[index]);
+    })
+    var energyCapToMaxInDayLi = energyCapToMaxInDay.map(function(cap, index) {
+        return capNeededToMaxInDayLi(cap, energyText[index]);
+    })
+    var magicCapToMaxInDayLi = magicCapToMaxInDay.map(function(cap, index) {
+        return capNeededToMaxInDayLi(cap, magicText[index]);
     })
 
     if(calcType == NGU_TARGET) {
@@ -233,19 +307,39 @@ export default function Page({children}) {
 
     return (
         <Content prechildren={topButtons} title="NGUs" infoRequired={infoReq} extraRequired={extraReq}>
-            <h4 className="text-xl mb-2">How long until I reach targets?</h4>
-            <ul className="inline-block w-1/2 align-top mb-2">
-                {energyLi}
-                <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{dn(energyTotalSeconds)}</span></li>
-            </ul>
-            <ul className="inline-block w-1/2 align-top mb-2">
-                {magicLi}
-                <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{dn(magicTotalSeconds)}</span></li>
-            </ul>
+            <div>
+                <h4 className="text-xl mb-2">How long until I reach targets?</h4>
+                <ul className="inline-block w-1/2 align-top mb-2">
+                    {energyLi}
+                    <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{dn(energyTotalSeconds)}</span></li>
+                </ul>
+                <ul className="inline-block w-1/2 align-top mb-2">
+                    {magicLi}
+                    <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{dn(magicTotalSeconds)}</span></li>
+                </ul>
 
-            <p className="mb-2 text-sm">
-                The time formats are given in D:H:M:S where D stands for days, H for hours, M for minutes, S for seconds. For example: 2:04:16:12 means it will take 2 days, 4 hours, 16 minutes and 12 seconds.
-            </p>
+                <p className="mb-2 text-sm">
+                    The time formats are given in D:H:M:S where D stands for days, H for hours, M for minutes, S for seconds. For example: 2:04:16:12 means it will take 2 days, 4 hours, 16 minutes and 12 seconds.
+                </p>
+            </div>
+            <div className="mt-10">
+                <h4 className="text-xl mb-2">How much cap is needed to max the targets?</h4>
+                <ul className="inline-block w-1/2 align-top mb-2">
+                    {energyCapToMaxTargetLi}
+                </ul>
+                <ul className="inline-block w-1/2 align-top mb-2">
+                    {magicCapToMaxTargetLi}
+                </ul>
+            </div>
+            <div className="mt-10">
+                <h4 className="text-xl mb-2">How much cap is needed to max for 24 hours non-stop?</h4>
+                <ul className="inline-block w-1/2 align-top mb-2">
+                    {energyCapToMaxInDayLi}
+                </ul>
+                <ul className="inline-block w-1/2 align-top mb-2">
+                    {magicCapToMaxInDayLi}
+                </ul>
+            </div>
         </Content>
     )
 }
