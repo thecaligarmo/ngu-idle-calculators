@@ -35,7 +35,7 @@ export const CHALLENGELIST = [
     new Challenge(2, '24 Hour Challenge', 0, [], []),
     new Challenge(3, '100 Levels Challenge', 0, [[Stat.WANDOOS_SPEED, 20],], []),
     new Challenge(4, 'No Equipment Challenge', 0, [], []),
-    new Challenge(5, 'Troll Challenge', 0, [], [[Stat.MAGIC_NGU_SPEED, 200, 1]]),
+    new Challenge(5, 'Troll Challenge', 0, [], []),
     new Challenge(6, 'No Rebirth Challenge', 0, [], []),
     new Challenge(7, 'Laser Sword Challenge', 0, [], []),
     new Challenge(8, 'Blind Challenge', 0, [[Stat.DAYCARE_SPEED, 1]], [[Stat.DAYCARE_SPEED, 5, 1]]),

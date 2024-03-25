@@ -24,25 +24,28 @@ export function useLocalStorage(key, fallbackValue) {
     return [value, setValue];
 }
 
-export function useLocalStorageNumber(key, fallbackValue) {
-    var fbV = fallbackValue.toString()
+export function useLocalStorageNumber(key, fallbackValue, nonzero = false) {
+    var fbV = (typeof fallbackValue == 'string') ? fallbackValue : fallbackValue.toString()
     const [value, setValue] = useState(fbV);
 
     useEffect(() => {
         const stored = localStorage.getItem(key);
+        
         if(stored) {
             var x = JSON.parse(stored)
-            if (x != value ){
+            if (x != value && (!nonzero || fbV != 0) ){
                 setValue(x); //
             }
         } else {
             setValue(fbV);
         }
         
-    }, [fbV, key]);
+    }, [fbV, key, nonzero]);
 
     useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(value)); //
+        if ((!nonzero || fbV != 0) ) {
+            localStorage.setItem(key, JSON.stringify(value)); //
+        }
     }, [key, value]);
 
     return [value, setValue];

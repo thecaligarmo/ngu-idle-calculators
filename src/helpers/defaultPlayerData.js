@@ -6,6 +6,7 @@ import { ENERGY_NGUS, MAGIC_NGUS } from "@/assets/ngus";
 import { BEARDS } from "@/assets/beards";
 import { DIGGERS } from "@/assets/diggers";
 import { CHALLENGES } from "@/assets/challenges";
+import { totalEnergyNGUSpeedFactor, totalMagicNGUSpeedFactor } from "./calculators";
 
 export function defaultPlayerData(playerData, info) {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
@@ -102,6 +103,10 @@ export function defaultPlayerData(playerData, info) {
                 return playerData.NGU.magicSkills[6].target.low;
             case 'resource3Active':
                 return playerData.res3.res3On;
+            case 'totalEnergyNGUSpeedFactor%':
+                return totalEnergyNGUSpeedFactor(playerData);
+            case 'totalMagicNGUSpeedFactor%':
+                return totalMagicNGUSpeedFactor(playerData);
 
 
             case 'beards':
@@ -231,6 +236,7 @@ export function defaultPlayerData(playerData, info) {
                     }
                 })
                 return maxxedItemIds
+            
             default:
                 return 0;
         }
@@ -307,5 +313,12 @@ export function getPlayerOptions() {
         'perks',
         'quirks',
         'maxxedItems',
+    ]
+}
+
+export function getCalculatedOptions() {
+    return [
+        'totalEnergyNGUSpeedFactor%',
+        'totalMagicNGUSpeedFactor%',
     ]
 }

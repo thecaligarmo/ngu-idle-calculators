@@ -2,11 +2,13 @@ import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
 
+// Parsing Stuff
 function parseObj(state, key) {
     var x = state[key][0]
     if (typeof x === 'string') {
-        return JSON.parse(x)
-    } else if (typeof x === 'number') {
+        x = JSON.parse(x)
+    }
+    if (typeof x === 'number') {
         return {}
     }
     return x
@@ -15,11 +17,13 @@ function parseObj(state, key) {
 function parseNum(state, key) {
     var x = state[key][0]
     if (x instanceof bigDecimal) {
-    return x
+        return x
     }
     return bd(x)
 }
 
+
+// Information Stuff
 export function beardInfoTemp(data, key) {
     var beards = parseObj(data, 'beards')
     var stat = 100
@@ -182,51 +186,69 @@ export function isMaxxedItem(data, itemId) {
     return itemId in parseObj(data, 'maxxedItems')
 }
 
-export function totalEnergyPower(data) {
-    return generalPCB(data, 'baseEnergyPower', Stat.ENERGY_POWER);
-}
-
-export function totalEnergyBar(data) {
-    return generalPCB(data, 'baseEnergyBar', Stat.ENERGY_BARS);
-}
-
-export function totalEnergyCap(data) {
-    return generalPCB(data, 'baseEnergyCap', Stat.ENERGY_CAP);
-}
-
-export function totalMagicPower(data) {
-    return generalPCB(data, 'baseMagicPower', Stat.MAGIC_POWER);
-}
-
-export function totalMagicBar(data) {
-    return generalPCB(data, 'baseMagicBar', Stat.MAGIC_BARS);
-}
-
-export function totalMagicCap(data) {
-    return generalPCB(data, 'baseMagicCap', Stat.MAGIC_CAP);
-}
-
-
-function generalPCB(data, key, stat){
-    return parseNum(data, key)
+// General Calc
+function calcAll(data, stat){
+    return bd(1)
         .multiply(equipmentInfo(data, stat)).divide(bd(100))
         .multiply(perkInfo(data, stat)).divide(bd(100))
         .multiply(quirkInfo(data, stat)).divide(bd(100))
+        .multiply(nguInfo(data, stat).divide(bd(100)))
+        .multiply(beardInfoTemp(data, stat).divide(bd(100)))
+        .multiply(beardInfoPerm(data, stat).divide(bd(100)))
+        .multiply(diggerInfo(data, stat).divide(bd(100)))
+        .multiply(challengeInfo(data, stat))
+}
+
+
+export function totalEnergyPower(data) {
+    return parseNum(data, 'baseEnergyPower')
+        .multiply(calcAll(data, Stat.ENERGY_POWER)).divide(bd(100));
+}
+
+export function totalEnergyBar(data) {
+    return parseNum(data, 'baseEnergyBar')
+        .multiply(calcAll(data, Stat.ENERGY_BARS)).divide(bd(100));
+}
+
+export function totalEnergyCap(data) {
+    return parseNum(data, 'baseEnergyCap')
+        .multiply(calcAll(data, Stat.ENERGY_CAP)).divide(bd(100));
+}
+
+export function totalMagicPower(data) {
+    return parseNum(data, 'baseMagicPower')
+        .multiply(calcAll(data, Stat.MAGIC_POWER)).divide(bd(100));
+}
+
+export function totalMagicBar(data) {
+    return parseNum(data, 'baseMagicBar')
+        .multiply(calcAll(data, Stat.MAGIC_BARS)).divide(bd(100));
+}
+
+export function totalMagicCap(data) {
+    return parseNum(data, 'baseMagicCap')
+        .multiply(calcAll(data, Stat.MAGIC_CAP)).divide(bd(100));
 }
 
 export function totalEnergyNGUSpeedFactor(data) {
     var aNumberSetModifier = isMaxxedItem(data, 102) ? bd(1.1) : bd(1);
+    var gen = calcAll(data, Stat.ENERGY_NGU_SPEED)
     
     return bd(1)
+        .multiply(gen)
         .multiply(totalEnergyPower(data))
-        .multiply(equipmentInfo(data, Stat.ENERGY_NGU_SPEED).divide(bd(100)))
         .multiply(aNumberSetModifier)
-        .multiply(nguInfo(data, Stat.ENERGY_NGU_SPEED).divide(bd(100)))
-        .multiply(beardInfoTemp(data, Stat.ENERGY_NGU_SPEED).divide(bd(100)))
-        .multiply(beardInfoPerm(data, Stat.ENERGY_NGU_SPEED).divide(bd(100)))
-        .multiply(diggerInfo(data, Stat.ENERGY_NGU_SPEED).divide(bd(100)))
-        .multiply(perkInfo(data, Stat.ENERGY_NGU_SPEED).divide(bd(100)))
-        .multiply(challengeInfo(data, Stat.ENERGY_NGU_SPEED))
-        
-        
+}
+
+export function totalMagicNGUSpeedFactor(data) {
+    var aNumberSetModifier = isMaxxedItem(data, 102) ? bd(1.1) : bd(1);
+    var gen = calcAll(data, Stat.MAGIC_NGU_SPEED)
+    var trollChallenge = parseObj(data, 'challenges')[5]
+    var tcNum = (!_.isUndefined(trollChallenge) && trollChallenge.level > 0) ? bd(3) : bd(1);
+    
+    return bd(1)
+        .multiply(gen)
+        .multiply(totalMagicPower(data))
+        .multiply(aNumberSetModifier)
+        .multiply(tcNum)
 }

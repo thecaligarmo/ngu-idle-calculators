@@ -10,7 +10,7 @@ import Link from 'next/link';
 import bigDecimal from "js-big-decimal";
 import { ITEMS, updateStats } from '@/assets/items';
 import { Stat } from '@/assets/stat';
-import { beardInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, nguInfo, perkInfo, quirkInfo, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalMagicBar, totalMagicCap, totalMagicPower } from '@/helpers/calculators';
+import { beardInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, nguInfo, perkInfo, quirkInfo, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower } from '@/helpers/calculators';
 
 export default function Page({children}) 
 {
@@ -88,23 +88,13 @@ export default function Page({children})
                                 <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
                                 <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_NGU_SPEED).round(), fmt)}%)</li>
                                 <li key="challenge">x Challenge ({pn(challengeInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
-                                <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyNGUSpeedFactor(playerStates), fmt)}</span></li>
+                                <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyNGUSpeedFactor(playerStates), fmt)}%</span></li>
                             </ul>
-                        </CalcSection>
-
-                        <CalcSection title="Total Magic NGU Speed Factor">
+                            <p className="mt-3">Similarly with Magic:</p>
                             <ul>
-                                <li key="base">Base Magic NGU Speed</li>
-                                <li key="energyPower">x Magic Power*</li>
-                                <li key="equipment">x Equipment</li>
-                                <li key="Number">x &apos;A Number&apos; Set</li>
-                                <li key="energyNGU">x Energy NGU</li>
-                                <li key="beard">x Beard</li>
-                                <li key="digger">x Digger</li>
-                                <li key="perk">x Perk</li>
-                                <li key="challenge">x Challenge</li>
-                                <li key="trollChallenge">x Troll Challenge</li>
+                                <li key="total" className=""><strong>Total Magic NGU Speed Factor:</strong> <span className="text-red-500">{pn(totalMagicNGUSpeedFactor(playerStates), fmt)}%</span></li>
                             </ul>
+                            
                         </CalcSection>
                     </div>
                     <p className="text-sm my-5">

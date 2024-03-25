@@ -68,10 +68,11 @@ function percentTargetLevel(baseLevel, percentage) {
 export default function Page({children}) {
     const [calcType, setCalcType] = useState(NGU_TARGET)
     var fmt = getNumberFormat();
+
     // Set data required (from playerData)
     var infoRequired = [
-        ['currentEnergyCap'],
-        ['currentMagicCap'],
+        ['currentEnergyCap', 'totalEnergyNGUSpeedFactor%'],
+        ['currentMagicCap', 'totalMagicNGUSpeedFactor%'],
         [
             'energyNGUAugmentsLevel',
             'energyNGUWandoosLevel',
@@ -114,8 +115,8 @@ export default function Page({children}) {
 
     // Set extra required (not from playerData)
     var extraRequired = [
-        ['totalEnergyNGUSpeedFactor%'],
-        ['totalMagicNGUSpeedFactor%'],
+        // [],//['totalEnergyNGUSpeedFactor%'],
+        // [],
         ['percentageIncrease%', 'timeInSeconds'], []
     ]
     const playerStates = createStatesForData(extraRequired);
@@ -128,7 +129,7 @@ export default function Page({children}) {
     function v(key) {
         var x = playerStates[key][0]
         if (x instanceof bigDecimal) {
-        return x
+            return x
         }
         return bd(x)
     }
