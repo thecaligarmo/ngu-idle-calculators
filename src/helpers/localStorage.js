@@ -2,12 +2,20 @@
 import { useEffect, useState } from "react";
 
 export function useLocalStorage(key, fallbackValue) {
+    var fbV = fallbackValue.toString()
     const [value, setValue] = useState(fallbackValue);
 
     useEffect(() => {
         const stored = localStorage.getItem(key);
-        setValue(stored ? JSON.parse(stored) : fallbackValue); //
-    }, [fallbackValue, key]);
+        if (stored) {
+            var x = JSON.parse(stored)
+            if (x != value) {
+                setValue(x); //
+            }
+        } else {
+            setValue(fbV)
+        }
+    }, [fbV, key]);
 
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(value)); //

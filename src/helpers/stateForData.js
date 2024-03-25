@@ -1,24 +1,33 @@
-import { defaultPlayerData, getPlayerOptions } from "./defaultPlayerData";
+import { defaultPlayerData, getPlayerNumberOptions, getPlayerOptions } from "./defaultPlayerData";
 import { getPlayerData, isPlayerDataUpdated } from "./context";
-import { useLocalStorageNumber } from "./localStorage";
+import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
+import _ from "lodash";
 
-export function createStatesForData(extraRequired) {
+export function createStatesForData(extraRequired = []) {
     const playerData = getPlayerData();
+    var playerNumberOptions = getPlayerNumberOptions();
     var playerOptions = getPlayerOptions();
     for (var col of extraRequired) {
         for (var key of col) {
-            playerOptions.push(key)
+            playerNumberOptions.push(key)
         }
     }
     var dataObj = {}
-    for (var key of playerOptions) {
+    for (var key of playerNumberOptions) {
         var defaultVal = defaultPlayerData(playerData, key)
         var dataState = useLocalStorageNumber(key, defaultVal)
         if (isPlayerDataUpdated() && dataState[0] != defaultVal) {
             // dataState[1]({"value": defaultVal})
             dataState[1](defaultVal)
         }
-
+        dataObj[key] = dataState
+    }
+    for (var key of playerOptions) {
+        var defaultVal = defaultPlayerData(playerData, key)
+        var dataState = useLocalStorage(key, defaultVal);
+        if (isPlayerDataUpdated() && ! _.isEqual(dataState[0], defaultVal)) {
+            dataState[1](defaultVal)
+        }
         dataObj[key] = dataState
     }
     return dataObj;

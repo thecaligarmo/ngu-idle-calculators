@@ -1,6 +1,7 @@
 import bigDecimal from "js-big-decimal";
 import { getNumberFormat } from "./context";
 import { getLargeSuffix } from "./largeNumbers";
+import _ from "lodash";
 
 export function bigdec_max(...args){
     if (args.length < 1){ 
@@ -62,6 +63,9 @@ export function bd(num) {
 
 // date number
 export function dn(num){
+    if ( _.isUndefined(num) || num.compareTo(bd(0)) == -1) {
+        return '00:00'
+    }
     var day = bd(3600 * 24)
     var hour = bd(3600)
     var minute = bd(60)
