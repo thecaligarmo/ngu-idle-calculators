@@ -18,7 +18,7 @@ function dataToList(d, input=false){
                 {camelToTitle(d.key)}
             </label>
             <input
-                className="text-black font-normal"
+                className="text-black font-normal rounded border border-black dark:border-white"
                 type="number"
                 name={d.key}
                 id={d.key}
