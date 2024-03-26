@@ -1,7 +1,7 @@
+import { MouseEventHandler, ReactNode } from "react";
 
 
-export function ListInputSwitcher({text, onClick}) {
-
+export function ListInputSwitcher({text, onClick} : {text: ReactNode, onClick: MouseEventHandler}) {
     return (
         <button
             className="bg-transparent inline-block hover:bg-blue-500 text-blue-700 text-sm hover:text-white dark:hover:text-black py-1 px-4 border border-blue-500 hover:border-transparent rounded ml-4"
@@ -13,7 +13,7 @@ export function ListInputSwitcher({text, onClick}) {
 
 }
 
-export function ChoiceButton({text, onClick, active=false}){
+export function ChoiceButton({text, onClick, active=false} : {text: ReactNode, onClick: MouseEventHandler, active?: boolean}){
     return (
         <button
             className="bg-transparent hover:bg-blue-500 inline-flex items-center py-2 px-4 text-blue-700 hover:text-white dark:hover:text-black font-semibold"
@@ -27,7 +27,7 @@ export function ChoiceButton({text, onClick, active=false}){
     );
 }
 
-export function CollapseButton({onClick, hidden}) {
+export function CollapseButton({onClick, hidden} : {onClick: MouseEventHandler, hidden: boolean}) {
     return (
         <button
             className="-ml-5 pr-2 w-5"

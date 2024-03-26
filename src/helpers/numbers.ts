@@ -3,7 +3,7 @@ import { getNumberFormat } from "./context";
 import { getLargeSuffix } from "./largeNumbers";
 import _ from "lodash";
 
-export function bigdec_max(...args){
+export function bigdec_max(...args : bigDecimal[]) : bigDecimal {
     if (args.length < 1){ 
         throw 'Max of empty list';
     }
@@ -16,7 +16,7 @@ export function bigdec_max(...args){
     return m;
 }
 
-export function bigdec_min(...args){
+export function bigdec_min(...args : bigDecimal[]) : bigDecimal {
     if (args.length < 1){ 
         throw 'Max of empty list';
     }
@@ -30,7 +30,7 @@ export function bigdec_min(...args){
 }
 
 // print/pretty number (Only integers supported currently)
-export function pn(num, numberFormat='scientific') {
+export function pn(num : bigDecimal, numberFormat : string = 'scientific') : string {
     var n = num.floor().getValue();
     var nl = n.length
 
@@ -57,12 +57,12 @@ export function pn(num, numberFormat='scientific') {
 }
 
 
-export function bd(num) {
+export function bd(num : any) : bigDecimal {
     return new bigDecimal(num)
 }
 
 // date number
-export function dn(num){
+export function dn(num : bigDecimal) : string{
     if ( _.isUndefined(num) || num.compareTo(bd(0)) == -1) {
         return '00:00'
     }

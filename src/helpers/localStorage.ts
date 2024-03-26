@@ -1,9 +1,9 @@
 // https://upmostly.com/next-js/using-localstorage-in-next-js
 import { useEffect, useState } from "react";
 
-export function useLocalStorage<T>(key: string, fallbackValue: any) {
+export function useLocalStorage(key: string, fallbackValue : any) {
     var fbV : string = fallbackValue.toString()
-    const [value, setValue] = useState<string>(fallbackValue);
+    const [value, setValue] = useState<any>(fallbackValue);
 
     useEffect(() => {
         const stored = localStorage.getItem(key);
@@ -24,7 +24,7 @@ export function useLocalStorage<T>(key: string, fallbackValue: any) {
     return [value, setValue] as const;
 }
 
-export function useLocalStorageNumber<T>(key: string, fallbackValue: any, nonzero : boolean = false) {
+export function useLocalStorageNumber(key: string, fallbackValue: any, nonzero : boolean = false) {
     var fbV : string = (typeof fallbackValue == 'string') ? fallbackValue : fallbackValue.toString()
     const [value, setValue] = useState<string>(fbV);
 

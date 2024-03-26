@@ -2,8 +2,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ImportSaveForm from '@/components/ImportSaveForm/importSaveForm';
 import { useNumberFormatContext } from "@/helpers/context";
+import { PropsWithChildren } from "react";
 
-export default function Nav({ children }) {
+export default function Nav({ children } : PropsWithChildren) {
     const {numberFormat, setNumberFormat} = useNumberFormatContext();
     const pathname = usePathname();
     

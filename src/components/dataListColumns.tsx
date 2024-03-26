@@ -2,11 +2,12 @@ import { useSavedDataContext } from "@/helpers/context";
 import bigDecimal from "js-big-decimal";
 import { pn } from "@/helpers/numbers";
 import { camelToTitle } from "@/helpers/strings";
+import { ReactNode } from "react";
 
 /*
  Returns the <li> needed for `dataToCols`
 */
-function dataToList(d, input=false){
+function dataToList(d : any, input : boolean = false) : ReactNode{
     const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();
     var val = d.value[0]
     if (!(val instanceof bigDecimal)) {
@@ -39,7 +40,7 @@ function dataToList(d, input=false){
 /*
  Takes our data and returns many <ul> depending on data
 */
-export function dataToCols(dr, input=false) {
+export function dataToCols(dr : any, input : boolean = false) : ReactNode{
     const cols = []
     for (var col of dr) {
         var colKey = ''
@@ -62,7 +63,7 @@ export function dataToCols(dr, input=false) {
         }
         
         cols.push (<ul className={cc} key={colKey}>
-            {col.map((d) => {
+            {col.map((d : any) => {
                 return dataToList(d, input)
             })}
         </ul>)

@@ -11,7 +11,7 @@ import { useState } from 'react';
 
 
 // Get the max and unit based off the ratios
-function getRatMaxAndUnit(base, ratio, mainRatio, oppRatio, thirdRatio) {
+function getRatMaxAndUnit(base : bigDecimal, ratio : bigDecimal, mainRatio : bigDecimal, oppRatio : bigDecimal, thirdRatio : bigDecimal) : [bigDecimal, bigDecimal] {
   // Might accidentally divide by 0
   try{
     // Get ratio of base power with our ratio (how many units we have of the ratio desired)
@@ -27,7 +27,7 @@ function getRatMaxAndUnit(base, ratio, mainRatio, oppRatio, thirdRatio) {
 }
 
 // Get numbers desired and for buying
-function getDesiredBuy(maxItem, base, ratMax) {
+function getDesiredBuy(maxItem : bigDecimal, base : bigDecimal, ratMax : bigDecimal) : [bigDecimal, bigDecimal] {
   try {
     var desired = (maxItem.multiply(base).divide(ratMax)).floor()
   } catch(error) {
@@ -54,7 +54,7 @@ export default function Page() {
   var extraReq = getRequiredStates(extraRequired, playerStates)
 
   // Helper function - Needed in every isntance (makes code easier to read too)
-  function v(key) {
+  function v(key : string) : bigDecimal{
     var x = playerStates[key][0]
     if (x instanceof bigDecimal) {
       return x
@@ -69,10 +69,13 @@ export default function Page() {
   var [MPowerRatMax, MPowerRatUnit] = getRatMaxAndUnit(v("baseMagicPower"), v("magicPowerRatio"), v("magicRatio"), v("energyRatio"), res3Active ? v("resource3Ratio") : bd(1));
   var [MCapRatMax, MCapRatUnit] = getRatMaxAndUnit(v("baseMagicCap"), v("magicCapRatio"), v("magicRatio"), v("energyRatio"), res3Active ? v("resource3Ratio") : bd(1));
   var [MBarRatMax, MBarRatUnit] = getRatMaxAndUnit(v("baseMagicBar"), v("magicBarRatio"), v("magicRatio"), v("energyRatio"), res3Active ? v("resource3Ratio") : bd(1));
+  var [RPowerRatMax, RPowerRatUnit] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
+  var [RCapRatMax, RCapRatUnit] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
+  var [RBarRatMax, RBarRatUnit] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
   if(res3Active) {
-    var [RPowerRatMax, RPowerRatUnit] = getRatMaxAndUnit(v("baseResource3Power"), v("resource3PowerRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
-    var [RCapRatMax, RCapRatUnit] = getRatMaxAndUnit(v("baseResource3Cap"), v("resource3CapRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
-    var [RBarRatMax, RBarRatUnit] = getRatMaxAndUnit(v("baseResource3Bar"), v("resource3BarRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
+    [RPowerRatMax, RPowerRatUnit] = getRatMaxAndUnit(v("baseResource3Power"), v("resource3PowerRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
+    [RCapRatMax, RCapRatUnit] = getRatMaxAndUnit(v("baseResource3Cap"), v("resource3CapRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
+    [RBarRatMax, RBarRatUnit] = getRatMaxAndUnit(v("baseResource3Bar"), v("resource3BarRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
   }
   // Calculate desired amount
   // The largest max is where we are trying to be. So take max of all values and
@@ -91,20 +94,25 @@ export default function Page() {
   var [MPowerDesired, MPowerBuy] = getDesiredBuy(maxItem, v("baseMagicPower"), MPowerRatMax)
   var [MCapDesired, MCapBuy] = getDesiredBuy(maxItem, v("baseMagicCap"), MCapRatMax)
   var [MBarDesired, MBarBuy] = getDesiredBuy(maxItem, v("baseMagicBar"), MBarRatMax)
+  var [RPowerDesired, RPowerBuy] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
+  var [RCapDesired, RCapBuy] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
+  var [RBarDesired, RBarBuy] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
+
   if (res3Active) {
-    var [RPowerDesired, RPowerBuy] = getDesiredBuy(maxItem, v("baseResource3Power"), RPowerRatMax)
-    var [RCapDesired, RCapBuy] = getDesiredBuy(maxItem, v("baseResource3Cap"), RCapRatMax)
-    var [RBarDesired, RBarBuy] = getDesiredBuy(maxItem, v("baseResource3Bar"), RBarRatMax)
+    [RPowerDesired, RPowerBuy] = getDesiredBuy(maxItem, v("baseResource3Power"), RPowerRatMax);
+    [RCapDesired, RCapBuy] = getDesiredBuy(maxItem, v("baseResource3Cap"), RCapRatMax);
+    [RBarDesired, RBarBuy] = getDesiredBuy(maxItem, v("baseResource3Bar"), RBarRatMax);
   }
 
 
   // Cost to increase all the things
-  var EExpCost = EPowerBuy.multiply(bd(15)).add(ECapBuy.multiply(bd(40)).divide(bd(10000))).add(EBarBuy.multiply(bd(80))).ceil()
-  var MExpCost = MPowerBuy.multiply(bd(450)).add(MCapBuy.multiply(bd(120)).divide(bd(10000))).add(MBarBuy.multiply(bd(240))).ceil()
-  var TotalExpCost = EExpCost.add(MExpCost)
+  var EExpCost = EPowerBuy.multiply(bd(15)).add(ECapBuy.multiply(bd(40)).divide(bd(10000))).add(EBarBuy.multiply(bd(80))).ceil();
+  var MExpCost = MPowerBuy.multiply(bd(450)).add(MCapBuy.multiply(bd(120)).divide(bd(10000))).add(MBarBuy.multiply(bd(240))).ceil();
+  var TotalExpCost = EExpCost.add(MExpCost);
+  var RExpCost = bd(0);
   if (res3Active) {
-    var RExpCost = RPowerBuy.multiply(bd(15000000)).add(RCapBuy.multiply(bd(400))).add(RBarBuy.multiply(bd(8000000))).ceil()
-    TotalExpCost = TotalExpCost.add(RExpCost)
+    RExpCost = RPowerBuy.multiply(bd(15000000)).add(RCapBuy.multiply(bd(400))).add(RBarBuy.multiply(bd(8000000))).ceil();
+    TotalExpCost = TotalExpCost.add(RExpCost);
   }
   
 

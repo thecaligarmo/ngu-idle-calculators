@@ -1,8 +1,21 @@
+import { ReactNode } from "react";
 import Container from "./container";
 import ContentSection from "./contentSection";
 import ContentSectionWithData from "./contentSectionWithData";
 
-export default function Content({children, prechildren, title, infoRequired, infoChildren, extraRequired, extraChildren, extraInputChildren, extraListChildren}) {
+interface ContentProps {
+    children : ReactNode;
+    prechildren?: ReactNode;
+    title: string;
+    infoRequired: any;
+    infoChildren?: ReactNode;
+    extraRequired: any;
+    extraChildren?: ReactNode;
+    extraInputChildren?: ReactNode;
+    extraListChildren?: ReactNode;
+}
+
+export default function Content({children, prechildren, title, infoRequired, infoChildren, extraRequired, extraChildren, extraInputChildren, extraListChildren} : ContentProps) {
     return (
         <Container title={title}>
             {prechildren}

@@ -2,29 +2,27 @@
 import CalcSection from '@/components/calcSection';
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
-import { getNumberFormat, getPlayerData } from '@/helpers/context';
-import { defaultPlayerData } from '@/helpers/defaultPlayerData';
+import { getNumberFormat } from '@/helpers/context';
 import { bd, pn } from '@/helpers/numbers';
-import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
+import { createStatesForData } from '@/helpers/stateForData';
 import Link from 'next/link';
 import bigDecimal from "js-big-decimal";
-import { ITEMS, updateStats } from '@/assets/items';
 import { Stat } from '@/assets/stat';
-import { beardInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, nguInfo, perkInfo, quirkInfo, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower } from '@/helpers/calculators';
+import { beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, nguInfo, perkInfo, quirkInfo, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower } from '@/helpers/calculators';
+import { PropsWithChildren } from 'react';
 
-export default function Page({children}) 
-{
+export default function Page() {
     const playerStates = createStatesForData();
     var fmt = getNumberFormat();
     // Helper function - Needed in every isntance (makes code easier to read too)
-    function v(key) {
+    function v(key : string) : bigDecimal{
         var x = playerStates[key][0]
         if (x instanceof bigDecimal) {
-        return x
+            return x
         }
         return bd(x)
     }
-    function j(key) {
+    function j(key : string) : any{
         var x = playerStates[key][0]
         if (typeof x === 'string') {
             return JSON.parse(x)
@@ -33,10 +31,7 @@ export default function Page({children})
         }
         return x
     }
-    
-    // var x = totalEnergyPower(playerStates);
-    // console.log(x)
-    // console.log(isMaxxedItem(playerStates, 102))
+
     
     return (
         <Container title="About/Credits">

@@ -3,17 +3,17 @@ import { getPlayerData, isPlayerDataUpdated } from "./context";
 import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
 import _ from "lodash";
 
-export function createStatesForData(extraRequired = []) {
+export function createStatesForData(extraRequired: string[][] = []) : any{
     const playerData = getPlayerData();
-    var playerNumberOptions = getPlayerNumberOptions();
-    var playerOptions = getPlayerOptions();
-    var calculatedOptions = getCalculatedOptions();
+    var playerNumberOptions : string[] = getPlayerNumberOptions();
+    var playerOptions : string[]= getPlayerOptions();
+    var calculatedOptions : string[] = getCalculatedOptions();
     for (var col of extraRequired) {
         for (var key of col) {
             playerNumberOptions.push(key)
         }
     }
-    var dataObj = {}
+    var dataObj : {[key: string] : any}= {}
     for (var key of playerNumberOptions) {
         var defaultVal = defaultPlayerData(playerData, key)
         var dataState = useLocalStorageNumber(key, defaultVal)
@@ -44,11 +44,11 @@ export function createStatesForData(extraRequired = []) {
     return dataObj;
 }
 
-function nonzero(val) {
+function nonzero(val : string) : boolean {
     return !(val === "0")
 }
 
-export function getRequiredStates(data, states) {
+export function getRequiredStates(data : any, states : any) : any{
     var ir = []
     for (var col of data) {
         let colDr = []

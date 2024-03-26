@@ -1,14 +1,14 @@
-import { ITEMS } from "../assets/items";
+import { ITEMS, Item } from "../assets/items";
 import _ from "lodash";
-import { PERKS } from "../assets/perks";
-import { QUIRKS } from "../assets/quirks";
-import { ENERGY_NGUS, MAGIC_NGUS } from "@/assets/ngus";
-import { BEARDS } from "@/assets/beards";
-import { DIGGERS } from "@/assets/diggers";
-import { CHALLENGES } from "@/assets/challenges";
+import { PERKS, Perk } from "../assets/perks";
+import { QUIRKS, Quirk } from "../assets/quirks";
+import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
+import { BEARDS, Beard } from "@/assets/beards";
+import { DIGGERS, Digger } from "@/assets/diggers";
+import { CHALLENGES, Challenge } from "@/assets/challenges";
 import { totalEnergyNGUSpeedFactor, totalMagicNGUSpeedFactor } from "./calculators";
 
-export function defaultPlayerData(playerData, info) {
+export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
     if (playerExists) {
         switch(info) {
@@ -110,8 +110,8 @@ export function defaultPlayerData(playerData, info) {
 
 
             case 'beards':
-                var beards = []
-                playerData.beards.beards.forEach((beard, index) => {
+                var beards : Beard[] = []
+                playerData.beards.beards.forEach((beard : any, index : number) => {
                     if (!_.isUndefined(BEARDS[index])) {
                         var b = BEARDS[index]
                         b.setLevel(beard.beardLevel.low)
@@ -122,7 +122,7 @@ export function defaultPlayerData(playerData, info) {
                 
                 return beards
             case 'challenges':
-                var challenges = []
+                var challenges : Challenge[] = []
                 for (var c = 0; c < 11; c++) {
                     challenges.push(CHALLENGES[c])
                 }
@@ -140,8 +140,8 @@ export function defaultPlayerData(playerData, info) {
 
                 return challenges
             case 'diggers':
-                var diggers = []
-                playerData.diggers.diggers.forEach((digger, id) => {
+                var diggers : Digger[] = []
+                playerData.diggers.diggers.forEach((digger : any, id : number) => {
                     var d = DIGGERS[id]
                     if (!_.isUndefined(d)) {
                         d.active = digger.active == 1 ? true : false;
@@ -153,41 +153,41 @@ export function defaultPlayerData(playerData, info) {
                 return diggers;
 
             case 'equipmentWeapon':
-                var weapon = playerData.inventory.weapon;
-                var item = ITEMS[weapon.id]
+                var weapon : any = playerData.inventory.weapon;
+                var item : Item = ITEMS[weapon.id]
                 item.importStats(weapon)
                 return item
             case 'equipmentHead':
-                var head = playerData.inventory.head;
-                var item = ITEMS[head.id]
+                var head : any = playerData.inventory.head;
+                var item : Item = ITEMS[head.id]
                 item.importStats(head)
                 return item
             case 'equipmentChest':
-                var chest = playerData.inventory.chest;
-                var item = ITEMS[chest.id]
+                var chest : any = playerData.inventory.chest;
+                var item : Item= ITEMS[chest.id]
                 item.importStats(chest)
                 return item
             case 'equipmentLegs':
-                var legs = playerData.inventory.legs;
-                var item = ITEMS[legs.id]
+                var legs : any = playerData.inventory.legs;
+                var item : Item = ITEMS[legs.id]
                 item.importStats(legs)
                 return item
             case 'equipmentBoots':
-                var boots = playerData.inventory.boots;
-                var item = ITEMS[boots.id]
+                var boots : any = playerData.inventory.boots;
+                var item : Item = ITEMS[boots.id]
                 item.importStats(boots)
                 return item
             case 'equipmentAccesories':
-                var accesories = playerData.inventory.accs.filter(acc => !_.isUndefined(acc.id) && !_.isNaN(acc.id))
+                var accesories : any = playerData.inventory.accs.filter((acc : any) => !_.isUndefined(acc.id) && !_.isNaN(acc.id))
                 
-                return accesories.map((acc) => {
+                return accesories.map((acc : any) => {
                     var item = ITEMS[acc.id]
                     item.importStats(acc)
                     return item
                 })
             case 'energyNGUs':
-                var energyNGUs = []
-                playerData.NGU.skills.forEach((engu, index) => {
+                var energyNGUs : NGU[] = []
+                playerData.NGU.skills.forEach((engu : any, index : number) => {
                     var ngu = ENERGY_NGUS[index]
                     if (!_.isUndefined(ngu)) {
                         ngu.importStats(engu)
@@ -196,8 +196,8 @@ export function defaultPlayerData(playerData, info) {
                 })
                 return energyNGUs
             case 'magicNGUs':
-                var magicNGUs = []
-                playerData.NGU.magicSkills.forEach((mngu, index) => {
+                var magicNGUs : NGU[] = []
+                playerData.NGU.magicSkills.forEach((mngu : any, index : number) => {
                     var ngu = MAGIC_NGUS[index]
                     if (!_.isUndefined(ngu)) {
                         ngu.importStats(mngu)
@@ -206,8 +206,8 @@ export function defaultPlayerData(playerData, info) {
                 })
                 return magicNGUs
             case 'perks':
-                var perks = []
-                playerData.adventure.itopod.perkLevel.forEach((perk, index) => {
+                var perks : Perk[] = []
+                playerData.adventure.itopod.perkLevel.forEach((perk : any, index : number) => {
                     if (!_.isUndefined(perk.low) && perk.low > 0) {
                         if (!_.isUndefined(PERKS[index])) {
                             var p = PERKS[index]
@@ -219,8 +219,8 @@ export function defaultPlayerData(playerData, info) {
                 
                 return perks
             case 'quirks':
-                var quirks = []
-                playerData.beastQuest.quirkLevel.forEach((quirk, index) => {
+                var quirks : Quirk[]= []
+                playerData.beastQuest.quirkLevel.forEach((quirk : any, index : number) => {
                     if (!_.isUndefined(quirk.low) && quirk.low > 0) {
                         if (!_.isUndefined(QUIRKS[index])) {
                             var q = QUIRKS[index]
@@ -231,8 +231,8 @@ export function defaultPlayerData(playerData, info) {
                 })
                 return quirks;
             case 'maxxedItems':
-                var maxxedItemIds = []
-                playerData.inventory.itemList.itemMaxxed.forEach((maxxed, item) => {
+                var maxxedItemIds : number[] = []
+                playerData.inventory.itemList.itemMaxxed.forEach((maxxed: number, item: number) => {
                     if (maxxed == 1) {
                         maxxedItemIds.push(item)
                     }
@@ -249,7 +249,7 @@ export function defaultPlayerData(playerData, info) {
     return 0;
 }
 
-export function getPlayerNumberOptions() {
+export function getPlayerNumberOptions() : string[]{
     return [
         'baseEnergyPower',
         'baseEnergyBar',
@@ -299,7 +299,7 @@ export function getPlayerNumberOptions() {
 }
 
 
-export function getPlayerOptions() {
+export function getPlayerOptions() : string[] {
     return [
         'beards',
         'challenges',
@@ -318,7 +318,7 @@ export function getPlayerOptions() {
     ]
 }
 
-export function getCalculatedOptions() {
+export function getCalculatedOptions() : string[] {
     return [
         'totalEnergyNGUSpeedFactor%',
         'totalMagicNGUSpeedFactor%',

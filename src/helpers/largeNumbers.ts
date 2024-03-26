@@ -1,5 +1,5 @@
 // https://www.olsenhome.com/bignumbers/
-export function getLargeSuffix(i){
+export function getLargeSuffix(i : number) : string {
     var largeNumberSuffixes = ["Thousand",
     "Million",
     "Billion",

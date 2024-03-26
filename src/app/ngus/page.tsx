@@ -13,7 +13,7 @@ const NGU_TARGET = 'target'
 const NGU_PERCENTAGE = 'percentage'
 const NGU_TIME = 'time'
 
-function calcSeconds(cap, speedFactor, base, level, target) {
+function calcSeconds(cap : bigDecimal, speedFactor : bigDecimal, base : bigDecimal, level : bigDecimal, target : bigDecimal) : bigDecimal {
     // Grab base amount of time things will take
     try {
         var baseTime = base.divide(cap).divide(speedFactor).multiply(bd(100))
@@ -44,7 +44,7 @@ function calcSeconds(cap, speedFactor, base, level, target) {
 
 }
 
-function capToMaxTarget(speedFactor, base, targetLvl) {
+function capToMaxTarget(speedFactor : bigDecimal, base : bigDecimal, targetLvl : bigDecimal) : bigDecimal {
     if (targetLvl.compareTo(bd(0)) == -1) {
         return bd(0)
     }
@@ -56,16 +56,16 @@ function capToMaxTarget(speedFactor, base, targetLvl) {
     return targetLvl.multiply(baseTimePerLevel).divide(bd(0.0002))
 }
 
-function capToMaxInDay(speedFactor, base, currentLvl) {
+function capToMaxInDay(speedFactor : bigDecimal, base : bigDecimal, currentLvl : bigDecimal) : bigDecimal {
     var targetLvl = currentLvl.add(bd(60 * 60 * 24 * 50)) // 50 ticks per second * seconds
     return capToMaxTarget(speedFactor, base, targetLvl)
 }
 
-function percentTargetLevel(baseLevel, percentage) {
+function percentTargetLevel(baseLevel : bigDecimal, percentage : bigDecimal) : bigDecimal {
     return baseLevel.multiply(percentage.add(bd(100))).divide(bd(100))
 }
 
-export default function Page({children}) {
+export default function Page() {
     const [calcType, setCalcType] = useState(NGU_TARGET)
     var fmt = getNumberFormat();
 
@@ -126,7 +126,7 @@ export default function Page({children}) {
     var extraReq = getRequiredStates(extraRequired, playerStates)
 
     // Helper function - Needed in every isntance (makes code easier to read too)
-    function v(key) {
+    function v(key : string) : bigDecimal{
         var x = playerStates[key][0]
         if (x instanceof bigDecimal) {
             return x

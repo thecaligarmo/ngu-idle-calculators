@@ -30,7 +30,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/helpers/inputUpdater.js", "src/components/ImportSaveForm/deserializeDotNet.js", "src/components/ImportSaveForm/importSaveForm.js"  ],
   "exclude": [
     "node_modules"
   ]

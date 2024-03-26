@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { CollapseButton } from "./buttons";
 
-export default function ContentSection({children, title, titleExtra}) {
+export default function ContentSection({children, title, titleExtra} : {children ?: ReactNode, title: string, titleExtra?: ReactNode}) {
     const [hideInfo, setHideInfo] = useState(false)
 
     return (

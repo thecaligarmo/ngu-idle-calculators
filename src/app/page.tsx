@@ -1,10 +1,11 @@
 'use client'
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
+import { PropsWithChildren } from 'react';
 
 
 
-export default function Home({children}) {
+export default function Home() {
     return (
         <Container title="NGU Idle">
             <ContentSection title="Welcome">
