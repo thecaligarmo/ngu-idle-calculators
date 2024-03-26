@@ -1,6 +1,6 @@
 'use client'
 import { createContext, useContext, useState } from "react";
-import { useLocalStorage } from "./localStorage";
+import { useLocalStorage } from "./localStorage.ts";
 
 const DataContext = createContext("{}");
 const SavedDataContext = createContext(false);

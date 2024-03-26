@@ -114,7 +114,8 @@ export function defaultPlayerData(playerData, info) {
                 playerData.beards.beards.forEach((beard, index) => {
                     if (!_.isUndefined(BEARDS[index])) {
                         var b = BEARDS[index]
-                        b.setLevel(beard.beardLevel.low, beard.permLevel.low)
+                        b.setLevel(beard.beardLevel.low)
+                        b.setPermLevel(beard.permLevel.low)
                         beards.push(b)
                     }
                 })
@@ -144,7 +145,8 @@ export function defaultPlayerData(playerData, info) {
                     var d = DIGGERS[id]
                     if (!_.isUndefined(d)) {
                         d.active = digger.active == 1 ? true : false;
-                        d.setLevel(digger.curLevel.low, digger.maxLevel.low)
+                        d.setLevel(digger.curLevel.low)
+                        d.setMaxLevel(digger.maxLevel.low)
                         diggers.push(d)
                     }
                 })

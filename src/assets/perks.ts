@@ -14,10 +14,8 @@ export const PERKLIST = [
         [Stat.TOUGHNESS, 100],
     ]),
     new Perk(5, 'Stat Boost for Rich Perks I', 1, [
-        [
-            [Stat.POWER, 10],
-            [Stat.TOUGHNESS, 10],
-        ]
+        [Stat.POWER, 10],
+        [Stat.TOUGHNESS, 10],
     ]),
     new Perk(6, 'Generic Energy Power Perk I', 1, [[Stat.ENERGY_POWER, 1]]),
     new Perk(7, 'Generic Energy Bar Perk I', 1, [[Stat.ENERGY_BARS, 1]]),

@@ -1,16 +1,14 @@
 import { Stat } from "./stat"
-import Resource, { ResourceContainer } from "./resource"
+import Resource, { ResourceContainer, prop } from "./resource"
 
-export class Digger extends Resource{
-    constructor(id, name, level, props = []) {
+export class Digger extends Resource {
+    constructor(id: number, name: string, level: number, props: prop) {
         super(id, name, level, props)
         this.active = false
         this.maxLevel = level
     }
-    setLevel(level, maxLevel) {
-        this.level = level
+    setMaxLevel(maxLevel: number) {
         this.maxLevel = maxLevel
-        this.updateStats()
     }
     updateStats() {
         for (var prop of this.statnames) {
@@ -51,7 +49,7 @@ export const DIGGERLIST = [
     new Digger(0, 'Drop Chance Digger', 0, [[Stat.DROP_CHANCE, 1],]),
     new Digger(1, 'Wandoos Digger', 0, [[Stat.WANDOOS_SPEED, 1],]),
     new Digger(2, 'Stat Digger', 0, [[Stat.ATTACK, 1],[ Stat.DEFENSE, 1]]),
-    new Digger(3, 'Adventure Digger', 0, [[Stat.POWER, 1], [Stat.TOUGHNESS]]),
+    new Digger(3, 'Adventure Digger', 0, [[Stat.POWER, 1], [Stat.TOUGHNESS, 1]]),
 
     new Digger(4, 'Energy NGU Digger', 0, [[Stat.ENERGY_NGU_SPEED, 1],]),
     new Digger(5, 'Magic NGU Digger', 0, [[Stat.MAGIC_NGU_SPEED, 1],]),

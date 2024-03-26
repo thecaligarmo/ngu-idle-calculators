@@ -1,29 +1,32 @@
 import { Stat } from "./stat"
-import Resource, { ResourceContainer } from "./resource"
+import Resource, { ResourceContainer, prop } from "./resource"
 
-export class Challenge extends Resource{
-    constructor(id, name, level, props = [], extraProps=[]) {
+export class Challenge extends Resource {
+    extraProps: any[]
+
+    constructor(id: number, name: string, level: number, props: prop, extraProps: prop = []) {
         super(id, name, level, props)
         this.extraProps = extraProps
         this.updateStats()
     }
+
     updateStats() {
         for (var prop of this.statnames) {
             this[prop] = this.level * this.base[prop]
         }
         if (this.extraProps) {
-            for (var prop of this.extraProps) {
-                if (this.level >= prop[2]) {
-                    if (this.statnames.includes(prop[0])) {
-                        this[prop[0]] += prop[1]
+            for (var eprop of this.extraProps) {
+                if (this.level >= eprop[2]) {
+                    if (this.statnames.includes(eprop[0])) {
+                        this[eprop[0]] += eprop[1]
                     } else {
-                        this[prop[0]] = prop[1]
+                        this[eprop[0]] = eprop[1]
                     }
                 }
             }
         }
     }
-    importStats(data) {
+    importStats(data: any) {
         this.level = data.curCompletions
         this.updateStats()
     }

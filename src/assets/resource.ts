@@ -1,7 +1,15 @@
 import _ from "lodash"
 
+export type prop = [string, number][] | [string, number, number][]
+
 export default class Resource {
-    constructor(id, name, level, props = []) {
+    [key:string]:any
+    id: number
+    name: string
+    level: number
+    base: {[index: string]: any}
+    statnames: string[]
+    constructor(id: number, name: string, level: number, props: prop) {
         this.id = id
         this.name = name
         this.level = level
@@ -13,7 +21,7 @@ export default class Resource {
         }
         this.updateStats()
     }
-    setLevel(level) {
+    setLevel(level: number) {
         this.level = level
         this.updateStats()
     }
@@ -25,7 +33,9 @@ export default class Resource {
 }
 
 export class ResourceContainer {
-    constructor(resource) {
+    [key:string]:any
+    names: any[]
+    constructor(resource: [number, Resource][]) {
         this.names = [];
         for (let i = 0; i < resource.length; i++) {
             this.names.push(resource[i][0]);

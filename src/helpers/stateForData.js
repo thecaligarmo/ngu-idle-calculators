@@ -2,7 +2,6 @@ import { defaultPlayerData, getCalculatedOptions, getPlayerNumberOptions, getPla
 import { getPlayerData, isPlayerDataUpdated } from "./context";
 import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
 import _ from "lodash";
-import { bd } from "./numbers";
 
 export function createStatesForData(extraRequired = []) {
     const playerData = getPlayerData();

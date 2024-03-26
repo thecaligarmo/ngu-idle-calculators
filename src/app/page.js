@@ -1,7 +1,8 @@
 'use client'
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
-import Link from 'next/link';
+
+
 
 export default function Home({children}) {
     return (

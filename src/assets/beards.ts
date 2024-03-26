@@ -1,13 +1,13 @@
 import { Stat } from "./stat"
-import Resource, { ResourceContainer } from "./resource"
+import Resource, { ResourceContainer, prop } from "./resource"
 
 export class Beard extends Resource{
-    constructor(id, name, level, permLevel, props=[]) {
+    permLevel: number
+    constructor(id: number, name: string, level: number, permLevel: number, props: prop) {
         super(id, name, level, props)
         this.permLevel = permLevel
     }
-    setLevel(level, permLevel) {
-        this.level = level
+    setPermLevel(permLevel: number) {
         this.permLevel = permLevel
         this.updateStats()
     }

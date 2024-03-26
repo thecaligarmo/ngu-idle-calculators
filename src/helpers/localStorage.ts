@@ -1,9 +1,9 @@
 // https://upmostly.com/next-js/using-localstorage-in-next-js
 import { useEffect, useState } from "react";
 
-export function useLocalStorage(key, fallbackValue) {
-    var fbV = fallbackValue.toString()
-    const [value, setValue] = useState(fallbackValue);
+export function useLocalStorage<T>(key: string, fallbackValue: any) {
+    var fbV : string = fallbackValue.toString()
+    const [value, setValue] = useState<string>(fallbackValue);
 
     useEffect(() => {
         const stored = localStorage.getItem(key);
@@ -21,19 +21,19 @@ export function useLocalStorage(key, fallbackValue) {
         localStorage.setItem(key, JSON.stringify(value)); //
     }, [key, value]);
 
-    return [value, setValue];
+    return [value, setValue] as const;
 }
 
-export function useLocalStorageNumber(key, fallbackValue, nonzero = false) {
-    var fbV = (typeof fallbackValue == 'string') ? fallbackValue : fallbackValue.toString()
-    const [value, setValue] = useState(fbV);
+export function useLocalStorageNumber<T>(key: string, fallbackValue: any, nonzero : boolean = false) {
+    var fbV : string = (typeof fallbackValue == 'string') ? fallbackValue : fallbackValue.toString()
+    const [value, setValue] = useState<string>(fbV);
 
     useEffect(() => {
         const stored = localStorage.getItem(key);
         
         if(stored) {
             var x = JSON.parse(stored)
-            if (x != value && (!nonzero || fbV != 0) ){
+            if (x != value && (!nonzero || fbV != '0') ){
                 setValue(x); //
             }
         } else {
@@ -43,10 +43,10 @@ export function useLocalStorageNumber(key, fallbackValue, nonzero = false) {
     }, [fbV, key, nonzero]);
 
     useEffect(() => {
-        if ((!nonzero || fbV != 0) ) {
+        if ((!nonzero || fbV != '0') ) {
             localStorage.setItem(key, JSON.stringify(value)); //
         }
     }, [key, value]);
 
-    return [value, setValue];
+    return [value, setValue] as const;
 }

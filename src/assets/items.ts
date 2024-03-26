@@ -1,10 +1,13 @@
 import _ from "lodash";
 import { Stat } from "./stat";
-import Resource, { ResourceContainer } from "./resource";
+import Resource, { ResourceContainer, prop } from "./resource";
+
+type slotType = (string | number)[]
 
 // Taken from https://github.com/gmiclotte/gear-optimizer/
 export class Item extends Resource {
-    constructor(id, name, slot, level, props) {
+    slot: slotType
+    constructor(id: number, name: string, slot: slotType, level: number, props: prop) {
         super(id, name, level, props)
         this.slot = slot;
     }
@@ -14,7 +17,7 @@ export class Item extends Resource {
         }
     }
     // They assume stats are green... Slightly problematic
-    importStats(data) {
+    importStats(data: any) {
         var types = [
             data.spec1Type.value__,
             data.spec2Type.value__,
@@ -38,7 +41,7 @@ export class Item extends Resource {
     }
 }
 
-export const Slot = {
+export const Slot : {[index: string]: slotType}= {
     WEAPON: [
         'weapon', 0
     ],
@@ -63,7 +66,7 @@ export const Slot = {
 }
 
 // For item stats
-export const StatType = {
+export const StatType : {[index: number]: string[]} = {
     1: [Stat.ENERGY_POWER],
     2: [Stat.ENERGY_SPEED],
     3: [Stat.MAGIC_POWER],
@@ -99,7 +102,7 @@ export const StatType = {
     41: [Stat.DROP_CHANCE],
 }
 
-export const StatDiv = {
+export const StatDiv  : {[index: number]: number}= {
     0: 1,
     1: 1,
     2: 1,
