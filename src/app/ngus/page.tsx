@@ -269,7 +269,7 @@ export default function Page() {
         var targetLvl = energyTargets[index];
         return (
             <li key={txt}>
-                {camelToTitle(txt)}: <span className="text-red-500">{pn(cap, fmt)}</span> until level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
+                {camelToTitle(txt)}: <span className="text-red-500">{pn(cap, fmt)}</span> cap at level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
             </li>
         )
     })
@@ -334,7 +334,7 @@ export default function Page() {
                 </p>
             </div>
             <div className="mt-10">
-                <h4 className="text-xl mb-2">How much cap is needed to max the targets?</h4>
+                <h4 className="text-xl mb-2">How much energy is needed to cap/max the bar at target level?</h4>
                 <ul className="inline-block w-1/2 align-top mb-2">
                     {energyCapToMaxTargetLi}
                 </ul>
@@ -343,7 +343,7 @@ export default function Page() {
                 </ul>
             </div>
             <div className="mt-10">
-                <h4 className="text-xl mb-2">How much cap is needed to max for 24 hours non-stop?</h4>
+                <h4 className="text-xl mb-2">How much energy is needed to cap/max the bar for 24 hours non-stop?</h4>
                 <ul className="inline-block w-1/2 align-top mb-2">
                     {energyCapToMaxInDayLi}
                 </ul>
