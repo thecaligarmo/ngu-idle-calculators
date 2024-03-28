@@ -4,8 +4,8 @@ import Resource, { ResourceContainer, prop } from "./resource"
 export class Challenge extends Resource {
     extraProps: any[]
 
-    constructor(id: number, name: string, level: number, props: prop, extraProps: prop = []) {
-        super(id, name, level, props)
+    constructor(id: number, key: string, name: string, level: number, props: prop, extraProps: prop = []) {
+        super(id, key, name, level, props)
         this.extraProps = extraProps
         this.updateStats()
     }
@@ -33,20 +33,18 @@ export class Challenge extends Resource {
 }
 
 export const CHALLENGELIST = [
-    new Challenge(0, 'Basic Challenge', 0, [[Stat.POWER, 5], [Stat.TOUGHNESS, 5]], [[Stat.POWER, 10, 1], [Stat.TOUGHNESS, 10, 1]]),
-    new Challenge(1, 'No Augmentations Challenge', 0, [[Stat.AUGMENT_SPEED, 25]], [[Stat.AUGMENT_SPEED, 10, 1]]),
-    new Challenge(2, '24 Hour Challenge', 0, [], []),
-    new Challenge(3, '100 Levels Challenge', 0, [[Stat.WANDOOS_SPEED, 20],], []),
-    new Challenge(4, 'No Equipment Challenge', 0, [], []),
-    new Challenge(5, 'Troll Challenge', 0, [], []),
-    new Challenge(6, 'No Rebirth Challenge', 0, [], []),
-    new Challenge(7, 'Laser Sword Challenge', 0, [], []),
-    new Challenge(8, 'Blind Challenge', 0, [[Stat.DAYCARE_SPEED, 1]], [[Stat.DAYCARE_SPEED, 5, 1]]),
-    new Challenge(9, 'No NGU Challenge', 0, [[Stat.ENERGY_NGU_SPEED, 5], [Stat.MAGIC_NGU_SPEED, 5]], []),
-    new Challenge(10, 'No Time Machine Challenge', 0, [[Stat.TIME_MACHINE, 100]], []),
+    new Challenge(0, 'basicChallenge', 'Basic Challenge',  0, [[Stat.POWER, 5], [Stat.TOUGHNESS, 5]], [[Stat.POWER, 10, 1], [Stat.TOUGHNESS, 10, 1]]),
+    new Challenge(1, 'noAugmentationsChallenge', 'No Augmentations Challenge',  0, [[Stat.AUGMENT_SPEED, 25]], [[Stat.AUGMENT_SPEED, 10, 1]]),
+    new Challenge(2, '24HourChallenge', '24 Hour Challenge',  0, [], []),
+    new Challenge(3, '100LevelsChallenge', '100 Levels Challenge',  0, [[Stat.WANDOOS_SPEED, 20],], []),
+    new Challenge(4, 'noEquipmentChallenge', 'No Equipment Challenge',  0, [], []),
+    new Challenge(5, 'trollChallenge', 'Troll Challenge',  0, [], []),
+    new Challenge(6, 'noRebirthChallenge', 'No Rebirth Challenge',  0, [], []),
+    new Challenge(7, 'laserSwordChallenge', 'Laser Sword Challenge',  0, [], []),
+    new Challenge(8, 'blindChallenge', 'Blind Challenge',  0, [[Stat.DAYCARE_SPEED, 1]], [[Stat.DAYCARE_SPEED, 5, 1]]),
+    new Challenge(9, 'noNGUChallenge', 'No NGU Challenge',  0, [[Stat.ENERGY_NGU_SPEED, 5], [Stat.MAGIC_NGU_SPEED, 5]], []),
+    new Challenge(10, 'noTimeMachineChallenge', 'No Time Machine Challenge',  0, [[Stat.TIME_MACHINE, 100]], []),
     
 ]
 
-export var CHALLENGES = new ResourceContainer(CHALLENGELIST.map((challenge) => {
-    return [challenge.id, challenge];
-}));
+export var CHALLENGES = new ResourceContainer(CHALLENGELIST);

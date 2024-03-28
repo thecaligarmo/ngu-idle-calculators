@@ -8,7 +8,7 @@ import { createStatesForData } from '@/helpers/stateForData';
 import Link from 'next/link';
 import bigDecimal from "js-big-decimal";
 import { Stat } from '@/assets/stat';
-import { beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, nguInfo, perkInfo, quirkInfo, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower } from '@/helpers/calculators';
+import { apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, nguInfo, perkInfo, quirkInfo, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower } from '@/helpers/calculators';
 import { PropsWithChildren } from 'react';
 
 export default function Page() {
@@ -61,6 +61,7 @@ export default function Page() {
                                 <li key="equip">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%) </li>
                                 <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%)</li>
                                 <li key="quirk">x Quick ({pn(quirkInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%)</li>
+                                <li key="apitems">x Potions ({pn(apItemInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%)</li>
                                 <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyPower(playerStates), fmt)}</span></li>
                             </ul>
                             <p className="mt-3">Similarly with the other basic stats:</p>

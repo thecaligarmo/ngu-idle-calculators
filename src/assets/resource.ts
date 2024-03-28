@@ -5,12 +5,14 @@ export type prop = [string, number][] | [string, number, number][]
 export default class Resource {
     [key:string]:any
     id: number
+    key: string
     name: string
     level: number
     base: {[index: string]: any}
     statnames: string[]
-    constructor(id: number, name: string, level: number, props: prop) {
+    constructor(id: number, key: string, name: string, level: number, props: prop) {
         this.id = id
+        this.key = key
         this.name = name
         this.level = level
         this.statnames = []
@@ -34,12 +36,19 @@ export default class Resource {
 
 export class ResourceContainer {
     [key:string]:any
-    names: any[]
-    constructor(resource: [number, Resource][]) {
+    names: string[]
+    ids : number[]
+    keys: string[]
+    constructor(resource: Resource[]) {
         this.names = [];
-        for (let i = 0; i < resource.length; i++) {
-            this.names.push(resource[i][0]);
-            this[resource[i][0]] = resource[i][1];
+        this.ids = [];
+        this.keys = []
+        for (var r of resource) {
+            this.ids.push(r.id);
+            this.keys.push(r.key)
+            this.names.push(r.name)
+            this[r.id] = r;
+            this[r.key] = r
         }
     }
 }

@@ -1,4 +1,4 @@
-import { useSavedDataContext } from "@/helpers/context";
+import { getNumberFormat, useSavedDataContext } from "@/helpers/context";
 import bigDecimal from "js-big-decimal";
 import { pn } from "@/helpers/numbers";
 import { camelToTitle } from "@/helpers/strings";
@@ -9,6 +9,7 @@ import { ReactNode } from "react";
 */
 function dataToList(d : any, input : boolean = false) : ReactNode{
     const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();
+    var fmt = getNumberFormat();
     var val = d.value[0]
     if (!(val instanceof bigDecimal)) {
         val = new bigDecimal(val)
@@ -32,7 +33,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
         </li>)
     } else {
         return (<li key={d.key}>
-                {camelToTitle(d.key)}: {pn(val)}
+                {camelToTitle(d.key)}: {pn(val, fmt)}
         </li>)
     }
 }

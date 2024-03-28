@@ -2,6 +2,8 @@ import _ from "lodash";
 import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
+import { ENERGY_NGUS } from "@/assets/ngus";
+import { APItem } from "@/assets/apItems";
 
 // Parsing Stuff
 function parseObj(state: any, key: string) {
@@ -25,6 +27,19 @@ function parseNum(state: any, key: string) : bigDecimal{
 
 
 // Information Stuff
+export function apItemInfo(data: any, key: string) : bigDecimal {
+    var apItems : APItem[] = parseObj(data, 'apItems')
+    var stat : number = 100;
+    if (Object.values(Stat).includes(key)) {
+        if(apItems.length > 0) {
+            apItems.forEach((g: APItem) => {
+                stat *= g[key] / 100
+            })
+        }
+    }
+    return bd(stat > 0 ? stat : 100)
+}
+
 export function beardInfoTemp(data: any, key: string) : bigDecimal{
     var beards : any = parseObj(data, 'beards')
     var stat : number = 100
@@ -198,6 +213,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
         .multiply(beardInfoPerm(data, stat).divide(bd(100)))
         .multiply(diggerInfo(data, stat).divide(bd(100)))
         .multiply(challengeInfo(data, stat))
+        .multiply(apItemInfo(data, stat).divide(bd(100)))
 }
 
 

@@ -3,8 +3,8 @@ import Resource, { ResourceContainer, prop } from "./resource"
 
 export class Beard extends Resource{
     permLevel: number
-    constructor(id: number, name: string, level: number, permLevel: number, props: prop) {
-        super(id, name, level, props)
+    constructor(id: number, key: string, name: string, level: number, permLevel: number, props: prop) {
+        super(id, key, name, level, props)
         this.permLevel = permLevel
     }
     setPermLevel(permLevel: number) {
@@ -99,15 +99,13 @@ export class Beard extends Resource{
 
 
 export const BEARDLIST = [
-    new Beard(0, 'The Fu Manchu', 0, 0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
-    new Beard(1, 'The Neckbeard', 0, 0, [[Stat.DROP_CHANCE, 1]]),
-    new Beard(2, 'The Revese Hitler', 0, 0, [[Stat.NUMBER, 1]]),
-    new Beard(3, 'The Beard Cage', 0, 0, [[Stat.ENERGY_NGU_SPEED, 1], [Stat.MAGIC_NGU_SPEED, 1]]),
-    new Beard(4, 'The LadyBeard', 0, 0, [[Stat.WANDOOS_SPEED, 1]]),
-    new Beard(5, 'The BEARd', 0, 0, [[Stat.POWER, 1], [Stat. TOUGHNESS, 1]]),
-    new Beard(6, 'The Golden Beard', 0, 0, [[Stat.TIME_MACHINE, 1]]),    
+    new Beard(0, 'fuManchu', 'The Fu Manchu', 0, 0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
+    new Beard(1, 'neckbeard', 'The Neckbeard', 0, 0, [[Stat.DROP_CHANCE, 1]]),
+    new Beard(2, 'reverseHitler', 'The Revese Hitler', 0, 0, [[Stat.NUMBER, 1]]),
+    new Beard(3, 'beardCage', 'The Beard Cage', 0, 0, [[Stat.ENERGY_NGU_SPEED, 1], [Stat.MAGIC_NGU_SPEED, 1]]),
+    new Beard(4, 'ladybeard', 'The LadyBeard', 0, 0, [[Stat.WANDOOS_SPEED, 1]]),
+    new Beard(5, 'BEARd', 'The BEARd', 0, 0, [[Stat.POWER, 1], [Stat. TOUGHNESS, 1]]),
+    new Beard(6, 'goldenBeard', 'The Golden Beard', 0, 0, [[Stat.TIME_MACHINE, 1]]),    
 ]
 
-export var BEARDS = new ResourceContainer(BEARDLIST.map((beard) => {
-    return [beard.id, beard];
-}));
+export var BEARDS = new ResourceContainer(BEARDLIST);

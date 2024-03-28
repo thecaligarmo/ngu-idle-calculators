@@ -7,6 +7,7 @@ import { BEARDS, Beard } from "@/assets/beards";
 import { DIGGERS, Digger } from "@/assets/diggers";
 import { CHALLENGES, Challenge } from "@/assets/challenges";
 import { totalEnergyNGUSpeedFactor, totalMagicNGUSpeedFactor } from "./calculators";
+import { APITEMS, APItem } from "@/assets/apItems";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
@@ -109,6 +110,29 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return totalMagicNGUSpeedFactor(playerData);
 
 
+            case 'apItems':
+                var apItems : APItem[] = []
+                if (playerData.arbitrary.energyPotion1Time.totalseconds > 0) {
+                    var apItem = APITEMS['energyPotionA'];
+                    apItem.setLevel(1)
+                    apItems.push(apItem)
+                }
+                if (playerData.arbitrary.magicPotion1Time.totalseconds > 0) {
+                    var apItem = APITEMS['magicPotionA'];
+                    apItem.setLevel(1)
+                    apItems.push(apItem)
+                }
+                if (playerData.arbitrary.energyPotion2InUse == 1) {
+                    var apItem = APITEMS['energyPotionB'];
+                    apItem.setLevel(1)
+                    apItems.push(apItem)
+                }
+                if (playerData.arbitrary.magicPotion2InUse == 1) {
+                    var apItem = APITEMS['magicPotionB'];
+                    apItem.setLevel(1)
+                    apItems.push(apItem)
+                }
+                return apItems;
             case 'beards':
                 var beards : Beard[] = []
                 playerData.beards.beards.forEach((beard : any, index : number) => {
@@ -301,6 +325,7 @@ export function getPlayerNumberOptions() : string[]{
 
 export function getPlayerOptions() : string[] {
     return [
+        'apItems',
         'beards',
         'challenges',
         'diggers',

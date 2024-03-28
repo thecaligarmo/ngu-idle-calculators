@@ -2,8 +2,8 @@ import { Stat } from "./stat"
 import Resource, { ResourceContainer, prop } from "./resource"
 
 export class Digger extends Resource {
-    constructor(id: number, name: string, level: number, props: prop) {
-        super(id, name, level, props)
+    constructor(id: number, key: string, name: string, level: number, props: prop) {
+        super(id, key, name, level, props)
         this.active = false
         this.maxLevel = level
     }
@@ -38,6 +38,7 @@ export class Digger extends Resource {
                     break;
                 case 11: // Exp
                     this[prop] = 105 + 0.5 * this.level
+                    break;
                 
             }
         }
@@ -46,24 +47,20 @@ export class Digger extends Resource {
 
 
 export const DIGGERLIST = [
-    new Digger(0, 'Drop Chance Digger', 0, [[Stat.DROP_CHANCE, 1],]),
-    new Digger(1, 'Wandoos Digger', 0, [[Stat.WANDOOS_SPEED, 1],]),
-    new Digger(2, 'Stat Digger', 0, [[Stat.ATTACK, 1],[ Stat.DEFENSE, 1]]),
-    new Digger(3, 'Adventure Digger', 0, [[Stat.POWER, 1], [Stat.TOUGHNESS, 1]]),
+    new Digger(0, 'dropChanceDigger', 'Drop Chance Digger',  0, [[Stat.DROP_CHANCE, 1],]),
+    new Digger(1, 'wandoosDigger', 'Wandoos Digger',  0, [[Stat.WANDOOS_SPEED, 1],]),
+    new Digger(2, 'statDigger', 'Stat Digger',  0, [[Stat.ATTACK, 1],[ Stat.DEFENSE, 1]]),
+    new Digger(3, 'adventureDigger', 'Adventure Digger',  0, [[Stat.POWER, 1], [Stat.TOUGHNESS, 1]]),
 
-    new Digger(4, 'Energy NGU Digger', 0, [[Stat.ENERGY_NGU_SPEED, 1],]),
-    new Digger(5, 'Magic NGU Digger', 0, [[Stat.MAGIC_NGU_SPEED, 1],]),
-    new Digger(6, 'Energy Beard Digger', 0, [[Stat.ENERGY_BEARD_SPEED, 1],]),
-    new Digger(7, 'Magic Beard Digger', 0, [[Stat.MAGIC_BEARD_SPEED, 1],]),
+    new Digger(4, 'energyNGUDigger', 'Energy NGU Digger',  0, [[Stat.ENERGY_NGU_SPEED, 1],]),
+    new Digger(5, 'magicNGUDigger', 'Magic NGU Digger',  0, [[Stat.MAGIC_NGU_SPEED, 1],]),
+    new Digger(6, 'energyBeardDigger', 'Energy Beard Digger',  0, [[Stat.ENERGY_BEARD_SPEED, 1],]),
+    new Digger(7, 'magicBeardDigger', 'Magic Beard Digger',  0, [[Stat.MAGIC_BEARD_SPEED, 1],]),
 
-    new Digger(8, 'PP Digger', 0, [[Stat.PP, 1],]),
-    new Digger(9, 'Daycare Digger', 0, [[Stat.DAYCARE_SPEED, 1],]),
-    new Digger(10, 'Blood Digger', 0, [[Stat.BLOOD, 1],]),
-    new Digger(11, 'EXP Digger', 0, [[Stat.EXPERIENCE, 1],]),
-
-    
+    new Digger(8, 'PPDigger', 'PP Digger',  0, [[Stat.PP, 1],]),
+    new Digger(9, 'daycareDigger', 'Daycare Digger',  0, [[Stat.DAYCARE_SPEED, 1],]),
+    new Digger(10, 'bloodDigger', 'Blood Digger',  0, [[Stat.BLOOD, 1],]),
+    new Digger(11, 'experienceDigger', 'EXP Digger',  0, [[Stat.EXPERIENCE, 1],]),
 ]
 
-export var DIGGERS = new ResourceContainer(DIGGERLIST.map((digger) => {
-    return [digger.id, digger];
-}));
+export var DIGGERS = new ResourceContainer(DIGGERLIST);

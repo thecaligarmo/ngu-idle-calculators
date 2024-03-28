@@ -11,8 +11,8 @@ export class NGU extends Resource {
     diminishingReturnLevel: number
     maxValue: number
     baseSpeed: number
-    constructor (id: number, name: string, level: number, props: prop, res: string, diminishingReturnLevel: number, maxValue: number, baseSpeed: number) {
-        super(id, name, level, props)
+    constructor (id: number, key: string, name: string, level: number, props: prop, res: string, diminishingReturnLevel: number, maxValue: number, baseSpeed: number) {
+        super(id, key, name, level, props)
         this.res = res
         this.target = 0
         this.evilLevel = 0
@@ -91,31 +91,27 @@ export class NGU extends Resource {
 
 
 export const ENGULIST = [
-    new NGU(0, 'NGU AUGMENTS', 0, [[Stat.AUGMENT_SPEED, 1]], 'energy',  0, 1000000000, 200000000000),
-    new NGU(1, 'NGU WANDOOS', 0, [[Stat.WANDOOS_SPEED, 0.1]], 'energy',  0, 100000000, 200000000000),
-    new NGU(2, 'NGU RESPAWN', 0, [[Stat.RESPAWN, 0.05]], 'energy',  400, 60, 200000000000),
-    new NGU(3, 'NGU GOLD', 0, [[Stat.GOLD_DROP, 1]], 'energy',  0, 1000000000, 200000000000),
-    new NGU(4, 'NGU ADVENTURE A', 0, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]], 'energy',  1000, 100244.2, 200000000000),
-    new NGU(5, 'NGU POWER A', 0, [[Stat.ATTACK, 5], [Stat.DEFENSE, 5]], 'energy',  0, 5000000000, 200000000000),
-    new NGU(6, 'NGU DROP CHANCE', 0, [[Stat.DROP_CHANCE, 0.1],], 'energy',  1000, 100244.2, 20000000000000),
-    new NGU(7, 'NGU MAGIC NGU', 0, [[Stat.MAGIC_NGU_SPEED, 0.1]], 'energy',  1000, 6309.95, 400000000000000),
-    new NGU(8, 'NGU PP', 0, [[Stat.PP, 0.05]], 'energy',  1000, 3154.97, 10000000000000000),
+    new NGU(0, 'NGUAugments', 'NGU AUGMENTS',  0, [[Stat.AUGMENT_SPEED, 1]], 'energy',   0, 1000000000, 200000000000),
+    new NGU(1, 'NGUWandoos', 'NGU WANDOOS',  0, [[Stat.WANDOOS_SPEED, 0.1]], 'energy',   0, 100000000, 200000000000),
+    new NGU(2, 'NGURespawn', 'NGU RESPAWN',  0, [[Stat.RESPAWN, 0.05]], 'energy',   400, 60, 200000000000),
+    new NGU(3, 'NGUGold', 'NGU GOLD',  0, [[Stat.GOLD_DROP, 1]], 'energy',   0, 1000000000, 200000000000),
+    new NGU(4, 'NGUAdventureA', 'NGU ADVENTURE A',  0, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]], 'energy',   1000, 100244.2, 200000000000),
+    new NGU(5, 'NGUPowerA', 'NGU POWER A',  0, [[Stat.ATTACK, 5], [Stat.DEFENSE, 5]], 'energy',   0, 5000000000, 200000000000),
+    new NGU(6, 'NGUDropChance', 'NGU DROP CHANCE',  0, [[Stat.DROP_CHANCE, 0.1],], 'energy',   1000, 100244.2, 20000000000000),
+    new NGU(7, 'NGUMagicNGU', 'NGU MAGIC NGU',  0, [[Stat.MAGIC_NGU_SPEED, 0.1]], 'energy',   1000, 6309.95, 400000000000000),
+    new NGU(8, 'NGUPP', 'NGU PP',  0, [[Stat.PP, 0.05]], 'energy',   1000, 3154.97, 10000000000000000),
 ]
 
 export const MNGULIST = [
-    new NGU(0, 'NGU YGGDRASIL', 0, [[Stat.YGGDRASIL_YIELD, 0.1]], 'magic',  400, 5170.23, 400000000000),
-    new NGU(1, 'NGU EXP', 0, [[Stat.EXPERIENCE, 0.01]], 'magic',  2000, 3808.29, 1200000000000),
-    new NGU(2, 'NGU POWER B', 0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]], 'magic',  0, 1000000000, 4000000000000),
-    new NGU(3, 'NGU NUMBER', 0, [[Stat.NUMBER, 1]], 'magic',  1000, 1002000, 12000000000000),
-    new NGU(4, 'NGU TIME MACHINE', 0, [[Stat.TIME_MACHINE, 0.2]], 'magic',  1000, 12619000, 100000000000000),
-    new NGU(5, 'NGU ENERGY NGU', 0, [[Stat.ENERGY_NGU_SPEED, 0.1]], 'magic',  1000, 6309.95, 1000000000000000),
-    new NGU(6, 'NGU ADVENTURE B', 0, [[Stat.POWER, 0.03], [Stat.TOUGHNESS, 0.03]], 'magic',  1000, 7539.75, 10000000000000000),
+    new NGU(0, 'NGUYggrdrasil', 'NGU YGGDRASIL',  0, [[Stat.YGGDRASIL_YIELD, 0.1]], 'magic',   400, 5170.23, 400000000000),
+    new NGU(1, 'NGUExperience', 'NGU EXP',  0, [[Stat.EXPERIENCE, 0.01]], 'magic',   2000, 3808.29, 1200000000000),
+    new NGU(2, 'NGUPowerB', 'NGU POWER B',  0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]], 'magic',   0, 1000000000, 4000000000000),
+    new NGU(3, 'NGUNumber', 'NGU NUMBER',  0, [[Stat.NUMBER, 1]], 'magic',   1000, 1002000, 12000000000000),
+    new NGU(4, 'NGUTimeMachine', 'NGU TIME MACHINE',  0, [[Stat.TIME_MACHINE, 0.2]], 'magic',   1000, 12619000, 100000000000000),
+    new NGU(5, 'NGUEnergyNGU', 'NGU ENERGY NGU',  0, [[Stat.ENERGY_NGU_SPEED, 0.1]], 'magic',   1000, 6309.95, 1000000000000000),
+    new NGU(6, 'NGUAdventureB', 'NGU ADVENTURE B',  0, [[Stat.POWER, 0.03], [Stat.TOUGHNESS, 0.03]], 'magic',   1000, 7539.75, 10000000000000000),
 ]
 
-export var ENERGY_NGUS = new ResourceContainer(ENGULIST.map((ngu) => {
-    return [ngu.id, ngu];
-}));
+export var ENERGY_NGUS = new ResourceContainer(ENGULIST);
 
-export var MAGIC_NGUS = new ResourceContainer(MNGULIST.map((ngu) => {
-    return [ngu.id, ngu];
-}));
+export var MAGIC_NGUS = new ResourceContainer(MNGULIST);
