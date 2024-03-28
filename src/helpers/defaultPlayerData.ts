@@ -6,7 +6,7 @@ import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { BEARDS, Beard } from "@/assets/beards";
 import { DIGGERS, Digger } from "@/assets/diggers";
 import { CHALLENGES, Challenge } from "@/assets/challenges";
-import { totalEnergyNGUSpeedFactor, totalMagicNGUSpeedFactor } from "./calculators";
+import { totalEnergyCap, totalEnergyNGUSpeedFactor, totalMagicCap, totalMagicNGUSpeedFactor } from "./calculators";
 import { APITEMS, APItem } from "@/assets/apItems";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
@@ -31,11 +31,6 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.res3.capRes3.low;
             case 'baseResource3Power':
                 return playerData.res3.res3Power;
-
-            case 'currentEnergyCap':
-                return playerData.curEnergy.low;
-            case 'currentMagicCap':
-                return playerData.magic.curMagic.low;
 
             case 'energyNGUAugmentsLevel':
                 return playerData.NGU.skills[0].level.low;
@@ -104,10 +99,6 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.NGU.magicSkills[6].target.low;
             case 'resource3Active':
                 return playerData.res3.res3On;
-            case 'totalEnergyNGUSpeedFactor%':
-                return totalEnergyNGUSpeedFactor(playerData);
-            case 'totalMagicNGUSpeedFactor%':
-                return totalMagicNGUSpeedFactor(playerData);
 
 
             case 'apItems':
@@ -262,6 +253,17 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     }
                 })
                 return maxxedItemIds
+
+            // Calculations
+            case 'currentEnergyCap':
+                return totalEnergyCap(playerData);
+            case 'currentMagicCap':
+                return totalMagicCap(playerData);
+            case 'totalEnergyNGUSpeedFactor%':
+                return totalEnergyNGUSpeedFactor(playerData);
+            case 'totalMagicNGUSpeedFactor%':
+                return totalMagicNGUSpeedFactor(playerData);
+            
             
             default:
                 return 0;
@@ -284,8 +286,6 @@ export function getPlayerNumberOptions() : string[]{
         'baseResource3Bar',
         'baseResource3Cap',
         'baseResource3Power',
-        'currentEnergyCap',
-        'currentMagicCap',
         'energyNGUAugmentsLevel',
         'energyNGUWandoosLevel',
         'energyNGURespawnLevel',
@@ -345,6 +345,8 @@ export function getPlayerOptions() : string[] {
 
 export function getCalculatedOptions() : string[] {
     return [
+        'currentEnergyCap',
+        'currentMagicCap',
         'totalEnergyNGUSpeedFactor%',
         'totalMagicNGUSpeedFactor%',
     ]

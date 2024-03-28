@@ -2,6 +2,7 @@
 
 import { ChoiceButton } from "@/components/buttons";
 import Content from "@/components/content";
+import { totalEnergyCap } from "@/helpers/calculators";
 import { getNumberFormat, getPlayerData } from "@/helpers/context";
 import { bd, bigdec_min, dn, pn} from "@/helpers/numbers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
