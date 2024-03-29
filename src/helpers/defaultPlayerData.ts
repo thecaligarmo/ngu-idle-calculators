@@ -68,6 +68,42 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.NGU.skills[7].target.low;
             case 'energyNGUPPTarget':
                 return playerData.NGU.skills[8].target.low;
+            case 'energyNGUAugmentsEvilLevel':
+                return playerData.NGU.skills[0].evilLevel.low;
+            case 'energyNGUWandoosEvilLevel':
+                return playerData.NGU.skills[1].evilLevel.low;
+            case 'energyNGURespawnEvilLevel':
+                return playerData.NGU.skills[2].evilLevel.low;
+            case 'energyNGUGoldEvilLevel':
+                return playerData.NGU.skills[3].evilLevel.low;
+            case 'energyNGUAdventureAEvilLevel':
+                return playerData.NGU.skills[4].evilLevel.low;
+            case 'energyNGUPowerAEvilLevel':
+                return playerData.NGU.skills[5].evilLevel.low;
+            case 'energyNGUDropChanceEvilLevel':
+                return playerData.NGU.skills[6].evilLevel.low;
+            case 'energyNGUMagicNGUEvilLevel':
+                return playerData.NGU.skills[7].evilLevel.low;
+            case 'energyNGUPPEvilLevel':
+                return playerData.NGU.skills[8].evilLevel.low;
+            case 'energyNGUAugmentsEvilTarget':
+                return playerData.NGU.skills[0].evilTarget.low;
+            case 'energyNGUWandoosEvilTarget':
+                return playerData.NGU.skills[1].evilTarget.low;
+            case 'energyNGURespawnEvilTarget':
+                return playerData.NGU.skills[2].evilTarget.low;
+            case 'energyNGUGoldEvilTarget':
+                return playerData.NGU.skills[3].evilTarget.low;
+            case 'energyNGUAdventureAEvilTarget':
+                return playerData.NGU.skills[4].evilTarget.low;
+            case 'energyNGUPowerAEvilTarget':
+                return playerData.NGU.skills[5].evilTarget.low;
+            case 'energyNGUDropChanceEvilTarget':
+                return playerData.NGU.skills[6].evilTarget.low;
+            case 'energyNGUMagicNGUEvilTarget':
+                return playerData.NGU.skills[7].evilTarget.low;
+            case 'energyNGUPPEvilTarget':
+                return playerData.NGU.skills[8].evilTarget.low;
                 
             case 'magicNGUYggdrasilLevel':
                 return playerData.NGU.magicSkills[0].level.low;
@@ -97,6 +133,36 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.NGU.magicSkills[5].target.low;
             case 'magicNGUAdventureBTarget':
                 return playerData.NGU.magicSkills[6].target.low;
+            case 'magicNGUYggdrasilEvilLevel':
+                return playerData.NGU.magicSkills[0].evilLevel.low;
+            case 'magicNGUExpEvilLevel':
+                return playerData.NGU.magicSkills[1].evilLevel.low;
+            case 'magicNGUPowerBEvilLevel':
+                return playerData.NGU.magicSkills[2].evilLevel.low;
+            case 'magicNGUNumberEvilLevel':
+                return playerData.NGU.magicSkills[3].evilLevel.low;
+            case 'magicNGUTimeMachineEvilLevel':
+                return playerData.NGU.magicSkills[4].evilLevel.low;
+            case 'magicNGUEnergyNGUEvilLevel':
+                return playerData.NGU.magicSkills[5].evilLevel.low;
+            case 'magicNGUAdventureBEvilLevel':
+                return playerData.NGU.magicSkills[6].evilLevel.low;
+            case 'magicNGUYggdrasilEvilTarget':
+                return playerData.NGU.magicSkills[0].evilTarget.low;
+            case 'magicNGUExpEvilTarget':
+                return playerData.NGU.magicSkills[1].evilTarget.low;
+            case 'magicNGUPowerBEvilTarget':
+                return playerData.NGU.magicSkills[2].evilTarget.low;
+            case 'magicNGUNumberEvilTarget':
+                return playerData.NGU.magicSkills[3].evilTarget.low;
+            case 'magicNGUTimeMachineEvilTarget':
+                return playerData.NGU.magicSkills[4].evilTarget.low;
+            case 'magicNGUEnergyNGUEvilTarget':
+                return playerData.NGU.magicSkills[5].evilTarget.low;
+            case 'magicNGUAdventureBEvilTarget':
+                return playerData.NGU.magicSkills[6].evilTarget.low;
+
+
             case 'resource3Active':
                 return playerData.res3.res3On;
 
@@ -304,6 +370,24 @@ export function getPlayerNumberOptions() : string[]{
         'energyNGUDropChanceTarget',
         'energyNGUMagicNGUTarget',
         'energyNGUPPTarget',
+        'energyNGUAugmentsEvilLevel',
+        'energyNGUWandoosEvilLevel',
+        'energyNGURespawnEvilLevel',
+        'energyNGUGoldEvilLevel',
+        'energyNGUAdventureAEvilLevel',
+        'energyNGUPowerAEvilLevel',
+        'energyNGUDropChanceEvilLevel',
+        'energyNGUMagicNGUEvilLevel',
+        'energyNGUPPEvilLevel',
+        'energyNGUAugmentsEvilTarget',
+        'energyNGUWandoosEvilTarget',
+        'energyNGURespawnEvilTarget',
+        'energyNGUGoldEvilTarget',
+        'energyNGUAdventureAEvilTarget',
+        'energyNGUPowerAEvilTarget',
+        'energyNGUDropChanceEvilTarget',
+        'energyNGUMagicNGUEvilTarget',
+        'energyNGUPPEvilTarget',
         'magicNGUYggdrasilLevel',
         'magicNGUExpLevel',
         'magicNGUPowerBLevel',
@@ -318,6 +402,20 @@ export function getPlayerNumberOptions() : string[]{
         'magicNGUTimeMachineTarget',
         'magicNGUEnergyNGUTarget',
         'magicNGUAdventureBTarget',
+        'magicNGUYggdrasilEvilLevel',
+        'magicNGUExpEvilLevel',
+        'magicNGUPowerBEvilLevel',
+        'magicNGUNumberEvilLevel',
+        'magicNGUTimeMachineEvilLevel',
+        'magicNGUEnergyNGUEvilLevel',
+        'magicNGUAdventureBEvilLevel',
+        'magicNGUYggdrasilEvilTarget',
+        'magicNGUExpEvilTarget',
+        'magicNGUPowerBEvilTarget',
+        'magicNGUNumberEvilTarget',
+        'magicNGUTimeMachineEvilTarget',
+        'magicNGUEnergyNGUEvilTarget',
+        'magicNGUAdventureBEvilTarget',
         'resource3Active',
     ]
 }

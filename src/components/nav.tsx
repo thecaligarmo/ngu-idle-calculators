@@ -2,7 +2,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ImportSaveForm from '@/components/ImportSaveForm/importSaveForm';
 import { useNumberFormatContext } from "@/helpers/context";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 
 export default function Nav({ children } : PropsWithChildren) {
     const {numberFormat, setNumberFormat} = useNumberFormatContext();
@@ -12,21 +12,22 @@ export default function Nav({ children } : PropsWithChildren) {
     const inactiveTabLi = "mr-1"
     const activeTab = "bg-blue-500 inline-block border-l border-blue-500 border-t border-r rounded-t py-2 px-4 text-white dark:text-black font-semibold"
     const inactiveTab = "bg-white dark:bg-black inline-block py-2 px-4 text-blue-500 dark:hover:text-blue-800 hover:text-blue-300 font-semibold"
+
+    function NavElt({children, href, hasChildren=false} : {children: ReactNode, href: string, hasChildren?: boolean}) {
+        var actTab = hasChildren ? (pathname.startsWith(href)) : (pathname == href)
+        return (<li key="home" className={actTab ? activeTabLi : inactiveTabLi}>
+            <Link className={actTab ? activeTab : inactiveTab} href={href}>{children}</Link>
+        </li>)
+    }
+
     return (
       <nav>
         <ul className="flex border-b dark:border-white border-black">
-            <li key="home" className={(pathname == "/") ? activeTabLi : inactiveTabLi}>
-                <Link className={(pathname == "/") ? activeTab : inactiveTab} href="/">Home</Link>
-            </li>
-            <li key="ratios" className={(pathname == "/ratios") ? activeTabLi : inactiveTabLi}>
-                <Link className={(pathname == "/ratios") ? activeTab : inactiveTab} href="/ratios">Ratio Calc</Link>
-            </li>
-            <li key="ngus" className={(pathname == "/ngus") ? activeTabLi : inactiveTabLi}>
-                <Link className={(pathname == "/ngus") ? activeTab : inactiveTab} href="/ngus">NGUs</Link>
-            </li>
-            <li key="about" className={(pathname == "/about") ? activeTabLi : inactiveTabLi}>
-                <Link className={(pathname == "/about") ? activeTab : inactiveTab} href="/about">About/Credits</Link>
-            </li>
+            <NavElt href="/">Home</NavElt>
+            <NavElt href="/ratios">Ratios</NavElt>
+            <NavElt href="/ngus" hasChildren={true}>NGUs</NavElt>
+            <NavElt href="/about">About/Credits</NavElt>
+
             <li key="save" className="flex-grow">
                 <ImportSaveForm />
                 <form className="float-right mt-px">
@@ -47,6 +48,13 @@ export default function Nav({ children } : PropsWithChildren) {
                 </form>
             </li>
         </ul>
+        { pathname.startsWith('/ngus') ?
+            <ul className="flex border-b dark:border-white border-black">
+                <NavElt href="/ngus">Normal</NavElt>
+                <NavElt href="/ngus/evil">Evil</NavElt>
+            </ul>
+            : null
+        }
       </nav>
     );
   }

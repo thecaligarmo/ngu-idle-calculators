@@ -1,5 +1,5 @@
 'use client'
-import CalcSection from '@/components/calcSection';
+import ContentSubsection from '@/components/contentSubsection';
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
 import { getNumberFormat } from '@/helpers/context';
@@ -55,7 +55,7 @@ export default function Page() {
                         If you see anything wrong, let me know.
                     </p>
                     <div>
-                        <CalcSection title="Energy Power">
+                        <ContentSubsection title="Energy Power">
                             <ul>
                                 <li key="base">Base Energy Power ({pn(v('baseEnergyPower'), fmt)})</li>
                                 <li key="equip">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%) </li>
@@ -72,8 +72,8 @@ export default function Page() {
                                 <li key="mCap"><strong>Magic Cap:</strong> <span className="text-red-500">{pn(totalMagicCap(playerStates), fmt)}</span></li>
                                 <li key="mBar"><strong>Magic Bar:</strong> <span className="text-red-500">{pn(totalMagicBar(playerStates), fmt)}</span></li>
                             </ul>
-                        </CalcSection>
-                        <CalcSection title="Total Energy NGU Speed Factor">
+                        </ContentSubsection>
+                        <ContentSubsection title="Total Energy NGU Speed Factor">
                             <ul>
                                 <li key="base">Base Energy NGU Speed (100%)</li>
                                 <li key="energyPower">x Energy Power ({pn(totalEnergyPower(playerStates).multiply(bd(100)), fmt)}%)</li>
@@ -91,7 +91,7 @@ export default function Page() {
                                 <li key="total" className=""><strong>Total Magic NGU Speed Factor:</strong> <span className="text-red-500">{pn(totalMagicNGUSpeedFactor(playerStates), fmt)}%</span></li>
                             </ul>
                             
-                        </CalcSection>
+                        </ContentSubsection>
                     </div>
                     <p className="text-sm my-5">
                         * These are also calculations and are not in the save file.

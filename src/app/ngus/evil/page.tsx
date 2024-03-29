@@ -25,47 +25,49 @@ export default function Page() {
         ['currentEnergyCap', 'totalEnergyNGUSpeedFactor%'],
         ['currentMagicCap', 'totalMagicNGUSpeedFactor%'],
         [
-            'energyNGUAugmentsLevel',
-            'energyNGUWandoosLevel',
-            'energyNGURespawnLevel',
-            'energyNGUGoldLevel',
-            'energyNGUAdventureALevel',
-            'energyNGUPowerALevel',
-            'energyNGUDropChanceLevel',
-            'energyNGUMagicNGULevel',
-            'energyNGUPPLevel'
+            'energyNGUAugmentsEvilLevel',
+            'energyNGUWandoosEvilLevel',
+            'energyNGURespawnEvilLevel',
+            'energyNGUGoldEvilLevel',
+            'energyNGUAdventureAEvilLevel',
+            'energyNGUPowerAEvilLevel',
+            'energyNGUDropChanceEvilLevel',
+            'energyNGUMagicNGUEvilLevel',
+            'energyNGUPPEvilLevel'
         ],[
-            'magicNGUYggdrasilLevel',
-            'magicNGUExpLevel',
-            'magicNGUPowerBLevel',
-            'magicNGUNumberLevel',
-            'magicNGUTimeMachineLevel',
-            'magicNGUEnergyNGULevel',
-            'magicNGUAdventureBLevel'
+            'magicNGUYggdrasilEvilLevel',
+            'magicNGUExpEvilLevel',
+            'magicNGUPowerBEvilLevel',
+            'magicNGUNumberEvilLevel',
+            'magicNGUTimeMachineEvilLevel',
+            'magicNGUEnergyNGUEvilLevel',
+            'magicNGUAdventureBEvilLevel'
         ],
         [
-            'energyNGUAugmentsTarget',
-            'energyNGUWandoosTarget',
-            'energyNGURespawnTarget',
-            'energyNGUGoldTarget',
-            'energyNGUAdventureATarget',
-            'energyNGUPowerATarget',
-            'energyNGUDropChanceTarget',
-            'energyNGUMagicNGUTarget',
-            'energyNGUPPTarget'
+            'energyNGUAugmentsEvilTarget',
+            'energyNGUWandoosEvilTarget',
+            'energyNGURespawnEvilTarget',
+            'energyNGUGoldEvilTarget',
+            'energyNGUAdventureAEvilTarget',
+            'energyNGUPowerAEvilTarget',
+            'energyNGUDropChanceEvilTarget',
+            'energyNGUMagicNGUEvilTarget',
+            'energyNGUPPEvilTarget'
         ],[
-            'magicNGUYggdrasilTarget',
-            'magicNGUExpTarget',
-            'magicNGUPowerBTarget',
-            'magicNGUNumberTarget',
-            'magicNGUTimeMachineTarget',
-            'magicNGUEnergyNGUTarget',
-            'magicNGUAdventureBTarget'
+            'magicNGUYggdrasilEvilTarget',
+            'magicNGUExpEvilTarget',
+            'magicNGUPowerBEvilTarget',
+            'magicNGUNumberEvilTarget',
+            'magicNGUTimeMachineEvilTarget',
+            'magicNGUEnergyNGUEvilTarget',
+            'magicNGUAdventureBEvilTarget'
         ]
     ]
 
     // Set extra required (not from playerData)
     var extraRequired = [
+        // [],//['totalEnergyNGUSpeedFactor%'],
+        // [],
         ['percentageIncrease%', 'timeInSeconds'], []
     ]
     const playerStates = createStatesForData(extraRequired);
@@ -85,37 +87,38 @@ export default function Page() {
     
     // Setup our texts
     var energyText = [
-        'energyNGUAugments',
-        'energyNGUWandoos',
-        'energyNGURespawn',
-        'energyNGUGold',
-        'energyNGUAdventureA',
-        'energyNGUPowerA',
-        'energyNGUDropChance',
-        'energyNGUMagicNGU',
-        'energyNGUPP'
+        'energyNGUAugmentsEvil',
+        'energyNGUWandoosEvil',
+        'energyNGURespawnEvil',
+        'energyNGUGoldEvil',
+        'energyNGUAdventureAEvil',
+        'energyNGUPowerAEvil',
+        'energyNGUDropChanceEvil',
+        'energyNGUMagicNGUEvil',
+        'energyNGUPPEvil'
     ]
     var magicText = [
-        'magicNGUYggdrasil',
-        'magicNGUExp',
-        'magicNGUPowerB',
-        'magicNGUNumber',
-        'magicNGUTimeMachine',
-        'magicNGUEnergyNGU',
-        'magicNGUAdventureB',
+        'magicNGUYggdrasilEvil',
+        'magicNGUExpEvil',
+        'magicNGUPowerBEvil',
+        'magicNGUNumberEvil',
+        'magicNGUTimeMachineEvil',
+        'magicNGUEnergyNGUEvil',
+        'magicNGUAdventureBEvil',
     ]
 
+    
     var eNGUs : NGU[] = energyText.map((txt, index) => {
         var engu = ENERGY_NGUS[index]
-        engu.setLevel(Number(v(txt + "Level").getValue()))
-        engu.target = Number(v(txt + "Target").getValue())
+        engu.evilLevel = Number(v(txt + "Level").getValue())
+        engu.evilTarget = Number(v(txt + "Target").getValue())
         return engu
     })
 
     var mNGUs : NGU[] = magicText.map((txt, index) => {
         var mngu = MAGIC_NGUS[index]
-        mngu.setLevel(Number(v(txt + "Level").getValue()))
-        mngu.target = Number(v(txt + "Target").getValue())
+        mngu.evilLevel = Number(v(txt + "Level").getValue())
+        mngu.evilTarget = Number(v(txt + "Target").getValue())
         return mngu
     })
 
@@ -127,6 +130,7 @@ export default function Page() {
     var magicTargets = mNGUs.map((ngu) => {
         return (calcType == NGU_PERCENTAGE) ? ngu.percentIncrease(v("percentageIncrease%")) : bd(ngu.target);
     })
+    
 
     var energySeconds = eNGUs.map((engu) => {
         return engu.calcSecondsToTarget(v("currentEnergyCap"), v("totalEnergyNGUSpeedFactor%"))
@@ -144,37 +148,27 @@ export default function Page() {
     }, bd(0))
 
 
+
+
     // Information retrieval
-    var energyRow = eNGUs.map(function(engu, index) {
+    var energyLi = energySeconds.map(function(secs, index) {
         var txt = energyText[index]
         var targetLvl = energyTargets[index]
-        var secs = energySeconds[index]
-        var val = bd(engu.getStatValue(Number(targetLvl.getValue()), engu.statnames[0]))
-        
         return (
-            <tr key={txt} className={index %2 == 0 ? "bg-slate-900" : ""}>
-                <td className="px-2">{camelToTitle(txt).replace("Energy NGU ", "")}</td>
-                <td className="px-2"><span className="text-red-500">{dn(secs)}</span></td>
-                <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-                <td>{pn(val, fmt)}%</td>
-            </tr>
+        <li key={txt}>
+            {camelToTitle(txt)}: <span className="text-red-500">{dn(secs)}</span> until level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
+        </li>
         )
     })
-    var magicRow = mNGUs.map(function(mngu, index) {
+    var magicLi = magicSeconds.map(function(secs, index) {
         var txt = magicText[index]
         var targetLvl = magicTargets[index]
-        var secs = magicSeconds[index]
-        var val = bd(mngu.getStatValue(Number(targetLvl.getValue()), mngu.statnames[0]))
         return (
-            <tr key={txt} className={index %2 == 0 ? "bg-slate-900" : ""}>
-                <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>
-                <td className="px-2"><span className="text-red-500">{dn(secs)}</span></td>
-                <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-                <td>{pn(val, fmt)}%</td>
-            </tr>
-        )
+            <li key={txt}>
+                {camelToTitle(txt)}: <span className="text-red-500">{dn(secs)}</span> until level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
+            </li>
+            )
     })
-
     var energyCapToMaxTargetLi = eNGUs.map(function(engu, index) {
         var cap = engu.capToReachMaxTarget(v("totalEnergyNGUSpeedFactor%"))
         var txt = energyText[index];
@@ -219,8 +213,8 @@ export default function Page() {
             extraReq[2].pop()
         }
     }
-
     
+
     var topButtons = (
         <>
             <p>How would you like to calculate NGUs?</p>
@@ -232,51 +226,20 @@ export default function Page() {
         
 
     return (
-        <Content prechildren={topButtons} title="NGUs - Normal" infoRequired={infoReq} extraRequired={extraReq}>
+        <Content prechildren={topButtons} title="NGUs - Evil" infoRequired={infoReq} extraRequired={extraReq}>
             <ContentSubsection title="How long until I reach targets?">
-                <table className="inline-block w-1/2 align-top mb-2">
-                    <thead>
-                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
-                            <th className="px-2">Energy NGU</th>
-                            <th className="px-2">Time</th>
-                            <th className="px-2">Target</th>
-                            <th className="px-2">Value at target</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {energyRow}
-                        <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
-                            <th className="px-2">Total:</th>
-                            <th className="px-2"><span className="text-red-500">{dn(energyTotalSeconds)}</span></th>
-                            <th className="px-2"></th>
-                            <th className="px-2"></th>
-                        </tr>
-                    </tbody>
-                </table>
-                <table className="inline-block w-1/2 align-top mb-2">
-                    <thead>
-                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
-                            <th className="px-2">Magic NGU</th>
-                            <th className="px-2">Time</th>
-                            <th className="px-2">Target</th>
-                            <th className="px-2">Value at target</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {magicRow}
-                    
-                        <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
-                            <th className="px-2">Total:</th>
-                            <th className="px-2"><span className="text-red-500">{dn(magicTotalSeconds)}</span></th>
-                            <th className="px-2"></th>
-                            <th className="px-2"></th>
-                        </tr>
-                    </tbody>
-                </table>
+                <ul className="inline-block w-1/2 align-top mb-2">
+                    {energyLi}
+                    <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{dn(energyTotalSeconds)}</span></li>
+                </ul>
+                <ul className="inline-block w-1/2 align-top mb-2">
+                    {magicLi}
+                    <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{dn(magicTotalSeconds)}</span></li>
+                </ul>
+
                 <p className="mb-2 text-sm">
                     The time formats are given in D:H:M:S where D stands for days, H for hours, M for minutes, S for seconds. For example: 2:04:16:12 means it will take 2 days, 4 hours, 16 minutes and 12 seconds.
                 </p>
-
             </ContentSubsection>
             <ContentSubsection title="How much energy is needed to cap/max the bar at target level?">
                 <ul className="inline-block w-1/2 align-top mb-2">
