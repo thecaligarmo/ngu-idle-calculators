@@ -152,7 +152,7 @@ export default function Page() {
         var val = bd(engu.getStatValue(Number(targetLvl.getValue()), engu.statnames[0]))
         
         return (
-            <tr key={txt} className={index %2 == 0 ? "bg-slate-900" : ""}>
+            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
                 <td className="px-2">{camelToTitle(txt).replace("Energy NGU ", "")}</td>
                 <td className="px-2"><span className="text-red-500">{dn(secs)}</span></td>
                 <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
@@ -166,7 +166,7 @@ export default function Page() {
         var secs = magicSeconds[index]
         var val = bd(mngu.getStatValue(Number(targetLvl.getValue()), mngu.statnames[0]))
         return (
-            <tr key={txt} className={index %2 == 0 ? "bg-slate-900" : ""}>
+            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
                 <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>
                 <td className="px-2"><span className="text-red-500">{dn(secs)}</span></td>
                 <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
