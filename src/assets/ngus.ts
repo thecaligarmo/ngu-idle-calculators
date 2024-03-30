@@ -42,7 +42,10 @@ export class NGU extends Resource {
     updateStats() : void {
         for (var prop of Object.keys(this.base)) {
             this[prop] = this.getStatValue(this.level, prop)
-            if (this[prop] > this.maxValue) {
+            if (this.isRespawn() && this[prop] < this.maxValue) {
+                this[prop] = this.maxValue
+            }
+            if (!this.isRespawn()  && this[prop] > this.maxValue) {
                 this[prop] = this.maxValue
             }
         }
@@ -123,7 +126,7 @@ export class NGU extends Resource {
                 return (value / 5.54) ** 3
             case 1: // exp
                 return (value / 0.9566) ** (2.5)
-            case 3: // number
+            case 3: // number   
                 return (value / 31.7) ** 2
             case 4: // tm
                 return (value / 0.7962) ** (10/3)

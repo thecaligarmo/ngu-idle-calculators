@@ -4,6 +4,7 @@ import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
 import { ENERGY_NGUS } from "@/assets/ngus";
 import { APItem } from "@/assets/apItems";
+import { ItemSet, ItemSets } from "@/assets/sets";
 
 // Parsing Stuff
 function parseObj(state: any, key: string) {
@@ -202,6 +203,11 @@ export function isMaxxedItem(data : any, itemId : number) : boolean {
     return itemId in parseObj(data, 'maxxedItems')
 }
 
+export function isMaxxedItemSet(data : any, itemSetKey : string) : boolean {
+    var itemSets = parseObj(data, 'itemSets')
+    return (itemSetKey in itemSets) ? itemSets[itemSetKey].isMaxxed : false;
+}
+
 // General Calc
 function calcAll(data : any, stat : string) : bigDecimal{
     return bd(1)
@@ -248,7 +254,7 @@ export function totalMagicCap(data : any) : bigDecimal {
 }
 
 export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
-    var aNumberSetModifier : bigDecimal= isMaxxedItem(data, 102) ? bd(1.1) : bd(1);
+    var aNumberSetModifier : bigDecimal= isMaxxedItemSet(data, "number") ? bd(1.1) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.ENERGY_NGU_SPEED)
     
     return bd(1)
@@ -258,7 +264,7 @@ export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
 }
 
 export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
-    var aNumberSetModifier : bigDecimal = isMaxxedItem(data, 102) ? bd(1.1) : bd(1);
+    var aNumberSetModifier : bigDecimal = isMaxxedItemSet(data, "number") ? bd(1.1) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.MAGIC_NGU_SPEED)
     var trollChallenge : any = parseObj(data, 'challenges')[5]
     var tcNum : bigDecimal = (!_.isUndefined(trollChallenge) && trollChallenge.level > 0) ? bd(3) : bd(1);
@@ -268,4 +274,14 @@ export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
         .multiply(totalMagicPower(data))
         .multiply(aNumberSetModifier)
         .multiply(tcNum)
+}
+
+export function totalRespawnRate(data : any) : bigDecimal {
+    var clockSetModifier = isMaxxedItemSet(data, "clock") ? bd(0.95) : bd(1)
+    console.log(nguInfo(data, Stat.RESPAWN))
+    return bd(1)
+        .multiply(bd(200).subtract(equipmentInfo(data, Stat.RESPAWN))).divide(bd(100))
+        .multiply(nguInfo(data, Stat.RESPAWN).divide(bd(100)))
+        .multiply(clockSetModifier)
+        .multiply(bd(100))
 }

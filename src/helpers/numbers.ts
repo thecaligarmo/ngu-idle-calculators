@@ -30,13 +30,13 @@ export function bigdec_min(...args : bigDecimal[]) : bigDecimal {
 }
 
 // print/pretty number (Only integers supported currently)
-export function pn(num : bigDecimal, numberFormat : string = 'scientific') : string {
-    var n = num.floor().getValue();
+export function pn(num : bigDecimal, numberFormat : string = 'scientific', precision : number = 0) : string {
+    var n = num.round(precision).getValue();
     var nl = n.length
 
     // We should only start for billions as until then it's pretty human readable
     if (nl < 10) {
-        return Number(n).toLocaleString()
+        return Number(n).toFixed(precision).toLocaleString()
     }
     
     if (numberFormat == 'scientific') {

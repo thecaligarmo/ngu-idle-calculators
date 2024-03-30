@@ -55,3 +55,4 @@ export const Stat = {
     EXPERIENCE: 'experience',
     COOKING: 'cooking'
 }
+

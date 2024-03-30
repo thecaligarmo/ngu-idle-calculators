@@ -8,6 +8,7 @@ import { DIGGERS, Digger } from "@/assets/diggers";
 import { CHALLENGES, Challenge } from "@/assets/challenges";
 import { totalEnergyCap, totalEnergyNGUSpeedFactor, totalMagicCap, totalMagicNGUSpeedFactor } from "./calculators";
 import { APITEMS, APItem } from "@/assets/apItems";
+import { ItemSet, ItemSets } from "@/assets/sets";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
@@ -311,6 +312,14 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     }
                 })
                 return quirks;
+            case 'itemSets':
+                var itemSets : {[key: string]: ItemSet} = {}
+                for (var set of Object.values(ItemSets)) {
+                    set.updateStats(playerData)
+                    itemSets[set.key] = set
+                }
+                console.log(itemSets)
+                return itemSets
             case 'maxxedItems':
                 var maxxedItemIds : number[] = []
                 playerData.inventory.itemList.itemMaxxed.forEach((maxxed: number, item: number) => {
@@ -438,6 +447,7 @@ export function getPlayerOptions() : string[] {
         'perks',
         'quirks',
         'maxxedItems',
+        'itemSets',
     ]
 }
 
