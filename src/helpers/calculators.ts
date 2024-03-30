@@ -147,7 +147,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
 export function nguInfo(data : any, key : string) : bigDecimal{
     var engus : any = parseObj(data, 'energyNGUs')
     var mngus : any = parseObj(data, 'magicNGUs')
-    var stat : number = 100
+    var stat : number = 0
     if (Object.values(Stat).includes(key)) {
         if ( engus.length > 0) {
             engus.forEach((g : any) => {
@@ -165,7 +165,7 @@ export function nguInfo(data : any, key : string) : bigDecimal{
         }
     }
 
-    return bd(stat)
+    return bd( stat == 0 ? 100 : stat)
 }
 
 export function perkInfo(data : any, key : string) : bigDecimal{

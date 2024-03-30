@@ -156,7 +156,7 @@ export default function Page() {
                 <td className="px-2">{camelToTitle(txt).replace("Energy NGU ", "")}</td>
                 <td className="px-2"><span className="text-red-500">{dn(secs)}</span></td>
                 <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-                <td>{pn(val, fmt)}%</td>
+                <td className="px-2">{pn(val, fmt)}%</td>
             </tr>
         )
     })
@@ -170,40 +170,54 @@ export default function Page() {
                 <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>
                 <td className="px-2"><span className="text-red-500">{dn(secs)}</span></td>
                 <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-                <td>{pn(val, fmt)}%</td>
+                <td className="px-2">{pn(val, fmt)}%</td>
             </tr>
         )
     })
 
-    var energyCapToMaxTargetLi = eNGUs.map(function(engu, index) {
+    var energyCapToMaxTargetRow = eNGUs.map(function(engu, index) {
         var cap = engu.capToReachMaxTarget(v("totalEnergyNGUSpeedFactor%"))
         var txt = energyText[index];
         var targetLvl = energyTargets[index];
         return (
-            <li key={txt}>
-                {camelToTitle(txt)}: <span className="text-red-500">{pn(cap, fmt)}</span> cap at level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
-            </li>
+            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
+                <td className="px-2">{camelToTitle(txt).replace("Energy NGU ", "")}</td>
+                <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
+                <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
+            </tr>
         )
     })
-    var magicCapToMaxTargetLi = mNGUs.map(function(mngu, index) {
+    var magicCapToMaxTargetRow = mNGUs.map(function(mngu, index) {
         var cap = mngu.capToReachMaxTarget(v("totalMagicNGUSpeedFactor%"));
         var txt = magicText[index];
         var targetLvl = magicTargets[index];
         return (
-            <li key={txt}>
-                {camelToTitle(txt)}: <span className="text-red-500">{pn(cap, fmt)}</span> until level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
-            </li>
+            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
+                <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>
+                <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
+                <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
+            </tr>
         )
     })
-    var energyCapToMaxInDayLi = eNGUs.map(function(engu, index) {
+    var energyCapToMaxInDayRow = eNGUs.map(function(engu, index) {
         var cap = engu.capToReachMaxInDay(v("totalEnergyNGUSpeedFactor%"))
         var txt = energyText[index];
-        return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{pn(cap, fmt)}</span></li>
+        return (
+            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
+                <td className="px-2">{camelToTitle(txt).replace("Energy NGU ", "")}</td>
+                <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
+            </tr>
+        )
     })
-    var magicCapToMaxInDayLi = mNGUs.map(function(mngu, index) {
+    var magicCapToMaxInDayRow = mNGUs.map(function(mngu, index) {
         var cap = mngu.capToReachMaxInDay(v("totalMagicNGUSpeedFactor%"))
         var txt = magicText[index];
-        return <li key={txt}>{camelToTitle(txt)}: <span className="text-red-500">{pn(cap, fmt)}</span></li>
+        return (
+            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
+                <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>
+                <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
+            </tr>
+        )
     })
 
     if(calcType == NGU_TARGET) {
@@ -225,7 +239,7 @@ export default function Page() {
         <>
             <p>How would you like to calculate NGUs?</p>
             <ChoiceButton text="Using Targets" onClick={() => setCalcType(NGU_TARGET)} active={calcType==NGU_TARGET} />
-            <ChoiceButton text="Using Percentage" onClick={() => setCalcType(NGU_PERCENTAGE)}  active={calcType==NGU_PERCENTAGE} />
+            <ChoiceButton text="Using Percentage of bonus" onClick={() => setCalcType(NGU_PERCENTAGE)}  active={calcType==NGU_PERCENTAGE} />
             {/* <ChoiceButton text="Using Time" onClick={() => setCalcType(NGU_TIME)} /> */}
         </>
     )
@@ -234,6 +248,10 @@ export default function Page() {
     return (
         <Content prechildren={topButtons} title="NGUs - Normal" infoRequired={infoReq} extraRequired={extraReq}>
             <ContentSubsection title="How long until I reach targets?">
+                <p>
+                    The following tables let you know how much <span className="text-red-500">Time</span> is needed until you get to the <span className="text-blue-500">Target</span>.
+                    The Value represents the bonus you will have once you reach the target.
+                </p>
                 <table className="inline-block w-1/2 align-top mb-2">
                     <thead>
                         <tr className="text-left border-b-1 border border-t-0 border-x-0">
@@ -278,21 +296,61 @@ export default function Page() {
                 </p>
 
             </ContentSubsection>
-            <ContentSubsection title="How much energy is needed to cap/max the bar at target level?">
-                <ul className="inline-block w-1/2 align-top mb-2">
-                    {energyCapToMaxTargetLi}
-                </ul>
-                <ul className="inline-block w-1/2 align-top mb-2">
-                    {magicCapToMaxTargetLi}
-                </ul>
+            <ContentSubsection title="How much energy/magic is needed to cap/max the bar at target level?">
+                <p>
+                    The following tells you how much energy or magic you will need to <span className="text-red-500">Cap</span> the bar at the <span className="text-blue-500">Target</span>.
+                </p>
+                <table className="inline-block w-1/2 align-top mb-2">
+                    <thead>
+                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
+                            <th className="px-2">Energy NGU</th>
+                            <th className="px-2">Cap</th>
+                            <th className="px-2">Target</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {energyCapToMaxTargetRow}
+                    </tbody>
+                </table>
+                <table className="inline-block w-1/2 align-top mb-2">
+                    <thead>
+                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
+                            <th className="px-2">Magic NGU</th>
+                            <th className="px-2">Cap</th>
+                            <th className="px-2">Target</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {magicCapToMaxTargetRow}
+                    </tbody>
+                </table>
             </ContentSubsection>
             <ContentSubsection title="How much energy is needed to cap/max the bar for 24 hours non-stop?">
-                <ul className="inline-block w-1/2 align-top mb-2">
-                    {energyCapToMaxInDayLi}
-                </ul>
-                <ul className="inline-block w-1/2 align-top mb-2">
-                    {magicCapToMaxInDayLi}
-                </ul>
+                <p>
+                    The following tells you how much energy or magic you will need to <span className="text-red-500">Cap</span> the bar for a continuous 24 hours.
+                </p>
+                <table className="inline-block w-1/2 align-top mb-2">
+                    <thead>
+                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
+                            <th className="px-2">Energy NGU</th>
+                            <th className="px-2">Cap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {energyCapToMaxInDayRow}
+                    </tbody>
+                </table>
+                <table className="inline-block w-1/2 align-top mb-2">
+                    <thead>
+                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
+                            <th className="px-2">Magic NGU</th>
+                            <th className="px-2">Cap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {magicCapToMaxInDayRow}
+                    </tbody>
+                </table>
             </ContentSubsection>
         </Content>
     )

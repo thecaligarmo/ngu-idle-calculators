@@ -160,12 +160,14 @@ export class NGU extends Resource {
         // Grab base amount of time things will take
         var baseSpeed = this.getBaseSpeed();
         try {
-            var baseTime = baseSpeed.divide(cap).divide(speedFactor).multiply(bd(100))
+            var baseTime = baseSpeed.multiply(bd(100)).divide(cap).divide(speedFactor)
         } catch (error) {
             var baseTime = bd(0)
         }
         var level = bd(this.level)
         var target = bd(this.target)
+
+
         
         
         // Grab the starting time and the ending time
@@ -185,6 +187,9 @@ export class NGU extends Resource {
             var endingSpeedLevels = bd(0);
         }
 
+        if (this.id === 4 && this.res === 'energy') {
+            console.log(baseSpeed, baseTime, level, target, startingSpeed, endingSpeed, startingSpeedLevels, middleSpeedLevels, endingSpeedLevels)
+        }
     
         return startingSpeedLevels.multiply(startingSpeed)
                 .add(endingSpeed.multiply(endingSpeedLevels))

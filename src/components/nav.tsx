@@ -51,7 +51,7 @@ export default function Nav({ children } : PropsWithChildren) {
         { pathname.startsWith('/ngus') ?
             <ul className="flex border-b dark:border-white border-black">
                 <NavElt href="/ngus">Normal</NavElt>
-                <NavElt href="/ngus/evil">Evil</NavElt>
+                {/* <NavElt href="/ngus/evil">Evil</NavElt> */}
             </ul>
             : null
         }
