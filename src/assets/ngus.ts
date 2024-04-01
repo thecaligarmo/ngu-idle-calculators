@@ -189,10 +189,6 @@ export class NGU extends Resource {
             var middleSpeedLevels = bd(0);
             var endingSpeedLevels = bd(0);
         }
-
-        if (this.id === 4 && this.res === 'energy') {
-            console.log(baseSpeed, baseTime, level, target, startingSpeed, endingSpeed, startingSpeedLevels, middleSpeedLevels, endingSpeedLevels)
-        }
     
         return startingSpeedLevels.multiply(startingSpeed)
                 .add(endingSpeed.multiply(endingSpeedLevels))

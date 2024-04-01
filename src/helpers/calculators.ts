@@ -277,8 +277,8 @@ export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
 }
 
 export function totalRespawnRate(data : any) : bigDecimal {
-    var clockSetModifier = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(0.95) : bd(1)
-    console.log(nguInfo(data, Stat.RESPAWN))
+    var clockSetModifier = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(0.95) : bd(1);
+
     return bd(1)
         .multiply(bd(200).subtract(equipmentInfo(data, Stat.RESPAWN))).divide(bd(100))
         .multiply(nguInfo(data, Stat.RESPAWN).divide(bd(100)))

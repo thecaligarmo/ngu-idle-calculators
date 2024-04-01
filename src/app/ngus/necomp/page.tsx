@@ -98,92 +98,92 @@ export default function Page() {
     ]
 
 
-    var eNGUs : NGU[] = energyText.map((txt, index) => {
-        var engu = ENERGY_NGUS[index]
-        engu.setLevel(Number(v(txt + "Level").getValue()))
-        engu.target = Number(v(txt + "Target").getValue())
-        engu.evilLevel = Number(v(txt + "Level").getValue())
-        engu.evilTarget = Number(v(txt + "Target").getValue())
-        return engu
-    })
+    // var eNGUs : NGU[] = energyText.map((txt, index) => {
+    //     var engu = ENERGY_NGUS[index]
+    //     engu.setLevel(Number(v(txt + "Level").getValue()))
+    //     engu.target = Number(v(txt + "Target").getValue())
+    //     engu.evilLevel = Number(v(txt + "Level").getValue())
+    //     engu.evilTarget = Number(v(txt + "Target").getValue())
+    //     return engu
+    // })
 
-    var mNGUs : NGU[] = magicText.map((txt, index) => {
-        var mngu = MAGIC_NGUS[index]
-        mngu.setLevel(Number(v(txt + "Level").getValue()))
-        mngu.target = Number(v(txt + "Target").getValue())
-        mngu.evilLevel = Number(v(txt + "Level").getValue())
-        mngu.evilTarget = Number(v(txt + "Target").getValue())
-        return mngu
-    })
+    // var mNGUs : NGU[] = magicText.map((txt, index) => {
+    //     var mngu = MAGIC_NGUS[index]
+    //     mngu.setLevel(Number(v(txt + "Level").getValue()))
+    //     mngu.target = Number(v(txt + "Target").getValue())
+    //     mngu.evilLevel = Number(v(txt + "Level").getValue())
+    //     mngu.evilTarget = Number(v(txt + "Target").getValue())
+    //     return mngu
+    // })
 
 
-    // shorthand for targets
-    var energyTargets = eNGUs.map((ngu: NGU) => {
-        return ngu.percentIncrease(v("percentageIncrease%"))
-    })
-    var magicTargets = mNGUs.map((ngu : NGU) => {
-        return ngu.percentIncrease(v("percentageIncrease%"))
-    })
-    var energyEvilTargets = eNGUs.map((ngu: NGU) => {
-        return ngu.percentIncrease(v("percentageIncrease%"))
-    })
-    var magicEvilTargets = mNGUs.map((ngu : NGU) => {
-        return ngu.percentIncrease(v("percentageIncrease%"))
-    })
+    // // shorthand for targets
+    // var energyTargets = eNGUs.map((ngu: NGU) => {
+    //     return ngu.percentIncrease(v("percentageIncrease%"))
+    // })
+    // var magicTargets = mNGUs.map((ngu : NGU) => {
+    //     return ngu.percentIncrease(v("percentageIncrease%"))
+    // })
+    // var energyEvilTargets = eNGUs.map((ngu: NGU) => {
+    //     return ngu.percentIncrease(v("percentageIncrease%"))
+    // })
+    // var magicEvilTargets = mNGUs.map((ngu : NGU) => {
+    //     return ngu.percentIncrease(v("percentageIncrease%"))
+    // })
     
 
     
-    var energySeconds = eNGUs.map((engu) => {
-        return engu.calcSecondsToTarget(v("currentEnergyCap"), v("totalEnergyNGUSpeedFactor%"))
+    // var energySeconds = eNGUs.map((engu) => {
+    //     return engu.calcSecondsToTarget(v("currentEnergyCap"), v("totalEnergyNGUSpeedFactor%"))
 
-    })
-    var magicSeconds = mNGUs.map((mngu) => {
-        return mngu.calcSecondsToTarget(v("currentMagicCap"), v("totalMagicNGUSpeedFactor%"))
-    })
+    // })
+    // var magicSeconds = mNGUs.map((mngu) => {
+    //     return mngu.calcSecondsToTarget(v("currentMagicCap"), v("totalMagicNGUSpeedFactor%"))
+    // })
 
-    var energyEvilSeconds = eNGUs.map((engu) => {
-        return engu.calcSecondsToTarget(v("currentEnergyCap"), v("totalEnergyNGUSpeedFactor%"))
+    // var energyEvilSeconds = eNGUs.map((engu) => {
+    //     return engu.calcSecondsToTarget(v("currentEnergyCap"), v("totalEnergyNGUSpeedFactor%"))
 
-    })
-    var magicEvilSeconds = mNGUs.map((mngu) => {
-        return mngu.calcSecondsToTarget(v("currentMagicCap"), v("totalMagicNGUSpeedFactor%"))
-    })
-
-
+    // })
+    // var magicEvilSeconds = mNGUs.map((mngu) => {
+    //     return mngu.calcSecondsToTarget(v("currentMagicCap"), v("totalMagicNGUSpeedFactor%"))
+    // })
 
 
 
 
-    // Information retrieval
-    var energyRows = energySeconds.map(function(secs, index) {
-        var txt = energyText[index]
-        var targetLvl = energyTargets[index]
-        var targetEvilLvl = energyEvilTargets[index]
-        var evilSecs = energyEvilSeconds[index]
-        var normalFaster = (secs < evilSecs)
-        var percDiff = (normalFaster ? (secs.divide(evilSecs)) : (evilSecs.divide(secs))).round(2)
-        return (
-            <></>
-        // <tr>
-        //     <td>{camelToTitle(txt)}</td>
-        //     <td>{pn(targetLvl, fmt)}</td>
-        //     <td>{dn(secs)}</td>
-        //     <td>{normalFaster ? "<--- " + percDiff + "%" : percDiff + "% --->"}</td>
-        //     <td>{dn(evilSecs)}</td>
-        //     <td>{pn(targetEvilLvl, fmt)}</td>
-        //     <td>{camelToTitle(txt)}</td>
-        // </tr>
-        )
-    })
-    var magicLi = magicSeconds.map(function(secs, index) {
-        var txt = magicText[index]
-        var targetLvl = magicTargets[index]
-        return (
-            <li key={txt}>
-                {camelToTitle(txt)}: <span className="text-red-500">{dn(secs)}</span> until level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
-            </li>
-            )
-    })
+
+
+    // // Information retrieval
+    // var energyRows = energySeconds.map(function(secs, index) {
+    //     var txt = energyText[index]
+    //     var targetLvl = energyTargets[index]
+    //     var targetEvilLvl = energyEvilTargets[index]
+    //     var evilSecs = energyEvilSeconds[index]
+    //     var normalFaster = (secs < evilSecs)
+    //     var percDiff = (normalFaster ? (secs.divide(evilSecs)) : (evilSecs.divide(secs))).round(2)
+    //     return (
+    //         <></>
+    //     // <tr>
+    //     //     <td>{camelToTitle(txt)}</td>
+    //     //     <td>{pn(targetLvl, fmt)}</td>
+    //     //     <td>{dn(secs)}</td>
+    //     //     <td>{normalFaster ? "<--- " + percDiff + "%" : percDiff + "% --->"}</td>
+    //     //     <td>{dn(evilSecs)}</td>
+    //     //     <td>{pn(targetEvilLvl, fmt)}</td>
+    //     //     <td>{camelToTitle(txt)}</td>
+    //     // </tr>
+    //     )
+    // })
+    // var magicLi = magicSeconds.map(function(secs, index) {
+    //     var txt = magicText[index]
+    //     var targetLvl = magicTargets[index]
+    //     return (
+    //         <li key={txt}>
+    //             {camelToTitle(txt)}: <span className="text-red-500">{dn(secs)}</span> until level <span className="text-blue-500">{pn(targetLvl, fmt)}</span>
+    //         </li>
+    //         )
+    // })
 
 
 
@@ -206,7 +206,7 @@ export default function Page() {
                         </tr>
                     </thead>
                     <tbody>
-                        {energyRows}
+                        {/* {energyRows} */}
                     </tbody>
                 </table>
             </ContentSubsection>

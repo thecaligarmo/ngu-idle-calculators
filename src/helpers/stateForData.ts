@@ -16,12 +16,12 @@ export function createStatesForData(extraRequired: string[][] = []) : any{
     var dataObj : {[key: string] : any}= {}
     for (var key of playerNumberOptions) {
         var defaultVal = defaultPlayerData(playerData, key)
-        var dataState = useLocalStorageNumber(key, defaultVal)
-        if (isPlayerDataUpdated() && dataState[0] != defaultVal) {
+        var dataStateNum = useLocalStorageNumber(key, defaultVal)
+        if (isPlayerDataUpdated() && dataStateNum[0] != defaultVal) {
             // dataState[1]({"value": defaultVal})
-            dataState[1](defaultVal)
+            dataStateNum[1](defaultVal)
         }
-        dataObj[key] = dataState
+        dataObj[key] = dataStateNum
     }
     for (var key of playerOptions) {
         var defaultVal = defaultPlayerData(playerData, key)
@@ -34,11 +34,11 @@ export function createStatesForData(extraRequired: string[][] = []) : any{
 
     for (var key of calculatedOptions) {
         var defaultVal = defaultPlayerData(dataObj, key).round().getValue()
-        var dataState = useLocalStorageNumber(key, defaultVal, true);
-        if (isPlayerDataUpdated() && dataState[0] != defaultVal) {
-            dataState[1](defaultVal)
+        var dataStateNum = useLocalStorageNumber(key, defaultVal, true);
+        if (isPlayerDataUpdated() && dataStateNum[0] != defaultVal) {
+            dataStateNum[1](defaultVal)
         }
-        dataObj[key] = dataState
+        dataObj[key] = dataStateNum
     }
 
     return dataObj;
