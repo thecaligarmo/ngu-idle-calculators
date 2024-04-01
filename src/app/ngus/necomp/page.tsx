@@ -163,15 +163,16 @@ export default function Page() {
         var normalFaster = (secs < evilSecs)
         var percDiff = (normalFaster ? (secs.divide(evilSecs)) : (evilSecs.divide(secs))).round(2)
         return (
-        <tr>
-            <td>{camelToTitle(txt)}</td>
-            <td>{pn(targetLvl, fmt)}</td>
-            <td>{dn(secs)}</td>
-            <td>{normalFaster ? "<--- " + percDiff + "%" : percDiff + "% --->"}</td>
-            <td>{dn(evilSecs)}</td>
-            <td>{pn(targetEvilLvl, fmt)}</td>
-            <td>{camelToTitle(txt)}</td>
-        </tr>
+            <></>
+        // <tr>
+        //     <td>{camelToTitle(txt)}</td>
+        //     <td>{pn(targetLvl, fmt)}</td>
+        //     <td>{dn(secs)}</td>
+        //     <td>{normalFaster ? "<--- " + percDiff + "%" : percDiff + "% --->"}</td>
+        //     <td>{dn(evilSecs)}</td>
+        //     <td>{pn(targetEvilLvl, fmt)}</td>
+        //     <td>{camelToTitle(txt)}</td>
+        // </tr>
         )
     })
     var magicLi = magicSeconds.map(function(secs, index) {
