@@ -203,9 +203,9 @@ export function isMaxxedItem(data : any, itemId : number) : boolean {
     return itemId in parseObj(data, 'maxxedItems')
 }
 
-export function isMaxxedItemSet(data : any, itemSetKey : string) : boolean {
+export function isMaxxedItemSet(data : any, itemSet : ItemSet) : boolean {
     var itemSets = parseObj(data, 'itemSets')
-    return (itemSetKey in itemSets) ? itemSets[itemSetKey].isMaxxed : false;
+    return (itemSet.key in itemSets) ? itemSets[itemSet.key].isMaxxed : false;
 }
 
 // General Calc
@@ -254,7 +254,7 @@ export function totalMagicCap(data : any) : bigDecimal {
 }
 
 export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
-    var aNumberSetModifier : bigDecimal= isMaxxedItemSet(data, "number") ? bd(1.1) : bd(1);
+    var aNumberSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.ENERGY_NGU_SPEED)
     
     return bd(1)
@@ -264,7 +264,7 @@ export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
 }
 
 export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
-    var aNumberSetModifier : bigDecimal = isMaxxedItemSet(data, "number") ? bd(1.1) : bd(1);
+    var aNumberSetModifier : bigDecimal = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.MAGIC_NGU_SPEED)
     var trollChallenge : any = parseObj(data, 'challenges')[5]
     var tcNum : bigDecimal = (!_.isUndefined(trollChallenge) && trollChallenge.level > 0) ? bd(3) : bd(1);
@@ -277,7 +277,7 @@ export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
 }
 
 export function totalRespawnRate(data : any) : bigDecimal {
-    var clockSetModifier = isMaxxedItemSet(data, "clock") ? bd(0.95) : bd(1)
+    var clockSetModifier = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(0.95) : bd(1)
     console.log(nguInfo(data, Stat.RESPAWN))
     return bd(1)
         .multiply(bd(200).subtract(equipmentInfo(data, Stat.RESPAWN))).divide(bd(100))

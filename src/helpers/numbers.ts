@@ -36,7 +36,7 @@ export function pn(num : bigDecimal, numberFormat : string = 'scientific', preci
 
     // We should only start for billions as until then it's pretty human readable
     if (nl < 10) {
-        return Number(n).toFixed(precision).toLocaleString()
+        return Number(n).toLocaleString() //.toFixed(precision).toLocaleString()
     }
     
     if (numberFormat == 'scientific') {

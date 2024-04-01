@@ -318,7 +318,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     set.updateStats(playerData)
                     itemSets[set.key] = set
                 }
-                console.log(itemSets)
+                
                 return itemSets
             case 'maxxedItems':
                 var maxxedItemIds : number[] = []
