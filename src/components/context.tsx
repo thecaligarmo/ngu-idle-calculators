@@ -1,6 +1,6 @@
 'use client'
 import { Dispatch, PropsWithChildren, SetStateAction, createContext, useContext, useState } from "react";
-import { useLocalStorage } from "./localStorage";
+import { useLocalStorage } from "../helpers/localStorage";
 
 
 type dataType = {

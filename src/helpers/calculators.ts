@@ -1,12 +1,15 @@
+/**
+ * This file eventually needs to be split up
+ */
 import _ from "lodash";
 import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
-import { ENERGY_NGUS } from "@/assets/ngus";
 import { APItem } from "@/assets/apItems";
 import { ItemSet, ItemSets } from "@/assets/sets";
 
-// Parsing Stuff
+
+// Parse an object to get something back properly
 function parseObj(state: any, key: string) {
     var x : any = state[key][0]
     if (typeof x === 'string') {
@@ -18,6 +21,8 @@ function parseObj(state: any, key: string) {
     return x
 }
 
+
+// Parse a number to get back a bigDecimal
 function parseNum(state: any, key: string) : bigDecimal{
     var x : any = state[key][0]
     if (x instanceof bigDecimal) {

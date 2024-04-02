@@ -1,5 +1,5 @@
 import { defaultPlayerData, getCalculatedOptions, getPlayerNumberOptions, getPlayerOptions } from "./defaultPlayerData";
-import { getPlayerData, isPlayerDataUpdated } from "./context";
+import { getPlayerData, isPlayerDataUpdated } from "../components/context";
 import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
 import _ from "lodash";
 
@@ -42,10 +42,6 @@ export function createStatesForData(extraRequired: string[][] = []) : any{
     }
 
     return dataObj;
-}
-
-function nonzero(val : string) : boolean {
-    return !(val === "0")
 }
 
 export function getRequiredStates(data : any, states : any) : any{

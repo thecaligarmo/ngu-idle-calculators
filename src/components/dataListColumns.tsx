@@ -1,11 +1,11 @@
-import { getNumberFormat, useSavedDataContext } from "@/helpers/context";
+import { getNumberFormat, useSavedDataContext } from "@/components/context";
 import bigDecimal from "js-big-decimal";
 import { pn } from "@/helpers/numbers";
 import { camelToTitle } from "@/helpers/strings";
 import { ReactNode } from "react";
 
 /*
- Returns the <li> needed for `dataToCols`
+ Returns the <li> or <input> needed for `dataToCols`
 */
 function dataToList(d : any, input : boolean = false) : ReactNode{
     const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();

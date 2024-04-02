@@ -2,7 +2,7 @@
 import ContentSubsection from '@/components/contentSubsection';
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
-import { getNumberFormat } from '@/helpers/context';
+import { getNumberFormat } from '@/components/context';
 import { bd, pn } from '@/helpers/numbers';
 import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
@@ -84,6 +84,26 @@ export default function Page() {
                         </ContentSubsection>
                     </div>
             </ContentSection>
+            {/* <ContentSection title="Adventure Stats">
+                <div>
+                    <ContentSubsection title="Adventure Power">
+                        <ul>
+                            <li key="base">Base Adventure Power</li>
+                            <li key="equipment">+ Equipment Power</li>
+                            <li key="infinity Cube">+ Infinity Cube</li>
+                            <li key="subtotal" className="border-white border-t-2 border-solid">Subtotal: </li>
+                            <li key="at">x Advanced Training</li>
+                            <li key="engu">x Energy NGU</li>
+                            <li key="mngu">x Magic NGU</li>
+                            <li key="digger">x Digger</li>
+                            <li key="basicChallenge">x Basic Challenge</li>
+                            <li key="beard">x Beard</li>
+                            <li key="perk">x Perk</li>
+                            <li key="quirk">x Quirk</li>
+                        </ul>
+                    </ContentSubsection>
+                </div>
+            </ContentSection> */}
             <ContentSection title="Misc Stats">
                     <div>
                         <ContentSubsection title="Respawn">

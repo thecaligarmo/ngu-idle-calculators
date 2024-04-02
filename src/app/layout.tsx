@@ -1,7 +1,7 @@
 'use client'
 import { Inter } from "next/font/google";
 import "./ui/globals.css";
-import {  DataWrapper } from "@/helpers/context";
+import {  DataWrapper } from "@/components/context";
 import Nav from "@/components/nav";
 import { PropsWithChildren } from "react";
 

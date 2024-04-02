@@ -1,15 +1,11 @@
 'use client'
-import ContentSubsection from '@/components/contentSubsection';
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
-import { getNumberFormat } from '@/helpers/context';
-import { bd, pn } from '@/helpers/numbers';
+import { getNumberFormat } from '@/components/context';
+import { bd} from '@/helpers/numbers';
 import { createStatesForData } from '@/helpers/stateForData';
 import Link from 'next/link';
 import bigDecimal from "js-big-decimal";
-import { Stat } from '@/assets/stat';
-import { apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, nguInfo, perkInfo, quirkInfo, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower } from '@/helpers/calculators';
-import { PropsWithChildren } from 'react';
 
 export default function Page() {
     const playerStates = createStatesForData();

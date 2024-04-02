@@ -3,7 +3,7 @@
 import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import Content from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
-import { getNumberFormat } from "@/helpers/context";
+import { getNumberFormat } from "@/components/context";
 import { bd, dn, pn} from "@/helpers/numbers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import { camelToTitle } from "@/helpers/strings";

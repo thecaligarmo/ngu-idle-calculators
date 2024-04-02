@@ -1,7 +1,7 @@
 "use client"
 import { ChoiceButton } from '@/components/buttons';
 import Content from '@/components/content';
-import { getNumberFormat, getPlayerData} from '@/helpers/context';
+import { getNumberFormat, getPlayerData} from '@/components/context';
 import { defaultPlayerData } from '@/helpers/defaultPlayerData';
 import { setInputValue } from '@/helpers/inputUpdater';
 import {bigdec_max, bigdec_min, pn, bd } from '@/helpers/numbers';
@@ -63,20 +63,22 @@ export default function Page() {
   }
   
 
+  // Max and Unit for all nine resources
   var [EPowerRatMax, EPowerRatUnit] = getRatMaxAndUnit(v("baseEnergyPower"), v("energyPowerRatio"), v("energyRatio"), v("magicRatio"), res3Active ? v("resource3Ratio") : bd(1));
   var [ECapRatMax, ECapRatUnit] = getRatMaxAndUnit(v("baseEnergyCap"), v("energyCapRatio"), v("energyRatio"), v("magicRatio"), res3Active ? v("resource3Ratio") : bd(1));
   var [EBarRatMax, EBarRatUnit] = getRatMaxAndUnit(v("baseEnergyBar"), v("energyBarRatio"), v("energyRatio"), v("magicRatio"), res3Active ? v("resource3Ratio") : bd(1));
   var [MPowerRatMax, MPowerRatUnit] = getRatMaxAndUnit(v("baseMagicPower"), v("magicPowerRatio"), v("magicRatio"), v("energyRatio"), res3Active ? v("resource3Ratio") : bd(1));
   var [MCapRatMax, MCapRatUnit] = getRatMaxAndUnit(v("baseMagicCap"), v("magicCapRatio"), v("magicRatio"), v("energyRatio"), res3Active ? v("resource3Ratio") : bd(1));
   var [MBarRatMax, MBarRatUnit] = getRatMaxAndUnit(v("baseMagicBar"), v("magicBarRatio"), v("magicRatio"), v("energyRatio"), res3Active ? v("resource3Ratio") : bd(1));
-  var [RPowerRatMax, RPowerRatUnit] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
-  var [RCapRatMax, RCapRatUnit] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
-  var [RBarRatMax, RBarRatUnit] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
+  var [RPowerRatMax, RPowerRatUnit] = [bd(0), bd(0)];
+  var [RCapRatMax, RCapRatUnit] = [bd(0), bd(0)];
+  var [RBarRatMax, RBarRatUnit] = [bd(0), bd(0)];
   if(res3Active) {
     [RPowerRatMax, RPowerRatUnit] = getRatMaxAndUnit(v("baseResource3Power"), v("resource3PowerRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
     [RCapRatMax, RCapRatUnit] = getRatMaxAndUnit(v("baseResource3Cap"), v("resource3CapRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
     [RBarRatMax, RBarRatUnit] = getRatMaxAndUnit(v("baseResource3Bar"), v("resource3BarRatio"), v("resource3Ratio"), v("magicRatio"), v("energyRatio"));
   }
+
   // Calculate desired amount
   // The largest max is where we are trying to be. So take max of all values and
   // do everything relative to that
@@ -87,7 +89,7 @@ export default function Page() {
     minItem = bigdec_min(minItem, RPowerRatUnit, RCapRatUnit, RBarRatUnit)
   }
 
-  
+  // See how much of each resource we want and how much exp it takes ot buy them
   var [EPowerDesired, EPowerBuy] = getDesiredBuy(maxItem, v("baseEnergyPower"), EPowerRatMax)
   var [ECapDesired, ECapBuy] = getDesiredBuy(maxItem, v("baseEnergyCap"), ECapRatMax)
   var [EBarDesired, EBarBuy] = getDesiredBuy(maxItem, v("baseEnergyBar"), EBarRatMax)
@@ -97,7 +99,6 @@ export default function Page() {
   var [RPowerDesired, RPowerBuy] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
   var [RCapDesired, RCapBuy] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
   var [RBarDesired, RBarBuy] : [bigDecimal, bigDecimal] = [bd(0), bd(0)];
-
   if (res3Active) {
     [RPowerDesired, RPowerBuy] = getDesiredBuy(maxItem, v("baseResource3Power"), RPowerRatMax);
     [RCapDesired, RCapBuy] = getDesiredBuy(maxItem, v("baseResource3Cap"), RCapRatMax);
@@ -115,7 +116,7 @@ export default function Page() {
     TotalExpCost = TotalExpCost.add(RExpCost);
   }
   
-
+  // Text for what to buy
   var suggestedBuy = ""
   switch(minItem) {
     case EPowerRatUnit:
@@ -152,6 +153,7 @@ export default function Page() {
     extraReq.pop()
   }
 
+  // Children of the extra information
   var extraChildren = (
     <>
       <ChoiceButton
@@ -161,6 +163,7 @@ export default function Page() {
     </>
   )
 
+  // Children of the extra inputs
   var extraInputChildren = (
     <>
       <div className="mt-2">
@@ -212,6 +215,7 @@ export default function Page() {
     </>
   )
 
+  // Children that comes before the containers
   var prechildren = (
     <>
       <p>Calculate how much Energy/Magic/Resource 3 you need in order to have the proper ratios.</p>

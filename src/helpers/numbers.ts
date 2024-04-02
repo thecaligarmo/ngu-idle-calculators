@@ -1,5 +1,4 @@
 import bigDecimal from "js-big-decimal";
-import { getNumberFormat } from "./context";
 import { getLargeSuffix } from "./largeNumbers";
 import _ from "lodash";
 
@@ -29,7 +28,7 @@ export function bigdec_min(...args : bigDecimal[]) : bigDecimal {
     return m;
 }
 
-// print/pretty number (Only integers supported currently)
+// print/pretty number
 export function pn(num : bigDecimal, numberFormat : string = 'scientific', precision : number = 0) : string {
     var n = num.round(precision).getValue();
     var nl = n.length
