@@ -139,6 +139,7 @@ export default function Page() {
     var energyTotalSeconds = energySeconds.reduce((total, current) => {
         return total.add(current)
     }, bd(0))
+    
     var magicTotalSeconds = magicSeconds.reduce((total, current) => {
         return total.add(current)
     }, bd(0))

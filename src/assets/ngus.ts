@@ -1,4 +1,4 @@
-import { bd, bigdec_min, dn } from "@/helpers/numbers"
+import { bd, bigdec_max, bigdec_min, dn } from "@/helpers/numbers"
 import Resource, { ResourceContainer, prop } from "./resource"
 import { Stat } from "./stat"
 import bigDecimal from "js-big-decimal"
@@ -179,7 +179,7 @@ export class NGU extends Resource {
 
         // Grab the number of levels that will be calculated with starting, middle (average) and end times
         try {
-            var startingSpeedLevels = bigdec_min(startingSpeed.divide(baseTime), target).subtract(level).floor()
+            var startingSpeedLevels = bigdec_max(bigdec_min(startingSpeed.divide(baseTime), target).subtract(level).floor(), bd(0))
             var x = endingSpeed.subtract(bd(0.01)).divide(baseTime).subtract(level).subtract(startingSpeedLevels).floor()
             var middleSpeedLevels = x.compareTo(bd(0)) == -1 ? bd(0) : x;
             x = bigdec_min(endingSpeed.divide(baseTime), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
@@ -189,7 +189,7 @@ export class NGU extends Resource {
             var middleSpeedLevels = bd(0);
             var endingSpeedLevels = bd(0);
         }
-    
+        
         return startingSpeedLevels.multiply(startingSpeed)
                 .add(endingSpeed.multiply(endingSpeedLevels))
                 .add(endingSpeed.add(startingSpeed).divide(bd(2)).multiply(middleSpeedLevels))
