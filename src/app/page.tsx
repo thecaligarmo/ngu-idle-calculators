@@ -11,7 +11,7 @@ export default function Home() {
             <ContentSection title="Welcome">
                   <p>
                       A little wesbite to help with calculations because filling out spreadsheets is hard.
-                      It's currently in alpha.
+                      It is currently in alpha.
                   </p>
             </ContentSection>
         </Container>
