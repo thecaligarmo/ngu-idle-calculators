@@ -86,7 +86,7 @@ export class NGU extends Resource {
             case 3: // number
                 return (level) ** 0.5 * 31.7 + 100
             case 4: // tm
-                return (level) ** 0.3 * 0.7962 + 100
+                return (level) ** 0.8 * 0.7962 + 100
             case 5: // energy ngu
                 return (level) ** 0.3 * 12.59 + 100
             case 6: // adv B
@@ -129,7 +129,7 @@ export class NGU extends Resource {
             case 3: // number   
                 return (value / 31.7) ** 2
             case 4: // tm
-                return (value / 0.7962) ** (10/3)
+                return (value / 0.7962) ** (10/8)
             case 5: // energy ngu
                 return (value / 12.59) ** (10/3)
             case 6: // adv B
@@ -238,7 +238,7 @@ export class NGU extends Resource {
                         return bd("1e16")
                 }
             }
-            //agic
+            //Magic
             switch(this.id) {
                 case 0: // Yggradasil
                     return bd("4e11")
