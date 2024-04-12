@@ -100,7 +100,13 @@ function globalDiggerBonus(data: any ) : number{
     }
     var challenges : any = parseObj(data, 'challenges')
     var challengeBonus : number = (!_.isUndefined(challenges[10]) && challenges[10].level > 0) ? 5 : 0;
-    return 0.05 * totalLevel + challengeBonus + 100
+
+    var partySetBonus : number = isMaxxedItemSet(data, ItemSets.PARTY) ? 5 : 0;
+
+    if (totalLevel <= 500) {
+        return 100 + 0.05 * totalLevel + challengeBonus + partySetBonus
+    }
+    return 100 + 25 + 0.05 * ((totalLevel-500) ** 0.7) + challengeBonus + partySetBonus
 
 }
 

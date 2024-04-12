@@ -46,17 +46,18 @@ export default function Page() {
                             <li key="base">Base Energy Power ({pn(v('baseEnergyPower'), fmt)})</li>
                             <li key="equip">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%) </li>
                             <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%)</li>
-                            <li key="quirk">x Quick ({pn(quirkInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%)</li>
+                            <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%)</li>
                             <li key="apitems">x Potions ({pn(apItemInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%)</li>
                             <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyPower(playerStates), fmt)}</span></li>
                         </ul>
                         <p className="mt-3">Similarly with the other basic stats:</p>
                         <ul>
-                            <li key="eCap"><strong>Energy Cap:</strong> <span className="text-red-500">{pn(totalEnergyCap(playerStates), fmt)}</span></li>
                             <li key="eBar"><strong>Energy Bar:</strong> <span className="text-red-500">{pn(totalEnergyBar(playerStates), fmt)}</span></li>
+                            <li key="eCap"><strong>Energy Cap:</strong> <span className="text-red-500">{pn(totalEnergyCap(playerStates), fmt)}</span></li>
+                            
                             <li key="mPow"><strong>Magic Power:</strong> <span className="text-red-500">{pn(totalMagicPower(playerStates), fmt)}</span></li>
-                            <li key="mCap"><strong>Magic Cap:</strong> <span className="text-red-500">{pn(totalMagicCap(playerStates), fmt)}</span></li>
                             <li key="mBar"><strong>Magic Bar:</strong> <span className="text-red-500">{pn(totalMagicBar(playerStates), fmt)}</span></li>
+                            <li key="mCap"><strong>Magic Cap:</strong> <span className="text-red-500">{pn(totalMagicCap(playerStates), fmt)}</span></li>
                         </ul>
                     </ContentSubsection>
                 </div>
