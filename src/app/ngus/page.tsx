@@ -151,13 +151,23 @@ export default function Page() {
         var targetLvl = energyTargets[index]
         var secs = energySeconds[index]
         var val = bd(engu.getStatValue(Number(targetLvl.getValue()), engu.statnames[0]))
+        var curVal = bd(engu.getStatValue(Number(engu.level), engu.statnames[0]))
+
+        var precision = 0;
+        if (txt == 'energyNGUWandoos' || txt == 'energyNGUAdventureA' || txt == 'energyNGUDropChance' || txt == 'energyNGUMagicNGU') {
+            precision = 1;
+        }
+        if (txt == 'energyNGURespawn' || txt == 'energyNGUPP') {
+            precision = 2;
+        }
         
         return (
             <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
                 <td className="px-2">{camelToTitle(txt).replace("Energy NGU ", "")}</td>
                 <td className="px-2"><span className="text-red-500">{dn(secs)}</span></td>
                 <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-                <td className="px-2">{pn(val, fmt)}%</td>
+                <td className="px-2">{pn(curVal, fmt, precision)}%</td>
+                <td className="px-2">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val, fmt, precision) + "%"}</td>
             </tr>
         )
     })
@@ -165,13 +175,25 @@ export default function Page() {
         var txt = magicText[index]
         var targetLvl = magicTargets[index]
         var secs = magicSeconds[index]
+        var curVal = bd(mngu.getStatValue(Number(mngu.level), mngu.statnames[0]))
         var val = bd(mngu.getStatValue(Number(targetLvl.getValue()), mngu.statnames[0]))
+
+
+        var precision = 0;
+        if (txt == 'magicNGUYggdrasil' || txt == 'magicNGUTimeMachine' || txt == 'magicNGUEnergyNGU') {
+            precision = 1;
+        }
+        if (txt == 'magicNGUExp' || txt == 'magicNGUAdventureB') {
+            precision = 2;
+        }
+
         return (
             <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
                 <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>
                 <td className="px-2"><span className="text-red-500">{dn(secs)}</span></td>
                 <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-                <td className="px-2">{pn(val, fmt)}%</td>
+                <td className="px-2">{pn(curVal, fmt, precision)}%</td>
+                <td className="px-2">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val, fmt, precision) + "%"}</td>
             </tr>
         )
     })
@@ -259,6 +281,7 @@ export default function Page() {
                             <th className="px-2">Energy NGU</th>
                             <th className="px-2">Time</th>
                             <th className="px-2">Target</th>
+                            <th className="px-2">Current Value</th>
                             <th className="px-2">Value at target</th>
                         </tr>
                     </thead>
@@ -267,6 +290,7 @@ export default function Page() {
                         <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
                             <th className="px-2">Total:</th>
                             <th className="px-2"><span className="text-red-500">{dn(energyTotalSeconds)}</span></th>
+                            <th className="px-2"></th>
                             <th className="px-2"></th>
                             <th className="px-2"></th>
                         </tr>
@@ -278,6 +302,7 @@ export default function Page() {
                             <th className="px-2">Magic NGU</th>
                             <th className="px-2">Time</th>
                             <th className="px-2">Target</th>
+                            <th className="px-2">Current Value</th>
                             <th className="px-2">Value at target</th>
                         </tr>
                     </thead>
@@ -287,6 +312,7 @@ export default function Page() {
                         <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
                             <th className="px-2">Total:</th>
                             <th className="px-2"><span className="text-red-500">{dn(magicTotalSeconds)}</span></th>
+                            <th className="px-2"></th>
                             <th className="px-2"></th>
                             <th className="px-2"></th>
                         </tr>

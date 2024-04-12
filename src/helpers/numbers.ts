@@ -30,19 +30,22 @@ export function bigdec_min(...args : bigDecimal[]) : bigDecimal {
 
 // print/pretty number
 export function pn(num : bigDecimal, numberFormat : string = 'scientific', precision : number = 0) : string {
-    var n = num.round(precision).getValue();
-    var nl = n.length
+    // Get the floor of the number for processing
+    var n = num.floor().getValue();
+    var nl = n.length // number length
 
     // We should only start for billions as until then it's pretty human readable
     if (nl < 10) {
-        return Number(n).toLocaleString() //.toFixed(precision).toLocaleString()
+        return Number(num.round(precision).getValue()).toLocaleString() //.toFixed(precision).toLocaleString()
     }
     
+    // If we're in scientific format, we only want the first 4 digits
     if (numberFormat == 'scientific') {
         var e = nl - 1
         var firstFour = n.slice(0,4);
         return (Number(firstFour) / 1000).toFixed(3).toLocaleString() + "E+" + e
     }
+
     // Number of digits in front
     var nmod = nl % 3
     // Number of 3 numbers
