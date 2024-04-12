@@ -202,11 +202,12 @@ export function quirkInfo(data : any, key : string) : bigDecimal{
         if ( quirks.length > 0) {
             quirks.forEach((g : any) => {
                 if (!_.isUndefined(g[key])) {
-                    stat += g[key]
+                    stat *= ((g[key] + 100) / 100)
                 }
             })
         }
     }
+
     return bd(stat)
 }
 

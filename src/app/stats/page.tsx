@@ -44,10 +44,10 @@ export default function Page() {
                     <ContentSubsection title="Energy Power">
                         <ul>
                             <li key="base">Base Energy Power ({pn(v('baseEnergyPower'), fmt)})</li>
-                            <li key="equip">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%) </li>
-                            <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%)</li>
-                            <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%)</li>
-                            <li key="apitems">x Potions ({pn(apItemInfo(playerStates, Stat.ENERGY_POWER).round(), fmt)}%)</li>
+                            <li key="equip">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_POWER), fmt)}%) </li>
+                            <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
+                            <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
+                            <li key="apitems">x Potions ({pn(apItemInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
                             <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyPower(playerStates), fmt)}</span></li>
                         </ul>
                         <p className="mt-3">Similarly with the other basic stats:</p>
