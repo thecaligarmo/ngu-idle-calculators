@@ -6,7 +6,7 @@ import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
 import { parseObj, parseNum } from "./parsers";
-import { apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
+import { advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
 import { ItemSets } from "@/assets/sets";
 
 
@@ -83,6 +83,38 @@ export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
         .multiply(tcNum)
 }
 
+/** Adventure Stats */
+export function totalPower(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.POWER)
+    var equipPower = equipmentInfo(data, Stat.POWER)
+    var advTraining = advTraininginInfo(data, Stat.POWER)
+    var basePower = parseNum(data, 'baseAdventurePower')    
+
+    // Want to add equipPower instead of multiply
+    var subtotal = basePower.add(equipPower)
+    
+    return subtotal
+        .multiply(gen)
+        .multiply(advTraining)
+        .divide(equipPower) // adding instead
+        
+}
+
+export function totalToughness(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.TOUGHNESS)
+    var equipPower = equipmentInfo(data, Stat.TOUGHNESS)
+    var advTraining = advTraininginInfo(data, Stat.TOUGHNESS)
+    var basePower = parseNum(data, 'baseAdventureToughness')    
+
+    // Want to add equipPower instead of multiply
+    var subtotal = basePower.add(equipPower)
+    
+    return subtotal
+        .multiply(gen)
+        .multiply(advTraining)
+        .divide(equipPower) // adding instead
+        
+}
 
 /** Misc Adventure */
 export function totalGoldDrop(data : any) : bigDecimal {

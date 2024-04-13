@@ -9,11 +9,16 @@ import { CHALLENGES, Challenge } from "@/assets/challenges";
 import { totalEnergyCap, totalEnergyNGUSpeedFactor, totalMagicCap, totalMagicNGUSpeedFactor } from "./calculators";
 import { APITEMS, APItem } from "@/assets/apItems";
 import { ItemSet, ItemSets } from "@/assets/sets";
+import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
     if (playerExists) {
         switch(info) {
+            case 'baseAdventurePower':
+                return playerData.adventure.attack
+            case 'baseAdventureToughness':
+                return playerData.adventure.defense
             case 'baseEnergyPower':
                 return playerData.energyPower;
             case 'baseEnergyBar':
@@ -173,6 +178,17 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.res3.res3On;
 
 
+
+            case 'advTrainings':
+                var advTrainings: AdvTraining[] = []
+                for (var c = 0; c < 5; c++) {
+                    advTrainings.push(ADVTRAININGS[c])
+                }
+                for (var c = 0; c < 5; c++) {
+                    advTrainings[c].setLevel(playerData.advancedTraining.level[c].low)
+                }
+                
+                return advTrainings
             case 'apItems':
                 var apItems : APItem[] = []
                 if (playerData.arbitrary.energyPotion1Time.totalseconds > 0) {
@@ -357,6 +373,8 @@ export function defaultPlayerData(playerData : any, info : string) : any {
 
 export function getPlayerNumberOptions() : string[]{
     return [
+        'baseAdventurePower',
+        'baseAdventureToughness',
         'baseEnergyPower',
         'baseEnergyBar',
         'baseEnergyCap',
@@ -439,6 +457,7 @@ export function getPlayerNumberOptions() : string[]{
 
 export function getPlayerOptions() : string[] {
     return [
+        'advTrainings',
         'apItems',
         'beards',
         'challenges',

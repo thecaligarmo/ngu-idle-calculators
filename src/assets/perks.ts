@@ -7,16 +7,10 @@ export class Perk extends Resource{}
 export const PERKLIST = [
     new Perk(0, 'theNewbieEnergyPerk', 'The Newbie Energy Perk',  1, []), // Added to base energy
     new Perk(1, 'theNewbieMagicPerk', 'The Newbie Magic Perk',  1, []), // Added to base magic
-    new Perk(2, 'heNewbieAdventurePerk', 'The Newbie Adventure Perk',  1, [[Stat.POWER, 10]]), 
+    new Perk(2, 'heNewbieAdventurePerk', 'The Newbie Adventure Perk',  1, [[Stat.POWER, 10], [Stat.TOUGHNESS, 10]]), 
     new Perk(3, 'theNewbieDropChancePerk', 'The Newbie Drop Chance Perk',  1, [[Stat.DROP_CHANCE, 10],]),
-    new Perk(4, 'theNewbieStatPerk', 'The Newbie Stat Perk',  1, [
-        [Stat.POWER, 100],
-        [Stat.TOUGHNESS, 100],
-    ]),
-    new Perk(5, 'statBoostForRichPerksI', 'Stat Boost for Rich Perks I',  1, [
-        [Stat.POWER, 10],
-        [Stat.TOUGHNESS, 10],
-    ]),
+    new Perk(4, 'theNewbieStatPerk', 'The Newbie Stat Perk',  1, [[Stat.ATTACK, 100],[Stat.DEFENSE, 100],]),
+    new Perk(5, 'statBoostForRichPerksI', 'Stat Boost for Rich Perks I',  1, [[Stat.ATTACK, 10],[Stat.DEFENSE, 10],]),
     new Perk(6, 'genericEnergyPowerPerkI', 'Generic Energy Power Perk I',  1, [[Stat.ENERGY_POWER, 1]]),
     new Perk(7, 'genericEnergyBarPerkI', 'Generic Energy Bar Perk I',  1, [[Stat.ENERGY_BARS, 1]]),
     new Perk(8, 'genericEnergyCapPerkI', 'Generic Energy Cap Perk I',  1, [[Stat.ENERGY_CAP, 1]]),

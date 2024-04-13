@@ -7,8 +7,8 @@ import { bd, pn } from '@/helpers/numbers';
 import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
 import { Stat } from '@/assets/stat';
-import { totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalGoldDrop, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalRespawnRate } from '@/helpers/calculators';
-import {apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, nguInfo, perkInfo, quirkInfo} from '@/helpers/resourceInfo';
+import { totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalGoldDrop, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPower, totalRespawnRate, totalToughness } from '@/helpers/calculators';
+import {advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, nguInfo, perkInfo, quirkInfo} from '@/helpers/resourceInfo';
 import { ItemSets } from '@/assets/sets';
 
 export default function Page() {
@@ -66,7 +66,7 @@ export default function Page() {
                         <ul>
                             <li key="base">Base Energy NGU Speed (100%)</li>
                             <li key="energyPower">x Energy Power ({pn(totalEnergyPower(playerStates).multiply(bd(100)), fmt)}%)</li>
-                            <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_NGU_SPEED).round(), fmt)}%)</li>
+                            <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
                             <li key="Number">x &apos;A Number&apos; Set ({pn(isMaxxedItemSet(playerStates, ItemSets.NUMBER) ? bd(110) : bd(100), fmt)}%)</li>
                             <li key="magicNGU">x Magic NGU ({pn(nguInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
                             <li key="beard">x Beard ({pn(beardInfoPerm(playerStates, Stat.ENERGY_NGU_SPEED).divide(bd(100)).multiply(beardInfoTemp(playerStates, Stat.ENERGY_NGU_SPEED).divide(bd(100))).multiply(bd(100)).round(), fmt)}%)</li>
@@ -82,28 +82,30 @@ export default function Page() {
                         
                     </ContentSubsection>
             </ContentSection>
-            {/* <ContentSection title="Adventure Stats">
-                <div>
-                    <ContentSubsection title="Adventure Power">
+            <ContentSection title="Adventure Stats">
+                <ContentSubsection title="Adventure Power" defaultHide={false}>
+                    <ul>
+                        <li key="base">Base Adventure Power ({pn(v('baseAdventurePower'), fmt)})</li>
+                        <li key="equipment">+ Equipment Power + Infinity Cube ({pn(equipmentInfo(playerStates, Stat.POWER), fmt)})</li>
+                        <li key="subtotal" className="border-white border-t-2 border-solid">Subtotal: {pn(v('baseAdventurePower').add(equipmentInfo(playerStates, Stat.POWER)), fmt)}</li>
+                        <li key="at">x Advanced Training ({pn(advTraininginInfo(playerStates, Stat.POWER), fmt)}%)</li>
+                        <li key="engu">x (Energy x Magic) NGU ({pn(nguInfo(playerStates, Stat.POWER), fmt)}%)</li>
+                        <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.POWER), fmt)}%)</li>
+                        <li key="basicChallenge">x Basic Challenge ({pn(challengeInfo(playerStates, Stat.POWER), fmt)}%)</li>
+                        <li key="beardTemp">x Beard (this run) ({pn(beardInfoTemp(playerStates, Stat.POWER), fmt)}%)</li>
+                        <li key="beardPerm">x Beard (permanent) ({pn(beardInfoPerm(playerStates, Stat.POWER), fmt)}%)</li>
+                        <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.POWER).round(), fmt)}%)</li>
+                        <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.POWER).round(), fmt)}%)</li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalPower(playerStates), fmt)}%</span></li>
+                    </ul>
+                    <p className="mt-3">Similarly with Toughness:</p>
                         <ul>
-                            <li key="base">Base Adventure Power</li>
-                            <li key="equipment">+ Equipment Power</li>
-                            <li key="infinity Cube">+ Infinity Cube</li>
-                            <li key="subtotal" className="border-white border-t-2 border-solid">Subtotal: </li>
-                            <li key="at">x Advanced Training</li>
-                            <li key="engu">x Energy NGU</li>
-                            <li key="mngu">x Magic NGU</li>
-                            <li key="digger">x Digger</li>
-                            <li key="basicChallenge">x Basic Challenge</li>
-                            <li key="beard">x Beard</li>
-                            <li key="perk">x Perk</li>
-                            <li key="quirk">x Quirk</li>
+                            <li key="total" className=""><strong>Total Toughness:</strong> <span className="text-red-500">{pn(totalToughness(playerStates), fmt)}%</span></li>
                         </ul>
-                    </ContentSubsection>
-                </div>
-            </ContentSection> */}
+                </ContentSubsection>
+            </ContentSection>
             <ContentSection title="Misc Stats">
-                <ContentSubsection title="Gold Drop" defaultHide={false}>
+                <ContentSubsection title="Gold Drop" defaultHide={true}>
                     <ul>
                         <li key="base">Base Gold Drop (100%)</li>
                         <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.GOLD_DROP), fmt, 3)}%)</li>

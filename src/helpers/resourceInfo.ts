@@ -5,15 +5,38 @@ import bigDecimal from "js-big-decimal";
 import { bd } from "./numbers";
 import { ItemSet, ItemSets } from "@/assets/sets";
 import _ from "lodash";
+import { AdvTraining } from "@/assets/advTraining";
+import { Beard } from "@/assets/beards";
+import { Challenge } from "@/assets/challenges";
+import { Digger } from "@/assets/diggers";
+import { NGU } from "@/assets/ngus";
+import { Perk } from "@/assets/perks";
 
+
+export function advTraininginInfo(data: any, key: string) : bigDecimal {
+    var advTrainings : AdvTraining[] = parseObj(data, 'advTrainings')
+    var stat : number = 100
+    if (Object.values(Stat).includes(key)) {
+        if (advTrainings.length > 0) {
+            advTrainings.forEach((g) => {
+                if (!_.isUndefined(g[key])) {
+                    stat += g[key]
+                }
+            })
+        }
+    }
+    return bd(stat)
+}
 
 export function apItemInfo(data: any, key: string) : bigDecimal {
     var apItems : APItem[] = parseObj(data, 'apItems')
     var stat : number = 100;
     if (Object.values(Stat).includes(key)) {
         if(apItems.length > 0) {
-            apItems.forEach((g: APItem) => {
-                stat *= g[key] / 100
+            apItems.forEach((g) => {
+                if (!_.isUndefined(g[key])) {
+                    stat *= g[key] / 100
+                }
             })
         }
     }
@@ -21,11 +44,11 @@ export function apItemInfo(data: any, key: string) : bigDecimal {
 }
 
 export function beardInfoTemp(data: any, key: string) : bigDecimal{
-    var beards : any = parseObj(data, 'beards')
+    var beards : Beard[] = parseObj(data, 'beards')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( beards.length > 0) {
-            beards.forEach((g : any) => {
+            beards.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
                     stat += g[key]['temp']
                 }
@@ -36,11 +59,11 @@ export function beardInfoTemp(data: any, key: string) : bigDecimal{
 }
 
 export function beardInfoPerm(data: any, key: string) : bigDecimal{
-    var beards : any = parseObj(data, 'beards')
+    var beards : Beard[] = parseObj(data, 'beards')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( beards.length > 0) {
-            beards.forEach((g : any) => {
+            beards.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
                     
                     stat += g[key]['perm']
@@ -52,11 +75,11 @@ export function beardInfoPerm(data: any, key: string) : bigDecimal{
 }
 
 export function challengeInfo(data : any, key : string) : bigDecimal{
-    var challenges : any = parseObj(data, 'challenges')
+    var challenges : Challenge[] = parseObj(data, 'challenges')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( challenges.length > 0) {
-            challenges.forEach((g : any) => {
+            challenges.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
                     stat += g[key]
                 }
@@ -123,7 +146,7 @@ function globalDiggerBonus(data: any ) : number{
     if (diggers.length){
         totalLevel = Object.keys(diggers).reduce((curVal: number, d : string) => {return diggers[d].maxLevel + curVal}, 0)
     }
-    var challenges : any = parseObj(data, 'challenges')
+    var challenges : Challenge[] = parseObj(data, 'challenges')
     var challengeBonus : number = (!_.isUndefined(challenges[10]) && challenges[10].level > 0) ? 5 : 0;
 
     var partySetBonus : number = isMaxxedItemSet(data, ItemSets.PARTY) ? 5 : 0;
@@ -136,11 +159,11 @@ function globalDiggerBonus(data: any ) : number{
 }
 
 export function diggerInfo(data: any, key: string) : bigDecimal{
-    var diggers : any = parseObj(data, 'diggers')
+    var diggers : Digger[] = parseObj(data, 'diggers')
     var stat : number = 0
     if (Object.values(Stat).includes(key)) {
         if ( diggers.length > 0) {
-            diggers.forEach((g : any) => {
+            diggers.forEach((g) => {
                 if (!_.isUndefined(g[key]) && g.active) {
                     stat += g[key]
                 }
@@ -184,35 +207,35 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
 }
 
 export function nguInfo(data : any, key : string) : bigDecimal{
-    var engus : any = parseObj(data, 'energyNGUs')
-    var mngus : any = parseObj(data, 'magicNGUs')
-    var stat : number = 0
+    var engus : NGU[] = parseObj(data, 'energyNGUs')
+    var mngus : NGU[] = parseObj(data, 'magicNGUs')
+    var stat : number = 1
     if (Object.values(Stat).includes(key)) {
         if ( engus.length > 0) {
-            engus.forEach((g : any) => {
+            engus.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
-                    stat += g[key]
+                    stat *= g[key] / 100
                 }
             })
         }
         if ( mngus.length > 0) {
-            mngus.forEach((g : any) => {
+            mngus.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
-                    stat += g[key]
+                    stat *= g[key] / 100
                 }
             })
         }
     }
 
-    return bd( stat == 0 ? 100 : stat)
+    return bd( stat == 1 ? 100 : stat * 100)
 }
 
 export function perkInfo(data : any, key : string) : bigDecimal{
-    var perks : any = parseObj(data, 'perks')
+    var perks : Perk[] = parseObj(data, 'perks')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( perks.length > 0) {
-            perks.forEach((g : any) => {
+            perks.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
                     stat += g[key]
                 }

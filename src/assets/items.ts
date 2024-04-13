@@ -46,7 +46,13 @@ export class Item extends Resource {
                 console.log(id, " is missing for ", data, this)
             }
         })
+
+        this[Stat.POWER] = data.curAttack
+        this[Stat.TOUGHNESS] = data.curDefense
         this.level = data.level;
+    }
+    updateStat() {
+
     }
 }
 
