@@ -33,6 +33,11 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'baseResource3Power':
                 return playerData.res3.res3Power;
 
+            case 'cubePower':
+                return playerData.inventory.cubePower;
+            case 'cubeToughness':
+                return playerData.inventory.cubeToughness;
+
             case 'energyNGUAugmentsLevel':
                 return playerData.NGU.skills[0].level.low;
             case 'energyNGUWandoosLevel':
@@ -361,6 +366,8 @@ export function getPlayerNumberOptions() : string[]{
         'baseResource3Bar',
         'baseResource3Cap',
         'baseResource3Power',
+        'cubePower',
+        'cubeToughness',
         'energyNGUAugmentsLevel',
         'energyNGUWandoosLevel',
         'energyNGURespawnLevel',

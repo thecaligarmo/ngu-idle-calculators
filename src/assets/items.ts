@@ -42,6 +42,8 @@ export class Item extends Resource {
                         added.push(t)
                     }
                 })
+            } else if (id > 0) {
+                console.log(id, " is missing for ", data, this)
             }
         })
         this.level = data.level;
@@ -108,6 +110,7 @@ export const StatType : {[index: number]: string[]} = {
     39: [Stat.ENERGY_NGU_SPEED, Stat.MAGIC_NGU_SPEED],
     40: [Stat.GOLD_DROP],
     41: [Stat.DROP_CHANCE],
+    42: [Stat.ENERGY_BEARD_SPEED, Stat.MAGIC_BEARD_SPEED],
 }
 
 export const StatDiv  : {[index: number]: number}= {
@@ -147,6 +150,7 @@ export const StatDiv  : {[index: number]: number}= {
     39: 10000,
     40: 1000,
     41: 10000,
+    42: 10000,
 }
 
 

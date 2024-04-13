@@ -5,7 +5,7 @@ export default function ContentSubsection({children, title, titleExtra, defaultH
     const [hideInfo, setHideInfo] = useState(defaultHide)
 
     return (
-        <div className="mt-4">
+        <div className="mt-4 ml-5">
             <h4 className="text-lg">
             <CollapseButton hidden={hideInfo} onClick={() => {
                     setHideInfo(!hideInfo)
