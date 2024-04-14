@@ -23,6 +23,7 @@ export const Stat = {
     ENERGY_SPEED: 'energySpeed',
     ENERGY_NGU_SPEED: 'energyNGUSpeed',
     ENERGY_BEARD_SPEED: 'energyBeardSpeed',
+    ENERGY_WANDOOS_SPEED: 'energyWandoosSpeed',
     // Magic
     MAGIC_BARS: 'magicBars',
     MAGIC_CAP: 'magicCap',
@@ -30,6 +31,7 @@ export const Stat = {
     MAGIC_SPEED: 'magicSpeed',
     MAGIC_NGU_SPEED: 'magicNGUSpeed',
     MAGIC_BEARD_SPEED: 'magicBeardSpeed',
+    MAGIC_WANDOOS_SPEED: 'magicWandoosSpeed',
     // Resource 3
     RES3_BARS: 'resource3Bars',
     RES3_CAP: 'resource3Cap',
@@ -38,7 +40,6 @@ export const Stat = {
     AT_SPEED: 'rawATSpeed',
     AUGMENT_SPEED: 'rawAugmentSpeed',
     HACK_SPEED: 'rawHackSpeed',
-    WANDOOS_SPEED: 'rawWandoosSpeed',
     WISH_SPEED: 'rawWishSpeed',
     BOOSTS_BOOST: 'boostsBoost',
     MAYO_GENERATION: 'mayoGeneration',

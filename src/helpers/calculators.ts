@@ -6,22 +6,24 @@ import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
 import { parseObj, parseNum } from "./parsers";
-import { advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
+import { advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
 import { ItemSets } from "@/assets/sets";
 
 
 // General Calc
 function calcAll(data : any, stat : string) : bigDecimal{
+    var base = bd(100)
     return bd(1)
-        .multiply(equipmentInfo(data, stat)).divide(bd(100))
-        .multiply(perkInfo(data, stat)).divide(bd(100))
-        .multiply(quirkInfo(data, stat)).divide(bd(100))
-        .multiply(nguInfo(data, stat).divide(bd(100)))
-        .multiply(beardInfoTemp(data, stat).divide(bd(100)))
-        .multiply(beardInfoPerm(data, stat).divide(bd(100)))
-        .multiply(diggerInfo(data, stat).divide(bd(100)))
+        .multiply(equipmentInfo(data, stat)).divide(base)
+        .multiply(perkInfo(data, stat)).divide(base)
+        .multiply(quirkInfo(data, stat)).divide(base)
+        .multiply(nguInfo(data, stat).divide(base))
+        .multiply(beardInfoTemp(data, stat).divide(base))
+        .multiply(beardInfoPerm(data, stat).divide(base))
+        .multiply(diggerInfo(data, stat).divide(base))
         .multiply(challengeInfo(data, stat))
-        .multiply(apItemInfo(data, stat).divide(bd(100)))
+        .multiply(apItemInfo(data, stat).divide(base))
+        .multiply(macguffinInfo(data, stat).divide(base))
 }
 
 
@@ -131,4 +133,17 @@ export function totalRespawnRate(data : any) : bigDecimal {
         .multiply(nguInfo(data, Stat.RESPAWN).divide(bd(100)))
         .multiply(clockSetModifier)
         .multiply(bd(100))
+}
+
+export function totalDropChance(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.DROP_CHANCE)
+    var twoDSetModifier = isMaxxedItemSet(data, ItemSets.TWO_D) ? bd(1.0743) : bd(1)
+    var bloodModifier = (parseNum(data, 'bloodMagicDropChance').add(bd(100))).divide(bd(100))
+    var yggdrasilModifier = parseNum(data, 'yggdrasilDropChance').divide(bd(100))
+    return bd(1)
+        .multiply(gen)
+        .multiply(twoDSetModifier)
+        .multiply(bloodModifier)
+        .multiply(yggdrasilModifier)
+    
 }

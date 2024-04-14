@@ -6,10 +6,11 @@ import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { BEARDS, Beard } from "@/assets/beards";
 import { DIGGERS, Digger } from "@/assets/diggers";
 import { CHALLENGES, Challenge } from "@/assets/challenges";
-import { totalEnergyCap, totalEnergyNGUSpeedFactor, totalMagicCap, totalMagicNGUSpeedFactor } from "./calculators";
+import { totalEnergyCap, totalEnergyNGUSpeedFactor, totalMagicCap, totalMagicNGUSpeedFactor, totalPower } from "./calculators";
 import { APITEMS, APItem } from "@/assets/apItems";
 import { ItemSet, ItemSets } from "@/assets/sets";
 import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
+import { MACGUFFINS, MacGuffin } from "@/assets/macguffins";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
@@ -37,6 +38,11 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.res3.capRes3.low;
             case 'baseResource3Power':
                 return playerData.res3.res3Power;
+
+            case 'bloodMagicDropChance':
+                return Math.log2(playerData.bloodMagic.lootSpellBlood / 10000)
+            case 'bloodMagicTimeMachine':
+                return Math.log2(playerData.bloodMagic.goldSpellBlood / 1000000) ** 2
 
             case 'cubePower':
                 return playerData.inventory.cubePower;
@@ -176,6 +182,8 @@ export function defaultPlayerData(playerData : any, info : string) : any {
 
             case 'resource3Active':
                 return playerData.res3.res3On;
+            case 'yggdrasilDropChance':
+                return playerData.yggdrasil.totalLuck.low / 20 + 100
 
 
 
@@ -308,6 +316,22 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     }
                 })
                 return magicNGUs
+
+            case 'macguffins':
+                var macguffins : MacGuffin[] = []
+
+                for (var c = 0; c < 22; c++) {
+                    macguffins.push(MACGUFFINS[c])
+                }
+                playerData.inventory.macguffins.forEach((macguffin : any, index : number) => {
+                    macguffins[macguffin.id - 198].setLevel(macguffin.level)
+                })
+
+                for (var c = 0; c < 22; c++) {
+                    macguffins[c].importStats(playerData.inventory.macguffinBonuses);
+                }
+                
+                return macguffins
             case 'perks':
                 var perks : Perk[] = []
                 playerData.adventure.itopod.perkLevel.forEach((perk : any, index : number) => {
@@ -359,6 +383,8 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return totalEnergyNGUSpeedFactor(playerData);
             case 'totalMagicNGUSpeedFactor%':
                 return totalMagicNGUSpeedFactor(playerData);
+            case 'totalPower':
+                return totalPower(playerData);
             
             
             default:
@@ -384,6 +410,8 @@ export function getPlayerNumberOptions() : string[]{
         'baseResource3Bar',
         'baseResource3Cap',
         'baseResource3Power',
+        'bloodMagicDropChance',
+        'bloodMagicTimeMachine',
         'cubePower',
         'cubeToughness',
         'energyNGUAugmentsLevel',
@@ -451,6 +479,7 @@ export function getPlayerNumberOptions() : string[]{
         'magicNGUEnergyNGUEvilTarget',
         'magicNGUAdventureBEvilTarget',
         'resource3Active',
+        'yggdrasilDropChance',
     ]
 }
 
@@ -470,6 +499,7 @@ export function getPlayerOptions() : string[] {
         'equipmentAccesories',
         'energyNGUs',
         'magicNGUs',
+        'macguffins',
         'perks',
         'quirks',
         'maxxedItems',
@@ -483,5 +513,6 @@ export function getCalculatedOptions() : string[] {
         'currentMagicCap',
         'totalEnergyNGUSpeedFactor%',
         'totalMagicNGUSpeedFactor%',
+        'totalPower',
     ]
 }

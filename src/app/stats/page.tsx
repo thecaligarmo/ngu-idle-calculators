@@ -7,8 +7,8 @@ import { bd, pn } from '@/helpers/numbers';
 import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
 import { Stat } from '@/assets/stat';
-import { totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalGoldDrop, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPower, totalRespawnRate, totalToughness } from '@/helpers/calculators';
-import {advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, nguInfo, perkInfo, quirkInfo} from '@/helpers/resourceInfo';
+import { totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalGoldDrop, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPower, totalRespawnRate, totalToughness } from '@/helpers/calculators';
+import {advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo} from '@/helpers/resourceInfo';
 import { ItemSets } from '@/assets/sets';
 
 export default function Page() {
@@ -108,6 +108,7 @@ export default function Page() {
                 <ul>
                     <li key="goldDrop"><strong>Total Gold Drop:</strong> <span className="text-red-500">{pn(totalGoldDrop(playerStates), fmt)}%</span></li>
                     <li key="respawn"><strong>Total Respawn:</strong> <span className="text-red-500">{pn(totalRespawnRate(playerStates), fmt, 2)}%</span> ({pn(totalRespawnRate(playerStates).divide(bd(25)), fmt, 2)} seconds)</li>
+                    <li key="dropChance"><strong>Total Drop Chance:</strong> <span className="text-red-500">{pn(totalDropChance(playerStates), fmt)}%</span></li>
                 </ul>
                 <ContentSubsection title="Gold Drop Calculation" defaultHide={true}>
                     <ul className='ml-5'>
@@ -128,19 +129,20 @@ export default function Page() {
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalRespawnRate(playerStates), fmt, 2)}%</span> ({pn(totalRespawnRate(playerStates).divide(bd(25)), fmt, 2)} seconds)</li>
                     </ul>
                 </ContentSubsection>
-                <ContentSubsection title="Drop Chance Calculation - Not Implemented Yet" defaultHide={true}>
+                <ContentSubsection title="Drop Chance Calculation" defaultHide={true}>
                     <ul className='ml-5'>
                         <li key="base">Base Drop Chance Rate (100%)</li>
                         <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
-                        <li key="macguffin">x MacGuffin</li>
+                        <li key="macguffin">x MacGuffin ({pn(macguffinInfo(playerStates, Stat.DROP_CHANCE), fmt, 2)}%)</li>
                         <li key="2d">x 2D Set Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.TWO_D) ? bd(107.43) : bd(100), fmt, 2)}%) </li>
-                        <li key="blood">x Blood Magic</li>
-                        <li key="Yggdrasil">x Yggdrasil Fruit</li>
-                        <li key="ngu">x NGU ({pn(nguInfo(playerStates, Stat.DROP_CHANCE), fmt, 2)}%)</li>
+                        <li key="blood">x Blood Magic ({pn(v('bloodMagicDropChance').add(bd(100)), fmt)}%)</li>
+                        <li key="Yggdrasil">x Yggdrasil Fruit ({pn(v('yggdrasilDropChance'), fmt)}%)</li>
+                        <li key="ngu">x NGU ({pn(nguInfo(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
+                        <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.DROP_CHANCE), fmt, 2)}%)</li>
                         <li key="beardTemp">x Beard (this run) ({pn(beardInfoTemp(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
                         <li key="beardPerm">x Beard (permanent) ({pn(beardInfoPerm(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
                         <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
-                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">%</span></li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalDropChance(playerStates), fmt)}%</span></li>
                     </ul>
                 </ContentSubsection>
             </ContentSection>

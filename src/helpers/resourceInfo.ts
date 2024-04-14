@@ -11,6 +11,7 @@ import { Challenge } from "@/assets/challenges";
 import { Digger } from "@/assets/diggers";
 import { NGU } from "@/assets/ngus";
 import { Perk } from "@/assets/perks";
+import { MacGuffin } from "@/assets/macguffins";
 
 
 export function advTraininginInfo(data: any, key: string) : bigDecimal {
@@ -204,6 +205,21 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
 
     var cube = cubeInfo(data, key)
     return bd(stat).add(cube)
+}
+
+export function macguffinInfo(data : any, key : string) : bigDecimal {
+    var macguffins : MacGuffin[] = parseObj(data, 'macguffins')
+    var stat : number = 100
+    if (Object.values(Stat).includes(key)) {
+        if ( macguffins.length > 0) {
+            macguffins.forEach((g) => {
+                if (!_.isUndefined(g[key])) {
+                    stat = 100 * g[key]
+                }
+            })
+        }
+    }
+    return bd(stat)
 }
 
 export function nguInfo(data : any, key : string) : bigDecimal{
