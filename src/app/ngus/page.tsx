@@ -275,7 +275,8 @@ export default function Page() {
                     The following tables let you know how much <span className="text-red-500">Time</span> is needed until you get to the <span className="text-blue-500">Target</span>.
                     The Value represents the bonus you will have once you reach the target.
                 </p>
-                <table className="inline-block w-1/2 align-top mb-2">
+                {/* <div className="flex flex-wrap"> */}
+                <table className="inline-block w-full 2xl:w-1/2 align-top mb-2">
                     <thead>
                         <tr className="text-left border-b-1 border border-t-0 border-x-0">
                             <th className="px-2">Energy NGU</th>
@@ -296,7 +297,7 @@ export default function Page() {
                         </tr>
                     </tbody>
                 </table>
-                <table className="inline-block w-1/2 align-top mb-2">
+                <table className="inline-block w-full 2xl:w-1/2 align-top mb-2">
                     <thead>
                         <tr className="text-left border-b-1 border border-t-0 border-x-0">
                             <th className="px-2">Magic NGU</th>
@@ -318,6 +319,7 @@ export default function Page() {
                         </tr>
                     </tbody>
                 </table>
+                {/* </div> */}
                 <p className="mb-2 text-sm">
                     The time formats are given in D:H:M:S where D stands for days, H for hours, M for minutes, S for seconds. For example: 2:04:16:12 means it will take 2 days, 4 hours, 16 minutes and 12 seconds.
                 </p>
@@ -327,7 +329,7 @@ export default function Page() {
                 <p>
                     The following tells you how much energy or magic you will need to <span className="text-red-500">Cap</span> the bar at the <span className="text-blue-500">Target</span>.
                 </p>
-                <table className="inline-block w-1/2 align-top mb-2">
+                <table className="inline-block w-full md:w-1/2 align-top mb-2">
                     <thead>
                         <tr className="text-left border-b-1 border border-t-0 border-x-0">
                             <th className="px-2">Energy NGU</th>
@@ -339,7 +341,7 @@ export default function Page() {
                         {energyCapToMaxTargetRow}
                     </tbody>
                 </table>
-                <table className="inline-block w-1/2 align-top mb-2">
+                <table className="inline-block w-full md:w-1/2 align-top mb-2">
                     <thead>
                         <tr className="text-left border-b-1 border border-t-0 border-x-0">
                             <th className="px-2">Magic NGU</th>
@@ -356,7 +358,7 @@ export default function Page() {
                 <p>
                     The following tells you how much energy or magic you will need to <span className="text-red-500">Cap</span> the bar for a continuous 24 hours.
                 </p>
-                <table className="inline-block w-1/2 align-top mb-2">
+                <table className="inline-block w-full md:w-1/2 align-top mb-2">
                     <thead>
                         <tr className="text-left border-b-1 border border-t-0 border-x-0">
                             <th className="px-2">Energy NGU</th>
@@ -367,7 +369,7 @@ export default function Page() {
                         {energyCapToMaxInDayRow}
                     </tbody>
                 </table>
-                <table className="inline-block w-1/2 align-top mb-2">
+                <table className="inline-block w-full md:w-1/2 align-top mb-2">
                     <thead>
                         <tr className="text-left border-b-1 border border-t-0 border-x-0">
                             <th className="px-2">Magic NGU</th>
