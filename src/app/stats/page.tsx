@@ -37,12 +37,22 @@ export default function Page() {
         <Container title="Stats">
             <p>
                 The following is a list of the calculations I am making.
-                If you see anything wrong, let me know.
+                As these calculations are not in the save file, due to rounding they might be slightly different from your game. 
+                If you see anything wrong, please let me know.
             </p>
 
             <ContentSection title="Energy / Magic">
-                <ContentSubsection title="Energy Power" defaultHide={true}>
-                    <ul>
+                <ul>
+                    <li key="ePow"><strong>Energy Power:</strong> <span className="text-red-500">{pn(totalEnergyPower(playerStates), fmt)}</span></li>
+                    <li key="eBar"><strong>Energy Bar:</strong> <span className="text-red-500">{pn(totalEnergyBar(playerStates), fmt)}</span></li>
+                    <li key="eCap"><strong>Energy Cap:</strong> <span className="text-red-500">{pn(totalEnergyCap(playerStates), fmt)}</span></li>
+                    
+                    <li key="mPow"><strong>Magic Power:</strong> <span className="text-red-500">{pn(totalMagicPower(playerStates), fmt)}</span></li>
+                    <li key="mBar"><strong>Magic Bar:</strong> <span className="text-red-500">{pn(totalMagicBar(playerStates), fmt)}</span></li>
+                    <li key="mCap"><strong>Magic Cap:</strong> <span className="text-red-500">{pn(totalMagicCap(playerStates), fmt)}</span></li>
+                </ul>
+                <ContentSubsection title="Energy Power Calculation" defaultHide={true}>
+                    <ul className="ml-5">
                         <li key="base">Base Energy Power ({pn(v('baseEnergyPower'), fmt)})</li>
                         <li key="equip">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_POWER), fmt)}%) </li>
                         <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
@@ -50,41 +60,35 @@ export default function Page() {
                         <li key="apitems">x Potions ({pn(apItemInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyPower(playerStates), fmt)}</span></li>
                     </ul>
-                    <p className="mt-3">Similarly with the other basic stats:</p>
-                    <ul>
-                        <li key="eBar"><strong>Energy Bar:</strong> <span className="text-red-500">{pn(totalEnergyBar(playerStates), fmt)}</span></li>
-                        <li key="eCap"><strong>Energy Cap:</strong> <span className="text-red-500">{pn(totalEnergyCap(playerStates), fmt)}</span></li>
-                        
-                        <li key="mPow"><strong>Magic Power:</strong> <span className="text-red-500">{pn(totalMagicPower(playerStates), fmt)}</span></li>
-                        <li key="mBar"><strong>Magic Bar:</strong> <span className="text-red-500">{pn(totalMagicBar(playerStates), fmt)}</span></li>
-                        <li key="mCap"><strong>Magic Cap:</strong> <span className="text-red-500">{pn(totalMagicCap(playerStates), fmt)}</span></li>
-                    </ul>
                 </ContentSubsection>
             </ContentSection>
             <ContentSection title="NGU">
-                    <ContentSubsection title="Total Energy NGU Speed Factor" defaultHide={true}>
-                        <ul>
-                            <li key="base">Base Energy NGU Speed (100%)</li>
-                            <li key="energyPower">x Energy Power ({pn(totalEnergyPower(playerStates).multiply(bd(100)), fmt)}%)</li>
-                            <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
-                            <li key="Number">x &apos;A Number&apos; Set ({pn(isMaxxedItemSet(playerStates, ItemSets.NUMBER) ? bd(110) : bd(100), fmt)}%)</li>
-                            <li key="magicNGU">x Magic NGU ({pn(nguInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
-                            <li key="beard">x Beard ({pn(beardInfoPerm(playerStates, Stat.ENERGY_NGU_SPEED).divide(bd(100)).multiply(beardInfoTemp(playerStates, Stat.ENERGY_NGU_SPEED).divide(bd(100))).multiply(bd(100)).round(), fmt)}%)</li>
-                            <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
-                            <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_NGU_SPEED).round(), fmt)}%)</li>
-                            <li key="challenge">x Challenge ({pn(challengeInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
-                            <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyNGUSpeedFactor(playerStates), fmt)}%</span></li>
-                        </ul>
-                        <p className="mt-3">Similarly with Magic:</p>
-                        <ul>
-                            <li key="total" className=""><strong>Total Magic NGU Speed Factor:</strong> <span className="text-red-500">{pn(totalMagicNGUSpeedFactor(playerStates), fmt)}%</span></li>
-                        </ul>
-                        
-                    </ContentSubsection>
+                <ul>
+                    <li key="eNGU" className=""><strong>Total Energy NGU Speed Factor:</strong> <span className="text-red-500">{pn(totalEnergyNGUSpeedFactor(playerStates), fmt)}%</span></li>
+                    <li key="mNGU" className=""><strong>Total Magic NGU Speed Factor:</strong> <span className="text-red-500">{pn(totalMagicNGUSpeedFactor(playerStates), fmt)}%</span></li>
+                </ul>
+                <ContentSubsection title="Total Energy NGU Speed Factor Calculation" defaultHide={true}>
+                    <ul className="ml-5">
+                        <li key="base">Base Energy NGU Speed (100%)</li>
+                        <li key="energyPower">x Energy Power ({pn(totalEnergyPower(playerStates).multiply(bd(100)), fmt)}%)</li>
+                        <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
+                        <li key="Number">x &apos;A Number&apos; Set ({pn(isMaxxedItemSet(playerStates, ItemSets.NUMBER) ? bd(110) : bd(100), fmt)}%)</li>
+                        <li key="magicNGU">x Magic NGU ({pn(nguInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
+                        <li key="beard">x Beard ({pn(beardInfoPerm(playerStates, Stat.ENERGY_NGU_SPEED).divide(bd(100)).multiply(beardInfoTemp(playerStates, Stat.ENERGY_NGU_SPEED).divide(bd(100))).multiply(bd(100)).round(), fmt)}%)</li>
+                        <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
+                        <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_NGU_SPEED).round(), fmt)}%)</li>
+                        <li key="challenge">x Challenge ({pn(challengeInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyNGUSpeedFactor(playerStates), fmt)}%</span></li>
+                    </ul>
+                </ContentSubsection>
             </ContentSection>
             <ContentSection title="Adventure Stats">
-                <ContentSubsection title="Adventure Power" defaultHide={false}>
-                    <ul>
+                <ul>
+                    <li key="power" className=""><strong>Total Power:</strong> <span className="text-red-500">{pn(totalPower(playerStates), fmt)}%</span></li>
+                    <li key="toughness" className=""><strong>Total Toughness:</strong> <span className="text-red-500">{pn(totalToughness(playerStates), fmt)}%</span></li>
+                </ul>
+                <ContentSubsection title="Adventure Power Calculation" defaultHide={true}>
+                    <ul className="ml-5">
                         <li key="base">Base Adventure Power ({pn(v('baseAdventurePower'), fmt)})</li>
                         <li key="equipment">+ Equipment Power + Infinity Cube ({pn(equipmentInfo(playerStates, Stat.POWER), fmt)})</li>
                         <li key="subtotal" className="border-white border-t-2 border-solid">Subtotal: {pn(v('baseAdventurePower').add(equipmentInfo(playerStates, Stat.POWER)), fmt)}</li>
@@ -98,15 +102,15 @@ export default function Page() {
                         <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.POWER).round(), fmt)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalPower(playerStates), fmt)}%</span></li>
                     </ul>
-                    <p className="mt-3">Similarly with Toughness:</p>
-                        <ul>
-                            <li key="total" className=""><strong>Total Toughness:</strong> <span className="text-red-500">{pn(totalToughness(playerStates), fmt)}%</span></li>
-                        </ul>
                 </ContentSubsection>
             </ContentSection>
             <ContentSection title="Misc Stats">
-                <ContentSubsection title="Gold Drop" defaultHide={true}>
-                    <ul>
+                <ul>
+                    <li key="goldDrop"><strong>Total Gold Drop:</strong> <span className="text-red-500">{pn(totalGoldDrop(playerStates), fmt)}%</span></li>
+                    <li key="respawn"><strong>Total Respawn:</strong> <span className="text-red-500">{pn(totalRespawnRate(playerStates), fmt, 2)}%</span> ({pn(totalRespawnRate(playerStates).divide(bd(25)), fmt, 2)} seconds)</li>
+                </ul>
+                <ContentSubsection title="Gold Drop Calculation" defaultHide={true}>
+                    <ul className='ml-5'>
                         <li key="base">Base Gold Drop (100%)</li>
                         <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.GOLD_DROP), fmt, 3)}%)</li>
                         <li key="ngu">x NGU ({pn(nguInfo(playerStates, Stat.GOLD_DROP), fmt)}%)</li>
@@ -115,8 +119,8 @@ export default function Page() {
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalGoldDrop(playerStates), fmt)}%</span></li>
                     </ul>
                 </ContentSubsection>
-                <ContentSubsection title="Respawn" defaultHide={true}>
-                    <ul>
+                <ContentSubsection title="Respawn Calculation" defaultHide={true}>
+                    <ul className='ml-5'>
                         <li key="base">Base Respawn Rate (100% - 4 seconds)</li>
                         <li key="equipment">x Equipment ({pn(bd(200).subtract(equipmentInfo(playerStates, Stat.RESPAWN)).round(), fmt)}%)</li>
                         <li key="ngu">x NGU ({pn(nguInfo(playerStates, Stat.RESPAWN), fmt, 2)}%)</li>
@@ -124,10 +128,22 @@ export default function Page() {
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalRespawnRate(playerStates), fmt, 2)}%</span> ({pn(totalRespawnRate(playerStates).divide(bd(25)), fmt, 2)} seconds)</li>
                     </ul>
                 </ContentSubsection>
+                <ContentSubsection title="Drop Chance Calculation - Not Implemented Yet" defaultHide={true}>
+                    <ul className='ml-5'>
+                        <li key="base">Base Drop Chance Rate (100%)</li>
+                        <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
+                        <li key="macguffin">x MacGuffin</li>
+                        <li key="2d">x 2D Set Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.TWO_D) ? bd(107.43) : bd(100), fmt, 2)}%) </li>
+                        <li key="blood">x Blood Magic</li>
+                        <li key="Yggdrasil">x Yggdrasil Fruit</li>
+                        <li key="ngu">x NGU ({pn(nguInfo(playerStates, Stat.DROP_CHANCE), fmt, 2)}%)</li>
+                        <li key="beardTemp">x Beard (this run) ({pn(beardInfoTemp(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
+                        <li key="beardPerm">x Beard (permanent) ({pn(beardInfoPerm(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
+                        <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">%</span></li>
+                    </ul>
+                </ContentSubsection>
             </ContentSection>
-            <p className="text-sm my-5">
-                * These are also calculations and are not in the save file.
-            </p>
         </Container>
     )
 }
