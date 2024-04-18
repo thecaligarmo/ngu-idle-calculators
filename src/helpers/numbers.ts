@@ -36,6 +36,9 @@ export function pn(num : bigDecimal, numberFormat : string = 'scientific', preci
 
     // We should only start for billions as until then it's pretty human readable
     if (nl < 10) {
+        if (nl < 3 && precision == 0) {
+            precision = 2
+        }
         return Number(num.round(precision).getValue()).toLocaleString() //.toFixed(precision).toLocaleString()
     }
     

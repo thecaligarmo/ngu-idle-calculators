@@ -19,7 +19,7 @@ export class ItemSet {
     }
 }
 
-export const ItemSets : {[k: string]: ItemSet} = {
+export const ItemSets = {
     TRAINING: new ItemSet('training', Zones.TRAINING),
     SEWERS: new ItemSet('sewers', Zones.SEWERS),
     FOREST: new ItemSet('forest', Zones.FOREST),
@@ -67,7 +67,7 @@ export const ItemSets : {[k: string]: ItemSet} = {
     NETHER: new ItemSet('nether', Zones.NETHER),
     AMALGAMATE: new ItemSet('amalgamate', [Zones.AMALGAMATE, Zones.AMALGAMATE2, Zones.AMALGAMATE3, Zones.AMALGAMATE4]),
     PIRATE: new ItemSet('pirate', Zones.PIRATE),
-} ;
+} as const satisfies {[k: string]: ItemSet};
 // space
 // wandoos
 // tutorialCube

@@ -1,86 +1,233 @@
+import { bd, bigdec_min } from "@/helpers/numbers"
+import { ENEMY_TYPE, Enemies, Enemy } from "./enemy"
+import bigDecimal from "js-big-decimal"
+import { at } from "lodash"
+
+var boostTable : number[] = [0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
+
 export default class Zone {
     id: number
     key: string
     name: string
+    boosts: number[][]
+    enemies: Enemy[]
+    bossChanceVal: number
     level: number
-    constructor(id: number, key: string, name: string, level: number = 0) {
+    constructor(id: number, key: string, name: string, boosts: number[][], enemies: Enemy[], level: number = 0,  bossChanceVal : number = -1) {
         this.id = id
         this.key = key
         this.name = name
+        this.boosts = boosts // [ [BoostValue, BoostChance, MaxBoostChance], ... ]
+        this.enemies = enemies
+        this.bossChanceVal = bossChanceVal
         this.level = level
+    }
+    setLevel(level : number) {
+        this.level = level
+        // For Itopod, update boosts
+        if (this.id === 0) {
+            var boostValue = 1
+            if (level >= 1150) {
+                boostValue = 10000
+            } else if (level >= 850) {
+                boostValue = 5000
+            } else if (level >= 700) {
+                boostValue = 2000
+            } else if (level >= 450) {
+                boostValue = 1000
+            } else if (level >= 400) {
+                boostValue = 500
+            } else if (level >= 350) {
+                boostValue = 200
+            } else if (level >= 300) {
+                boostValue = 100
+            } else if (level >= 250) {
+                boostValue = 50
+            } else if (level >= 200) {
+                boostValue = 20
+            } else if (level >= 150) {
+                boostValue = 10
+            } else if (level >= 100) {
+                boostValue = 5
+            } else if (level >= 50) {
+                boostValue = 2
+            }
+            
+            this.boosts = [[boostValue, 14, 14]]
+        }
+    }
+    hardestEnemy() : Enemy {
+        var hp = bd(0)
+        var toughness = bd(0)
+        var power = bd(0)
+        var retEnemy = this.enemies[0];
+        this.enemies.forEach((enemy) => {
+            if(enemy.hp.compareTo(hp) == 1) {
+                retEnemy = enemy
+                toughness = enemy.toughness
+                power = enemy.power
+                hp = enemy.hp
+            }  else if (enemy.hp.compareTo(hp) == 0 && enemy.toughness.compareTo(toughness) == 1) {
+                retEnemy = enemy
+                toughness = enemy.toughness
+                power = enemy.power
+                hp = enemy.hp
+            } else if (enemy.hp.compareTo(hp) == 0 && enemy.toughness.compareTo(toughness) == 0 && enemy.power.compareTo(power) == 1) {
+                retEnemy = enemy
+                toughness = enemy.toughness
+                power = enemy.power
+                hp = enemy.hp
+            }
+        })
+        return retEnemy
+    }
+    bossChance() : bigDecimal {
+        if (this.bossChanceVal > 0) {
+            return bd(this.bossChanceVal)
+        }
+        var bossEnemies = 0
+        this.enemies.forEach((enemy) => {
+            if (enemy.isBoss) {
+                bossEnemies += 1
+            }
+        })
+        return bd(bossEnemies).divide(bd(this.enemies.length))
+    }
+    paralyzeEnemies() : bigDecimal {
+        var paralyzeEnemies = 0
+        var paralyzeBosses = 0
+        var totalNormals = 0
+        var totalBosses = 0
+        this.enemies.forEach((enemy) => {
+            if (enemy.type === ENEMY_TYPE.PARALYZE || enemy.type === ENEMY_TYPE.POISONPARALYZE) {
+                if(enemy.isBoss) {
+                    paralyzeBosses += 1
+                } else {
+                    paralyzeEnemies += 1
+                }
+            }
+
+            if(enemy.isBoss) {
+                totalBosses += 1
+            } else {
+                totalNormals += 1
+            }
+
+        })
+        var bossChance = this.bossChance()
+        var chanceParalyze = bd(paralyzeEnemies).multiply(bd(1).subtract(bossChance)).divide(bd(totalNormals))
+        var chanceBossParalyze = bd(paralyzeBosses).multiply(bossChance).divide(bd(totalBosses))
+        return chanceParalyze.add(chanceBossParalyze)
+    }
+    boostedValue(boostRecyclying : bigDecimal) : bigDecimal[] { 
+        var boostRecyclying : bigDecimal = boostRecyclying;
+
+        var boostedVals : bigDecimal[] = []
+
+        this.boosts.forEach((boost) => {
+            var recycledValue = boostTable.reduce((boostSum, boostVal) => {
+                if (boostVal <= boost[0]) {
+                    return boostSum.multiply(boostRecyclying).divide(bd(100)).add(bd(boostVal));
+                }
+                return boostSum
+            }, bd(0))
+            
+            boostedVals.push(recycledValue)
+        })
+        return boostedVals
+    }
+
+    boostChances(dropChance : bigDecimal) : bigDecimal[] {
+        var boostChance : bigDecimal[] = []
+
+        this.boosts.forEach((boost) => {
+            var maxChance = bd(1)
+            if (this.id >= 22) {
+                var root = Math.pow(Number(dropChance.divide(bd(100)).getValue()), 1/3)
+                maxChance = bd(boost[1]).divide(bd(100)).multiply(bd(root))
+
+            } else {
+                maxChance = bd(boost[1]).divide(bd(100)).multiply(dropChance).divide(bd(100))
+            }
+            var bC = bigdec_min(bd(boost[2]).divide(bd(100)), maxChance)
+            boostChance.push(bC)
+        })
+        return boostChance
     }
 }
 
+// Need to add "Boss Chance" as this is not as simple as ratio
+
 export const Zones = {
-    MISC: new Zone(-4, 'misc', 'Miscellaneous'),
-    HEART: new Zone(-3, 'hearts', 'My Hearts <3'),
-    FOREST_PENDANT: new Zone(-2, 'pendants', 'Forest Pendant'),
-    LOOTY: new Zone(-1, 'looty', 'Looty'),
-    ITOPOD: new Zone(0, 'itopod', 'ITOPOD'),
-    SAFE: new Zone(1, 'safe', 'Safe Zone'),
-    TRAINING: new Zone(2, 'training', 'Tutorial Zone'),
-    SEWERS: new Zone(3, 'sewers', 'Sewers'),
-    FOREST: new Zone(4, 'forest', 'Forest'),
-    CAVE: new Zone(5, 'cave', 'Cave of Many Things'),
-    SKY: new Zone(6, 'sky', 'The Sky'),
-    HSB: new Zone(7, 'HSB', 'High Security Base'),
-    GRB: new Zone(8, 'GRB', 'Gordon Ramsay Bolton'),
-    CLOCK: new Zone(9, 'clock', 'Clock Dimension'),
-    GCT: new Zone(10, 'GCT', 'Grand Corrupted Tree'),
-    TWO_D: new Zone(11, 'twoD', 'The 2D Universe'),
-    ANCIENT_BATTLEFIELD: new Zone(12, 'ghost', 'Ancient Battlefield'),
-    JAKE: new Zone(13, 'jake', 'Jake from Accounting'),
-    AVSP: new Zone(14, 'avsp', 'A Very Strange Place'),
-    MEGA: new Zone(15, 'mega', 'Mega Lands'),
-    UUG: new Zone(16, 'uug', 'UUG, The Unmentionable'),
-    BEARDVERSE: new Zone(17, 'beardverse', 'The Beardverse'),
-    WALDERP: new Zone(18, 'walderp', 'Walderp'),
-    BDW: new Zone(19, 'badlyDrawn', 'Badly Drawn World'),
-    BAE: new Zone(20, 'stealth', 'Boring-Ass Earth'),
-    BEAST1: new Zone(21, 'beast1', 'The Beast', 1),
-    BEAST2: new Zone(21, 'beast2', 'The Beast', 2),
-    BEAST3: new Zone(21, 'beast3', 'The Beast', 3),
-    BEAST4: new Zone(21, 'beast4', 'The Beast', 4),
-    CHOCO: new Zone(22, 'choco', 'Chocolate World'),
-    EVIL: new Zone(23, 'edgy', 'The Evilverse'),
-    PINK: new Zone(24, 'pretty', 'Pretty Pink Princess Land'),
-    NERD: new Zone(25, 'nerd1', 'Greasy Nerd', 1),
-    NERD2: new Zone(25, 'nerd2', 'Greasy Nerd', 2),
-    NERD3: new Zone(25, 'nerd3', 'Greasy Nerd', 3),
-    NERD4: new Zone(25, 'nerd4', 'Greasy Nerd', 4),
-    META: new Zone(26, 'meta', 'Meta Land'),
-    PARTY: new Zone(27, 'party', 'Interdimensional Party'),
-    MOBSTER: new Zone(28, 'godMother1', 'The Godmother', 1),
-    MOBSTER2: new Zone(28, 'godMother2', 'The Godmother', 2),
-    MOBSTER3: new Zone(28, 'godMother3', 'The Godmother', 3),
-    MOBSTER4: new Zone(28, 'godMother4', 'The Godmother', 4),
-    TYPO: new Zone(29, 'typo', 'Typo Zonw'),
-    FAD: new Zone(30, 'fad', 'The Fad-lands'),
-    JRPG: new Zone(31, 'jrpg', 'JRPGVille'),
-    EXILE: new Zone(32, 'exile1', 'The Exile', 1),
-    EXILE2: new Zone(32, 'exile2', 'The Exile', 2),
-    EXILE3: new Zone(32, 'exile3', 'The Exile', 3),
-    EXILE4: new Zone(32, 'exile4', 'The Exile', 4),
-    RADLANDS: new Zone(33, 'rad', 'The Rad Lands'),
-    BACKTOSCHOOL: new Zone(34, 'school', 'Back To School'),
-    WESTWORLD: new Zone(35, 'western', 'The West World'),
-    ITHUNGERS: new Zone(36, 'hunger1', 'It Hungers', 1),
-    ITHUNGERS2: new Zone(36, 'hunger2', 'It Hungers', 2),
-    ITHUNGERS3: new Zone(36, 'hugner3', 'It Hungers', 3),
-    ITHUNGERS4: new Zone(36, 'hunger4', 'It Hungers', 4),
-    BREADVERSE: new Zone(37, 'bread', 'The Breadverse'),
-    SEVENTIES: new Zone(38, 'that70s', 'That 70\'s Zone'),
-    HALLOWEEN: new Zone(39, 'halloweenies', 'The Halloweenies'),
-    ROCKLOBSTER: new Zone(40, 'rockLobster1', 'Rock Lobster', 1),
-    ROCKLOBSTER2: new Zone(40, 'rockLobster2', 'Rock Lobster', 2),
-    ROCKLOBSTER3: new Zone(40, 'rockLobster3', 'Rock Lobster', 3),
-    ROCKLOBSTER4: new Zone(40, 'rockLobster4', 'Rock Lobster', 4),
-    CONSTRUCTION: new Zone(41, 'construction', 'Construction Zone'),
-    DUCK: new Zone(42, 'duck', 'DUCK DUCK ZONE'),
-    NETHER: new Zone(43, 'nether', 'The Nether Regions'),
-    AMALGAMATE: new Zone(44, 'amalgamate1', 'Amalgamate', 1),
-    AMALGAMATE2: new Zone(44, 'amalgamate2', 'Amalgamate', 2),
-    AMALGAMATE3: new Zone(44, 'amalgamate3', 'Amalgamate', 3),
-    AMALGAMATE4: new Zone(44, 'amalgamate4', 'Amalgamate', 4),
-    PIRATE: new Zone(45, 'pirate', 'The Aethereal Sea Part 1'),
-}
+    MISC: new Zone(-4, 'misc', 'Miscellaneous', [], []),
+    HEART: new Zone(-3, 'hearts', 'My Hearts <3', [], []),
+    FOREST_PENDANT: new Zone(-2, 'pendants', 'Forest Pendant', [], []),
+    LOOTY: new Zone(-1, 'looty', 'Looty', [], []),
+    ITOPOD: new Zone(0, 'itopod', 'ITOPOD', [], []),
+    SAFE: new Zone(1, 'safe', 'Safe Zone', [], []),
+    TUTORIAL: new Zone(2, 'training', 'Tutorial Zone', [[1, 15, 100]], [Enemies.A_SMALL_PIECE_OF_FLUFF, Enemies.FLOATING_SEWAGE, Enemies.A_STICK, Enemies.A_SMALL_MOUSE]),
+    SEWERS: new Zone(3, 'sewers', 'Sewers', [[1, 15, 100]], [Enemies.SMALL_MOUSE, Enemies.SLIGHTLY_BIGGER_MOUSE, Enemies.BIG_RAT, Enemies.BROWN_SLIME]),
+    FOREST: new Zone(4, 'forest', 'Forest', [[1, 12, 100], [2, 8, 100]], [Enemies.SKELETON, Enemies.GOBLIN, Enemies.ORC, Enemies.ZOMBIE, Enemies.ENT, Enemies.GIANT, Enemies.RAT_OF_UNUSUAL_SIZE, Enemies.FAIRY, Enemies.GORGON]),
+    CAVE: new Zone(5, 'cave', 'Cave of Many Things', [[1, 13, 100], [2, 12, 100]], [Enemies.GORGONZOLA, Enemies.BRIE, Enemies.GOUDA, Enemies.BLUE_CHEESE, Enemies.PARMESAN, Enemies.LIMBURGER_CHEESE, Enemies.MEGA_RAT, Enemies.ROBOT, Enemies.A_FLUFFY_CHAIR, Enemies.COUCH, Enemies.FLOPPY_MATTRESS, Enemies.EVIL_FRIDGE, Enemies.T800, Enemies.A_WIDE_SCREEN_TV, Enemies.THE_KITCHEN_SINK, Enemies.A_FIFTH_GIANT_MOLE]),
+    SKY: new Zone(6, 'sky', 'The Sky', [[2, 8, 100], [5, 8, 100]], [Enemies.ICARUS_PROUDBOTTOM, Enemies.KID_ON_A_CLOUD, Enemies.NINJA_SAMURAI, Enemies.GIGANTIC_FLOCK_OF_SEAGULLS, Enemies.SEVENFORTYSEVEN, Enemies.TWO_HEADED_GUY, Enemies.LESTER, Enemies.ORIENTAL_DRAGON, Enemies.A_BIRD_PERSON, Enemies.GIGANTIC_FLOCK_OF_CANADA_GEESE]),
+    HSB: new Zone(7, 'HSB', 'High Security Base', [[2, 6, 100], [5, 1.5, 100]], [Enemies.HIGH_SECURITY_INSECT_GUARD_1, Enemies.HIGH_SECURITY_INSECT_GUARD_2, Enemies.A_WHOLE_LOTTA_GUARDS, Enemies.THE_EXPERIMENT, Enemies.GROSS_GREEN_ALIEN, Enemies.THE_RAT_GOD, Enemies.HOOLOOVOO, Enemies.MASSIVE_PLANT_MONSTER, Enemies.ONE_MEGA_GUARD, Enemies.SPIKY_HAIRED_GUY]),
+    GRB: new Zone(8, 'GRB', 'Gordon Ramsay Bolton', [], []),
+    CLOCK: new Zone(9, 'clock', 'Clock Dimension', [[5, 3, 15], [10, 3, 15]], [Enemies.MONDAY, Enemies.TUESDAY, Enemies.WEDNESDAY, Enemies.THURSDAY, Enemies.FRIDAY, Enemies.SATURDAY, Enemies.SUNDAY, Enemies.SUNDAE], 0, 2/9),
+    GCT: new Zone(10, 'GCT', 'Grand Corrupted Tree', [], []),
+    TWO_D: new Zone(11, 'twoD', 'The 2D Universe', [[10, 7, 15], [20, 7, 15]], [Enemies.A_FLAT_MOUSE, Enemies.A_TINY_TRIANGLE, Enemies.A_SQUARE_BEAR, Enemies.THE_PENTAGON, Enemies.THE_FIRST_STOP_SIGN, Enemies.THE_SECOND_STOP_SIGN, Enemies.KING_CIRCLE, Enemies.A_SUPER_HEXAGON]),
+    ANCIENT_BATTLEFIELD: new Zone(12, 'ghost', 'Ancient Battlefield', [[10, 6, 20],[20, 6, 20]], [Enemies.GHOST_MICE, Enemies.CRASPER_THE_PISSED_OFF_GHOST, Enemies.LIVING_ARMOR, Enemies.LIVING_ARMOUR, Enemies.QUOTES, Enemies.THE_PANTHEON_OF_FALLEN_GODS, Enemies.GHOST_DAD, Enemies.MYSTERIOUS_FIGURE]),
+    JAKE: new Zone(13, 'jake', 'Jake from Accounting', [], []),
+    AVSP: new Zone(14, 'avsp', 'A Very Strange Place', [[20, 3, 25],[50, 3, 25]], [Enemies.THE_ENTIRE_ALPHABET_UP_A_COCONUT_TREE, Enemies.THE_LUMMOX, Enemies.A_METAL_SLIME, Enemies.A_GINORMOUS_SWORD, Enemies.AN_ORDINARY_CHICKEN, Enemies.SEVENFORTYTHREE_CHICKENS, Enemies.VIC, Enemies.KENNY]),
+    MEGA: new Zone(15, 'mega', 'Mega Lands', [[50, 1.1, 15], [100, 1.1, 15]], [Enemies.BROKEN_VCR_MAN, Enemies.KITTEN_IN_A_MECH_WOMAN, Enemies.MR_PLOW, Enemies.ROBUTT, Enemies.FORMER_CANADIAN_PM_STEPHEN_HARPER, Enemies.A_CYBERDEMON, Enemies.ROBO_RAT_9000, Enemies.BUTTER_PASSING_ROBOT, Enemies.DOCTOR_WAHWEE], 0, 1/5),
+    UUG: new Zone(16, 'uug', 'UUG, The Unmentionable', [], []),
+    BEARDVERSE: new Zone(17, 'beardverse', 'The Beardverse', [[50, 0.35, 25], [100, 0.35, 25]], [Enemies.A_BEARDED_LADY, Enemies.A_BEARDED_MAN, Enemies.COUSIN_ITT, Enemies.A_NAKED_MOLERAT, Enemies.ROB_BOSS, Enemies.GOSSAMER, Enemies.AN_ORANGE_TOUPEE_WITH_FISTS, Enemies.A_CLOGGED_SHOWER_DRAIN]),
+    WALDERP: new Zone(18, 'walderp', 'Walderp', [], []),
+    BDW: new Zone(19, 'badlyDrawn', 'Badly Drawn World', [[100, 0.1, 20], [200, 0.1, 20]], [Enemies.BADLY_DRAWN_DRAGON, Enemies.REALLY_BAD_SONIC_FANART, Enemies.BADLY_DRAWN_SCHOOLGIRL, Enemies.NO_ENEMY, Enemies.REALLY_BAD_MLP_FANART, Enemies.LOSS_PNG, Enemies.EVIL_SPIKY_HAIRED_GUY, Enemies.EVIL_BADLY_DRAWN_KITTY]),
+    BAE: new Zone(20, 'stealth', 'Boring-Ass Earth', [[200, 0.012, 20], [500, 0.012, 20]], [Enemies.THE_EIFFEL_TOWER, Enemies.A_MUMMY, Enemies.A_DADDY, Enemies.TWO_BANANAS_IN_PYJAMAS, Enemies.GIANT_RAISINS_FROM_CALIFORNIA, Enemies.AN_ANNOYING_PENGUIN, Enemies.AN_ARMY_OF_ANNOYING_PENGUINS, Enemies.THE_ELUSIVE_CS], 0, 2/9),
+    BEAST1: new Zone(21, 'beast1', 'The Beast', [], [], 1),
+    BEAST2: new Zone(21, 'beast2', 'The Beast', [], [], 2),
+    BEAST3: new Zone(21, 'beast3', 'The Beast', [], [], 3),
+    BEAST4: new Zone(21, 'beast4', 'The Beast', [], [], 4),
+    CHOCO: new Zone(22, 'choco', 'Chocolate World', [[200, 0.055, 10], [500, 0.055, 10]], [Enemies.CHOCOLATE_MOUSE, Enemies.CHOCOLATE_MIMIC, Enemies.CHOCOLATE_CROWBAR, Enemies.CHOCO_FREEMAN, Enemies.CHOCOLATE_FONDUE, Enemies.CHOCOLATE_SLIME, Enemies.DARK_CHOCOLATE, Enemies.CHOCOLATE_SALTY_BALLS, Enemies.SCREAMING_CHOCOLATE_FISH, Enemies.A_MIGHTY_LUMP_OF_POO, Enemies.CHOCO_GIANT, Enemies.TYPE_TWO_DIABETES, Enemies.MELTED_CHOCOLATE_BLOB]),
+    EVIL: new Zone(23, 'edgy', 'The Evilverse', [[200, 0.012, 10], [500, 0.012, 10]], []),
+    PINK: new Zone(24, 'pretty', 'Pretty Pink Princess Land', [[500, 0.01, 8], [1000, 0.01, 6]], []),
+    NERD: new Zone(25, 'nerd1', 'Greasy Nerd', [], [], 1),
+    NERD2: new Zone(25, 'nerd2', 'Greasy Nerd', [], [], 2),
+    NERD3: new Zone(25, 'nerd3', 'Greasy Nerd', [], [], 3),
+    NERD4: new Zone(25, 'nerd4', 'Greasy Nerd', [], [], 4),
+    META: new Zone(26, 'meta', 'Meta Land', [[1000, 0.005, 7], [2000, 0.005, 7]], []),
+    PARTY: new Zone(27, 'party', 'Interdimensional Party', [[1000, 0.003, 8], [2000, 0.003, 8]], []),
+    MOBSTER: new Zone(28, 'godMother1', 'The Godmother', [], [], 1),
+    MOBSTER2: new Zone(28, 'godMother2', 'The Godmother', [], [], 2),
+    MOBSTER3: new Zone(28, 'godMother3', 'The Godmother', [], [], 3),
+    MOBSTER4: new Zone(28, 'godMother4', 'The Godmother', [], [], 4),
+    TYPO: new Zone(29, 'typo', 'Typo Zonw', [[1000, 0.0022, 9], [2000, 0.0022, 9]], []),
+    FAD: new Zone(30, 'fad', 'The Fad-lands', [[2000, 0.0018, 10], [5000, 0.0018, 10]], []),
+    JRPG: new Zone(31, 'jrpg', 'JRPGVille', [[2000, 0.0015, 10], [5000, 0.0015, 10]], []),
+    EXILE: new Zone(32, 'exile1', 'The Exile', [], [], 1),
+    EXILE2: new Zone(32, 'exile2', 'The Exile', [], [], 2),
+    EXILE3: new Zone(32, 'exile3', 'The Exile', [], [], 3),
+    EXILE4: new Zone(32, 'exile4', 'The Exile', [], [], 4),
+    RADLANDS: new Zone(33, 'rad', 'The Rad Lands', [[2000, 0.00006, 15], [5000, 0.00006, 15]], []),
+    BACKTOSCHOOL: new Zone(34, 'school', 'Back To School', [[5000, 0.00004, 10], [10000, 0.00004, 10]], []),
+    WESTWORLD: new Zone(35, 'western', 'The West World', [[5000, 0.000025, 15], [10000, 0.000025, 15]], []),
+    ITHUNGERS: new Zone(36, 'hunger1', 'It Hungers', [], [], 1),
+    ITHUNGERS2: new Zone(36, 'hunger2', 'It Hungers', [], [], 2),
+    ITHUNGERS3: new Zone(36, 'hugner3', 'It Hungers', [], [], 3),
+    ITHUNGERS4: new Zone(36, 'hunger4', 'It Hungers', [], [], 4),
+    BREADVERSE: new Zone(37, 'bread', 'The Breadverse', [[5000, 0.00001, 15], [10000, 0.00001, 15]], []),
+    SEVENTIES: new Zone(38, 'that70s', 'That 70\'s Zone', [[10000, 0.000006, 15], [10000, 0.000006, 15]], []),
+    HALLOWEEN: new Zone(39, 'halloweenies', 'The Halloweenies', [[10000, 0.000004, 15], [10000, 0.000004, 15]], []),
+    ROCKLOBSTER: new Zone(40, 'rockLobster1', 'Rock Lobster', [], [], 1),
+    ROCKLOBSTER2: new Zone(40, 'rockLobster2', 'Rock Lobster', [], [], 2),
+    ROCKLOBSTER3: new Zone(40, 'rockLobster3', 'Rock Lobster', [], [], 3),
+    ROCKLOBSTER4: new Zone(40, 'rockLobster4', 'Rock Lobster', [], [], 4),
+    CONSTRUCTION: new Zone(41, 'construction', 'Construction Zone', [[10000, 0.0000025, 16], [10000, 0.0000025, 16]], []),
+    DUCK: new Zone(42, 'duck', 'DUCK DUCK ZONE', [[10000, 0.000002, 17], [10000, 0.000002, 17]], []),
+    NETHER: new Zone(43, 'nether', 'The Nether Regions', [[10000, 0.0000016, 17], [10000, 0.0000016, 17]], []),
+    AMALGAMATE: new Zone(44, 'amalgamate1', 'Amalgamate', [], [], 1),
+    AMALGAMATE2: new Zone(44, 'amalgamate2', 'Amalgamate', [], [], 2),
+    AMALGAMATE3: new Zone(44, 'amalgamate3', 'Amalgamate', [], [], 3),
+    AMALGAMATE4: new Zone(44, 'amalgamate4', 'Amalgamate', [], [], 4),
+    PIRATE: new Zone(45, 'pirate', 'The Aethereal Sea Part 1', [[10000, 0.000001, 17], [10000, 0.000001, 17]], []),
+} as const satisfies {[key: string]: Zone};

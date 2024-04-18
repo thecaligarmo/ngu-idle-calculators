@@ -301,7 +301,7 @@ export class NGU extends Resource {
 
 export const ENGULIST = [
     new NGU(0, 'NGUAugments', 'NGU AUGMENTS',  0, [[Stat.AUGMENT_SPEED, 1]], 'energy',   0, 1000000000),
-    new NGU(1, 'NGUWandoos', 'NGU WANDOOS',  0, [[Stat.WANDOOS_SPEED, 0.1]], 'energy',   0, 100000000),
+    new NGU(1, 'NGUWandoos', 'NGU WANDOOS',  0, [[Stat.ENERGY_WANDOOS_SPEED, 0.1], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy',   0, 100000000),
     new NGU(2, 'NGURespawn', 'NGU RESPAWN',  0, [[Stat.RESPAWN, 0.05]], 'energy',   400, 60),
     new NGU(3, 'NGUGold', 'NGU GOLD',  0, [[Stat.GOLD_DROP, 1]], 'energy',   0, 1000000000),
     new NGU(4, 'NGUAdventureA', 'NGU ADVENTURE A',  0, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]], 'energy',   1000, 100244.2),

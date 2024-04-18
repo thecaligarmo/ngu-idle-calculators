@@ -5,6 +5,9 @@ import { bd } from "./numbers"
 // Parse an object to get something back properly
 export function parseObj(state: any, key: string) {
     var x : any = state[key][0]
+    if(key == 'totalRespawnTime') {
+        console.log(x);
+    }
     if (typeof x === 'string') {
         x = JSON.parse(x)
     }

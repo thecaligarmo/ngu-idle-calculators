@@ -6,11 +6,12 @@ import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { BEARDS, Beard } from "@/assets/beards";
 import { DIGGERS, Digger } from "@/assets/diggers";
 import { CHALLENGES, Challenge } from "@/assets/challenges";
-import { totalEnergyCap, totalEnergyNGUSpeedFactor, totalMagicCap, totalMagicNGUSpeedFactor, totalPower } from "./calculators";
+import { boostRecyclying, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalMagicCap, totalMagicNGUSpeedFactor, totalPower, totalRespawnRate } from "./calculators";
 import { APITEMS, APItem } from "@/assets/apItems";
 import { ItemSet, ItemSets } from "@/assets/sets";
 import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
 import { MACGUFFINS, MacGuffin } from "@/assets/macguffins";
+import { bd } from "./numbers";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
@@ -39,10 +40,17 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'baseResource3Power':
                 return playerData.res3.res3Power;
 
+            case 'beastMode':
+                return playerData.adventure.beastModeOn
             case 'bloodMagicDropChance':
+                if (playerData.bloodMagic.lootSpellBlood == '0') {
+                    return 0
+                }
                 return Math.log2(playerData.bloodMagic.lootSpellBlood / 10000)
             case 'bloodMagicTimeMachine':
                 return Math.log2(playerData.bloodMagic.goldSpellBlood / 1000000) ** 2
+            case 'boostRecyclyingPurchase':
+                return playerData.purchases.boost
 
             case 'cubePower':
                 return playerData.inventory.cubePower;
@@ -375,6 +383,8 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return maxxedItemIds
 
             // Calculations
+            case 'boostRecyclying%':
+                return boostRecyclying(playerData);
             case 'currentEnergyCap':
                 return totalEnergyCap(playerData);
             case 'currentMagicCap':
@@ -385,6 +395,10 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return totalMagicNGUSpeedFactor(playerData);
             case 'totalPower':
                 return totalPower(playerData);
+            case 'totalRespawnTime':
+                return totalRespawnRate(playerData).divide(bd(25));
+            case 'totalDropChance%':
+                return totalDropChance(playerData);
             
             
             default:
@@ -410,8 +424,10 @@ export function getPlayerNumberOptions() : string[]{
         'baseResource3Bar',
         'baseResource3Cap',
         'baseResource3Power',
+        'beastMode',
         'bloodMagicDropChance',
         'bloodMagicTimeMachine',
+        'boostRecyclyingPurchase',
         'cubePower',
         'cubeToughness',
         'energyNGUAugmentsLevel',
@@ -509,10 +525,13 @@ export function getPlayerOptions() : string[] {
 
 export function getCalculatedOptions() : string[] {
     return [
+        'boostRecyclying%',
         'currentEnergyCap',
         'currentMagicCap',
         'totalEnergyNGUSpeedFactor%',
         'totalMagicNGUSpeedFactor%',
         'totalPower',
+        'totalRespawnTime',
+        'totalDropChance%',
     ]
 }

@@ -87,7 +87,7 @@ export const StatType : {[index: number]: string[]} = {
     3: [Stat.MAGIC_POWER],
     5: [Stat.DROP_CHANCE],
     7: [Stat.GOLD_DROP],
-    12: [Stat.WANDOOS_SPEED],
+    12: [Stat.ENERGY_WANDOOS_SPEED, Stat.MAGIC_WANDOOS_SPEED],
     13: [Stat.AT_SPEED],
     14: [Stat.MOVE_COOLDOWN],
     15: [Stat.SEED_GAIN],
@@ -105,7 +105,7 @@ export const StatType : {[index: number]: string[]} = {
     28: [Stat.ENERGY_BARS, Stat.MAGIC_BARS],
     29: [Stat.ENERGY_CAP, Stat.MAGIC_CAP],
     30: [Stat.AUGMENT_SPEED],
-    31: [Stat.WANDOOS_SPEED],
+    31: [Stat.ENERGY_WANDOOS_SPEED, Stat.MAGIC_WANDOOS_SPEED],
     32: [Stat.AT_SPEED],
     33: [Stat.ENERGY_POWER],
     34: [Stat.MAGIC_POWER],
@@ -117,6 +117,7 @@ export const StatType : {[index: number]: string[]} = {
     40: [Stat.GOLD_DROP],
     41: [Stat.DROP_CHANCE],
     42: [Stat.ENERGY_BEARD_SPEED, Stat.MAGIC_BEARD_SPEED],
+    45: [Stat.QUEST_DROP],
 }
 
 export const StatDiv  : {[index: number]: number}= {
@@ -157,6 +158,7 @@ export const StatDiv  : {[index: number]: number}= {
     40: 1000,
     41: 10000,
     42: 10000,
+    45: 1000000,
 }
 
 
@@ -410,7 +412,7 @@ export const ITEMLIST = [
         [Stat.TOUGHNESS, 600],
         [Stat.ENERGY_POWER, 95],
         [Stat.ENERGY_BARS, 30],
-        [Stat.WANDOOS_SPEED, 10],
+        [Stat.ENERGY_WANDOOS_SPEED, 10],[ Stat.MAGIC_WANDOOS_SPEED, 10],
     ]),
     new Item(96, 'squareChestpiece', 'Square Chestpiece',  Slot.CHEST, 100, [
         [Stat.POWER, 50],
@@ -443,7 +445,7 @@ export const ITEMLIST = [
         [Stat.TOUGHNESS, 650],
     ]),
     new Item(101, 'kingCirclesAmuletofHelpingRandomStuff', 'King Circle\'s Amulet of Helping Random Stuff',  Slot.ACCESSORY, 100, [
-        [Stat.WANDOOS_SPEED, 30],
+        [Stat.ENERGY_WANDOOS_SPEED, 30],[ Stat.MAGIC_WANDOOS_SPEED, 30],
         [Stat.AT_SPEED, 40],
     ]),
     new Item(103, 'spoopyHelmet', 'Spoopy Helmet',  Slot.HEAD, 100, [
@@ -645,7 +647,8 @@ export const ITEMLIST = [
         [Stat.TOUGHNESS, 1000],
         [Stat.ENERGY_NGU_SPEED, 50],
         [Stat.MAGIC_NGU_SPEED, 50], 
-        [Stat.WANDOOS_SPEED, 50],
+        [Stat.ENERGY_WANDOOS_SPEED, 50],
+        [Stat.MAGIC_WANDOOS_SPEED, 50],
         [Stat.AT_SPEED, 50],
     ]),
     new Item(139, 'ringofWayTooMuchEnergy', 'Ring of Way Too Much Energy',  Slot.ACCESSORY, 100, [
@@ -745,7 +748,8 @@ export const ITEMLIST = [
     new Item(153, 'wanderersBoots', 'Wanderer\'s Boots',  Slot.BOOTS, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 24000],
-        [Stat.WANDOOS_SPEED, 130],
+        [Stat.ENERGY_WANDOOS_SPEED, 130],
+        [Stat.MAGIC_WANDOOS_SPEED, 130],
         [Stat.ENERGY_NGU_SPEED, 60],
         [Stat.MAGIC_NGU_SPEED, 60], 
     ]),
@@ -807,7 +811,8 @@ export const ITEMLIST = [
         [Stat.MAGIC_BARS, 500],
         [Stat.ENERGY_NGU_SPEED, 150],
         [Stat.MAGIC_NGU_SPEED, 150], 
-        [Stat.WANDOOS_SPEED, 120],
+        [Stat.ENERGY_WANDOOS_SPEED, 120],
+        [Stat.MAGIC_WANDOOS_SPEED, 120],
     ]),
     new Item(162, 'myBrownHeart<3', 'My Brown Heart <3',  Slot.ACCESSORY, 100, [
         [Stat.POWER, 100],
@@ -969,7 +974,8 @@ export const ITEMLIST = [
     new Item(189, 'aBaldEgg', 'A Bald Egg',  Slot.ACCESSORY, 100, [
         [Stat.POWER, 33333],
         [Stat.TOUGHNESS, 33333],
-        [Stat.WANDOOS_SPEED, 200],
+        [Stat.ENERGY_WANDOOS_SPEED, 200],
+        [Stat.MAGIC_WANDOOS_SPEED, 200],
         [Stat.ENERGY_CAP, 150],
         [Stat.MAGIC_CAP, 150],
     ]),
@@ -1369,7 +1375,8 @@ export const ITEMLIST = [
         [Stat.POWER, 696969],
         [Stat.TOUGHNESS, 696969],
         [Stat.QUEST_DROP, 8],
-        [Stat.WANDOOS_SPEED, 400],
+        [Stat.ENERGY_WANDOOS_SPEED, 400],
+        [Stat.MAGIC_WANDOOS_SPEED, 400],
         [Stat.RES3_CAP, 1],
     ]),
     new Item(258, 'partyHat', 'Party Hat',  Slot.HEAD, 100, [
@@ -1503,7 +1510,8 @@ export const ITEMLIST = [
         [Stat.ENERGY_NGU_SPEED, 200],
         [Stat.MAGIC_NGU_SPEED, 200], 
         [Stat.SEED_GAIN, 50],
-        [Stat.WANDOOS_SPEED, 800],
+        [Stat.ENERGY_WANDOOS_SPEED, 800],
+        [Stat.MAGIC_WANDOOS_SPEED, 800],
     ]),
     new Item(274, 'theGodmothersRing', 'The Godmother\'s Ring',  Slot.ACCESSORY, 100, [
         [Stat.POWER, 15000000],
@@ -2118,7 +2126,8 @@ export const ITEMLIST = [
         [Stat.TOUGHNESS, 400000000],
         [Stat.HACK_SPEED, 20],
         [Stat.YGGDRASIL_YIELD, 4],
-        [Stat.WANDOOS_SPEED, 1300],
+        [Stat.ENERGY_WANDOOS_SPEED, 1300],
+        [Stat.MAGIC_WANDOOS_SPEED, 1300],
     ]),
     new Item(384, 'aFunkyKleinBottle', 'A Funky Klein Bottle',  Slot.ACCESSORY, 100, [
         [Stat.POWER, 380000000],
@@ -2323,7 +2332,8 @@ export const ITEMLIST = [
         [Stat.POWER, 25500000],
         [Stat.TOUGHNESS, 744000000],
         [Stat.RES3_POWER, 616],
-        [Stat.WANDOOS_SPEED, 3100],
+        [Stat.ENERGY_WANDOOS_SPEED, 3100],
+        [Stat.MAGIC_WANDOOS_SPEED, 3100],
         [Stat.RES3_CAP, 61.3],
     ]),
     new Item(412, 'anOrdinaryApple', 'An Ordinary Apple',  Slot.WEAPON, 100, [
@@ -2400,7 +2410,8 @@ export const ITEMLIST = [
     new Item(421, 'aPetRock', 'A Pet Rock',  Slot.ACCESSORY, 100, [
         [Stat.POWER, 931000000],
         [Stat.TOUGHNESS, 931000000],
-        [Stat.WANDOOS_SPEED, 4600],
+        [Stat.ENERGY_WANDOOS_SPEED, 4600],
+        [Stat.MAGIC_WANDOOS_SPEED, 4600],
         [Stat.ENERGY_POWER, 627000],
         [Stat.MAGIC_POWER, 627000],
         [Stat.ENERGY_BARS, 630000],
@@ -2739,7 +2750,8 @@ export const ITEMLIST = [
     new Item(466, 'pocketNetherlands', 'Pocket Netherlands',  Slot.ACCESSORY, 100, [
         [Stat.POWER, 2810000000],
         [Stat.TOUGHNESS, 2810000000],
-        [Stat.WANDOOS_SPEED, 9800],
+        [Stat.ENERGY_WANDOOS_SPEED, 9800],
+        [Stat.MAGIC_WANDOOS_SPEED, 9800],
         [Stat.ENERGY_POWER, 1310000],
         [Stat.MAGIC_POWER, 1310000],
         [Stat.QUEST_DROP, 12],

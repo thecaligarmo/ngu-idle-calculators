@@ -8,9 +8,10 @@ import bigDecimal from "js-big-decimal";
 import { parseObj, parseNum } from "./parsers";
 import { advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
 import { ItemSets } from "@/assets/sets";
+import { M_PLUS_1 } from "next/font/google";
 
 
-// General Calc
+// General Calc - gives a percentage
 function calcAll(data : any, stat : string) : bigDecimal{
     var base = bd(100)
     return bd(1)
@@ -24,6 +25,15 @@ function calcAll(data : any, stat : string) : bigDecimal{
         .multiply(challengeInfo(data, stat))
         .multiply(apItemInfo(data, stat).divide(base))
         .multiply(macguffinInfo(data, stat).divide(base))
+}
+
+export function boostRecyclying(data : any) : bigDecimal {
+    var boostRecyclying = parseNum(data, 'boostRecyclyingPurchase').multiply(bd(100))
+    var challenges = parseObj(data, 'challenges')
+    if(challenges && !_.isUndefined(challenges[0])) {
+        boostRecyclying = boostRecyclying.add(bd(challenges[0].level * 10)) // 10 % each level
+    }
+    return boostRecyclying
 }
 
 
@@ -94,11 +104,15 @@ export function totalPower(data : any) : bigDecimal {
 
     // Want to add equipPower instead of multiply
     var subtotal = basePower.add(equipPower)
+
+    // Beast multiplier
+    var beast = parseNum(data, 'beastMode').compareTo(bd(1)) == 0 ? bd(1.4) : bd(1)
     
     return subtotal
-        .multiply(gen)
+        .multiply(gen).divide(bd(100))
         .multiply(advTraining)
         .divide(equipPower) // adding instead
+        .multiply(beast)
         
 }
 
@@ -112,7 +126,7 @@ export function totalToughness(data : any) : bigDecimal {
     var subtotal = basePower.add(equipPower)
     
     return subtotal
-        .multiply(gen)
+        .multiply(gen).divide(bd(100))
         .multiply(advTraining)
         .divide(equipPower) // adding instead
         

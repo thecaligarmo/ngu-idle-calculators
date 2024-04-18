@@ -33,7 +33,7 @@ export function createStatesForData(extraRequired: string[][] = []) : any{
     }
 
     for (var key of calculatedOptions) {
-        var defaultVal = defaultPlayerData(dataObj, key).round().getValue()
+        var defaultVal = defaultPlayerData(dataObj, key).getValue()
         var dataStateNum = useLocalStorageNumber(key, defaultVal, true);
         if (isPlayerDataUpdated() && dataStateNum[0] != defaultVal) {
             dataStateNum[1](defaultVal)
