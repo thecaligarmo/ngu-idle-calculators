@@ -55,24 +55,20 @@ export default function Page() {
   itopodZone.setLevel(optimalITOPODFloor)
   
   var optimalZone = itopodZone;
-  var boostedVal = optimalZone.boostChances(v('totalDropChance%'))[0].multiply(optimalZone.boostedValue(v('boostRecyclying%'))[0]);
+  var optimalZoneExpValue = bd(optimalZone.exp[0] * optimalZone.exp[1]);
 
   for(let zone of Object.values(Zones)) {
     if(zone.hardestEnemy()){
       
       var oneHitPower = zone.hardestEnemy().oneHitPower(idleAttackModifier);
       var paralyzer = zone.paralyzeEnemies();
-      var normalEnemyPercent = bd(1).subtract(zone.bossChance());
-      var boostChances = zone.boostChances(v('totalDropChance%'))
-      var recycledValues = zone.boostedValue(v('boostRecyclying%')).reduce((sum, boost, index) => {
-        var boostValueChance = boost.multiply(boostChances[index])
-        return sum.add(boostValueChance)
+      var expChance = zone.expChance(v('totalDropChance%'))
+      var exp = zone.exp[0]
 
-      }, bd(0));
-
+      // Needs ot be at least one
       var powerRat = bigdec_max((oneHitPower.divide(v('totalPower'))).ceil(), bd(1))
 
-      var boostedValZone = (v('totalRespawnTime').add(idleAttackCooldown))
+      var expValZone = (v('totalRespawnTime').add(idleAttackCooldown))
           .divide(
             v('totalRespawnTime').add(
                   idleAttackCooldown.multiply(powerRat)
@@ -80,21 +76,22 @@ export default function Page() {
                   idleAttackCooldown.multiply(powerRat).compareTo(bd(3.5)) == 1 ? bd(2).multiply(paralyzer) : bd(0)
               )
           )
-          .multiply(normalEnemyPercent)
-          .multiply(recycledValues)
-      if(boostedVal.compareTo(boostedValZone) == -1) {
-        boostedVal = boostedValZone
-        optimalZone = zone
-      }
+          .multiply(expChance)
+          .multiply(bd(exp))
+
+        if(optimalZoneExpValue.compareTo(expValZone) == -1) {
+            optimalZoneExpValue = expValZone
+            optimalZone = zone
+        }
     }
   }
 
   
   return (
-    <Content title="Boosts" infoRequired={infoReq} extraRequired={extraReq}>
-      <ContentSubsection title="What is the optimal zone for getting boosts?">
+    <Content title="Experience" infoRequired={infoReq} extraRequired={extraReq}>
+      <ContentSubsection title="What is the optimal zone for getting experience?">
           <p>
-              The optimal zone for getting boosts is <span className="text-red-500">{optimalZone.name}</span> which will give you an average boost value of <span className="text-blue-500">{pn(boostedVal, fmt, 2)}</span>.
+              The optimal zone for getting experience is <span className="text-red-500">{optimalZone.name}</span> which will give you an average exp value of <span className="text-blue-500">{pn(optimalZoneExpValue, fmt, 2)}</span>.
           </p>
       </ContentSubsection>
     </Content>
