@@ -141,7 +141,10 @@ export class NGU extends Resource {
 
     percentIncrease(percent: bigDecimal | number) : bigDecimal{
         var maxLvl = 0
-        percent = Number(percent)
+        if (percent instanceof bigDecimal) {
+            percent = Number(percent.getValue())
+        }
+        
         for (var prop of Object.keys(this.base)) {
             if (this.isRespawn()) { // Respawn has weird scaling so we need to fix it.
                 var curVal = this.getStatValue(this.level, prop) - 100
@@ -159,7 +162,7 @@ export class NGU extends Resource {
         }
         return bd(maxLvl).ceil()
     }
-    calcSecondsToTarget(cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal {
+    calcSecondsToTarget(cap : bigDecimal, speedFactor : bigDecimal, target : bigDecimal = bd(-1)) : bigDecimal {
         // Grab base amount of time things will take
         var baseSpeed = this.getBaseSpeed();
         try {
@@ -167,16 +170,19 @@ export class NGU extends Resource {
         } catch (error) {
             var baseTime = bd(0)
         }
+        
         var level = bd(this.level)
-        var target = bd(this.target)
+        if (target.compareTo(bd(-1)) === 0 ) {
+            target = bd(this.target)
+        }
 
 
         
         
         // Grab the starting time and the ending time
-        var startingSpeed = baseTime.multiply(level.add(bd(1))).round(2)
-        var endingSpeed = baseTime.multiply(target).round(2)
-
+        var startingSpeed = baseTime.multiply(level.add(bd(1)))
+        var endingSpeed = baseTime.multiply(target)
+        
         // Grab the number of levels that will be calculated with starting, middle (average) and end times
         try {
             var startingSpeedLevels = bigdec_max(bigdec_min(startingSpeed.divide(baseTime), target).subtract(level).floor(), bd(0))

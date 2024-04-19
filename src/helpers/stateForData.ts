@@ -52,7 +52,8 @@ export function getRequiredStates(data : any, states : any) : any{
             var dataState = states[k]
             colDr.push({
                 key: k,
-                value: dataState
+                value: dataState,
+                disabled: false
             })
         }
         ir.push(colDr)

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Container from "./container";
 import ContentSection from "./contentSection";
 import ContentSectionWithData from "./contentSectionWithData";
+import _ from "lodash";
 
 interface ContentProps {
     children : ReactNode;

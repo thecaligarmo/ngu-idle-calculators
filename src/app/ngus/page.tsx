@@ -5,6 +5,7 @@ import { ChoiceButton } from "@/components/buttons";
 import Content from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
+import { disableItem } from "@/components/dataListColumns";
 import { bd, dn, pn} from "@/helpers/numbers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import { camelToTitle } from "@/helpers/strings";
@@ -128,17 +129,18 @@ export default function Page() {
         return (calcType == NGU_PERCENTAGE) ? ngu.percentIncrease(v("percentageIncrease%")) : bd(ngu.target);
     })
 
-    var energySeconds = eNGUs.map((engu) => {
-        return engu.calcSecondsToTarget(v("currentEnergyCap"), v("totalEnergyNGUSpeedFactor%"))
+    var energySeconds = eNGUs.map((engu, index) => {
+        return engu.calcSecondsToTarget(v("currentEnergyCap"), v("totalEnergyNGUSpeedFactor%"), energyTargets[index])
 
     })
-    var magicSeconds = mNGUs.map((mngu) => {
-        return mngu.calcSecondsToTarget(v("currentMagicCap"), v("totalMagicNGUSpeedFactor%"))
+    var magicSeconds = mNGUs.map((mngu, index) => {
+        return mngu.calcSecondsToTarget(v("currentMagicCap"), v("totalMagicNGUSpeedFactor%"), magicTargets[index])
     })
 
     var energyTotalSeconds = energySeconds.reduce((total, current) => {
         return total.add(current)
     }, bd(0))
+
     
     var magicTotalSeconds = magicSeconds.reduce((total, current) => {
         return total.add(current)
@@ -244,19 +246,34 @@ export default function Page() {
     })
 
     if(calcType == NGU_TARGET) {
-        extraReq.pop()
-        extraReq.pop()
+        extraReq = disableItem(extraReq, ['percentageIncrease%', 'timeInSeconds']);
     } else {
-        infoReq.pop()
-        infoReq.pop()
+        infoReq = disableItem(infoReq, [
+            'energyNGUAugmentsTarget',
+            'energyNGUWandoosTarget',
+            'energyNGURespawnTarget',
+            'energyNGUGoldTarget',
+            'energyNGUAdventureATarget',
+            'energyNGUPowerATarget',
+            'energyNGUDropChanceTarget',
+            'energyNGUMagicNGUTarget',
+            'energyNGUPPTarget',
+            'magicNGUYggdrasilTarget',
+            'magicNGUExpTarget',
+            'magicNGUPowerBTarget',
+            'magicNGUNumberTarget',
+            'magicNGUTimeMachineTarget',
+            'magicNGUEnergyNGUTarget',
+            'magicNGUAdventureBTarget'
+        ])
+
         if (calcType != NGU_PERCENTAGE) {
-            extraReq[2].shift()
+            extraReq = disableItem(extraReq, ['percentageIncrease%']);
         }
         if (calcType != NGU_TIME) {
-            extraReq[2].pop()
+            extraReq = disableItem(extraReq, ['timeInSeconds']);
         }
     }
-
     
     var topButtons = (
         <>

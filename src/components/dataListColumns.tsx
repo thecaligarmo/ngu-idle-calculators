@@ -4,6 +4,18 @@ import { pn } from "@/helpers/numbers";
 import { camelToTitle } from "@/helpers/strings";
 import { ReactNode } from "react";
 
+export function disableItem(reqs: any, itemToRemove: string[]) : string[][] {
+    
+    for(var i = 0; i < reqs.length; i++) {
+        for(var j = 0; j< reqs[i].length; j++) {
+            if(itemToRemove.includes(reqs[i][j].key)) {
+                reqs[i][j].key = reqs[i][j].key + "DISABLED"
+            }
+        }
+    }
+    return reqs
+}
+
 /*
  Returns the <li> or <input> needed for `dataToCols`
 */
@@ -32,7 +44,11 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                 />
         </li>)
     } else {
-        return (<li key={d.key}>
+        var disabled = ""
+        if(d.disabled) {
+            disabled += "hidden"
+        }
+        return (<li key={d.key} className={disabled}>
                 {camelToTitle(d.key)}: {pn(val, fmt)}
         </li>)
     }
@@ -43,9 +59,14 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
 */
 export function dataToCols(dr : any, input : boolean = false) : ReactNode{
     const cols = []
+    
     for (var col of dr) {
         var colKey = ''
         for (var d of col) {
+            if(d.key.includes('DISABLED')) {
+                d.key = d.key.replace('DISABLED', '')
+                d.disabled = true
+            }
             colKey += d.key
         }
         var cc = 'inline-block align-top mb-2 '
