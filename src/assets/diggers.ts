@@ -48,7 +48,7 @@ export class Digger extends Resource {
 
 export const DIGGERLIST = [
     new Digger(0, 'dropChanceDigger', 'Drop Chance Digger',  0, [[Stat.DROP_CHANCE, 1],]),
-    new Digger(1, 'wandoosDigger', 'Wandoos Digger',  0, [[Stat.WANDOOS_SPEED, 1],]),
+    new Digger(1, 'wandoosDigger', 'Wandoos Digger',  0, [[Stat.ENERGY_WANDOOS_SPEED, 1],[Stat.MAGIC_WANDOOS_SPEED, 1]]),
     new Digger(2, 'statDigger', 'Stat Digger',  0, [[Stat.ATTACK, 1],[ Stat.DEFENSE, 1]]),
     new Digger(3, 'adventureDigger', 'Adventure Digger',  0, [[Stat.POWER, 1], [Stat.TOUGHNESS, 1]]),
 

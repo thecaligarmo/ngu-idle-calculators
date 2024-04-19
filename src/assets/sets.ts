@@ -20,7 +20,7 @@ export class ItemSet {
 }
 
 export const ItemSets = {
-    TRAINING: new ItemSet('training', Zones.TRAINING),
+    TRAINING: new ItemSet('training', Zones.TUTORIAL),
     SEWERS: new ItemSet('sewers', Zones.SEWERS),
     FOREST: new ItemSet('forest', Zones.FOREST),
     CAVE: new ItemSet('cave', Zones.CAVE),

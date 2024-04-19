@@ -103,7 +103,7 @@ export const BEARDLIST = [
     new Beard(1, 'neckbeard', 'The Neckbeard', 0, 0, [[Stat.DROP_CHANCE, 1]]),
     new Beard(2, 'reverseHitler', 'The Revese Hitler', 0, 0, [[Stat.NUMBER, 1]]),
     new Beard(3, 'beardCage', 'The Beard Cage', 0, 0, [[Stat.ENERGY_NGU_SPEED, 1], [Stat.MAGIC_NGU_SPEED, 1]]),
-    new Beard(4, 'ladybeard', 'The LadyBeard', 0, 0, [[Stat.WANDOOS_SPEED, 1]]),
+    new Beard(4, 'ladybeard', 'The LadyBeard', 0, 0, [[Stat.ENERGY_WANDOOS_SPEED, 1], [Stat.MAGIC_WANDOOS_SPEED, 1]]),
     new Beard(5, 'BEARd', 'The BEARd', 0, 0, [[Stat.POWER, 1], [Stat. TOUGHNESS, 1]]),
     new Beard(6, 'goldenBeard', 'The Golden Beard', 0, 0, [[Stat.TIME_MACHINE, 1]]),    
 ]
