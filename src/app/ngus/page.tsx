@@ -166,11 +166,11 @@ export default function Page() {
         return (
             <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
                 <td className="px-2">{camelToTitle(txt).replace("Energy NGU ", "")}</td>
-                <td className="px-2"><span className="text-red-500">{dn(secs)}</span></td>
+                <td className="px-2 text-right"><span className="text-red-500">{dn(secs)}</span></td>
                 <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
                 <td className="px-2">{pn(curVal, fmt, precision)}%</td>
+                <td className="px-2 text-green-500">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : " x " + pn(val.divide(curVal), fmt, 2 ) + " = "}</td>
                 <td className="px-2">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val, fmt, precision) + "%"}</td>
-                <td className="px-2 text-green-500">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val.divide(curVal), fmt, 2, ) + "%"}</td>
             </tr>
         )
     })
@@ -189,15 +189,17 @@ export default function Page() {
         if (txt == 'magicNGUExp' || txt == 'magicNGUAdventureB') {
             precision = 2;
         }
+
+
         
         return (
             <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
                 <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>
-                <td className="px-2"><span className="text-red-500">{dn(secs)}</span></td>
+                <td className="px-2 text-right"><span className="text-red-500">{dn(secs)}</span></td>
                 <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
                 <td className="px-2">{pn(curVal, fmt, precision)}%</td>
+                <td className="px-2 text-green-500">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : " x " + pn(val.divide(curVal), fmt, 2 ) + " = "}</td>
                 <td className="px-2">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val, fmt, precision) + "%"}</td>
-                <td className="px-2 text-green-500">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val.divide(curVal), fmt, 2, ) + "%"}</td>
             </tr>
         )
     })
@@ -302,8 +304,8 @@ export default function Page() {
                             <th className="px-2">Time</th>
                             <th className="px-2">Target</th>
                             <th className="px-2">Current Value</th>
+                            <th className="px-2">Increase Amount</th>
                             <th className="px-2">Value at target</th>
-                            <th className="px-2">% Increase from current to Target</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -325,8 +327,8 @@ export default function Page() {
                             <th className="px-2">Time</th>
                             <th className="px-2">Target</th>
                             <th className="px-2">Current Value</th>
+                            <th className="px-2">Increase Amount</th>
                             <th className="px-2">Value at target</th>
-                            <th className="px-2">% Increase from current to Target</th>
                         </tr>
                     </thead>
                     <tbody>
