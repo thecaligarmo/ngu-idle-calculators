@@ -170,6 +170,7 @@ export default function Page() {
                 <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
                 <td className="px-2">{pn(curVal, fmt, precision)}%</td>
                 <td className="px-2">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val, fmt, precision) + "%"}</td>
+                <td className="px-2 text-green-500">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val.divide(curVal), fmt, 2, ) + "%"}</td>
             </tr>
         )
     })
@@ -196,6 +197,7 @@ export default function Page() {
                 <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
                 <td className="px-2">{pn(curVal, fmt, precision)}%</td>
                 <td className="px-2">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val, fmt, precision) + "%"}</td>
+                <td className="px-2 text-green-500">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val.divide(curVal), fmt, 2, ) + "%"}</td>
             </tr>
         )
     })
@@ -293,7 +295,7 @@ export default function Page() {
                     The Value represents the bonus you will have once you reach the target.
                 </p>
                 {/* <div className="flex flex-wrap"> */}
-                <table className="inline-block w-full 2xl:w-1/2 align-top mb-2">
+                <table className="inline-block w-full align-top mb-2">
                     <thead>
                         <tr className="text-left border-b-1 border border-t-0 border-x-0">
                             <th className="px-2">Energy NGU</th>
@@ -301,6 +303,7 @@ export default function Page() {
                             <th className="px-2">Target</th>
                             <th className="px-2">Current Value</th>
                             <th className="px-2">Value at target</th>
+                            <th className="px-2">% Increase from current to Target</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -311,10 +314,11 @@ export default function Page() {
                             <th className="px-2"></th>
                             <th className="px-2"></th>
                             <th className="px-2"></th>
+                            <th className="px-2"></th>
                         </tr>
                     </tbody>
                 </table>
-                <table className="inline-block w-full 2xl:w-1/2 align-top mb-2">
+                <table className="inline-block w-full align-top mb-2">
                     <thead>
                         <tr className="text-left border-b-1 border border-t-0 border-x-0">
                             <th className="px-2">Magic NGU</th>
@@ -322,6 +326,7 @@ export default function Page() {
                             <th className="px-2">Target</th>
                             <th className="px-2">Current Value</th>
                             <th className="px-2">Value at target</th>
+                            <th className="px-2">% Increase from current to Target</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -330,6 +335,7 @@ export default function Page() {
                         <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
                             <th className="px-2">Total:</th>
                             <th className="px-2"><span className="text-red-500">{dn(magicTotalSeconds)}</span></th>
+                            <th className="px-2"></th>
                             <th className="px-2"></th>
                             <th className="px-2"></th>
                             <th className="px-2"></th>
