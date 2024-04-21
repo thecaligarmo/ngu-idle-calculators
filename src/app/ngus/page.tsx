@@ -189,7 +189,7 @@ export default function Page() {
         if (txt == 'magicNGUExp' || txt == 'magicNGUAdventureB') {
             precision = 2;
         }
-
+        
         return (
             <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
                 <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>

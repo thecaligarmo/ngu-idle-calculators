@@ -84,9 +84,9 @@ export function dn(num : bigDecimal) : string{
     var hString = h.getValue().padStart(2, '0') + ":"
     var mString = m.getValue().padStart(2, '0') + ":"
     var sString = s.getValue().padStart(2, '0')
-    
+
     var str = mString + sString
-    if (h.compareTo(bd(0)) == 1) {
+    if (h.compareTo(bd(0)) == 1 || d.compareTo(bd(0)) == 1) {
         str = hString + str
     }
     if (d.compareTo(bd(0)) == 1) {
