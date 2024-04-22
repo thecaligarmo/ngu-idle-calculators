@@ -10,11 +10,12 @@ import { isMaxxedItem, isMaxxedItemSet } from '@/helpers/resourceInfo';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
 import _ from 'lodash';
+import { useState } from 'react';
 
 
 
 export default function Page() {
-  
+  const [optZoneChosen, setOptZoneChosen] = useState('training')
   var fmt = getNumberFormat();
   
   // Set data required (from playerData)
@@ -54,37 +55,69 @@ export default function Page() {
   var itopodZone = Zones.ITOPOD;
   itopodZone.setLevel(optimalITOPODFloor)
   
-  var optimalZone = itopodZone;
-  var optimalZoneExpValue = bd(optimalZone.exp[0] * optimalZone.exp[1]);
+  
+  var optimalZoneExpValue = bd(itopodZone.exp[0] * itopodZone.exp[1]);
+  var optimalZone = {key: itopodZone.key, name: itopodZone.name + " (floor: " + optimalITOPODFloor + ")", val: optimalZoneExpValue};
+  var zoneExpInfo : any[] = [optimalZone];
 
-  for(let zone of Object.values(Zones)) {
-    if(zone.hardestEnemy()){
-      
-      var oneHitPower = zone.hardestEnemy().oneHitPower(idleAttackModifier);
-      var paralyzer = zone.paralyzeEnemies();
-      var expChance = zone.expChance(v('totalDropChance%'))
-      var exp = zone.exp[0]
+    // Non-optimal ITOPOD
+    var nonOptItopodZone = Zones.ITOPOD;
+    nonOptItopodZone.setLevel( Math.ceil(optimalITOPODFloor / 50) * 50)
+    var nonOptExpVal = bd(nonOptItopodZone.exp[0] * nonOptItopodZone.exp[1]);
+    var nonOptItopodZoneInfo = {key: nonOptItopodZone.key + "NO", name: nonOptItopodZone.name + " Non-optimal" + " (floor: " + nonOptItopodZone.level + ")", val: nonOptExpVal}
+    zoneExpInfo.push(nonOptItopodZoneInfo)
+    if(optimalZoneExpValue.compareTo(nonOptExpVal) == -1) {
+      optimalZoneExpValue = nonOptExpVal
+      optimalZone = nonOptItopodZoneInfo
+    }
 
-      // Needs ot be at least one
-      var powerRat = bigdec_max((oneHitPower.divide(v('totalPower'))).ceil(), bd(1))
+  if (v('totalPower').compareTo(bd(0)) != 0) {
+    for(let zone of Object.values(Zones)) {
+      if(zone.hardestEnemy()){
+        
+        var oneHitPower = zone.hardestEnemy().oneHitPower(idleAttackModifier);
+        var paralyzer = zone.paralyzeEnemies();
+        var expChance = zone.expChance(v('totalDropChance%'))
+        var exp = zone.exp[0]
 
-      var expValZone = (v('totalRespawnTime').add(idleAttackCooldown))
-          .divide(
-            v('totalRespawnTime').add(
-                  idleAttackCooldown.multiply(powerRat)
-              ).add(
-                  idleAttackCooldown.multiply(powerRat).compareTo(bd(3.5)) == 1 ? bd(2).multiply(paralyzer) : bd(0)
-              )
-          )
-          .multiply(expChance)
-          .multiply(bd(exp))
+        // Needs ot be at least one
+        var powerRat = bigdec_max((oneHitPower.divide(v('totalPower'))).ceil(), bd(1))
 
-        if(optimalZoneExpValue.compareTo(expValZone) == -1) {
-            optimalZoneExpValue = expValZone
-            optimalZone = zone
-        }
+        var expValZone = (v('totalRespawnTime').add(idleAttackCooldown))
+            .divide(
+              v('totalRespawnTime').add(
+                    idleAttackCooldown.multiply(powerRat)
+                ).add(
+                    idleAttackCooldown.multiply(powerRat).compareTo(bd(3.5)) == 1 ? bd(2).multiply(paralyzer) : bd(0)
+                )
+            )
+            .multiply(expChance)
+            .multiply(bd(exp))
+
+          var zoneInfo = {key: zone.key, name: zone.name, val: expValZone}
+          zoneExpInfo.push(zoneInfo);
+          if(optimalZoneExpValue.compareTo(expValZone) == -1) {
+              optimalZoneExpValue = expValZone
+              optimalZone = zoneInfo
+          }
+          
+      }
     }
   }
+
+  var zoneList = zoneExpInfo.map(function(zone) {
+    return (
+      <option key={zone.key} value={zone.key}>{zone.name}</option>
+    )
+  }) 
+  var zoneBoonList = zoneExpInfo.map(function(zone) {
+    var eV = optimalZoneExpValue.compareTo(bd(0)) == 0 ? bd(1) : optimalZoneExpValue
+    return (
+      <li key={zone.key} className={optZoneChosen == zone.key ? "" : "hidden"}>
+        {zone.name} is <span className="text-red-500">{pn(zone.val.divide(eV).multiply(bd(100)), fmt, 2)}%</span> as efficient with a exp value of <span className="text-blue-500">{pn(zone.val, fmt)}.</span>
+      </li>
+    )
+  })
 
   
   return (
@@ -93,6 +126,22 @@ export default function Page() {
           <p>
               The optimal zone for getting experience is <span className="text-red-500">{optimalZone.name}</span> which will give you an average exp value of <span className="text-blue-500">{pn(optimalZoneExpValue, fmt, 2)}</span>.
           </p>
+          <br />
+          <p>
+            Compare the optimal zone with:
+            <select
+              className='ml-2 text-black'
+              onChange={(e) => {
+                setOptZoneChosen(e.target.value)
+              }}
+              value={optZoneChosen}
+            >
+              {zoneList}
+            </select>
+          </p>
+          <ul>
+            {zoneBoonList}
+          </ul>
       </ContentSubsection>
     </Content>
   )

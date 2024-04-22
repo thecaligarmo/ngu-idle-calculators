@@ -100,7 +100,12 @@ export function totalPower(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.POWER)
     var equipPower = equipmentInfo(data, Stat.POWER)
     var advTraining = advTraininginInfo(data, Stat.POWER)
-    var basePower = parseNum(data, 'baseAdventurePower')    
+    var basePower = parseNum(data, 'baseAdventurePower')
+
+    // We want to return 0 if we don't have data yet
+    if (basePower.compareTo(bd(0)) == 0) {
+        return bd(0);
+    }
 
     // Want to add equipPower instead of multiply
     var subtotal = basePower.add(equipPower)
@@ -110,17 +115,20 @@ export function totalPower(data : any) : bigDecimal {
     
     return subtotal
         .multiply(gen).divide(bd(100))
-        .multiply(advTraining)
-        .divide(equipPower) // adding instead
+        .multiply(advTraining)// .divide(bd(100))
+        .divide(equipPower)
         .multiply(beast)
-        
+        //.multiply(bd(100)) % not a percentage
 }
 
 export function totalToughness(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.TOUGHNESS)
     var equipPower = equipmentInfo(data, Stat.TOUGHNESS)
     var advTraining = advTraininginInfo(data, Stat.TOUGHNESS)
-    var basePower = parseNum(data, 'baseAdventureToughness')    
+    var basePower = parseNum(data, 'baseAdventureToughness')
+    if (basePower.compareTo(bd(0)) == 0) {
+        return bd(0);
+    }
 
     // Want to add equipPower instead of multiply
     var subtotal = basePower.add(equipPower)
@@ -129,7 +137,6 @@ export function totalToughness(data : any) : bigDecimal {
         .multiply(gen).divide(bd(100))
         .multiply(advTraining)
         .divide(equipPower) // adding instead
-        
 }
 
 /** Misc Adventure */
@@ -141,6 +148,12 @@ export function totalGoldDrop(data : any) : bigDecimal {
 
 export function totalRespawnRate(data : any) : bigDecimal {
     var clockSetModifier = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(0.95) : bd(1);
+
+    // We want to return 0 if we don't have data yet
+    var basePower = parseNum(data, 'baseAdventurePower')
+    if (basePower.compareTo(bd(0)) == 0) {
+        return bd(0);
+    }
 
     return bd(1)
         .multiply(bd(200).subtract(equipmentInfo(data, Stat.RESPAWN))).divide(bd(100))
