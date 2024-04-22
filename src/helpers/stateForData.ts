@@ -2,6 +2,7 @@ import { defaultPlayerData, getCalculatedOptions, getPlayerNumberOptions, getPla
 import { getPlayerData, isPlayerDataUpdated } from "../components/context";
 import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
 import _ from "lodash";
+import { camelToTitle } from "./strings";
 
 export function createStatesForData(extraRequired: string[][] = []) : any{
     const playerData = getPlayerData();
@@ -44,7 +45,7 @@ export function createStatesForData(extraRequired: string[][] = []) : any{
     return dataObj;
 }
 
-export function getRequiredStates(data : any, states : any) : any{
+export function getRequiredStates(data : any, states : any, nameMap : any = {} ) : any{
     var ir = []
     for (var col of data) {
         let colDr = []
@@ -53,7 +54,8 @@ export function getRequiredStates(data : any, states : any) : any{
             colDr.push({
                 key: k,
                 value: dataState,
-                disabled: false
+                disabled: false,
+                name: (k in nameMap) ? nameMap[k] : camelToTitle(k)
             })
         }
         ir.push(colDr)

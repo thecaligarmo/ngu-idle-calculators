@@ -27,12 +27,17 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
         val = new bigDecimal(val)
     }
     if (input) {
-        return (<li key={'in-'+d.key} id={'in-'+d.key}>
-            <label className="block text-black dark:text-white text-sm mt-2 mb-1" htmlFor={d.key}>
-                {camelToTitle(d.key)}
+        var disabled = ""
+        if(d.disabled) {
+            disabled += "hidden"
+        }
+
+        return (<li key={'in-'+d.key} id={'in-'+d.key} className={disabled}>
+            <label className="inline-block text-black dark:text-white text-sm mt-2 mb-1 mr-2" htmlFor={d.key}>
+                {d.name}:
             </label>
             <input
-                className="text-black font-normal rounded border border-black dark:border-white"
+                className="text-black font-normal rounded border border-black dark:border-white w-32"
                 type="number"
                 name={d.key}
                 id={d.key}
@@ -49,7 +54,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
             disabled += "hidden"
         }
         return (<li key={d.key} className={disabled}>
-                {camelToTitle(d.key)}: {pn(val, fmt)}
+                {d.name}: {pn(val, fmt)}
         </li>)
     }
 }
@@ -69,7 +74,7 @@ export function dataToCols(dr : any, input : boolean = false) : ReactNode{
             }
             colKey += d.key
         }
-        var cc = 'inline-block align-top mb-2 '
+        var cc = 'inline-block align-top mb-5 '
         // We can't do dynamic classnames for tailwind =(
         switch (dr.length) {
             case 1:

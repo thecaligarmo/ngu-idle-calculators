@@ -72,7 +72,40 @@ export default function Page() {
     const playerStates = createStatesForData(extraRequired);
 
     // Get required data
-    var infoReq = getRequiredStates(infoRequired, playerStates)
+    var infoReq = getRequiredStates(infoRequired, playerStates, {
+        'energyNGUAugmentsLevel': 'Augments Level',
+        'energyNGUWandoosLevel': 'Wandoos Level',
+        'energyNGURespawnLevel': 'Respawn Level',
+        'energyNGUGoldLevel': 'Gold Level',
+        'energyNGUAdventureALevel': 'Adventure α Level',
+        'energyNGUPowerALevel': 'Power α Level',
+        'energyNGUDropChanceLevel': 'Drop Chance Level',
+        'energyNGUMagicNGULevel': 'Magic NGU Level',
+        'energyNGUPPLevel': 'PP Level',
+        'magicNGUYggdrasilLevel': 'Yggdrasil Level',
+        'magicNGUExpLevel': 'Exp Level',
+        'magicNGUPowerBLevel': 'Power β Level',
+        'magicNGUNumberLevel': 'Number Level',
+        'magicNGUTimeMachineLevel': 'Time Machine Level',
+        'magicNGUEnergyNGULevel': 'Energy NGU Level',
+        'magicNGUAdventureBLevel': 'Adventure β Level',
+        'energyNGUAugmentsTarget': 'Augments Target',
+        'energyNGUWandoosTarget': 'Wandoos Target',
+        'energyNGURespawnTarget': 'Respawn Target',
+        'energyNGUGoldTarget': 'Gold Target',
+        'energyNGUAdventureATarget': 'Adventure α Target',
+        'energyNGUPowerATarget': 'Power α Target',
+        'energyNGUDropChanceTarget': 'Drop Chance Target',
+        'energyNGUMagicNGUTarget': 'Magic NGU Target',
+        'energyNGUPPTarget': 'PP Target',
+        'magicNGUYggdrasilTarget': 'Yggdrasil Target',
+        'magicNGUExpTarget': 'Exp Target',
+        'magicNGUPowerBTarget': 'Power β Target',
+        'magicNGUNumberTarget': 'Number Target',
+        'magicNGUTimeMachineTarget': 'Time Machine Target',
+        'magicNGUEnergyNGUTarget': 'Energy NGU Target',
+        'magicNGUAdventureBTarget': 'Adventure β Target',
+    })
     var extraReq = getRequiredStates(extraRequired, playerStates)
 
     // Helper function - Needed in every isntance (makes code easier to read too)
