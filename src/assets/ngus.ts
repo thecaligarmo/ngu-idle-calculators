@@ -28,7 +28,7 @@ export class NGU extends Resource {
         this.maxValue = maxValue
     }
     isRespawn() : boolean {
-        return (this.id ===2 && this.res === 'energy')
+        return (this.key === 'NGURespawn')
     }
     importStats(data: any) : void {
         this.level = data.level.low
@@ -96,10 +96,14 @@ export class NGU extends Resource {
         return 0
     }
     // The above formula's inverses
-    getLevelFromVal(value: number, prop: string, forseDiminished : boolean = false) : number{
+    getLevelFromVal(value: number, prop: string, forceDiminished : boolean = false, forceNotDiminished : boolean = false) : number{
         var base = this.base[prop]
-        var diminishing = (forseDiminished || this.level > this.diminishingReturnLevel)
-        if (this.diminishingReturnLevel === 0 || !diminishing) {
+        if (this.isRespawn() && (value <= 60 || value > 100)) {
+            return 0
+        }
+        value = value - 100
+        var diminishing = (forceDiminished || this.level > this.diminishingReturnLevel)
+        if (this.diminishingReturnLevel === 0 || !diminishing || forceNotDiminished) {
             if (this.isRespawn()) {
                 return - value / base
             } else {
@@ -138,28 +142,40 @@ export class NGU extends Resource {
         }
         return 0
     }
-
+    // Gets target for a percentage increase of value
     percentIncrease(percent: bigDecimal | number) : bigDecimal{
-        var maxLvl = 0
         if (percent instanceof bigDecimal) {
             percent = Number(percent.getValue())
         }
+        var prop = this.statnames[0]
         
-        for (var prop of Object.keys(this.base)) {
-            if (this.isRespawn()) { // Respawn has weird scaling so we need to fix it.
-                var curVal = this.getStatValue(this.level, prop) - 100
-                percent = (curVal * (100 + percent) / 100) < -39.99 ? (-39.99 - curVal) / curVal : percent / 100
-                var desiredVal = (curVal) * (percent + 1)
-            } else {
-                var curVal = this.getStatValue(this.level, prop)
-                var desiredVal = curVal * (percent/100 + 1) - 100
-            }
-            var desiredLevel = this.getLevelFromVal(desiredVal, prop)
-            if (desiredLevel > this.diminishingReturnLevel && this.level <= this.diminishingReturnLevel && this.diminishingReturnLevel > 0) {
-                desiredLevel = this.getLevelFromVal(desiredVal, prop, true)
-            }
-            maxLvl = Math.max(maxLvl, desiredLevel)
+        if (this.isRespawn()) { // Respawn has weird scaling so we need to fix it.
+            var curVal = this.getStatValue(this.level, prop) - 100
+            percent = (curVal * (100 + percent) / 100) < -39.99 ? (-39.99 - curVal) / curVal : percent / 100
+            var desiredVal = (curVal) * (percent + 1)
+        } else {
+            var curVal = this.getStatValue(this.level, prop)
+            var desiredVal = curVal * (percent/100 + 1) - 100
         }
+        return (this.valueIncrease(desiredVal))
+    }
+    // Gets target for a set increase of value
+    valueIncrease(desiredVal: bigDecimal | number) : bigDecimal {
+        var maxLvl = 0
+        if (desiredVal instanceof bigDecimal) {
+            desiredVal = Number(desiredVal.getValue())
+        }
+        var prop = this.statnames[0]
+        
+        var desiredLevel = this.getLevelFromVal(desiredVal, prop)
+
+        if (desiredLevel > this.diminishingReturnLevel && this.level <= this.diminishingReturnLevel && this.diminishingReturnLevel > 0) {
+            desiredLevel = this.getLevelFromVal(desiredVal, prop, true)
+        } else if (this.level >= this.diminishingReturnLevel && (desiredLevel < this.diminishingReturnLevel || this.diminishingReturnLevel == 0)) {
+            desiredLevel = this.getLevelFromVal(desiredVal, prop, false, true)
+        }
+        
+        maxLvl = Math.max(maxLvl, desiredLevel)
         return bd(maxLvl).ceil()
     }
     calcSecondsToTarget(cap : bigDecimal, speedFactor : bigDecimal, target : bigDecimal = bd(-1)) : bigDecimal {
@@ -306,25 +322,25 @@ export class NGU extends Resource {
 
 
 export const ENGULIST = [
-    new NGU(0, 'NGUAugments', 'NGU AUGMENTS',  0, [[Stat.AUGMENT_SPEED, 1]], 'energy',   0, 1000000000),
-    new NGU(1, 'NGUWandoos', 'NGU WANDOOS',  0, [[Stat.ENERGY_WANDOOS_SPEED, 0.1], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy',   0, 100000000),
-    new NGU(2, 'NGURespawn', 'NGU RESPAWN',  0, [[Stat.RESPAWN, 0.05]], 'energy',   400, 60),
-    new NGU(3, 'NGUGold', 'NGU GOLD',  0, [[Stat.GOLD_DROP, 1]], 'energy',   0, 1000000000),
-    new NGU(4, 'NGUAdventureA', 'NGU ADVENTURE A',  0, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]], 'energy',   1000, 100244.2),
-    new NGU(5, 'NGUPowerA', 'NGU POWER A',  0, [[Stat.ATTACK, 5], [Stat.DEFENSE, 5]], 'energy',   0, 5000000000),
-    new NGU(6, 'NGUDropChance', 'NGU DROP CHANCE',  0, [[Stat.DROP_CHANCE, 0.1],], 'energy',   1000, 100244.2),
-    new NGU(7, 'NGUMagicNGU', 'NGU MAGIC NGU',  0, [[Stat.MAGIC_NGU_SPEED, 0.1]], 'energy',   1000, 6309.95),
+    new NGU(0, 'NGUAugments', 'NGU Augments',  0, [[Stat.AUGMENT_SPEED, 1]], 'energy',   0, 1000000000),
+    new NGU(1, 'NGUWandoos', 'NGU Wandoos',  0, [[Stat.ENERGY_WANDOOS_SPEED, 0.1], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy',   0, 100000000),
+    new NGU(2, 'NGURespawn', 'NGU Respawn',  0, [[Stat.RESPAWN, 0.05]], 'energy',   400, 60),
+    new NGU(3, 'NGUGold', 'NGU Gold',  0, [[Stat.GOLD_DROP, 1]], 'energy',   0, 1000000000),
+    new NGU(4, 'NGUAdventureA', 'NGU Adventure α',  0, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]], 'energy',   1000, 100244.2),
+    new NGU(5, 'NGUPowerA', 'NGU Power α',  0, [[Stat.ATTACK, 5], [Stat.DEFENSE, 5]], 'energy',   0, 5000000000),
+    new NGU(6, 'NGUDropChance', 'NGU Drop Chance',  0, [[Stat.DROP_CHANCE, 0.1],], 'energy',   1000, 100244.2),
+    new NGU(7, 'NGUMagicNGU', 'NGU Magic NGU',  0, [[Stat.MAGIC_NGU_SPEED, 0.1]], 'energy',   1000, 6309.95),
     new NGU(8, 'NGUPP', 'NGU PP',  0, [[Stat.PP, 0.05]], 'energy',   1000, 3154.97),
 ]
 
 export const MNGULIST = [
-    new NGU(0, 'NGUYggrdrasil', 'NGU YGGDRASIL',  0, [[Stat.YGGDRASIL_YIELD, 0.1]], 'magic',   400, 5170.23),
-    new NGU(1, 'NGUExperience', 'NGU EXP',  0, [[Stat.EXPERIENCE, 0.01]], 'magic',   2000, 3808.29),
-    new NGU(2, 'NGUPowerB', 'NGU POWER B',  0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]], 'magic',   0, 1000000000),
-    new NGU(3, 'NGUNumber', 'NGU NUMBER',  0, [[Stat.NUMBER, 1]], 'magic',   1000, 1002000),
-    new NGU(4, 'NGUTimeMachine', 'NGU TIME MACHINE',  0, [[Stat.TIME_MACHINE, 0.2]], 'magic',   1000, 12619000),
-    new NGU(5, 'NGUEnergyNGU', 'NGU ENERGY NGU',  0, [[Stat.ENERGY_NGU_SPEED, 0.1]], 'magic',   1000, 6309.95),
-    new NGU(6, 'NGUAdventureB', 'NGU ADVENTURE B',  0, [[Stat.POWER, 0.03], [Stat.TOUGHNESS, 0.03]], 'magic', 1000, 7539.75),
+    new NGU(0, 'NGUYggdrasil', 'NGU Yggdrasil',  0, [[Stat.YGGDRASIL_YIELD, 0.1]], 'magic',   400, 5170.23),
+    new NGU(1, 'NGUExp', 'NGU Exp',  0, [[Stat.EXPERIENCE, 0.01]], 'magic',   2000, 3808.29),
+    new NGU(2, 'NGUPowerB', 'NGU Power β',  0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]], 'magic',   0, 1000000000),
+    new NGU(3, 'NGUNumber', 'NGU Number',  0, [[Stat.NUMBER, 1]], 'magic',   1000, 1002000),
+    new NGU(4, 'NGUTimeMachine', 'NGU Time Machine',  0, [[Stat.TIME_MACHINE, 0.2]], 'magic',   1000, 12619000),
+    new NGU(5, 'NGUEnergyNGU', 'NGU Energy NGU',  0, [[Stat.ENERGY_NGU_SPEED, 0.1]], 'magic',   1000, 6309.95),
+    new NGU(6, 'NGUAdventureB', 'NGU Adventure β',  0, [[Stat.POWER, 0.03], [Stat.TOUGHNESS, 0.03]], 'magic', 1000, 7539.75),
 ]
 
 export var ENERGY_NGUS = new ResourceContainer(ENGULIST);

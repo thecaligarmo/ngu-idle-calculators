@@ -7,14 +7,15 @@ import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
 import { bd, dn, pn} from "@/helpers/numbers";
+import { parseNum } from "@/helpers/parsers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
-import { camelToTitle } from "@/helpers/strings";
 import bigDecimal from "js-big-decimal";
 import { useState } from "react";
 
 const NGU_TARGET = 'target'
 const NGU_PERCENTAGE = 'percentage'
 const NGU_TIME = 'time'
+const NGU_VALUE = 'value'
 
 
 export default function Page() {
@@ -67,7 +68,26 @@ export default function Page() {
 
     // Set extra required (not from playerData)
     var extraRequired = [
-        ['percentageIncrease%', 'timeInSeconds'], []
+        ['percentageIncrease%', 'timeInSeconds'], [],
+        [
+            'energyNGUAugmentsValue',
+            'energyNGUWandoosValue',
+            'energyNGURespawnValue',
+            'energyNGUGoldValue',
+            'energyNGUAdventureAValue',
+            'energyNGUPowerAValue',
+            'energyNGUDropChanceValue',
+            'energyNGUMagicNGUValue',
+            'energyNGUPPValue'
+        ],[
+            'magicNGUYggdrasilValue',
+            'magicNGUExpValue',
+            'magicNGUPowerBValue',
+            'magicNGUNumberValue',
+            'magicNGUTimeMachineValue',
+            'magicNGUEnergyNGUValue',
+            'magicNGUAdventureBValue'
+        ]
     ]
     const playerStates = createStatesForData(extraRequired);
 
@@ -110,213 +130,259 @@ export default function Page() {
 
     // Helper function - Needed in every isntance (makes code easier to read too)
     function v(key : string) : bigDecimal{
-        var x = playerStates[key][0]
-        if (x instanceof bigDecimal) {
-            return x
-        }
-        return bd(x)
+        return parseNum(playerStates, key)
     }
     
-    // Setup our texts
-    var energyText = [
-        'energyNGUAugments',
-        'energyNGUWandoos',
-        'energyNGURespawn',
-        'energyNGUGold',
-        'energyNGUAdventureA',
-        'energyNGUPowerA',
-        'energyNGUDropChance',
-        'energyNGUMagicNGU',
-        'energyNGUPP'
-    ]
-    var magicText = [
-        'magicNGUYggdrasil',
-        'magicNGUExp',
-        'magicNGUPowerB',
-        'magicNGUNumber',
-        'magicNGUTimeMachine',
-        'magicNGUEnergyNGU',
-        'magicNGUAdventureB',
-    ]
 
-    var eNGUs : NGU[] = energyText.map((txt, index) => {
-        var engu = ENERGY_NGUS[index]
-        engu.setLevel(Number(v(txt + "Level").getValue()))
-        engu.target = Number(v(txt + "Target").getValue())
-        return engu
-    })
-
-    var mNGUs : NGU[] = magicText.map((txt, index) => {
-        var mngu = MAGIC_NGUS[index]
-        mngu.setLevel(Number(v(txt + "Level").getValue()))
-        mngu.target = Number(v(txt + "Target").getValue())
-        return mngu
+    var types = ['energy', 'magic']
+    var NGUs : NGU[][] = types.map((ty) => {
+        var ngus = (ty === 'energy') ? ENERGY_NGUS : MAGIC_NGUS
+        var nguIds = (ty === 'energy') ? ENERGY_NGUS.ids : MAGIC_NGUS.ids
+        return nguIds.map((nguId) => {
+            var ngu = ngus[nguId]
+            ngu.setLevel(Number(v(ty + ngu.key + "Level").getValue()))
+            ngu.target = Number(v(ty + ngu.key + "Target").getValue())
+            return ngu
+        })
     })
 
 
-    // shorthand for targets
-    var energyTargets = eNGUs.map((ngu) => {
-        return (calcType == NGU_PERCENTAGE) ? ngu.percentIncrease(v("percentageIncrease%")) : bd(ngu.target);
-    })
-    var magicTargets = mNGUs.map((ngu) => {
-        return (calcType == NGU_PERCENTAGE) ? ngu.percentIncrease(v("percentageIncrease%")) : bd(ngu.target);
-    })
-
-    var energySeconds = eNGUs.map((engu, index) => {
-        return engu.calcSecondsToTarget(v("currentEnergyCap"), v("totalEnergyNGUSpeedFactor%"), energyTargets[index])
-
-    })
-    var magicSeconds = mNGUs.map((mngu, index) => {
-        return mngu.calcSecondsToTarget(v("currentMagicCap"), v("totalMagicNGUSpeedFactor%"), magicTargets[index])
+    var targets = NGUs.map((tyNGUs, index) => {
+        var ty = types[index]
+        return tyNGUs.map((ngu) => {
+            switch(calcType) {
+                case NGU_PERCENTAGE:
+                    return ngu.percentIncrease(v("percentageIncrease%"))
+                case NGU_VALUE:
+                    return ngu.valueIncrease(v(ty + ngu.key + "Value"))
+                default: 
+                    return bd(ngu.target);
+            }
+        })
     })
 
-    var energyTotalSeconds = energySeconds.reduce((total, current) => {
-        return total.add(current)
-    }, bd(0))
+    var seconds = NGUs.map((tyNGUs, index) => {
+        var ty = types[index]
+        ty = ty[0].toUpperCase() + ty.substring(1)
+        return tyNGUs.map((ngu, innerIndex) => {
+            return ngu.calcSecondsToTarget(v("current" + ty + "Cap"), v("total" + ty + "NGUSpeedFactor%"), targets[index][innerIndex])
+        })
+    })
 
-    
-    var magicTotalSeconds = magicSeconds.reduce((total, current) => {
-        return total.add(current)
-    }, bd(0))
+    var totalSeconds = seconds.map((secs, index) => {
+        return secs.reduce((total, current) => {
+            return total.add(current)
+        }, bd(0))
+    })
 
 
     // Information retrieval
-    var energyRow = eNGUs.map(function(engu, index) {
-        var txt = energyText[index]
-        var targetLvl = energyTargets[index]
-        var secs = energySeconds[index]
-        var val = bd(engu.getStatValue(Number(targetLvl.getValue()), engu.statnames[0]))
-        var curVal = bd(engu.getStatValue(Number(engu.level), engu.statnames[0]))
+    var infoRow = NGUs.map((tyNGUs, index) => {
+        var ty = types[index]
+        ty = ty[0].toUpperCase() + ty.substring(1)
+        return tyNGUs.map(function(ngu, innerIndex) {
+            var targetLvl = targets[index][innerIndex]
+            var secs = seconds[index][innerIndex]
+            var val = bd(ngu.getStatValue(Number(targetLvl.getValue()), ngu.statnames[0]))
+            var curVal = bd(ngu.getStatValue(Number(ngu.level), ngu.statnames[0]))
+    
+            var precision = 0;
+            if (ngu.key == 'NGUWandoos' || ngu.key == 'NGUAdventureA' || ngu.key == 'NGUDropChance' || ngu.key == 'NGUMagicNGU'
+                || ngu.key == 'NGUYggdrasil' || ngu.key == 'NGUTimeMachine' || ngu.key == 'NGUEnergyNGU'
+            ) {
+                precision = 1;
+            }
+            if (ngu.key == 'NGURespawn' || ngu.key == 'NGUPP'
+                || ngu.key == 'NGUExp' || ngu.key == 'NGUAdventureB'
+            ) {
+                precision = 2;
+            }
 
-        var precision = 0;
-        if (txt == 'energyNGUWandoos' || txt == 'energyNGUAdventureA' || txt == 'energyNGUDropChance' || txt == 'energyNGUMagicNGU') {
-            precision = 1;
-        }
-        if (txt == 'energyNGURespawn' || txt == 'energyNGUPP') {
-            precision = 2;
-        }
-        
-        return (
-            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
-                <td className="px-2">{camelToTitle(txt).replace("Energy NGU ", "")}</td>
-                <td className="px-2 text-right"><span className="text-red-500">{dn(secs)}</span></td>
-                <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-                <td className="px-2">{pn(curVal, fmt, precision)}%</td>
-                <td className="px-2 text-green-500">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : " x " + pn(val.divide(curVal), fmt, 2 ) + " = "}</td>
-                <td className="px-2">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val, fmt, precision) + "%"}</td>
-            </tr>
-        )
+            
+            return (
+                <tr key={ngu.key} className={innerIndex % 2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
+                    <td className="px-2">{ngu.name}</td>
+                    <td className="px-2 text-right"><span className="text-red-500">{dn(secs)}</span></td>
+                    <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
+                    <td className="px-2">{pn(curVal, fmt, precision)}%</td>
+                    <td className="px-2 text-green-500">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : " x " + pn(val.divide(curVal), fmt, 2 ) + " = "}</td>
+                    <td className="px-2">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val, fmt, precision) + "%"}</td>
+                </tr>
+            )
+        })
     })
-    var magicRow = mNGUs.map(function(mngu, index) {
-        var txt = magicText[index]
-        var targetLvl = magicTargets[index]
-        var secs = magicSeconds[index]
-        var curVal = bd(mngu.getStatValue(Number(mngu.level), mngu.statnames[0]))
-        var val = bd(mngu.getStatValue(Number(targetLvl.getValue()), mngu.statnames[0]))
+    var energyRow = infoRow[0]
+    var magicRow = infoRow[1]
 
-
-        var precision = 0;
-        if (txt == 'magicNGUYggdrasil' || txt == 'magicNGUTimeMachine' || txt == 'magicNGUEnergyNGU') {
-            precision = 1;
-        }
-        if (txt == 'magicNGUExp' || txt == 'magicNGUAdventureB') {
-            precision = 2;
-        }
-
-
-        
-        return (
-            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
-                <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>
-                <td className="px-2 text-right"><span className="text-red-500">{dn(secs)}</span></td>
-                <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-                <td className="px-2">{pn(curVal, fmt, precision)}%</td>
-                <td className="px-2 text-green-500">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : " x " + pn(val.divide(curVal), fmt, 2 ) + " = "}</td>
-                <td className="px-2">{targetLvl.compareTo(bd(0)) <= 0 ? '-' : pn(val, fmt, precision) + "%"}</td>
-            </tr>
-        )
+    var capToMaxTargetsRow = NGUs.map((tyNGUs, index) => {
+        var ty = types[index]
+        ty = ty[0].toUpperCase() + ty.substring(1)
+        return tyNGUs.map(function(ngu, innerIndex) {
+            var cap = ngu.capToReachMaxTarget(v("total" + ty + "NGUSpeedFactor%"))
+            
+            var targetLvl = targets[index][innerIndex];
+            return (
+                <tr key={ngu.key} className={innerIndex %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
+                    <td className="px-2">{ngu.name}</td>
+                    <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
+                    <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
+                </tr>
+            )
+        })
     })
+    var energyCapToMaxTargetRow = capToMaxTargetsRow[0];
+    var magicCapToMaxTargetRow = capToMaxTargetsRow[1];
 
-    var energyCapToMaxTargetRow = eNGUs.map(function(engu, index) {
-        var cap = engu.capToReachMaxTarget(v("totalEnergyNGUSpeedFactor%"))
-        var txt = energyText[index];
-        var targetLvl = energyTargets[index];
-        return (
-            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
-                <td className="px-2">{camelToTitle(txt).replace("Energy NGU ", "")}</td>
-                <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
-                <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-            </tr>
-        )
-    })
-    var magicCapToMaxTargetRow = mNGUs.map(function(mngu, index) {
-        var cap = mngu.capToReachMaxTarget(v("totalMagicNGUSpeedFactor%"));
-        var txt = magicText[index];
-        var targetLvl = magicTargets[index];
-        return (
-            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
-                <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>
-                <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
-                <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-            </tr>
-        )
-    })
-    var energyCapToMaxInDayRow = eNGUs.map(function(engu, index) {
-        var cap = engu.capToReachMaxInDay(v("totalEnergyNGUSpeedFactor%"))
-        var txt = energyText[index];
-        return (
-            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
-                <td className="px-2">{camelToTitle(txt).replace("Energy NGU ", "")}</td>
-                <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
-            </tr>
-        )
-    })
-    var magicCapToMaxInDayRow = mNGUs.map(function(mngu, index) {
-        var cap = mngu.capToReachMaxInDay(v("totalMagicNGUSpeedFactor%"))
-        var txt = magicText[index];
-        return (
-            <tr key={txt} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
-                <td className="px-2">{camelToTitle(txt).replace("Magic NGU ", "")}</td>
-                <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
-            </tr>
-        )
-    })
 
-    if(calcType == NGU_TARGET) {
-        extraReq = disableItem(extraReq, ['percentageIncrease%', 'timeInSeconds']);
-    } else {
-        infoReq = disableItem(infoReq, [
-            'energyNGUAugmentsTarget',
-            'energyNGUWandoosTarget',
-            'energyNGURespawnTarget',
-            'energyNGUGoldTarget',
-            'energyNGUAdventureATarget',
-            'energyNGUPowerATarget',
-            'energyNGUDropChanceTarget',
-            'energyNGUMagicNGUTarget',
-            'energyNGUPPTarget',
-            'magicNGUYggdrasilTarget',
-            'magicNGUExpTarget',
-            'magicNGUPowerBTarget',
-            'magicNGUNumberTarget',
-            'magicNGUTimeMachineTarget',
-            'magicNGUEnergyNGUTarget',
-            'magicNGUAdventureBTarget'
-        ])
+    var capToMaxInDayRow = NGUs.map((tyNGUs, index) => {
+        var ty = types[index]
+        ty = ty[0].toUpperCase() + ty.substring(1)
+        return tyNGUs.map(function(ngu, innerIndex) {
+            var cap = ngu.capToReachMaxInDay(v("total" + ty + "NGUSpeedFactor%"))
+            
+            return (
+                <tr key={ngu.key} className={innerIndex %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
+                    <td className="px-2">{ngu.name}</td>
+                    <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
+                </tr>
+            )
+        })
+    })
+    var energyCapToMaxInDayRow = capToMaxInDayRow[0];
+    var magicCapToMaxInDayRow = capToMaxInDayRow[1];
 
-        if (calcType != NGU_PERCENTAGE) {
-            extraReq = disableItem(extraReq, ['percentageIncrease%']);
-        }
-        if (calcType != NGU_TIME) {
+
+
+    switch (calcType) {
+        case NGU_TARGET:
+            extraReq = disableItem(extraReq, ['percentageIncrease%', 'timeInSeconds']);
+            extraReq = disableItem(extraReq, [
+                'energyNGUAugmentsValue',
+                'energyNGUWandoosValue',
+                'energyNGURespawnValue',
+                'energyNGUGoldValue',
+                'energyNGUAdventureAValue',
+                'energyNGUPowerAValue',
+                'energyNGUDropChanceValue',
+                'energyNGUMagicNGUValue',
+                'energyNGUPPValue',
+                'magicNGUYggdrasilValue',
+                'magicNGUExpValue',
+                'magicNGUPowerBValue',
+                'magicNGUNumberValue',
+                'magicNGUTimeMachineValue',
+                'magicNGUEnergyNGUValue',
+                'magicNGUAdventureBValue'
+            ])
+            break;
+        case NGU_VALUE:
+            extraReq = disableItem(extraReq, ['percentageIncrease%', 'timeInSeconds']);
+            infoReq = disableItem(infoReq, [
+                'energyNGUAugmentsTarget',
+                'energyNGUWandoosTarget',
+                'energyNGURespawnTarget',
+                'energyNGUGoldTarget',
+                'energyNGUAdventureATarget',
+                'energyNGUPowerATarget',
+                'energyNGUDropChanceTarget',
+                'energyNGUMagicNGUTarget',
+                'energyNGUPPTarget',
+                'magicNGUYggdrasilTarget',
+                'magicNGUExpTarget',
+                'magicNGUPowerBTarget',
+                'magicNGUNumberTarget',
+                'magicNGUTimeMachineTarget',
+                'magicNGUEnergyNGUTarget',
+                'magicNGUAdventureBTarget'
+            ])
+            break;
+        case NGU_PERCENTAGE:
             extraReq = disableItem(extraReq, ['timeInSeconds']);
-        }
+            extraReq = disableItem(extraReq, [
+                'energyNGUAugmentsValue',
+                'energyNGUWandoosValue',
+                'energyNGURespawnValue',
+                'energyNGUGoldValue',
+                'energyNGUAdventureAValue',
+                'energyNGUPowerAValue',
+                'energyNGUDropChanceValue',
+                'energyNGUMagicNGUValue',
+                'energyNGUPPValue',
+                'magicNGUYggdrasilValue',
+                'magicNGUExpValue',
+                'magicNGUPowerBValue',
+                'magicNGUNumberValue',
+                'magicNGUTimeMachineValue',
+                'magicNGUEnergyNGUValue',
+                'magicNGUAdventureBValue'
+            ])
+            infoReq = disableItem(infoReq, [
+                'energyNGUAugmentsTarget',
+                'energyNGUWandoosTarget',
+                'energyNGURespawnTarget',
+                'energyNGUGoldTarget',
+                'energyNGUAdventureATarget',
+                'energyNGUPowerATarget',
+                'energyNGUDropChanceTarget',
+                'energyNGUMagicNGUTarget',
+                'energyNGUPPTarget',
+                'magicNGUYggdrasilTarget',
+                'magicNGUExpTarget',
+                'magicNGUPowerBTarget',
+                'magicNGUNumberTarget',
+                'magicNGUTimeMachineTarget',
+                'magicNGUEnergyNGUTarget',
+                'magicNGUAdventureBTarget'
+            ])
+            break;
+        case NGU_TIME:
+            extraReq = disableItem(extraReq, ['percentageIncrease%']);
+            extraReq = disableItem(extraReq, [
+                'energyNGUAugmentsValue',
+                'energyNGUWandoosValue',
+                'energyNGURespawnValue',
+                'energyNGUGoldValue',
+                'energyNGUAdventureAValue',
+                'energyNGUPowerAValue',
+                'energyNGUDropChanceValue',
+                'energyNGUMagicNGUValue',
+                'energyNGUPPValue',
+                'magicNGUYggdrasilValue',
+                'magicNGUExpValue',
+                'magicNGUPowerBValue',
+                'magicNGUNumberValue',
+                'magicNGUTimeMachineValue',
+                'magicNGUEnergyNGUValue',
+                'magicNGUAdventureBValue'
+            ])
+            infoReq = disableItem(infoReq, [
+                'energyNGUAugmentsTarget',
+                'energyNGUWandoosTarget',
+                'energyNGURespawnTarget',
+                'energyNGUGoldTarget',
+                'energyNGUAdventureATarget',
+                'energyNGUPowerATarget',
+                'energyNGUDropChanceTarget',
+                'energyNGUMagicNGUTarget',
+                'energyNGUPPTarget',
+                'magicNGUYggdrasilTarget',
+                'magicNGUExpTarget',
+                'magicNGUPowerBTarget',
+                'magicNGUNumberTarget',
+                'magicNGUTimeMachineTarget',
+                'magicNGUEnergyNGUTarget',
+                'magicNGUAdventureBTarget'
+            ])
+            break;
+
     }
     
     var topButtons = (
         <>
             <p>How would you like to calculate NGUs?</p>
             <ChoiceButton text="Using Targets" onClick={() => setCalcType(NGU_TARGET)} active={calcType==NGU_TARGET} />
-            <ChoiceButton text="Using Percentage of bonus" onClick={() => setCalcType(NGU_PERCENTAGE)}  active={calcType==NGU_PERCENTAGE} />
+            <ChoiceButton text="Using Percentage of value" onClick={() => setCalcType(NGU_PERCENTAGE)}  active={calcType==NGU_PERCENTAGE} />
+            <ChoiceButton text="Using new value" onClick={() => setCalcType(NGU_VALUE)}  active={calcType==NGU_VALUE} />
             {/* <ChoiceButton text="Using Time" onClick={() => setCalcType(NGU_TIME)} /> */}
         </>
     )
@@ -345,7 +411,7 @@ export default function Page() {
                         {energyRow}
                         <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
                             <th className="px-2">Total:</th>
-                            <th className="px-2"><span className="text-red-500">{dn(energyTotalSeconds)}</span></th>
+                            <th className="px-2"><span className="text-red-500">{dn(totalSeconds[0])}</span></th>
                             <th className="px-2"></th>
                             <th className="px-2"></th>
                             <th className="px-2"></th>
@@ -369,7 +435,7 @@ export default function Page() {
                     
                         <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
                             <th className="px-2">Total:</th>
-                            <th className="px-2"><span className="text-red-500">{dn(magicTotalSeconds)}</span></th>
+                            <th className="px-2"><span className="text-red-500">{dn(totalSeconds[1])}</span></th>
                             <th className="px-2"></th>
                             <th className="px-2"></th>
                             <th className="px-2"></th>
