@@ -150,12 +150,12 @@ export class NGU extends Resource {
         var prop = this.statnames[0]
         
         if (this.isRespawn()) { // Respawn has weird scaling so we need to fix it.
-            var curVal = this.getStatValue(this.level, prop) - 100
-            percent = (curVal * (100 + percent) / 100) < -39.99 ? (-39.99 - curVal) / curVal : percent / 100
+            var curVal = this.getStatValue(this.level, prop) - 100 // Make it < 0
+            percent = (curVal * (100 + percent) / 100) <= -40 ? (-40 - curVal) / curVal : percent / 100
             var desiredVal = (curVal) * (percent + 1)
         } else {
             var curVal = this.getStatValue(this.level, prop)
-            var desiredVal = curVal * (percent/100 + 1) - 100
+            var desiredVal = curVal * (percent/100 + 1)
         }
         return (this.valueIncrease(desiredVal))
     }
@@ -179,52 +179,63 @@ export class NGU extends Resource {
         return bd(maxLvl).ceil()
     }
     calcSecondsToTarget(cap : bigDecimal, speedFactor : bigDecimal, target : bigDecimal = bd(-1)) : bigDecimal {
-        // Grab base amount of time things will take
-        var baseSpeed = this.getBaseSpeed();
-        try {
-            var baseTime = baseSpeed.multiply(bd(100)).divide(cap).divide(speedFactor)
-        } catch (error) {
-            var baseTime = bd(0)
-        }
-        
         var level = bd(this.level)
         if (target.compareTo(bd(-1)) === 0 ) {
             target = bd(this.target)
         }
 
 
-        
+        // Grab base amount of time things will take
+        var baseSpeed = this.getBaseSpeed();
+        var baseFactor = bd(1)
+        var i = 0
+        try {
+            
+            var baseTimePerLevel = baseSpeed.multiply(bd(100)).divide(cap).divide(speedFactor)
+            while(level.compareTo(target) != 0 && baseTimePerLevel.floor().compareTo(bd(0)) == 0) {
+                i += 1
+                baseFactor = baseFactor.multiply(bd(1000000000))
+                baseTimePerLevel = baseSpeed.multiply(bd(100)).multiply(baseFactor).divide(cap).divide(speedFactor)
+            }
+        } catch (error) {
+            var baseTimePerLevel = bd(0)
+        }
         
         // Grab the starting time and the ending time
-        var startingSpeed = baseTime.multiply(level.add(bd(1)))
-        var endingSpeed = baseTime.multiply(target)
+        var startingSpeed = baseTimePerLevel.multiply(level.add(bd(1))).divide(baseFactor).round(2, bigDecimal.RoundingModes.CEILING)
+        var endingSpeed = baseTimePerLevel.multiply(target).divide(baseFactor).round(2, bigDecimal.RoundingModes.CEILING)
+
+        startingSpeed = startingSpeed.compareTo(bd(0)) <= 0 ? bd(0.02) : startingSpeed
+        endingSpeed = endingSpeed.compareTo(bd(0)) <= 0 ? bd(0.02) : endingSpeed
+
         
         // Grab the number of levels that will be calculated with starting, middle (average) and end times
         try {
-            var startingSpeedLevels = bigdec_max(bigdec_min(startingSpeed.divide(baseTime), target).subtract(level).floor(), bd(0))
-            var x = endingSpeed.subtract(bd(0.01)).divide(baseTime).subtract(level).subtract(startingSpeedLevels).floor()
-            var middleSpeedLevels = x.compareTo(bd(0)) == -1 ? bd(0) : x;
-            x = bigdec_min(endingSpeed.divide(baseTime), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
-            var endingSpeedLevels = x.compareTo(bd(0)) == -1 ? bd(0) : x;
+            var startingSpeedLevels = bigdec_max(
+                bigdec_min(startingSpeed.multiply(baseFactor).divide(baseTimePerLevel), target).subtract(level).floor(),
+                bd(0)
+            )
+
+            var x = endingSpeed.subtract(bd(0.02)).multiply(baseFactor).divide(baseTimePerLevel).subtract(level).subtract(startingSpeedLevels).floor()
+            var middleSpeedLevels = x.compareTo(bd(0)) == 1 ? x : bd(0);
+
+            x = bigdec_min(endingSpeed.multiply(baseFactor).divide(baseTimePerLevel), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
+            var endingSpeedLevels = x.compareTo(bd(0)) == 1 ? x : bd(0);
         } catch(error) {
             var startingSpeedLevels = bd(0);
             var middleSpeedLevels = bd(0);
             var endingSpeedLevels = bd(0);
         }
-        
+
         return startingSpeedLevels.multiply(startingSpeed)
                 .add(endingSpeed.multiply(endingSpeedLevels))
-                .add(endingSpeed.add(startingSpeed).divide(bd(2)).multiply(middleSpeedLevels))
+                .add((endingSpeed.add(startingSpeed)).divide(bd(2)).multiply(middleSpeedLevels))
     
     }
-
-    capToReachMaxTarget(speedFactor : bigDecimal, target : (bigDecimal | null) = null ) : bigDecimal {
+    capAtTarget(speedFactor : bigDecimal, level : bigDecimal) : bigDecimal {
         var base = this.getBaseSpeed();
-        if (_.isNull(target)) {
-            target = bd(this.target)
-        } 
 
-        if (target.compareTo(bd(0)) == -1) {
+        if (level.compareTo(bd(0)) == -1) {
             return bd(0)
         }
         try {
@@ -232,7 +243,14 @@ export class NGU extends Resource {
         } catch (error) {
             var baseTimePerLevel = bd(0)
         }
-        return target.multiply(baseTimePerLevel).divide(bd(0.0002))
+        return level.multiply(baseTimePerLevel).divide(bd(0.0002))
+    }
+
+    capToReachMaxTarget(speedFactor : bigDecimal, target : (bigDecimal | null) = null ) : bigDecimal {
+        if (_.isNull(target)) {
+            target = bd(this.target)
+        }
+        return this.capAtTarget(speedFactor, target)
     }
 
     capToReachMaxInDay(speedFactor : bigDecimal) : bigDecimal {
