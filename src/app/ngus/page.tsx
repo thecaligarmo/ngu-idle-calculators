@@ -126,7 +126,24 @@ export default function Page() {
         'magicNGUEnergyNGUTarget': 'Energy NGU Target',
         'magicNGUAdventureBTarget': 'Adventure β Target',
     })
-    var extraReq = getRequiredStates(extraRequired, playerStates)
+    var extraReq = getRequiredStates(extraRequired, playerStates, {
+        'energyNGUAugmentsValue': 'Augments Value',
+        'energyNGUWandoosValue': 'Wandoos Value',
+        'energyNGURespawnValue': 'Respawn Value',
+        'energyNGUGoldValue': 'Gold Value',
+        'energyNGUAdventureAValue': 'Adventure α Value',
+        'energyNGUPowerAValue': 'Power α Value',
+        'energyNGUDropChanceValue': 'Drop Chance Value',
+        'energyNGUMagicNGUValue': 'Magic NGU Value',
+        'energyNGUPPValue': 'PP Value',
+        'magicNGUYggdrasilValue': 'Yggdrasil Value',
+        'magicNGUExpValue': 'Exp Value',
+        'magicNGUPowerBValue': 'Power β Value',
+        'magicNGUNumberValue': 'Number Value',
+        'magicNGUTimeMachineValue': 'Time Machine Value',
+        'magicNGUEnergyNGUValue': 'Energy NGU Value',
+        'magicNGUAdventureBValue': 'Adventure β Value',
+    })
 
     // Helper function - Needed in every isntance (makes code easier to read too)
     function v(key : string) : bigDecimal{
@@ -381,8 +398,8 @@ export default function Page() {
         <>
             <p>How would you like to calculate NGUs?</p>
             <ChoiceButton text="Using Targets" onClick={() => setCalcType(NGU_TARGET)} active={calcType==NGU_TARGET} />
-            <ChoiceButton text="Using Percentage of value" onClick={() => setCalcType(NGU_PERCENTAGE)}  active={calcType==NGU_PERCENTAGE} />
-            <ChoiceButton text="Using new value" onClick={() => setCalcType(NGU_VALUE)}  active={calcType==NGU_VALUE} />
+            <ChoiceButton text="Using Percentage of Current Value" onClick={() => setCalcType(NGU_PERCENTAGE)}  active={calcType==NGU_PERCENTAGE} />
+            <ChoiceButton text="Using Certain Value" onClick={() => setCalcType(NGU_VALUE)}  active={calcType==NGU_VALUE} />
             {/* <ChoiceButton text="Using Time" onClick={() => setCalcType(NGU_TIME)} /> */}
         </>
     )
