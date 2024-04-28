@@ -98,7 +98,7 @@ export default function Page() {
             .multiply(normalEnemyPercent)
             .multiply(recycledValues)
         var zoneInfo = {key: zone.key, name: zone.name, val: boostedValZone}
-        zoneBoostInfo.push();
+        zoneBoostInfo.push(zoneInfo);
         if(boostedVal.compareTo(boostedValZone) == -1) {
           boostedVal = boostedValZone
           optimalZone = zoneInfo
