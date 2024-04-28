@@ -6,7 +6,7 @@ import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { BEARDS, Beard } from "@/assets/beards";
 import { DIGGERS, Digger } from "@/assets/diggers";
 import { CHALLENGES, Challenge } from "@/assets/challenges";
-import { boostRecyclying, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalMagicCap, totalMagicNGUSpeedFactor, totalPower, totalRespawnRate } from "./calculators";
+import { boostRecyclying, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalMagicCap, totalMagicNGUSpeedFactor, totalPPBonus, totalPower, totalRespawnRate } from "./calculators";
 import { APITEMS, APItem } from "@/assets/apItems";
 import { ItemSet, ItemSets } from "@/assets/sets";
 import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
@@ -195,6 +195,8 @@ export function defaultPlayerData(playerData : any, info : string) : any {
 
 
 
+            case 'achievements':
+                return playerData.achievements.achievementComplete
             case 'advTrainings':
                 var advTrainings: AdvTraining[] = []
                 for (var c = 0; c < 5; c++) {
@@ -393,6 +395,8 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return totalEnergyNGUSpeedFactor(playerData);
             case 'totalMagicNGUSpeedFactor%':
                 return totalMagicNGUSpeedFactor(playerData);
+            case 'totalPPBonus%':
+                return totalPPBonus(playerData)
             case 'totalPower':
                 return totalPower(playerData);
             case 'totalRespawnTime':
@@ -502,6 +506,7 @@ export function getPlayerNumberOptions() : string[]{
 
 export function getPlayerOptions() : string[] {
     return [
+        'achievements',
         'advTrainings',
         'apItems',
         'beards',
@@ -530,6 +535,7 @@ export function getCalculatedOptions() : string[] {
         'currentMagicCap',
         'totalEnergyNGUSpeedFactor%',
         'totalMagicNGUSpeedFactor%',
+        'totalPPBonus%',
         'totalPower',
         'totalRespawnTime',
         'totalDropChance%',

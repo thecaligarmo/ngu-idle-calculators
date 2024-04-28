@@ -51,11 +51,22 @@ export function getRequiredStates(data : any, states : any, nameMap : any = {} )
         let colDr = []
         for (var k of col) {
             var dataState = states[k]
+            var ty = 'number'
+            var name = (k in nameMap) ? nameMap[k] : camelToTitle(k)
+            if (k.slice(-1) == '%') {
+                ty = 'percent'
+            } else if (k.slice(-1) == '^') {
+                ty = 'checkbox'
+                name = camelToTitle(k.slice(0, -1))
+            }
+            var id = k.replace('^', '').replace('%', '')
             colDr.push({
                 key: k,
                 value: dataState,
                 disabled: false,
-                name: (k in nameMap) ? nameMap[k] : camelToTitle(k)
+                name: name,
+                type: ty,
+                id: id,
             })
         }
         ir.push(colDr)

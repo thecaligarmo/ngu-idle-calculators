@@ -13,6 +13,122 @@ import { NGU } from "@/assets/ngus";
 import { Perk } from "@/assets/perks";
 import { MacGuffin } from "@/assets/macguffins";
 
+export function achievementAPBonus(data : any) : bigDecimal {
+    var achievements = parseObj(data, 'achievements')
+    
+    var sum = 0
+    for (var i = 0; i < achievements.length; i++) {
+        if(achievements[i] == 1) {
+            // There are 16 of the first 6, so we can collapse as they
+            // have identical points
+            var j = (i < 96) ? i % 16 : i
+            switch(j) {
+                case 0:
+                case 96:
+                case 135:
+                    sum += 5
+                    break
+                case 1:
+                case 97:
+                case 136:
+                    sum += 10
+                    break
+                case 2:
+                case 98:
+                case 137:
+                    sum += 15
+                    break
+                case 3:
+                case 99:
+                case 138:
+                case 147:
+                    sum += 20
+                    break
+                case 4:
+                case 100:
+                case 101:
+                case 139:
+                case 148:
+                case 149:
+                case 150:
+                case 151:
+                case 152 :
+                    sum += 25
+                    break
+                case 5:
+                case 102:
+                case 103:
+                case 126:
+                case 127:
+                case 140:
+                    sum += 30
+                    break
+                case 6:
+                case 7:
+                case 104:
+                case 105:
+                case 106:
+                    sum += 35
+                    break
+                case 8:
+                case 9:
+                case 10:
+                case 107:
+                case 108:
+                case 109:
+                case 141:
+                    sum += 40
+                    break
+                case 11:
+                case 12:
+                case 13:
+                case 110:
+                case 111:
+                case 112:
+                case 113:
+                    sum += 45
+                    break
+                case 14:
+                case 15:
+                case 114:
+                case 115:
+                case 116:
+                case 117:
+                case 142:
+                    sum += 50
+                    break
+                case 118:
+                case 119:
+                case 120:
+                case 121:
+                    sum += 55
+                    break
+                case 122:
+                case 123:
+                case 124:
+                case 125:
+                case 143:
+                case 144:
+                    sum += 60
+                    break
+                case 128:
+                case 129:
+                case 130:
+                case 131:
+                case 132:
+                case 133:
+                case 134:
+                case 145:
+                case 146:
+                    sum += 100
+                    break
+
+            }
+        }
+    }
+    
+    return bd(sum / 100 + 100)
+}
 
 export function advTraininginInfo(data: any, key: string) : bigDecimal {
     var advTrainings : AdvTraining[] = parseObj(data, 'advTrainings')

@@ -6,14 +6,18 @@ import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
 import { parseObj, parseNum } from "./parsers";
-import { advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
+import { achievementAPBonus, advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
 import { ItemSets } from "@/assets/sets";
-import { M_PLUS_1 } from "next/font/google";
 
 
 // General Calc - gives a percentage
 function calcAll(data : any, stat : string) : bigDecimal{
     var base = bd(100)
+
+    if (isInitilizing(data)) {
+        return bd(0)
+    }
+
     return bd(1)
         .multiply(equipmentInfo(data, stat)).divide(base)
         .multiply(perkInfo(data, stat)).divide(base)
@@ -25,6 +29,12 @@ function calcAll(data : any, stat : string) : bigDecimal{
         .multiply(challengeInfo(data, stat))
         .multiply(apItemInfo(data, stat).divide(base))
         .multiply(macguffinInfo(data, stat).divide(base))
+}
+
+function isInitilizing(data : any ) : boolean {
+    // We want to return 0 if we don't have data yet
+    var basePower = parseNum(data, 'baseAdventurePower')
+    return (basePower.compareTo(bd(0)) == 0)
 }
 
 export function boostRecyclying(data : any) : bigDecimal {
@@ -95,17 +105,47 @@ export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
         .multiply(tcNum)
 }
 
+/** Exp, AP, PP */
+export function totalExpBonus(data : any) : bigDecimal {
+    var redHeartBonus : bigDecimal = isMaxxedItem(data, 119) ? bd(1.1) : bd(1)
+    var gen : bigDecimal = calcAll(data, Stat.EXPERIENCE)
+
+    return bd(1)
+        .multiply(gen)
+        .multiply(redHeartBonus)
+}
+
+export function totalAPBonus(data: any) : bigDecimal {
+    var yellowHeartBonus : bigDecimal = isMaxxedItem(data, 129) ? bd(1.2) : bd(1)
+    var achievBonus = achievementAPBonus(data)
+
+    if (isInitilizing(data)) {
+        return bd(0)
+    }
+
+    return bd(100)
+        .multiply(yellowHeartBonus)
+        .multiply(achievBonus).divide(bd(100))
+}
+
+export function totalPPBonus(data: any) : bigDecimal {
+    var greenHeartBonus : bigDecimal = isMaxxedItem(data, 171) ? bd(1.2) : bd(1)
+    var pissedOffKeyBonus : bigDecimal = isMaxxedItem(data, 172) ? bd(1.1) : bd(1)
+    var gen : bigDecimal = calcAll(data, Stat.PP)
+    
+
+    return bd(1)
+        .multiply(gen)
+        .multiply(greenHeartBonus)
+        .multiply(pissedOffKeyBonus)
+}
+
 /** Adventure Stats */
 export function totalPower(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.POWER)
     var equipPower = equipmentInfo(data, Stat.POWER)
     var advTraining = advTraininginInfo(data, Stat.POWER)
     var basePower = parseNum(data, 'baseAdventurePower')
-
-    // We want to return 0 if we don't have data yet
-    if (basePower.compareTo(bd(0)) == 0) {
-        return bd(0);
-    }
 
     // Want to add equipPower instead of multiply
     var subtotal = basePower.add(equipPower)
@@ -126,9 +166,6 @@ export function totalToughness(data : any) : bigDecimal {
     var equipPower = equipmentInfo(data, Stat.TOUGHNESS)
     var advTraining = advTraininginInfo(data, Stat.TOUGHNESS)
     var basePower = parseNum(data, 'baseAdventureToughness')
-    if (basePower.compareTo(bd(0)) == 0) {
-        return bd(0);
-    }
 
     // Want to add equipPower instead of multiply
     var subtotal = basePower.add(equipPower)
@@ -142,6 +179,7 @@ export function totalToughness(data : any) : bigDecimal {
 /** Misc Adventure */
 export function totalGoldDrop(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.GOLD_DROP);
+
     return bd(1)
         .multiply(gen)
 }
@@ -149,10 +187,8 @@ export function totalGoldDrop(data : any) : bigDecimal {
 export function totalRespawnRate(data : any) : bigDecimal {
     var clockSetModifier = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(0.95) : bd(1);
 
-    // We want to return 0 if we don't have data yet
-    var basePower = parseNum(data, 'baseAdventurePower')
-    if (basePower.compareTo(bd(0)) == 0) {
-        return bd(0);
+    if (isInitilizing(data)) {
+        return bd(0)
     }
 
     return bd(1)
@@ -167,6 +203,7 @@ export function totalDropChance(data : any) : bigDecimal {
     var twoDSetModifier = isMaxxedItemSet(data, ItemSets.TWO_D) ? bd(1.0743) : bd(1)
     var bloodModifier = (parseNum(data, 'bloodMagicDropChance').add(bd(100))).divide(bd(100))
     var yggdrasilModifier = parseNum(data, 'yggdrasilDropChance').divide(bd(100))
+
     return bd(1)
         .multiply(gen)
         .multiply(twoDSetModifier)

@@ -7,8 +7,8 @@ import { bd, pn } from '@/helpers/numbers';
 import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
 import { Stat } from '@/assets/stat';
-import { totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalGoldDrop, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPower, totalRespawnRate, totalToughness } from '@/helpers/calculators';
-import {advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo} from '@/helpers/resourceInfo';
+import { totalAPBonus, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRespawnRate, totalToughness } from '@/helpers/calculators';
+import {achievementAPBonus, advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo} from '@/helpers/resourceInfo';
 import { ItemSets } from '@/assets/sets';
 
 export default function Page() {
@@ -79,6 +79,40 @@ export default function Page() {
                         <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_NGU_SPEED).round(), fmt)}%)</li>
                         <li key="challenge">x Challenge ({pn(challengeInfo(playerStates, Stat.ENERGY_NGU_SPEED), fmt)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyNGUSpeedFactor(playerStates), fmt)}%</span></li>
+                    </ul>
+                </ContentSubsection>
+            </ContentSection>
+            <ContentSection title="Exp/AP/PP">
+                <ul>
+                    <li key="exp"><strong>Total Exp Bonus:</strong> <span className="text-red-500">{pn(totalExpBonus(playerStates), fmt, 2)}%</span></li>
+                    <li key="ap"><strong>Total AP Bonus:</strong> <span className="text-red-500">{pn(totalAPBonus(playerStates), fmt, 2)}%</span></li>
+                    <li key="pp"><strong>Total PP Bonus:</strong> <span className="text-red-500">{pn(totalPPBonus(playerStates), fmt, 2)}%</span></li>
+                </ul>
+                <ContentSubsection title="Exp Calculation" defaultHide={true}>
+                    <ul className='ml-5'>
+                        <li key="base">Base Exp Gain (100%)</li>
+                        <li key="heart">x Red Heart Bonus ({pn(isMaxxedItem(playerStates, 119) ? bd(110) : bd(100), fmt)}%)</li>
+                        <li key="ngu">x NGU ({pn(nguInfo(playerStates, Stat.EXPERIENCE), fmt, 2)}%)</li>
+                        <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.EXPERIENCE), fmt, 2)}%)</li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalExpBonus(playerStates), fmt, 2)}%</span></li>
+                    </ul>
+                </ContentSubsection>
+                <ContentSubsection title="AP Calculation" defaultHide={true}>
+                    <ul className='ml-5'>
+                    <li key="base">Base AP Gain (100%)</li>
+                        <li key="heart">x Yellow Heart Bonus ({pn(isMaxxedItem(playerStates, 129) ? bd(120) : bd(100), fmt)}%)</li>
+                        <li key="ngu">x Achievements ({pn(achievementAPBonus(playerStates), fmt, 2)}%)</li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalAPBonus(playerStates), fmt, 2)}%</span></li>
+                    </ul>
+                </ContentSubsection>
+                <ContentSubsection title="PP Calculation" defaultHide={true}>
+                    <ul className='ml-5'>
+                        <li key="base">Base PP Gain (100%)</li>
+                        <li key="heart">x Green Heart Bonus ({pn(isMaxxedItem(playerStates, 171) ? bd(120) : bd(100), fmt)}%)</li>
+                        <li key="podKey">x Pissed Off Key Bonus ({pn(isMaxxedItem(playerStates, 172) ? bd(110) : bd(100), fmt)}%)</li>
+                        <li key="ngu">x NGU ({pn(nguInfo(playerStates, Stat.PP), fmt)}%)</li>
+                        <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.PP), fmt, 2)}%)</li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalPPBonus(playerStates), fmt, 2)}%</span></li>
                     </ul>
                 </ContentSubsection>
             </ContentSection>
