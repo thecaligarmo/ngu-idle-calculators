@@ -17,7 +17,7 @@ export function bigdec_max(...args : bigDecimal[]) : bigDecimal {
 
 export function bigdec_min(...args : bigDecimal[]) : bigDecimal {
     if (args.length < 1){ 
-        throw 'Max of empty list';
+        throw 'Min of empty list';
     }
     var m = args[0];
     args.forEach( a => {
