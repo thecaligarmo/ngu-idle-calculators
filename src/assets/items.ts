@@ -1,15 +1,20 @@
 import _, { add } from "lodash";
 import { Stat } from "./stat";
 import Resource, { ResourceContainer, prop } from "./resource";
+import { ItemSet } from "./sets";
+import Zone, { Zones } from "./zones";
 
 type slotType = (string | number)[]
+
 
 // Taken from https://github.com/gmiclotte/gear-optimizer/
 export class Item extends Resource {
     slot: slotType
-    constructor(id: number, key: string, name: string, slot: slotType, level: number, props: prop) {
+    zone: Zone[]
+    constructor(id: number, key: string, name: string, slot: slotType, zone: Zone | Zone[] , level: number, props: prop) {
         super(id, key, name, level, props)
         this.slot = slot;
+        this.zone = (zone instanceof Zone) ? [zone] : zone
     }
     updateStats() {
         for (var prop of Object.keys(this.base)) {
@@ -99,6 +104,7 @@ export const StatType : {[index: number]: string[]} = {
     21: [Stat.MAGIC_CAP],
     22: [Stat.ENERGY_NGU_SPEED, Stat.MAGIC_NGU_SPEED],
     23: [Stat.RESPAWN],
+    24: [Stat.EXPERIENCE],
     25: [Stat.AP],
     26: [Stat.ENERGY_BEARD_SPEED, Stat.MAGIC_BEARD_SPEED],
     27: [Stat.ENERGY_POWER, Stat.MAGIC_POWER],
@@ -117,6 +123,7 @@ export const StatType : {[index: number]: string[]} = {
     40: [Stat.GOLD_DROP],
     41: [Stat.DROP_CHANCE],
     42: [Stat.ENERGY_BEARD_SPEED, Stat.MAGIC_BEARD_SPEED],
+    43: [Stat.YGGDRASIL_YIELD],
     45: [Stat.QUEST_DROP],
 }
 
@@ -140,6 +147,7 @@ export const StatDiv  : {[index: number]: number}= {
     21: 100,
     22: 100,
     23: 1000,
+    24: 10000,
     25: 10000,
     26: 1000,
     27: 1000,
@@ -158,634 +166,636 @@ export const StatDiv  : {[index: number]: number}= {
     40: 1000,
     41: 10000,
     42: 10000,
+    43: 100000,
     45: 1000000,
 }
 
 
-
 export const ITEMLIST = [
-    new Item(40, 'crappyHelmet', 'Crappy Helmet',  Slot.HEAD, 100, [
+    new Item(40, 'crappyHelmet', 'Crappy Helmet', Slot.HEAD, Zones.SEWERS, 100, [
         [Stat.TOUGHNESS, 5],
         [Stat.ENERGY_SPEED, 3],
     ]),
-    new Item(41, 'crappyChestplate', 'Crappy Chestplate',  Slot.CHEST, 100, [
+    new Item(41, 'crappyChestplate', 'Crappy Chestplate', Slot.CHEST, Zones.SEWERS, 100, [
         [Stat.TOUGHNESS, 5],
     ]),
-    new Item(42, 'crappyLeggings', 'Crappy Leggings',  Slot.PANTS, 100, [
+    new Item(42, 'crappyLeggings', 'Crappy Leggings', Slot.PANTS, Zones.SEWERS, 100, [
         [Stat.TOUGHNESS, 5],
     ]),
-    new Item(43, 'crappyBoots', 'Crappy Boots',  Slot.BOOTS, 100, [
+    new Item(43, 'crappyBoots', 'Crappy Boots', Slot.BOOTS, Zones.SEWERS, 100, [
         [Stat.TOUGHNESS, 5],
         [Stat.ENERGY_SPEED, 5],
     ]),
-    new Item(44, 'rustySword', 'Rusty Sword',  Slot.WEAPON, 100, [
+    new Item(44, 'rustySword', 'Rusty Sword', Slot.WEAPON, Zones.SEWERS, 100, [
         [Stat.POWER, 20],
     ]),
-    new Item(45, 'grossRing', 'Gross Ring',  Slot.ACCESSORY, 100, [
+    new Item(45, 'grossRing', 'Gross Ring', Slot.ACCESSORY, Zones.SEWERS, 100, [
         [Stat.POWER, 1],
         [Stat.TOUGHNESS, 1],
         [Stat.ENERGY_SPEED, 20],
     ]),
-    new Item(46, 'crackedAmulet', 'Cracked Amulet',  Slot.ACCESSORY, 100, [
+    new Item(46, 'crackedAmulet', 'Cracked Amulet', Slot.ACCESSORY, Zones.SEWERS, 100, [
         [Stat.POWER, 5],
         [Stat.TOUGHNESS, 5],
     ]),
-    new Item(47, 'forestHelmet', 'Forest Helmet',  Slot.HEAD, 100, [
+    new Item(47, 'forestHelmet', 'Forest Helmet', Slot.HEAD, Zones.FOREST, 100, [
         [Stat.TOUGHNESS, 20],
         [Stat.ENERGY_SPEED, 12],
         [Stat.ENERGY_POWER, 10],
     ]),
-    new Item(48, 'forestChestplate', 'Forest Chestplate',  Slot.CHEST, 100, [
+    new Item(48, 'forestChestplate', 'Forest Chestplate', Slot.CHEST, Zones.FOREST, 100, [
         [Stat.TOUGHNESS, 20],
         [Stat.ENERGY_SPEED, 8],
         [Stat.ENERGY_POWER, 12],
     ]),
-    new Item(49, 'forestLeggings', 'Forest Leggings',  Slot.PANTS, 100, [
+    new Item(49, 'forestLeggings', 'Forest Leggings', Slot.PANTS, Zones.FOREST, 100, [
         [Stat.TOUGHNESS, 20],
         [Stat.ENERGY_SPEED, 8],
     ]),
-    new Item(50, 'forestBoots', 'Forest Boots',  Slot.BOOTS, 100, [
+    new Item(50, 'forestBoots', 'Forest Boots', Slot.BOOTS, Zones.FOREST, 100, [
         [Stat.TOUGHNESS, 20],
         [Stat.ENERGY_POWER, 5],
     ]),
-    new Item(51, 'kokiriBlade', 'Kokiri Blade',  Slot.WEAPON, 100, [
+    new Item(51, 'kokiriBlade', 'Kokiri Blade', Slot.WEAPON, Zones.FOREST, 100, [
         [Stat.POWER, 80],
         [Stat.ENERGY_POWER, 10],
     ]),
-    new Item(52, 'mossyRing', 'Mossy Ring',  Slot.ACCESSORY, 100, [
+    new Item(52, 'mossyRing', 'Mossy Ring', Slot.ACCESSORY, Zones.FOREST, 100, [
         [Stat.POWER, 8],
         [Stat.TOUGHNESS, 8],
         [Stat.ENERGY_SPEED, 20],
     ]),
-    new Item(53, 'forestPendant', 'Forest Pendant',  Slot.ACCESSORY, 100, [
+    new Item(53, 'forestPendant', 'Forest Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
     ]),
-    new Item(54, 'blueCheeseHelmet', 'Blue Cheese Helmet',  Slot.HEAD, 100, [
+    new Item(54, 'blueCheeseHelmet', 'Blue Cheese Helmet', Slot.HEAD, Zones.CAVE, 100, [
         [Stat.TOUGHNESS, 50],
         [Stat.MAGIC_POWER, 7],
     ]),
-    new Item(55, 'goudaChestplate', 'Gouda Chestplate',  Slot.CHEST, 100, [
+    new Item(55, 'goudaChestplate', 'Gouda Chestplate', Slot.CHEST, Zones.CAVE, 100, [
         [Stat.TOUGHNESS, 50],
         [Stat.MAGIC_POWER, 13],
     ]),
-    new Item(56, 'swissLeggings', 'Swiss Leggings',  Slot.PANTS, 100, [
+    new Item(56, 'swissLeggings', 'Swiss Leggings', Slot.PANTS, Zones.CAVE, 100, [
         [Stat.TOUGHNESS, 50],
         [Stat.MAGIC_SPEED, 10],
     ]),
-    new Item(57, 'limburgerBoots', 'Limburger Boots',  Slot.BOOTS, 100, [
+    new Item(57, 'limburgerBoots', 'Limburger Boots', Slot.BOOTS, Zones.CAVE, 100, [
         [Stat.TOUGHNESS, 50],
         [Stat.MAGIC_SPEED, 10],
         [Stat.MAGIC_POWER, 10],
     ]),
-    new Item(58, 'moleHammer', 'Mole Hammer',  Slot.WEAPON, 100, [
+    new Item(58, 'moleHammer', 'Mole Hammer', Slot.WEAPON, Zones.CAVE, 100, [
         [Stat.POWER, 200],
         [Stat.ENERGY_BARS, 15],
     ]),
-    new Item(59, 'havartiRing', 'Havarti Ring',  Slot.ACCESSORY, 100, [
+    new Item(59, 'havartiRing', 'Havarti Ring', Slot.ACCESSORY, Zones.CAVE, 100, [
         [Stat.POWER, 4],
         [Stat.TOUGHNESS, 4],
         [Stat.MAGIC_SPEED, 25],
         [Stat.MAGIC_POWER, 25],
     ]),
-    new Item(60, 'cheddarAmulet', 'Cheddar Amulet',  Slot.ACCESSORY, 100, [
+    new Item(60, 'cheddarAmulet', 'Cheddar Amulet', Slot.ACCESSORY, Zones.CAVE, 100, [
         [Stat.POWER, 1],
         [Stat.TOUGHNESS, 1],
         [Stat.ENERGY_POWER, 30],
         [Stat.ENERGY_SPEED, 60],
     ]),
-    new Item(61, 'combatCheese', 'Combat Cheese',  Slot.ACCESSORY, 100, [
+    new Item(61, 'combatCheese', 'Combat Cheese', Slot.ACCESSORY, Zones.CAVE, 100, [
         [Stat.POWER, 30],
         [Stat.TOUGHNESS, 30],
         [Stat.GOLD_DROP, 10],
     ]),
-    new Item(62, 'clothHat', 'Cloth Hat',  Slot.HEAD, 100, [
+    new Item(62, 'clothHat', 'Cloth Hat', Slot.HEAD, Zones.TUTORIAL, 100, [
         [Stat.TOUGHNESS, 1],
     ]),
-    new Item(63, 'clothShirt', 'Cloth Shirt',  Slot.CHEST, 100, [
+    new Item(63, 'clothShirt', 'Cloth Shirt', Slot.CHEST, Zones.TUTORIAL, 100, [
         [Stat.TOUGHNESS, 1],
     ]),
-    new Item(64, 'clothLeggings', 'Cloth Leggings',  Slot.PANTS, 100, [
+    new Item(64, 'clothLeggings', 'Cloth Leggings', Slot.PANTS, Zones.TUTORIAL, 100, [
         [Stat.TOUGHNESS, 1],
     ]),
-    new Item(65, 'clothBoots', 'Cloth Boots',  Slot.BOOTS, 100, [
+    new Item(65, 'clothBoots', 'Cloth Boots', Slot.BOOTS, Zones.TUTORIAL, 100, [
         [Stat.TOUGHNESS, 1],
     ]),
-    new Item(67, 'lootyMcLootFace', 'Looty McLootFace',  Slot.ACCESSORY, 100, [
+    new Item(67, 'lootyMcLootFace', 'Looty McLootFace', Slot.ACCESSORY, Zones.LOOTY, 100, [
         [Stat.POWER, 2],
         [Stat.TOUGHNESS, 2],
         [Stat.DROP_CHANCE, 10],
     ]),
-    new Item(68, 'magitechHelmet', 'Magitech Helmet',  Slot.HEAD, 100, [
+    new Item(68, 'magitechHelmet', 'Magitech Helmet', Slot.HEAD, Zones.HSB, 100, [
         [Stat.TOUGHNESS, 125],
         [Stat.ENERGY_BARS, 25],
         [Stat.MAGIC_BARS, 15],
     ]),
-    new Item(69, 'magitechChestplate', 'Magitech Chestplate',  Slot.CHEST, 100, [
+    new Item(69, 'magitechChestplate', 'Magitech Chestplate', Slot.CHEST, Zones.HSB, 100, [
         [Stat.TOUGHNESS, 125],
         [Stat.ENERGY_BARS, 15],
         [Stat.MAGIC_SPEED, 20],
     ]),
-    new Item(70, 'magitechLeggings', 'Magitech Leggings',  Slot.PANTS, 100, [
+    new Item(70, 'magitechLeggings', 'Magitech Leggings', Slot.PANTS, Zones.HSB, 100, [
         [Stat.TOUGHNESS, 125],
         [Stat.MAGIC_BARS, 20],
         [Stat.MAGIC_POWER, 10],
     ]),
-    new Item(71, 'magitechBoots', 'Magitech Boots',  Slot.BOOTS, 100, [
+    new Item(71, 'magitechBoots', 'Magitech Boots', Slot.BOOTS, Zones.HSB, 100, [
         [Stat.TOUGHNESS, 125],
         [Stat.ENERGY_POWER, 25],
         [Stat.MAGIC_POWER, 15],
     ]),
-    new Item(72, 'magitechBlade', 'Magitech Blade',  Slot.WEAPON, 100, [
+    new Item(72, 'magitechBlade', 'Magitech Blade', Slot.WEAPON, Zones.HSB, 100, [
         [Stat.POWER, 500],
         [Stat.GOLD_DROP, 20],
         [Stat.ENERGY_CAP, 6],
         [Stat.MAGIC_CAP, 4],
     ]),
-    new Item(73, 'magitechRing', 'Magitech Ring',  Slot.ACCESSORY, 100, [
+    new Item(73, 'magitechRing', 'Magitech Ring', Slot.ACCESSORY, Zones.HSB, 100, [
         [Stat.POWER, 45],
         [Stat.TOUGHNESS, 45],
         [Stat.MAGIC_POWER, 40],
     ]),
-    new Item(74, 'magitechAmulet', 'Magitech Amulet',  Slot.ACCESSORY, 100, [
+    new Item(74, 'magitechAmulet', 'Magitech Amulet', Slot.ACCESSORY, Zones.HSB, 100, [
         [Stat.ENERGY_POWER, 30],
         [Stat.ENERGY_CAP, 0.9],
         [Stat.GOLD_DROP, 20],
     ]),
-    new Item(75, 'aStick', 'A Stick',  Slot.WEAPON, 100, [
+    new Item(75, 'aStick', 'A Stick', Slot.WEAPON, Zones.TUTORIAL, 100, [
         [Stat.POWER, 3],
     ]),
-    new Item(76, 'ascendedForestPendant', 'Ascended Forest Pendant',  Slot.ACCESSORY, 100, [
+    new Item(76, 'ascendedForestPendant', 'Ascended Forest Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 100],
         [Stat.TOUGHNESS, 100],
         [Stat.DROP_CHANCE, 20],
         [Stat.GOLD_DROP, 200],
     ]),
-    new Item(77, '4GsMergeandBoostTutorialCube', '4G\'s Merge and Boost Tutorial Cube',  Slot.ACCESSORY, 100, [
+    new Item(77, '4GsMergeAndBoostTutorialCube', '4G\'s Merge and Boost Tutorial Cube', Slot.ACCESSORY, Zones.SEWERS, 100, [
         [Stat.POWER, 7],
         [Stat.TOUGHNESS, 7],
         [Stat.ENERGY_SPEED, 15],
     ]),
-    new Item(78, 'chefsHat', 'Chef\'s Hat',  Slot.HEAD, 100, [
+    new Item(78, 'chefsHat', 'Chef\'s Hat', Slot.HEAD, Zones.GRB, 100, [
         [Stat.POWER, 250],
         [Stat.TOUGHNESS, 250],
         [Stat.COOKING, 30],
         [Stat.ENERGY_POWER, 50],
     ]),
-    new Item(79, 'chefsApron', 'Chef\'s Apron',  Slot.CHEST, 100, [
+    new Item(79, 'chefsApron', 'Chef\'s Apron', Slot.CHEST, Zones.GRB, 100, [
         [Stat.POWER, 20],
         [Stat.TOUGHNESS, 250],
         [Stat.COOKING, 30],
         [Stat.ENERGY_POWER, 50],
     ]),
-    new Item(80, 'regularPants', 'Regular Pants',  Slot.PANTS, 100, [
+    new Item(80, 'regularPants', 'Regular Pants', Slot.PANTS, Zones.GRB, 100, [
         [Stat.POWER, 20],
         [Stat.TOUGHNESS, 250],
         [Stat.COOKING, 30],
         [Stat.ENERGY_POWER, 65],
     ]),
-    new Item(81, 'nonSlipShoes', 'Non Slip Shoes',  Slot.BOOTS, 100, [
+    new Item(81, 'nonSlipShoes', 'Non Slip Shoes', Slot.BOOTS, Zones.GRB, 100, [
         [Stat.POWER, 20],
         [Stat.TOUGHNESS, 250],
         [Stat.COOKING, 30],
         [Stat.ENERGY_POWER, 65],
     ]),
-    new Item(82, 'bloodyCleaver', 'Bloody Cleaver',  Slot.WEAPON, 100, [
+    new Item(82, 'bloodyCleaver', 'Bloody Cleaver', Slot.WEAPON, Zones.GRB, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 80],
         [Stat.COOKING, 120],
         [Stat.ENERGY_POWER, 45],
         [Stat.ENERGY_BARS, 65],
     ]),
-    new Item(83, 'suspiciousSausageNecklace', 'Suspicious Sausage Necklace',  Slot.ACCESSORY, 100, [
+    new Item(83, 'suspiciousSausageNecklace', 'Suspicious Sausage Necklace', Slot.ACCESSORY, Zones.GRB, 100, [
         [Stat.POWER, 250],
         [Stat.TOUGHNESS, 250],
     ]),
-    new Item(84, 'rawSlabofMeat', 'Raw Slab of Meat',  Slot.ACCESSORY, 100, [
+    new Item(84, 'rawSlabofMeat', 'Raw Slab of Meat', Slot.ACCESSORY, Zones.GRB, 100, [
         [Stat.ENERGY_POWER, 70],
         [Stat.ENERGY_CAP, 5],
     ]),
-    new Item(85, 'clockworkHat', 'Clockwork Hat',  Slot.HEAD, 100, [
+    new Item(85, 'clockworkHat', 'Clockwork Hat', Slot.HEAD, Zones.CLOCK, 100, [
         [Stat.POWER, 30],
         [Stat.TOUGHNESS, 430],
         [Stat.MAGIC_POWER, 30],
         [Stat.MAGIC_CAP, 2],
     ]),
-    new Item(86, 'clockworkChest', 'Clockwork Chest',  Slot.CHEST, 100, [
+    new Item(86, 'clockworkChest', 'Clockwork Chest', Slot.CHEST, Zones.CLOCK, 100, [
         [Stat.POWER, 20],
         [Stat.TOUGHNESS, 445],
         [Stat.MAGIC_POWER, 30],
         [Stat.MAGIC_CAP, 3],
     ]),
-    new Item(87, 'clockworkPants', 'Clockwork Pants',  Slot.PANTS, 100, [
+    new Item(87, 'clockworkPants', 'Clockwork Pants', Slot.PANTS, Zones.CLOCK, 100, [
         [Stat.POWER, 20],
         [Stat.TOUGHNESS, 500],
         [Stat.MAGIC_POWER, 30],
         [Stat.MAGIC_CAP, 3],
     ]),
-    new Item(88, 'clockworkBoots', 'Clockwork Boots',  Slot.BOOTS, 100, [
+    new Item(88, 'clockworkBoots', 'Clockwork Boots', Slot.BOOTS, Zones.CLOCK, 100, [
         [Stat.POWER, 20],
         [Stat.TOUGHNESS, 515],
         [Stat.MAGIC_POWER, 30],
         [Stat.MAGIC_CAP, 3],
     ]),
-    new Item(89, 'aComicallyOversizedMinute-Hand', 'A Comically Oversized Minute-Hand',  Slot.WEAPON, 100, [
+    new Item(89, 'aComicallyOversizedMinute-Hand', 'A Comically Oversized Minute-Hand', Slot.WEAPON, Zones.CLOCK, 100, [
         [Stat.POWER, 2500],
         [Stat.TOUGHNESS, 80],
         [Stat.MAGIC_POWER, 50],
         [Stat.MAGIC_BARS, 65],
     ]),
-    new Item(90, 'alarmClock', 'Alarm Clock',  Slot.ACCESSORY, 100, [
+    new Item(90, 'alarmClock', 'Alarm Clock', Slot.ACCESSORY, Zones.CLOCK, 100, [
         [Stat.POWER, 450],
         [Stat.TOUGHNESS, 450],
     ]),
-    new Item(91, 'theSandsofTime', 'The Sands of Time',  Slot.ACCESSORY, 100, [
+    new Item(91, 'theSandsofTime', 'The Sands of Time', Slot.ACCESSORY, Zones.CLOCK, 100, [
         [Stat.MOVE_COOLDOWN, 10],
     ]),
-    new Item(94, 'ascendedAscendedForestPendant', 'Ascended Ascended Forest Pendant',  Slot.ACCESSORY, 100, [
+    new Item(94, 'ascendedAscendedForestPendant', 'Ascended Ascended Forest Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 800],
         [Stat.TOUGHNESS, 800],
         [Stat.DROP_CHANCE, 40],
         [Stat.GOLD_DROP, 400],
         [Stat.MAGIC_POWER, 100],
     ]),
-    new Item(95, 'circleHelmet', 'Circle Helmet',  Slot.HEAD, 100, [
+    new Item(95, 'circleHelmet', 'Circle Helmet', Slot.HEAD, Zones.TWO_D, 100, [
         [Stat.POWER, 50],
         [Stat.TOUGHNESS, 600],
         [Stat.ENERGY_POWER, 95],
         [Stat.ENERGY_BARS, 30],
-        [Stat.ENERGY_WANDOOS_SPEED, 10],[ Stat.MAGIC_WANDOOS_SPEED, 10],
+        [Stat.ENERGY_WANDOOS_SPEED, 10],
+        [Stat.MAGIC_WANDOOS_SPEED, 10],
     ]),
-    new Item(96, 'squareChestpiece', 'Square Chestpiece',  Slot.CHEST, 100, [
+    new Item(96, 'squareChestpiece', 'Square Chestpiece', Slot.CHEST, Zones.TWO_D, 100, [
         [Stat.POWER, 50],
         [Stat.TOUGHNESS, 645],
         [Stat.MAGIC_POWER, 40],
         [Stat.ENERGY_POWER, 50],
         [Stat.ENERGY_BARS, 50],
     ]),
-    new Item(97, 'rectanglePants', 'Rectangle Pants',  Slot.PANTS, 100, [
+    new Item(97, 'rectanglePants', 'Rectangle Pants', Slot.PANTS, Zones.TWO_D, 100, [
         [Stat.POWER, 70],
         [Stat.TOUGHNESS, 760],
         [Stat.ENERGY_POWER, 50],
         [Stat.ENERGY_CAP, 7],
     ]),
-    new Item(98, 'polygonBoots', 'Polygon Boots',  Slot.BOOTS, 100, [
+    new Item(98, 'polygonBoots', 'Polygon Boots', Slot.BOOTS, Zones.TWO_D, 100, [
         [Stat.POWER, 60],
         [Stat.TOUGHNESS, 700],
         [Stat.ENERGY_POWER, 50],
         [Stat.ENERGY_BARS, 70],
         [Stat.ENERGY_CAP, 5],
     ]),
-    new Item(99, 'aTriangle', 'A Triangle',  Slot.WEAPON, 100, [
+    new Item(99, 'aTriangle', 'A Triangle', Slot.WEAPON, Zones.TWO_D, 100, [
         [Stat.POWER, 4600],
         [Stat.TOUGHNESS, 300],
         [Stat.ENERGY_POWER, 45],
         [Stat.ENERGY_BARS, 50],
     ]),
-    new Item(100, 'tHECUBE', 'THE CUBE',  Slot.ACCESSORY, 100, [
+    new Item(100, 'tHECUBE', 'THE CUBE', Slot.ACCESSORY, Zones.TWO_D, 100, [
         [Stat.POWER, 650],
         [Stat.TOUGHNESS, 650],
     ]),
-    new Item(101, 'kingCirclesAmuletofHelpingRandomStuff', 'King Circle\'s Amulet of Helping Random Stuff',  Slot.ACCESSORY, 100, [
-        [Stat.ENERGY_WANDOOS_SPEED, 30],[ Stat.MAGIC_WANDOOS_SPEED, 30],
+    new Item(101, 'kingCirclesAmuletOfHelpingRandomStuff', 'King Circle\'s Amulet of Helping Random Stuff', Slot.ACCESSORY, Zones.TWO_D, 100, [
+        [Stat.ENERGY_WANDOOS_SPEED, 30],
+        [Stat.MAGIC_WANDOOS_SPEED, 30],
         [Stat.AT_SPEED, 40],
     ]),
-    new Item(103, 'spoopyHelmet', 'Spoopy Helmet',  Slot.HEAD, 100, [
+    new Item(103, 'spoopyHelmet', 'Spoopy Helmet', Slot.HEAD, Zones.ANCIENT_BATTLEFIELD, 100, [
         [Stat.POWER, 50],
         [Stat.TOUGHNESS, 1000],
         [Stat.ENERGY_CAP, 10.3],
         [Stat.MAGIC_CAP, 10.5],
         [Stat.MAGIC_POWER, 75],
     ]),
-    new Item(104, 'ghostlyChest', 'Ghostly Chest',  Slot.CHEST, 100, [
+    new Item(104, 'ghostlyChest', 'Ghostly Chest', Slot.CHEST, Zones.ANCIENT_BATTLEFIELD, 100, [
         [Stat.POWER, 80],
         [Stat.TOUGHNESS, 1035],
         [Stat.ENERGY_CAP, 11],
         [Stat.MAGIC_CAP, 11.5],
         [Stat.MAGIC_POWER, 40],
     ]),
-    new Item(105, 'pantsofHorror', 'Pants of Horror',  Slot.PANTS, 100, [
+    new Item(105, 'pantsofHorror', 'Pants of Horror', Slot.PANTS, Zones.ANCIENT_BATTLEFIELD, 100, [
         [Stat.POWER, 70],
         [Stat.TOUGHNESS, 1060],
         [Stat.ENERGY_CAP, 14],
         [Stat.MAGIC_CAP, 12],
         [Stat.MAGIC_BARS, 40],
     ]),
-    new Item(106, 'spectralBoots', 'Spectral Boots',  Slot.BOOTS, 100, [
+    new Item(106, 'spectralBoots', 'Spectral Boots', Slot.BOOTS, Zones.ANCIENT_BATTLEFIELD, 100, [
         [Stat.POWER, 60],
         [Stat.TOUGHNESS, 1090],
         [Stat.ENERGY_POWER, 50],
         [Stat.MAGIC_CAP, 9],
         [Stat.ENERGY_CAP, 5],
     ]),
-    new Item(107, 'spookySword', 'Spooky Sword',  Slot.WEAPON, 100, [
+    new Item(107, 'spookySword', 'Spooky Sword', Slot.WEAPON, Zones.ANCIENT_BATTLEFIELD, 100, [
         [Stat.POWER, 8888],
         [Stat.TOUGHNESS, 300],
         [Stat.ENERGY_POWER, 85],
         [Stat.MAGIC_POWER, 110],
     ]),
-    new Item(108, 'cursedRing', 'Cursed Ring',  Slot.ACCESSORY, 100, [
+    new Item(108, 'cursedRing', 'Cursed Ring', Slot.ACCESSORY, Zones.ANCIENT_BATTLEFIELD, 100, [
         [Stat.POWER, 1050],
         [Stat.TOUGHNESS, 1050],
     ]),
-    new Item(109, 'amuletOfSunshineSparklesAndGore', 'Amulet of Sunshine, Sparkles, and Gore', Slot.ACCESSORY, 100, [
+    new Item(109, 'amuletofSunshine,Sparkles,andGore', 'Amulet of Sunshine, Sparkles, and Gore', Slot.ACCESSORY, Zones.ANCIENT_BATTLEFIELD, 100, [
         [Stat.ENERGY_POWER, 100],
         [Stat.MAGIC_POWER, 100],
     ]),
-    new Item(110, 'dragonWings', 'Dragon Wings',  Slot.ACCESSORY, 100, [
+    new Item(110, 'dragonWings', 'Dragon Wings', Slot.ACCESSORY, Zones.ANCIENT_BATTLEFIELD, 100, [
         [Stat.POWER, 82],
         [Stat.TOUGHNESS, 82],
         [Stat.MAGIC_CAP, 22.82],
         [Stat.MAGIC_POWER, 108.2],
         [Stat.GOLD_DROP, 200],
     ]),
-    new Item(111, 'officeHat', 'Office Hat',  Slot.HEAD, 100, [
+    new Item(111, 'officeHat', 'Office Hat', Slot.HEAD, Zones.JAKE, 100, [
         [Stat.POWER, 80],
         [Stat.TOUGHNESS, 1300],
         [Stat.ENERGY_CAP, 15.82],
         [Stat.ENERGY_POWER, 108.2],
     ]),
-    new Item(112, 'officeShirt', 'Office Shirt',  Slot.CHEST, 100, [
+    new Item(112, 'officeShirt', 'Office Shirt', Slot.CHEST, Zones.JAKE, 100, [
         [Stat.POWER, 80],
         [Stat.TOUGHNESS, 1250],
         [Stat.ENERGY_CAP, 30.82],
         [Stat.ENERGY_POWER, 78.2],
     ]),
-    new Item(113, 'officePants', 'Office Pants',  Slot.PANTS, 100, [
+    new Item(113, 'officePants', 'Office Pants', Slot.PANTS, Zones.JAKE, 100, [
         [Stat.POWER, 80],
         [Stat.TOUGHNESS, 1399],
         [Stat.ENERGY_CAP, 28.82],
         [Stat.ENERGY_POWER, 58.2],
     ]),
-    new Item(114, 'officeShoes', 'Office Shoes',  Slot.BOOTS, 100, [
+    new Item(114, 'officeShoes', 'Office Shoes', Slot.BOOTS, Zones.JAKE, 100, [
         [Stat.POWER, 80],
         [Stat.TOUGHNESS, 1300],
         [Stat.ENERGY_POWER, 168.2],
     ]),
-    new Item(115, 'thePen-Is', 'The Pen-Is',  Slot.WEAPON, 100, [
+    new Item(115, 'thePen-Is', 'The Pen-Is', Slot.WEAPON, Zones.JAKE, 100, [
         [Stat.POWER, 11500],
         [Stat.MAGIC_CAP, 23.56],
         [Stat.MAGIC_POWER, 88.2],
     ]),
-    new Item(116, 'aRegularTie', 'A Regular Tie',  Slot.ACCESSORY, 100, [
+    new Item(116, 'aRegularTie', 'A Regular Tie', Slot.ACCESSORY, Zones.JAKE, 100, [
         [Stat.TOUGHNESS, 82],
         [Stat.ENERGY_NGU_SPEED, 60],
-        [Stat.MAGIC_NGU_SPEED, 60], 
+        [Stat.MAGIC_NGU_SPEED, 60],
         [Stat.MAGIC_POWER, 108.2],
         [Stat.GOLD_DROP, 200],
     ]),
-    new Item(117, 'genericPaperweight', 'Generic Paperweight',  Slot.ACCESSORY, 100, [
+    new Item(117, 'genericPaperweight', 'Generic Paperweight', Slot.ACCESSORY, Zones.JAKE, 100, [
         [Stat.POWER, 1450],
         [Stat.TOUGHNESS, 1450],
     ]),
-    new Item(118, 'stapler', 'Stapler',  Slot.ACCESSORY, 100, [
+    new Item(118, 'stapler', 'Stapler', Slot.ACCESSORY, Zones.JAKE, 100, [
         [Stat.POWER, 500],
         [Stat.ENERGY_CAP, 30],
         [Stat.RESPAWN, 6],
     ]),
-    new Item(119, 'myRedHeart<3', 'My Red Heart <3',  Slot.ACCESSORY, 100, [
+    new Item(119, 'myRedHeart<3', 'My Red Heart <3', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 100],
         [Stat.TOUGHNESS, 100],
         [Stat.EXPERIENCE, 5],
         [Stat.DROP_CHANCE, 30],
     ]),
-    new Item(120, 'theLonelyFlubber', 'The Lonely Flubber',  Slot.ACCESSORY, 100, [
+    new Item(120, 'theLonelyFlubber', 'The Lonely Flubber', Slot.ACCESSORY, Zones.MISC, 100, [
     ]),
-    new Item(121, 'theTripleFlubber', 'The Triple Flubber',  Slot.ACCESSORY, 100, [
+    new Item(121, 'theTripleFlubber', 'The Triple Flubber', Slot.ACCESSORY, Zones.MISC, 100, [
         [Stat.RESPAWN, 4],
     ]),
-    new Item(122, 'gaudyHat', 'Gaudy Hat',  Slot.HEAD, 100, [
+    new Item(122, 'gaudyHat', 'Gaudy Hat', Slot.HEAD, Zones.AVSP, 100, [
         [Stat.POWER, 280],
         [Stat.TOUGHNESS, 2400],
         [Stat.ENERGY_BARS, 60],
         [Stat.MAGIC_BARS, 60],
     ]),
-    new Item(123, 'gaudyShirt', 'Gaudy Shirt',  Slot.CHEST, 100, [
+    new Item(123, 'gaudyShirt', 'Gaudy Shirt', Slot.CHEST, Zones.AVSP, 100, [
         [Stat.POWER, 250],
         [Stat.TOUGHNESS, 2500],
         [Stat.ENERGY_CAP, 38],
         [Stat.ENERGY_POWER, 96],
     ]),
-    new Item(124, 'gaudyPants', 'Gaudy Pants',  Slot.PANTS, 100, [
+    new Item(124, 'gaudyPants', 'Gaudy Pants', Slot.PANTS, Zones.AVSP, 100, [
         [Stat.POWER, 300],
         [Stat.TOUGHNESS, 2600],
         [Stat.ENERGY_CAP, 36],
         [Stat.ENERGY_POWER, 90],
     ]),
-    new Item(125, 'gaudyBoots', 'Gaudy Boots',  Slot.BOOTS, 100, [
+    new Item(125, 'gaudyBoots', 'Gaudy Boots', Slot.BOOTS, Zones.AVSP, 100, [
         [Stat.POWER, 200],
         [Stat.TOUGHNESS, 2400],
         [Stat.MAGIC_POWER, 120],
     ]),
-    new Item(126, 'paperFan', 'Paper Fan',  Slot.WEAPON, 100, [
+    new Item(126, 'paperFan', 'Paper Fan', Slot.WEAPON, Zones.AVSP, 100, [
         [Stat.POWER, 20000],
         [Stat.MAGIC_BARS, 100],
         [Stat.MAGIC_POWER, 130],
     ]),
-    new Item(127, 'aBeanie', 'A Beanie',  Slot.HEAD, 100, [
+    new Item(127, 'aBeanie', 'A Beanie', Slot.HEAD, Zones.AVSP, 100, [
         [Stat.POWER, 2000],
         [Stat.TOUGHNESS, 3000],
         [Stat.MAGIC_CAP, 53],
         [Stat.MAGIC_POWER, 185],
     ]),
-    new Item(128, 'sirLootyMcLootingtonIIIEsquire', 'Sir Looty McLootington III, Esquire', Slot.ACCESSORY, 100, [
+    new Item(128, 'sirLootyMcLootingtonIII,Esquire', 'Sir Looty McLootington III, Esquire', Slot.ACCESSORY, Zones.LOOTY, 100, [
         [Stat.POWER, 200],
         [Stat.TOUGHNESS, 200],
         [Stat.DROP_CHANCE, 40],
         [Stat.ENERGY_POWER, 100],
         [Stat.MAGIC_POWER, 100],
     ]),
-    new Item(129, 'myYellowHeart<3', 'My Yellow Heart <3',  Slot.ACCESSORY, 100, [
+    new Item(129, 'myYellowHeart<3', 'My Yellow Heart <3', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 100],
         [Stat.TOUGHNESS, 100],
         [Stat.AP, 10],
         [Stat.GOLD_DROP, 300],
     ]),
-    new Item(130, 'megaHelmet', 'Mega Helmet',  Slot.HEAD, 100, [
+    new Item(130, 'megaHelmet', 'Mega Helmet', Slot.HEAD, Zones.MEGA, 100, [
         [Stat.POWER, 300],
         [Stat.TOUGHNESS, 5600],
         [Stat.ENERGY_POWER, 230],
         [Stat.MAGIC_POWER, 230],
     ]),
-    new Item(131, 'megaChest', 'Mega Chest',  Slot.CHEST, 100, [
+    new Item(131, 'megaChest', 'Mega Chest', Slot.CHEST, Zones.MEGA, 100, [
         [Stat.POWER, 300],
         [Stat.TOUGHNESS, 5600],
         [Stat.ENERGY_BARS, 170],
         [Stat.MAGIC_BARS, 170],
     ]),
-    new Item(132, 'megaBlueJeans', 'Mega Blue Jeans',  Slot.PANTS, 100, [
+    new Item(132, 'megaBlueJeans', 'Mega Blue Jeans', Slot.PANTS, Zones.MEGA, 100, [
         [Stat.POWER, 300],
         [Stat.TOUGHNESS, 5700],
         [Stat.ENERGY_CAP, 46],
         [Stat.MAGIC_CAP, 46],
     ]),
-    new Item(133, 'megaBoots', 'Mega Boots',  Slot.BOOTS, 100, [
+    new Item(133, 'megaBoots', 'Mega Boots', Slot.BOOTS, Zones.MEGA, 100, [
         [Stat.POWER, 300],
         [Stat.TOUGHNESS, 5500],
         [Stat.MAGIC_POWER, 140],
         [Stat.MAGIC_BARS, 150],
     ]),
-    new Item(134, 'beamLaserSword', 'Beam Laser Sword',  Slot.WEAPON, 100, [
+    new Item(134, 'beamLaserSword', 'Beam Laser Sword', Slot.WEAPON, Zones.MEGA, 100, [
         [Stat.POWER, 44000],
         [Stat.ENERGY_POWER, 140],
         [Stat.ENERGY_BARS, 100],
         [Stat.ENERGY_CAP, 20],
     ]),
-    new Item(135, 'ringofApathy', 'Ring of Apathy',  Slot.ACCESSORY, 100, [
+    new Item(135, 'ringofApathy', 'Ring of Apathy', Slot.ACCESSORY, Zones.MISC, 100, [
     ]),
-    new Item(136, 'ringofGreed', 'Ring of Greed',  Slot.ACCESSORY, 100, [
+    new Item(136, 'ringofGreed', 'Ring of Greed', Slot.ACCESSORY, Zones.UUG, 100, [
         [Stat.GOLD_DROP, 800],
         [Stat.DROP_CHANCE, 60],
         [Stat.RESPAWN, 8],
     ]),
-    new Item(137, 'ringofMight', 'Ring of Might',  Slot.ACCESSORY, 100, [
+    new Item(137, 'ringofMight', 'Ring of Might', Slot.ACCESSORY, Zones.UUG, 100, [
         [Stat.POWER, 6666],
         [Stat.TOUGHNESS, 6666],
         [Stat.MOVE_COOLDOWN, 10],
         [Stat.RESPAWN, 2],
     ]),
-    new Item(138, 'ringofUtility', 'Ring of Utility',  Slot.ACCESSORY, 100, [
+    new Item(138, 'ringofUtility', 'Ring of Utility', Slot.ACCESSORY, Zones.UUG, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 1000],
         [Stat.ENERGY_NGU_SPEED, 50],
-        [Stat.MAGIC_NGU_SPEED, 50], 
+        [Stat.MAGIC_NGU_SPEED, 50],
         [Stat.ENERGY_WANDOOS_SPEED, 50],
         [Stat.MAGIC_WANDOOS_SPEED, 50],
         [Stat.AT_SPEED, 50],
     ]),
-    new Item(139, 'ringofWayTooMuchEnergy', 'Ring of Way Too Much Energy',  Slot.ACCESSORY, 100, [
+    new Item(139, 'ringofWayTooMuchEnergy', 'Ring of Way Too Much Energy', Slot.ACCESSORY, Zones.UUG, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 1000],
         [Stat.ENERGY_POWER, 250],
         [Stat.ENERGY_BARS, 120],
         [Stat.ENERGY_CAP, 40],
     ]),
-    new Item(140, 'ringofWayTooMuchMagic', 'Ring of Way Too Much Magic',  Slot.ACCESSORY, 100, [
+    new Item(140, 'ringofWayTooMuchMagic', 'Ring of Way Too Much Magic', Slot.ACCESSORY, Zones.UUG, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 1000],
         [Stat.MAGIC_POWER, 250],
         [Stat.MAGIC_BARS, 120],
         [Stat.MAGIC_CAP, 40],
     ]),
-    new Item(142, 'ascendedAscendedAscendedPendant', 'Ascended Ascended Ascended Pendant',  Slot.ACCESSORY, 100, [
+    new Item(142, 'ascendedAscendedAscendedPendant', 'Ascended Ascended Ascended Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 40000],
         [Stat.TOUGHNESS, 40000],
         [Stat.DROP_CHANCE, 100],
         [Stat.GOLD_DROP, 800],
         [Stat.ENERGY_POWER, 270],
     ]),
-    new Item(143, 'grouchoMarxDisguise', 'Groucho Marx Disguise',  Slot.HEAD, 100, [
+    new Item(143, 'grouchoMarxDisguise', 'Groucho Marx Disguise', Slot.HEAD, Zones.BEARDVERSE, 100, [
         [Stat.POWER, 1100],
         [Stat.TOUGHNESS, 12000],
         [Stat.ENERGY_POWER, 180],
         [Stat.MAGIC_CAP, 48],
         [Stat.MAGIC_BARS, 240],
     ]),
-    new Item(144, 'gossamerChest', 'Gossamer Chest',  Slot.CHEST, 100, [
+    new Item(144, 'gossamerChest', 'Gossamer Chest', Slot.CHEST, Zones.BEARDVERSE, 100, [
         [Stat.POWER, 1100],
         [Stat.TOUGHNESS, 12500],
         [Stat.ENERGY_CAP, 62],
         [Stat.MAGIC_CAP, 50],
     ]),
-    new Item(145, 'braidedBeardLegs', 'Braided Beard Legs',  Slot.PANTS, 100, [
+    new Item(145, 'braidedBeardLegs', 'Braided Beard Legs', Slot.PANTS, Zones.BEARDVERSE, 100, [
         [Stat.POWER, 1100],
         [Stat.TOUGHNESS, 12500],
         [Stat.MAGIC_POWER, 290],
         [Stat.MAGIC_CAP, 43],
         [Stat.MAGIC_BARS, 230],
     ]),
-    new Item(146, 'fuzzyOrangeCheetoSlippers!', 'Fuzzy Orange Cheeto Slippers!',  Slot.BOOTS, 100, [
+    new Item(146, 'fuzzyOrangeCheetoSlippers!', 'Fuzzy Orange Cheeto Slippers!', Slot.BOOTS, Zones.BEARDVERSE, 100, [
         [Stat.POWER, 1200],
         [Stat.TOUGHNESS, 12500],
         [Stat.ENERGY_POWER, 220],
         [Stat.ENERGY_BARS, 330],
         [Stat.ENERGY_CAP, 20],
     ]),
-    new Item(147, 'beardedAxe', 'Bearded Axe',  Slot.WEAPON, 100, [
+    new Item(147, 'beardedAxe', 'Bearded Axe', Slot.WEAPON, Zones.BEARDVERSE, 100, [
         [Stat.POWER, 83000],
         [Stat.TOUGHNESS, 6000],
         [Stat.ENERGY_BARS, 220],
         [Stat.MAGIC_BARS, 220],
         [Stat.ENERGY_BEARD_SPEED, 10],
-        [Stat.MAGIC_BEARD_SPEED, 10], 
+        [Stat.MAGIC_BEARD_SPEED, 10],
     ]),
-    new Item(148, 'anInfinitelyLongStrandofBeardHair', 'An Infinitely Long Strand of Beard Hair',  Slot.ACCESSORY, 100, [
+    new Item(148, 'anInfinitelyLongStrandofBeardHair', 'An Infinitely Long Strand of Beard Hair', Slot.ACCESSORY, Zones.BEARDVERSE, 100, [
         [Stat.POWER, 8000],
         [Stat.TOUGHNESS, 8000],
         [Stat.ENERGY_POWER, 450],
         [Stat.MAGIC_POWER, 350],
         [Stat.ENERGY_BEARD_SPEED, 10],
-        [Stat.MAGIC_BEARD_SPEED, 10], 
+        [Stat.MAGIC_BEARD_SPEED, 10],
     ]),
-    new Item(149, 'uUGsSpecialRing', 'UUG\'s \'Special\' Ring',  Slot.ACCESSORY, 100, [
+    new Item(149, 'uUGsSpecialRing', 'UUG\'s \'Special\' Ring', Slot.ACCESSORY, Zones.UUG, 100, [
         [Stat.POWER, 12000],
         [Stat.TOUGHNESS, 12000],
         [Stat.ENERGY_NGU_SPEED, 100],
-        [Stat.MAGIC_NGU_SPEED, 100], 
+        [Stat.MAGIC_NGU_SPEED, 100],
         [Stat.SEED_GAIN, 15],
         [Stat.ENERGY_BEARD_SPEED, 10],
-        [Stat.MAGIC_BEARD_SPEED, 10], 
+        [Stat.MAGIC_BEARD_SPEED, 10],
     ]),
-    new Item(150, 'wanderersHat', 'Wanderer\'s Hat',  Slot.HEAD, 100, [
+    new Item(150, 'wanderersHat', 'Wanderer\'s Hat', Slot.HEAD, Zones.WALDERP, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 22000],
         [Stat.ENERGY_CAP, 85],
         [Stat.ENERGY_POWER, 750],
         [Stat.MAGIC_POWER, 200],
     ]),
-    new Item(151, 'wanderersChest', 'Wanderer\'s Chest',  Slot.CHEST, 100, [
+    new Item(151, 'wanderersChest', 'Wanderer\'s Chest', Slot.CHEST, Zones.WALDERP, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 23000],
         [Stat.ENERGY_POWER, 800],
         [Stat.ENERGY_BARS, 600],
         [Stat.MAGIC_CAP, 30],
     ]),
-    new Item(152, 'wanderersPants', 'Wanderer\'s Pants',  Slot.PANTS, 100, [
+    new Item(152, 'wanderersPants', 'Wanderer\'s Pants', Slot.PANTS, Zones.WALDERP, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 23000],
         [Stat.ENERGY_BARS, 800],
         [Stat.ENERGY_CAP, 85],
         [Stat.MAGIC_BARS, 200],
     ]),
-    new Item(153, 'wanderersBoots', 'Wanderer\'s Boots',  Slot.BOOTS, 100, [
+    new Item(153, 'wanderersBoots', 'Wanderer\'s Boots', Slot.BOOTS, Zones.WALDERP, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 24000],
         [Stat.ENERGY_WANDOOS_SPEED, 130],
         [Stat.MAGIC_WANDOOS_SPEED, 130],
         [Stat.ENERGY_NGU_SPEED, 60],
-        [Stat.MAGIC_NGU_SPEED, 60], 
+        [Stat.MAGIC_NGU_SPEED, 60],
     ]),
-    new Item(154, 'wanderersCane', 'Wanderer\'s Cane',  Slot.WEAPON, 100, [
+    new Item(154, 'wanderersCane', 'Wanderer\'s Cane', Slot.WEAPON, Zones.WALDERP, 100, [
         [Stat.POWER, 170000],
         [Stat.TOUGHNESS, 12000],
     ]),
-    new Item(155, 'taHsrerednaW', 'taH s\'rerednaW',  Slot.HEAD, 100, [
+    new Item(155, 'taHsrerednaW', 'taH s\'rerednaW', Slot.HEAD, Zones.WALDERP, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 21000],
         [Stat.MAGIC_CAP, 85],
         [Stat.MAGIC_POWER, 750],
         [Stat.ENERGY_POWER, 200],
     ]),
-    new Item(156, 'tsehCsrerednaW', 'tsehC s\'rerednaW',  Slot.CHEST, 100, [
+    new Item(156, 'tsehCsrerednaW', 'tsehC s\'rerednaW', Slot.CHEST, Zones.WALDERP, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 22000],
         [Stat.MAGIC_POWER, 800],
         [Stat.MAGIC_BARS, 600],
         [Stat.ENERGY_CAP, 30],
     ]),
-    new Item(157, 'stnaPsrerednaW', 'stnaP s\'rerednaW',  Slot.PANTS, 100, [
+    new Item(157, 'stnaPsrerednaW', 'stnaP s\'rerednaW', Slot.PANTS, Zones.WALDERP, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 23000],
         [Stat.MAGIC_BARS, 800],
         [Stat.MAGIC_CAP, 85],
         [Stat.ENERGY_BARS, 200],
     ]),
-    new Item(158, 'stooBsrerednaW', 'stooB s\'rerednaW',  Slot.BOOTS, 100, [
+    new Item(158, 'stooBsrerednaW', 'stooB s\'rerednaW', Slot.BOOTS, Zones.WALDERP, 100, [
         [Stat.POWER, 1000],
         [Stat.TOUGHNESS, 24000],
         [Stat.SEED_GAIN, 30],
         [Stat.ENERGY_BEARD_SPEED, 40],
-        [Stat.MAGIC_BEARD_SPEED, 40], 
+        [Stat.MAGIC_BEARD_SPEED, 40],
     ]),
-    new Item(159, 'theCandyCaneofDestiny', 'The Candy Cane of Destiny',  Slot.WEAPON, 100, [
+    new Item(159, 'theCandyCaneofDestiny', 'The Candy Cane of Destiny', Slot.WEAPON, Zones.WALDERP, 100, [
         [Stat.POWER, 170000],
         [Stat.TOUGHNESS, 12000],
         [Stat.ENERGY_POWER, 1000],
@@ -795,7 +805,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 100],
         [Stat.MAGIC_CAP, 100],
     ]),
-    new Item(160, 'fannyPack', 'Fanny Pack',  Slot.ACCESSORY, 100, [
+    new Item(160, 'fannyPack', 'Fanny Pack', Slot.ACCESSORY, Zones.WALDERP, 100, [
         [Stat.POWER, 15000],
         [Stat.TOUGHNESS, 15000],
         [Stat.ENERGY_POWER, 500],
@@ -804,52 +814,52 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 30],
         [Stat.DROP_CHANCE, 30],
     ]),
-    new Item(161, 'dorkyGlasses', 'Dorky Glasses',  Slot.ACCESSORY, 100, [
+    new Item(161, 'dorkyGlasses', 'Dorky Glasses', Slot.ACCESSORY, Zones.WALDERP, 100, [
         [Stat.POWER, 5000],
         [Stat.TOUGHNESS, 5000],
         [Stat.ENERGY_BARS, 500],
         [Stat.MAGIC_BARS, 500],
         [Stat.ENERGY_NGU_SPEED, 150],
-        [Stat.MAGIC_NGU_SPEED, 150], 
+        [Stat.MAGIC_NGU_SPEED, 150],
         [Stat.ENERGY_WANDOOS_SPEED, 120],
         [Stat.MAGIC_WANDOOS_SPEED, 120],
     ]),
-    new Item(162, 'myBrownHeart<3', 'My Brown Heart <3',  Slot.ACCESSORY, 100, [
+    new Item(162, 'myBrownHeart<3', 'My Brown Heart <3', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 100],
         [Stat.TOUGHNESS, 100],
         [Stat.SEED_GAIN, 35],
         [Stat.ENERGY_POWER, 100],
         [Stat.MAGIC_POWER, 100],
     ]),
-    new Item(164, 'badlyDrawnSmileyFace', 'Badly Drawn Smiley Face',  Slot.HEAD, 100, [
+    new Item(164, 'badlyDrawnSmileyFace', 'Badly Drawn Smiley Face', Slot.HEAD, Zones.BDW, 100, [
         [Stat.TOUGHNESS, 60000],
         [Stat.ENERGY_BARS, 450],
         [Stat.MAGIC_BARS, 450],
         [Stat.AT_SPEED, 160],
         [Stat.GOLD_DROP, 1200],
     ]),
-    new Item(165, 'badlyDrawnChest', 'Badly Drawn Chest',  Slot.CHEST, 100, [
+    new Item(165, 'badlyDrawnChest', 'Badly Drawn Chest', Slot.CHEST, Zones.BDW, 100, [
         [Stat.TOUGHNESS, 60000],
         [Stat.ENERGY_BARS, 450],
         [Stat.MAGIC_BARS, 450],
         [Stat.MAGIC_CAP, 135],
         [Stat.ENERGY_POWER, 1400],
     ]),
-    new Item(166, 'badlyDrawnPants', 'Badly Drawn Pants',  Slot.PANTS, 100, [
+    new Item(166, 'badlyDrawnPants', 'Badly Drawn Pants', Slot.PANTS, Zones.BDW, 100, [
         [Stat.TOUGHNESS, 60000],
         [Stat.ENERGY_POWER, 400],
         [Stat.MAGIC_POWER, 400],
         [Stat.MAGIC_BARS, 1400],
         [Stat.ENERGY_CAP, 130],
     ]),
-    new Item(167, 'badlyDrawnFoot', 'Badly Drawn Foot',  Slot.BOOTS, 100, [
+    new Item(167, 'badlyDrawnFoot', 'Badly Drawn Foot', Slot.BOOTS, Zones.BDW, 100, [
         [Stat.TOUGHNESS, 60000],
         [Stat.ENERGY_CAP, 40],
         [Stat.MAGIC_CAP, 40],
         [Stat.MAGIC_POWER, 1200],
         [Stat.ENERGY_BARS, 1200],
     ]),
-    new Item(168, 'badlyDrawnGun', 'Badly Drawn Gun',  Slot.WEAPON, 100, [
+    new Item(168, 'badlyDrawnGun', 'Badly Drawn Gun', Slot.WEAPON, Zones.BDW, 100, [
         [Stat.POWER, 500000],
         [Stat.TOUGHNESS, 25000],
         [Stat.ENERGY_CAP, 60],
@@ -858,7 +868,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 600],
         [Stat.AUGMENT_SPEED, 120],
     ]),
-    new Item(169, 'kingLooty', 'King Looty',  Slot.ACCESSORY, 100, [
+    new Item(169, 'kingLooty', 'King Looty', Slot.ACCESSORY, Zones.LOOTY, 100, [
         [Stat.POWER, 100000],
         [Stat.TOUGHNESS, 100000],
         [Stat.DROP_CHANCE, 100],
@@ -867,7 +877,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 40],
         [Stat.MAGIC_CAP, 40],
     ]),
-    new Item(170, 'ascendedx4Pendant', 'Ascended x4 Pendant',  Slot.ACCESSORY, 100, [
+    new Item(170, 'ascendedx4Pendant', 'Ascended x4 Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 100000],
         [Stat.TOUGHNESS, 100000],
         [Stat.QUEST_DROP, 5],
@@ -875,22 +885,22 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 120],
         [Stat.DROP_CHANCE, 250],
     ]),
-    new Item(171, 'myGreenHeart<3', 'My Green Heart <3',  Slot.ACCESSORY, 100, [
+    new Item(171, 'myGreenHeart<3', 'My Green Heart <3', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 100],
         [Stat.TOUGHNESS, 100],
         [Stat.DROP_CHANCE, 50],
         [Stat.RESPAWN, 4],
         [Stat.ENERGY_BEARD_SPEED, 30],
-        [Stat.MAGIC_BEARD_SPEED, 30], 
+        [Stat.MAGIC_BEARD_SPEED, 30],
     ]),
-    new Item(173, 'stealthyHat', 'Stealthy Hat',  Slot.HEAD, 100, [
+    new Item(173, 'stealthyHat', 'Stealthy Hat', Slot.HEAD, Zones.BAE, 100, [
         [Stat.POWER, 5000],
         [Stat.TOUGHNESS, 112000],
         [Stat.ENERGY_CAP, 175],
         [Stat.MAGIC_CAP, 85],
         [Stat.ENERGY_POWER, 1200],
     ]),
-    new Item(174, 'stealthyChest', 'Stealthy Chest',  Slot.CHEST, 100, [
+    new Item(174, 'stealthyChest', 'Stealthy Chest', Slot.CHEST, Zones.BAE, 100, [
         [Stat.POWER, 5000],
         [Stat.TOUGHNESS, 115000],
         [Stat.ENERGY_POWER, 900],
@@ -898,21 +908,21 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 1900],
         [Stat.MAGIC_BARS, 800],
     ]),
-    new Item(175, 'noPants', 'No Pants',  Slot.PANTS, 100, [
+    new Item(175, 'noPants', 'No Pants', Slot.PANTS, Zones.BAE, 100, [
         [Stat.POWER, 5000],
         [Stat.TOUGHNESS, 118000],
         [Stat.ENERGY_POWER, 1750],
         [Stat.MAGIC_POWER, 450],
         [Stat.MAGIC_BARS, 1000],
     ]),
-    new Item(176, 'highHeeledBoots', 'High Heeled Boots',  Slot.BOOTS, 100, [
+    new Item(176, 'highHeeledBoots', 'High Heeled Boots', Slot.BOOTS, Zones.BAE, 100, [
         [Stat.POWER, 5000],
         [Stat.TOUGHNESS, 122000],
         [Stat.ENERGY_CAP, 200],
         [Stat.MAGIC_CAP, 60],
         [Stat.MAGIC_POWER, 1400],
     ]),
-    new Item(177, 'aGiantBazooka', 'A Giant Bazooka',  Slot.WEAPON, 100, [
+    new Item(177, 'aGiantBazooka', 'A Giant Bazooka', Slot.WEAPON, Zones.BAE, 100, [
         [Stat.POWER, 1000000],
         [Stat.TOUGHNESS, 60000],
         [Stat.ENERGY_CAP, 120],
@@ -920,7 +930,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 1200],
         [Stat.MAGIC_POWER, 1200],
     ]),
-    new Item(178, 'theStealthiestArmour', 'The Stealthiest Armour',  Slot.CHEST, 100, [
+    new Item(178, 'theStealthiestArmour', 'The Stealthiest Armour', Slot.CHEST, Zones.BAE, 100, [
         [Stat.POWER, 8000],
         [Stat.TOUGHNESS, 150000],
         [Stat.ENERGY_BARS, 2000],
@@ -928,9 +938,9 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 210],
         [Stat.MAGIC_CAP, 210],
         [Stat.ENERGY_NGU_SPEED, 200],
-        [Stat.MAGIC_NGU_SPEED, 200], 
+        [Stat.MAGIC_NGU_SPEED, 200],
     ]),
-    new Item(184, 'slimyHelmet', 'Slimy Helmet',  Slot.HEAD, 100, [
+    new Item(184, 'slimyHelmet', 'Slimy Helmet', Slot.HEAD, Zones.BEAST1, 100, [
         [Stat.POWER, 11000],
         [Stat.TOUGHNESS, 242000],
         [Stat.ENERGY_POWER, 1400],
@@ -938,7 +948,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 150],
         [Stat.MAGIC_BARS, 1000],
     ]),
-    new Item(185, 'slimyChest', 'Slimy Chest',  Slot.CHEST, 100, [
+    new Item(185, 'slimyChest', 'Slimy Chest', Slot.CHEST, Zones.BEAST1, 100, [
         [Stat.POWER, 11000],
         [Stat.TOUGHNESS, 250000],
         [Stat.ENERGY_CAP, 150],
@@ -946,7 +956,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 1400],
         [Stat.ENERGY_BARS, 1200],
     ]),
-    new Item(186, 'slimyPants', 'Slimy Pants',  Slot.PANTS, 100, [
+    new Item(186, 'slimyPants', 'Slimy Pants', Slot.PANTS, Zones.BEAST1, 100, [
         [Stat.POWER, 10000],
         [Stat.TOUGHNESS, 245000],
         [Stat.ENERGY_BARS, 1000],
@@ -954,7 +964,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 1800],
         [Stat.ENERGY_CAP, 160],
     ]),
-    new Item(187, 'slimyBoots', 'Slimy Boots',  Slot.BOOTS, 100, [
+    new Item(187, 'slimyBoots', 'Slimy Boots', Slot.BOOTS, Zones.BEAST1, 100, [
         [Stat.POWER, 10000],
         [Stat.TOUGHNESS, 240000],
         [Stat.ENERGY_CAP, 140],
@@ -964,14 +974,14 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 1400],
         [Stat.MAGIC_POWER, 1400],
     ]),
-    new Item(188, 'theFistsofFlubber', 'The Fists of Flubber',  Slot.WEAPON, 100, [
+    new Item(188, 'theFistsofFlubber', 'The Fists of Flubber', Slot.WEAPON, Zones.BEAST1, 100, [
         [Stat.POWER, 2200000],
         [Stat.TOUGHNESS, 100000],
         [Stat.MAGIC_CAP, 200],
         [Stat.MAGIC_POWER, 2000],
         [Stat.MAGIC_BARS, 1200],
     ]),
-    new Item(189, 'aBaldEgg', 'A Bald Egg',  Slot.ACCESSORY, 100, [
+    new Item(189, 'aBaldEgg', 'A Bald Egg', Slot.ACCESSORY, Zones.BEAST1, 100, [
         [Stat.POWER, 33333],
         [Stat.TOUGHNESS, 33333],
         [Stat.ENERGY_WANDOOS_SPEED, 200],
@@ -979,28 +989,28 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 150],
         [Stat.MAGIC_CAP, 150],
     ]),
-    new Item(190, 'aShrunkenVoodooDoll', 'A Shrunken Voodoo Doll',  Slot.ACCESSORY, 100, [
+    new Item(190, 'aShrunkenVoodooDoll', 'A Shrunken Voodoo Doll', Slot.ACCESSORY, Zones.BEAST2, 100, [
         [Stat.POWER, 66666],
         [Stat.TOUGHNESS, 66666],
         [Stat.ENERGY_BEARD_SPEED, 200],
-        [Stat.MAGIC_BEARD_SPEED, 200], 
+        [Stat.MAGIC_BEARD_SPEED, 200],
         [Stat.ENERGY_NGU_SPEED, 200],
-        [Stat.MAGIC_NGU_SPEED, 200], 
+        [Stat.MAGIC_NGU_SPEED, 200],
     ]),
-    new Item(192, 'aPricelessVan-GoghPainting', 'A Priceless Van-Gogh Painting',  Slot.ACCESSORY, 100, [
+    new Item(192, 'aPricelessVan-GoghPainting', 'A Priceless Van-Gogh Painting', Slot.ACCESSORY, Zones.BEAST3, 100, [
         [Stat.POWER, 30000],
         [Stat.TOUGHNESS, 30000],
         [Stat.GOLD_DROP, 3000],
         [Stat.ENERGY_CAP, 200],
         [Stat.MAGIC_CAP, 200],
     ]),
-    new Item(193, 'aGiantApple', 'A Giant Apple',  Slot.ACCESSORY, 100, [
+    new Item(193, 'aGiantApple', 'A Giant Apple', Slot.ACCESSORY, Zones.BEAST3, 100, [
         [Stat.POWER, 50000],
         [Stat.TOUGHNESS, 50000],
         [Stat.SEED_GAIN, 50],
         [Stat.YGGDRASIL_YIELD, 10],
     ]),
-    new Item(194, 'aPowerPill', 'A Power Pill',  Slot.ACCESSORY, 100, [
+    new Item(194, 'aPowerPill', 'A Power Pill', Slot.ACCESSORY, Zones.BEAST4, 100, [
         [Stat.POWER, 250000],
         [Stat.TOUGHNESS, 250000],
         [Stat.ENERGY_POWER, 3000],
@@ -1010,28 +1020,50 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 300],
         [Stat.MAGIC_CAP, 300],
     ]),
-    new Item(195, 'aSmallGerbil', 'A Small Gerbil',  Slot.ACCESSORY, 100, [
+    new Item(195, 'aSmallGerbil', 'A Small Gerbil', Slot.ACCESSORY, Zones.BEAST4, 100, [
         [Stat.POWER, 100000],
         [Stat.TOUGHNESS, 100000],
         [Stat.MAGIC_CAP, 600],
         [Stat.MAGIC_POWER, 6000],
         [Stat.ENERGY_POWER, 6000],
     ]),
-    new Item(196, 'myBlueHeart<3', 'My Blue Heart <3',  Slot.ACCESSORY, 100, [
+    new Item(196, 'myBlueHeart<3', 'My Blue Heart <3', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 420],
         [Stat.TOUGHNESS, 420],
         [Stat.GOLD_DROP, 100],
         [Stat.ENERGY_NGU_SPEED, 40],
-        [Stat.MAGIC_NGU_SPEED, 40], 
+        [Stat.MAGIC_NGU_SPEED, 40],
     ]),
-    new Item(212, 'myPurpleHeart<3', 'My Purple Heart <3',  Slot.ACCESSORY, 100, [
+    new Item(198, 'energyPowerMacGuffinFragment', 'Energy Power MacGuffin Fragment', Slot.OTHER, Zones.SEWERS, 100, []),
+    new Item(200, 'magicPowerMacGuffinFragment', 'Magic Power MacGuffin Fragment', Slot.OTHER, Zones.FOREST, 100, []),
+    new Item(199, 'energyCapMacGuffinFragment', 'Energy Cap MacGuffin Fragment', Slot.OTHER, Zones.CAVE, 100, []),
+    new Item(201, 'magicCapMacGuffinFragment', 'Magic Cap MacGuffin Fragment', Slot.OTHER, Zones.SKY, 100, []),
+    new Item(202, 'energyNGUMacGuffinFragment', 'Energy NGU MacGuffin Fragment', Slot.OTHER, Zones.HSB, 100, []),
+    new Item(203, 'magicNGUMacGuffinFragment', 'Magic NGU MacGuffin Fragment', Slot.OTHER, Zones.CLOCK, 100, []),
+    new Item(204, 'energyBarMacGuffinFragment', 'Energy Bar MacGuffin Fragment', Slot.OTHER, Zones.TWO_D, 100, []),
+    new Item(205, 'magicBarMacGuffinFragment', 'Magic Bar MacGuffin Fragment', Slot.OTHER, Zones.ANCIENT_BATTLEFIELD, 100, []),
+    new Item(206, 'sEXYMacGuffinFragment', 'SEXY MacGuffin Fragment', Slot.OTHER, Zones.AVSP, 100, []),
+    new Item(207, 'sMARTMacGuffinFragment', 'SMART MacGuffin Fragment', Slot.OTHER, Zones.MEGA, 100, []),
+    new Item(208, 'dropChanceMacGuffinFragment', 'Drop Chance MacGuffin Fragment', Slot.OTHER, Zones.BEARDVERSE, 100, []),
+    new Item(209, 'goldenMacGuffinFragment', 'Golden MacGuffin Fragment', Slot.OTHER, Zones.BDW, 100, []),
+    new Item(210, 'augmentMacGuffinFragment', 'Augment MacGuffin Fragment', Slot.OTHER, Zones.BAE, 100, []),
+    new Item(228, 'statMacGuffinFragment', 'Stat MacGuffin Fragment', Slot.OTHER, Zones.CHOCO, 100, []),
+    new Item(211, 'energyWandoosMacGuffinFragment', 'Energy Wandoos MacGuffin Fragment', Slot.OTHER, Zones.EVIL, 100, []),
+    new Item(250, 'magicWandoosMacGuffinFragment', 'Magic Wandoos MacGuffin Fragment', Slot.OTHER, Zones.PINK, 100, []),
+    new Item(291, 'adventureMacGuffinFragment', 'Adventure MacGuffin Fragment', Slot.OTHER, Zones.NERD, 100, []),
+    new Item(289, 'numberMacGuffinFragment', 'Number MacGuffin Fragment', Slot.OTHER, Zones.MEGA, 100, []),
+    new Item(290, 'bloodMacGuffinFragment', 'Blood MacGuffin Fragment', Slot.OTHER, Zones.PARTY, 100, []),
+    new Item(298, 'resource3PowerMacGuffinFragment', 'Resource 3 Power MacGuffin Fragment', Slot.OTHER, Zones.MOBSTER, 100, []),
+    new Item(299, 'resource3CapMacGuffinFragment', 'Resource 3 Cap MacGuffin Fragment', Slot.OTHER, Zones.MOBSTER2, 100, []),
+    new Item(300, 'resource3BarMacGuffinFragment', 'Resource 3 Bar MacGuffin Fragment', Slot.OTHER, Zones.MOBSTER3, 100, []),
+    new Item(212, 'myPurpleHeart<3', 'My Purple Heart <3', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 100],
         [Stat.TOUGHNESS, 1000],
         [Stat.DROP_CHANCE, 40],
         [Stat.ENERGY_BEARD_SPEED, 40],
-        [Stat.MAGIC_BEARD_SPEED, 40], 
+        [Stat.MAGIC_BEARD_SPEED, 40],
     ]),
-    new Item(213, 'edgyHelmet', 'Edgy Helmet',  Slot.HEAD, 100, [
+    new Item(213, 'edgyHelmet', 'Edgy Helmet', Slot.HEAD, Zones.EVIL, 100, [
         [Stat.POWER, 40000],
         [Stat.TOUGHNESS, 502000],
         [Stat.ENERGY_POWER, 3600],
@@ -1039,7 +1071,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 330],
         [Stat.MAGIC_BARS, 2600],
     ]),
-    new Item(214, 'edgyChest', 'Edgy Chest',  Slot.CHEST, 100, [
+    new Item(214, 'edgyChest', 'Edgy Chest', Slot.CHEST, Zones.EVIL, 100, [
         [Stat.POWER, 30000],
         [Stat.TOUGHNESS, 540000],
         [Stat.ENERGY_CAP, 460],
@@ -1048,7 +1080,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 4100],
         [Stat.MAGIC_BARS, 3700],
     ]),
-    new Item(215, 'edgyPants', 'Edgy Pants',  Slot.PANTS, 100, [
+    new Item(215, 'edgyPants', 'Edgy Pants', Slot.PANTS, Zones.EVIL, 100, [
         [Stat.POWER, 30000],
         [Stat.TOUGHNESS, 555000],
         [Stat.ENERGY_BARS, 3300],
@@ -1056,21 +1088,21 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 5500],
         [Stat.ENERGY_CAP, 450],
     ]),
-    new Item(216, 'leftEdgyBoot', 'Left Edgy Boot',  Slot.BOOTS, 100, [
+    new Item(216, 'leftEdgyBoot', 'Left Edgy Boot', Slot.BOOTS, Zones.EVIL, 100, [
         [Stat.POWER, 20000],
         [Stat.TOUGHNESS, 516000],
         [Stat.ENERGY_CAP, 480],
         [Stat.ENERGY_BARS, 4800],
         [Stat.ENERGY_POWER, 4800],
     ]),
-    new Item(217, 'edgyJawAxe', 'Edgy Jaw Axe',  Slot.WEAPON, 100, [
+    new Item(217, 'edgyJawAxe', 'Edgy Jaw Axe', Slot.WEAPON, Zones.EVIL, 100, [
         [Stat.POWER, 5600000],
         [Stat.TOUGHNESS, 300000],
         [Stat.MAGIC_CAP, 420],
         [Stat.ENERGY_POWER, 4400],
         [Stat.MAGIC_BARS, 1700],
     ]),
-    new Item(218, 'aCheapPlasticAmulet', 'A Cheap Plastic Amulet',  Slot.ACCESSORY, 100, [
+    new Item(218, 'aCheapPlasticAmulet', 'A Cheap Plastic Amulet', Slot.ACCESSORY, Zones.EVIL, 100, [
         [Stat.POWER, 150000],
         [Stat.TOUGHNESS, 150000],
         [Stat.ENERGY_POWER, 4500],
@@ -1080,14 +1112,14 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 3200],
         [Stat.MAGIC_BARS, 3200],
     ]),
-    new Item(219, 'rightEdgyBoot', 'Right Edgy Boot',  Slot.BOOTS, 100, [
+    new Item(219, 'rightEdgyBoot', 'Right Edgy Boot', Slot.BOOTS, Zones.EVIL, 100, [
         [Stat.POWER, 30000],
         [Stat.TOUGHNESS, 516000],
         [Stat.MAGIC_CAP, 480],
         [Stat.MAGIC_BARS, 4800],
         [Stat.MAGIC_POWER, 4800],
     ]),
-    new Item(220, 'bOTHEdgyBoots', 'BOTH Edgy Boots',  Slot.BOOTS, 100, [
+    new Item(220, 'bOTHEdgyBoots', 'BOTH Edgy Boots', Slot.BOOTS, Zones.EVIL, 100, [
         [Stat.POWER, 60000],
         [Stat.TOUGHNESS, 540000],
         [Stat.ENERGY_CAP, 420],
@@ -1097,14 +1129,14 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 4200],
         [Stat.MAGIC_POWER, 4200],
     ]),
-    new Item(221, 'chocolateHelmet', 'Chocolate Helmet',  Slot.HEAD, 100, [
+    new Item(221, 'chocolateHelmet', 'Chocolate Helmet', Slot.HEAD, Zones.CHOCO, 100, [
         [Stat.POWER, 30000],
         [Stat.TOUGHNESS, 352000],
         [Stat.ENERGY_POWER, 2600],
         [Stat.MAGIC_CAP, 190],
         [Stat.MAGIC_BARS, 1400],
     ]),
-    new Item(222, 'chocolateChest', 'Chocolate Chest',  Slot.CHEST, 100, [
+    new Item(222, 'chocolateChest', 'Chocolate Chest', Slot.CHEST, Zones.CHOCO, 100, [
         [Stat.POWER, 20000],
         [Stat.TOUGHNESS, 370000],
         [Stat.ENERGY_CAP, 300],
@@ -1113,7 +1145,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 2900],
         [Stat.MAGIC_BARS, 2500],
     ]),
-    new Item(223, 'chocolatePants', 'Chocolate Pants',  Slot.PANTS, 100, [
+    new Item(223, 'chocolatePants', 'Chocolate Pants', Slot.PANTS, Zones.CHOCO, 100, [
         [Stat.POWER, 20000],
         [Stat.TOUGHNESS, 355000],
         [Stat.ENERGY_BARS, 1700],
@@ -1121,14 +1153,14 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 2800],
         [Stat.ENERGY_CAP, 230],
     ]),
-    new Item(224, 'chocolateBoots', 'Chocolate Boots',  Slot.BOOTS, 100, [
+    new Item(224, 'chocolateBoots', 'Chocolate Boots', Slot.BOOTS, Zones.CHOCO, 100, [
         [Stat.POWER, 20000],
         [Stat.TOUGHNESS, 366000],
         [Stat.ENERGY_CAP, 340],
         [Stat.ENERGY_BARS, 3400],
         [Stat.ENERGY_POWER, 3400],
     ]),
-    new Item(225, 'chocolateCrowbar', 'Chocolate Crowbar',  Slot.WEAPON, 100, [
+    new Item(225, 'chocolateCrowbar', 'Chocolate Crowbar', Slot.WEAPON, Zones.CHOCO, 100, [
         [Stat.POWER, 3800000],
         [Stat.TOUGHNESS, 200000],
         [Stat.MAGIC_CAP, 290],
@@ -1136,31 +1168,31 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 1800],
         [Stat.MAGIC_BARS, 1800],
     ]),
-    new Item(226, 'energyBarBar', 'Energy Bar Bar',  Slot.ACCESSORY, 100, [
+    new Item(226, 'energyBarBar', 'Energy Bar Bar', Slot.ACCESSORY, Zones.CHOCO, 100, [
         [Stat.POWER, 50000],
         [Stat.TOUGHNESS, 50000],
         [Stat.ENERGY_POWER, 3000],
         [Stat.ENERGY_CAP, 250],
         [Stat.ENERGY_BARS, 2200],
     ]),
-    new Item(227, 'magicBarBar', 'Magic Bar Bar',  Slot.ACCESSORY, 100, [
+    new Item(227, 'magicBarBar', 'Magic Bar Bar', Slot.ACCESSORY, Zones.CHOCO, 100, [
         [Stat.POWER, 50000],
         [Stat.TOUGHNESS, 50000],
         [Stat.MAGIC_POWER, 3000],
         [Stat.MAGIC_CAP, 250],
         [Stat.MAGIC_BARS, 2200],
     ]),
-    new Item(229, 'ascendedx5Pendant', 'Ascended x5 Pendant',  Slot.ACCESSORY, 100, [
+    new Item(229, 'ascendedx5Pendant', 'Ascended x5 Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 400000],
         [Stat.TOUGHNESS, 400000],
         [Stat.ENERGY_NGU_SPEED, 250],
-        [Stat.MAGIC_NGU_SPEED, 250], 
+        [Stat.MAGIC_NGU_SPEED, 250],
         [Stat.ENERGY_CAP, 500],
         [Stat.MAGIC_CAP, 500],
         [Stat.ENERGY_POWER, 5000],
         [Stat.MAGIC_POWER, 5000],
     ]),
-    new Item(230, 'emperorLooty', 'Emperor Looty',  Slot.ACCESSORY, 100, [
+    new Item(230, 'emperorLooty', 'Emperor Looty', Slot.ACCESSORY, Zones.LOOTY, 100, [
         [Stat.POWER, 300000],
         [Stat.TOUGHNESS, 300000],
         [Stat.DROP_CHANCE, 300],
@@ -1169,7 +1201,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 150],
         [Stat.MAGIC_CAP, 150],
     ]),
-    new Item(231, 'clownHat', 'Clown Hat',  Slot.HEAD, 100, [
+    new Item(231, 'clownHat', 'Clown Hat', Slot.HEAD, Zones.PINK, 100, [
         [Stat.POWER, 60000],
         [Stat.TOUGHNESS, 742000],
         [Stat.MAGIC_POWER, 5500],
@@ -1178,7 +1210,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 3500],
         [Stat.MAGIC_BARS, 3500],
     ]),
-    new Item(232, 'fabulousSuperChest', 'Fabulous Super Chest',  Slot.CHEST, 100, [
+    new Item(232, 'fabulousSuperChest', 'Fabulous Super Chest', Slot.CHEST, Zones.PINK, 100, [
         [Stat.POWER, 60000],
         [Stat.TOUGHNESS, 740000],
         [Stat.ENERGY_CAP, 550],
@@ -1187,7 +1219,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 5400],
         [Stat.MAGIC_BARS, 5300],
     ]),
-    new Item(233, 'aCrappyTutu', 'A Crappy Tutu',  Slot.PANTS, 100, [
+    new Item(233, 'aCrappyTutu', 'A Crappy Tutu', Slot.PANTS, Zones.PINK, 100, [
         [Stat.POWER, 50000],
         [Stat.TOUGHNESS, 755000],
         [Stat.ENERGY_BARS, 5000],
@@ -1195,7 +1227,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 600],
         [Stat.MAGIC_CAP, 600],
     ]),
-    new Item(234, 'prettyPinkSlippers', 'Pretty Pink Slippers',  Slot.BOOTS, 100, [
+    new Item(234, 'prettyPinkSlippers', 'Pretty Pink Slippers', Slot.BOOTS, Zones.PINK, 100, [
         [Stat.POWER, 30000],
         [Stat.TOUGHNESS, 730000],
         [Stat.MAGIC_CAP, 630],
@@ -1203,7 +1235,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 6500],
         [Stat.MAGIC_POWER, 6500],
     ]),
-    new Item(235, 'giantStickyFoot', 'Giant Sticky Foot',  Slot.WEAPON, 100, [
+    new Item(235, 'giantStickyFoot', 'Giant Sticky Foot', Slot.WEAPON, Zones.PINK, 100, [
         [Stat.POWER, 7600000],
         [Stat.TOUGHNESS, 440000],
         [Stat.ENERGY_CAP, 570],
@@ -1211,15 +1243,15 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 6000],
         [Stat.MAGIC_BARS, 3300],
     ]),
-    new Item(236, 'aPrettyPinkBow', 'A Pretty Pink Bow',  Slot.ACCESSORY, 100, [
+    new Item(236, 'aPrettyPinkBow', 'A Pretty Pink Bow', Slot.ACCESSORY, Zones.PINK, 100, [
         [Stat.POWER, 400000],
         [Stat.TOUGHNESS, 400000],
         [Stat.DAYCARE_SPEED, 10],
         [Stat.ENERGY_NGU_SPEED, 170],
-        [Stat.MAGIC_NGU_SPEED, 170], 
+        [Stat.MAGIC_NGU_SPEED, 170],
         [Stat.QUEST_DROP, 5],
     ]),
-    new Item(237, 'aWornOutFedora', 'A Worn Out Fedora',  Slot.HEAD, 100, [
+    new Item(237, 'aWornOutFedora', 'A Worn Out Fedora', Slot.HEAD, Zones.NERD, 100, [
         [Stat.POWER, 80000],
         [Stat.TOUGHNESS, 1100000],
         [Stat.ENERGY_POWER, 5800],
@@ -1227,7 +1259,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 900],
         [Stat.ENERGY_BARS, 7000],
     ]),
-    new Item(238, 'sweat-StainedNGUShirt', 'Sweat-Stained NGU Shirt',  Slot.CHEST, 100, [
+    new Item(238, 'sweat-StainedNGUShirt', 'Sweat-Stained NGU Shirt', Slot.CHEST, Zones.NERD, 100, [
         [Stat.POWER, 80000],
         [Stat.TOUGHNESS, 1120000],
         [Stat.ENERGY_CAP, 700],
@@ -1235,7 +1267,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 10000],
         [Stat.MAGIC_BARS, 6100],
     ]),
-    new Item(239, 'notSweat-StainedUnderpants', 'Not Sweat-Stained Underpants',  Slot.PANTS, 100, [
+    new Item(239, 'notSweat-StainedUnderpants', 'Not Sweat-Stained Underpants', Slot.PANTS, Zones.NERD, 100, [
         [Stat.POWER, 50000],
         [Stat.TOUGHNESS, 1200000],
         [Stat.MAGIC_BARS, 6200],
@@ -1243,7 +1275,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 6100],
         [Stat.ENERGY_CAP, 900],
     ]),
-    new Item(240, 'nerdyShoes', 'Nerdy Shoes',  Slot.BOOTS, 100, [
+    new Item(240, 'nerdyShoes', 'Nerdy Shoes', Slot.BOOTS, Zones.NERD, 100, [
         [Stat.POWER, 80000],
         [Stat.TOUGHNESS, 1200000],
         [Stat.ENERGY_CAP, 800],
@@ -1252,7 +1284,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_BARS, 6300],
         [Stat.MAGIC_POWER, 8000],
     ]),
-    new Item(241, 'superiorJapaneseKatana', 'Superior Japanese Katana',  Slot.WEAPON, 100, [
+    new Item(241, 'superiorJapaneseKatana', 'Superior Japanese Katana', Slot.WEAPON, Zones.NERD, 100, [
         [Stat.POWER, 11000000],
         [Stat.TOUGHNESS, 600000],
         [Stat.ENERGY_CAP, 670],
@@ -1261,16 +1293,16 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 6500],
         [Stat.MAGIC_BARS, 6100],
     ]),
-    new Item(242, 'anOrdinaryCalculator', 'An Ordinary Calculator',  Slot.ACCESSORY, 100, [
+    new Item(242, 'anOrdinaryCalculator', 'An Ordinary Calculator', Slot.ACCESSORY, Zones.NERD, 100, [
         [Stat.POWER, 250000],
         [Stat.TOUGHNESS, 250000],
         [Stat.ENERGY_BARS, 6000],
         [Stat.MAGIC_BARS, 6000],
         [Stat.ENERGY_NGU_SPEED, 300],
-        [Stat.MAGIC_NGU_SPEED, 300], 
+        [Stat.MAGIC_NGU_SPEED, 300],
         [Stat.RES3_POWER, 5],
     ]),
-    new Item(243, 'animeFigurine', 'Anime Figurine',  Slot.ACCESSORY, 100, [
+    new Item(243, 'animeFigurine', 'Anime Figurine', Slot.ACCESSORY, Zones.NERD, 100, [
         [Stat.POWER, 250000],
         [Stat.TOUGHNESS, 250000],
         [Stat.ENERGY_POWER, 8000],
@@ -1278,36 +1310,36 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 500],
         [Stat.ENERGY_BARS, 6000],
     ]),
-    new Item(244, 'theD20', 'The D20',  Slot.ACCESSORY, 100, [
+    new Item(244, 'theD20', 'The D20', Slot.ACCESSORY, Zones.NERD2, 100, [
         [Stat.POWER, 250000],
         [Stat.TOUGHNESS, 250000],
         [Stat.ENERGY_POWER, 9000],
         [Stat.ENERGY_CAP, 800],
         [Stat.ENERGY_BARS, 9000],
     ]),
-    new Item(245, 'theD8', 'The D8',  Slot.ACCESSORY, 100, [
+    new Item(245, 'theD8', 'The D8', Slot.ACCESSORY, Zones.NERD2, 100, [
         [Stat.POWER, 300000],
         [Stat.TOUGHNESS, 250000],
         [Stat.MAGIC_POWER, 9000],
         [Stat.MAGIC_CAP, 800],
         [Stat.MAGIC_BARS, 9000],
     ]),
-    new Item(246, 'animeBodypillow', 'Anime Bodypillow',  Slot.ACCESSORY, 100, [
+    new Item(246, 'animeBodypillow', 'Anime Bodypillow', Slot.ACCESSORY, Zones.NERD3, 100, [
         [Stat.POWER, 500000],
         [Stat.TOUGHNESS, 500000],
         [Stat.RES3_POWER, 10],
         [Stat.ENERGY_NGU_SPEED, 150],
-        [Stat.MAGIC_NGU_SPEED, 150], 
+        [Stat.MAGIC_NGU_SPEED, 150],
         [Stat.RESPAWN, 2],
     ]),
-    new Item(247, 'redMeepleThingy', 'Red Meeple Thingy',  Slot.ACCESSORY, 100, [
+    new Item(247, 'redMeepleThingy', 'Red Meeple Thingy', Slot.ACCESSORY, Zones.NERD3, 100, [
         [Stat.POWER, 500000],
         [Stat.TOUGHNESS, 500000],
         [Stat.MAGIC_POWER, 12000],
         [Stat.RES3_POWER, 10],
         [Stat.AUGMENT_SPEED, 250],
     ]),
-    new Item(248, 'aBagofTrash', 'A Bag of Trash',  Slot.ACCESSORY, 100, [
+    new Item(248, 'aBagofTrash', 'A Bag of Trash', Slot.ACCESSORY, Zones.NERD4, 100, [
         [Stat.POWER, 500000],
         [Stat.TOUGHNESS, 500000],
         [Stat.RES3_BARS, 5],
@@ -1315,16 +1347,16 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 1000],
         [Stat.DAYCARE_SPEED, 10],
     ]),
-    new Item(249, 'heartShapedPanties', 'Heart Shaped Panties',  Slot.ACCESSORY, 100, [
+    new Item(249, 'heartShapedPanties', 'Heart Shaped Panties', Slot.ACCESSORY, Zones.NERD4, 100, [
         [Stat.POWER, 666666],
         [Stat.TOUGHNESS, 666666],
         [Stat.RES3_POWER, 6.666666],
         [Stat.ENERGY_NGU_SPEED, 333.3333],
-        [Stat.MAGIC_NGU_SPEED, 333.3333], 
+        [Stat.MAGIC_NGU_SPEED, 333.3333],
         [Stat.ENERGY_CAP, 666.6666],
         [Stat.MAGIC_CAP, 666.6666],
     ]),
-    new Item(251, 'numericalHead', 'Numerical Head',  Slot.HEAD, 100, [
+    new Item(251, 'numericalHead', 'Numerical Head', Slot.HEAD, Zones.META, 100, [
         [Stat.POWER, 150000],
         [Stat.TOUGHNESS, 2200000],
         [Stat.ENERGY_CAP, 1500],
@@ -1332,7 +1364,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 8300],
         [Stat.MAGIC_BARS, 9000],
     ]),
-    new Item(252, 'numericalChest', 'Numerical Chest',  Slot.CHEST, 100, [
+    new Item(252, 'numericalChest', 'Numerical Chest', Slot.CHEST, Zones.META, 100, [
         [Stat.POWER, 150000],
         [Stat.TOUGHNESS, 2200000],
         [Stat.MAGIC_CAP, 1100],
@@ -1340,7 +1372,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 5000],
         [Stat.MAGIC_BARS, 5000],
     ]),
-    new Item(253, 'numericalLegs', 'Numerical Legs',  Slot.PANTS, 100, [
+    new Item(253, 'numericalLegs', 'Numerical Legs', Slot.PANTS, Zones.META, 100, [
         [Stat.POWER, 150000],
         [Stat.TOUGHNESS, 2200000],
         [Stat.ENERGY_BARS, 8500],
@@ -1348,7 +1380,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 900],
         [Stat.MAGIC_CAP, 900],
     ]),
-    new Item(254, 'numericalBoots', 'Numerical Boots',  Slot.BOOTS, 100, [
+    new Item(254, 'numericalBoots', 'Numerical Boots', Slot.BOOTS, Zones.META, 100, [
         [Stat.POWER, 150000],
         [Stat.TOUGHNESS, 2200000],
         [Stat.ENERGY_CAP, 1100],
@@ -1356,14 +1388,14 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 10000],
         [Stat.MAGIC_POWER, 10000],
     ]),
-    new Item(255, 'theNumber7', 'The Number 7',  Slot.WEAPON, 100, [
+    new Item(255, 'theNumber7', 'The Number 7', Slot.WEAPON, Zones.META, 100, [
         [Stat.POWER, 25000000],
         [Stat.TOUGHNESS, 1200000],
         [Stat.MAGIC_POWER, 9000],
         [Stat.MAGIC_CAP, 1000],
         [Stat.RES3_BARS, 10],
     ]),
-    new Item(256, 'infinityCharm', 'Infinity Charm',  Slot.ACCESSORY, 100, [
+    new Item(256, 'infinityCharm', 'Infinity Charm', Slot.ACCESSORY, Zones.META, 100, [
         [Stat.POWER, 888888],
         [Stat.TOUGHNESS, 888888],
         [Stat.ENERGY_CAP, 888.8888],
@@ -1371,7 +1403,7 @@ export const ITEMLIST = [
         [Stat.MOVE_COOLDOWN, 5],
         [Stat.SEED_GAIN, 40],
     ]),
-    new Item(257, '69Charm', '69 Charm',  Slot.ACCESSORY, 100, [
+    new Item(257, '69Charm', '69 Charm', Slot.ACCESSORY, Zones.META, 100, [
         [Stat.POWER, 696969],
         [Stat.TOUGHNESS, 696969],
         [Stat.QUEST_DROP, 8],
@@ -1379,7 +1411,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_WANDOOS_SPEED, 400],
         [Stat.RES3_CAP, 1],
     ]),
-    new Item(258, 'partyHat', 'Party Hat',  Slot.HEAD, 100, [
+    new Item(258, 'partyHat', 'Party Hat', Slot.HEAD, Zones.PARTY, 100, [
         [Stat.POWER, 250000],
         [Stat.TOUGHNESS, 4500000],
         [Stat.MAGIC_CAP, 1500],
@@ -1387,7 +1419,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 8000],
         [Stat.MAGIC_BARS, 8000],
     ]),
-    new Item(259, 'pogmailChest', 'Pogmail Chest',  Slot.CHEST, 100, [
+    new Item(259, 'pogmailChest', 'Pogmail Chest', Slot.CHEST, Zones.PARTY, 100, [
         [Stat.POWER, 250000],
         [Stat.TOUGHNESS, 4500000],
         [Stat.ENERGY_CAP, 1600],
@@ -1395,7 +1427,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 13000],
         [Stat.MAGIC_BARS, 10000],
     ]),
-    new Item(260, 'tearAwayPants', 'Tear Away Pants',  Slot.PANTS, 100, [
+    new Item(260, 'tearAwayPants', 'Tear Away Pants', Slot.PANTS, Zones.PARTY, 100, [
         [Stat.POWER, 250000],
         [Stat.TOUGHNESS, 4500000],
         [Stat.MAGIC_BARS, 12000],
@@ -1403,7 +1435,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 12000],
         [Stat.MAGIC_CAP, 1200],
     ]),
-    new Item(261, 'pizzaBoots', 'Pizza Boots',  Slot.BOOTS, 100, [
+    new Item(261, 'pizzaBoots', 'Pizza Boots', Slot.BOOTS, Zones.PARTY, 100, [
         [Stat.POWER, 250000],
         [Stat.TOUGHNESS, 4500000],
         [Stat.ENERGY_CAP, 1200],
@@ -1411,7 +1443,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 10000],
         [Stat.ENERGY_POWER, 10000],
     ]),
-    new Item(262, 'theGodofThundersHammer', 'The God of Thunder\'s Hammer',  Slot.WEAPON, 100, [
+    new Item(262, 'theGodofThundersHammer', 'The God of Thunder\'s Hammer', Slot.WEAPON, Zones.PARTY, 100, [
         [Stat.POWER, 50000000],
         [Stat.TOUGHNESS, 2000000],
         [Stat.ENERGY_POWER, 11000],
@@ -1419,7 +1451,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 1300],
         [Stat.ENERGY_BARS, 10000],
     ]),
-    new Item(263, 'plasticRedCup', 'Plastic Red Cup',  Slot.ACCESSORY, 100, [
+    new Item(263, 'plasticRedCup', 'Plastic Red Cup', Slot.ACCESSORY, Zones.PARTY, 100, [
         [Stat.POWER, 1500000],
         [Stat.TOUGHNESS, 1000000],
         [Stat.ENERGY_CAP, 1200],
@@ -1428,16 +1460,16 @@ export const ITEMLIST = [
         [Stat.MAGIC_BARS, 12000],
         [Stat.GOLD_DROP, 8000],
     ]),
-    new Item(264, 'partyWhistle', 'Party Whistle',  Slot.ACCESSORY, 100, [
+    new Item(264, 'partyWhistle', 'Party Whistle', Slot.ACCESSORY, Zones.PARTY, 100, [
         [Stat.POWER, 2000000],
         [Stat.TOUGHNESS, 2000000],
         [Stat.ENERGY_NGU_SPEED, 200],
-        [Stat.MAGIC_NGU_SPEED, 200], 
+        [Stat.MAGIC_NGU_SPEED, 200],
         [Stat.ENERGY_POWER, 10000],
         [Stat.MAGIC_POWER, 10000],
         [Stat.YGGDRASIL_YIELD, 5],
     ]),
-    new Item(265, 'mobsterHat', 'Mobster Hat',  Slot.HEAD, 100, [
+    new Item(265, 'mobsterHat', 'Mobster Hat', Slot.HEAD, Zones.MOBSTER, 100, [
         [Stat.POWER, 400000],
         [Stat.TOUGHNESS, 10000000],
         [Stat.ENERGY_POWER, 17000],
@@ -1445,7 +1477,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 1600],
         [Stat.RES3_CAP, 1.4],
     ]),
-    new Item(266, 'mobsterVest', 'Mobster Vest',  Slot.CHEST, 100, [
+    new Item(266, 'mobsterVest', 'Mobster Vest', Slot.CHEST, Zones.MOBSTER, 100, [
         [Stat.POWER, 400000],
         [Stat.TOUGHNESS, 10000000],
         [Stat.ENERGY_CAP, 1600],
@@ -1453,7 +1485,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 18000],
         [Stat.RES3_CAP, 1.6],
     ]),
-    new Item(267, 'mobsterPants', 'Mobster Pants',  Slot.PANTS, 100, [
+    new Item(267, 'mobsterPants', 'Mobster Pants', Slot.PANTS, Zones.MOBSTER, 100, [
         [Stat.POWER, 400000],
         [Stat.TOUGHNESS, 10000000],
         [Stat.ENERGY_BARS, 17000],
@@ -1462,7 +1494,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 13000],
         [Stat.ENERGY_CAP, 1400],
     ]),
-    new Item(268, 'cementBoots', 'Cement Boots',  Slot.BOOTS, 100, [
+    new Item(268, 'cementBoots', 'Cement Boots', Slot.BOOTS, Zones.MOBSTER, 100, [
         [Stat.POWER, 400000],
         [Stat.TOUGHNESS, 10000000],
         [Stat.ENERGY_CAP, 1300],
@@ -1470,7 +1502,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 14000],
         [Stat.MAGIC_POWER, 14000],
     ]),
-    new Item(269, 'tommyGun', 'Tommy Gun',  Slot.WEAPON, 100, [
+    new Item(269, 'tommyGun', 'Tommy Gun', Slot.WEAPON, Zones.MOBSTER, 100, [
         [Stat.POWER, 100000000],
         [Stat.TOUGHNESS, 4000000],
         [Stat.ENERGY_POWER, 13000],
@@ -1479,7 +1511,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 14000],
         [Stat.MAGIC_BARS, 14000],
     ]),
-    new Item(270, 'aGarrote', 'A Garrote',  Slot.ACCESSORY, 100, [
+    new Item(270, 'aGarrote', 'A Garrote', Slot.ACCESSORY, Zones.MOBSTER, 100, [
         [Stat.POWER, 4000000],
         [Stat.TOUGHNESS, 4000000],
         [Stat.DAYCARE_SPEED, 10],
@@ -1487,7 +1519,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 14000],
         [Stat.DROP_CHANCE, 300],
     ]),
-    new Item(271, 'brassKnuckles', 'Brass Knuckles',  Slot.ACCESSORY, 100, [
+    new Item(271, 'brassKnuckles', 'Brass Knuckles', Slot.ACCESSORY, Zones.MOBSTER, 100, [
         [Stat.POWER, 3500000],
         [Stat.TOUGHNESS, 3500000],
         [Stat.ENERGY_CAP, 900],
@@ -1495,7 +1527,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 12],
         [Stat.GOLD_DROP, 12000],
     ]),
-    new Item(272, 'violinCase', 'Violin Case',  Slot.ACCESSORY, 100, [
+    new Item(272, 'violinCase', 'Violin Case', Slot.ACCESSORY, Zones.MOBSTER2, 100, [
         [Stat.POWER, 7000000],
         [Stat.TOUGHNESS, 7000000],
         [Stat.ENERGY_CAP, 1300],
@@ -1504,23 +1536,23 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 13000],
         [Stat.MAGIC_BARS, 13000],
     ]),
-    new Item(273, 'molotovCocktail', 'Molotov Cocktail',  Slot.ACCESSORY, 100, [
+    new Item(273, 'molotovCocktail', 'Molotov Cocktail', Slot.ACCESSORY, Zones.MOBSTER2, 100, [
         [Stat.POWER, 10000000],
         [Stat.TOUGHNESS, 10000000],
         [Stat.ENERGY_NGU_SPEED, 200],
-        [Stat.MAGIC_NGU_SPEED, 200], 
+        [Stat.MAGIC_NGU_SPEED, 200],
         [Stat.SEED_GAIN, 50],
         [Stat.ENERGY_WANDOOS_SPEED, 800],
         [Stat.MAGIC_WANDOOS_SPEED, 800],
     ]),
-    new Item(274, 'theGodmothersRing', 'The Godmother\'s Ring',  Slot.ACCESSORY, 100, [
+    new Item(274, 'theGodmothersRing', 'The Godmother\'s Ring', Slot.ACCESSORY, Zones.MOBSTER3, 100, [
         [Stat.POWER, 15000000],
         [Stat.TOUGHNESS, 15000000],
         [Stat.GOLD_DROP, 30000],
         [Stat.DROP_CHANCE, 700],
         [Stat.RES3_CAP, 5.5],
     ]),
-    new Item(275, 'theGodmothersWand', 'The Godmother\'s Wand',  Slot.ACCESSORY, 100, [
+    new Item(275, 'theGodmothersRing', 'The Godmother\'s Wand', Slot.ACCESSORY, Zones.MOBSTER3, 100, [
         [Stat.POWER, 22000000],
         [Stat.TOUGHNESS, 22000000],
         [Stat.ENERGY_POWER, 60000],
@@ -1529,34 +1561,45 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 6000],
         [Stat.YGGDRASIL_YIELD, 7.5],
     ]),
-    new Item(276, 'leftFairyWing', 'Left Fairy Wing',  Slot.ACCESSORY, 100, [
+    new Item(276, 'leftFairyWing', 'Left Fairy Wing', Slot.ACCESSORY, Zones.MOBSTER4, 100, [
         [Stat.POWER, 60000000],
         [Stat.TOUGHNESS, 60000000],
         [Stat.RES3_CAP, 8],
         [Stat.RES3_POWER, 80],
         [Stat.ENERGY_CAP, 8000],
     ]),
-    new Item(277, 'rightFairyWing', 'Right Fairy Wing',  Slot.ACCESSORY, 100, [
+    new Item(277, 'rightFairyWing', 'Right Fairy Wing', Slot.ACCESSORY, Zones.MOBSTER4, 100, [
         [Stat.ENERGY_BARS, 90000],
         [Stat.MAGIC_BARS, 90000],
         [Stat.ENERGY_POWER, 90000],
         [Stat.MAGIC_POWER, 90000],
         [Stat.MAGIC_CAP, 9000],
     ]),
-    new Item(293, 'myOrangeHeart<3', 'My Orange Heart <3',  Slot.ACCESSORY, 100, [
+    new Item(278, 'bitsOfString', 'Bits of String', Slot.OTHER, Zones.SEWERS, 100, []),
+    new Item(279, 'theEntireStateOfNorthDakota', 'The Entire State of North Dakota', Slot.OTHER, Zones.TWO_D, 100, []),
+    new Item(280, 'aToothbrush', 'A Toothbrush', Slot.OTHER, Zones.CHOCO, 100, []),
+    new Item(281, 'aDreamcatcher', 'A Dreamcatcher', Slot.OTHER, Zones.FOREST, 100, []),
+    new Item(282, 'randomCanadianCoins', 'Random Canadian Coins', Slot.OTHER, Zones.AVSP, 100, []),
+    new Item(283, 'aMissingPuzzlePiece', 'A Missing Puzzle Piece', Slot.OTHER, Zones.HSB, 100, []),
+    new Item(284, 'aSeveredHumanThumb', 'A Severed Human Thumb', Slot.OTHER, Zones.EVIL, 100, []),
+    new Item(285, 'aSpittoon', 'A Spittoon', Slot.OTHER, Zones.BEARDVERSE, 100, []),
+    new Item(286, 'aSmallerCaterpillar', 'A Smaller Caterplillar', Slot.OTHER, Zones.PINK, 100, []),
+    new Item(287, 'aUselessCollegeDiploma', 'A Useless College Diploma', Slot.OTHER, Zones.MEGA, 100, []),
+
+    new Item(293, 'myOrangeHeart<3', 'My Orange Heart <3', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 100],
         [Stat.TOUGHNESS, 1000],
         [Stat.QUEST_DROP, 5],
         [Stat.GOLD_DROP, 300],
     ]),
-    new Item(295, 'ascendedx6Pendant', 'Ascended x6 Pendant',  Slot.ACCESSORY, 100, [
+    new Item(295, 'ascendedx6Pendant', 'Ascended x6 Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 20000000],
         [Stat.TOUGHNESS, 20000000],
         [Stat.RES3_CAP, 50],
         [Stat.RES3_POWER, 100],
         [Stat.RES3_BARS, 100],
     ]),
-    new Item(296, 'gALACTICHERALDLOOTY', 'GALACTIC HERALD LOOTY',  Slot.ACCESSORY, 100, [
+    new Item(296, 'gALACTICHERALDLOOTY', 'GALACTIC HERALD LOOTY', Slot.ACCESSORY, Zones.LOOTY, 100, [
         [Stat.POWER, 30000000],
         [Stat.TOUGHNESS, 30000000],
         [Stat.DROP_CHANCE, 600],
@@ -1564,13 +1607,13 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 25000],
         [Stat.RES3_CAP, 20],
     ]),
-    new Item(297, 'myGreyHeart<3', 'My Grey Heart <3',  Slot.ACCESSORY, 100, [
+    new Item(297, 'myGreyHeart<3', 'My Grey Heart <3', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 1000000],
         [Stat.TOUGHNESS, 1000000],
         [Stat.RES3_CAP, 20],
         [Stat.RES3_BARS, 20],
     ]),
-    new Item(301, 'hamlet', 'Hamlet',  Slot.HEAD, 100, [
+    new Item(301, 'hamlet', 'Hamlet', Slot.HEAD, Zones.TYPO, 100, [
         [Stat.POWER, 600000],
         [Stat.TOUGHNESS, 15000000],
         [Stat.RES3_POWER, 28],
@@ -1578,7 +1621,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_BARS, 31000],
         [Stat.RES3_BARS, 30],
     ]),
-    new Item(302, 'chessPlate', 'Chess Plate',  Slot.CHEST, 100, [
+    new Item(302, 'chessPlate', 'Chess Plate', Slot.CHEST, Zones.TYPO, 100, [
         [Stat.POWER, 600000],
         [Stat.TOUGHNESS, 16000000],
         [Stat.ENERGY_POWER, 29000],
@@ -1586,7 +1629,7 @@ export const ITEMLIST = [
         [Stat.RES3_CAP, 2.7],
         [Stat.RES3_BARS, 40],
     ]),
-    new Item(303, 'logs', 'Logs',  Slot.PANTS, 100, [
+    new Item(303, 'logs', 'Logs', Slot.PANTS, Zones.TYPO, 100, [
         [Stat.POWER, 600000],
         [Stat.TOUGHNESS, 15500000],
         [Stat.RES3_CAP, 3.2],
@@ -1594,7 +1637,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 3500],
         [Stat.MAGIC_CAP, 3500],
     ]),
-    new Item(304, 'booms', 'Booms',  Slot.BOOTS, 100, [
+    new Item(304, 'booms', 'Booms', Slot.BOOTS, Zones.TYPO, 100, [
         [Stat.POWER, 600000],
         [Stat.TOUGHNESS, 15000000],
         [Stat.RES3_POWER, 30],
@@ -1602,7 +1645,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 35000],
         [Stat.RES3_CAP, 3.1],
     ]),
-    new Item(305, 'weepin', 'Wee pin',  Slot.WEAPON, 100, [
+    new Item(305, 'weepin', 'Wee pin', Slot.WEAPON, Zones.TYPO, 100, [
         [Stat.POWER, 160000000],
         [Stat.TOUGHNESS, 6000000],
         [Stat.ENERGY_POWER, 25000],
@@ -1611,7 +1654,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 34000],
         [Stat.MAGIC_BARS, 34000],
     ]),
-    new Item(306, 'theAss-cessory', 'The Ass-cessory',  Slot.ACCESSORY, 100, [
+    new Item(306, 'theAss-cessory', 'The Ass-cessory', Slot.ACCESSORY, Zones.TYPO, 100, [
         [Stat.POWER, 12000000],
         [Stat.TOUGHNESS, 12000000],
         [Stat.ENERGY_CAP, 3300],
@@ -1620,14 +1663,14 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 33000],
         [Stat.YGGDRASIL_YIELD, 5],
     ]),
-    new Item(307, 'eyeofELXU', 'Eye of ELXU',  Slot.ACCESSORY, 100, [
+    new Item(307, 'eyeofELXU', 'Eye of ELXU', Slot.ACCESSORY, Zones.TYPO, 100, [
         [Stat.POWER, 6666666],
         [Stat.TOUGHNESS, 6666666],
         [Stat.RES3_CAP, 3.2],
         [Stat.RES3_POWER, 35],
         [Stat.RES3_BARS, 29],
     ]),
-    new Item(308, 'spinningTophat', 'Spinning Tophat',  Slot.HEAD, 100, [
+    new Item(308, 'spinningTophat', 'Spinning Tophat', Slot.HEAD, Zones.FAD, 100, [
         [Stat.POWER, 900000],
         [Stat.TOUGHNESS, 22000000],
         [Stat.RES3_POWER, 62],
@@ -1635,7 +1678,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 61000],
         [Stat.RES3_BARS, 52],
     ]),
-    new Item(309, 'demonicFlurbieChestplate', 'Demonic Flurbie Chestplate',  Slot.CHEST, 100, [
+    new Item(309, 'demonicFlurbieChestplate', 'Demonic Flurbie Chestplate', Slot.CHEST, Zones.FAD, 100, [
         [Stat.POWER, 900000],
         [Stat.TOUGHNESS, 24000000],
         [Stat.ENERGY_CAP, 6600],
@@ -1644,7 +1687,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 40000],
         [Stat.MAGIC_BARS, 40000],
     ]),
-    new Item(310, 'aAABatteryLegs', 'AAA Battery Legs',  Slot.PANTS, 100, [
+    new Item(310, 'aAABatteryLegs', 'AAA Battery Legs', Slot.PANTS, Zones.FAD, 100, [
         [Stat.POWER, 900000],
         [Stat.TOUGHNESS, 23000000],
         [Stat.ENERGY_POWER, 57000],
@@ -1652,7 +1695,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 62],
         [Stat.RES3_CAP, 6.3],
     ]),
-    new Item(311, 'slinkyBoots', 'Slinky Boots',  Slot.BOOTS, 100, [
+    new Item(311, 'slinkyBoots', 'Slinky Boots', Slot.BOOTS, Zones.FAD, 100, [
         [Stat.POWER, 900000],
         [Stat.TOUGHNESS, 21000000],
         [Stat.ENERGY_BARS, 50000],
@@ -1660,7 +1703,7 @@ export const ITEMLIST = [
         [Stat.RES3_BARS, 62],
         [Stat.RES3_POWER, 69],
     ]),
-    new Item(312, 'tHEMALFSLAMMER', 'THE MALF SLAMMER',  Slot.WEAPON, 100, [
+    new Item(312, 'tHEMALFSLAMMER', 'THE MALF SLAMMER', Slot.WEAPON, Zones.FAD, 100, [
         [Stat.POWER, 250000000],
         [Stat.TOUGHNESS, 10000000],
         [Stat.ENERGY_POWER, 62000],
@@ -1668,21 +1711,21 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 64],
         [Stat.RES3_CAP, 7],
     ]),
-    new Item(313, 'rareFoilPokeymanCard', 'Rare Foil Pokeyman Card',  Slot.ACCESSORY, 100, [
+    new Item(313, 'rareFoilPokeymanCard', 'Rare Foil Pokeyman Card', Slot.ACCESSORY, Zones.FAD, 100, [
         [Stat.POWER, 19000000],
         [Stat.TOUGHNESS, 19000000],
         [Stat.DROP_CHANCE, 400],
         [Stat.GOLD_DROP, 50000],
         [Stat.RES3_CAP, 12],
     ]),
-    new Item(314, 'ahandfulofKrazyBonez', 'A handful of Krazy Bonez',  Slot.ACCESSORY, 100, [
+    new Item(314, 'ahandfulofKrazyBonez', 'A handful of Krazy Bonez', Slot.ACCESSORY, Zones.FAD, 100, [
         [Stat.POWER, 20000000],
         [Stat.TOUGHNESS, 20000000],
         [Stat.QUEST_DROP, 7],
         [Stat.RES3_CAP, 7],
         [Stat.RES3_POWER, 60],
     ]),
-    new Item(315, 'busterSwordTop', 'Buster Sword Top',  Slot.HEAD, 100, [
+    new Item(315, 'busterSwordTop', 'Buster Sword Top', Slot.HEAD, Zones.JRPG, 100, [
         [Stat.POWER, 1400000],
         [Stat.TOUGHNESS, 38000000],
         [Stat.ENERGY_POWER, 85000],
@@ -1690,14 +1733,14 @@ export const ITEMLIST = [
         [Stat.RES3_CAP, 8.3],
         [Stat.RES3_POWER, 90],
     ]),
-    new Item(316, 'busterSwordUpper', 'Buster Sword Upper',  Slot.CHEST, 100, [
+    new Item(316, 'busterSwordUpper', 'Buster Sword Upper', Slot.CHEST, Zones.JRPG, 100, [
         [Stat.POWER, 1500000],
         [Stat.TOUGHNESS, 37000000],
         [Stat.RES3_CAP, 9.2],
         [Stat.RES3_POWER, 88],
         [Stat.RES3_BARS, 90],
     ]),
-    new Item(317, 'busterSwordLower', 'Buster Sword Lower',  Slot.PANTS, 100, [
+    new Item(317, 'busterSwordLower', 'Buster Sword Lower', Slot.PANTS, Zones.JRPG, 100, [
         [Stat.POWER, 1500000],
         [Stat.TOUGHNESS, 39000000],
         [Stat.RES3_CAP, 8.9],
@@ -1705,7 +1748,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 87000],
         [Stat.MAGIC_BARS, 87000],
     ]),
-    new Item(318, 'busterSwordBottom', 'Buster Sword Bottom',  Slot.BOOTS, 100, [
+    new Item(318, 'busterSwordBottom', 'Buster Sword Bottom', Slot.BOOTS, Zones.JRPG, 100, [
         [Stat.POWER, 1500000],
         [Stat.TOUGHNESS, 38000000],
         [Stat.ENERGY_POWER, 89000],
@@ -1714,7 +1757,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 9400],
         [Stat.MAGIC_CAP, 9400],
     ]),
-    new Item(319, 'giftShopBusterSwordReplica', 'Gift Shop Buster Sword Replica',  Slot.WEAPON, 100, [
+    new Item(319, 'giftShopBusterSwordReplica', 'Gift Shop Buster Sword Replica', Slot.WEAPON, Zones.JRPG, 100, [
         [Stat.POWER, 400000000],
         [Stat.TOUGHNESS, 16000000],
         [Stat.RES3_BARS, 91],
@@ -1722,7 +1765,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_BARS, 87000],
         [Stat.RES3_POWER, 100],
     ]),
-    new Item(320, 'aGiganticZipper', 'A Gigantic Zipper',  Slot.ACCESSORY, 100, [
+    new Item(320, 'aGiganticZipper', 'A Gigantic Zipper', Slot.ACCESSORY, Zones.JRPG, 100, [
         [Stat.POWER, 21000000],
         [Stat.TOUGHNESS, 23000000],
         [Stat.RES3_BARS, 97],
@@ -1730,7 +1773,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 88000],
         [Stat.RES3_POWER, 100],
     ]),
-    new Item(321, 'animeHeroWig', 'Anime Hero Wig',  Slot.ACCESSORY, 100, [
+    new Item(321, 'animeHeroWig', 'Anime Hero Wig', Slot.ACCESSORY, Zones.JRPG, 100, [
         [Stat.POWER, 30000000],
         [Stat.TOUGHNESS, 30000000],
         [Stat.RES3_CAP, 8.8],
@@ -1738,14 +1781,14 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 96000],
         [Stat.YGGDRASIL_YIELD, 4],
     ]),
-    new Item(322, 'hatofGreed', 'Hat of Greed',  Slot.HEAD, 100, [
+    new Item(322, 'hatofGreed', 'Hat of Greed', Slot.HEAD, Zones.EXILE, 100, [
         [Stat.POWER, 2200000],
         [Stat.TOUGHNESS, 57000000],
         [Stat.RES3_CAP, 12],
         [Stat.RES3_POWER, 112],
         [Stat.GOLD_DROP, 100000],
     ]),
-    new Item(323, 'blueEyesWhiteChestplate', 'Blue Eyes White Chestplate',  Slot.CHEST, 100, [
+    new Item(323, 'blueEyesWhiteChestplate', 'Blue Eyes White Chestplate', Slot.CHEST, Zones.EXILE, 100, [
         [Stat.POWER, 2300000],
         [Stat.TOUGHNESS, 60000000],
         [Stat.ENERGY_CAP, 11600],
@@ -1754,7 +1797,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_BARS, 103000],
         [Stat.RES3_POWER, 118],
     ]),
-    new Item(324, 'trapPants', 'Trap Pants',  Slot.PANTS, 100, [
+    new Item(324, 'trapPants', 'Trap Pants', Slot.PANTS, Zones.EXILE, 100, [
         [Stat.POWER, 2200000],
         [Stat.TOUGHNESS, 59000000],
         [Stat.RES3_BARS, 110],
@@ -1762,7 +1805,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 120000],
         [Stat.RES3_CAP, 13],
     ]),
-    new Item(325, 'alltheotherTitansMissingShoes', 'All the other Titans\' Missing Shoes',  Slot.BOOTS, 100, [
+    new Item(325, 'alltheotherTitansMissingShoes', 'All the other Titans\' Missing Shoes', Slot.BOOTS, Zones.EXILE, 100, [
         [Stat.POWER, 2200000],
         [Stat.TOUGHNESS, 58000000],
         [Stat.RES3_POWER, 113],
@@ -1771,7 +1814,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 118000],
         [Stat.MAGIC_POWER, 118000],
     ]),
-    new Item(326, 'theDiskofDueling', 'The Disk of Dueling',  Slot.WEAPON, 100, [
+    new Item(326, 'theDiskofDueling', 'The Disk of Dueling', Slot.WEAPON, Zones.EXILE, 100, [
         [Stat.POWER, 620000000],
         [Stat.TOUGHNESS, 25000000],
         [Stat.ENERGY_BARS, 100000],
@@ -1779,14 +1822,14 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 118],
         [Stat.RES3_CAP, 13],
     ]),
-    new Item(327, 'theJoker', 'The Joker',  Slot.ACCESSORY, 100, [
+    new Item(327, 'theJoker', 'The Joker', Slot.ACCESSORY, Zones.EXILE, 100, [
         [Stat.POWER, 66600000],
         [Stat.TOUGHNESS, 66600000],
         [Stat.COOKING, 10000000],
         [Stat.WISH_SPEED, 5],
         [Stat.RES3_CAP, 40],
     ]),
-    new Item(328, 'antlersoftheExile', 'Antlers of the Exile',  Slot.ACCESSORY, 100, [
+    new Item(328, 'antlersoftheExile', 'Antlers of the Exile', Slot.ACCESSORY, Zones.EXILE, 100, [
         [Stat.POWER, 80000000],
         [Stat.ENERGY_POWER, 100000],
         [Stat.MAGIC_POWER, 100000],
@@ -1794,13 +1837,13 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 12000],
         [Stat.MAGIC_CAP, 12000],
     ]),
-    new Item(329, 'theCreditCard', 'The Credit Card',  Slot.ACCESSORY, 100, [
+    new Item(329, 'theCreditCard', 'The Credit Card', Slot.ACCESSORY, Zones.EXILE, 100, [
         [Stat.ENERGY_BARS, 170000],
         [Stat.MAGIC_BARS, 170000],
         [Stat.QUEST_DROP, 5],
         [Stat.GOLD_DROP, 250000],
     ]),
-    new Item(330, 'tentacleoftheExile', 'Tentacle of the Exile',  Slot.ACCESSORY, 100, [
+    new Item(330, 'tentacleoftheExile', 'Tentacle of the Exile', Slot.ACCESSORY, Zones.EXILE, 100, [
         [Stat.POWER, 110000000],
         [Stat.TOUGHNESS, 100000000],
         [Stat.RES3_BARS, 180],
@@ -1808,16 +1851,16 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 190000],
         [Stat.RES3_CAP, 18],
     ]),
-    new Item(331, 'theSkipCard', 'The Skip Card',  Slot.ACCESSORY, 100, [
+    new Item(331, 'theSkipCard', 'The Skip Card', Slot.ACCESSORY, Zones.EXILE, 100, [
         [Stat.POWER, 120000000],
         [Stat.TOUGHNESS, 120000000],
         [Stat.ENERGY_NGU_SPEED, 250],
-        [Stat.MAGIC_NGU_SPEED, 250], 
+        [Stat.MAGIC_NGU_SPEED, 250],
         [Stat.ENERGY_POWER, 280000],
         [Stat.MAGIC_POWER, 280000],
         [Stat.RES3_POWER, 260],
     ]),
-    new Item(332, 'antennaeoftheExile', 'Antennae of the Exile',  Slot.ACCESSORY, 100, [
+    new Item(332, 'antennaeoftheExile', 'Antennae of the Exile', Slot.ACCESSORY, Zones.EXILE, 100, [
         [Stat.POWER, 100000000],
         [Stat.TOUGHNESS, 100000000],
         [Stat.RES3_POWER, 270],
@@ -1825,7 +1868,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 26000],
         [Stat.HACK_SPEED, 12],
     ]),
-    new Item(333, 'theBlackLotus', 'The Black Lotus',  Slot.ACCESSORY, 100, [
+    new Item(333, 'theBlackLotus', 'The Black Lotus', Slot.ACCESSORY, Zones.EXILE, 100, [
         [Stat.POWER, 150000000],
         [Stat.TOUGHNESS, 150000000],
         [Stat.RES3_CAP, 45],
@@ -1833,7 +1876,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 40000],
         [Stat.WISH_SPEED, 20],
     ]),
-    new Item(334, 'busteroftheExile', 'Buster of the Exile',  Slot.ACCESSORY, 100, [
+    new Item(334, 'busteroftheExile', 'Buster of the Exile', Slot.ACCESSORY, Zones.EXILE, 100, [
         [Stat.POWER, 250000000],
         [Stat.TOUGHNESS, 250000000],
         [Stat.RES3_POWER, 400],
@@ -1841,22 +1884,22 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 400000],
         [Stat.HACK_SPEED, 20],
     ]),
-    new Item(335, 'sealoftheExile', 'Seal of the Exile',  Slot.WEAPON, 100, [
+    new Item(335, 'sealoftheExile', 'Seal of the Exile', Slot.WEAPON, Zones.MISC, 100, [
     ]),
-    new Item(342, 'blueEyesUltimateChestplate', 'Blue Eyes Ultimate Chestplate',  Slot.CHEST, 100, [
+    new Item(342, 'blueEyesUltimateChestplate', 'Blue Eyes Ultimate Chestplate', Slot.CHEST, Zones.EXILE, 100, [
         [Stat.POWER, 5500000],
         [Stat.TOUGHNESS, 160000000],
         [Stat.RES3_CAP, 120],
         [Stat.WISH_SPEED, 25],
         [Stat.HACK_SPEED, 20],
     ]),
-    new Item(344, 'myPinkHeart<3', 'My Pink Heart <3',  Slot.ACCESSORY, 100, [
+    new Item(344, 'myPinkHeart<3', 'My Pink Heart <3', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 3000000],
         [Stat.TOUGHNESS, 3000000],
         [Stat.WISH_SPEED, 10],
         [Stat.DAYCARE_SPEED, 10],
     ]),
-    new Item(345, 'coolShades', 'Cool Shades',  Slot.HEAD, 100, [
+    new Item(345, 'coolShades', 'Cool Shades', Slot.HEAD, Zones.RADLANDS, 100, [
         [Stat.POWER, 3300000],
         [Stat.TOUGHNESS, 87000000],
         [Stat.ENERGY_CAP, 14500],
@@ -1865,7 +1908,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 144000],
         [Stat.MAGIC_POWER, 144000],
     ]),
-    new Item(346, 'leatherJacket', 'Leather Jacket',  Slot.CHEST, 100, [
+    new Item(346, 'leatherJacket', 'Leather Jacket', Slot.CHEST, Zones.RADLANDS, 100, [
         [Stat.POWER, 3400000],
         [Stat.TOUGHNESS, 86000000],
         [Stat.RES3_BARS, 147],
@@ -1873,7 +1916,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 14500],
         [Stat.MAGIC_CAP, 14500],
     ]),
-    new Item(347, 'flaminHotShorts', 'Flamin\' Hot Shorts',  Slot.PANTS, 100, [
+    new Item(347, 'flaminHotShorts', 'Flamin\' Hot Shorts', Slot.PANTS, Zones.RADLANDS, 100, [
         [Stat.POWER, 3500000],
         [Stat.TOUGHNESS, 86000000],
         [Stat.ENERGY_POWER, 144000],
@@ -1882,7 +1925,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_BARS, 145000],
         [Stat.RES3_CAP, 14.5],
     ]),
-    new Item(348, 'aSkateboard', 'A Skateboard',  Slot.BOOTS, 100, [
+    new Item(348, 'aSkateboard', 'A Skateboard', Slot.BOOTS, Zones.RADLANDS, 100, [
         [Stat.POWER, 3400000],
         [Stat.TOUGHNESS, 86000000],
         [Stat.ENERGY_CAP, 15000],
@@ -1890,7 +1933,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 144],
         [Stat.RES3_CAP, 14.8],
     ]),
-    new Item(349, 'nunchuks', 'Nunchuks',  Slot.WEAPON, 100, [
+    new Item(349, 'nunchuks', 'Nunchuks', Slot.WEAPON, Zones.RADLANDS, 100, [
         [Stat.POWER, 880000000],
         [Stat.TOUGHNESS, 35000000],
         [Stat.ENERGY_POWER, 147000],
@@ -1900,7 +1943,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 147000],
         [Stat.MAGIC_BARS, 147000],
     ]),
-    new Item(350, 'notDrugs', 'Not Drugs',  Slot.ACCESSORY, 100, [
+    new Item(350, 'notDrugs', 'Not Drugs', Slot.ACCESSORY, Zones.RADLANDS, 100, [
         [Stat.POWER, 90000000],
         [Stat.TOUGHNESS, 90000000],
         [Stat.ENERGY_CAP, 14600],
@@ -1908,7 +1951,7 @@ export const ITEMLIST = [
         [Stat.HACK_SPEED, 14.7],
         [Stat.GOLD_DROP, 148000],
     ]),
-    new Item(351, 'theGloveofPower', 'The Glove of Power',  Slot.ACCESSORY, 100, [
+    new Item(351, 'theGloveofPower', 'The Glove of Power', Slot.ACCESSORY, Zones.RADLANDS, 100, [
         [Stat.POWER, 130000000],
         [Stat.TOUGHNESS, 80000000],
         [Stat.ENERGY_POWER, 150000],
@@ -1916,7 +1959,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 150],
         [Stat.AUGMENT_SPEED, 550],
     ]),
-    new Item(352, 'dunceCap', 'Dunce Cap',  Slot.HEAD, 100, [
+    new Item(352, 'dunceCap', 'Dunce Cap', Slot.HEAD, Zones.BACKTOSCHOOL, 100, [
         [Stat.POWER, 4600000],
         [Stat.TOUGHNESS, 122000000],
         [Stat.ENERGY_BARS, 175000],
@@ -1925,7 +1968,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 176000],
         [Stat.RES3_POWER, 174],
     ]),
-    new Item(353, 'schoolJersey', 'School Jersey',  Slot.CHEST, 100, [
+    new Item(353, 'schoolJersey', 'School Jersey', Slot.CHEST, Zones.BACKTOSCHOOL, 100, [
         [Stat.POWER, 4600000],
         [Stat.TOUGHNESS, 122000000],
         [Stat.RES3_CAP, 17.4],
@@ -1934,7 +1977,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 178000],
         [Stat.MAGIC_BARS, 178000],
     ]),
-    new Item(354, 'uLTRAWIDEPants', 'ULTRAWIDE Pants',  Slot.PANTS, 100, [
+    new Item(354, 'uLTRAWIDEPants', 'ULTRAWIDE Pants', Slot.PANTS, Zones.BACKTOSCHOOL, 100, [
         [Stat.POWER, 4600000],
         [Stat.TOUGHNESS, 122000000],
         [Stat.ENERGY_POWER, 173000],
@@ -1943,7 +1986,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 17600],
         [Stat.RES3_CAP, 17.4],
     ]),
-    new Item(355, 'shoesWithWheels', 'Shoes With Wheels',  Slot.BOOTS, 100, [
+    new Item(355, 'shoesWithWheels', 'Shoes With Wheels', Slot.BOOTS, Zones.BACKTOSCHOOL, 100, [
         [Stat.POWER, 4600000],
         [Stat.TOUGHNESS, 122000000],
         [Stat.RES3_BARS, 172],
@@ -1951,7 +1994,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 175000],
         [Stat.RES3_POWER, 178],
     ]),
-    new Item(356, 'floppyElasticRuler', 'Floppy Elastic Ruler',  Slot.WEAPON, 100, [
+    new Item(356, 'floppyElasticRuler', 'Floppy Elastic Ruler', Slot.WEAPON, Zones.BACKTOSCHOOL, 100, [
         [Stat.POWER, 1140000000],
         [Stat.TOUGHNESS, 45000000],
         [Stat.ENERGY_CAP, 17300],
@@ -1959,7 +2002,7 @@ export const ITEMLIST = [
         [Stat.RES3_CAP, 17.7],
         [Stat.RES3_POWER, 174],
     ]),
-    new Item(357, 'tHES', 'THE S',  Slot.ACCESSORY, 100, [
+    new Item(357, 'tHES', 'THE S', Slot.ACCESSORY, Zones.BACKTOSCHOOL, 100, [
         [Stat.POWER, 180000000],
         [Stat.TOUGHNESS, 180000000],
         [Stat.RES3_POWER, 180],
@@ -1967,14 +2010,14 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 180000],
         [Stat.WISH_SPEED, 18],
     ]),
-    new Item(358, 'aWalkman', 'A Walkman',  Slot.ACCESSORY, 100, [
+    new Item(358, 'aWalkman', 'A Walkman', Slot.ACCESSORY, Zones.BACKTOSCHOOL, 100, [
         [Stat.POWER, 126000000],
         [Stat.TOUGHNESS, 90000000],
         [Stat.GOLD_DROP, 175000],
         [Stat.HACK_SPEED, 17.5],
         [Stat.WISH_SPEED, 17.5],
     ]),
-    new Item(359, 'a10LitreHat', 'A 10 Litre Hat',  Slot.HEAD, 100, [
+    new Item(359, 'a10LitreHat', 'A 10 Litre Hat', Slot.HEAD, Zones.WESTWORLD, 100, [
         [Stat.POWER, 6000000],
         [Stat.TOUGHNESS, 159000000],
         [Stat.ENERGY_CAP, 21100],
@@ -1983,7 +2026,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 213000],
         [Stat.RES3_POWER, 209],
     ]),
-    new Item(360, 'asslestVest', 'Asslest Vest',  Slot.CHEST, 100, [
+    new Item(360, 'asslestVest', 'Asslest Vest', Slot.CHEST, Zones.WESTWORLD, 100, [
         [Stat.POWER, 6000000],
         [Stat.TOUGHNESS, 160000000],
         [Stat.RES3_CAP, 21],
@@ -1991,7 +2034,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 207000],
         [Stat.MAGIC_BARS, 207000],
     ]),
-    new Item(361, 'assfulChaps', 'Assful Chaps',  Slot.PANTS, 100, [
+    new Item(361, 'assfulChaps', 'Assful Chaps', Slot.PANTS, Zones.WESTWORLD, 100, [
         [Stat.POWER, 6000000],
         [Stat.TOUGHNESS, 158000000],
         [Stat.RES3_POWER, 211],
@@ -1999,7 +2042,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 21200],
         [Stat.RES3_BARS, 209],
     ]),
-    new Item(362, 'extraSpikySpurs', 'Extra Spiky Spurs',  Slot.BOOTS, 100, [
+    new Item(362, 'extraSpikySpurs', 'Extra Spiky Spurs', Slot.BOOTS, Zones.WESTWORLD, 100, [
         [Stat.POWER, 6000000],
         [Stat.TOUGHNESS, 162000000],
         [Stat.ENERGY_POWER, 213000],
@@ -2008,7 +2051,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 210000],
         [Stat.MAGIC_BARS, 210000],
     ]),
-    new Item(363, 'theSixShooter', 'The Six Shooter',  Slot.WEAPON, 100, [
+    new Item(363, 'theSixShooter', 'The Six Shooter', Slot.WEAPON, Zones.WESTWORLD, 100, [
         [Stat.POWER, 1480000000],
         [Stat.TOUGHNESS, 58000000],
         [Stat.ENERGY_CAP, 21400],
@@ -2016,30 +2059,30 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 208],
         [Stat.RES3_CAP, 21.1],
     ]),
-    new Item(364, 'aBattleCorgi', 'A Battle Corgi',  Slot.ACCESSORY, 100, [
+    new Item(364, 'aBattleCorgi', 'A Battle Corgi', Slot.ACCESSORY, Zones.WESTWORLD, 100, [
         [Stat.POWER, 220000000],
         [Stat.TOUGHNESS, 220000000],
         [Stat.WISH_SPEED, 21],
         [Stat.ENERGY_NGU_SPEED, 600],
-        [Stat.MAGIC_NGU_SPEED, 600], 
+        [Stat.MAGIC_NGU_SPEED, 600],
         [Stat.DROP_CHANCE, 1200],
     ]),
-    new Item(365, 'aPinkBandana', 'A Pink Bandana',  Slot.ACCESSORY, 100, [
+    new Item(365, 'aPinkBandana', 'A Pink Bandana', Slot.ACCESSORY, Zones.WESTWORLD, 100, [
         [Stat.POWER, 170000000],
         [Stat.TOUGHNESS, 170000000],
         [Stat.MAGIC_CAP, 36000],
         [Stat.ENERGY_POWER, 360000],
         [Stat.RES3_CAP, 31],
     ]),
-    new Item(366, 'a9mmBeretta', 'A 9mm Beretta',  Slot.WEAPON, 100, [
+    new Item(366, 'a9mmBeretta', 'A 9mm Beretta', Slot.WEAPON, Zones.WESTWORLD, 100, [
         [Stat.POWER, 1400000000],
         [Stat.TOUGHNESS, 70000000],
         [Stat.RES3_CAP, 21],
         [Stat.ENERGY_NGU_SPEED, 700],
-        [Stat.MAGIC_NGU_SPEED, 700], 
+        [Stat.MAGIC_NGU_SPEED, 700],
         [Stat.AUGMENT_SPEED, 750],
     ]),
-    new Item(373, 'spaceHelmet', 'Space Helmet',  Slot.HEAD, 100, [
+    new Item(373, 'spaceHelmet', 'Space Helmet', Slot.HEAD, Zones.ITHUNGERS, 100, [
         [Stat.POWER, 7800000],
         [Stat.TOUGHNESS, 205000000],
         [Stat.RES3_POWER, 251],
@@ -2047,7 +2090,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 28300],
         [Stat.MAGIC_CAP, 28300],
     ]),
-    new Item(374, 'spaceSuitChest', 'Space Suit Chest',  Slot.CHEST, 100, [
+    new Item(374, 'spaceSuitChest', 'Space Suit Chest', Slot.CHEST, Zones.ITHUNGERS, 100, [
         [Stat.POWER, 7800000],
         [Stat.TOUGHNESS, 205000000],
         [Stat.ENERGY_POWER, 250000],
@@ -2055,7 +2098,7 @@ export const ITEMLIST = [
         [Stat.RES3_BARS, 271],
         [Stat.RES3_CAP, 25.5],
     ]),
-    new Item(375, 'spaceSuitLegs', 'Space Suit Legs',  Slot.PANTS, 100, [
+    new Item(375, 'spaceSuitLegs', 'Space Suit Legs', Slot.PANTS, Zones.ITHUNGERS, 100, [
         [Stat.POWER, 7800000],
         [Stat.TOUGHNESS, 205000000],
         [Stat.RES3_POWER, 289],
@@ -2064,7 +2107,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 303000],
         [Stat.MAGIC_BARS, 303000],
     ]),
-    new Item(376, 'spaceBoots', 'Space Boots',  Slot.BOOTS, 100, [
+    new Item(376, 'spaceBoots', 'Space Boots', Slot.BOOTS, Zones.ITHUNGERS, 100, [
         [Stat.POWER, 7800000],
         [Stat.TOUGHNESS, 205000000],
         [Stat.RES3_POWER, 254],
@@ -2072,7 +2115,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 30000],
         [Stat.RES3_CAP, 25.5],
     ]),
-    new Item(377, 'spaceGun!', 'Space Gun!',  Slot.WEAPON, 100, [
+    new Item(377, 'spaceGun!', 'Space Gun!', Slot.WEAPON, Zones.ITHUNGERS, 100, [
         [Stat.POWER, 1920000000],
         [Stat.TOUGHNESS, 75000000],
         [Stat.ENERGY_POWER, 251000],
@@ -2080,7 +2123,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 283],
         [Stat.RES3_CAP, 25],
     ]),
-    new Item(378, 'aManhole', 'A Manhole',  Slot.ACCESSORY, 100, [
+    new Item(378, 'aManhole', 'A Manhole', Slot.ACCESSORY, Zones.ITHUNGERS, 100, [
         [Stat.POWER, 225000000],
         [Stat.TOUGHNESS, 225000000],
         [Stat.HACK_SPEED, 20.2],
@@ -2089,14 +2132,14 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 252000],
         [Stat.MAGIC_BARS, 252000],
     ]),
-    new Item(379, 'aRedShirt', 'A Red Shirt',  Slot.ACCESSORY, 100, [
+    new Item(379, 'aRedShirt', 'A Red Shirt', Slot.ACCESSORY, Zones.ITHUNGERS, 100, [
         [Stat.POWER, 300000000],
         [Stat.TOUGHNESS, 1],
         [Stat.WISH_SPEED, 20.3],
         [Stat.RESPAWN, 3],
         [Stat.RES3_CAP, 25.2],
     ]),
-    new Item(380, 'TheCricket', '\'The Cricket\'',  Slot.WEAPON, 100, [
+    new Item(380, 'theCricket', '\'The Cricket\'', Slot.WEAPON, Zones.ITHUNGERS, 100, [
         [Stat.POWER, 2100000000],
         [Stat.TOUGHNESS, 90000000],
         [Stat.ENERGY_CAP, 28300],
@@ -2105,7 +2148,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 249000],
         [Stat.RES3_POWER, 253],
     ]),
-    new Item(381, 'evilRubberDucky', 'Evil Rubber Ducky',  Slot.ACCESSORY, 100, [
+    new Item(381, 'evilRubberDucky', 'Evil Rubber Ducky', Slot.ACCESSORY, Zones.ITHUNGERS2, 100, [
         [Stat.POWER, 225000000],
         [Stat.TOUGHNESS, 225000000],
         [Stat.ENERGY_CAP, 30300],
@@ -2114,14 +2157,14 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 304000],
         [Stat.MAGIC_BARS, 304000],
     ]),
-    new Item(382, 'aGasGiant', 'A Gas Giant',  Slot.ACCESSORY, 100, [
+    new Item(382, 'aGasGiant', 'A Gas Giant', Slot.ACCESSORY, Zones.ITHUNGERS2, 100, [
         [Stat.POWER, 290000000],
         [Stat.TOUGHNESS, 290000000],
         [Stat.RES3_POWER, 302],
         [Stat.RES3_CAP, 30.4],
         [Stat.AUGMENT_SPEED, 800],
     ]),
-    new Item(383, 'anInanimateCarbonRod', 'An Inanimate Carbon Rod',  Slot.ACCESSORY, 100, [
+    new Item(383, 'anInanimateCarbonRod', 'An Inanimate Carbon Rod', Slot.ACCESSORY, Zones.ITHUNGERS3, 100, [
         [Stat.POWER, 400000000],
         [Stat.TOUGHNESS, 400000000],
         [Stat.HACK_SPEED, 20],
@@ -2129,14 +2172,14 @@ export const ITEMLIST = [
         [Stat.ENERGY_WANDOOS_SPEED, 1300],
         [Stat.MAGIC_WANDOOS_SPEED, 1300],
     ]),
-    new Item(384, 'aFunkyKleinBottle', 'A Funky Klein Bottle',  Slot.ACCESSORY, 100, [
+    new Item(384, 'aFunkyKleinBottle', 'A Funky Klein Bottle', Slot.ACCESSORY, Zones.ITHUNGERS3, 100, [
         [Stat.POWER, 380000000],
         [Stat.TOUGHNESS, 380000000],
         [Stat.ENERGY_POWER, 510000],
         [Stat.MAGIC_POWER, 510000],
         [Stat.RES3_POWER, 365],
     ]),
-    new Item(385, 'giantAlienBugNest', 'Giant Alien Bug Nest',  Slot.ACCESSORY, 100, [
+    new Item(385, 'giantAlienBugNest', 'Giant Alien Bug Nest', Slot.ACCESSORY, Zones.ITHUNGERS4, 100, [
         [Stat.POWER, 456000000],
         [Stat.TOUGHNESS, 456000000],
         [Stat.QUEST_DROP, 8],
@@ -2144,23 +2187,23 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 437000],
         [Stat.RES3_CAP, 44],
     ]),
-    new Item(386, 'theKey', 'The Key',  Slot.ACCESSORY, 100, [
+    new Item(386, 'theKey', 'The Key', Slot.ACCESSORY, Zones.ITHUNGERS4, 100, [
         [Stat.POWER, 456000000],
         [Stat.TOUGHNESS, 456000000],
         [Stat.AUGMENT_SPEED, 750],
         [Stat.ENERGY_POWER, 437000],
         [Stat.MAGIC_POWER, 437000],
         [Stat.ENERGY_NGU_SPEED, 1600],
-        [Stat.MAGIC_NGU_SPEED, 1600], 
+        [Stat.MAGIC_NGU_SPEED, 1600],
     ]),
-    new Item(388, 'ascendedx7Pendant', 'Ascended x7 Pendant',  Slot.ACCESSORY, 100, [
+    new Item(388, 'ascendedx7Pendant', 'Ascended x7 Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 400000000],
         [Stat.TOUGHNESS, 400000000],
         [Stat.RES3_CAP, 40],
         [Stat.RES3_POWER, 400],
         [Stat.WISH_SPEED, 40],
     ]),
-    new Item(389, 'sUPREMEINTELLIGENCELOOTY', 'SUPREME INTELLIGENCE LOOTY',  Slot.ACCESSORY, 100, [
+    new Item(389, 'sUPREMEINTELLIGENCELOOTY', 'SUPREME INTELLIGENCE LOOTY', Slot.ACCESSORY, Zones.LOOTY, 100, [
         [Stat.POWER, 500000000],
         [Stat.TOUGHNESS, 500000000],
         [Stat.GOLD_DROP, 200000],
@@ -2168,14 +2211,14 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 500000],
         [Stat.MAGIC_POWER, 500000],
     ]),
-    new Item(390, 'myRainbowHeart', 'My Rainbow Heart',  Slot.ACCESSORY, 100, [
+    new Item(390, 'myRainbowHeart', 'My Rainbow Heart', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 100],
         [Stat.TOUGHNESS, 100],
         [Stat.COOKING, 69000000],
         [Stat.RES3_BARS, 100],
         [Stat.SEED_GAIN, 30],
     ]),
-    new Item(392, 'breadBowlHelmet', 'Bread Bowl Helmet',  Slot.HEAD, 100, [
+    new Item(392, 'breadBowlHelmet', 'Bread Bowl Helmet', Slot.HEAD, Zones.BREADVERSE, 100, [
         [Stat.POWER, 13000000],
         [Stat.TOUGHNESS, 380000000],
         [Stat.RES3_POWER, 360],
@@ -2183,15 +2226,15 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 40700],
         [Stat.MAGIC_CAP, 40700],
     ]),
-    new Item(393, 'paperThinCrepeCape', 'Paper Thin Crepe Cape',  Slot.CHEST, 100, [
+    new Item(393, 'paperThinCrepeCape', 'Paper Thin Crepe Cape', Slot.CHEST, Zones.BREADVERSE, 100, [
         [Stat.POWER, 13000000],
         [Stat.TOUGHNESS, 382000000],
         [Stat.ENERGY_NGU_SPEED, 1100],
-        [Stat.MAGIC_NGU_SPEED, 1100], 
+        [Stat.MAGIC_NGU_SPEED, 1100],
         [Stat.RES3_BARS, 389],
         [Stat.RES3_CAP, 36.1],
     ]),
-    new Item(394, 'flourSackPants', 'Flour Sack Pants',  Slot.PANTS, 100, [
+    new Item(394, 'flourSackPants', 'Flour Sack Pants', Slot.PANTS, Zones.BREADVERSE, 100, [
         [Stat.POWER, 13000000],
         [Stat.TOUGHNESS, 383000000],
         [Stat.RES3_POWER, 419],
@@ -2200,14 +2243,14 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 439000],
         [Stat.MAGIC_BARS, 439000],
     ]),
-    new Item(395, 'gingerbreadBoots', 'Gingerbread Boots',  Slot.BOOTS, 100, [
+    new Item(395, 'gingerbreadBoots', 'Gingerbread Boots', Slot.BOOTS, Zones.BREADVERSE, 100, [
         [Stat.POWER, 13000000],
         [Stat.TOUGHNESS, 378000000],
         [Stat.RES3_POWER, 369],
         [Stat.WISH_SPEED, 30.2],
         [Stat.RES3_CAP, 37],
     ]),
-    new Item(396, '1Day-OldBaguette', '1 Day-Old Baguette',  Slot.WEAPON, 100, [
+    new Item(396, '1Day-OldBaguette', '1 Day-Old Baguette', Slot.WEAPON, Zones.BREADVERSE, 100, [
         [Stat.POWER, 3600000000],
         [Stat.TOUGHNESS, 137000000],
         [Stat.ENERGY_POWER, 363000],
@@ -2215,7 +2258,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 405],
         [Stat.RES3_CAP, 36.2],
     ]),
-    new Item(397, 'aCreamPie', 'A Cream Pie',  Slot.ACCESSORY, 100, [
+    new Item(397, 'aCreamPie', 'A Cream Pie', Slot.ACCESSORY, Zones.BREADVERSE, 100, [
         [Stat.POWER, 410000000],
         [Stat.TOUGHNESS, 410000000],
         [Stat.HACK_SPEED, 30],
@@ -2224,15 +2267,15 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 364000],
         [Stat.MAGIC_BARS, 364000],
     ]),
-    new Item(398, 'aSpoonfulofYeast', 'A Spoonful of Yeast',  Slot.ACCESSORY, 100, [
+    new Item(398, 'aSpoonfulofYeast', 'A Spoonful of Yeast', Slot.ACCESSORY, Zones.BREADVERSE, 100, [
         [Stat.POWER, 380000000],
         [Stat.TOUGHNESS, 380000000],
         [Stat.WISH_SPEED, 30.2],
         [Stat.ENERGY_NGU_SPEED, 1000],
-        [Stat.MAGIC_NGU_SPEED, 1000], 
+        [Stat.MAGIC_NGU_SPEED, 1000],
         [Stat.RES3_CAP, 36.3],
     ]),
-    new Item(399, 'aRollingPin', 'A Rolling Pin',  Slot.WEAPON, 100, [
+    new Item(399, 'aRollingPin', 'A Rolling Pin', Slot.WEAPON, Zones.BREADVERSE, 100, [
         [Stat.POWER, 3820000000],
         [Stat.TOUGHNESS, 90000000],
         [Stat.ENERGY_CAP, 41000],
@@ -2241,22 +2284,22 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 362000],
         [Stat.RES3_POWER, 365],
     ]),
-    new Item(400, 'discoBallHelmet', 'Disco Ball Helmet',  Slot.HEAD, 100, [
+    new Item(400, 'discoBallHelmet', 'Disco Ball Helmet', Slot.HEAD, Zones.SEVENTIES, 100, [
         [Stat.POWER, 17500000],
         [Stat.TOUGHNESS, 513000000],
         [Stat.RES3_POWER, 432],
         [Stat.RES3_CAP, 43.3],
         [Stat.RES3_BARS, 407],
     ]),
-    new Item(401, 'discoShirt', 'Disco Shirt',  Slot.CHEST, 100, [
+    new Item(401, 'discoShirt', 'Disco Shirt', Slot.CHEST, Zones.SEVENTIES, 100, [
         [Stat.POWER, 17600000],
         [Stat.TOUGHNESS, 512000000],
         [Stat.ENERGY_NGU_SPEED, 1320],
-        [Stat.MAGIC_NGU_SPEED, 1320], 
+        [Stat.MAGIC_NGU_SPEED, 1320],
         [Stat.RES3_CAP, 46.6],
         [Stat.HACK_SPEED, 35.5],
     ]),
-    new Item(402, 'bellBottoms', 'Bell Bottoms',  Slot.PANTS, 100, [
+    new Item(402, 'bellBottoms', 'Bell Bottoms', Slot.PANTS, Zones.SEVENTIES, 100, [
         [Stat.POWER, 17600000],
         [Stat.TOUGHNESS, 514000000],
         [Stat.RES3_POWER, 502],
@@ -2264,7 +2307,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 439000],
         [Stat.MAGIC_BARS, 439000],
     ]),
-    new Item(403, 'rollerSkates', 'Roller Skates',  Slot.BOOTS, 100, [
+    new Item(403, 'rollerSkates', 'Roller Skates', Slot.BOOTS, Zones.SEVENTIES, 100, [
         [Stat.POWER, 17600000],
         [Stat.TOUGHNESS, 516000000],
         [Stat.RES3_POWER, 439],
@@ -2272,7 +2315,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 436000],
         [Stat.RES3_CAP, 44.4],
     ]),
-    new Item(404, 'aRustyOldSabre', 'A Rusty Old Sabre',  Slot.WEAPON, 100, [
+    new Item(404, 'aRustyOldSabre', 'A Rusty Old Sabre', Slot.WEAPON, Zones.SEVENTIES, 100, [
         [Stat.POWER, 4860000000],
         [Stat.TOUGHNESS, 137000000],
         [Stat.ENERGY_POWER, 435000],
@@ -2280,7 +2323,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 486],
         [Stat.RES3_CAP, 43.3],
     ]),
-    new Item(405, 'aBitofWhitePowder', 'A Bit of White Powder',  Slot.ACCESSORY, 100, [
+    new Item(405, 'aBitofWhitePowder', 'A Bit of White Powder', Slot.ACCESSORY, Zones.SEVENTIES, 100, [
         [Stat.POWER, 553000000],
         [Stat.TOUGHNESS, 553000000],
         [Stat.HACK_SPEED, 48],
@@ -2288,16 +2331,16 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 436000],
         [Stat.RES3_BARS, 440],
     ]),
-    new Item(406, 'someRollingPaper', 'Some Rolling Paper',  Slot.ACCESSORY, 100, [
+    new Item(406, 'someRollingPaper', 'Some Rolling Paper', Slot.ACCESSORY, Zones.SEVENTIES, 100, [
         [Stat.POWER, 555000000],
         [Stat.TOUGHNESS, 555000000],
         [Stat.ENERGY_POWER, 424000],
         [Stat.MAGIC_POWER, 424000],
         [Stat.ENERGY_NGU_SPEED, 1200],
-        [Stat.MAGIC_NGU_SPEED, 1200], 
+        [Stat.MAGIC_NGU_SPEED, 1200],
         [Stat.RES3_CAP, 43.6],
     ]),
-    new Item(407, 'aVinylRecordShard', 'A Vinyl Record Shard',  Slot.WEAPON, 100, [
+    new Item(407, 'aVinylRecordShard', 'A Vinyl Record Shard', Slot.WEAPON, Zones.SEVENTIES, 100, [
         [Stat.POWER, 5000000000],
         [Stat.TOUGHNESS, 110000000],
         [Stat.ENERGY_CAP, 50500],
@@ -2306,29 +2349,29 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 437000],
         [Stat.RES3_POWER, 433],
     ]),
-    new Item(408, 'neckBolts', 'Neck Bolts',  Slot.HEAD, 100, [
+    new Item(408, 'neckBolts', 'Neck Bolts', Slot.HEAD, Zones.HALLOWEEN, 100, [
         [Stat.POWER, 25300000],
         [Stat.TOUGHNESS, 743000000],
         [Stat.RES3_POWER, 518],
         [Stat.HACK_SPEED, 47.6],
         [Stat.RES3_BARS, 515],
     ]),
-    new Item(409, 'skeletonShirt', 'Skeleton Shirt',  Slot.CHEST, 100, [
+    new Item(409, 'skeletonShirt', 'Skeleton Shirt', Slot.CHEST, Zones.HALLOWEEN, 100, [
         [Stat.POWER, 25500000],
         [Stat.TOUGHNESS, 740000000],
         [Stat.WISH_SPEED, 51.6],
         [Stat.RES3_CAP, 55.5],
         [Stat.HACK_SPEED, 47.7],
     ]),
-    new Item(410, 'aBroomstick', 'A Broomstick',  Slot.PANTS, 100, [
+    new Item(410, 'aBroomstick', 'A Broomstick', Slot.PANTS, Zones.HALLOWEEN, 100, [
         [Stat.POWER, 25500000],
         [Stat.TOUGHNESS, 745000000],
         [Stat.RES3_POWER, 603],
         [Stat.WISH_SPEED, 56.5],
         [Stat.ENERGY_NGU_SPEED, 1250],
-        [Stat.MAGIC_NGU_SPEED, 1250], 
+        [Stat.MAGIC_NGU_SPEED, 1250],
     ]),
-    new Item(411, 'fuzzyBoots', 'Fuzzy Boots',  Slot.BOOTS, 100, [
+    new Item(411, 'fuzzyBoots', 'Fuzzy Boots', Slot.BOOTS, Zones.HALLOWEEN, 100, [
         [Stat.POWER, 25500000],
         [Stat.TOUGHNESS, 744000000],
         [Stat.RES3_POWER, 616],
@@ -2336,7 +2379,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_WANDOOS_SPEED, 3100],
         [Stat.RES3_CAP, 61.3],
     ]),
-    new Item(412, 'anOrdinaryApple', 'An Ordinary Apple',  Slot.WEAPON, 100, [
+    new Item(412, 'anOrdinaryApple', 'An Ordinary Apple', Slot.WEAPON, Zones.HALLOWEEN, 100, [
         [Stat.POWER, 7020000000],
         [Stat.TOUGHNESS, 137000000],
         [Stat.ENERGY_POWER, 521000],
@@ -2344,7 +2387,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 573],
         [Stat.RES3_CAP, 52],
     ]),
-    new Item(413, 'aRollofToiletPaper', 'A Roll of Toilet Paper',  Slot.ACCESSORY, 100, [
+    new Item(413, 'aRollofToiletPaper', 'A Roll of Toilet Paper', Slot.ACCESSORY, Zones.HALLOWEEN, 100, [
         [Stat.POWER, 643000000],
         [Stat.TOUGHNESS, 643000000],
         [Stat.HACK_SPEED, 43],
@@ -2353,16 +2396,16 @@ export const ITEMLIST = [
         [Stat.ENERGY_CAP, 52700],
         [Stat.MAGIC_CAP, 52700],
     ]),
-    new Item(414, 'pandorasBox', 'Pandora\'s Box',  Slot.ACCESSORY, 100, [
+    new Item(414, 'pandorasBox', 'Pandora\'s Box', Slot.ACCESSORY, Zones.HALLOWEEN, 100, [
         [Stat.POWER, 651000000],
         [Stat.TOUGHNESS, 651000000],
         [Stat.ENERGY_POWER, 436000],
         [Stat.MAGIC_POWER, 436000],
         [Stat.ENERGY_NGU_SPEED, 1450],
-        [Stat.MAGIC_NGU_SPEED, 1450], 
+        [Stat.MAGIC_NGU_SPEED, 1450],
         [Stat.RES3_CAP, 52.1],
     ]),
-    new Item(415, 'aGiantScythe', 'A Giant Scythe',  Slot.WEAPON, 100, [
+    new Item(415, 'aGiantScythe', 'A Giant Scythe', Slot.WEAPON, Zones.HALLOWEEN, 100, [
         [Stat.POWER, 7250000000],
         [Stat.TOUGHNESS, 210000000],
         [Stat.ENERGY_POWER, 596000],
@@ -2370,36 +2413,36 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 520],
         [Stat.QUEST_DROP, 10],
     ]),
-    new Item(416, 'aBandana', 'A Bandana',  Slot.HEAD, 100, [
+    new Item(416, 'aBandana', 'A Bandana', Slot.HEAD, Zones.ROCKLOBSTER, 100, [
         [Stat.POWER, 36600000],
         [Stat.TOUGHNESS, 1075000000],
         [Stat.RES3_POWER, 623],
         [Stat.HACK_SPEED, 57.4],
         [Stat.RES3_BARS, 613],
     ]),
-    new Item(417, 'brokenDrum', 'Broken Drum',  Slot.CHEST, 100, [
+    new Item(417, 'brokenDrum', 'Broken Drum', Slot.CHEST, Zones.ROCKLOBSTER, 100, [
         [Stat.POWER, 36600000],
         [Stat.TOUGHNESS, 1075000000],
         [Stat.WISH_SPEED, 61.7],
         [Stat.RES3_CAP, 66.6],
         [Stat.HACK_SPEED, 57.4],
     ]),
-    new Item(418, 'stonehengePants', 'Stonehenge Pants',  Slot.PANTS, 100, [
+    new Item(418, 'stonehengePants', 'Stonehenge Pants', Slot.PANTS, Zones.ROCKLOBSTER, 100, [
         [Stat.POWER, 36600000],
         [Stat.TOUGHNESS, 1070000000],
         [Stat.RES3_POWER, 723],
         [Stat.WISH_SPEED, 67.8],
         [Stat.ENERGY_NGU_SPEED, 2620],
-        [Stat.MAGIC_NGU_SPEED, 2620], 
+        [Stat.MAGIC_NGU_SPEED, 2620],
     ]),
-    new Item(419, 'platformBoots', 'Platform Boots',  Slot.BOOTS, 100, [
+    new Item(419, 'platformBoots', 'Platform Boots', Slot.BOOTS, Zones.ROCKLOBSTER, 100, [
         [Stat.POWER, 36600000],
         [Stat.TOUGHNESS, 1080000000],
         [Stat.RES3_POWER, 739],
         [Stat.HACK_SPEED, 58.4],
         [Stat.RES3_CAP, 73.4],
     ]),
-    new Item(420, 'aRocket', 'A Rocket',  Slot.WEAPON, 100, [
+    new Item(420, 'aRocket', 'A Rocket', Slot.WEAPON, Zones.ROCKLOBSTER, 100, [
         [Stat.POWER, 10150000000],
         [Stat.TOUGHNESS, 200000000],
         [Stat.ENERGY_POWER, 625000],
@@ -2407,7 +2450,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 686],
         [Stat.RES3_CAP, 62.5],
     ]),
-    new Item(421, 'aPetRock', 'A Pet Rock',  Slot.ACCESSORY, 100, [
+    new Item(421, 'aPetRock', 'A Pet Rock', Slot.ACCESSORY, Zones.ROCKLOBSTER, 100, [
         [Stat.POWER, 931000000],
         [Stat.TOUGHNESS, 931000000],
         [Stat.ENERGY_WANDOOS_SPEED, 4600],
@@ -2417,16 +2460,16 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 630000],
         [Stat.MAGIC_BARS, 630000],
     ]),
-    new Item(422, 'aRollingStone', 'A Rolling Stone',  Slot.ACCESSORY, 100, [
+    new Item(422, 'aRollingStone', 'A Rolling Stone', Slot.ACCESSORY, Zones.ROCKLOBSTER, 100, [
         [Stat.POWER, 933000000],
         [Stat.TOUGHNESS, 933000000],
         [Stat.ENERGY_POWER, 523000],
         [Stat.MAGIC_POWER, 523000],
         [Stat.ENERGY_NGU_SPEED, 2850],
-        [Stat.MAGIC_NGU_SPEED, 2850], 
+        [Stat.MAGIC_NGU_SPEED, 2850],
         [Stat.RES3_CAP, 62.6],
     ]),
-    new Item(423, 'giantDrumsticks', 'Giant Drumsticks',  Slot.WEAPON, 100, [
+    new Item(423, 'giantDrumsticks', 'Giant Drumsticks', Slot.WEAPON, Zones.ROCKLOBSTER, 100, [
         [Stat.POWER, 10510000000],
         [Stat.TOUGHNESS, 300000000],
         [Stat.ENERGY_POWER, 677000],
@@ -2434,7 +2477,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 624],
         [Stat.WISH_SPEED, 66.6],
     ]),
-    new Item(424, 'aSkippingStone', 'A Skipping Stone',  Slot.ACCESSORY, 100, [
+    new Item(424, 'aSkippingStone', 'A Skipping Stone', Slot.ACCESSORY, Zones.ROCKLOBSTER2, 100, [
         [Stat.POWER, 1582000000],
         [Stat.TOUGHNESS, 1582000000],
         [Stat.HACK_SPEED, 78.8],
@@ -2443,7 +2486,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 711000],
         [Stat.MAGIC_BARS, 711000],
     ]),
-    new Item(425, 'aBedRock', 'A Bed Rock',  Slot.ACCESSORY, 100, [
+    new Item(425, 'aBedRock', 'A Bed Rock', Slot.ACCESSORY, Zones.ROCKLOBSTER2, 100, [
         [Stat.POWER, 1576000000],
         [Stat.TOUGHNESS, 1576000000],
         [Stat.ENERGY_POWER, 999000],
@@ -2451,7 +2494,7 @@ export const ITEMLIST = [
         [Stat.WISH_SPEED, 99.9],
         [Stat.RES3_CAP, 72.1],
     ]),
-    new Item(426, 'rockCandy', 'Rock Candy',  Slot.ACCESSORY, 100, [
+    new Item(426, 'rockCandy', 'Rock Candy', Slot.ACCESSORY, Zones.ROCKLOBSTER3, 100, [
         [Stat.POWER, 2679000000],
         [Stat.TOUGHNESS, 2679000000],
         [Stat.HACK_SPEED, 100],
@@ -2460,24 +2503,24 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 1300000],
         [Stat.MAGIC_BARS, 1300000],
     ]),
-    new Item(427, 'aBrokenPairOfScissors', 'A Broken Pair Of Scissors',  Slot.ACCESSORY, 100, [
+    new Item(427, 'aBrokenPairOfScissors', 'A Broken Pair Of Scissors', Slot.ACCESSORY, Zones.ROCKLOBSTER3, 100, [
         [Stat.POWER, 2700000000],
         [Stat.TOUGHNESS, 2700000000],
         [Stat.ENERGY_POWER, 1320000],
         [Stat.MAGIC_POWER, 1320000],
         [Stat.ENERGY_NGU_SPEED, 4000],
-        [Stat.MAGIC_NGU_SPEED, 4000], 
+        [Stat.MAGIC_NGU_SPEED, 4000],
         [Stat.RES3_CAP, 132],
     ]),
-    new Item(428, 'portableStairway(ToHeaven)', 'Portable Stairway (To Heaven)',  Slot.ACCESSORY, 100, [
+    new Item(428, 'portableStairway(ToHeaven)', 'Portable Stairway (To Heaven)', Slot.ACCESSORY, Zones.ROCKLOBSTER4, 100, [
         [Stat.POWER, 4860000000],
         [Stat.TOUGHNESS, 4860000000],
         [Stat.HACK_SPEED, 160],
         [Stat.WISH_SPEED, 160],
         [Stat.ENERGY_NGU_SPEED, 10000],
-        [Stat.MAGIC_NGU_SPEED, 10000], 
+        [Stat.MAGIC_NGU_SPEED, 10000],
     ]),
-    new Item(429, 'amplifier', 'Amplifier',  Slot.ACCESSORY, 100, [
+    new Item(429, 'amplifier', 'Amplifier', Slot.ACCESSORY, Zones.ROCKLOBSTER4, 100, [
         [Stat.POWER, 4840000000],
         [Stat.TOUGHNESS, 4840000000],
         [Stat.ENERGY_POWER, 2000000],
@@ -2485,14 +2528,14 @@ export const ITEMLIST = [
         [Stat.YGGDRASIL_YIELD, 10],
         [Stat.RES3_POWER, 2000],
     ]),
-    new Item(430, 'ascendedx8Pendant', 'Ascended x8 Pendant',  Slot.ACCESSORY, 100, [
+    new Item(430, 'ascendedx8Pendant', 'Ascended x8 Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 1500000000],
         [Stat.TOUGHNESS, 1500000000],
         [Stat.RES3_CAP, 100],
         [Stat.HACK_SPEED, 100],
         [Stat.WISH_SPEED, 100],
     ]),
-    new Item(431, 'gRANDDEMONLOOTZIFER', 'GRAND DEMON LOOTZIFER',  Slot.ACCESSORY, 100, [
+    new Item(431, 'gRANDDEMONLOOTZIFER', 'GRAND DEMON LOOTZIFER', Slot.ACCESSORY, Zones.LOOTY, 100, [
         [Stat.POWER, 1000000000],
         [Stat.TOUGHNESS, 1000000000],
         [Stat.GOLD_DROP, 666000],
@@ -2500,95 +2543,95 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 3330000],
         [Stat.MAGIC_POWER, 3330000],
     ]),
-    new Item(432, 'theTubaofTime', 'The Tuba of Time',  Slot.ACCESSORY, 100, [
+    new Item(432, 'theTubaofTime', 'The Tuba of Time', Slot.ACCESSORY, Zones.FOREST, 100, [
         [Stat.POWER, 10],
         [Stat.TOUGHNESS, 10],
         [Stat.ENERGY_POWER, 15],
     ]),
-    new Item(433, 'cheeseGrater', 'Cheese Grater',  Slot.ACCESSORY, 100, [
+    new Item(433, 'cheeseGrater', 'Cheese Grater', Slot.ACCESSORY, Zones.CAVE, 100, [
         [Stat.POWER, 15],
         [Stat.DROP_CHANCE, 2],
         [Stat.MAGIC_SPEED, 30],
         [Stat.ENERGY_SPEED, 40],
     ]),
-    new Item(434, 'aDragonsLeftBall', 'A Dragon\'s Left Ball',  Slot.ACCESSORY, 100, [
+    new Item(434, 'aDragonsLeftBall', 'A Dragon\'s Left Ball', Slot.ACCESSORY, Zones.SKY, 100, [
         [Stat.MAGIC_CAP, 3],
         [Stat.MAGIC_POWER, 50],
     ]),
-    new Item(435, 'magiciteCrystal', 'Magicite Crystal',  Slot.ACCESSORY, 100, [
+    new Item(435, 'magiciteCrystal', 'Magicite Crystal', Slot.ACCESSORY, Zones.HSB, 100, [
         [Stat.POWER, 50],
         [Stat.TOUGHNESS, 50],
         [Stat.MAGIC_CAP, 6],
         [Stat.MAGIC_SPEED, 50],
     ]),
-    new Item(436, 'giantWindupGear', 'Giant Windup Gear',  Slot.ACCESSORY, 100, [
+    new Item(436, 'giantWindupGear', 'Giant Windup Gear', Slot.ACCESSORY, Zones.CLOCK, 100, [
         [Stat.POWER, 150],
         [Stat.TOUGHNESS, 150],
         [Stat.DROP_CHANCE, 8],
         [Stat.ENERGY_CAP, 5],
         [Stat.MAGIC_CAP, 5],
     ]),
-    new Item(437, 'aSinusoidalWave', 'A Sinusoidal Wave',  Slot.ACCESSORY, 100, [
+    new Item(437, 'aSinusoidalWave', 'A Sinusoidal Wave', Slot.ACCESSORY, Zones.TWO_D, 100, [
         [Stat.MAGIC_CAP, 7],
         [Stat.ENERGY_CAP, 7],
     ]),
-    new Item(438, 'ghostTypewriter', 'Ghost Typewriter',  Slot.ACCESSORY, 100, [
+    new Item(438, 'ghostTypewriter', 'Ghost Typewriter', Slot.ACCESSORY, Zones.ANCIENT_BATTLEFIELD, 100, [
         [Stat.POWER, 600],
         [Stat.TOUGHNESS, 600],
         [Stat.ENERGY_CAP, 16],
         [Stat.DROP_CHANCE, 18],
         [Stat.MAGIC_POWER, 60],
     ]),
-    new Item(439, 'gaudyEpaulettes', 'Gaudy Epaulettes',  Slot.ACCESSORY, 100, [
+    new Item(439, 'gaudyEpaulettes', 'Gaudy Epaulettes', Slot.ACCESSORY, Zones.AVSP, 100, [
         [Stat.POWER, 900],
         [Stat.TOUGHNESS, 900],
         [Stat.ENERGY_CAP, 24],
         [Stat.ENERGY_POWER, 90],
         [Stat.ENERGY_BARS, 100],
     ]),
-    new Item(440, 'theFTank', 'The F Tank',  Slot.ACCESSORY, 100, [
+    new Item(440, 'theFTank', 'The F Tank', Slot.ACCESSORY, Zones.MEGA, 100, [
         [Stat.POWER, 4000],
         [Stat.TOUGHNESS, 4000],
         [Stat.ENERGY_POWER, 160],
         [Stat.ENERGY_BARS, 100],
         [Stat.ENERGY_CAP, 50],
     ]),
-    new Item(441, 'aBeardComb', 'A Beard Comb',  Slot.ACCESSORY, 100, [
+    new Item(441, 'aBeardComb', 'A Beard Comb', Slot.ACCESSORY, Zones.BEARDVERSE, 100, [
         [Stat.ENERGY_BEARD_SPEED, 12],
-        [Stat.MAGIC_BEARD_SPEED, 12], 
+        [Stat.MAGIC_BEARD_SPEED, 12],
         [Stat.ENERGY_CAP, 60],
         [Stat.MAGIC_POWER, 450],
     ]),
-    new Item(442, 'randomCrayons', 'Random Crayons',  Slot.ACCESSORY, 100, [
+    new Item(442, 'randomCrayons', 'Random Crayons', Slot.ACCESSORY, Zones.BDW, 100, [
         [Stat.ENERGY_POWER, 400],
         [Stat.MAGIC_POWER, 400],
         [Stat.ENERGY_CAP, 40],
         [Stat.MAGIC_CAP, 40],
         [Stat.DROP_CHANCE, 40],
     ]),
-    new Item(443, 'redLipstick', 'Red Lipstick',  Slot.ACCESSORY, 100, [
+    new Item(443, 'redLipstick', 'Red Lipstick', Slot.ACCESSORY, Zones.BAE, 100, [
         [Stat.ENERGY_POWER, 1000],
         [Stat.MAGIC_POWER, 1000],
         [Stat.MAGIC_CAP, 150],
         [Stat.ENERGY_BEARD_SPEED, 25],
-        [Stat.MAGIC_BEARD_SPEED, 25], 
+        [Stat.MAGIC_BEARD_SPEED, 25],
     ]),
-    new Item(444, 'candyCornNecklace', 'Candy Corn Necklace',  Slot.ACCESSORY, 100, [
+    new Item(444, 'candyCornNecklace', 'Candy Corn Necklace', Slot.ACCESSORY, Zones.CHOCO, 100, [
         [Stat.ENERGY_BARS, 2000],
         [Stat.MAGIC_BARS, 2000],
         [Stat.SEED_GAIN, 50],
         [Stat.ENERGY_NGU_SPEED, 200],
-        [Stat.MAGIC_NGU_SPEED, 200], 
+        [Stat.MAGIC_NGU_SPEED, 200],
     ]),
-    new Item(445, 'edgyMagiciteCrystal', 'Edgy Magicite Crystal',  Slot.ACCESSORY, 100, [
+    new Item(445, 'edgyMagiciteCrystal', 'Edgy Magicite Crystal', Slot.ACCESSORY, Zones.EVIL, 100, [
         [Stat.POWER, 666000],
         [Stat.TOUGHNESS, 666000],
         [Stat.MAGIC_CAP, 600],
         [Stat.ENERGY_NGU_SPEED, 250],
-        [Stat.MAGIC_NGU_SPEED, 250], 
+        [Stat.MAGIC_NGU_SPEED, 250],
         [Stat.ENERGY_POWER, 6000],
     ]),
-    new Item(446, 'creepyDoll', 'Creepy Doll',  Slot.ACCESSORY, 100, [
+    new Item(446, 'creepyDoll', 'Creepy Doll', Slot.ACCESSORY, Zones.PINK, 100, [
         [Stat.POWER, 930000],
         [Stat.TOUGHNESS, 930000],
         [Stat.DAYCARE_SPEED, 12],
@@ -2596,7 +2639,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 8500],
         [Stat.RESPAWN, 3],
     ]),
-    new Item(447, 'tHEEXPONENTIAL', 'THE EXPONENTIAL',  Slot.ACCESSORY, 100, [
+    new Item(447, 'tHEEXPONENTIAL', 'THE EXPONENTIAL', Slot.ACCESSORY, Zones.META, 100, [
         [Stat.POWER, 2800000],
         [Stat.TOUGHNESS, 2800000],
         [Stat.ENERGY_CAP, 1200],
@@ -2605,7 +2648,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 12000],
         [Stat.DROP_CHANCE, 200],
     ]),
-    new Item(448, 'mt.RushmoreRooseveltsNose', 'Mt. Rushmore Roosevelt\'s Nose',  Slot.ACCESSORY, 100, [
+    new Item(448, 'mt.RushmoreRooseveltsHouse', 'Mt. Rushmore Roosevelt\'s Nose', Slot.ACCESSORY, Zones.PARTY, 100, [
         [Stat.POWER, 5000000],
         [Stat.TOUGHNESS, 5000000],
         [Stat.MAGIC_CAP, 2500],
@@ -2614,16 +2657,16 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 15000],
         [Stat.MAGIC_BARS, 15000],
     ]),
-    new Item(449, 'tHROODIGNSLUG', 'THRO, ODIGNSLUG', Slot.ACCESSORY, 100, [
+    new Item(449, 'tHRO,ODIGNSLUG', 'THRO, ODIGNSLUG', Slot.ACCESSORY, Zones.TYPO, 100, [
         [Stat.POWER, 17000000],
         [Stat.TOUGHNESS, 17000000],
         [Stat.ENERGY_POWER, 38000],
         [Stat.MAGIC_POWER, 38000],
         [Stat.ENERGY_NGU_SPEED, 450],
-        [Stat.MAGIC_NGU_SPEED, 450], 
+        [Stat.MAGIC_NGU_SPEED, 450],
         [Stat.WISH_SPEED, 4],
     ]),
-    new Item(450, 'aLinkCable', 'A Link Cable',  Slot.ACCESSORY, 100, [
+    new Item(450, 'aLinkCable', 'A Link Cable', Slot.ACCESSORY, Zones.FAD, 100, [
         [Stat.POWER, 28000000],
         [Stat.TOUGHNESS, 28000000],
         [Stat.ENERGY_CAP, 6200],
@@ -2632,52 +2675,52 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 62000],
         [Stat.HACK_SPEED, 10],
     ]),
-    new Item(451, 'aHandCursor', 'A Hand Cursor',  Slot.ACCESSORY, 100, [
+    new Item(451, 'aHandCursor', 'A Hand Cursor', Slot.ACCESSORY, Zones.JRPG, 100, [
         [Stat.POWER, 35000000],
         [Stat.TOUGHNESS, 35000000],
         [Stat.WISH_SPEED, 7],
         [Stat.RES3_POWER, 110],
         [Stat.DROP_CHANCE, 900],
     ]),
-    new Item(452, 'radMixtape', 'Rad Mixtape',  Slot.ACCESSORY, 100, [
+    new Item(452, 'radMixtape', 'Rad Mixtape', Slot.ACCESSORY, Zones.RADLANDS, 100, [
         [Stat.POWER, 100000000],
         [Stat.TOUGHNESS, 100000000],
         [Stat.ENERGY_NGU_SPEED, 500],
-        [Stat.MAGIC_NGU_SPEED, 500], 
+        [Stat.MAGIC_NGU_SPEED, 500],
         [Stat.ENERGY_POWER, 150000],
         [Stat.MAGIC_POWER, 150000],
         [Stat.RES3_CAP, 15],
     ]),
-    new Item(453, 'aHardhat', 'A Hardhat',  Slot.HEAD, 100, [
+    new Item(453, 'aHardhat', 'A Hardhat', Slot.HEAD, Zones.CONSTRUCTION, 100, [
         [Stat.POWER, 72600000],
         [Stat.TOUGHNESS, 2055000000],
         [Stat.RES3_POWER, 902],
         [Stat.HACK_SPEED, 82.6],
         [Stat.RES3_BARS, 882],
     ]),
-    new Item(454, 'highVisibilityVest', 'High Visibility Vest',  Slot.CHEST, 100, [
+    new Item(454, 'highVisibilityVest', 'High Visibility Vest', Slot.CHEST, Zones.CONSTRUCTION, 100, [
         [Stat.POWER, 72400000],
         [Stat.TOUGHNESS, 2040000000],
         [Stat.WISH_SPEED, 90.3],
         [Stat.RES3_CAP, 82.4],
         [Stat.RES3_POWER, 890],
     ]),
-    new Item(455, 'yetAnotherGenericPairOfJeans', 'Yet Another Generic Pair Of Jeans',  Slot.PANTS, 100, [
+    new Item(455, 'yetAnotherGenericPairOfJeans', 'Yet Another Generic Pair Of Jeans', Slot.PANTS, Zones.CONSTRUCTION, 100, [
         [Stat.POWER, 75900000],
         [Stat.TOUGHNESS, 2030000000],
         [Stat.GOLD_DROP, 1400000],
         [Stat.WISH_SPEED, 88.8],
         [Stat.ENERGY_NGU_SPEED, 3940],
-        [Stat.MAGIC_NGU_SPEED, 3940], 
+        [Stat.MAGIC_NGU_SPEED, 3940],
     ]),
-    new Item(456, 'steelToedBoots', 'Steel Toed Boots',  Slot.BOOTS, 100, [
+    new Item(456, 'steelToedBoots', 'Steel Toed Boots', Slot.BOOTS, Zones.CONSTRUCTION, 100, [
         [Stat.POWER, 76000000],
         [Stat.TOUGHNESS, 2060000000],
         [Stat.RES3_POWER, 939],
         [Stat.HACK_SPEED, 88.4],
         [Stat.RES3_CAP, 93.4],
     ]),
-    new Item(457, 'aWoodenHammer', 'A Wooden Hammer',  Slot.WEAPON, 100, [
+    new Item(457, 'aWoodenHammer', 'A Wooden Hammer', Slot.WEAPON, Zones.CONSTRUCTION, 100, [
         [Stat.POWER, 20000000000],
         [Stat.TOUGHNESS, 400000000],
         [Stat.RES3_POWER, 902],
@@ -2685,14 +2728,14 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 936000],
         [Stat.RES3_CAP, 90],
     ]),
-    new Item(458, 'theToolbox', 'The Toolbox',  Slot.ACCESSORY, 100, [
+    new Item(458, 'theToolbox', 'The Toolbox', Slot.ACCESSORY, Zones.CONSTRUCTION, 100, [
         [Stat.POWER, 1820000000],
         [Stat.TOUGHNESS, 1820000000],
         [Stat.RES3_BARS, 1884],
         [Stat.ENERGY_POWER, 941000],
         [Stat.MAGIC_POWER, 941000],
     ]),
-    new Item(459, 'aLevelLevel', 'A Level Level',  Slot.ACCESSORY, 100, [
+    new Item(459, 'aLevelLevel', 'A Level Level', Slot.ACCESSORY, Zones.CONSTRUCTION, 100, [
         [Stat.POWER, 933000000],
         [Stat.TOUGHNESS, 933000000],
         [Stat.ENERGY_POWER, 923000],
@@ -2700,54 +2743,54 @@ export const ITEMLIST = [
         [Stat.WISH_SPEED, 96.3],
         [Stat.RES3_CAP, 92.6],
     ]),
-    new Item(460, 'aGiantWreckingBall', 'A Giant Wrecking Ball',  Slot.WEAPON, 100, [
+    new Item(460, 'aGiantWreckingBall', 'A Giant Wrecking Ball', Slot.WEAPON, Zones.CONSTRUCTION, 100, [
         [Stat.POWER, 20510000000],
         [Stat.TOUGHNESS, 300000000],
         [Stat.ENERGY_POWER, 975000],
         [Stat.MAGIC_POWER, 975000],
         [Stat.RES3_POWER, 944],
         [Stat.ENERGY_NGU_SPEED, 3850],
-        [Stat.MAGIC_NGU_SPEED, 3850], 
+        [Stat.MAGIC_NGU_SPEED, 3850],
     ]),
-    new Item(461, 'aDutchHat', 'A Dutch Hat',  Slot.HEAD, 100, [
+    new Item(461, 'aDutchHat', 'A Dutch Hat', Slot.HEAD, Zones.NETHER, 100, [
         [Stat.POWER, 140000000],
         [Stat.TOUGHNESS, 3850000000],
         [Stat.RES3_POWER, 1300],
         [Stat.ENERGY_NGU_SPEED, 5850],
-        [Stat.MAGIC_NGU_SPEED, 5850], 
+        [Stat.MAGIC_NGU_SPEED, 5850],
         [Stat.RES3_BARS, 1280],
     ]),
-    new Item(462, 'windmillShirt', 'Windmill Shirt',  Slot.CHEST, 100, [
+    new Item(462, 'windmillShirt', 'Windmill Shirt', Slot.CHEST, Zones.NETHER, 100, [
         [Stat.POWER, 140000000],
         [Stat.TOUGHNESS, 3820000000],
         [Stat.WISH_SPEED, 125],
         [Stat.RES3_CAP, 123],
         [Stat.RES3_POWER, 1290],
     ]),
-    new Item(463, 'stroopwaffelPants', 'Stroopwaffel Pants',  Slot.PANTS, 100, [
+    new Item(463, 'stroopwaffelPants', 'Stroopwaffel Pants', Slot.PANTS, Zones.NETHER, 100, [
         [Stat.POWER, 140000000],
         [Stat.TOUGHNESS, 3800000000],
         [Stat.GOLD_DROP, 2000000],
         [Stat.WISH_SPEED, 124],
         [Stat.ENERGY_NGU_SPEED, 7000],
-        [Stat.MAGIC_NGU_SPEED, 7000], 
+        [Stat.MAGIC_NGU_SPEED, 7000],
     ]),
-    new Item(464, 'clogs', 'Clogs',  Slot.BOOTS, 100, [
+    new Item(464, 'clogs', 'Clogs', Slot.BOOTS, Zones.NETHER, 100, [
         [Stat.POWER, 140000000],
         [Stat.TOUGHNESS, 3850000000],
         [Stat.RES3_POWER, 1270],
         [Stat.ENERGY_NGU_SPEED, 6000],
-        [Stat.MAGIC_NGU_SPEED, 6000], 
+        [Stat.MAGIC_NGU_SPEED, 6000],
         [Stat.RES3_CAP, 123],
     ]),
-    new Item(465, 'blackTulip', 'Black Tulip',  Slot.WEAPON, 100, [
+    new Item(465, 'blackTulip', 'Black Tulip', Slot.WEAPON, Zones.NETHER, 100, [
         [Stat.POWER, 38000000000],
         [Stat.TOUGHNESS, 600000000],
         [Stat.RES3_POWER, 1260],
         [Stat.WISH_SPEED, 130],
         [Stat.RES3_CAP, 128],
     ]),
-    new Item(466, 'pocketNetherlands', 'Pocket Netherlands',  Slot.ACCESSORY, 100, [
+    new Item(466, 'pocketNetherlands', 'Pocket Netherlands', Slot.ACCESSORY, Zones.NETHER, 100, [
         [Stat.POWER, 2810000000],
         [Stat.TOUGHNESS, 2810000000],
         [Stat.ENERGY_WANDOOS_SPEED, 9800],
@@ -2756,7 +2799,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 1310000],
         [Stat.QUEST_DROP, 12],
     ]),
-    new Item(467, 'restoftheCombatCheese', 'Rest of the Combat Cheese',  Slot.ACCESSORY, 100, [
+    new Item(467, 'restoftheCombatCheese', 'Rest of the Combat Cheese', Slot.ACCESSORY, Zones.NETHER, 100, [
         [Stat.POWER, 3510000000],
         [Stat.TOUGHNESS, 3510000000],
         [Stat.ENERGY_POWER, 900000],
@@ -2764,45 +2807,45 @@ export const ITEMLIST = [
         [Stat.WISH_SPEED, 130],
         [Stat.RES3_CAP, 100],
     ]),
-    new Item(468, 'weaponizedHollandaisesauce', 'Weaponized Hollandaise sauce',  Slot.WEAPON, 100, [
+    new Item(468, 'weaponizedHollandaisesauce', 'Weaponized Hollandaise sauce', Slot.WEAPON, Zones.NETHER, 100, [
         [Stat.POWER, 38200000000],
         [Stat.TOUGHNESS, 600000000],
         [Stat.ENERGY_POWER, 1300000],
         [Stat.MAGIC_POWER, 1300000],
         [Stat.RES3_POWER, 1300],
         [Stat.ENERGY_NGU_SPEED, 8000],
-        [Stat.MAGIC_NGU_SPEED, 8000], 
+        [Stat.MAGIC_NGU_SPEED, 8000],
     ]),
-    new Item(469, 'chofficeHatofGreed', 'Choffice Hat of Greed',  Slot.HEAD, 100, [
+    new Item(469, 'chofficeHatofGreed', 'Choffice Hat of Greed', Slot.HEAD, Zones.AMALGAMATE, 100, [
         [Stat.POWER, 170000000],
         [Stat.TOUGHNESS, 4600000000],
         [Stat.GOLD_DROP, 2800000],
         [Stat.DROP_CHANCE, 14000],
         [Stat.QUEST_DROP, 14],
     ]),
-    new Item(470, 'woodenOfficeApronofMight', 'Wooden Office Apron of Might',  Slot.CHEST, 100, [
+    new Item(470, 'woodenOfficeApronofMight', 'Wooden Office Apron of Might', Slot.CHEST, Zones.AMALGAMATE, 100, [
         [Stat.POWER, 4600000000],
         [Stat.TOUGHNESS, 4600000000],
         [Stat.WISH_SPEED, 140.3],
         [Stat.RES3_CAP, 142.4],
         [Stat.RES3_POWER, 1490],
     ]),
-    new Item(471, 'papapapantstststsofUtility', 'Papapapantstststs of Utility',  Slot.PANTS, 100, [
+    new Item(471, 'papapapantstststsofUtility', 'Papapapantstststs of Utility', Slot.PANTS, Zones.AMALGAMATE, 100, [
         [Stat.POWER, 170000000],
         [Stat.TOUGHNESS, 4600000000],
         [Stat.ENERGY_NGU_SPEED, 10000],
-        [Stat.MAGIC_NGU_SPEED, 10000], 
+        [Stat.MAGIC_NGU_SPEED, 10000],
         [Stat.RES3_BARS, 1600],
         [Stat.RES3_POWER, 1600],
     ]),
-    new Item(472, 'aShoe.', 'A Shoe.',  Slot.BOOTS, 100, [
+    new Item(472, 'aShoe.', 'A Shoe.', Slot.BOOTS, Zones.AMALGAMATE, 100, [
         [Stat.POWER, 170000000],
         [Stat.TOUGHNESS, 4600000000],
         [Stat.RES3_POWER, 1570],
         [Stat.RES3_BARS, 1590],
         [Stat.RES3_CAP, 154],
     ]),
-    new Item(473, 'tHEDEATHSTICK', 'THE DEATHSTICK',  Slot.WEAPON, 100, [
+    new Item(473, 'tHEDEATHSTICK', 'THE DEATHSTICK', Slot.WEAPON, Zones.AMALGAMATE, 100, [
         [Stat.POWER, 50000000000],
         [Stat.TOUGHNESS, 800000000],
         [Stat.RES3_POWER, 1540],
@@ -2810,23 +2853,23 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 1540000],
         [Stat.RES3_CAP, 154],
     ]),
-    new Item(474, 'aCorruptedLeaf', 'A Corrupted Leaf',  Slot.ACCESSORY, 100, [
+    new Item(474, 'aCorruptedLeaf', 'A Corrupted Leaf', Slot.ACCESSORY, Zones.AMALGAMATE, 100, [
         [Stat.POWER, 3200000000],
         [Stat.TOUGHNESS, 3200000000],
         [Stat.RES3_POWER, 1510],
         [Stat.ENERGY_NGU_SPEED, 10000],
-        [Stat.MAGIC_NGU_SPEED, 10000], 
+        [Stat.MAGIC_NGU_SPEED, 10000],
         [Stat.ENERGY_BARS, 1560000],
         [Stat.MAGIC_BARS, 1560000],
     ]),
-    new Item(475, '8OldAccessoriesGluedTogether', '8 Old Accessories Glued Together',  Slot.ACCESSORY, 100, [
+    new Item(475, '8OldAccessoriesGluedTogether', '8 Old Accessories Glued Together', Slot.ACCESSORY, Zones.AMALGAMATE, 100, [
         [Stat.POWER, 4600000000],
         [Stat.TOUGHNESS, 4600000000],
         [Stat.YGGDRASIL_YIELD, 12],
         [Stat.WISH_SPEED, 156],
         [Stat.RES3_CAP, 158],
     ]),
-    new Item(476, 'uUGsBigBookofInsults', 'UUG\'s Big Book of Insults',  Slot.WEAPON, 100, [
+    new Item(476, 'uUGsBigBookOfInsults', 'UUG\'s Big Book of Insults', Slot.WEAPON, Zones.AMALGAMATE, 100, [
         [Stat.POWER, 52000000000],
         [Stat.TOUGHNESS, 800000000],
         [Stat.ENERGY_POWER, 1560000],
@@ -2834,7 +2877,7 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 1560],
         [Stat.RES3_BARS, 1560],
     ]),
-    new Item(477, 'rawSlabofWood', 'Raw Slab of Wood',  Slot.ACCESSORY, 100, [
+    new Item(477, 'rawSlabofWood', 'Raw Slab of Wood', Slot.ACCESSORY, Zones.AMALGAMATE2, 100, [
         [Stat.POWER, 6300000000],
         [Stat.TOUGHNESS, 6300000000],
         [Stat.RES3_CAP, 187],
@@ -2842,50 +2885,50 @@ export const ITEMLIST = [
         [Stat.MAGIC_CAP, 185000],
         [Stat.RES3_POWER, 1860],
     ]),
-    new Item(478, 'tieofApathy', 'Tie of Apathy',  Slot.ACCESSORY, 100, [
+    new Item(478, 'tieofApathy', 'Tie of Apathy', Slot.ACCESSORY, Zones.AMALGAMATE3, 100, [
         [Stat.POWER, 8999999000],
         [Stat.TOUGHNESS, 8999999000],
         [Stat.RES3_POWER, 1850],
         [Stat.WISH_SPEED, 185],
         [Stat.GOLD_DROP, 4000000],
     ]),
-    new Item(479, 'theTitanEffigy', 'The Titan Effigy',  Slot.ACCESSORY, 100, [
+    new Item(479, 'theTitanEffigy', 'The Titan Effigy', Slot.ACCESSORY, Zones.AMALGAMATE4, 100, [
         [Stat.POWER, 13000000000],
         [Stat.TOUGHNESS, 13000000000],
         [Stat.RES3_CAP, 220],
         [Stat.RES3_POWER, 2200],
         [Stat.RES3_BARS, 2200],
     ]),
-    new Item(496, 'aFakeDuckbill', 'A Fake Duckbill',  Slot.HEAD, 100, [
+    new Item(496, 'aFakeDuckbill', 'A Fake Duckbill', Slot.HEAD, Zones.DUCK, 100, [
         [Stat.POWER, 100000000],
         [Stat.TOUGHNESS, 2820000000],
         [Stat.RES3_POWER, 1170],
         [Stat.HACK_SPEED, 97.6],
         [Stat.RES3_BARS, 1140],
     ]),
-    new Item(497, 'anInflatableDuckyInnertube', 'An Inflatable Ducky Innertube',  Slot.CHEST, 100, [
+    new Item(497, 'anInflatableDuckyInnertube', 'An Inflatable Ducky Innertube', Slot.CHEST, Zones.DUCK, 100, [
         [Stat.POWER, 100000000],
         [Stat.TOUGHNESS, 2810000000],
         [Stat.WISH_SPEED, 107],
         [Stat.ENERGY_NGU_SPEED, 5550],
-        [Stat.MAGIC_NGU_SPEED, 5550], 
+        [Stat.MAGIC_NGU_SPEED, 5550],
         [Stat.RES3_POWER, 1050],
     ]),
-    new Item(498, 'duckDuckShorts', 'Duck Duck Shorts',  Slot.PANTS, 100, [
+    new Item(498, 'duckDuckShorts', 'Duck Duck Shorts', Slot.PANTS, Zones.DUCK, 100, [
         [Stat.POWER, 100000000],
         [Stat.TOUGHNESS, 2870000000],
         [Stat.GOLD_DROP, 1400000],
         [Stat.WISH_SPEED, 108],
         [Stat.RES3_CAP, 102],
     ]),
-    new Item(499, 'duckSlippers', 'Duck Slippers',  Slot.BOOTS, 100, [
+    new Item(499, 'duckSlippers', 'Duck Slippers', Slot.BOOTS, Zones.DUCK, 100, [
         [Stat.POWER, 100000000],
         [Stat.TOUGHNESS, 2840000000],
         [Stat.RES3_POWER, 1100],
         [Stat.HACK_SPEED, 108],
         [Stat.RES3_CAP, 113],
     ]),
-    new Item(500, 'ashotgun', 'A shotgun',  Slot.WEAPON, 100, [
+    new Item(500, 'ashotgun', 'A shotgun', Slot.WEAPON, Zones.DUCK, 100, [
         [Stat.POWER, 28500000000],
         [Stat.TOUGHNESS, 550000000],
         [Stat.RES3_POWER, 1080],
@@ -2893,25 +2936,25 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 1080000],
         [Stat.RES3_CAP, 107],
     ]),
-    new Item(501, 'someDuck-tTape', 'Some Duck-t Tape',  Slot.ACCESSORY, 100, [
+    new Item(501, 'someDuck-tTape', 'Some Duck-t Tape', Slot.ACCESSORY, Zones.DUCK, 100, [
         [Stat.POWER, 2540000000],
         [Stat.TOUGHNESS, 2540000000],
         [Stat.RESPAWN, 4],
         [Stat.ENERGY_CAP, 100000],
         [Stat.MAGIC_CAP, 100000],
         [Stat.ENERGY_NGU_SPEED, 6300],
-        [Stat.MAGIC_NGU_SPEED, 6300], 
+        [Stat.MAGIC_NGU_SPEED, 6300],
     ]),
-    new Item(502, 'aDuckCaller', 'A Duck Caller',  Slot.ACCESSORY, 100, [
+    new Item(502, 'aDuckCaller', 'A Duck Caller', Slot.ACCESSORY, Zones.DUCK, 100, [
         [Stat.POWER, 1200000000],
         [Stat.TOUGHNESS, 1200000000],
         [Stat.ENERGY_POWER, 1060000],
         [Stat.MAGIC_POWER, 1060000],
         [Stat.ENERGY_NGU_SPEED, 6000],
-        [Stat.MAGIC_NGU_SPEED, 6000], 
+        [Stat.MAGIC_NGU_SPEED, 6000],
         [Stat.RES3_CAP, 120],
     ]),
-    new Item(503, 'theZapper', 'The Zapper',  Slot.WEAPON, 100, [
+    new Item(503, 'theZapper', 'The Zapper', Slot.WEAPON, Zones.DUCK, 100, [
         [Stat.POWER, 28900000000],
         [Stat.TOUGHNESS, 420000000],
         [Stat.ENERGY_POWER, 1200000],
@@ -2919,14 +2962,14 @@ export const ITEMLIST = [
         [Stat.RES3_POWER, 1200],
         [Stat.WISH_SPEED, 110],
     ]),
-    new Item(504, 'ascendedx9Pendant', 'Ascended x9 Pendant',  Slot.ACCESSORY, 100, [
+    new Item(504, 'ascendedx9Pendant', 'Ascended x9 Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 3000000000],
         [Stat.TOUGHNESS, 3000000000],
         [Stat.RES3_CAP, 200],
         [Stat.HACK_SPEED, 200],
         [Stat.WISH_SPEED, 200],
     ]),
-    new Item(505, 'lootzLrtozlOtZlOtTlooTTLoooLLLTTTToTlOOt', 'LootzLrtozlOtZlOtTlooTTLoooLLLTTTToTlOOt',  Slot.ACCESSORY, 100, [
+    new Item(505, 'lootzLrtozlOtZlOtTlooTTLoooLLLTTTToTlOOt', 'LootzLrtozlOtZlOtTlooTTLoooLLLTTTToTlOOt', Slot.ACCESSORY, Zones.LOOTY, 100, [
         [Stat.POWER, 3000000000],
         [Stat.TOUGHNESS, 3000000000],
         [Stat.GOLD_DROP, 2200000],
@@ -2934,7 +2977,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 10000000],
         [Stat.MAGIC_POWER, 10000000],
     ]),
-    new Item(507, 'pirateHat', 'Pirate Hat',  Slot.HEAD, 100, [
+    new Item(507, 'pirateHat', 'Pirate Hat', Slot.HEAD, Zones.PIRATE, 100, [
         [Stat.POWER, 240000000],
         [Stat.TOUGHNESS, 5600000000],
         [Stat.ENERGY_CAP, 280000],
@@ -2942,14 +2985,14 @@ export const ITEMLIST = [
         [Stat.RES3_CAP, 179],
         [Stat.RESPAWN, 2],
     ]),
-    new Item(508, 'swashbucklerChest', 'Swashbuckler Chest',  Slot.CHEST, 100, [
+    new Item(508, 'swashbucklerChest', 'Swashbuckler Chest', Slot.CHEST, Zones.PIRATE, 100, [
         [Stat.POWER, 250000000],
         [Stat.TOUGHNESS, 5700000000],
         [Stat.RES3_POWER, 1760],
         [Stat.RES3_BARS, 1790],
         [Stat.YGGDRASIL_YIELD, 10],
     ]),
-    new Item(509, 'pirateyPants', 'Piratey Pants',  Slot.PANTS, 100, [
+    new Item(509, 'pirateyPants', 'Piratey Pants', Slot.PANTS, Zones.PIRATE, 100, [
         [Stat.POWER, 240000000],
         [Stat.TOUGHNESS, 5500000000],
         [Stat.ENERGY_POWER, 1760000],
@@ -2957,7 +3000,7 @@ export const ITEMLIST = [
         [Stat.RES3_CAP, 182],
         [Stat.RES3_POWER, 1800],
     ]),
-    new Item(510, 'pirateyPeglegs', 'Piratey Peglegs',  Slot.BOOTS, 100, [
+    new Item(510, 'pirateyPeglegs', 'Piratey Peglegs', Slot.BOOTS, Zones.PIRATE, 100, [
         [Stat.POWER, 240000000],
         [Stat.TOUGHNESS, 5500000000],
         [Stat.ENERGY_BARS, 1820000],
@@ -2965,7 +3008,7 @@ export const ITEMLIST = [
         [Stat.RES3_CAP, 177],
         [Stat.RES3_POWER, 1810],
     ]),
-    new Item(511, 'theCutlass', 'The Cutlass',  Slot.WEAPON, 100, [
+    new Item(511, 'theCutlass', 'The Cutlass', Slot.WEAPON, Zones.PIRATE, 100, [
         [Stat.POWER, 63000000000],
         [Stat.TOUGHNESS, 1000000000],
         [Stat.ENERGY_CAP, 179000],
@@ -2974,22 +3017,22 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 1820000],
         [Stat.WISH_SPEED, 183],
     ]),
-    new Item(512, 'aGiantsEyepatch', 'A Giant\'s Eyepatch',  Slot.ACCESSORY, 100, [
+    new Item(512, 'aGiantsEyepatch', 'A Giant\'s Eyepatch', Slot.ACCESSORY, Zones.PIRATE, 100, [
         [Stat.POWER, 5900000000],
         [Stat.TOUGHNESS, 5900000000],
         [Stat.RES3_BARS, 1820],
         [Stat.ENERGY_NGU_SPEED, 13000],
-        [Stat.MAGIC_NGU_SPEED, 13000], 
+        [Stat.MAGIC_NGU_SPEED, 13000],
         [Stat.RES3_POWER, 1820],
     ]),
-    new Item(513, 'aCompass!', 'A Compass!',  Slot.ACCESSORY, 100, [
+    new Item(513, 'aCompass!', 'A Compass!', Slot.ACCESSORY, Zones.PIRATE, 100, [
         [Stat.POWER, 5900000000],
         [Stat.TOUGHNESS, 5900000000],
         [Stat.RESPAWN, 1],
         [Stat.RES3_POWER, 1820],
         [Stat.WISH_SPEED, 182],
     ]),
-    new Item(514, 'theFlintlock', 'The Flintlock',  Slot.WEAPON, 100, [
+    new Item(514, 'theFlintlock', 'The Flintlock', Slot.WEAPON, Zones.PIRATE, 100, [
         [Stat.POWER, 69000000000],
         [Stat.TOUGHNESS, 1000000000],
         [Stat.ENERGY_BARS, 1790000],

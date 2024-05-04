@@ -55,5 +55,5 @@ export const Stat = {
     BLOOD: 'blood',
     EXPERIENCE: 'experience',
     COOKING: 'cooking'
-}
+} as const satisfies {[k: string]: string};
 

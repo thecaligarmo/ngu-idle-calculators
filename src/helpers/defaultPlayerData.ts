@@ -302,9 +302,21 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 var accesories : any = playerData.inventory.accs.filter((acc : any) => !_.isUndefined(acc.id) && !_.isNaN(acc.id))
                 
                 return accesories.map((acc : any) => {
-                    var item = ITEMS[acc.id]
+                    var item : Item = ITEMS[acc.id]
                     item.importStats(acc)
                     return item
+                })
+            case 'equipmentTest':
+                var items : any = playerData.inventory.inventory.filter((it : any) => !_.isUndefined(it.id) && !_.isNaN(it.id) && it.id > 0)
+                
+                return items.map((it : any) => {
+                    if(!_.isUndefined(ITEMS[it.id])) {
+                        var item : Item = ITEMS[it.id]
+                        item.importStats(it)
+                        return item
+                    } else {
+                        console.log(it, " is missing from item list.")
+                    }
                 })
             case 'energyNGUs':
                 var energyNGUs : NGU[] = []
@@ -518,6 +530,7 @@ export function getPlayerOptions() : string[] {
         'equipmentBoots',
         'equipmentWeapon',
         'equipmentAccesories',
+        'equipmentTest',
         'energyNGUs',
         'magicNGUs',
         'macguffins',

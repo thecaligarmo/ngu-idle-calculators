@@ -19,6 +19,7 @@ export class ItemSet {
     }
 }
 
+// ItemSets are the sets that can be maxxed
 export const ItemSets = {
     TRAINING: new ItemSet('training', Zones.TUTORIAL),
     SEWERS: new ItemSet('sewers', Zones.SEWERS),
@@ -58,6 +59,7 @@ export const ItemSets = {
     RADLANDS: new ItemSet('rad', Zones.RADLANDS),
     BACKTOSCHOOL: new ItemSet('school', Zones.BACKTOSCHOOL),
     WESTWORLD: new ItemSet('western', Zones.WESTWORLD),
+    ITHUNGERS: new ItemSet('itHungers', [Zones.ITHUNGERS, Zones.ITHUNGERS2, Zones.ITHUNGERS3, Zones.ITHUNGERS4]),
     BREADVERSE: new ItemSet('bread', Zones.BREADVERSE),
     SEVENTIES: new ItemSet('that70s', Zones.SEVENTIES),
     HALLOWEEN: new ItemSet('halloweenies', Zones.HALLOWEEN),
@@ -67,6 +69,11 @@ export const ItemSets = {
     NETHER: new ItemSet('nether', Zones.NETHER),
     AMALGAMATE: new ItemSet('amalgamate', [Zones.AMALGAMATE, Zones.AMALGAMATE2, Zones.AMALGAMATE3, Zones.AMALGAMATE4]),
     PIRATE: new ItemSet('pirate', Zones.PIRATE),
+    // Without Zones
+    FOREST_PENDANT: new ItemSet('forestPendant', []),
+    LOOTY: new ItemSet('looty', []),
+    HEART: new ItemSet('haert', []),
+    MISC: new ItemSet('misc', []),
 } as const satisfies {[k: string]: ItemSet};
 // space
 // wandoos
