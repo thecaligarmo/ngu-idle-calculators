@@ -184,13 +184,11 @@ export class NGU extends Resource {
             target = bd(this.target)
         }
 
-
         // Grab base amount of time things will take
         var baseSpeed = this.getBaseSpeed();
         var baseFactor = bd(1)
         var i = 0
-        try {
-            
+        try {            
             var baseTimePerLevel = baseSpeed.multiply(bd(100)).divide(cap).divide(speedFactor)
             while(level.compareTo(target) != 0 && baseTimePerLevel.floor().compareTo(bd(0)) == 0) {
                 i += 1
@@ -205,8 +203,9 @@ export class NGU extends Resource {
         var startingSpeed = baseTimePerLevel.multiply(level.add(bd(1))).divide(baseFactor).round(2, bigDecimal.RoundingModes.CEILING)
         var endingSpeed = baseTimePerLevel.multiply(target).divide(baseFactor).round(2, bigDecimal.RoundingModes.CEILING)
 
-        startingSpeed = startingSpeed.compareTo(bd(0)) <= 0 ? bd(0.02) : startingSpeed
-        endingSpeed = endingSpeed.compareTo(bd(0)) <= 0 ? bd(0.02) : endingSpeed
+        // We can never go faster than 50 levels/second
+        startingSpeed = startingSpeed.compareTo(bd(0.02)) <= 0 ? bd(0.02) : startingSpeed
+        endingSpeed = endingSpeed.compareTo(bd(0.02)) <= 0 ? bd(0.02) : endingSpeed
 
         
         // Grab the number of levels that will be calculated with starting, middle (average) and end times
