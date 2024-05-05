@@ -12,6 +12,7 @@ import { ItemSet, ItemSets } from "@/assets/sets";
 import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
 import { MACGUFFINS, MacGuffin } from "@/assets/macguffins";
 import { bd } from "./numbers";
+import { isMaxxedItem, isMaxxedItemSet } from "./resourceInfo";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
@@ -397,12 +398,20 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return maxxedItemIds
 
             // Calculations
+            case 'blueHeart^':
+                // Blue Heart // 196
+                return isMaxxedItem(playerData, 196) ? bd(1) : bd(0)
             case 'boostRecyclying%':
                 return boostRecyclying(playerData);
             case 'currentEnergyCap':
                 return totalEnergyCap(playerData);
             case 'currentMagicCap':
                 return totalMagicCap(playerData);
+            case 'redLiquidBonus^':
+                // - Mysterious Red Liquid // 93
+                return isMaxxedItem(playerData, 93) ? bd(1) : bd(0)
+            case 'spoopySetBonus^':
+                return isMaxxedItemSet(playerData, ItemSets.SPOOPY) ? bd(1) : bd(0)
             case 'totalEnergyNGUSpeedFactor%':
                 return totalEnergyNGUSpeedFactor(playerData);
             case 'totalMagicNGUSpeedFactor%':
@@ -543,9 +552,12 @@ export function getPlayerOptions() : string[] {
 
 export function getCalculatedOptions() : string[] {
     return [
+        'blueHeart^',
         'boostRecyclying%',
         'currentEnergyCap',
         'currentMagicCap',
+        'redLiquidBonus^',
+        'spoopySetBonus^',
         'totalEnergyNGUSpeedFactor%',
         'totalMagicNGUSpeedFactor%',
         'totalPPBonus%',

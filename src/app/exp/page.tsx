@@ -19,7 +19,7 @@ export default function Page() {
   var fmt = getNumberFormat();
   
   // Set data required (from playerData)
-  var infoRequired = [['totalPower', 'totalDropChance%', 'totalRespawnTime', 'boostRecyclying%']]
+  var infoRequired = [['totalPower', 'totalDropChance%', 'totalRespawnTime', 'boostRecyclying%'], ['redLiquidBonus^', 'spoopySetBonus^']]
   // Set extra required (not from playerData)
   var extraRequired = [[]]
   const playerStates = createStatesForData(extraRequired);
@@ -34,18 +34,14 @@ export default function Page() {
   }
 
   
-  // Idle Attack Multiplier
-  var spoopySetBonus = isMaxxedItemSet(playerStates, ItemSets.SPOOPY) ? bd(1) : bd(0)
-
   // idle attack cooldown
-  // - Mysterious Red Liquid // 93
-  var idleAttackCooldown = isMaxxedItem(playerStates, 93) ? bd(0.8) : bd(1)
+  var idleAttackCooldown = v('redLiquidBonus^').compareTo(bd(1)) == 0 ? bd(0.8) : bd(1)
 
   // Sadistic NECs?
   var sadisticNEC = bd(0)
   // if sadistic NEC == 5 then we double it
 
-  var idleAttackModifier = (spoopySetBonus.multiply(bd(0.3)).add(bd(1.2))).multiply(
+  var idleAttackModifier = (v('spoopySetBonus^').multiply(bd(0.3)).add(bd(1.2))).multiply(
     bd(1).add(sadisticNEC)
   )
 
