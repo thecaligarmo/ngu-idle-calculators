@@ -1,5 +1,6 @@
 'use client'
 
+import { GameMode } from "@/assets/mode";
 import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { ChoiceButton } from "@/components/buttons";
 import Content from "@/components/content";
@@ -155,12 +156,18 @@ export default function Page() {
     var NGUs : NGU[][] = types.map((ty) => {
         var ngus = (ty === 'energy') ? ENERGY_NGUS : MAGIC_NGUS
         var nguIds = (ty === 'energy') ? ENERGY_NGUS.ids : MAGIC_NGUS.ids
-        return nguIds.map((nguId) => {
-            var ngu = ngus[nguId]
-            ngu.setLevel(Number(v(ty + ngu.key + "Level").getValue()))
-            ngu.target = Number(v(ty + ngu.key + "Target").getValue())
-            return ngu
-        })
+
+        var retNgus = []
+        for(var nguId of nguIds) {
+            
+            var ngu : NGU = ngus[nguId]
+            if(ngu.mode == GameMode.NORMAL) {
+                ngu.setLevel(Number(v(ty + ngu.key + "Level").getValue()))
+                ngu.target = Number(v(ty + ngu.key + "Target").getValue())
+                retNgus.push(ngu)
+            }
+        }
+        return retNgus
     })
 
 

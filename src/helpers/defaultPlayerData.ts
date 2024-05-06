@@ -322,20 +322,28 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'energyNGUs':
                 var energyNGUs : NGU[] = []
                 playerData.NGU.skills.forEach((engu : any, index : number) => {
-                    var ngu = ENERGY_NGUS[index]
-                    if (!_.isUndefined(ngu)) {
-                        ngu.importStats(engu)
-                        energyNGUs.push(ngu)
+                    if (!_.isUndefined(engu.level)) {
+                        for (var i = 0; i < 3; i++) {
+                            var ngu = ENERGY_NGUS[index + (i * 10)]
+                            if (!_.isUndefined(ngu)) {
+                                ngu.importStats(engu)
+                                energyNGUs.push(ngu)
+                            }
+                        }
                     }
                 })
                 return energyNGUs
             case 'magicNGUs':
                 var magicNGUs : NGU[] = []
                 playerData.NGU.magicSkills.forEach((mngu : any, index : number) => {
-                    var ngu = MAGIC_NGUS[index]
-                    if (!_.isUndefined(ngu)) {
-                        ngu.importStats(mngu)
-                        magicNGUs.push(ngu)
+                    if (!_.isUndefined(mngu.level)) {
+                        for (var i = 0; i < 3; i++) {
+                            var ngu = MAGIC_NGUS[index + (i * 10)]
+                            if (!_.isUndefined(ngu)) {
+                                ngu.importStats(mngu)
+                                magicNGUs.push(ngu)
+                            }
+                        }
                     }
                 })
                 return magicNGUs

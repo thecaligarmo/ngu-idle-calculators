@@ -50,8 +50,16 @@ export class NGU extends Resource {
         return (this.key === NGUKeys.RESPAWN)
     }
     importStats(data: any) : void {
-        this.level = data.level.low
-        this.target = data.target.low
+        if(this.id >= 20) {
+            this.level = data.sadisticLevel.low
+            this.target = data.sadisticTarget.low
+        } else if(this.id >= 10) {
+            this.level = data.evilLevel.low
+            this.target = data.evilTarget.low
+        } else{
+            this.level = data.level.low
+            this.target = data.target.low
+        }
         this.updateStats()
     }
     updateStats() : void {
