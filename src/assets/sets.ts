@@ -19,8 +19,12 @@ export class ItemSet {
     }
 }
 
+
+// TODO - Each ItemSet should have a list of items. Items have zones, so we just need a list of items
+
+
 // ItemSets are the sets that can be maxxed
-export const ItemSets = {
+export const ItemSets : {[k: string]: ItemSet} = {
     TRAINING: new ItemSet('training', Zones.TUTORIAL),
     SEWERS: new ItemSet('sewers', Zones.SEWERS),
     FOREST: new ItemSet('forest', Zones.FOREST),

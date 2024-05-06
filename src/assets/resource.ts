@@ -1,4 +1,6 @@
 import _ from "lodash"
+import { GameMode } from "./mode"
+
 
 export type prop = [string, number][] | [string, number, number][]
 
@@ -7,13 +9,15 @@ export default class Resource {
     id: number
     key: string
     name: string
+    mode: number
     level: number
     base: {[index: string]: any}
     statnames: string[]
-    constructor(id: number, key: string, name: string, level: number, props: prop) {
+    constructor(id: number, key: string, name: string, mode: number, level: number, props: prop) {
         this.id = id
         this.key = key
         this.name = name
+        this.mode = mode
         this.level = level
         this.statnames = []
         this.base = {}
@@ -29,7 +33,7 @@ export default class Resource {
     }
     updateStats() {
         for (var prop of Object.keys(this.base)) {
-            this[prop] = this.level * this.base[prop]
+            this[prop] = (this.level > 0) ?  this.base[prop] : 0
         }
     }
 }

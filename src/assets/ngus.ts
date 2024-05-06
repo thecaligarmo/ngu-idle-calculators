@@ -1,42 +1,57 @@
-import { bd, bigdec_max, bigdec_min, dn } from "@/helpers/numbers"
+import { bd, bigdec_max, bigdec_min } from "@/helpers/numbers"
 import Resource, { ResourceContainer, prop } from "./resource"
 import { Stat } from "./stat"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
-import { Mode } from "./mode"
+import { GameMode } from "./mode"
 
+const NGUKeys : {[key: string]: string} = {
+    AUGMENTS: 'NGUAugments',
+    WANDOOS : 'NGUWandoos',
+    RESPAWN : 'NGURespawn',
+    GOLD : 'NGUGold',
+    ADVENTURE_A : 'NGUAdventureA',
+    POWER_A : 'NGUPowerA',
+    DROP_CHANCE : 'NGUDropChance',
+    MAGIC_NGU : 'NGUMagicNGU',
+    PP : 'NGUPP',
+    YGGDRASIL : 'NGUYggdrasil',
+    EXP: 'NGUExp',
+    POWER_B : 'NGUPowerB',
+    NUMBER : 'NGUNumber',
+    TIME_MACHINE : 'NGUTimeMachine',
+    ENERGY_NGU : 'NGUEnergyNGU',
+    ADVENTURE_B : 'NGUAdventureB',
+} as const satisfies {[key: string]: string};
 
 
 export class NGU extends Resource {
-    res: string
+    resource: string // 'energy' or 'magic'
     target: number
-    evilLevel: number
-    evilTarget: number
-    sadisticLevel: number
-    sadisticTarget: number
     diminishingReturnLevel: number
-    maxValue: number
-    constructor (id: number, key: string, name: string, level: number, props: prop, res: string, diminishingReturnLevel: number, maxValue: number) {
-        super(id, key, name, level, props)
-        this.res = res
+    baseCost: bigDecimal
+    maxValue: bigDecimal
+    constructor (
+        id: number, key: string, name: string, mode : number, props: prop,
+        resource: string,
+        diminishingReturnLevel: number,
+        baseCost : bigDecimal,
+        maxValue: bigDecimal
+    ) {
+        // level always 0
+        super(id, key, name, mode, 0, props)
+        this.resource = resource
         this.target = 0
-        this.evilLevel = 0
-        this.evilTarget = 0
-        this.sadisticLevel = 0
-        this.sadisticTarget = 0
         this.diminishingReturnLevel = diminishingReturnLevel
+        this.baseCost = baseCost
         this.maxValue = maxValue
     }
     isRespawn() : boolean {
-        return (this.key === 'NGURespawn')
+        return (this.key === NGUKeys.RESPAWN)
     }
     importStats(data: any) : void {
         this.level = data.level.low
-        this.evilLevel = data.evilLevel.low
-        this.sadisticLevel = data.sadisticLevel.low
         this.target = data.target.low
-        this.evilTarget = data.evilTarget.low
-        this.sadisticTarget = data.sadisticTarget.low
         this.updateStats()
     }
     updateStats() : void {
@@ -60,38 +75,89 @@ export class NGU extends Resource {
         if (this.diminishingReturnLevel === 0 || !diminishing) {
             if (this.isRespawn()) {
                 return -level * base + 100
-            } else {
-                return  level * base + 100
-            }
-        } else if (this.res == 'energy') {
-            switch (this.id) {
-                case 2: // respawn
-                    return (-(level) / (level * 5 + 200000) - 0.2) * 100 + 100
-                case 4: // Adv A
-                case 6: // DC
-                    return (level)**0.5 * 3.17 + 100
-                case 7: // M NGU
-                    return (level)**0.3 * 12.59 + 100
-                case 8: // PP
-                    return (level)**0.3 * 6.295 + 100
             } 
-            
-        } 
-        // Else Magic
-        switch (this.id) {
-            case 0: // ygg
-                return (level) ** 0.33 * 5.54  + 100
-            case 1: // exp
-                return (level) ** 0.4 * 0.9566 + 100
-            case 3: // number
-                return (level) ** 0.5 * 31.7 + 100
-            case 4: // tm
-                return (level) ** 0.8 * 0.7962 + 100
-            case 5: // energy ngu
-                return (level) ** 0.3 * 12.59 + 100
-            case 6: // adv B
-                return (level) ** 0.4 * 1.894 + 100
-
+            return  level * base + 100
+        }
+        // Handle non-diminishing return ones
+        if(this.mode == GameMode.NORMAL) {
+            switch (this.key) {
+                case NGUKeys.RESPAWN: 
+                    return (-(level) / (level * 5 + 200000) - 0.2) * 100 + 100
+                case NGUKeys.ADVENTURE_A:
+                case NGUKeys.DROP_CHANCE:
+                    return (level)**0.5 * 3.17 + 100
+                case NGUKeys.MAGIC_NGU:
+                    return (level)**0.3 * 12.59 + 100
+                case NGUKeys.PP: 
+                    return (level)**0.3 * 6.295 + 100
+                case NGUKeys.YGGDRASIL:
+                    return (level) ** 0.33 * 5.54  + 100
+                case NGUKeys.EXP:
+                    return (level) ** 0.4 * 0.9566 + 100
+                case NGUKeys.NUMBER:
+                    return (level) ** 0.5 * 31.7 + 100
+                case NGUKeys.TIME_MACHINE:
+                    return (level) ** 0.8 * 0.7962 + 100
+                case NGUKeys.ENERGY_NGU:
+                    return (level) ** 0.3 * 12.59 + 100
+                case NGUKeys.ADVENTURE_B:
+                    return (level) ** 0.4 * 1.894 + 100
+            }
+        } else if(this.mode == GameMode.EVIL) {
+            switch (this.key) {
+                case NGUKeys.WANDOOS:
+                    return (level) ** 0.25 * 17.79 + 100
+                case NGUKeys.RESPAWN: 
+                    return (-(level) / (level * 20 + 200000) - 0.05) * 100 + 100
+                case NGUKeys.ADVENTURE_A:
+                    return (level)**0.25 * 8.8945 + 100
+                case NGUKeys.DROP_CHANCE:
+                case NGUKeys.MAGIC_NGU:
+                    return (level)**0.3 * 6.295 + 100
+                case NGUKeys.PP: 
+                    return (level)**0.2 * 5.024 + 100
+                case NGUKeys.YGGDRASIL:
+                    return (level) ** 0.1 * 10.9854  + 100
+                case NGUKeys.EXP:
+                    return (level) ** 0.2 * 2.1867 + 100
+                case NGUKeys.NUMBER:
+                    return (level) ** 0.3 * 62.95 + 100
+                case NGUKeys.TIME_MACHINE:
+                    return (level) ** 0.8 * 0.3981 + 100
+                case NGUKeys.ENERGY_NGU:
+                    return (level) ** 0.2 * 12.56 + 100
+                case NGUKeys.ADVENTURE_B:
+                    return (level) ** 0.25 * 2.6675 + 100
+            }
+        } else if(this.mode == GameMode.SADISTIC) {
+            switch (this.key) {
+                case NGUKeys.WANDOOS:
+                    return (level) ** 0.15 * 21.2886 + 100
+                case NGUKeys.RESPAWN: 
+                    return (-(level) / (level * 20 + 200000) - 0.05) * 100 + 100
+                case NGUKeys.GOLD:
+                    return (level) ** 0.5 * 15.815 + 100
+                case NGUKeys.ADVENTURE_A:
+                    return (level)**0.2 * 10.0476 + 100
+                case NGUKeys.DROP_CHANCE:
+                    return level ** 0.2 * 10.048 + 100
+                case NGUKeys.MAGIC_NGU:
+                    return (level)**0.2 * 20.0476 + 100
+                case NGUKeys.PP: 
+                    return (level)**0.1 * 8.01936 + 100
+                case NGUKeys.YGGDRASIL:
+                    return (level) ** 0.08 * 9.9076  + 100
+                case NGUKeys.EXP:
+                    return (level) ** 0.15 * 3.1978 + 100
+                case NGUKeys.NUMBER:
+                    return (level) ** 0.2 * 125.6 + 100
+                case NGUKeys.TIME_MACHINE:
+                    return (level) ** 0.8 * 0.3981 + 100
+                case NGUKeys.ENERGY_NGU:
+                    return (level) ** 0.15 * 17.741 + 100
+                case NGUKeys.ADVENTURE_B:
+                    return (level) ** 0.12 * 6.54795 + 100
+            }
         }
         return 0
     }
@@ -106,42 +172,40 @@ export class NGU extends Resource {
         if (this.diminishingReturnLevel === 0 || !diminishing || forceNotDiminished) {
             if (this.isRespawn()) {
                 return - value / base
-            } else {
-                return  value / base
             }
-        } else if (this.res == 'energy') {
-            switch (this.id) {
-                case 2: // respawn
-                    return -40000 * (value + 20) / (value + 40)
-                    // return 40000 * ( value + 80) / (60 - value)
-                case 4: // Adv A
-                case 6: // DC
-                    return (value / 3.17) ** 2 
-                case 7: // M NGU
-                    return (value / 12.59) ** (10/3) 
-                case 8: // PP
-                    return (value / 6.295) ** (10/3)
-            } 
+            return  value / base
             
-        } 
-        // Else Magic
-        switch (this.id) {
-            case 0: // ygg
-                return (value / 5.54) ** 3
-            case 1: // exp
-                return (value / 0.9566) ** (2.5)
-            case 3: // number   
-                return (value / 31.7) ** 2
-            case 4: // tm
-                return (value / 0.7962) ** (10/8)
-            case 5: // energy ngu
-                return (value / 12.59) ** (10/3)
-            case 6: // adv B
-                return (value / 1.894) ** (2.5)
-
         }
+        // Handle non-diminishing return ones
+        if(this.mode == GameMode.NORMAL) {
+            switch (this.key) {
+                case NGUKeys.RESPAWN: 
+                    return -40000 * (value + 20) / (value + 40)
+                case NGUKeys.ADVENTURE_A:
+                case NGUKeys.DROP_CHANCE:
+                    return (value / 3.17) ** 2 
+                case NGUKeys.MAGIC_NGU:
+                    return (value / 12.59) ** (10/3) 
+                case NGUKeys.PP: 
+                    return (value / 6.295) ** (10/3)
+                case NGUKeys.YGGDRASIL:
+                    return (value / 5.54) ** 3
+                case NGUKeys.EXP:
+                    return (value / 0.9566) ** (2.5)
+                case NGUKeys.NUMBER:
+                    return (value / 31.7) ** 2
+                case NGUKeys.TIME_MACHINE:
+                    return (value / 0.7962) ** (10/8)
+                case NGUKeys.ENERGY_NGU:
+                    return (value / 12.59) ** (10/3)
+                case NGUKeys.ADVENTURE_B:
+                    return (value / 1.894) ** (2.5)
+            }
+        }
+        
         return 0
     }
+
     // Gets target for a percentage increase of value
     percentIncrease(percent: bigDecimal | number) : bigDecimal{
         if (percent instanceof bigDecimal) {
@@ -159,6 +223,7 @@ export class NGU extends Resource {
         }
         return (this.valueIncrease(desiredVal))
     }
+
     // Gets target for a set increase of value
     valueIncrease(desiredVal: bigDecimal | number) : bigDecimal {
         var maxLvl = 0
@@ -178,6 +243,7 @@ export class NGU extends Resource {
         maxLvl = Math.max(maxLvl, desiredLevel)
         return bd(maxLvl).ceil()
     }
+
     calcSecondsToTarget(cap : bigDecimal, speedFactor : bigDecimal, target : bigDecimal = bd(-1)) : bigDecimal {
         var level = bd(this.level)
         if (target.compareTo(bd(-1)) === 0 ) {
@@ -185,15 +251,15 @@ export class NGU extends Resource {
         }
 
         // Grab base amount of time things will take
-        var baseSpeed = this.getBaseSpeed();
+        var baseCost = this.baseCost
         var baseFactor = bd(1)
         var i = 0
         try {            
-            var baseTimePerLevel = baseSpeed.multiply(bd(100)).divide(cap).divide(speedFactor)
+            var baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap).divide(speedFactor)
             while(level.compareTo(target) != 0 && baseTimePerLevel.floor().compareTo(bd(0)) == 0) {
                 i += 1
                 baseFactor = baseFactor.multiply(bd(1000000000))
-                baseTimePerLevel = baseSpeed.multiply(bd(100)).multiply(baseFactor).divide(cap).divide(speedFactor)
+                baseTimePerLevel = baseCost.multiply(bd(100)).multiply(baseFactor).divide(cap).divide(speedFactor)
             }
         } catch (error) {
             var baseTimePerLevel = bd(0)
@@ -231,14 +297,15 @@ export class NGU extends Resource {
                 .add((endingSpeed.add(startingSpeed)).divide(bd(2)).multiply(middleSpeedLevels))
     
     }
+
     capAtTarget(speedFactor : bigDecimal, level : bigDecimal) : bigDecimal {
-        var base = this.getBaseSpeed();
+        var baseCost = this.baseCost
 
         if (level.compareTo(bd(0)) == -1) {
             return bd(0)
         }
         try {
-            var baseTimePerLevel = base.divide(speedFactor)
+            var baseTimePerLevel = baseCost.divide(speedFactor)
         } catch (error) {
             var baseTimePerLevel = bd(0)
         }
@@ -257,109 +324,68 @@ export class NGU extends Resource {
         var targetLvl = level.add(bd(60 * 60 * 24 * 50)) // 50 ticks per second * seconds
         return this.capToReachMaxTarget(speedFactor, targetLvl)
     }
-
-    getBaseSpeed(mode : number = Mode.NORMAL) : bigDecimal{
-        if (mode === Mode.NORMAL) {
-            if (this.res == 'energy') {
-                switch(this.id) {
-                    case 0: // augments
-                    case 1: // wandoos
-                    case 2: // respawn
-                    case 3: // gold
-                    case 4: //adventure
-                    case 5: //power a
-                        return bd("2e11")
-                    case 6: // drop chance
-                        return bd("2e13")
-                    case 7: // magic NGU
-                        return bd("4e14")
-                    case 8: // pp
-                        return bd("1e16")
-                }
-            }
-            //Magic
-            switch(this.id) {
-                case 0: // Yggradasil
-                    return bd("4e11")
-                case 1: // Exp
-                    return bd("1.2e12")
-                case 2: // Power B
-                    return bd("4e12")
-                case 3: // Number
-                    return bd("1.2e13")
-                case 4: // Time Machine
-                    return bd("1e14")
-                case 5: // Energy NGU
-                    return bd("1e15")
-                case 6: // Adv B
-                    return bd("1e16")
-            }
-        } else if (mode === Mode.EVIL) {
-            if (this.res == 'energy') {
-                switch(this.id) {
-                    case 0: // augments
-                    case 1: // wandoos
-                    case 2: // respawn
-                        return bd("2e20")
-                    case 3: // gold
-                        return bd("2e21")
-                    case 4: //adventure
-                        return bd("2e22")
-                    case 5: //power a
-                        return bd("2e23")
-                    case 6: // drop chance
-                        return bd("2e24")
-                    case 7: // magic NGU
-                        return bd("2e25")
-                    case 8: // pp
-                        return bd("2e26")
-                }
-            }
-            //agic
-            switch(this.id) {
-                case 0: // Yggradasil
-                    return bd("2e20")
-                case 1: // Exp
-                    return bd("2e21")
-                case 2: // Power B
-                    return bd("2e22")
-                case 3: // Number
-                    return bd("2e23")
-                case 4: // Time Machine
-                    return bd("2e24")
-                case 5: // Energy NGU
-                    return bd("2e25")
-                case 6: // Adv B
-                    return bd("2e26")
-            }
-        }
-        return bd(0);
-    }
 }
 
 
+
+
 export const ENGULIST = [
-    new NGU(0, 'NGUAugments', 'NGU Augments',  0, [[Stat.AUGMENT_SPEED, 1]], 'energy',   0, 1000000000),
-    new NGU(1, 'NGUWandoos', 'NGU Wandoos',  0, [[Stat.ENERGY_WANDOOS_SPEED, 0.1], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy',   0, 100000000),
-    new NGU(2, 'NGURespawn', 'NGU Respawn',  0, [[Stat.RESPAWN, 0.05]], 'energy',   400, 60),
-    new NGU(3, 'NGUGold', 'NGU Gold',  0, [[Stat.GOLD_DROP, 1]], 'energy',   0, 1000000000),
-    new NGU(4, 'NGUAdventureA', 'NGU Adventure α',  0, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]], 'energy',   1000, 100244.2),
-    new NGU(5, 'NGUPowerA', 'NGU Power α',  0, [[Stat.ATTACK, 5], [Stat.DEFENSE, 5]], 'energy',   0, 5000000000),
-    new NGU(6, 'NGUDropChance', 'NGU Drop Chance',  0, [[Stat.DROP_CHANCE, 0.1],], 'energy',   1000, 100244.2),
-    new NGU(7, 'NGUMagicNGU', 'NGU Magic NGU',  0, [[Stat.MAGIC_NGU_SPEED, 0.1]], 'energy',   1000, 6309.95),
-    new NGU(8, 'NGUPP', 'NGU PP',  0, [[Stat.PP, 0.05]], 'energy',   1000, 3154.97),
+    new NGU(0, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.NORMAL, [[Stat.AUGMENT_SPEED, 1]], 'energy', 0, bd('2e11'), bd('1e9')),
+    new NGU(1, NGUKeys.WANDOOS, 'NGU Wandoos', GameMode.NORMAL, [[Stat.ENERGY_WANDOOS_SPEED, 0.1], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy', 0, bd('2e11'), bd('1e8')),
+    new NGU(2, NGUKeys.RESPAWN, 'NGU Respawn', GameMode.NORMAL, [[Stat.RESPAWN, 0.05]], 'energy', 400, bd('2e11'), bd(60)),
+    new NGU(3, NGUKeys.GOLD, 'NGU Gold', GameMode.NORMAL, [[Stat.GOLD_DROP, 1]], 'energy', 0, bd('2e11'), bd('1e9')),
+    new NGU(4, NGUKeys.ADVENTURE_A, 'NGU Adventure α', GameMode.NORMAL, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]], 'energy', 1000, bd('2e11'), bd(100244.2)),
+    new NGU(5, NGUKeys.POWER_A, 'NGU Power α', GameMode.NORMAL, [[Stat.ATTACK, 5], [Stat.DEFENSE, 5]], 'energy', 0, bd('2e11'), bd('5e9')),
+    new NGU(6, NGUKeys.DROP_CHANCE, 'NGU Drop Chance', GameMode.NORMAL, [[Stat.DROP_CHANCE, 0.1],], 'energy', 1000, bd('2e13'), bd(100244.2)),
+    new NGU(7, NGUKeys.MAGIC_NGU, 'NGU Magic NGU', GameMode.NORMAL, [[Stat.MAGIC_NGU_SPEED, 0.1]], 'energy', 1000, bd('4e14'), bd(6309.95)),
+    new NGU(8, NGUKeys.PP, 'NGU PP', GameMode.NORMAL, [[Stat.PP, 0.05]], 'energy', 1000, bd('1e16'), bd(3154.97)),
+
+    new NGU(10, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.EVIL, [[Stat.AUGMENT_SPEED, 0.5]], 'energy', 0, bd('2e20'), bd('5e8')),
+    new NGU(11, NGUKeys.WANDOOS, 'NGU Wandoos', GameMode.EVIL, [[Stat.ENERGY_WANDOOS_SPEED, 0.1], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy', 1000, bd('2e20'), bd('3163.56')),
+    new NGU(12, NGUKeys.RESPAWN, 'NGU Respawn', GameMode.EVIL, [[Stat.RESPAWN, 0.0005]], 'energy', 10000, bd('2e20'), bd(90)),
+    new NGU(13, NGUKeys.GOLD, 'NGU Gold', GameMode.EVIL, [[Stat.GOLD_DROP, 0.5]], 'energy', 0, bd('2e21'), bd('5e8')),
+    new NGU(14, NGUKeys.ADVENTURE_A, 'NGU Adventure α', GameMode.EVIL, [[Stat.POWER, 0.05], [Stat.TOUGHNESS, 0.05]], 'energy', 1000, bd('2e22'), bd(1581.78)),
+    new NGU(15, NGUKeys.POWER_A, 'NGU Power α', GameMode.EVIL, [[Stat.ATTACK, 2], [Stat.DEFENSE, 2]], 'energy', 0, bd('2e23'), bd('2e9')),
+    new NGU(16, NGUKeys.DROP_CHANCE, 'NGU Drop Chance', GameMode.EVIL, [[Stat.DROP_CHANCE, 0.05],], 'energy', 1000, bd('2e24'), bd(3154.97)),
+    new NGU(17, NGUKeys.MAGIC_NGU, 'NGU Magic NGU', GameMode.EVIL, [[Stat.MAGIC_NGU_SPEED, 0.05]], 'energy', 1000, bd('2e25'), bd(3154.97)),
+    new NGU(18, NGUKeys.PP, 'NGU PP', GameMode.EVIL, [[Stat.PP, 0.02]], 'energy', 1000, bd('2e26'), bd(316.99)),
+
+    new NGU(20, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.SADISTIC, [[Stat.AUGMENT_SPEED, 0.4]], 'energy', 0, bd('1e40'), bd('4e8')),
+    new NGU(21, NGUKeys.WANDOOS, 'NGU Wandoos', GameMode.SADISTIC, [[Stat.ENERGY_WANDOOS_SPEED, 0.06], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy', 1000, bd('1e40'), bd(476.59)),
+    new NGU(22, NGUKeys.RESPAWN, 'NGU Respawn', GameMode.SADISTIC, [[Stat.RESPAWN, 0.0005]], 'energy', 10000, bd('1e40'), bd(90)),
+    new NGU(23, NGUKeys.GOLD, 'NGU Gold', GameMode.SADISTIC, [[Stat.GOLD_DROP, 0.5]], 'energy', 1000, bd('1e40'), bd('500114.21')),
+    new NGU(24, NGUKeys.ADVENTURE_A, 'NGU Adventure α', GameMode.SADISTIC, [[Stat.POWER, 0.04], [Stat.TOUGHNESS, 0.04]], 'energy', 1000, bd('1e41'), bd(633.96)),
+    new NGU(25, NGUKeys.POWER_A, 'NGU Power α', GameMode.SADISTIC, [[Stat.ATTACK, 1.6], [Stat.DEFENSE, 1.6]], 'energy', 0, bd('1e42'), bd('1.6e9')),
+    new NGU(26, NGUKeys.DROP_CHANCE, 'NGU Drop Chance', GameMode.SADISTIC, [[Stat.DROP_CHANCE, 0.04],], 'energy', 1000, bd('1e43'), bd(633.99)),
+    new NGU(27, NGUKeys.MAGIC_NGU, 'NGU Magic NGU', GameMode.SADISTIC, [[Stat.MAGIC_NGU_SPEED, 0.04]], 'energy', 1000, bd('1e44'), bd(159.24)),
+    new NGU(28, NGUKeys.PP, 'NGU PP', GameMode.SADISTIC, [[Stat.PP, 0.016]], 'energy', 1000, bd('1e45'), bd(63.7)),
 ]
 
 export const MNGULIST = [
-    new NGU(0, 'NGUYggdrasil', 'NGU Yggdrasil',  0, [[Stat.YGGDRASIL_YIELD, 0.1]], 'magic',   400, 5170.23),
-    new NGU(1, 'NGUExp', 'NGU Exp',  0, [[Stat.EXPERIENCE, 0.01]], 'magic',   2000, 3808.29),
-    new NGU(2, 'NGUPowerB', 'NGU Power β',  0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]], 'magic',   0, 1000000000),
-    new NGU(3, 'NGUNumber', 'NGU Number',  0, [[Stat.NUMBER, 1]], 'magic',   1000, 1002000),
-    new NGU(4, 'NGUTimeMachine', 'NGU Time Machine',  0, [[Stat.TIME_MACHINE, 0.2]], 'magic',   1000, 12619000),
-    new NGU(5, 'NGUEnergyNGU', 'NGU Energy NGU',  0, [[Stat.ENERGY_NGU_SPEED, 0.1]], 'magic',   1000, 6309.95),
-    new NGU(6, 'NGUAdventureB', 'NGU Adventure β',  0, [[Stat.POWER, 0.03], [Stat.TOUGHNESS, 0.03]], 'magic', 1000, 7539.75),
+    new NGU(0, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.NORMAL, [[Stat.YGGDRASIL_YIELD, 0.1]], 'magic', 400, bd('4e11'), bd(5170.23)),
+    new NGU(1, NGUKeys.EXP, 'NGU Exp', GameMode.NORMAL, [[Stat.EXPERIENCE, 0.01]], 'magic', 2000, bd('1.2e12'), bd(3808.29)),
+    new NGU(2, NGUKeys.POWER_B, 'NGU Power β', GameMode.NORMAL, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]], 'magic', 0,bd('4e12'), bd('1e9')),
+    new NGU(3, NGUKeys.NUMBER, 'NGU Number', GameMode.NORMAL, [[Stat.NUMBER, 1]], 'magic', 1000, bd('1.2e13'), bd(1002000)),
+    new NGU(4, NGUKeys.TIME_MACHINE, 'NGU Time Machine', GameMode.NORMAL, [[Stat.TIME_MACHINE, 0.2]], 'magic', 1000, bd('1e14'), bd(12619000)),
+    new NGU(5, NGUKeys.ENERGY_NGU, 'NGU Energy NGU', GameMode.NORMAL, [[Stat.ENERGY_NGU_SPEED, 0.1]], 'magic', 1000, bd('1e15'), bd(6309.95)),
+    new NGU(6, NGUKeys.ADVENTURE_B, 'NGU Adventure β', GameMode.NORMAL, [[Stat.POWER, 0.03], [Stat.TOUGHNESS, 0.03]], 'magic', 1000, bd('1e16'), bd(7539.75)),
+
+    new NGU(10, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.EVIL, [[Stat.YGGDRASIL_YIELD, 0.05]], 'magic', 400, bd('2e20'), bd(87.26)),
+    new NGU(11, NGUKeys.EXP, 'NGU Exp', GameMode.EVIL, [[Stat.EXPERIENCE, 0.005]], 'magic', 2000, bd('2e21'), bd(137.97)),
+    new NGU(12, NGUKeys.POWER_B, 'NGU Power β', GameMode.EVIL, [[Stat.ATTACK, 0.5], [Stat.DEFENSE, 0.5]], 'magic', 0, bd('2e22'), bd('5e8')),
+    new NGU(13, NGUKeys.NUMBER, 'NGU Number', GameMode.EVIL, [[Stat.NUMBER, 0.5]], 'magic', 1000, bd('2e23'), bd(31549.74)),
+    new NGU(14, NGUKeys.TIME_MACHINE, 'NGU Time Machine', GameMode.EVIL, [[Stat.TIME_MACHINE, 0.1]], 'magic', 1000, bd('2e24'), bd('6.31e6')),
+    new NGU(15, NGUKeys.ENERGY_NGU, 'NGU Energy NGU', GameMode.EVIL, [[Stat.ENERGY_NGU_SPEED, 0.05]], 'magic', 1000, bd('2e25'), bd(792.48)),
+    new NGU(16, NGUKeys.ADVENTURE_B, 'NGU Adventure β', GameMode.EVIL, [[Stat.POWER, 0.015], [Stat.TOUGHNESS, 0.015]], 'magic', 1000, bd('2e26'), bd(474.35)),
+
+    new NGU(20, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.SADISTIC, [[Stat.YGGDRASIL_YIELD, 0.04]], 'magic', 400, bd('1e40'), bd(52)),
+    new NGU(21, NGUKeys.EXP, 'NGU Exp', GameMode.SADISTIC, [[Stat.EXPERIENCE, 0.005]], 'magic', 2000, bd('1e40'), bd(71.59)),
+    new NGU(22, NGUKeys.POWER_B, 'NGU Power β', GameMode.SADISTIC, [[Stat.ATTACK, 0.5], [Stat.DEFENSE, 0.5]], 'magic', 0, bd('1e41'), bd('5e8')),
+    new NGU(23, NGUKeys.NUMBER, 'NGU Number', GameMode.SADISTIC, [[Stat.NUMBER, 0.5]], 'magic', 1000, bd('1e42'), bd(7924.82)),
+    new NGU(24, NGUKeys.TIME_MACHINE, 'NGU Time Machine', GameMode.SADISTIC, [[Stat.TIME_MACHINE, 0.1]], 'magic', 1000, bd('1e43'), bd('6.309e6')),
+    new NGU(25, NGUKeys.ENERGY_NGU, 'NGU Energy NGU', GameMode.SADISTIC, [[Stat.ENERGY_NGU_SPEED, 0.05]], 'magic', 1000, bd('1e44'), bd(397.17)),
+    new NGU(26, NGUKeys.ADVENTURE_B, 'NGU Adventure β', GameMode.SADISTIC, [[Stat.POWER, 0.015], [Stat.TOUGHNESS, 0.015]], 'magic', 1000, bd('1e45'), bd(78.72)),
 ]
 
 export var ENERGY_NGUS = new ResourceContainer(ENGULIST);
-
 export var MAGIC_NGUS = new ResourceContainer(MNGULIST);

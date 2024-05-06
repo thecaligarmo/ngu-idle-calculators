@@ -1,11 +1,13 @@
 import { Stat } from "./stat"
 import Resource, { ResourceContainer, prop } from "./resource"
+import { GameMode } from "./mode"
 
 export class Beard extends Resource{
     permLevel: number
-    constructor(id: number, key: string, name: string, level: number, permLevel: number, props: prop) {
-        super(id, key, name, level, props)
-        this.permLevel = permLevel
+    constructor(id: number, key: string, name: string, props: prop) {
+        // level and perm level always start at 0
+        super(id, key, name, GameMode.ALL, 0, props)
+        this.permLevel = 0
     }
     setPermLevel(permLevel: number) {
         this.permLevel = permLevel
@@ -99,13 +101,13 @@ export class Beard extends Resource{
 
 
 export const BEARDLIST = [
-    new Beard(0, 'fuManchu', 'The Fu Manchu', 0, 0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
-    new Beard(1, 'neckbeard', 'The Neckbeard', 0, 0, [[Stat.DROP_CHANCE, 1]]),
-    new Beard(2, 'reverseHitler', 'The Revese Hitler', 0, 0, [[Stat.NUMBER, 1]]),
-    new Beard(3, 'beardCage', 'The Beard Cage', 0, 0, [[Stat.ENERGY_NGU_SPEED, 1], [Stat.MAGIC_NGU_SPEED, 1]]),
-    new Beard(4, 'ladybeard', 'The LadyBeard', 0, 0, [[Stat.ENERGY_WANDOOS_SPEED, 1], [Stat.MAGIC_WANDOOS_SPEED, 1]]),
-    new Beard(5, 'BEARd', 'The BEARd', 0, 0, [[Stat.POWER, 1], [Stat. TOUGHNESS, 1]]),
-    new Beard(6, 'goldenBeard', 'The Golden Beard', 0, 0, [[Stat.TIME_MACHINE, 1]]),    
+    new Beard(0, 'fuManchu', 'The Fu Manchu', [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
+    new Beard(1, 'neckbeard', 'The Neckbeard', [[Stat.DROP_CHANCE, 1]]),
+    new Beard(2, 'reverseHitler', 'The Revese Hitler', [[Stat.NUMBER, 1]]),
+    new Beard(3, 'beardCage', 'The Beard Cage', [[Stat.ENERGY_NGU_SPEED, 1], [Stat.MAGIC_NGU_SPEED, 1]]),
+    new Beard(4, 'ladybeard', 'The LadyBeard', [[Stat.ENERGY_WANDOOS_SPEED, 1], [Stat.MAGIC_WANDOOS_SPEED, 1]]),
+    new Beard(5, 'BEARd', 'The BEARd', [[Stat.POWER, 1], [Stat. TOUGHNESS, 1]]),
+    new Beard(6, 'goldenBeard', 'The Golden Beard', [[Stat.TIME_MACHINE, 1]]),    
 ]
 
 export var BEARDS = new ResourceContainer(BEARDLIST);

@@ -1,8 +1,8 @@
-import _, { add } from "lodash";
+import _ from "lodash";
 import { Stat } from "./stat";
 import Resource, { ResourceContainer, prop } from "./resource";
-import { ItemSet } from "./sets";
 import Zone, { Zones } from "./zones";
+import { GameMode } from "./mode";
 
 type slotType = (string | number)[]
 
@@ -12,7 +12,8 @@ export class Item extends Resource {
     slot: slotType
     zone: Zone[]
     constructor(id: number, key: string, name: string, slot: slotType, zone: Zone | Zone[] , level: number, props: prop) {
-        super(id, key, name, level, props)
+        // TODO - Not all items are available in all game modes
+        super(id, key, name, GameMode.ALL, level, props)
         this.slot = slot;
         this.zone = (zone instanceof Zone) ? [zone] : zone
     }

@@ -1,4 +1,4 @@
-export const Stat = {
+export const Stat : {[k: string]: string} = {
     // Boss
     ATTACK: 'attack',
     DEFENSE: 'defense',

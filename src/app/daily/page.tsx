@@ -68,7 +68,7 @@ export default function Page() {
                         .floor()
 
     // PPP Per Day
-    // @todo Still need to add evil/sadistic
+    // TODO - Still need to add evil/sadistic
     // PP Bonus -> stats
     // * 
     // little Blue Pills = 2 (with blue heart = 2.2) else 1
