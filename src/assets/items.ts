@@ -83,7 +83,10 @@ export const Slot : {[index: string]: slotType}= {
     ],
     OTHER: [
         'other', 6
-    ]
+    ],
+    BOOST: [
+        'boost', 7
+    ],
 }
 
 // For item stats
@@ -91,8 +94,11 @@ export const StatType : {[index: number]: string[]} = {
     1: [Stat.ENERGY_POWER],
     2: [Stat.ENERGY_SPEED],
     3: [Stat.MAGIC_POWER],
+    4: [Stat.MAGIC_SPEED],
     5: [Stat.DROP_CHANCE],
     7: [Stat.GOLD_DROP],
+    8: [Stat.ENERGY_BARS],
+    11: [Stat.COOKING],
     12: [Stat.ENERGY_WANDOOS_SPEED, Stat.MAGIC_WANDOOS_SPEED],
     13: [Stat.AT_SPEED],
     14: [Stat.MOVE_COOLDOWN],
@@ -133,8 +139,10 @@ export const StatDiv  : {[index: number]: number}= {
     1: 1,
     2: 1,
     3: 1,
+    4: 1,
     5: 10,
     7: 1,
+    8: 1,
     11: 1,
     12: 100,
     13: 100,
@@ -173,6 +181,45 @@ export const StatDiv  : {[index: number]: number}= {
 
 
 export const ITEMLIST = [
+    new Item(1, 'powerBoost1', 'Power Boost 1', Slot.BOOST, [Zones.ITOPOD, Zones.TUTORIAL, Zones.SEWERS, Zones.FOREST, Zones.CAVE], 100, []),
+    new Item(2, 'powerBoost2', 'Power Boost 2', Slot.BOOST, [Zones.ITOPOD, Zones.FOREST, Zones.CAVE, Zones.SKY, Zones.HSB], 100, []),
+    new Item(3, 'powerBoost5', 'Power Boost 5', Slot.BOOST, [Zones.SKY, Zones.HSB, Zones.CLOCK, Zones.ITOPOD], 100, []),
+    new Item(4, 'powerBoost10', 'Power Boost 10', Slot.BOOST, [Zones.ITOPOD, Zones.CLOCK, Zones.GRAND, Zones.TWO_D, Zones.ANCIENT_BATTLEFIELD], 100, []),
+    new Item(5, 'powerBoost20', 'Power Boost 20', Slot.BOOST, [Zones.ITOPOD, Zones.GRAND, Zones.TWO_D, Zones.ANCIENT_BATTLEFIELD, Zones.AVSP], 100, []),
+    new Item(6, 'powerBoost50', 'Power Boost 50', Slot.BOOST, [Zones.ITOPOD, Zones.GRAND, Zones.AVSP, Zones.MEGA, Zones.BEARDVERSE], 100, []),
+    new Item(7, 'powerBoost100', 'Power Boost 100', Slot.BOOST, [Zones.ITOPOD, Zones.GRAND, Zones.JAKE, Zones.MEGA, Zones.BEARDVERSE, Zones.BDW], 100, []),
+    new Item(8, 'powerBoost200', 'Power Boost 200', Slot.BOOST, [Zones.ITOPOD, Zones.BDW, Zones.BAE, Zones.CHOCO, Zones.EVIL], 100, []),
+    new Item(9, 'powerBoost500', 'Power Boost 500', Slot.BOOST, [Zones.ITOPOD, Zones.BAE, Zones.CHOCO, Zones.EVIL, Zones.PPPL], 100, []),
+    new Item(10, 'powerBoost1k', 'Power Boost 1k', Slot.BOOST, [Zones.ITOPOD, Zones.PPPL, Zones.META, Zones.PARTY, Zones.TYPO], 100, []),
+    new Item(11, 'powerBoost2k', 'Power Boost 2k', Slot.BOOST, [Zones.ITOPOD, Zones.META, Zones.PARTY, Zones.TYPO, Zones.FAD, Zones.JRPG, Zones.RADLANDS], 100, []),
+    new Item(12, 'powerBoost5k', 'Power Boost 5k', Slot.BOOST, [Zones.ITOPOD, Zones.FAD, Zones.JRPG, Zones.RADLANDS, Zones.BACKTOSCHOOL, Zones.WESTWORLD], 100, []),
+    new Item(13, 'powerBoost10k', 'Power Boost 10k', Slot.BOOST, [Zones.ITOPOD, Zones.BACKTOSCHOOL, Zones.WESTWORLD, Zones.BREADVERSE, Zones.SEVENTIES, Zones.HALLOWEEN, Zones.CONSTRUCTION, Zones.DUCK, Zones.NETHER, Zones.PIRATE], 100, []),
+    new Item(14, 'toughnessBoost1', 'Toughness Boost 1', Slot.BOOST, [Zones.ITOPOD, Zones.TUTORIAL, Zones.SEWERS, Zones.FOREST, Zones.CAVE], 100, []),
+    new Item(15, 'toughnessBoost2', 'Toughness Boost 2', Slot.BOOST, [Zones.ITOPOD, Zones.FOREST, Zones.CAVE, Zones.SKY, Zones.HSB], 100, []),
+    new Item(16, 'toughnessBoost5', 'Toughness Boost 5', Slot.BOOST, [Zones.SKY, Zones.HSB, Zones.CLOCK, Zones.ITOPOD], 100, []),
+    new Item(17, 'toughnessBoost10', 'Toughness Boost 10', Slot.BOOST, [Zones.ITOPOD, Zones.CLOCK, Zones.GRAND, Zones.TWO_D, Zones.ANCIENT_BATTLEFIELD], 100, []),
+    new Item(18, 'toughnessBoost20', 'Toughness Boost 20', Slot.BOOST, [Zones.ITOPOD, Zones.GRAND, Zones.TWO_D, Zones.ANCIENT_BATTLEFIELD, Zones.AVSP], 100, []),
+    new Item(19, 'toughnessBoost50', 'Toughness Boost 50', Slot.BOOST, [Zones.ITOPOD, Zones.GRAND, Zones.AVSP, Zones.MEGA, Zones.BEARDVERSE], 100, []),
+    new Item(20, 'toughnessBoost100', 'Toughness Boost 100', Slot.BOOST, [Zones.ITOPOD, Zones.GRAND, Zones.JAKE, Zones.MEGA, Zones.BEARDVERSE, Zones.BDW], 100, []),
+    new Item(21, 'toughnessBoost200', 'Toughness Boost 200', Slot.BOOST, [Zones.ITOPOD, Zones.BDW, Zones.BAE, Zones.CHOCO, Zones.EVIL], 100, []),
+    new Item(22, 'toughnessBoost500', 'Toughness Boost 500', Slot.BOOST, [Zones.ITOPOD, Zones.BAE, Zones.CHOCO, Zones.EVIL, Zones.PPPL], 100, []),
+    new Item(23, 'toughnessBoost1k', 'Toughness Boost 1k', Slot.BOOST, [Zones.ITOPOD, Zones.PPPL, Zones.META, Zones.PARTY, Zones.TYPO], 100, []),
+    new Item(24, 'toughnessBoost2k', 'Toughness Boost 2k', Slot.BOOST, [Zones.ITOPOD, Zones.META, Zones.PARTY, Zones.TYPO, Zones.FAD, Zones.JRPG, Zones.RADLANDS], 100, []),
+    new Item(25, 'toughnessBoost5k', 'Toughness Boost 5k', Slot.BOOST, [Zones.ITOPOD, Zones.FAD, Zones.JRPG, Zones.RADLANDS, Zones.BACKTOSCHOOL, Zones.WESTWORLD], 100, []),
+    new Item(26, 'toughnessBoost10k', 'Toughness Boost 10k', Slot.BOOST, [Zones.ITOPOD, Zones.BACKTOSCHOOL, Zones.WESTWORLD, Zones.BREADVERSE, Zones.SEVENTIES, Zones.HALLOWEEN, Zones.CONSTRUCTION, Zones.DUCK, Zones.NETHER, Zones.PIRATE], 100, []),
+    new Item(27, 'specialBoost1', 'Special Boost 1', Slot.BOOST, [Zones.ITOPOD, Zones.TUTORIAL, Zones.SEWERS, Zones.FOREST, Zones.CAVE], 100, []),
+    new Item(28, 'specialBoost2', 'Special Boost 2', Slot.BOOST, [Zones.ITOPOD, Zones.FOREST, Zones.CAVE, Zones.SKY, Zones.HSB], 100, []),
+    new Item(29, 'specialBoost5', 'Special Boost 5', Slot.BOOST, [Zones.SKY, Zones.HSB, Zones.CLOCK, Zones.ITOPOD], 100, []),
+    new Item(30, 'specialBoost10', 'Special Boost 10', Slot.BOOST, [Zones.ITOPOD, Zones.CLOCK, Zones.GRAND, Zones.TWO_D, Zones.ANCIENT_BATTLEFIELD], 100, []),
+    new Item(31, 'specialBoost20', 'Special Boost 20', Slot.BOOST, [Zones.ITOPOD, Zones.GRAND, Zones.TWO_D, Zones.ANCIENT_BATTLEFIELD, Zones.AVSP], 100, []),
+    new Item(32, 'specialBoost50', 'Special Boost 50', Slot.BOOST, [Zones.ITOPOD, Zones.GRAND, Zones.AVSP, Zones.MEGA, Zones.BEARDVERSE], 100, []),
+    new Item(33, 'specialBoost100', 'Special Boost 100', Slot.BOOST, [Zones.ITOPOD, Zones.GRAND, Zones.JAKE, Zones.MEGA, Zones.BEARDVERSE, Zones.BDW], 100, []),
+    new Item(34, 'specialBoost200', 'Special Boost 200', Slot.BOOST, [Zones.ITOPOD, Zones.BDW, Zones.BAE, Zones.CHOCO, Zones.EVIL], 100, []),
+    new Item(35, 'specialBoost500', 'Special Boost 500', Slot.BOOST, [Zones.ITOPOD, Zones.BAE, Zones.CHOCO, Zones.EVIL, Zones.PPPL], 100, []),
+    new Item(36, 'specialBoost1k', 'Special Boost 1k', Slot.BOOST, [Zones.ITOPOD, Zones.PPPL, Zones.META, Zones.PARTY, Zones.TYPO], 100, []),
+    new Item(37, 'specialBoost2k', 'Special Boost 2k', Slot.BOOST, [Zones.ITOPOD, Zones.META, Zones.PARTY, Zones.TYPO, Zones.FAD, Zones.JRPG, Zones.RADLANDS], 100, []),
+    new Item(38, 'specialBoost5k', 'Special Boost 5k', Slot.BOOST, [Zones.ITOPOD, Zones.FAD, Zones.JRPG, Zones.RADLANDS, Zones.BACKTOSCHOOL, Zones.WESTWORLD], 100, []),
+    new Item(39, 'specialBoost10k', 'Special Boost 10k', Slot.BOOST, [Zones.ITOPOD, Zones.BACKTOSCHOOL, Zones.WESTWORLD, Zones.BREADVERSE, Zones.SEVENTIES, Zones.HALLOWEEN, Zones.CONSTRUCTION, Zones.DUCK, Zones.NETHER, Zones.PIRATE], 100, []),
     new Item(40, 'crappyHelmet', 'Crappy Helmet', Slot.HEAD, Zones.SEWERS, 100, [
         [Stat.TOUGHNESS, 5],
         [Stat.ENERGY_SPEED, 3],
@@ -278,6 +325,7 @@ export const ITEMLIST = [
     new Item(65, 'clothBoots', 'Cloth Boots', Slot.BOOTS, Zones.TUTORIAL, 100, [
         [Stat.TOUGHNESS, 1],
     ]),
+    new Item(66, 'bustedCopyOfWandoos98', 'Busted Copy of Wandoos 98', Slot.Other, [Zones.SKY, Zones.GRB, Zones.GRAND, Zones.ANCIENT_BATTLEFIELD, Zones.AVSP], 100, []),
     new Item(67, 'lootyMcLootFace', 'Looty McLootFace', Slot.ACCESSORY, Zones.LOOTY, 100, [
         [Stat.POWER, 2],
         [Stat.TOUGHNESS, 2],
@@ -288,6 +336,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BARS, 25],
         [Stat.MAGIC_BARS, 15],
     ]),
+
     new Item(69, 'magitechChestplate', 'Magitech Chestplate', Slot.CHEST, Zones.HSB, 100, [
         [Stat.TOUGHNESS, 125],
         [Stat.ENERGY_BARS, 15],
@@ -409,6 +458,7 @@ export const ITEMLIST = [
     new Item(91, 'theSandsofTime', 'The Sands of Time', Slot.ACCESSORY, Zones.CLOCK, 100, [
         [Stat.MOVE_COOLDOWN, 10],
     ]),
+    new Item(92, 'aGiantSeed', 'A Giant Seed', Slot.OTHER, Zones.GRAND, 100, []),
     new Item(94, 'ascendedAscendedForestPendant', 'Ascended Ascended Forest Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 800],
         [Stat.TOUGHNESS, 800],
@@ -832,6 +882,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 100],
         [Stat.MAGIC_POWER, 100],
     ]),
+    new Item(163, 'aBustedCopyOfWandoosXL', 'A Busted Copy of Wandoos XL', Slot.OTHER, [Zones.WALDERP, Zones.BDW, Zones.BAE], 100, []),
     new Item(164, 'badlyDrawnSmileyFace', 'Badly Drawn Smiley Face', Slot.HEAD, Zones.BDW, 100, [
         [Stat.TOUGHNESS, 60000],
         [Stat.ENERGY_BARS, 450],
@@ -894,6 +945,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_BEARD_SPEED, 30],
         [Stat.MAGIC_BEARD_SPEED, 30],
     ]),
+    new Item(172, 'pissedOffKey', 'Pissed Off Key', Slot.OTHER, Zones.SKY, 100, []),
     new Item(173, 'stealthyHat', 'Stealthy Hat', Slot.HEAD, Zones.BAE, 100, [
         [Stat.POWER, 5000],
         [Stat.TOUGHNESS, 112000],

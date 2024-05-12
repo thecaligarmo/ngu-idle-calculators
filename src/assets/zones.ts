@@ -330,7 +330,7 @@ export const Zones : {[key: string]: Zone} = {
             [[200, 0.012, 10], [500, 0.012, 10]], [30, 0.01, 3],
             []
         ),
-    PINK: new Zone(
+    PPPL: new Zone(
             24, 'pretty', 'Pretty Pink Princess Land',
             [[500, 0.01, 8], [1000, 0.01, 6]], [30, 0.03, 3],
             []

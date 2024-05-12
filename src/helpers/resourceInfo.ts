@@ -13,6 +13,7 @@ import { NGU } from "@/assets/ngus";
 import { Perk } from "@/assets/perks";
 import { MacGuffin } from "@/assets/macguffins";
 
+
 export function achievementAPBonus(data : any) : bigDecimal {
     var achievements = parseObj(data, 'achievements')
     
@@ -130,7 +131,7 @@ export function achievementAPBonus(data : any) : bigDecimal {
     return bd(sum / 100 + 100)
 }
 
-export function advTraininginInfo(data: any, key: string) : bigDecimal {
+export function advTrainingInfo(data: any, key: string) : bigDecimal {
     var advTrainings : AdvTraining[] = parseObj(data, 'advTrainings')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
@@ -303,7 +304,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
         parseObj(data, 'equipmentWeapon'),
     ]
     var accs : any = parseObj(data, 'equipmentAccesories')
-    var stat : number = 100
+    var stat : number = (key == Stat.POWER || key == Stat.TOUGHNESS) ? 0 : 100;
     if (Object.values(Stat).includes(key)) {
             gear.forEach((g : any) => {
                 if (!_.isUndefined(g[key])) {
@@ -319,8 +320,20 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             }
     }
 
+
     var cube = cubeInfo(data, key)
-    return bd(stat).add(cube)
+
+    switch(key) {
+        case Stat.POWER:
+        case Stat.TOUGHNESS:
+            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube)
+        case Stat.ENERGY_POWER:
+        case Stat.MAGIC_POWER:
+        case Stat.ENERGY_BARS:
+        case Stat.MAGIC_BARS:
+            return bd(stat).add(cube).round(1, bigDecimal.RoundingModes.FLOOR)
+    }
+    return bd(stat).add(cube)//.round(0, bigDecimal.RoundingModes.DOWN)
 }
 
 export function macguffinInfo(data : any, key : string) : bigDecimal {
@@ -365,6 +378,7 @@ export function nguInfo(data : any, key : string) : bigDecimal{
 export function perkInfo(data : any, key : string) : bigDecimal{
     var perks : Perk[] = parseObj(data, 'perks')
     var stat : number = 100
+    
     if (Object.values(Stat).includes(key)) {
         if ( perks.length > 0) {
             perks.forEach((g) => {
@@ -394,7 +408,11 @@ export function quirkInfo(data : any, key : string) : bigDecimal{
 }
 
 export function isMaxxedItem(data : any, itemId : number) : boolean {
-    return itemId in parseObj(data, 'maxxedItems')
+    var itemList = parseObj(data, 'maxxedItems')
+    if(_.isArray(itemList)){
+        return parseObj(data, 'maxxedItems').includes(itemId)
+    }
+    return false
 }
 
 export function isMaxxedItemSet(data : any, itemSet : ItemSet) : boolean {

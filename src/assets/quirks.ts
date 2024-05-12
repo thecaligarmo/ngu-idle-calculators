@@ -2,7 +2,13 @@ import { GameMode } from "./mode";
 import Resource, { ResourceContainer } from "./resource"
 import { Stat } from "./stat"
 
-export class Quirk  extends Resource {}
+export class Quirk  extends Resource {
+    updateStats() {
+        for (var prop of Object.keys(this.base)) {
+            this[prop] = (this.level > 0) ?  this.base[prop] * this.level : 0
+        }
+    }
+}
 
 // TODO - Finish adding all the Quirks
 

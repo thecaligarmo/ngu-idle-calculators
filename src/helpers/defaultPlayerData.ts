@@ -206,7 +206,6 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 for (var c = 0; c < 5; c++) {
                     advTrainings[c].setLevel(playerData.advancedTraining.level[c].low)
                 }
-                
                 return advTrainings
             case 'apItems':
                 var apItems : APItem[] = []
@@ -355,7 +354,9 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     macguffins.push(MACGUFFINS[c])
                 }
                 playerData.inventory.macguffins.forEach((macguffin : any, index : number) => {
-                    macguffins[macguffin.id - 198].setLevel(macguffin.level)
+                    if(macguffin.id > 0) {
+                        macguffins[macguffin.id - 198].setLevel(macguffin.level)
+                    }
                 })
 
                 for (var c = 0; c < 22; c++) {

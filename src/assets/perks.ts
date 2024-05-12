@@ -55,6 +55,11 @@ export class Perk extends Resource{
         }
         this.updateStats()
     }
+    updateStats() {
+        for (var prop of Object.keys(this.base)) {
+            this[prop] = (this.level > 0) ?  this.base[prop] * this.level : 0
+        }
+    }
 }
 
 export const PERKLIST = [

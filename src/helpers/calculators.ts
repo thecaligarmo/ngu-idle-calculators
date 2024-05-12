@@ -6,7 +6,7 @@ import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
 import { parseObj, parseNum } from "./parsers";
-import { achievementAPBonus, advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
+import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
 import { ItemSets } from "@/assets/sets";
 
 
@@ -50,7 +50,7 @@ export function boostRecyclying(data : any) : bigDecimal {
 /** Energy */
 export function totalEnergyPower(data : any) : bigDecimal {
     return parseNum(data, 'baseEnergyPower')
-        .multiply(calcAll(data, Stat.ENERGY_POWER)).divide(bd(100));
+        .multiply(calcAll(data, Stat.ENERGY_POWER)).divide(bd(100))
 }
 
 export function totalEnergyBar(data : any) : bigDecimal {
@@ -144,7 +144,7 @@ export function totalPPBonus(data: any) : bigDecimal {
 export function totalPower(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.POWER)
     var equipPower = equipmentInfo(data, Stat.POWER)
-    var advTraining = advTraininginInfo(data, Stat.POWER)
+    var advTraining = advTrainingInfo(data, Stat.POWER)
     var basePower = parseNum(data, 'baseAdventurePower')
 
     // Want to add equipPower instead of multiply
@@ -156,7 +156,7 @@ export function totalPower(data : any) : bigDecimal {
     return subtotal
         .multiply(gen).divide(bd(100))
         .multiply(advTraining)// .divide(bd(100))
-        .divide(equipPower)
+        .divide((equipPower.compareTo(bd(0)) > 0) ? equipPower : bd(1))
         .multiply(beast)
         //.multiply(bd(100)) % not a percentage
 }
@@ -164,7 +164,7 @@ export function totalPower(data : any) : bigDecimal {
 export function totalToughness(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.TOUGHNESS)
     var equipPower = equipmentInfo(data, Stat.TOUGHNESS)
-    var advTraining = advTraininginInfo(data, Stat.TOUGHNESS)
+    var advTraining = advTrainingInfo(data, Stat.TOUGHNESS)
     var basePower = parseNum(data, 'baseAdventureToughness')
 
     // Want to add equipPower instead of multiply
@@ -173,7 +173,7 @@ export function totalToughness(data : any) : bigDecimal {
     return subtotal
         .multiply(gen).divide(bd(100))
         .multiply(advTraining)
-        .divide(equipPower) // adding instead
+        .divide((equipPower.compareTo(bd(0)) > 0) ? equipPower : bd(1)) // adding Instead
 }
 
 /** Misc Adventure */

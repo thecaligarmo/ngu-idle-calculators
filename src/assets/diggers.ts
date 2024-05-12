@@ -28,7 +28,7 @@ export class Digger extends Resource {
     }
     updateStats() {
         for (var prop of this.statnames) {
-            switch(this.keys) {
+            switch(this.key) {
                 case DiggerKeys.DROP_CHANCE:
                 case DiggerKeys.WANDOOS:
                 case DiggerKeys.BLOOD:

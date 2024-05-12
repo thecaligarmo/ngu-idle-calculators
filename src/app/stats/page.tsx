@@ -8,7 +8,7 @@ import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
 import { Stat } from '@/assets/stat';
 import { totalAPBonus, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRespawnRate, totalToughness } from '@/helpers/calculators';
-import {achievementAPBonus, advTraininginInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo} from '@/helpers/resourceInfo';
+import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo} from '@/helpers/resourceInfo';
 import { ItemSets } from '@/assets/sets';
 
 export default function Page() {
@@ -53,12 +53,12 @@ export default function Page() {
                 </ul>
                 <ContentSubsection title="Energy Power Calculation" defaultHide={true}>
                     <ul className="ml-5">
-                        <li key="base">Base Energy Power ({pn(v('baseEnergyPower'), fmt)})</li>
-                        <li key="equip">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_POWER), fmt)}%) </li>
+                        <li key="base">Base Energy Power ({pn(v('baseEnergyPower'), fmt, 2)})</li>
+                        <li key="equip">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_POWER), fmt, 2)}%) </li>
                         <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
                         <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
                         <li key="apitems">x Potions ({pn(apItemInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
-                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyPower(playerStates), fmt)}</span></li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyPower(playerStates), fmt, 4)}</span></li>
                     </ul>
                 </ContentSubsection>
             </ContentSection>
@@ -126,7 +126,7 @@ export default function Page() {
                         <li key="base">Base Adventure Power ({pn(v('baseAdventurePower'), fmt)})</li>
                         <li key="equipment">+ Equipment Power + Infinity Cube ({pn(equipmentInfo(playerStates, Stat.POWER), fmt)})</li>
                         <li key="subtotal" className="border-white border-t-2 border-solid">Subtotal: {pn(v('baseAdventurePower').add(equipmentInfo(playerStates, Stat.POWER)), fmt)}</li>
-                        <li key="at">x Advanced Training ({pn(advTraininginInfo(playerStates, Stat.POWER), fmt)}%)</li>
+                        <li key="at">x Advanced Training ({pn(advTrainingInfo(playerStates, Stat.POWER), fmt)}%)</li>
                         <li key="engu">x (Energy x Magic) NGU ({pn(nguInfo(playerStates, Stat.POWER), fmt)}%)</li>
                         <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.POWER), fmt)}%)</li>
                         <li key="basicChallenge">x Basic Challenge ({pn(challengeInfo(playerStates, Stat.POWER), fmt)}%)</li>
