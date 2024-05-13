@@ -130,6 +130,42 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.NGU.skills[7].evilTarget.low;
             case 'energyNGUPPEvilTarget':
                 return playerData.NGU.skills[8].evilTarget.low;
+            case 'energyNGUAugmentsSadisticLevel':
+                return playerData.NGU.skills[0].sadisticLevel.low;
+            case 'energyNGUWandoosSadisticLevel':
+                return playerData.NGU.skills[1].sadisticLevel.low;
+            case 'energyNGURespawnSadisticLevel':
+                return playerData.NGU.skills[2].sadisticLevel.low;
+            case 'energyNGUGoldSadisticLevel':
+                return playerData.NGU.skills[3].sadisticLevel.low;
+            case 'energyNGUAdventureASadisticLevel':
+                return playerData.NGU.skills[4].sadisticLevel.low;
+            case 'energyNGUPowerASadisticLevel':
+                return playerData.NGU.skills[5].sadisticLevel.low;
+            case 'energyNGUDropChanceSadisticLevel':
+                return playerData.NGU.skills[6].sadisticLevel.low;
+            case 'energyNGUMagicNGUSadisticLevel':
+                return playerData.NGU.skills[7].sadisticLevel.low;
+            case 'energyNGUPPSadisticLevel':
+                return playerData.NGU.skills[8].sadisticLevel.low;
+            case 'energyNGUAugmentsSadisticTarget':
+                return playerData.NGU.skills[0].sadisticTarget.low;
+            case 'energyNGUWandoosSadisticTarget':
+                return playerData.NGU.skills[1].sadisticTarget.low;
+            case 'energyNGURespawnSadisticTarget':
+                return playerData.NGU.skills[2].sadisticTarget.low;
+            case 'energyNGUGoldSadisticTarget':
+                return playerData.NGU.skills[3].sadisticTarget.low;
+            case 'energyNGUAdventureASadisticTarget':
+                return playerData.NGU.skills[4].sadisticTarget.low;
+            case 'energyNGUPowerASadisticTarget':
+                return playerData.NGU.skills[5].sadisticTarget.low;
+            case 'energyNGUDropChanceSadisticTarget':
+                return playerData.NGU.skills[6].sadisticTarget.low;
+            case 'energyNGUMagicNGUSadisticTarget':
+                return playerData.NGU.skills[7].sadisticTarget.low;
+            case 'energyNGUPPSadisticTarget':
+                return playerData.NGU.skills[8].sadisticTarget.low;
                 
             case 'magicNGUYggdrasilLevel':
                 return playerData.NGU.magicSkills[0].level.low;
@@ -187,8 +223,38 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.NGU.magicSkills[5].evilTarget.low;
             case 'magicNGUAdventureBEvilTarget':
                 return playerData.NGU.magicSkills[6].evilTarget.low;
+            case 'magicNGUYggdrasilSadisticLevel':
+                return playerData.NGU.magicSkills[0].sadisticLevel.low;
+            case 'magicNGUExpSadisticLevel':
+                return playerData.NGU.magicSkills[1].sadisticLevel.low;
+            case 'magicNGUPowerBSadisticLevel':
+                return playerData.NGU.magicSkills[2].sadisticLevel.low;
+            case 'magicNGUNumberSadisticLevel':
+                return playerData.NGU.magicSkills[3].sadisticLevel.low;
+            case 'magicNGUTimeMachineSadisticLevel':
+                return playerData.NGU.magicSkills[4].sadisticLevel.low;
+            case 'magicNGUEnergyNGUSadisticLevel':
+                return playerData.NGU.magicSkills[5].sadisticLevel.low;
+            case 'magicNGUAdventureBSadisticLevel':
+                return playerData.NGU.magicSkills[6].sadisticLevel.low;
+            case 'magicNGUYggdrasilSadisticTarget':
+                return playerData.NGU.magicSkills[0].sadisticTarget.low;
+            case 'magicNGUExpSadisticTarget':
+                return playerData.NGU.magicSkills[1].sadisticTarget.low;
+            case 'magicNGUPowerBSadisticTarget':
+                return playerData.NGU.magicSkills[2].sadisticTarget.low;
+            case 'magicNGUNumberSadisticTarget':
+                return playerData.NGU.magicSkills[3].sadisticTarget.low;
+            case 'magicNGUTimeMachineSadisticTarget':
+                return playerData.NGU.magicSkills[4].sadisticTarget.low;
+            case 'magicNGUEnergyNGUSadisticTarget':
+                return playerData.NGU.magicSkills[5].sadisticTarget.low;
+            case 'magicNGUAdventureBSadisticTarget':
+                return playerData.NGU.magicSkills[6].sadisticTarget.low;
 
 
+            case 'gameMode':
+                return playerData.settings.rebirthDifficulty.value__;
             case 'resource3Active':
                 return playerData.res3.res3On;
             case 'yggdrasilDropChance':
@@ -323,7 +389,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 playerData.NGU.skills.forEach((engu : any, index : number) => {
                     if (!_.isUndefined(engu.level)) {
                         for (var i = 0; i < 3; i++) {
-                            var ngu = ENERGY_NGUS[index + (i * 10)]
+                            var ngu : NGU = ENERGY_NGUS[index + (i * 10)]
                             if (!_.isUndefined(ngu)) {
                                 ngu.importStats(engu)
                                 energyNGUs.push(ngu)
@@ -337,7 +403,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 playerData.NGU.magicSkills.forEach((mngu : any, index : number) => {
                     if (!_.isUndefined(mngu.level)) {
                         for (var i = 0; i < 3; i++) {
-                            var ngu = MAGIC_NGUS[index + (i * 10)]
+                            var ngu : NGU = MAGIC_NGUS[index + (i * 10)]
                             if (!_.isUndefined(ngu)) {
                                 ngu.importStats(mngu)
                                 magicNGUs.push(ngu)
@@ -500,6 +566,25 @@ export function getPlayerNumberOptions() : string[]{
         'energyNGUDropChanceEvilTarget',
         'energyNGUMagicNGUEvilTarget',
         'energyNGUPPEvilTarget',
+        'energyNGUAugmentsSadisticLevel',
+        'energyNGUWandoosSadisticLevel',
+        'energyNGURespawnSadisticLevel',
+        'energyNGUGoldSadisticLevel',
+        'energyNGUAdventureASadisticLevel',
+        'energyNGUPowerASadisticLevel',
+        'energyNGUDropChanceSadisticLevel',
+        'energyNGUMagicNGUSadisticLevel',
+        'energyNGUPPSadisticLevel',
+        'energyNGUAugmentsSadisticTarget',
+        'energyNGUWandoosSadisticTarget',
+        'energyNGURespawnSadisticTarget',
+        'energyNGUGoldSadisticTarget',
+        'energyNGUAdventureASadisticTarget',
+        'energyNGUPowerASadisticTarget',
+        'energyNGUDropChanceSadisticTarget',
+        'energyNGUMagicNGUSadisticTarget',
+        'energyNGUPPSadisticTarget',
+        'gameMode',
         'magicNGUYggdrasilLevel',
         'magicNGUExpLevel',
         'magicNGUPowerBLevel',
@@ -528,6 +613,20 @@ export function getPlayerNumberOptions() : string[]{
         'magicNGUTimeMachineEvilTarget',
         'magicNGUEnergyNGUEvilTarget',
         'magicNGUAdventureBEvilTarget',
+        'magicNGUYggdrasilSadisticLevel',
+        'magicNGUExpSadisticLevel',
+        'magicNGUPowerBSadisticLevel',
+        'magicNGUNumberSadisticLevel',
+        'magicNGUTimeMachineSadisticLevel',
+        'magicNGUEnergyNGUSadisticLevel',
+        'magicNGUAdventureBSadisticLevel',
+        'magicNGUYggdrasilSadisticTarget',
+        'magicNGUExpSadisticTarget',
+        'magicNGUPowerBSadisticTarget',
+        'magicNGUNumberSadisticTarget',
+        'magicNGUTimeMachineSadisticTarget',
+        'magicNGUEnergyNGUSadisticTarget',
+        'magicNGUAdventureBSadisticTarget',
         'resource3Active',
         'yggdrasilDropChance',
     ]

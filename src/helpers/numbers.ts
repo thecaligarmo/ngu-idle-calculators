@@ -91,6 +91,9 @@ export function dn(num : bigDecimal) : string{
     }
     if (d.compareTo(bd(0)) == 1) {
         str = dString + str
+        if(d.compareTo(bd(365)) == 1) {
+            return '∞'
+        }
     }
     return str
 }

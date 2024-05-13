@@ -1,4 +1,5 @@
 import { Stat } from "./stat"
+import _ from "lodash"
 import Resource, { ResourceContainer, prop } from "./resource"
 import { GameMode } from "./mode"
 
@@ -12,6 +13,18 @@ export class Beard extends Resource{
     setPermLevel(permLevel: number) {
         this.permLevel = permLevel
         this.updateStats()
+    }
+    getTempStatValue(prop: string) : number {
+        if(!_.isUndefined(this[prop])) {
+            return this[prop]['temp']
+        }
+        return 0
+    }
+    getPermStatValue(prop: string) : number {
+        if(!_.isUndefined(this[prop])) {
+            return this[prop]['perm']
+        }
+        return 0
     }
     updateStats() {
         for (var prop of this.statnames) {

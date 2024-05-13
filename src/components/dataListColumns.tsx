@@ -112,6 +112,8 @@ export function dataToCols(dr : any, input : boolean = false) : ReactNode{
             case 2:
             case 4:
             case 6:
+            case 8:
+            case 10:
                 cc += 'w-1/2 '
                 break;
             case 3:

@@ -1,6 +1,6 @@
 export const GameMode : {[key: string]: number} = {
-    ALL: 0,
-    NORMAL: 1,
-    EVIL: 2,
-    SADISTIC: 3,
+    ALL: 4,
+    NORMAL: 0,
+    EVIL: 1,
+    SADISTIC: 2,
 } as const satisfies {[key: string]: number};

@@ -7,7 +7,7 @@ import NGUInfo from "@/components/nguInfo";
 export default function Page() {
 
     return (
-        <NGUInfo gameMode={GameMode.EVIL} />
+        <NGUInfo gameMode={GameMode.SADISTIC} />
     )
 }
 

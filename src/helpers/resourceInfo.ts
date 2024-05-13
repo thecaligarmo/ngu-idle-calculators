@@ -12,6 +12,7 @@ import { Digger } from "@/assets/diggers";
 import { NGU } from "@/assets/ngus";
 import { Perk } from "@/assets/perks";
 import { MacGuffin } from "@/assets/macguffins";
+import { Item } from "@/assets/items";
 
 
 export function achievementAPBonus(data : any) : bigDecimal {
@@ -137,9 +138,7 @@ export function advTrainingInfo(data: any, key: string) : bigDecimal {
     if (Object.values(Stat).includes(key)) {
         if (advTrainings.length > 0) {
             advTrainings.forEach((g) => {
-                if (!_.isUndefined(g[key])) {
-                    stat += g[key]
-                }
+                stat += g.getStatValue(key)
             })
         }
     }
@@ -167,9 +166,7 @@ export function beardInfoTemp(data: any, key: string) : bigDecimal{
     if (Object.values(Stat).includes(key)) {
         if ( beards.length > 0) {
             beards.forEach((g) => {
-                if (!_.isUndefined(g[key])) {
-                    stat += g[key]['temp']
-                }
+                stat += g.getTempStatValue(key)
             })
         }
     }
@@ -182,10 +179,7 @@ export function beardInfoPerm(data: any, key: string) : bigDecimal{
     if (Object.values(Stat).includes(key)) {
         if ( beards.length > 0) {
             beards.forEach((g) => {
-                if (!_.isUndefined(g[key])) {
-                    
-                    stat += g[key]['perm']
-                }
+                stat += g.getPermStatValue(key)
             })
         }
     }
@@ -198,9 +192,7 @@ export function challengeInfo(data : any, key : string) : bigDecimal{
     if (Object.values(Stat).includes(key)) {
         if ( challenges.length > 0) {
             challenges.forEach((g) => {
-                if (!_.isUndefined(g[key])) {
-                    stat += g[key]
-                }
+                stat += g.getStatValue(key)
             })
         }
     }
@@ -282,8 +274,8 @@ export function diggerInfo(data: any, key: string) : bigDecimal{
     if (Object.values(Stat).includes(key)) {
         if ( diggers.length > 0) {
             diggers.forEach((g) => {
-                if (!_.isUndefined(g[key]) && g.active) {
-                    stat += g[key]
+                if (g.active) {
+                    stat += g.getStatValue(key)
                 }
             })
         }
@@ -296,26 +288,24 @@ export function diggerInfo(data: any, key: string) : bigDecimal{
 }
 
 export function equipmentInfo(data: any, key: string) : bigDecimal {
-    var gear : any[] = [
+    var gear : Item[] = [
         parseObj(data, 'equipmentHead'),
         parseObj(data, 'equipmentChest'),
         parseObj(data, 'equipmentLegs'),
         parseObj(data, 'equipmentBoots'),
         parseObj(data, 'equipmentWeapon'),
     ]
-    var accs : any = parseObj(data, 'equipmentAccesories')
+    var accs : Item[] = parseObj(data, 'equipmentAccesories')
     var stat : number = (key == Stat.POWER || key == Stat.TOUGHNESS) ? 0 : 100;
     if (Object.values(Stat).includes(key)) {
-            gear.forEach((g : any) => {
-                if (!_.isUndefined(g[key])) {
-                    stat += g[key]
+            gear.forEach((g) => {
+                if(g instanceof Item) {
+                    stat += g.getStatValue(key)
                 }
             })
             if ( accs.length > 0) {
-                accs.forEach((g : any) => {
-                    if (!_.isUndefined(g[key])) {
-                        stat += g[key]
-                    }
+                accs.forEach((g) => {
+                    stat += g.getStatValue(key)
                 })
             }
     }
@@ -358,16 +348,12 @@ export function nguInfo(data : any, key : string) : bigDecimal{
     if (Object.values(Stat).includes(key)) {
         if ( engus.length > 0) {
             engus.forEach((g) => {
-                if (!_.isUndefined(g[key])) {
-                    stat *= g[key] / 100
-                }
+                stat *= g.getStatValue(key) / 100
             })
         }
         if ( mngus.length > 0) {
             mngus.forEach((g) => {
-                if (!_.isUndefined(g[key])) {
-                    stat *= g[key] / 100
-                }
+                stat *= g.getStatValue(key) / 100
             })
         }
     }
@@ -382,9 +368,7 @@ export function perkInfo(data : any, key : string) : bigDecimal{
     if (Object.values(Stat).includes(key)) {
         if ( perks.length > 0) {
             perks.forEach((g) => {
-                if (!_.isUndefined(g[key])) {
-                    stat += g[key]
-                }
+                stat += g.getStatValue(key)
             })
         }
     }
@@ -397,9 +381,7 @@ export function quirkInfo(data : any, key : string) : bigDecimal{
     if (Object.values(Stat).includes(key)) {
         if ( quirks.length > 0) {
             quirks.forEach((g : any) => {
-                if (!_.isUndefined(g[key])) {
-                    stat *= ((g[key] + 100) / 100)
-                }
+                stat *= ((g.getStatValue(key) + 100) / 100)
             })
         }
     }

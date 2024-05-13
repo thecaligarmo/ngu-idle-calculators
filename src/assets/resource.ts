@@ -1,5 +1,4 @@
 import _ from "lodash"
-import { GameMode } from "./mode"
 
 
 export type prop = [string, number][] | [string, number, number][]
@@ -35,6 +34,12 @@ export default class Resource {
         for (var prop of Object.keys(this.base)) {
             this[prop] = (this.level > 0) ?  this.base[prop] : 0
         }
+    }
+    getStatValue(prop: string, level : number = -1) : number {
+        if(!_.isUndefined(this[prop])) {
+            return this[prop]
+        }
+        return 0
     }
 }
 

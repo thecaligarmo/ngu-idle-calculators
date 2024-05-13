@@ -2,7 +2,7 @@ import { bd } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 
-class AttackStat {
+export class AttackStat {
     attackRate: number
     power: bigDecimal
     toughness: bigDecimal
