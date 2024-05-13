@@ -1,4 +1,5 @@
 // https://upmostly.com/next-js/using-localstorage-in-next-js
+import ESSerializer from 'esserializer';
 import { AdvTraining } from "@/assets/advTraining";
 import { APItem } from "@/assets/apItems";
 import { Beard } from "@/assets/beards";
@@ -17,7 +18,6 @@ import { Stat } from "@/assets/stat";
 import Zone from "@/assets/zones";
 import bigDecimal from "js-big-decimal";
 import { useEffect, useState } from "react";
-const ESSerializer = require('esserializer');
 
 export function useLocalStorage(key: string, fallbackValue : any) {
     var fbV : string = fallbackValue.toString()
