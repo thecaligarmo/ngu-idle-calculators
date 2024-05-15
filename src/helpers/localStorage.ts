@@ -24,6 +24,24 @@ export function useLocalStorage(key: string, fallbackValue : any) {
     const [value, setValue] = useState<any>(fallbackValue);
 
     useEffect(() => {
+        console.log('advTrain', AdvTraining)
+        console.log('apitem', APItem)
+        console.log( 'beard', Beard)
+        console.log('challenge', Challenge)
+        console.log('digger', Digger)
+        console.log('enemy', Enemy)
+        console.log('item', Item)
+        console.log('macguff', MacGuffin)
+        console.log('game mode',  GameMode)
+        console.log('ngu', NGU)
+        console.log('perk', Perk)
+        console.log('quirk', Quirk)
+        console.log('resource', Resource)
+        console.log('itemset', ItemSet)
+        console.log('stat',  Stat)
+        console.log('zone',  Zone)
+        console.log('attackstat', AttackStat)
+        console.log('bigdecimal', bigDecimal)
         const stored = localStorage.getItem(key);
         if (stored) {
             var x = ESSerializer.deserialize(stored, [AdvTraining, APItem, Beard, Challenge, Digger, Enemy, Item, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Zone, AttackStat, bigDecimal]);
