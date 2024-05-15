@@ -1,15 +1,10 @@
 'use client'
 
-import { createStatesForData } from "@/helpers/stateForData";
-
-// import Container from '@/components/container';
-// import ContentSection from '@/components/contentSection';
-// import { PropsWithChildren } from 'react';
-
+import { getPlayerData } from "../components/context";
 
 
 export default function Home() {
-    const playerStates = createStatesForData();
+    getPlayerData();
     return (
         <p>Test</p>
     )
