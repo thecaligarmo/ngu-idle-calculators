@@ -13,6 +13,7 @@ import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
 import { MACGUFFINS, MacGuffin } from "@/assets/macguffins";
 import { bd } from "./numbers";
 import { isMaxxedItem, isMaxxedItemSet } from "./resourceInfo";
+import { GameMode } from "../assets/mode";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
@@ -25,19 +26,19 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'baseEnergyPower':
                 return playerData.energyPower;
             case 'baseEnergyBar':
-                return playerData.energyBars.low;
+                return playerData.energyBars;
             case 'baseEnergyCap':
-                return playerData.capEnergy.low;
+                return playerData.capEnergy;
             case 'baseMagicBar':
-                return playerData.magic.magicPerBar.low;
+                return playerData.magic.magicPerBar;
             case 'baseMagicCap':
-                return playerData.magic.capMagic.low;
+                return playerData.magic.capMagic;
             case 'baseMagicPower':
                 return playerData.magic.magicPower;
             case 'baseResource3Bar':
-                return playerData.res3.res3PerBar.low;
+                return playerData.res3.res3PerBar;
             case 'baseResource3Cap':
-                return playerData.res3.capRes3.low;
+                return playerData.res3.capRes3;
             case 'baseResource3Power':
                 return playerData.res3.res3Power;
 
@@ -59,198 +60,198 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.inventory.cubeToughness;
 
             case 'energyNGUAugmentsLevel':
-                return playerData.NGU.skills[0].level.low;
+                return playerData.NGU.skills[0].level;
             case 'energyNGUWandoosLevel':
-                return playerData.NGU.skills[1].level.low;
+                return playerData.NGU.skills[1].level;
             case 'energyNGURespawnLevel':
-                return playerData.NGU.skills[2].level.low;
+                return playerData.NGU.skills[2].level;
             case 'energyNGUGoldLevel':
-                return playerData.NGU.skills[3].level.low;
+                return playerData.NGU.skills[3].level;
             case 'energyNGUAdventureALevel':
-                return playerData.NGU.skills[4].level.low;
+                return playerData.NGU.skills[4].level;
             case 'energyNGUPowerALevel':
-                return playerData.NGU.skills[5].level.low;
+                return playerData.NGU.skills[5].level;
             case 'energyNGUDropChanceLevel':
-                return playerData.NGU.skills[6].level.low;
+                return playerData.NGU.skills[6].level;
             case 'energyNGUMagicNGULevel':
-                return playerData.NGU.skills[7].level.low;
+                return playerData.NGU.skills[7].level;
             case 'energyNGUPPLevel':
-                return playerData.NGU.skills[8].level.low;
+                return playerData.NGU.skills[8].level;
             case 'energyNGUAugmentsTarget':
-                return playerData.NGU.skills[0].target.low;
+                return playerData.NGU.skills[0].target;
             case 'energyNGUWandoosTarget':
-                return playerData.NGU.skills[1].target.low;
+                return playerData.NGU.skills[1].target;
             case 'energyNGURespawnTarget':
-                return playerData.NGU.skills[2].target.low;
+                return playerData.NGU.skills[2].target;
             case 'energyNGUGoldTarget':
-                return playerData.NGU.skills[3].target.low;
+                return playerData.NGU.skills[3].target;
             case 'energyNGUAdventureATarget':
-                return playerData.NGU.skills[4].target.low;
+                return playerData.NGU.skills[4].target;
             case 'energyNGUPowerATarget':
-                return playerData.NGU.skills[5].target.low;
+                return playerData.NGU.skills[5].target;
             case 'energyNGUDropChanceTarget':
-                return playerData.NGU.skills[6].target.low;
+                return playerData.NGU.skills[6].target;
             case 'energyNGUMagicNGUTarget':
-                return playerData.NGU.skills[7].target.low;
+                return playerData.NGU.skills[7].target;
             case 'energyNGUPPTarget':
-                return playerData.NGU.skills[8].target.low;
+                return playerData.NGU.skills[8].target;
             case 'energyNGUAugmentsEvilLevel':
-                return playerData.NGU.skills[0].evilLevel.low;
+                return playerData.NGU.skills[0].evilLevel;
             case 'energyNGUWandoosEvilLevel':
-                return playerData.NGU.skills[1].evilLevel.low;
+                return playerData.NGU.skills[1].evilLevel;
             case 'energyNGURespawnEvilLevel':
-                return playerData.NGU.skills[2].evilLevel.low;
+                return playerData.NGU.skills[2].evilLevel;
             case 'energyNGUGoldEvilLevel':
-                return playerData.NGU.skills[3].evilLevel.low;
+                return playerData.NGU.skills[3].evilLevel;
             case 'energyNGUAdventureAEvilLevel':
-                return playerData.NGU.skills[4].evilLevel.low;
+                return playerData.NGU.skills[4].evilLevel;
             case 'energyNGUPowerAEvilLevel':
-                return playerData.NGU.skills[5].evilLevel.low;
+                return playerData.NGU.skills[5].evilLevel;
             case 'energyNGUDropChanceEvilLevel':
-                return playerData.NGU.skills[6].evilLevel.low;
+                return playerData.NGU.skills[6].evilLevel;
             case 'energyNGUMagicNGUEvilLevel':
-                return playerData.NGU.skills[7].evilLevel.low;
+                return playerData.NGU.skills[7].evilLevel;
             case 'energyNGUPPEvilLevel':
-                return playerData.NGU.skills[8].evilLevel.low;
+                return playerData.NGU.skills[8].evilLevel;
             case 'energyNGUAugmentsEvilTarget':
-                return playerData.NGU.skills[0].evilTarget.low;
+                return playerData.NGU.skills[0].evilTarget;
             case 'energyNGUWandoosEvilTarget':
-                return playerData.NGU.skills[1].evilTarget.low;
+                return playerData.NGU.skills[1].evilTarget;
             case 'energyNGURespawnEvilTarget':
-                return playerData.NGU.skills[2].evilTarget.low;
+                return playerData.NGU.skills[2].evilTarget;
             case 'energyNGUGoldEvilTarget':
-                return playerData.NGU.skills[3].evilTarget.low;
+                return playerData.NGU.skills[3].evilTarget;
             case 'energyNGUAdventureAEvilTarget':
-                return playerData.NGU.skills[4].evilTarget.low;
+                return playerData.NGU.skills[4].evilTarget;
             case 'energyNGUPowerAEvilTarget':
-                return playerData.NGU.skills[5].evilTarget.low;
+                return playerData.NGU.skills[5].evilTarget;
             case 'energyNGUDropChanceEvilTarget':
-                return playerData.NGU.skills[6].evilTarget.low;
+                return playerData.NGU.skills[6].evilTarget;
             case 'energyNGUMagicNGUEvilTarget':
-                return playerData.NGU.skills[7].evilTarget.low;
+                return playerData.NGU.skills[7].evilTarget;
             case 'energyNGUPPEvilTarget':
-                return playerData.NGU.skills[8].evilTarget.low;
+                return playerData.NGU.skills[8].evilTarget;
             case 'energyNGUAugmentsSadisticLevel':
-                return playerData.NGU.skills[0].sadisticLevel.low;
+                return playerData.NGU.skills[0].sadisticLevel;
             case 'energyNGUWandoosSadisticLevel':
-                return playerData.NGU.skills[1].sadisticLevel.low;
+                return playerData.NGU.skills[1].sadisticLevel;
             case 'energyNGURespawnSadisticLevel':
-                return playerData.NGU.skills[2].sadisticLevel.low;
+                return playerData.NGU.skills[2].sadisticLevel;
             case 'energyNGUGoldSadisticLevel':
-                return playerData.NGU.skills[3].sadisticLevel.low;
+                return playerData.NGU.skills[3].sadisticLevel;
             case 'energyNGUAdventureASadisticLevel':
-                return playerData.NGU.skills[4].sadisticLevel.low;
+                return playerData.NGU.skills[4].sadisticLevel;
             case 'energyNGUPowerASadisticLevel':
-                return playerData.NGU.skills[5].sadisticLevel.low;
+                return playerData.NGU.skills[5].sadisticLevel;
             case 'energyNGUDropChanceSadisticLevel':
-                return playerData.NGU.skills[6].sadisticLevel.low;
+                return playerData.NGU.skills[6].sadisticLevel;
             case 'energyNGUMagicNGUSadisticLevel':
-                return playerData.NGU.skills[7].sadisticLevel.low;
+                return playerData.NGU.skills[7].sadisticLevel;
             case 'energyNGUPPSadisticLevel':
-                return playerData.NGU.skills[8].sadisticLevel.low;
+                return playerData.NGU.skills[8].sadisticLevel;
             case 'energyNGUAugmentsSadisticTarget':
-                return playerData.NGU.skills[0].sadisticTarget.low;
+                return playerData.NGU.skills[0].sadisticTarget;
             case 'energyNGUWandoosSadisticTarget':
-                return playerData.NGU.skills[1].sadisticTarget.low;
+                return playerData.NGU.skills[1].sadisticTarget;
             case 'energyNGURespawnSadisticTarget':
-                return playerData.NGU.skills[2].sadisticTarget.low;
+                return playerData.NGU.skills[2].sadisticTarget;
             case 'energyNGUGoldSadisticTarget':
-                return playerData.NGU.skills[3].sadisticTarget.low;
+                return playerData.NGU.skills[3].sadisticTarget;
             case 'energyNGUAdventureASadisticTarget':
-                return playerData.NGU.skills[4].sadisticTarget.low;
+                return playerData.NGU.skills[4].sadisticTarget;
             case 'energyNGUPowerASadisticTarget':
-                return playerData.NGU.skills[5].sadisticTarget.low;
+                return playerData.NGU.skills[5].sadisticTarget;
             case 'energyNGUDropChanceSadisticTarget':
-                return playerData.NGU.skills[6].sadisticTarget.low;
+                return playerData.NGU.skills[6].sadisticTarget;
             case 'energyNGUMagicNGUSadisticTarget':
-                return playerData.NGU.skills[7].sadisticTarget.low;
+                return playerData.NGU.skills[7].sadisticTarget;
             case 'energyNGUPPSadisticTarget':
-                return playerData.NGU.skills[8].sadisticTarget.low;
+                return playerData.NGU.skills[8].sadisticTarget;
                 
             case 'magicNGUYggdrasilLevel':
-                return playerData.NGU.magicSkills[0].level.low;
+                return playerData.NGU.magicSkills[0].level;
             case 'magicNGUExpLevel':
-                return playerData.NGU.magicSkills[1].level.low;
+                return playerData.NGU.magicSkills[1].level;
             case 'magicNGUPowerBLevel':
-                return playerData.NGU.magicSkills[2].level.low;
+                return playerData.NGU.magicSkills[2].level;
             case 'magicNGUNumberLevel':
-                return playerData.NGU.magicSkills[3].level.low;
+                return playerData.NGU.magicSkills[3].level;
             case 'magicNGUTimeMachineLevel':
-                return playerData.NGU.magicSkills[4].level.low;
+                return playerData.NGU.magicSkills[4].level;
             case 'magicNGUEnergyNGULevel':
-                return playerData.NGU.magicSkills[5].level.low;
+                return playerData.NGU.magicSkills[5].level;
             case 'magicNGUAdventureBLevel':
-                return playerData.NGU.magicSkills[6].level.low;
+                return playerData.NGU.magicSkills[6].level;
             case 'magicNGUYggdrasilTarget':
-                return playerData.NGU.magicSkills[0].target.low;
+                return playerData.NGU.magicSkills[0].target;
             case 'magicNGUExpTarget':
-                return playerData.NGU.magicSkills[1].target.low;
+                return playerData.NGU.magicSkills[1].target;
             case 'magicNGUPowerBTarget':
-                return playerData.NGU.magicSkills[2].target.low;
+                return playerData.NGU.magicSkills[2].target;
             case 'magicNGUNumberTarget':
-                return playerData.NGU.magicSkills[3].target.low;
+                return playerData.NGU.magicSkills[3].target;
             case 'magicNGUTimeMachineTarget':
-                return playerData.NGU.magicSkills[4].target.low;
+                return playerData.NGU.magicSkills[4].target;
             case 'magicNGUEnergyNGUTarget':
-                return playerData.NGU.magicSkills[5].target.low;
+                return playerData.NGU.magicSkills[5].target;
             case 'magicNGUAdventureBTarget':
-                return playerData.NGU.magicSkills[6].target.low;
+                return playerData.NGU.magicSkills[6].target;
             case 'magicNGUYggdrasilEvilLevel':
-                return playerData.NGU.magicSkills[0].evilLevel.low;
+                return playerData.NGU.magicSkills[0].evilLevel;
             case 'magicNGUExpEvilLevel':
-                return playerData.NGU.magicSkills[1].evilLevel.low;
+                return playerData.NGU.magicSkills[1].evilLevel;
             case 'magicNGUPowerBEvilLevel':
-                return playerData.NGU.magicSkills[2].evilLevel.low;
+                return playerData.NGU.magicSkills[2].evilLevel;
             case 'magicNGUNumberEvilLevel':
-                return playerData.NGU.magicSkills[3].evilLevel.low;
+                return playerData.NGU.magicSkills[3].evilLevel;
             case 'magicNGUTimeMachineEvilLevel':
-                return playerData.NGU.magicSkills[4].evilLevel.low;
+                return playerData.NGU.magicSkills[4].evilLevel;
             case 'magicNGUEnergyNGUEvilLevel':
-                return playerData.NGU.magicSkills[5].evilLevel.low;
+                return playerData.NGU.magicSkills[5].evilLevel;
             case 'magicNGUAdventureBEvilLevel':
-                return playerData.NGU.magicSkills[6].evilLevel.low;
+                return playerData.NGU.magicSkills[6].evilLevel;
             case 'magicNGUYggdrasilEvilTarget':
-                return playerData.NGU.magicSkills[0].evilTarget.low;
+                return playerData.NGU.magicSkills[0].evilTarget;
             case 'magicNGUExpEvilTarget':
-                return playerData.NGU.magicSkills[1].evilTarget.low;
+                return playerData.NGU.magicSkills[1].evilTarget;
             case 'magicNGUPowerBEvilTarget':
-                return playerData.NGU.magicSkills[2].evilTarget.low;
+                return playerData.NGU.magicSkills[2].evilTarget;
             case 'magicNGUNumberEvilTarget':
-                return playerData.NGU.magicSkills[3].evilTarget.low;
+                return playerData.NGU.magicSkills[3].evilTarget;
             case 'magicNGUTimeMachineEvilTarget':
-                return playerData.NGU.magicSkills[4].evilTarget.low;
+                return playerData.NGU.magicSkills[4].evilTarget;
             case 'magicNGUEnergyNGUEvilTarget':
-                return playerData.NGU.magicSkills[5].evilTarget.low;
+                return playerData.NGU.magicSkills[5].evilTarget;
             case 'magicNGUAdventureBEvilTarget':
-                return playerData.NGU.magicSkills[6].evilTarget.low;
+                return playerData.NGU.magicSkills[6].evilTarget;
             case 'magicNGUYggdrasilSadisticLevel':
-                return playerData.NGU.magicSkills[0].sadisticLevel.low;
+                return playerData.NGU.magicSkills[0].sadisticLevel;
             case 'magicNGUExpSadisticLevel':
-                return playerData.NGU.magicSkills[1].sadisticLevel.low;
+                return playerData.NGU.magicSkills[1].sadisticLevel;
             case 'magicNGUPowerBSadisticLevel':
-                return playerData.NGU.magicSkills[2].sadisticLevel.low;
+                return playerData.NGU.magicSkills[2].sadisticLevel;
             case 'magicNGUNumberSadisticLevel':
-                return playerData.NGU.magicSkills[3].sadisticLevel.low;
+                return playerData.NGU.magicSkills[3].sadisticLevel;
             case 'magicNGUTimeMachineSadisticLevel':
-                return playerData.NGU.magicSkills[4].sadisticLevel.low;
+                return playerData.NGU.magicSkills[4].sadisticLevel;
             case 'magicNGUEnergyNGUSadisticLevel':
-                return playerData.NGU.magicSkills[5].sadisticLevel.low;
+                return playerData.NGU.magicSkills[5].sadisticLevel;
             case 'magicNGUAdventureBSadisticLevel':
-                return playerData.NGU.magicSkills[6].sadisticLevel.low;
+                return playerData.NGU.magicSkills[6].sadisticLevel;
             case 'magicNGUYggdrasilSadisticTarget':
-                return playerData.NGU.magicSkills[0].sadisticTarget.low;
+                return playerData.NGU.magicSkills[0].sadisticTarget;
             case 'magicNGUExpSadisticTarget':
-                return playerData.NGU.magicSkills[1].sadisticTarget.low;
+                return playerData.NGU.magicSkills[1].sadisticTarget;
             case 'magicNGUPowerBSadisticTarget':
-                return playerData.NGU.magicSkills[2].sadisticTarget.low;
+                return playerData.NGU.magicSkills[2].sadisticTarget;
             case 'magicNGUNumberSadisticTarget':
-                return playerData.NGU.magicSkills[3].sadisticTarget.low;
+                return playerData.NGU.magicSkills[3].sadisticTarget;
             case 'magicNGUTimeMachineSadisticTarget':
-                return playerData.NGU.magicSkills[4].sadisticTarget.low;
+                return playerData.NGU.magicSkills[4].sadisticTarget;
             case 'magicNGUEnergyNGUSadisticTarget':
-                return playerData.NGU.magicSkills[5].sadisticTarget.low;
+                return playerData.NGU.magicSkills[5].sadisticTarget;
             case 'magicNGUAdventureBSadisticTarget':
-                return playerData.NGU.magicSkills[6].sadisticTarget.low;
+                return playerData.NGU.magicSkills[6].sadisticTarget;
 
 
             case 'gameMode':
@@ -258,7 +259,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'resource3Active':
                 return playerData.res3.res3On;
             case 'yggdrasilDropChance':
-                return playerData.yggdrasil.totalLuck.low / 20 + 100
+                return playerData.yggdrasil.totalLuck / 20 + 100
 
 
 
@@ -270,7 +271,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     advTrainings.push(ADVTRAININGS[c])
                 }
                 for (var c = 0; c < 5; c++) {
-                    advTrainings[c].setLevel(playerData.advancedTraining.level[c].low)
+                    advTrainings[c].setLevel(playerData.advancedTraining.level[c])
                 }
                 return advTrainings
             case 'apItems':
@@ -301,8 +302,8 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 playerData.beards.beards.forEach((beard : any, index : number) => {
                     if (!_.isUndefined(BEARDS[index])) {
                         var b = BEARDS[index]
-                        b.setLevel(beard.beardLevel.low)
-                        b.setPermLevel(beard.permLevel.low)
+                        b.setLevel(beard.beardLevel)
+                        b.setPermLevel(beard.permLevel)
                         beards.push(b)
                     }
                 })
@@ -310,8 +311,12 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return beards
             case 'challenges':
                 var challenges : Challenge[] = []
+                var evilChallenges : Challenge[] = []
+                var sadChallenges : Challenge[] = []
                 for (var c = 0; c < 11; c++) {
                     challenges.push(CHALLENGES[c])
+                    evilChallenges.push(CHALLENGES[c + 100])
+                    sadChallenges.push(CHALLENGES[c + 200])
                 }
                 challenges[0].importStats(playerData.challenges.basicChallenge)
                 challenges[1].importStats(playerData.challenges.noAugsChallenge)
@@ -324,16 +329,46 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 challenges[8].importStats(playerData.challenges.blindChallenge)
                 challenges[9].importStats(playerData.challenges.nguChallenge)
                 challenges[10].importStats(playerData.challenges.timeMachineChallenge)
+                
+                evilChallenges[0].importStats(playerData.challenges.basicChallenge)
+                evilChallenges[1].importStats(playerData.challenges.noAugsChallenge)
+                evilChallenges[2].importStats(playerData.challenges.hour24Challenge)
+                evilChallenges[3].importStats(playerData.challenges.levelChallenge10k)
+                evilChallenges[4].importStats(playerData.challenges.noEquipmentChallenge)
+                evilChallenges[5].importStats(playerData.challenges.trollChallenge)
+                evilChallenges[6].importStats(playerData.challenges.noRebirthChallenge)
+                evilChallenges[7].importStats(playerData.challenges.laserSwordChallenge)
+                evilChallenges[8].importStats(playerData.challenges.blindChallenge)
+                evilChallenges[9].importStats(playerData.challenges.nguChallenge)
+                evilChallenges[10].importStats(playerData.challenges.timeMachineChallenge)
 
-                return challenges
+                sadChallenges[0].importStats(playerData.challenges.basicChallenge)
+                sadChallenges[1].importStats(playerData.challenges.noAugsChallenge)
+                sadChallenges[2].importStats(playerData.challenges.hour24Challenge)
+                sadChallenges[3].importStats(playerData.challenges.levelChallenge10k)
+                sadChallenges[4].importStats(playerData.challenges.noEquipmentChallenge)
+                sadChallenges[5].importStats(playerData.challenges.trollChallenge)
+                sadChallenges[6].importStats(playerData.challenges.noRebirthChallenge)
+                sadChallenges[7].importStats(playerData.challenges.laserSwordChallenge)
+                sadChallenges[8].importStats(playerData.challenges.blindChallenge)
+                sadChallenges[9].importStats(playerData.challenges.nguChallenge)
+                sadChallenges[10].importStats(playerData.challenges.timeMachineChallenge);
+
+                var cc : {[key:number] : Challenge[]} = {}
+                cc[GameMode.NORMAL] = challenges
+                cc[GameMode.EVIL] = evilChallenges;
+                cc[GameMode.SADISTIC] = sadChallenges;
+
+                // return challenges.concat(evilChallenges, sadChallenges)
+                return cc
             case 'diggers':
                 var diggers : Digger[] = []
                 playerData.diggers.diggers.forEach((digger : any, id : number) => {
                     var d = DIGGERS[id]
                     if (!_.isUndefined(d)) {
                         d.active = digger.active == 1 ? true : false;
-                        d.setLevel(digger.curLevel.low)
-                        d.setMaxLevel(digger.maxLevel.low)
+                        d.setLevel(digger.curLevel)
+                        d.setMaxLevel(digger.maxLevel)
                         diggers.push(d)
                     }
                 })
@@ -370,6 +405,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return accesories.map((acc : any) => {
                     var item : Item = ITEMS[acc.id]
                     item.importStats(acc)
+
                     return item
                 })
             case 'equipmentTest':
@@ -378,7 +414,6 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return items.map((it : any) => {
                     if(!_.isUndefined(ITEMS[it.id])) {
                         var item : Item = ITEMS[it.id]
-                        item.importStats(it)
                         return item
                     } else {
                         console.log(it, " is missing from item list.")
@@ -421,6 +456,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 }
                 playerData.inventory.macguffins.forEach((macguffin : any, index : number) => {
                     if(macguffin.id > 0) {
+                        // id will need to change for things higher than 12
                         macguffins[macguffin.id - 198].setLevel(macguffin.level)
                     }
                 })
@@ -433,10 +469,10 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'perks':
                 var perks : Perk[] = []
                 playerData.adventure.itopod.perkLevel.forEach((perk : any, index : number) => {
-                    if (!_.isUndefined(perk.low) && perk.low > 0) {
+                    if (!_.isUndefined(perk) && perk > 0) {
                         if (!_.isUndefined(PERKS[index])) {
                             var p = PERKS[index]
-                            p.setLevel(perk.low)
+                            p.setLevel(perk)
                             perks.push(p)
                         }
                     }
@@ -446,10 +482,10 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'quirks':
                 var quirks : Quirk[]= []
                 playerData.beastQuest.quirkLevel.forEach((quirk : any, index : number) => {
-                    if (!_.isUndefined(quirk.low) && quirk.low > 0) {
+                    if (!_.isUndefined(quirk) && quirk > 0) {
                         if (!_.isUndefined(QUIRKS[index])) {
                             var q = QUIRKS[index]
-                            q.setLevel(quirk.low)
+                            q.setLevel(quirk)
                             quirks.push(q)
                         }
                     }

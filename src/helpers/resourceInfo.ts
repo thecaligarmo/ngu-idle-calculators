@@ -13,6 +13,7 @@ import { NGU } from "@/assets/ngus";
 import { Perk } from "@/assets/perks";
 import { MacGuffin } from "@/assets/macguffins";
 import { Item } from "@/assets/items";
+import { ALL_GAME_MODES, GameMode } from "@/assets/mode";
 
 
 export function achievementAPBonus(data : any) : bigDecimal {
@@ -186,14 +187,24 @@ export function beardInfoPerm(data: any, key: string) : bigDecimal{
     return bd(stat)
 }
 
-export function challengeInfo(data : any, key : string) : bigDecimal{
-    var challenges : Challenge[] = parseObj(data, 'challenges')
+export function challengeInfo(data : any, key : string, gameMode : number = GameMode.ALL) : bigDecimal{
+    var challenges : {[key:number] : Challenge[]} = parseObj(data, 'challenges')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
-        if ( challenges.length > 0) {
-            challenges.forEach((g) => {
-                stat += g.getStatValue(key)
+        if(gameMode === GameMode.ALL) {
+            ALL_GAME_MODES.forEach((mode) => {
+                if(!_.isUndefined(challenges[mode]) && challenges[mode].length > 0) {
+                    challenges[mode].forEach((g) => {
+                        stat += g.getStatValue(key)
+                    })
+                }
             })
+        } else {
+            if(challenges[gameMode].length > 0) {
+                challenges[gameMode].forEach((g) => {
+                    stat += g.getStatValue(key)
+                })
+            }
         }
     }
     return bd(stat)
@@ -257,7 +268,7 @@ function globalDiggerBonus(data: any ) : number{
         totalLevel = Object.keys(diggers).reduce((curVal: number, d : string) => {return diggers[d].maxLevel + curVal}, 0)
     }
     var challenges : Challenge[] = parseObj(data, 'challenges')
-    var challengeBonus : number = (!_.isUndefined(challenges[10]) && challenges[10].level > 0) ? 5 : 0;
+    var challengeBonus : number = (!_.isUndefined(challenges[GameMode.NORMAL]) && !_.isUndefined(challenges[GameMode.NORMAL][10]) && challenges[GameMode.NORMAL][10].level > 0) ? 5 : 0;
 
     var partySetBonus : number = isMaxxedItemSet(data, ItemSets.PARTY) ? 5 : 0;
 
@@ -308,15 +319,22 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
                     stat += g.getStatValue(key)
                 })
             }
-    }
 
+    }
 
     var cube = cubeInfo(data, key)
 
     switch(key) {
         case Stat.POWER:
+            var basePower = parseNum(data, 'baseAdventurePower')
+            var maxCubePow = basePower.add(bd(stat))
+            var extraPow = Math.sqrt(Number(cube.subtract(maxCubePow).getValue()))
+            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(maxCubePow.add(bd(extraPow)))
         case Stat.TOUGHNESS:
-            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube)
+            var baseToughness = parseNum(data, 'baseAdventureToughness')
+            var maxCubeTough = baseToughness.add(bd(stat))
+            var extraTough = Math.sqrt(Number(cube.subtract(maxCubeTough).getValue()))
+            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(maxCubeTough.add(bd(extraTough)))
         case Stat.ENERGY_POWER:
         case Stat.MAGIC_POWER:
         case Stat.ENERGY_BARS:
@@ -351,10 +369,16 @@ export function nguInfo(data : any, key : string) : bigDecimal{
                 stat *= g.getStatValue(key) / 100
             })
         }
+
+        var x = 1
         if ( mngus.length > 0) {
             mngus.forEach((g) => {
                 stat *= g.getStatValue(key) / 100
+                x *= g.getStatValue(key) / 100
             })
+        }
+        if(key === Stat.POWER) {
+            console.log(x)
         }
     }
 
@@ -368,7 +392,9 @@ export function perkInfo(data : any, key : string) : bigDecimal{
     if (Object.values(Stat).includes(key)) {
         if ( perks.length > 0) {
             perks.forEach((g) => {
-                stat += g.getStatValue(key)
+                if(g.getStatValue(key) > 0) {
+                    stat *= (100 + g.getStatValue(key)) / 100.0
+                }
             })
         }
     }

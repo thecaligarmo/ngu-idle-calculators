@@ -1,5 +1,7 @@
 'use client'
 
+import { Titans } from "@/assets/enemy";
+import { GameMode } from "@/assets/mode";
 import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { ItemSets } from "@/assets/sets";
 import { Zones } from "@/assets/zones";
@@ -22,7 +24,10 @@ export default function Page() {
     var fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired = [['totalRespawnTime', 'totalPPBonus%', 'totalPower'], [ 'blueHeart^', 'redLiquidBonus^','spoopySetBonus^']]
+    var infoRequired = [
+        ['gameMode'], [],
+        ['totalRespawnTime', 'totalPPBonus%', 'totalPower'], [ 'blueHeart^', 'redLiquidBonus^','spoopySetBonus^']
+    ]
 
     // Set extra required (not from playerData)
     var extraRequired = [['itopodFloor', 'bluePill^', 'hoursPerDay']]
@@ -61,14 +66,21 @@ export default function Page() {
                                 ? (v('blueHeart^').compareTo(bd(1)) == 0 ? bd(2.2) : bd(2))
                                 : bd(1)
 
+    var floorAdd = 200
+    if(v('gameMode').compareTo(bd(GameMode.EVIL)) == 0) {
+        floorAdd = 700
+    } else if(v('gameMode').compareTo(bd(GameMode.SADISTIC)) == 0) {
+        floorAdd = 2000
+    }
+
     var pppPerKill = v('totalPPBonus%')
                         .divide(bd(100))
                         .multiply(bluePillMultiplier)
-                        .multiply(bd(itopodFloor + 200))
+                        .multiply(bd(itopodFloor + floorAdd))
                         .floor()
 
     // PPP Per Day
-    // TODO - Still need to add evil/sadistic
+    // TODO - Still need to add Sadistic "bonus pp"
     // PP Bonus -> stats
     // * 
     // little Blue Pills = 2 (with blue heart = 2.2) else 1
@@ -83,6 +95,11 @@ export default function Page() {
 
     /* Titan Info */
     // average PPP per hour from Titans * hoursPerDay / 1000000
+    var tt = Object.values(Titans).map((titan, index) => {
+        var titanPP = titan.getPP(v('totalPPBonus%'))
+        var titanRespawn = titan.getRespawnTime(bd(0))
+        // console.log(titan.name, titanPP, titanRespawn)
+    })
 
 
 

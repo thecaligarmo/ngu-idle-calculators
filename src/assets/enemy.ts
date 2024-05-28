@@ -1,4 +1,4 @@
-import { bd } from "@/helpers/numbers"
+import { bd, bigdec_max } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 
@@ -109,6 +109,12 @@ export class Titan extends Enemy {
     }
     autoKill() : bigDecimal {
         return bd(0)
+    }
+    getPP(ppBonus : bigDecimal) : bigDecimal {
+        return ppBonus.multiply(bd(this.pp))
+    }
+    getRespawnTime(rbChallenges : bigDecimal) : bigDecimal{
+        return bigdec_max(bd(1), bd(this.respawnTime).subtract(rbChallenges.multiply(bd(1/4))))
     }
 }
 

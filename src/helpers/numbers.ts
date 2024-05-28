@@ -63,6 +63,9 @@ export function pn(num : bigDecimal, numberFormat : string = 'scientific', preci
 
 
 export function bd(num : any) : bigDecimal {
+    if(num instanceof bigDecimal) {
+        return num
+    }
     return new bigDecimal(num)
 }
 

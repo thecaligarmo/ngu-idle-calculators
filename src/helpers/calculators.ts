@@ -8,6 +8,8 @@ import bigDecimal from "js-big-decimal";
 import { parseObj, parseNum } from "./parsers";
 import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
 import { ItemSets } from "@/assets/sets";
+import { GameMode } from "@/assets/mode";
+import { Challenge } from "@/assets/challenges";
 
 
 // General Calc - gives a percentage
@@ -95,9 +97,26 @@ export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
 export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
     var aNumberSetModifier : bigDecimal = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.MAGIC_NGU_SPEED)
-    var trollChallenge : any = parseObj(data, 'challenges')[5]
+    var challenges : Challenge[] = parseObj(data, 'challenges')
+    var trollChallenge = (!_.isUndefined(challenges[GameMode.NORMAL]) && challenges[GameMode.NORMAL][5])
     var tcNum : bigDecimal = (!_.isUndefined(trollChallenge) && trollChallenge.level > 0) ? bd(3) : bd(1);
     
+    // console.log('------')
+    // console.log(parseNum(data, 'baseEnergyCap'))
+    // console.log(calcAll(data, Stat.ENERGY_CAP))
+
+    var stat = Stat.MAGIC_NGU_SPEED
+    // console.log('equip', equipmentInfo(data, stat))
+    // console.log('perk', perkInfo(data, stat))
+    // console.log('quirk', quirkInfo(data, stat))
+    // console.log('ngu', nguInfo(data, stat))
+    // console.log('beard', beardInfoTemp(data, stat))
+    // console.log('beard2', beardInfoPerm(data, stat))
+    // console.log('digg', diggerInfo(data, stat))
+    // console.log('challenge', challengeInfo(data, stat))
+    // console.log('ap', apItemInfo(data, stat))
+    // console.log('mac', macguffinInfo(data, stat))
+
     return bd(1)
         .multiply(gen)
         .multiply(totalMagicPower(data))
@@ -151,7 +170,11 @@ export function totalPower(data : any) : bigDecimal {
     var subtotal = basePower.add(equipPower)
 
     // Beast multiplier
-    var beast = parseNum(data, 'beastMode').compareTo(bd(1)) == 0 ? bd(1.4) : bd(1)
+    var beast = (parseNum(data, 'beastMode').compareTo(bd(1)) == 0)
+                ? ( (isMaxxedItem(data, 191)) ? bd(1.5) : bd(1.4))
+                : bd(1)
+
+    // console.log(isMaxxedItem(data, 191))
     
     return subtotal
         .multiply(gen).divide(bd(100))

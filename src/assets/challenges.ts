@@ -2,11 +2,29 @@ import { Stat } from "./stat"
 import Resource, { ResourceContainer, prop } from "./resource"
 import { GameMode } from "./mode"
 
+
+
+const ChallengeKeys : {[key: string]: string} = {
+    BASIC: 'basicChallenge',
+    NO_AUG : 'noAugmentationsChallenge',
+    TWENTY_FOUR : '24HourChallenge',
+    ONE_HUNDRED : '100LevelsChallenge',
+    NO_EQUIP : 'noEquipmentChallenge',
+    TROLL : 'trollChallenge',
+    NO_RB : 'noRebirthChallenge',
+    LASER_SWORD : 'laserSwordChallenge',
+    BLIND : 'blindChallenge',
+    NO_NGU : 'noNGUChallenge',
+    NO_TM: 'noTimeMachineChallenge',
+} as const satisfies {[key: string]: string};
+
+
+
 export class Challenge extends Resource {
     extraProps: any[]
 
-    constructor(id: number, key: string, name: string, mode : number, level: number, props: prop, extraProps: prop = []) {
-        super(id, key, name, mode, level, props)
+    constructor(id: number, key: string, name: string, mode : number, props: prop, extraProps: prop = []) {
+        super(id, key, name, mode, 0, props)
         this.extraProps = extraProps
         this.updateStats()
     }
@@ -28,23 +46,55 @@ export class Challenge extends Resource {
         }
     }
     importStats(data: any) {
-        this.level = data.curCompletions
+        if(this.mode == GameMode.NORMAL) {
+            this.level = data.curCompletions
+        } else if (this.mode == GameMode.EVIL) {
+            this.level = data.curEvilCompletions
+        } else if (this.mode == GameMode.SADISTIC) {
+            this.level = data.curSadisticCompletions
+        }
         this.updateStats()
     }
 }
 
 export const CHALLENGELIST = [
-    new Challenge(0, 'basicChallenge', 'Basic Challenge', GameMode.NORMAL, 0, [[Stat.POWER, 5], [Stat.TOUGHNESS, 5]], [[Stat.POWER, 10, 1], [Stat.TOUGHNESS, 10, 1]]),
-    new Challenge(1, 'noAugmentationsChallenge', 'No Augmentations Challenge',  GameMode.NORMAL, 0, [[Stat.AUGMENT_SPEED, 25]], [[Stat.AUGMENT_SPEED, 10, 1]]),
-    new Challenge(2, '24HourChallenge', '24 Hour Challenge',  GameMode.NORMAL, 0, [], []),
-    new Challenge(3, '100LevelsChallenge', '100 Levels Challenge',  GameMode.NORMAL, 0, [[Stat.ENERGY_WANDOOS_SPEED, 20],[Stat.MAGIC_WANDOOS_SPEED, 20]], []),
-    new Challenge(4, 'noEquipmentChallenge', 'No Equipment Challenge',  GameMode.NORMAL, 0, [], []),
-    new Challenge(5, 'trollChallenge', 'Troll Challenge',  GameMode.NORMAL, 0, [], []),
-    new Challenge(6, 'noRebirthChallenge', 'No Rebirth Challenge',  GameMode.NORMAL, 0, [], []),
-    new Challenge(7, 'laserSwordChallenge', 'Laser Sword Challenge',  GameMode.NORMAL, 0, [], []),
-    new Challenge(8, 'blindChallenge', 'Blind Challenge',  GameMode.NORMAL, 0, [[Stat.DAYCARE_SPEED, 1]], [[Stat.DAYCARE_SPEED, 5, 1]]),
-    new Challenge(9, 'noNGUChallenge', 'No NGU Challenge',  GameMode.NORMAL, 0, [[Stat.ENERGY_NGU_SPEED, 5], [Stat.MAGIC_NGU_SPEED, 5]], []),
-    new Challenge(10, 'noTimeMachineChallenge', 'No Time Machine Challenge',  GameMode.NORMAL, 0, [[Stat.TIME_MACHINE, 100]], []),
+    new Challenge(0, ChallengeKeys.BASIC, 'Basic Challenge', GameMode.NORMAL, [[Stat.POWER, 5], [Stat.TOUGHNESS, 5]], [[Stat.POWER, 10, 1], [Stat.TOUGHNESS, 10, 1]]),
+    new Challenge(1, ChallengeKeys.NO_AUG, 'No Augmentations Challenge',  GameMode.NORMAL, [[Stat.AUGMENT_SPEED, 25]], [[Stat.AUGMENT_SPEED, 10, 1]]),
+    new Challenge(2, ChallengeKeys.TWENTY_FOUR, '24 Hour Challenge',  GameMode.NORMAL, [], []),
+    new Challenge(3, ChallengeKeys.ONE_HUNDRED, '100 Levels Challenge',  GameMode.NORMAL, [[Stat.ENERGY_WANDOOS_SPEED, 20],[Stat.MAGIC_WANDOOS_SPEED, 20]], []),
+    new Challenge(4, ChallengeKeys.NO_EQUIP, 'No Equipment Challenge',  GameMode.NORMAL, [], []),
+    new Challenge(5, ChallengeKeys.TROLL, 'Troll Challenge',  GameMode.NORMAL, [], []),
+    new Challenge(6, ChallengeKeys.NO_RB, 'No Rebirth Challenge',  GameMode.NORMAL, [], []),
+    new Challenge(7, ChallengeKeys.LASER_SWORD, 'Laser Sword Challenge',  GameMode.NORMAL, [], []),
+    new Challenge(8, ChallengeKeys.BLIND, 'Blind Challenge',  GameMode.NORMAL, [[Stat.DAYCARE_SPEED, 1]], [[Stat.DAYCARE_SPEED, 5, 1]]),
+    new Challenge(9, ChallengeKeys.NO_NGU, 'No NGU Challenge',  GameMode.NORMAL, [[Stat.ENERGY_NGU_SPEED, 5], [Stat.MAGIC_NGU_SPEED, 5]], []),
+    new Challenge(10, ChallengeKeys.NO_TM, 'No Time Machine Challenge',  GameMode.NORMAL, [[Stat.TIME_MACHINE, 100]], []),
+
+    //id: number, key: string, name: string, mode : number, level: number, props: prop, extraProps: prop = []
+    new Challenge(100, ChallengeKeys.BASIC, 'Basic Challenge', GameMode.EVIL, [[Stat.POWER, 10], [Stat.TOUGHNESS, 10]], []),
+    new Challenge(101, ChallengeKeys.NO_AUG, 'No Augmentations Challenge',  GameMode.EVIL, [[Stat.AUGMENT_SPEED, 5]], [[Stat.AUGMENT_SPEED, 25, 5]]),
+    new Challenge(102, ChallengeKeys.TWENTY_FOUR, '24 Hour Challenge',  GameMode.EVIL, [], []),
+    new Challenge(103, ChallengeKeys.ONE_HUNDRED, '100 Levels Challenge',  GameMode.EVIL, [], []),
+    new Challenge(104, ChallengeKeys.NO_EQUIP, 'No Equipment Challenge',  GameMode.EVIL, [], []),
+    new Challenge(105, ChallengeKeys.TROLL, 'Troll Challenge',  GameMode.EVIL, [], []),
+    new Challenge(106, ChallengeKeys.NO_RB, 'No Rebirth Challenge',  GameMode.EVIL, [], []),
+    new Challenge(107, ChallengeKeys.LASER_SWORD, 'Laser Sword Challenge',  GameMode.EVIL, [], []),
+    new Challenge(108, ChallengeKeys.BLIND, 'Blind Challenge',  GameMode.EVIL, [[Stat.DAYCARE_SPEED, 2]], []),
+    new Challenge(109, ChallengeKeys.NO_NGU, 'No NGU Challenge',  GameMode.EVIL, [[Stat.HACK_SPEED, 20]], []),
+    new Challenge(110, ChallengeKeys.NO_TM, 'No Time Machine Challenge',  GameMode.EVIL, [], [[Stat.GOLD_DROP, 1000, 1]]),
+
+    //id: number, key: string, name: string, mode : number, level: number, props: prop, extraProps: prop = []
+    new Challenge(200, ChallengeKeys.BASIC, 'Basic Challenge', GameMode.SADISTIC, [], []),
+    new Challenge(201, ChallengeKeys.NO_AUG, 'No Augmentations Challenge',  GameMode.SADISTIC, [], []),
+    new Challenge(202, ChallengeKeys.TWENTY_FOUR, '24 Hour Challenge',  GameMode.SADISTIC, [], []),
+    new Challenge(203, ChallengeKeys.ONE_HUNDRED, '100 Levels Challenge',  GameMode.SADISTIC, [], []),
+    new Challenge(204, ChallengeKeys.NO_EQUIP, 'No Equipment Challenge',  GameMode.SADISTIC, [], []),
+    new Challenge(205, ChallengeKeys.TROLL, 'Troll Challenge',  GameMode.SADISTIC, [], []),
+    new Challenge(206, ChallengeKeys.NO_RB, 'No Rebirth Challenge',  GameMode.SADISTIC, [], []),
+    new Challenge(207, ChallengeKeys.LASER_SWORD, 'Laser Sword Challenge',  GameMode.SADISTIC, [], []),
+    new Challenge(208, ChallengeKeys.BLIND, 'Blind Challenge',  GameMode.SADISTIC, [[Stat.DAYCARE_SPEED, 1]], []),
+    new Challenge(209, ChallengeKeys.NO_NGU, 'No NGU Challenge',  GameMode.SADISTIC, [], []),
+    new Challenge(210, ChallengeKeys.NO_TM, 'No Time Machine Challenge',  GameMode.SADISTIC, [], []),
 ]
 
 export var CHALLENGES = new ResourceContainer(CHALLENGELIST);

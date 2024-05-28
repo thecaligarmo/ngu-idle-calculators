@@ -134,7 +134,7 @@ export default function Page() {
                         <li key="beardPerm">x Beard (permanent) ({pn(beardInfoPerm(playerStates, Stat.POWER), fmt)}%)</li>
                         <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.POWER).round(), fmt)}%)</li>
                         <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.POWER).round(), fmt)}%)</li>
-                        <li key="beastMode">x Beast Mode ({v('beastMode').compareTo(bd(1)) == 0 ? pn(bd(140), fmt) : pn(bd(100), fmt)}%)</li>
+                        <li key="beastMode">x Beast Mode ({pn( (v('beastMode').compareTo(bd(1)) == 0 ? ( (isMaxxedItem(playerStates, 191)) ? bd(150) : bd(140)) : bd(100)), fmt)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalPower(playerStates), fmt)}</span></li>
                     </ul>
                 </ContentSubsection>

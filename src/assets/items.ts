@@ -34,6 +34,7 @@ export class Item extends Resource {
             data.spec2Cur,
             data.spec3Cur,
         ]
+
         
         var added : string[] = []
         types.forEach((id, index) => {

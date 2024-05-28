@@ -48,14 +48,14 @@ export class NGU extends Resource {
     }
     importStats(data: any) : void {
         if(this.id >= 20) {
-            this.level = data.sadisticLevel.low
-            this.target = data.sadisticTarget.low
+            this.level = data.sadisticLevel
+            this.target = data.sadisticTarget
         } else if(this.id >= 10) {
-            this.level = data.evilLevel.low
-            this.target = data.evilTarget.low
+            this.level = data.evilLevel
+            this.target = data.evilTarget
         } else{
-            this.level = data.level.low
-            this.target = data.target.low
+            this.level = data.level
+            this.target = data.target
         }
         this.updateStats()
     }

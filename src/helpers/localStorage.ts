@@ -52,7 +52,6 @@ export function useLocalStorageNumber(key: string, fallbackValue: any, nonzero :
         const stored = localStorage.getItem(key);
         
         if(stored) {
-            
             var x = JSON.parse(stored)
             if (x != value && (!nonzero || fbV != '0') ){
                 setValue(x); //

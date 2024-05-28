@@ -10,7 +10,7 @@ const getJson = obj => {
   if (typeof obj === 'number') return obj
   if (typeof obj === 'string') return obj
   if (typeof obj === 'object') {
-    if (obj instanceof Long) return obj
+    if (obj instanceof Long) return obj.toNumber() // This is where Energy Cap was failing when it got to high. This might need changing if number can't handle things - return new bigDecimal(obj.toString(10))
     if (obj instanceof Array) return obj.map(x => getJson(x))
     if (obj.hasOwnProperty('value')) {
       if (obj.value.hasOwnProperty('_items') && obj.value._items.hasOwnProperty('value') && obj.value._items.value instanceof Array) return obj.value._items.value.map(x => getJson(x))
@@ -121,12 +121,6 @@ export class Deserializer {
     return this.idmap[_id]
   }
 
-  readU32 () {
-    const res = struct.unpack('<L', this.data.slice(this.pos, this.pos + 4))
-    this.pos += 4
-    return res[0]
-  }
-
   getClassValues (metaid) {
     if (!this.meta.hasOwnProperty(metaid)) throw new Error(`Couldn't find meta-id ${metaid}`)
     const cls = JSON.parse(JSON.stringify(this.meta[metaid]))
@@ -181,6 +175,7 @@ export class Deserializer {
   }
 
   getPrimValue (primType) {
+    
     if (primType === 1) return this.readByte()
     if (primType === 6) return this.readDouble()
     if (primType === 8) return this.readI32()
@@ -198,6 +193,12 @@ export class Deserializer {
   readDouble () {
     const res = struct.unpack('<d', this.data.slice(this.pos, this.pos + 8))
     this.pos += 8
+    return res[0]
+  }
+
+  readU32 () {
+    const res = struct.unpack('<L', this.data.slice(this.pos, this.pos + 4))
+    this.pos += 4
     return res[0]
   }
 
