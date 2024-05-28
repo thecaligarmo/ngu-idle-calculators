@@ -32,16 +32,12 @@ export const ItemSets : {[k: string]: ItemSet} = {
     SKY: new ItemSet('sky', Zones.SKY),
     HSB: new ItemSet('HSB', Zones.HSB),
     GRB: new ItemSet('GRB', Zones.GRB),
-    NUMBER: new ItemSet('number', Zones.GRB),
-    SEED: new ItemSet('seed', Zones.GCT),
     CLOCK: new ItemSet('clock', Zones.CLOCK),
     TWO_D: new ItemSet('twoD', Zones.TWO_D),
     SPOOPY: new ItemSet('ghost', Zones.ANCIENT_BATTLEFIELD),
     JAKE: new ItemSet('jake', Zones.JAKE),
     GAUDY: new ItemSet('gaudy', Zones.AVSP),
     MEGA: new ItemSet('mega', Zones.MEGA),
-    UUG: new ItemSet('uug', Zones.UUG),
-    UUG_RINGS: new ItemSet('uugRing', Zones.UUG),
     BEARDVERSE: new ItemSet('beardverse', Zones.BEARDVERSE),
     WANDERER: new ItemSet('waldo', Zones.WALDERP),
     WANDERER2: new ItemSet('antiWaldo', Zones.WALDERP),
@@ -63,7 +59,6 @@ export const ItemSets : {[k: string]: ItemSet} = {
     RADLANDS: new ItemSet('rad', Zones.RADLANDS),
     BACKTOSCHOOL: new ItemSet('school', Zones.BACKTOSCHOOL),
     WESTWORLD: new ItemSet('western', Zones.WESTWORLD),
-    ITHUNGERS: new ItemSet('itHungers', [Zones.ITHUNGERS, Zones.ITHUNGERS2, Zones.ITHUNGERS3, Zones.ITHUNGERS4]),
     BREADVERSE: new ItemSet('bread', Zones.BREADVERSE),
     SEVENTIES: new ItemSet('that70s', Zones.SEVENTIES),
     HALLOWEEN: new ItemSet('halloweenies', Zones.HALLOWEEN),
@@ -73,11 +68,19 @@ export const ItemSets : {[k: string]: ItemSet} = {
     NETHER: new ItemSet('nether', Zones.NETHER),
     AMALGAMATE: new ItemSet('amalgamate', [Zones.AMALGAMATE, Zones.AMALGAMATE2, Zones.AMALGAMATE3, Zones.AMALGAMATE4]),
     PIRATE: new ItemSet('pirate', Zones.PIRATE),
+    NUMBER: new ItemSet('number', Zones.GRB),
+    SEED: new ItemSet('seed', Zones.GCT),
+    UUG: new ItemSet('uug', Zones.UUG),
+    UUG_RINGS: new ItemSet('uugRing', Zones.UUG),
+    NORMAL_ACC: new ItemSet('normalBonusAcc', [])
+    // ITHUNGERS: new ItemSet('itHungers', [Zones.ITHUNGERS, Zones.ITHUNGERS2, Zones.ITHUNGERS3, Zones.ITHUNGERS4]),
+
+
     // Without Zones
-    FOREST_PENDANT: new ItemSet('forestPendant', []),
-    LOOTY: new ItemSet('looty', []),
-    HEART: new ItemSet('haert', []),
-    MISC: new ItemSet('misc', []),
+    // FOREST_PENDANT: new ItemSet('forestPendant', []),
+    // LOOTY: new ItemSet('looty', []),
+    // HEART: new ItemSet('heart', []),
+    // MISC: new ItemSet('misc', []),
 } as const satisfies {[k: string]: ItemSet};
 // space
 // wandoos
@@ -93,7 +96,6 @@ export const ItemSets : {[k: string]: ItemSet} = {
 // pinkHeart
 // severedHead
 // beatingHeart
-// normalBonusAcc
 // evilBonusAcc
 
 // rainbowHeart
@@ -103,6 +105,29 @@ export const ItemSets : {[k: string]: ItemSet} = {
 // greyHeart
 // greenHeart
 // blueHeart
+
+// spaceComplete : 0
+// wandoosComplete : 1
+// tutorialCubeComplete : 1
+// flubberComplete : 1
+// redLiquidComplete : 1
+// brownHeartComplete : 0
+// xlComplete : 1
+// greenHeartComplete : 1
+// itopodKeyComplete : 1
+// purpleLiquidComplete : 1
+// blueHeartComplete : 1
+// jakeNoteComplete : 1
+// purpleHeartComplete : 0
+// orangeHeartComplete : 0
+// greyHeartComplete : 0
+// sigilComplete : 1
+// evidenceComplete : 0
+// pinkHeartComplete : 0
+// severedHeadComplete : 0
+// rainbowHeartComplete : 0
+// beatingHeartComplete : 0
+// evilBonusAccComplete : 0
 
 
 // The following are sets that don't appear in the set list in the save file

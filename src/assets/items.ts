@@ -41,7 +41,7 @@ export class Item extends Resource {
             var ty = StatType[id]
             if (!_.isUndefined(ty)) {
                 var stat = _.isArray(ty[0]) ? ty[0] : [ty[0]]
-                var amt = nums[index] / ty[1]
+                var amt = Math.floor(nums[index] * ty[1]) / (ty[1] ** 2)
                 stat.forEach((t) => {
                     if (added.includes(t)) {
                         this[t] += Math.floor(amt * 100) / 100    
@@ -55,8 +55,8 @@ export class Item extends Resource {
             }
         })
 
-        this[Stat.POWER] = data.curAttack
-        this[Stat.TOUGHNESS] = data.curDefense
+        this[Stat.POWER] = Math.floor(data.curAttack)
+        this[Stat.TOUGHNESS] = Math.floor(data.curDefense)
         this.level = data.level;
     }
     updateStat() {

@@ -125,14 +125,12 @@ test('Exp, AP, PP for Early Normal 2', () => {
 });
 test('Adventure for Early Normal 2', () => {
     var playerData = toDataObj(earlyNormalTwo)
-    // These might be wrong as save file added AT
-    expect(Number(totalPower(playerData).getValue())).toBeCloseTo(10276, 0)
-    expect(Number(totalToughness(playerData).getValue())).toBeCloseTo(8884, 0)
+    expect(Number(totalPower(playerData).getValue())).toBeCloseTo(23253, 0)
+    expect(Number(totalToughness(playerData).getValue())).toBeCloseTo(20102, 0)
 });
 test('Misc Adventure for Early Normal 2', () => {
     var playerData = toDataObj(earlyNormalTwo)
-    // Gold Drop might be wrong as save file added NGU
-    expect(Number(totalGoldDrop(playerData).getValue())).toBeCloseTo(371, 0)
+    expect(Number(totalGoldDrop(playerData).getValue())).toBeCloseTo(854, 0)
     expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(95, 0)
     expect(Number(totalDropChance(playerData).getValue())).toBeCloseTo(155, 0)
 })
@@ -181,9 +179,9 @@ test('Exp, AP, PP for Mid Normal 1', () => {
 test('Adventure for Mid Normal 1', () => {
     var playerData = toDataObj(midNormal)
     // These might be wrong as save file added AT
-    var ec = expectClose(Number(totalPower(playerData).getValue()), 1451000, 4)
+    var ec = expectClose(Number(totalPower(playerData).getValue()), 1452000, 4)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalToughness(playerData).getValue()), 978500, 3)
+    var ec = expectClose(Number(totalToughness(playerData).getValue()), 978531, 3)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
 });
 test('Misc Adventure for Mid Normal 1', () => {
@@ -224,9 +222,9 @@ test('Magic for Mid Normal 2', () => {
 });
 test('NGU for Mid Normal 2', () => {
     var playerData = toDataObj(midNormalTwo)
-    var ec = expectClose(Number(totalEnergyNGUSpeedFactor(playerData).getValue()), 1450000000, 6)
+    var ec = expectClose(Number(totalEnergyNGUSpeedFactor(playerData).getValue()), 1290000000, 6)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicNGUSpeedFactor(playerData).getValue()), 729000000, 5)
+    var ec = expectClose(Number(totalMagicNGUSpeedFactor(playerData).getValue()), 648400000, 5)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
 });
 test('Exp, AP, PP for Mid Normal 2', () => {
@@ -237,19 +235,18 @@ test('Exp, AP, PP for Mid Normal 2', () => {
 });
 test('Adventure for Mid Normal 2', () => {
     var playerData = toDataObj(midNormalTwo)
-    // These might be wrong as save file added AT
-    var ec = expectClose(Number(totalPower(playerData).getValue()), 1119000000, 9)
+    // These numbers will change as Cube increases in offline
+    var ec = expectClose(Number(totalPower(playerData).getValue()), 1189000000, 9)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalToughness(playerData).getValue()), 683000000, 6)
+    var ec = expectClose(Number(totalToughness(playerData).getValue()), 783600000, 6)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
 });
 test('Misc Adventure for Mid Normal 2', () => {
     var playerData = toDataObj(midNormalTwo)
-    // Drop Chance might be wrong as save file added Beard
-    var ec = expectClose(Number(totalGoldDrop(playerData).getValue()), 2520000, 3)
+    var ec = expectClose(Number(totalGoldDrop(playerData).getValue()), 2638000, 3)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
     expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(63.08, 0)
-    expect(Number(totalDropChance(playerData).getValue())).toBeCloseTo(14289, 0)
+    expect(Number(totalDropChance(playerData).getValue())).toBeCloseTo(15760, 0)
 })
 
 
@@ -283,31 +280,30 @@ test('Magic for Late Normal', () => {
 });
 test('NGU for Late Normal', () => {
     var playerData = toDataObj(lateNormal)
-    var ec = expectClose(Number(totalEnergyNGUSpeedFactor(playerData).getValue()), 1562000000000, 9)
+    var ec = expectClose(Number(totalEnergyNGUSpeedFactor(playerData).getValue()), 1091000000000, 9)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicNGUSpeedFactor(playerData).getValue()), 1633000000000, 9)
+    var ec = expectClose(Number(totalMagicNGUSpeedFactor(playerData).getValue()), 1163000000000, 9)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
 });
 test('Exp, AP, PP for Late Normal', () => {
     var playerData = toDataObj(lateNormal)
-    expect(Number(totalExpBonus(playerData).getValue())).toBeCloseTo(1042.95, 0)
+    expect(Number(totalExpBonus(playerData).getValue())).toBeCloseTo(1776.49, 0)
     expect(Number(totalAPBonus(playerData).getValue())).toBeCloseTo(173.76, 2)
     expect(Number(totalPPBonus(playerData).getValue())).toBeCloseTo(348.58, 0)
 });
 test('Adventure for Late Normal', () => {
     var playerData = toDataObj(lateNormal)
-    // These might be wrong as save file added AT
-    var ec = expectClose(Number(totalPower(playerData).getValue()), 1689000000000, 9)
+    // These numbers will change as Cube increases in offline
+    var ec = expectClose(Number(totalPower(playerData).getValue()), 1010000000000, 9)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalToughness(playerData).getValue()), 1185000000000, 9)
+    var ec = expectClose(Number(totalToughness(playerData).getValue()), 674700000000, 8)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
 });
 test('Misc Adventure for Late Normal', () => {
     var playerData = toDataObj(lateNormal)
-    // Drop Chance might be wrong as save file added Beard
-    var ec = expectClose(Number(totalGoldDrop(playerData).getValue()), 15410000000, 7)
+    var ec = expectClose(Number(totalGoldDrop(playerData).getValue()), 15600000000, 7)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
     expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(41.15, 0)
-    var ec = expectClose(Number(totalDropChance(playerData).getValue()), 11460000, 4)
+    var ec = expectClose(Number(totalDropChance(playerData).getValue()), 10440000, 4)
     expect(ec[0]).toBeCloseTo(ec[1], 0)
 })

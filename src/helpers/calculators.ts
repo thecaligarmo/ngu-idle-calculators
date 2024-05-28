@@ -224,6 +224,7 @@ export function totalRespawnRate(data : any) : bigDecimal {
 export function totalDropChance(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.DROP_CHANCE)
     var twoDSetModifier = isMaxxedItemSet(data, ItemSets.TWO_D) ? bd(1.0743) : bd(1)
+    var dropChanceSetModifier = isMaxxedItemSet(data, ItemSets.NORMAL_ACC) ? bd(1.25) : bd(1)
     var bloodModifier = (parseNum(data, 'bloodMagicDropChance').add(bd(100))).divide(bd(100))
     var yggdrasilModifier = parseNum(data, 'yggdrasilDropChance').divide(bd(100))
 
@@ -232,5 +233,6 @@ export function totalDropChance(data : any) : bigDecimal {
         .multiply(twoDSetModifier)
         .multiply(bloodModifier)
         .multiply(yggdrasilModifier)
+        .multiply(dropChanceSetModifier)
     
 }

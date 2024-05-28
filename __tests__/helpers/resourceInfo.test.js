@@ -73,6 +73,8 @@ test('Equipment - Early Normal', () => {
         'equipmentAccesories' : [defaultPlayerData(earlyNormal, 'equipmentAccesories')],
         'cubePower' : [defaultPlayerData(earlyNormal, 'cubePower')],
         'cubeToughness' : [defaultPlayerData(earlyNormal, 'cubeToughness')],
+        'baseAdventurePower' : [defaultPlayerData(earlyNormal, 'baseAdventurePower')],
+        'baseAdventureToughness' : [defaultPlayerData(earlyNormal, 'baseAdventureToughness')],
     }
     var val = Number(equipmentInfo(data, Stat.POWER).getValue())
     expect(val).toBeCloseTo(435, 0)
@@ -210,7 +212,7 @@ test('Achievement info - Early Normal 2', () => {
 test('Advanced Training info - Early Normal 2', () => {
     var data = { 'advTrainings' : [defaultPlayerData(earlyNormalTwo, 'advTrainings')]}
     var val = Number(advTrainingInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(133, 0)
+    expect(val).toBeCloseTo(301.3, 0)
     var val = Number(advTrainingInfo(data, Stat.ENERGY_POWER).getValue())
     expect(val).toBeCloseTo(100, 0)
 });
@@ -265,9 +267,13 @@ test('Equipment - Early Normal 2', () => {
         'equipmentAccesories' : [defaultPlayerData(earlyNormalTwo, 'equipmentAccesories')],
         'cubePower' : [defaultPlayerData(earlyNormalTwo, 'cubePower')],
         'cubeToughness' : [defaultPlayerData(earlyNormalTwo, 'cubeToughness')],
+        'baseAdventurePower' : [defaultPlayerData(earlyNormalTwo, 'baseAdventurePower')],
+        'baseAdventureToughness' : [defaultPlayerData(earlyNormalTwo, 'baseAdventureToughness')],
     }
     var val = Number(equipmentInfo(data, Stat.POWER).getValue())
     expect(val).toBeCloseTo(6736, 0)
+    var val = Number(equipmentInfo(data, Stat.TOUGHNESS).getValue())
+    expect(val).toBeCloseTo(5779, 0)
 
     var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
     expect(val).toBeCloseTo(511, 0)
@@ -307,11 +313,11 @@ test('NGU - Early Normal 2', () => {
     var val = Number(nguInfo(data, Stat.POWER).getValue())
     expect(val).toBeCloseTo(100, 0)
     var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(100, 0)
+    expect(val).toBeCloseTo(101.4, 0)
     var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
     expect(val).toBeCloseTo(100, 0)
     var val = Number(nguInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(140, 0)
+    expect(val).toBeCloseTo(915, 0)
     var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
     expect(val).toBeCloseTo(100, 0)
 });
@@ -456,6 +462,8 @@ test('Equipment - Mid Normal 1', () => {
         'equipmentAccesories' : [defaultPlayerData(midNormal, 'equipmentAccesories')],
         'cubePower' : [defaultPlayerData(midNormal, 'cubePower')],
         'cubeToughness' : [defaultPlayerData(midNormal, 'cubeToughness')],
+        'baseAdventurePower' : [defaultPlayerData(midNormal, 'baseAdventurePower')],
+        'baseAdventureToughness' : [defaultPlayerData(midNormal, 'baseAdventureToughness')],
     }
     var val = Number(equipmentInfo(data, Stat.POWER).getValue())
     expect(val).toBeCloseTo(198896, 0)
@@ -602,9 +610,9 @@ test('AP - Mid Normal 2', () => {
 test('Beard Temp - Mid Normal 2', () => {
     var data = { 'beards' : [defaultPlayerData(midNormalTwo, 'beards')]}
     var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(205.4, 1)
+    expect(val).toBeCloseTo(100, 1)
     var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(174.47, 1)
+    expect(val).toBeCloseTo(100, 1)
 });
 
 test('Beard Perm - Mid Normal 2', () => {
@@ -643,16 +651,19 @@ test('Equipment - Mid Normal 2', () => {
         'equipmentAccesories' : [defaultPlayerData(midNormalTwo, 'equipmentAccesories')],
         'cubePower' : [defaultPlayerData(midNormalTwo, 'cubePower')],
         'cubeToughness' : [defaultPlayerData(midNormalTwo, 'cubeToughness')],
+        'baseAdventurePower' : [defaultPlayerData(midNormalTwo, 'baseAdventurePower')],
+        'baseAdventureToughness' : [defaultPlayerData(midNormalTwo, 'baseAdventureToughness')],
     }
+    // Cube may be wrong due to offline increases
     var val = Number(equipmentInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(1145412, 0)
+    expect(val).toBeCloseTo(1450789, 0)
 
     var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
     expect(val).toBeCloseTo(8708, 0)
     var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
     expect(val).toBeCloseTo(868, 0)
     var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(310, 0)
+    expect(val).toBeCloseTo(330, 0)
     var val = Number(equipmentInfo(data, Stat.RESPAWN).getValue())
     expect(val).toBeCloseTo(116, 0)
 
@@ -683,11 +694,11 @@ test('NGU - Mid Normal 2', () => {
         'magicNGUs' : [defaultPlayerData(midNormalTwo, 'magicNGUs')],
     }
     var val = Number(nguInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(1585.66, 1)
+    expect(val).toBeCloseTo(2746, 0)
     var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(286.51, 1)
+    expect(val).toBeCloseTo(377.22, 1)
     var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(565.03, 1)
+    expect(val).toBeCloseTo(1019.92, 1)
     var val = Number(nguInfo(data, Stat.ATTACK).getValue())
     expect(val).toBeCloseTo(750500, 0)
     var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
@@ -790,9 +801,9 @@ test('AP - Late Normal', () => {
 test('Beard Temp - Late Normal', () => {
     var data = { 'beards' : [defaultPlayerData(lateNormal, 'beards')]}
     var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(437.09, 1)
+    expect(val).toBeCloseTo(100, 1)
     var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(337.75, 1)
+    expect(val).toBeCloseTo(100, 1)
 });
 
 test('Beard Perm - Late Normal', () => {
@@ -818,7 +829,7 @@ test('Digger - Late Normal', () => {
         'itemSets' : [defaultPlayerData(lateNormal, 'itemSets')],
     }
     var val = Number(diggerInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(236.98, 2)
+    expect(val).toBeCloseTo(235.64, 2)
 });
 
 test('Equipment - Late Normal', () => {
@@ -831,16 +842,19 @@ test('Equipment - Late Normal', () => {
         'equipmentAccesories' : [defaultPlayerData(lateNormal, 'equipmentAccesories')],
         'cubePower' : [defaultPlayerData(lateNormal, 'cubePower')],
         'cubeToughness' : [defaultPlayerData(lateNormal, 'cubeToughness')],
+        'baseAdventurePower' : [defaultPlayerData(lateNormal, 'baseAdventurePower')],
+        'baseAdventureToughness' : [defaultPlayerData(lateNormal, 'baseAdventureToughness')],
     }
+    // Cube may be wrong due to offline increases
     var val = Number(equipmentInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(4804846, 0)
+    expect(val).toBeCloseTo(5956238, 0)
 
     var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
     expect(val).toBeCloseTo(24500, 0)
     var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
     expect(val).toBeCloseTo(2820, 0)
     var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(350, 0)
+    expect(val).toBeCloseTo(370, 0)
     var val = 200 - Number(equipmentInfo(data, Stat.RESPAWN).getValue())
     expect(val).toBeCloseTo(72, 0)
 
@@ -871,11 +885,11 @@ test('NGU - Late Normal', () => {
         'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
     }
     var val = Number(nguInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(20981.39, 1)
+    expect(val).toBeCloseTo(42222, 0)
     var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(1135.37, 1)
+    expect(val).toBeCloseTo(1851.98, 1)
     var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(4646.36, 1)
+    expect(val).toBeCloseTo(11140.88, 1)
     var val = Number(nguInfo(data, Stat.ATTACK).getValue())
     expect(val).toBeCloseTo(129483517932, 0)
     var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
@@ -889,7 +903,7 @@ test('Perks - Late Normal', () => {
     var val = Number(perkInfo(data, Stat.POWER).getValue())
     expect(val).toBeCloseTo(110, 0)
     var val = Number(perkInfo(data, Stat.BOOSTS_BOOST).getValue())
-    expect(val).toBeCloseTo(370, 0)
+    expect(val).toBeCloseTo(550, 0)
     var val = Number(perkInfo(data, Stat.ENERGY_POWER).getValue())
     expect(val).toBeCloseTo(150, 0)
 });

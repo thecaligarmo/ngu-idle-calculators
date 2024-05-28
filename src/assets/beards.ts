@@ -9,13 +9,20 @@ export class Beard extends Resource{
         // level and perm level always start at 0
         super(id, key, name, GameMode.ALL, 0, props)
         this.permLevel = 0
+        this.active = false
     }
     setPermLevel(permLevel: number) {
         this.permLevel = permLevel
         this.updateStats()
     }
+    setActive(active : boolean | number) {
+        if(typeof active == 'boolean') {
+            this.active = active
+        }
+        this.active = (active == 1)
+    }
     getTempStatValue(prop: string) : number {
-        if(!_.isUndefined(this[prop])) {
+        if(this.active && !_.isUndefined(this[prop])) {
             return this[prop]['temp']
         }
         return 0

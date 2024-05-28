@@ -1,61 +1,37 @@
 var midNormalTwo = {
-    "playerName": "xxx",
+    "playerName": "thecaligarmo",
     "firstTimePlaying": 0,
     "version": 1260,
-    "lastTime": 1711957928,
+    "lastTime": 1716928827,
     "nextRebirthDifficulty": {
         "value__": 0,
         "__cname__": "difficulty"
     },
-    "maxHP": 3.3139581125087687e+192,
-    "curHP": 1.2608571090880569e+192,
+    "maxHP": 4.262677876004014e+207,
+    "curHP": 4.262677876004014e+207,
     "hpRegen": 1,
-    "attack": 3.3139581125087685e+191,
-    "defense": 2.339752568135854e+191,
+    "attack": 4.262677876004014e+206,
+    "defense": 3.0095742339170534e+206,
     "gold": 0,
-    "realGold": 1.0871860005091965e+29,
+    "realGold": 2.2571389703952716e+33,
     "attackMulti": 2.2195493845094652e+138,
     "defenseMulti": 2.2195493845094652e+138,
     "nextAttackMulti": 0,
     "nextDefenseMulti": 0,
     "oldBossMulti": 3.2138760885179806e+60,
-    "timeMulti": 1.477755122691846,
+    "timeMulti": 30.244303057176563,
     "oldTimeMulti": 1.522643832464198,
     "exp": 0,
-    "realExp": {
-        "low": 3314,
-        "high": 0,
-        "unsigned": false
-    },
+    "realExp": 3290134,
     "attackBoost": 21,
     "defenseBoost": 21,
     "energySpeed": 50,
-    "capEnergy": {
-        "low": 88320000,
-        "high": 0,
-        "unsigned": false
-    },
-    "curEnergy": {
-        "low": 1617782234,
-        "high": 0,
-        "unsigned": false
-    },
-    "idleEnergy": {
-        "low": 15087705,
-        "high": 0,
-        "unsigned": false
-    },
-    "energyGained": {
-        "low": 3556647,
-        "high": 0,
-        "unsigned": false
-    },
+    "capEnergy": 88320000,
+    "curEnergy": 1617782234,
+    "idleEnergy": 1617782234,
+    "energyGained": 3556647,
     "energyPerBar": 1,
-    "energyBars": {
-        "low": 2208,
-        "high": 0,
-        "unsigned": false
-    },
+    "energyBars": 2208,
     "energyPower": 2760,
     "energyBarProgress": 1,
     "training": {
@@ -92,143 +68,39 @@ var midNormalTwo = {
             10000000
         ],
         "_attackTraining": [
-            {
-                "low": 8255382,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 8250382,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 8240382,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 8225382,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 8205382,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 8180382,
-                "high": 0,
-                "unsigned": false
-            }
+            504804090,
+            504799122,
+            504789156,
+            504774194,
+            504754238,
+            504729276
         ],
         "_defenseTraining": [
-            {
-                "low": 8255382,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 8250384,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 8240384,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 8225386,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 8205386,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 8180388,
-                "high": 0,
-                "unsigned": false
-            }
+            504804090,
+            504799124,
+            504789158,
+            504774198,
+            504754242,
+            504729282
         ],
         "_attackEnergy": [
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            }
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
         "_defenseEnergy": [
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            }
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
-        "_totalAttackLevels": {
-            "low": 49357292,
-            "high": 0,
-            "unsigned": false
-        },
-        "_totalDefenseLevels": {
-            "low": 49357310,
-            "high": 0,
-            "unsigned": false
-        },
+        "_totalAttackLevels": 3028650076,
+        "_totalDefenseLevels": 3028650094,
         "_attackBarProgress": [
             0,
             0,
@@ -273,57 +145,57 @@ var midNormalTwo = {
         "attack": 25994,
         "defense": 26141,
         "regen": 842.3599243164062,
-        "curHP": 3361247232,
+        "curHP": 3571900416,
         "maxHP": 82206,
         "respawnRate": 5,
         "attackSpeed": 0.800000011920929,
-        "zone": 5,
+        "zone": -1,
         "autoattacking": 1,
         "boss1Spawn": {
-            "totalseconds": 3355.4424202998634,
-            "seconds": 55.44242029986344,
+            "totalseconds": 2612.148256301065,
+            "seconds": 32.148256301064976,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss1Defeated": 0,
-        "titan1Kills": 20,
+        "titan1Kills": 1401,
         "boss2Spawn": {
-            "totalseconds": 3355.4424202998634,
-            "seconds": 55.44242029986344,
+            "totalseconds": 2612.148256301065,
+            "seconds": 32.148256301064976,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss2Defeated": 0,
-        "titan2Kills": 20,
+        "titan2Kills": 1401,
         "boss3Spawn": {
-            "totalseconds": 3355.4424202998634,
-            "seconds": 55.44242029986344,
+            "totalseconds": 2612.148256301065,
+            "seconds": 32.148256301064976,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss3Defeated": 0,
-        "titan3Kills": 20,
+        "titan3Kills": 1401,
         "boss4Spawn": {
-            "totalseconds": 3355.4424202998634,
-            "seconds": 55.44242029986344,
+            "totalseconds": 2612.148256301065,
+            "seconds": 32.148256301064976,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss4Defeated": 0,
-        "titan4Kills": 20,
+        "titan4Kills": 1401,
         "boss5Spawn": {
-            "totalseconds": 3355.4424202998634,
-            "seconds": 55.44242029986344,
+            "totalseconds": 6212.148256301065,
+            "seconds": 32.148256301064976,
             "minutes": 0,
-            "hours": 0,
+            "hours": 1,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -331,12 +203,12 @@ var midNormalTwo = {
         "waldoDefeats": 4,
         "waldoFinds": 4,
         "boss5Kills": 207,
-        "titan5Kills": 10,
+        "titan5Kills": 700,
         "boss6Spawn": {
-            "totalseconds": 9000,
-            "seconds": 0,
+            "totalseconds": 5381.169560106704,
+            "seconds": 41.16956010670401,
             "minutes": 0,
-            "hours": 2,
+            "hours": 1,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -348,7 +220,7 @@ var midNormalTwo = {
         "clue4Complete": 1,
         "titan6Unlocked": 1,
         "titan6Version": 0,
-        "boss6Kills": 49,
+        "boss6Kills": 50,
         "titan6V1Kills": 0,
         "titan6V2Kills": 0,
         "titan6V3Kills": 0,
@@ -494,1313 +366,269 @@ var midNormalTwo = {
         "highestItopodLevel": 332,
         "itopod": {
             "perkLevel": [
-                {
-                    "low": 1,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 1,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 1,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 1,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 1,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 50,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 50,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 58,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 2,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 1,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 2,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 20,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 1,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 1,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 3,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                }
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                50,
+                0,
+                50,
+                0,
+                0,
+                0,
+                58,
+                2,
+                0,
+                1,
+                0,
+                0,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                20,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
             ],
-            "perkPoints": {
-                "low": 16,
-                "high": 0,
-                "unsigned": false
-            },
-            "lifetimePoints": {
-                "low": 497,
-                "high": 0,
-                "unsigned": false
-            },
-            "pointProgress": {
-                "low": 139994,
-                "high": 0,
-                "unsigned": false
-            },
-            "enemiesKilled": 906600,
-            "poopProgress": {
-                "low": 8084,
-                "high": 0,
-                "unsigned": false
-            },
-            "buffedKills": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
+            "perkPoints": 877,
+            "lifetimePoints": 1358,
+            "pointProgress": 938816,
+            "enemiesKilled": 2402274,
+            "poopProgress": 758,
+            "buffedKills": 0,
             "filterDiff": 1,
             "filterAfford": 0,
             "filterMaxxed": 1,
@@ -2460,12 +1288,78 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 0,
+                "id": 184,
                 "type": {
-                    "value__": 9,
+                    "value__": 0,
                     "__cname__": "part"
                 },
-                "bossRequired": -1,
+                "bossRequired": 100,
+                "capAttack": 11000,
+                "curAttack": 11000,
+                "capDefense": 242000,
+                "curDefense": 242000,
+                "spec1Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 1400000,
+                "spec1Cap": 1400000,
+                "spec2Type": {
+                    "value__": 38,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 1500000,
+                "spec2Cap": 1500000,
+                "spec3Type": {
+                    "value__": 36,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 1000000,
+                "spec3Cap": 1000000,
+                "removable": 1,
+                "level": 5,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 142,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 40000,
+                "curAttack": 40000,
+                "capDefense": 40000,
+                "curDefense": 40000,
+                "spec1Type": {
+                    "value__": 5,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 1000,
+                "spec1Cap": 1000,
+                "spec2Type": {
+                    "value__": 7,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 800,
+                "spec2Cap": 800,
+                "spec3Type": {
+                    "value__": 16,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 2700,
+                "spec3Cap": 2700,
+                "removable": 1,
+                "level": 2,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 283,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -2493,12 +1387,12 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 0,
+                "id": 283,
                 "type": {
-                    "value__": 9,
+                    "value__": 10,
                     "__cname__": "part"
                 },
-                "bossRequired": -1,
+                "bossRequired": 0,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -2526,78 +1420,12 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 0,
+                "id": 283,
                 "type": {
-                    "value__": 9,
+                    "value__": 10,
                     "__cname__": "part"
                 },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
+                "bossRequired": 0,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -3417,12 +2245,12 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 0,
+                "id": 283,
                 "type": {
-                    "value__": 9,
+                    "value__": 10,
                     "__cname__": "part"
                 },
-                "bossRequired": -1,
+                "bossRequired": 0,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -3516,12 +2344,12 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 0,
+                "id": 283,
                 "type": {
-                    "value__": 9,
+                    "value__": 10,
                     "__cname__": "part"
                 },
-                "bossRequired": -1,
+                "bossRequired": 0,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -4242,12 +3070,12 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 0,
+                "id": 283,
                 "type": {
-                    "value__": 9,
+                    "value__": 10,
                     "__cname__": "part"
                 },
-                "bossRequired": -1,
+                "bossRequired": 0,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -6557,18 +5385,18 @@ var midNormalTwo = {
         ],
         "daycareTimers": [
             {
-                "totalseconds": 1237150.8063513509,
-                "seconds": 10.80635135085322,
+                "totalseconds": 6208010.289430309,
+                "seconds": 50.28943030908704,
                 "minutes": 0,
-                "hours": 7,
+                "hours": 20,
                 "days": 0,
                 "__cname__": "PlayerTime"
             },
             {
-                "totalseconds": 166905.2180801708,
-                "seconds": 45.21808017080184,
+                "totalseconds": 5137764.701159129,
+                "seconds": 24.701159128919244,
                 "minutes": 0,
-                "hours": 22,
+                "hours": 11,
                 "days": 0,
                 "__cname__": "PlayerTime"
             },
@@ -8636,11 +7464,6 @@ var midNormalTwo = {
             ],
             "itemFiltered": [
                 0,
-                1,
-                1,
-                1,
-                1,
-                1,
                 0,
                 0,
                 0,
@@ -8649,11 +7472,6 @@ var midNormalTwo = {
                 0,
                 0,
                 0,
-                1,
-                1,
-                1,
-                1,
-                1,
                 0,
                 0,
                 0,
@@ -8662,11 +7480,21 @@ var midNormalTwo = {
                 0,
                 0,
                 0,
-                1,
-                1,
-                1,
-                1,
-                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
                 0,
                 0,
                 0,
@@ -9736,16 +8564,16 @@ var midNormalTwo = {
         },
         "autoMergeSlot1": 0,
         "mergeTime": {
-            "totalseconds": 432.5053971003508,
-            "seconds": 12.50539710035082,
+            "totalseconds": 854.9884760574205,
+            "seconds": 14.988476057420485,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boostTime": {
-            "totalseconds": 1392.8564773530234,
-            "seconds": 12.856477353023365,
+            "totalseconds": 1800,
+            "seconds": 0.0008805704419501126,
             "minutes": 0,
             "hours": 0,
             "days": 0,
@@ -9987,8 +8815,8 @@ var midNormalTwo = {
                 null
             ]
         ],
-        "cubePower": 44417.09375,
-        "cubeToughness": 43449.234375,
+        "cubePower": 349794.34375,
+        "cubeToughness": 348826.75,
         "selectedGraphic": 3,
         "disabled": 0,
         "kittyArt": 1,
@@ -10052,160 +8880,40 @@ var midNormalTwo = {
             0
         ],
         "level": [
-            {
-                "low": 24491,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 40000,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 2500,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 200,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 200,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            }
+            24491,
+            40000,
+            2500,
+            200,
+            200,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
         "bankedLevel": [
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            }
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
         "energy": [
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            }
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
         "barProgress": [
             0.5278854370117188,
@@ -10220,56 +8928,16 @@ var midNormalTwo = {
             0
         ],
         "levelTarget": [
-            {
-                "low": 40000,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 40000,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 2500,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 200,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 200,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            }
+            40000,
+            40000,
+            2500,
+            200,
+            200,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
         "transferredBankedLevels": 1,
         "autoAdvance": 1,
@@ -10278,248 +8946,80 @@ var midNormalTwo = {
     "augments": {
         "augs": [
             {
-                "augLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "augLevel": 0,
                 "augProgress": 0,
-                "upgradeLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "upgradeLevel": 0,
                 "upgradeProgress": 0,
-                "augEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "upgradeEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "augmentTarget": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
-                "upgradeTarget": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": -1,
+                "upgradeTarget": -1,
                 "__cname__": "Aug"
             },
             {
-                "augLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "augLevel": 0,
                 "augProgress": 0,
-                "upgradeLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "upgradeLevel": 0,
                 "upgradeProgress": 0,
-                "augEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "upgradeEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "augmentTarget": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
-                "upgradeTarget": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": -1,
+                "upgradeTarget": -1,
                 "__cname__": "Aug"
             },
             {
-                "augLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "augLevel": 0,
                 "augProgress": 0,
-                "upgradeLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "upgradeLevel": 0,
                 "upgradeProgress": 0,
-                "augEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "upgradeEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "augmentTarget": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
-                "upgradeTarget": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": -1,
+                "upgradeTarget": -1,
                 "__cname__": "Aug"
             },
             {
-                "augLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "augLevel": 0,
                 "augProgress": 0,
-                "upgradeLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "upgradeLevel": 0,
                 "upgradeProgress": 0,
-                "augEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "upgradeEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "augmentTarget": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
-                "upgradeTarget": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": -1,
+                "upgradeTarget": -1,
                 "__cname__": "Aug"
             },
             {
-                "augLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "augLevel": 0,
                 "augProgress": 0,
-                "upgradeLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "upgradeLevel": 0,
                 "upgradeProgress": 0,
-                "augEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "upgradeEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "augmentTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "upgradeTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": 0,
+                "upgradeTarget": 0,
                 "__cname__": "Aug"
             },
             {
-                "augLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "augLevel": 0,
                 "augProgress": 0,
-                "upgradeLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "upgradeLevel": 0,
                 "upgradeProgress": 0,
-                "augEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "upgradeEnergy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "augmentTarget": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
-                "upgradeTarget": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": -1,
+                "upgradeTarget": -1,
                 "__cname__": "Aug"
             },
             {
-                "augLevel": {
-                    "low": 5,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "augProgress": 0.1920960396528244,
-                "upgradeLevel": {
-                    "low": 4,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "upgradeProgress": 0.991105318069458,
-                "augEnergy": {
-                    "low": 40000000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "upgradeEnergy": {
-                    "low": 3000000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "augmentTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "upgradeTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "augLevel": 51,
+                "augProgress": 0.000009429028068552725,
+                "upgradeLevel": 49,
+                "upgradeProgress": 0.000009072106877283659,
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": 0,
+                "upgradeTarget": 0,
                 "__cname__": "Aug"
             }
         ],
@@ -10527,32 +9027,12 @@ var midNormalTwo = {
         "__cname__": "Augmentation"
     },
     "magic": {
-        "capMagic": {
-            "low": 29440000,
-            "high": 0,
-            "unsigned": false
-        },
-        "curMagic": {
-            "low": 281061326,
-            "high": 0,
-            "unsigned": false
-        },
-        "idleMagic": {
-            "low": 44939923,
-            "high": 0,
-            "unsigned": false
-        },
+        "capMagic": 29440000,
+        "curMagic": 281061326,
+        "idleMagic": 281061326,
         "magicBarSpeed": 50,
-        "magicPerBar": {
-            "low": 736,
-            "high": 0,
-            "unsigned": false
-        },
-        "magicGained": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "magicPerBar": 736,
+        "magicGained": 0,
         "magicPower": 920,
         "magicBarProgress": 0,
         "__cname__": "Magic"
@@ -10560,60 +9040,24 @@ var midNormalTwo = {
     "machine": {
         "baseGold": 0,
         "machineProgress": 0,
-        "machineEnergy": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "machineEnergy": 0,
         "realBaseGold": 1701378257125.8955,
         "speedLevel": 0,
-        "levelSpeed": {
-            "low": 81304,
-            "high": 0,
-            "unsigned": false
-        },
+        "levelSpeed": 81304,
         "speedBuildTime": 100000,
         "speedProgress": 0.46892133355140686,
-        "speedEnergy": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "speedEnergy": 0,
         "speedGoldCost": 1000000000,
         "goldMultiLevel": 0,
-        "levelGoldMulti": {
-            "low": 15883,
-            "high": 0,
-            "unsigned": false
-        },
+        "levelGoldMulti": 15883,
         "goldMultiBuildTime": 1000000,
         "goldMultiProgress": 0.41304662823677063,
-        "goldMultiMagic": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "goldMultiMagic": 0,
         "goldMultiGoldCost": 1000000000,
-        "speedTarget": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
-        "multiTarget": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
-        "speedBankLevels": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
-        "goldMultiBankLevels": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "speedTarget": 0,
+        "multiTarget": 0,
+        "speedBankLevels": 0,
+        "goldMultiBankLevels": 0,
         "transferredBankLevels": 1,
         "__cname__": "TimeMachine"
     },
@@ -10627,124 +9071,60 @@ var midNormalTwo = {
         "ritual": [
             {
                 "progress": 0,
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "magic": 0,
+                "level": 0,
                 "__cname__": "Ritual"
             },
             {
                 "progress": 0,
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "magic": 0,
+                "level": 0,
                 "__cname__": "Ritual"
             },
             {
                 "progress": 0,
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "magic": 0,
+                "level": 0,
                 "__cname__": "Ritual"
             },
             {
                 "progress": 0,
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "magic": 0,
+                "level": 0,
                 "__cname__": "Ritual"
             },
             {
                 "progress": 0,
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "magic": 0,
+                "level": 0,
                 "__cname__": "Ritual"
             },
             {
                 "progress": 0,
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "magic": 0,
+                "level": 0,
                 "__cname__": "Ritual"
             },
             {
                 "progress": 0.9063668847084045,
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": {
-                    "low": 3808,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "magic": 0,
+                "level": 3808,
                 "__cname__": "Ritual"
             },
             {
                 "progress": 0,
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "magic": 0,
+                "level": 0,
                 "__cname__": "Ritual"
             }
         ],
         "bloodPoints": 0,
         "rebirthPower": 269415133040.368,
         "adventureSpellTime": {
-            "totalseconds": 227164.00122022536,
-            "seconds": 4.001220225356519,
+            "totalseconds": 5197601.001220225,
+            "seconds": 41.00122022535652,
             "minutes": 0,
-            "hours": 15,
+            "hours": 3,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -10772,33 +9152,33 @@ var midNormalTwo = {
         "__cname__": "BloodMagic"
     },
     "rebirthTime": {
-        "totalseconds": 82556.08520115097,
-        "seconds": 56.08520115097053,
+        "totalseconds": 5053415.56828011,
+        "seconds": 35.568280110135674,
         "minutes": 0,
-        "hours": 22,
+        "hours": 11,
         "days": 0,
         "__cname__": "PlayerTime"
     },
     "totalPlaytime": {
-        "totalseconds": 6561109.998659523,
-        "seconds": 49.99865952320397,
+        "totalseconds": 11531969.481738841,
+        "seconds": 29.481738841161132,
         "minutes": 0,
-        "hours": 22,
+        "hours": 11,
         "days": 0,
         "__cname__": "PlayerTime"
     },
     "lootState": {
-        "s0": -1571267523,
-        "s1": 910509162,
-        "s2": -696972705,
-        "s3": -1570691533,
+        "s0": 1793347754,
+        "s1": -409466041,
+        "s2": 716181208,
+        "s3": 1602082090,
         "__cname__": "UnityEngine.Random+State"
     },
     "boostState": {
-        "s0": -998305377,
-        "s1": -1863567632,
-        "s2": -1796509756,
-        "s3": 342777148,
+        "s0": -188257346,
+        "s1": -2073066378,
+        "s2": -1071649280,
+        "s3": 664326420,
         "__cname__": "UnityEngine.Random+State"
     },
     "purchases": {
@@ -10843,50 +9223,18 @@ var midNormalTwo = {
         "__cname__": "Purchases"
     },
     "stats": {
-        "rebirthNumber": {
-            "low": 522,
-            "high": 0,
-            "unsigned": false
-        },
-        "highestBoss": {
-            "low": 201,
-            "high": 0,
-            "unsigned": false
-        },
-        "lifeTimeEnergy": {
-            "low": -1766299149,
-            "high": 9,
-            "unsigned": false
-        },
-        "advBossesKilled": {
-            "low": 96605,
-            "high": 0,
-            "unsigned": false
-        },
+        "rebirthNumber": 522,
+        "highestBoss": 201,
+        "lifeTimeEnergy": 41183373811,
+        "advBossesKilled": 96617,
         "highestDamageDealt": 33848346624,
         "highestDamageTaken": 566986624,
-        "totalExp": {
-            "low": 2084589,
-            "high": 0,
-            "unsigned": false
-        },
-        "totalGold": 4.326144038367108e+31,
-        "titansDefeated": {
-            "low": 1744,
-            "high": 0,
-            "unsigned": false
-        },
-        "bossesDefeated": {
-            "low": 30999,
-            "high": 0,
-            "unsigned": false
-        },
+        "totalExp": 5371409,
+        "totalGold": 2.300298199240601e+33,
+        "titansDefeated": 7958,
+        "bossesDefeated": 30999,
         "lastBloodMagic": 7420549764217.494,
-        "poopUsed": {
-            "low": 61,
-            "high": 0,
-            "unsigned": false
-        },
+        "poopUsed": 61,
         "__cname__": "Stats"
     },
     "perks": {
@@ -11049,26 +9397,10 @@ var midNormalTwo = {
         "specialAdvHpBars": 1,
         "filterOn": 0,
         "wandoos98On": 1,
-        "customEnergy1": {
-            "low": 100000000,
-            "high": 0,
-            "unsigned": false
-        },
-        "customEnergy2": {
-            "low": 10000000,
-            "high": 0,
-            "unsigned": false
-        },
-        "customMagic1": {
-            "low": 100000,
-            "high": 0,
-            "unsigned": false
-        },
-        "customMagic2": {
-            "low": 6,
-            "high": 0,
-            "unsigned": false
-        },
+        "customEnergy1": 100000000,
+        "customEnergy2": 10000000,
+        "customMagic1": 100000,
+        "customMagic2": 6,
         "yggdrasilOn": 1,
         "filterHead": 0,
         "filterChest": 0,
@@ -11077,9 +9409,9 @@ var midNormalTwo = {
         "filterWeapon": 0,
         "filterAccessory": 0,
         "filterBoosts": 0,
-        "filterBoostAtk": 1,
-        "filterBoostDef": 1,
-        "filterBoostSpec": 1,
+        "filterBoostAtk": 0,
+        "filterBoostDef": 0,
+        "filterBoostSpec": 0,
         "filterMisc": 0,
         "filterTitan": 0,
         "syncTraining": 1,
@@ -11088,11 +9420,7 @@ var midNormalTwo = {
             "value__": 0,
             "__cname__": "difficulty"
         },
-        "rebirthLevels": {
-            "low": 202728,
-            "high": 0,
-            "unsigned": false
-        },
+        "rebirthLevels": 202925,
         "speedrunCount": 3,
         "gotSpeedrunSecret": 1,
         "nguOn": 1,
@@ -11100,38 +9428,26 @@ var midNormalTwo = {
         "antiFlickerBars": 1,
         "autoAssignOn": 0,
         "autoAssignTime": 0,
-        "machineEnergyAmount": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
-        "machineGoldMultiAmount": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "machineEnergyAmount": 0,
+        "machineGoldMultiAmount": 0,
         "tutorialState": -1,
         "tutorialOffForever": 0,
         "tutorial1Complete": 0,
         "expPopups": 1,
         "dailySaveRewardTime": {
-            "totalseconds": 0,
-            "seconds": 0,
+            "totalseconds": 5358.169560106704,
+            "seconds": 18.16956010670401,
             "minutes": 0,
-            "hours": 0,
+            "hours": 1,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "submitHighscores": 1,
         "timedTooltipsOn": 1,
-        "autoMergeOn": 1,
-        "inputAmount": {
-            "low": 100000000,
-            "high": 0,
-            "unsigned": false
-        },
+        "autoMergeOn": 0,
+        "inputAmount": 100000000,
         "autoKillTitans": 1,
-        "autoBoostOn": 1,
+        "autoBoostOn": 0,
         "customEnergyPercent1": 1,
         "customEnergyPercent2": 1,
         "customMagicPercent1": 1,
@@ -11159,55 +9475,19 @@ var midNormalTwo = {
         "buffedKillsOn": 0,
         "customPowerAmount": 15,
         "customBarAmount": 12,
-        "customCapAmount": {
-            "low": 480000,
-            "high": 0,
-            "unsigned": false
-        },
+        "customCapAmount": 480000,
         "customMagicPowerAmount": 5,
         "customMagicBarAmount": 4,
-        "customMagicCapAmount": {
-            "low": 160000,
-            "high": 0,
-            "unsigned": false
-        },
+        "customMagicCapAmount": 160000,
         "customRes3PowerAmount": 1,
         "customRes3BarAmount": 1,
-        "customRes3CapAmount": {
-            "low": 10000,
-            "high": 0,
-            "unsigned": false
-        },
-        "customAttackInput": {
-            "low": 100,
-            "high": 0,
-            "unsigned": false
-        },
-        "customDefenseInput": {
-            "low": 100,
-            "high": 0,
-            "unsigned": false
-        },
-        "customPowerInput": {
-            "low": 10000,
-            "high": 0,
-            "unsigned": false
-        },
-        "customToughnessInput": {
-            "low": 10000,
-            "high": 0,
-            "unsigned": false
-        },
-        "customHPInput": {
-            "low": 100000,
-            "high": 0,
-            "unsigned": false
-        },
-        "customRegenInput": {
-            "low": 10000,
-            "high": 0,
-            "unsigned": false
-        },
+        "customRes3CapAmount": 10000,
+        "customAttackInput": 100,
+        "customDefenseInput": 100,
+        "customPowerInput": 10000,
+        "customToughnessInput": 10000,
+        "customHPInput": 100000,
+        "customRegenInput": 10000,
         "beastModeUnlocked": 0,
         "diggersOn": 1,
         "nguLevelTrack": {
@@ -11398,20 +9678,20 @@ var midNormalTwo = {
             "__cname__": "Challenge"
         },
         "laserSwordChallenge": {
-            "inChallenge": 1,
-            "curCompletions": 4,
+            "inChallenge": 0,
+            "curCompletions": 5,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
-            "bestTime": 30766,
+            "bestTime": 5048034,
             "challengeType": {
                 "value__": 1,
                 "__cname__": "challengeType"
             },
             "challengeTime": {
-                "totalseconds": 82556.0730917512,
-                "seconds": 56.07309175119735,
+                "totalseconds": 0,
+                "seconds": 0,
                 "minutes": 0,
-                "hours": 22,
+                "hours": 0,
                 "days": 0,
                 "__cname__": "PlayerTime"
             },
@@ -11486,9 +9766,9 @@ var midNormalTwo = {
             "__cname__": "Challenge"
         },
         "unlocked": 1,
-        "inChallenge": 1,
+        "inChallenge": 0,
         "curChallengeType": {
-            "value__": 1,
+            "value__": 0,
             "__cname__": "challengeType"
         },
         "curPoints": 0,
@@ -11514,10 +9794,10 @@ var midNormalTwo = {
             "__cname__": "UnityEngine.Random+State"
         },
         "pitTime": {
-            "totalseconds": 240,
-            "seconds": 0,
+            "totalseconds": 4971100,
+            "seconds": 40,
             "minutes": 0,
-            "hours": 0,
+            "hours": 12,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -11560,43 +9840,15 @@ var midNormalTwo = {
         "energyProgress": 0,
         "magicProgress": 0,
         "bootupProgress": 0,
-        "wandoosEnergy": {
-            "low": 31961722,
-            "high": 0,
-            "unsigned": false
-        },
-        "wandoosMagic": {
-            "low": 31961722,
-            "high": 0,
-            "unsigned": false
-        },
-        "energyLevel": {
-            "low": 16255,
-            "high": 0,
-            "unsigned": false
-        },
-        "magicLevel": {
-            "low": 16142,
-            "high": 0,
-            "unsigned": false
-        },
+        "wandoosEnergy": 0,
+        "wandoosMagic": 0,
+        "energyLevel": 248290247,
+        "magicLevel": 248290147,
         "baseEnergyTime": 0,
         "baseMagicTime": 0,
-        "OSlevel": {
-            "low": 100,
-            "high": 0,
-            "unsigned": false
-        },
-        "pitOSLevels": {
-            "low": 26,
-            "high": 0,
-            "unsigned": false
-        },
-        "XLLevels": {
-            "low": 71,
-            "high": 0,
-            "unsigned": false
-        },
+        "OSlevel": 100,
+        "pitOSLevels": 26,
+        "XLLevels": 71,
         "installed": 1,
         "disabled": 0,
         "bootupTime": {
@@ -11625,21 +9877,9 @@ var midNormalTwo = {
         "goldFruit": {
             "seconds": 0,
             "activated": 0,
-            "unlockCost": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "totalLevels": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "maxTier": {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
+            "unlockCost": 0,
+            "totalLevels": 0,
+            "maxTier": 1,
             "permCostPaid": 0,
             "usePoop": 0,
             "eatFruit": 1,
@@ -11649,21 +9889,9 @@ var midNormalTwo = {
         "adventureFruit": {
             "seconds": 0,
             "activated": 0,
-            "unlockCost": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "totalLevels": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "maxTier": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
+            "unlockCost": 0,
+            "totalLevels": 0,
+            "maxTier": 0,
             "permCostPaid": 0,
             "usePoop": 0,
             "eatFruit": 1,
@@ -11673,21 +9901,9 @@ var midNormalTwo = {
         "luckFruit": {
             "seconds": 0,
             "activated": 0,
-            "unlockCost": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "totalLevels": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "maxTier": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
+            "unlockCost": 0,
+            "totalLevels": 0,
+            "maxTier": 0,
             "permCostPaid": 0,
             "usePoop": 0,
             "eatFruit": 1,
@@ -11697,21 +9913,9 @@ var midNormalTwo = {
         "statFruit": {
             "seconds": 0,
             "activated": 0,
-            "unlockCost": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "totalLevels": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "maxTier": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
+            "unlockCost": 0,
+            "totalLevels": 0,
+            "maxTier": 0,
             "permCostPaid": 0,
             "usePoop": 0,
             "eatFruit": 1,
@@ -11721,21 +9925,9 @@ var midNormalTwo = {
         "knowledgeFruit": {
             "seconds": 0,
             "activated": 0,
-            "unlockCost": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "totalLevels": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "maxTier": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
+            "unlockCost": 0,
+            "totalLevels": 0,
+            "maxTier": 0,
             "permCostPaid": 0,
             "usePoop": 0,
             "eatFruit": 1,
@@ -11745,21 +9937,9 @@ var midNormalTwo = {
         "pomegranate": {
             "seconds": 0,
             "activated": 0,
-            "unlockCost": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "totalLevels": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            "maxTier": {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
+            "unlockCost": 0,
+            "totalLevels": 0,
+            "maxTier": 0,
             "permCostPaid": 0,
             "usePoop": 0,
             "eatFruit": 1,
@@ -11768,23 +9948,11 @@ var midNormalTwo = {
         },
         "fruits": [
             {
-                "seconds": 82557,
+                "seconds": 86400,
                 "activated": 1,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 24,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 24,
                 "permCostPaid": 1,
                 "usePoop": 0,
                 "eatFruit": 0,
@@ -11792,23 +9960,11 @@ var midNormalTwo = {
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 519,
+                "seconds": 18000,
                 "activated": 1,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 5,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 5,
                 "permCostPaid": 1,
                 "usePoop": 0,
                 "eatFruit": 0,
@@ -11816,23 +9972,11 @@ var midNormalTwo = {
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 520,
+                "seconds": 18000,
                 "activated": 1,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 5,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 5,
                 "permCostPaid": 1,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -11840,23 +9984,11 @@ var midNormalTwo = {
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 527,
+                "seconds": 43200,
                 "activated": 1,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 12,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 12,
                 "permCostPaid": 1,
                 "usePoop": 1,
                 "eatFruit": 1,
@@ -11864,23 +9996,11 @@ var midNormalTwo = {
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 82557,
+                "seconds": 86400,
                 "activated": 1,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 24,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 24,
                 "permCostPaid": 1,
                 "usePoop": 1,
                 "eatFruit": 0,
@@ -11888,23 +10008,11 @@ var midNormalTwo = {
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 521,
+                "seconds": 10800,
                 "activated": 1,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 3,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 3,
                 "permCostPaid": 1,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -11912,23 +10020,11 @@ var midNormalTwo = {
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 524,
+                "seconds": 7200,
                 "activated": 1,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 2,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 2,
                 "permCostPaid": 1,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -11936,23 +10032,11 @@ var midNormalTwo = {
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 522,
+                "seconds": 7200,
                 "activated": 1,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 2,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 2,
                 "permCostPaid": 1,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -11962,21 +10046,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -11986,21 +10058,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12010,21 +10070,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12034,21 +10082,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12058,21 +10094,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12082,21 +10106,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12106,21 +10118,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12130,21 +10130,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12154,21 +10142,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12178,21 +10154,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12202,21 +10166,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12226,21 +10178,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12250,21 +10190,9 @@ var midNormalTwo = {
             {
                 "seconds": 0,
                 "activated": 0,
-                "unlockCost": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "totalLevels": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxTier": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 0,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -12318,32 +10246,12 @@ var midNormalTwo = {
         ],
         "resetFactor": 0,
         "statBonus": 0,
-        "seeds": {
-            "low": 3033,
-            "high": 0,
-            "unsigned": false
-        },
-        "totalLuck": {
-            "low": 1245,
-            "high": 0,
-            "unsigned": false
-        },
-        "totalPermStatBonus": {
-            "low": 809,
-            "high": 0,
-            "unsigned": false
-        },
+        "seeds": 3033,
+        "totalLuck": 1245,
+        "totalPermStatBonus": 809,
         "permBonusOn": 1,
-        "totalPermStatBonus2": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
-        "totalPermNumberBonus": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "totalPermStatBonus2": 0,
+        "totalPermNumberBonus": 0,
         "permNumberBonusOn": 0,
         "usePoop": 0,
         "__cname__": "Yggdrasil"
@@ -12352,508 +10260,156 @@ var midNormalTwo = {
         "skills": [
             {
                 "progress": 0,
-                "level": {
-                    "low": 50000,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 50000,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 50000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 50000,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 31000,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 31000,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 31000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 31000,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 2000,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 2000,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 2000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 2000,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 60000,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 60000,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 60000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 60000,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
-                "progress": 0.7619572877883911,
-                "level": {
-                    "low": 219646,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "progress": 0.12559770047664642,
+                "level": 696870,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 607312168,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 2500000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 2500000,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 30000,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 30000,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 30000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 30000,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
-                "progress": 0.7580152750015259,
-                "level": {
-                    "low": 21520,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "progress": 0.015751568600535393,
+                "level": 84213,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 920420627,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 250000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 250000,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 500,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 500,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 500,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 500,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 100,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 100,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 100,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 100,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             [
@@ -12879,509 +10435,157 @@ var midNormalTwo = {
         ],
         "magicSkills": [
             {
-                "progress": 0.8535745143890381,
-                "level": {
-                    "low": 42447,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "progress": 0.02930242195725441,
+                "level": 141073,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 100000000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 2000,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 2000,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 2000,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 2000,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 400,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 400,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 400,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "__cname__": "NGU"
-            },
-            {
-                "progress": 0.6802158951759338,
-                "level": {
-                    "low": 386,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 104159681,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 400,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 400,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 100,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 400,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 200,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 400,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
+                "__cname__": "NGU"
+            },
+            {
+                "progress": 0.17052502930164337,
+                "level": 100,
+                "evilProgress": 0,
+                "evilLevel": 0,
+                "sadisticProgress": 0,
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 200,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0.819579005241394,
-                "level": {
-                    "low": 50,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 50,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 100,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 100,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": -1,
-                    "high": -1,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": -1,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
                 "evilProgress": 0,
-                "evilLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "evilLevel": 0,
                 "sadisticProgress": 0,
-                "sadisticLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "evilTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "sadisticTarget": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 0,
+                "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             [
@@ -13412,16 +10616,8 @@ var midNormalTwo = {
     "arbitrary": {
         "arbitraryPoints": 0,
         "lifetimePoints": 0,
-        "curArbitraryPoints": {
-            "low": 190250,
-            "high": 0,
-            "unsigned": false
-        },
-        "curLifetimePoints": {
-            "low": 855250,
-            "high": 0,
-            "unsigned": false
-        },
+        "curArbitraryPoints": 604127,
+        "curLifetimePoints": 1269127,
         "energyPotion1Count": 3,
         "energyPotion1Time": {
             "totalseconds": 0,
@@ -13474,9 +10670,9 @@ var midNormalTwo = {
         "macGuffinBooster1Count": 0,
         "macGuffinBooster1Time": {
             "totalseconds": 0,
-            "seconds": -10,
+            "seconds": -25,
             "minutes": 0,
-            "hours": -14,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -13504,7 +10700,7 @@ var midNormalTwo = {
         "hasYggdrasilReminder": 0,
         "hasExtendedSpinBank": 0,
         "curLoadoutSlots": 0,
-        "poop1Count": 53,
+        "poop1Count": 220,
         "energyPotion3Count": 0,
         "magicPotion3Count": 0,
         "beardSlots": 0,
@@ -13828,16 +11024,12 @@ var midNormalTwo = {
         "__cname__": "AchievementList"
     },
     "daily": {
-        "totalSpins": {
-            "low": 83,
-            "high": 0,
-            "unsigned": false
-        },
+        "totalSpins": 83,
         "spinTime": {
-            "totalseconds": 21327.07128106337,
-            "seconds": 27.071281063370407,
+            "totalseconds": 129600,
+            "seconds": 0,
             "minutes": 0,
-            "hours": 5,
+            "hours": 12,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -13848,11 +11040,7 @@ var midNormalTwo = {
             "s3": -1077277601,
             "__cname__": "UnityEngine.Random+State"
         },
-        "freeSpins": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "freeSpins": 0,
         "__cname__": "DailyReward"
     },
     "beards": {
@@ -13860,141 +11048,57 @@ var midNormalTwo = {
             {
                 "progress": 0,
                 "active": 0,
-                "beardLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "permLevel": {
-                    "low": 234,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "bankedLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "beardLevel": 0,
+                "permLevel": 234,
+                "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
-                "progress": 0.2134389728307724,
-                "active": 1,
-                "beardLevel": {
-                    "low": 3773,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "permLevel": {
-                    "low": 6256,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "bankedLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "progress": 0.17701417207717896,
+                "active": 0,
+                "beardLevel": 23174,
+                "permLevel": 6256,
+                "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
                 "progress": 0,
                 "active": 0,
-                "beardLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "permLevel": {
-                    "low": 173,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "bankedLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "beardLevel": 0,
+                "permLevel": 173,
+                "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
-                "progress": 0.14350274205207825,
-                "active": 1,
-                "beardLevel": {
-                    "low": 2066,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "permLevel": {
-                    "low": 3901,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "bankedLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "progress": 0.09695833921432495,
+                "active": 0,
+                "beardLevel": 12692,
+                "permLevel": 3901,
+                "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
                 "progress": 0,
                 "active": 0,
-                "beardLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "permLevel": {
-                    "low": 15,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "bankedLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "beardLevel": 0,
+                "permLevel": 15,
+                "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
-                "progress": 0.5475250482559204,
-                "active": 1,
-                "beardLevel": {
-                    "low": 1192,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "permLevel": {
-                    "low": 3918,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "bankedLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "progress": 0.055981505662202835,
+                "active": 0,
+                "beardLevel": 7327,
+                "permLevel": 3918,
+                "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
                 "progress": 0,
                 "active": 0,
-                "beardLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "permLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "bankedLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "beardLevel": 0,
+                "permLevel": 0,
+                "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             [
@@ -14003,13 +11107,13 @@ var midNormalTwo = {
             ]
         ],
         "activeBeards": [
-            1,
-            3,
-            5,
+            0,
+            0,
+            0,
             0
         ],
         "capBeards": 1,
-        "energyBeardCount": 3,
+        "energyBeardCount": 0,
         "magicBeardCount": 0,
         "disabled": 0,
         "transferredBankedLevels": 1,
@@ -14018,16 +11122,8 @@ var midNormalTwo = {
     "diggers": {
         "diggers": [
             {
-                "curLevel": {
-                    "low": 77,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 84,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 77,
+                "maxLevel": 84,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14040,16 +11136,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 79,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 80,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 79,
+                "maxLevel": 80,
                 "active": 1,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14062,16 +11150,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 80,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 80,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 80,
+                "maxLevel": 80,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14084,16 +11164,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 60,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 81,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 60,
+                "maxLevel": 81,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14106,16 +11178,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 46,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 46,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 46,
+                "maxLevel": 46,
                 "active": 1,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14128,16 +11192,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 43,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 44,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 43,
+                "maxLevel": 44,
                 "active": 1,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14150,16 +11206,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 32,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 32,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 32,
+                "maxLevel": 32,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14172,16 +11220,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 32,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 0,
+                "maxLevel": 32,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14194,16 +11234,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 23,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 25,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 23,
+                "maxLevel": 25,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14216,16 +11248,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 13,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 19,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 13,
+                "maxLevel": 19,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14238,16 +11262,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 5,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 7,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 5,
+                "maxLevel": 7,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14260,16 +11276,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": {
-                    "low": 1,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "maxLevel": {
-                    "low": 5,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "curLevel": 1,
+                "maxLevel": 5,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -14314,1297 +11322,265 @@ var midNormalTwo = {
     },
     "beastQuest": {
         "quirkLevel": [
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 1,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 13,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 50,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 25,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            },
-            {
-                "low": 0,
-                "high": 0,
-                "unsigned": false
-            }
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            13,
+            0,
+            50,
+            25,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
-        "quirkPoints": {
-            "low": 29,
-            "high": 0,
-            "unsigned": false
-        },
-        "lifetimePoints": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "quirkPoints": 29,
+        "lifetimePoints": 0,
         "questsUnlocked": 0,
         "inQuest": 1,
         "idleMode": 0,
@@ -15612,14 +11588,14 @@ var midNormalTwo = {
         "targetDrops": 57,
         "curDrops": 10,
         "dailyQuestTimer": {
-            "totalseconds": 27626.68144445894,
-            "seconds": 26.68144445893995,
+            "totalseconds": 7086.164523415733,
+            "seconds": 6.164523415733129,
             "minutes": 0,
-            "hours": 7,
+            "hours": 1,
             "days": 0,
             "__cname__": "PlayerTime"
         },
-        "curBankedQuests": 2,
+        "curBankedQuests": 10,
         "maxBankedQuests": 10,
         "questState": {
             "s0": 286501437,
@@ -15642,32 +11618,12 @@ var midNormalTwo = {
         "__cname__": "BeastQuest"
     },
     "res3": {
-        "capRes3": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
-        "curRes3": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
-        "idleRes3": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "capRes3": 0,
+        "curRes3": 0,
+        "idleRes3": 0,
         "res3BarSpeed": 0,
-        "res3PerBar": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
-        "res3Gained": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "res3PerBar": 0,
+        "res3Gained": 0,
         "res3Power": 1,
         "res3BarProgress": 0,
         "res3Name": "Butts",
@@ -15680,4938 +11636,1970 @@ var midNormalTwo = {
     "hacks": {
         "hacks": [
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             },
             {
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "res3": 0,
                 "progress": 0,
-                "level": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "target": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "level": 0,
+                "target": 0,
                 "__cname__": "Hack"
             }
         ],
         "hacksOn": 0,
         "autoAdvance": 1,
-        "target": {
-            "low": 0,
-            "high": 0,
-            "unsigned": false
-        },
+        "target": 0,
         "disabled": 0,
         "__cname__": "Hacks"
     },
     "wishes": {
         "wishes": [
             {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            {
-                "energy": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "magic": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
-                "res3": {
-                    "low": 0,
-                    "high": 0,
-                    "unsigned": false
-                },
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
+                "level": 0,
+                "progress": 0,
+                "__cname__": "Wish"
+            },
+            {
+                "energy": 0,
+                "magic": 0,
+                "res3": 0,
                 "level": 0,
                 "progress": 0,
                 "__cname__": "Wish"
@@ -21060,43 +14048,43 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 3618,
+                "kills": 3624,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 3621,
+                "kills": 3625,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 3551,
+                "kills": 3555,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 3628,
+                "kills": 3636,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 3591,
+                "kills": 3597,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 3502,
+                "kills": 3508,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 3523,
+                "kills": 3532,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 3669,
+                "kills": 3673,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 3553,
+                "kills": 3560,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 3661,
+                "kills": 3666,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -22072,23 +15060,19 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 1408,
+                "kills": 2789,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 1242,
+                "kills": 2623,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 875,
+                "kills": 2256,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 748,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1,
+                "kills": 2129,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -22104,7 +15088,11 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 297,
+                "kills": 1,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 987,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -22112,7 +15100,7 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 49,
+                "kills": 50,
                 "__cname__": "BestiaryInfo"
             },
             {

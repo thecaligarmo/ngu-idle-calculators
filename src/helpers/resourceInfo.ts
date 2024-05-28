@@ -328,13 +328,23 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
         case Stat.POWER:
             var basePower = parseNum(data, 'baseAdventurePower')
             var maxCubePow = basePower.add(bd(stat))
-            var extraPow = Math.sqrt(Number(cube.subtract(maxCubePow).getValue()))
-            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(maxCubePow.add(bd(extraPow)))
+            var extraPow = 0
+            if(maxCubePow.compareTo(cube) == -1) {
+                extraPow = Math.sqrt(Number(cube.subtract(maxCubePow).getValue()))
+                cube = maxCubePow
+            }
+            
+            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube.add(bd(extraPow)))
         case Stat.TOUGHNESS:
             var baseToughness = parseNum(data, 'baseAdventureToughness')
             var maxCubeTough = baseToughness.add(bd(stat))
-            var extraTough = Math.sqrt(Number(cube.subtract(maxCubeTough).getValue()))
-            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(maxCubeTough.add(bd(extraTough)))
+            var extraTough = 0
+            if(maxCubeTough.compareTo(cube) == -1) {
+                extraTough = Math.sqrt(Number(cube.subtract(maxCubeTough).getValue()))
+                cube = maxCubeTough
+            }
+            
+            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube.add(bd(extraTough)))
         case Stat.ENERGY_POWER:
         case Stat.MAGIC_POWER:
         case Stat.ENERGY_BARS:
@@ -369,7 +379,7 @@ export function nguInfo(data : any, key : string) : bigDecimal{
                 stat *= g.getStatValue(key) / 100
             })
         }
-
+        
         var x = 1
         if ( mngus.length > 0) {
             mngus.forEach((g) => {
@@ -377,9 +387,7 @@ export function nguInfo(data : any, key : string) : bigDecimal{
                 x *= g.getStatValue(key) / 100
             })
         }
-        if(key === Stat.POWER) {
-            console.log(x)
-        }
+        
     }
 
     return bd( stat == 1 ? 100 : stat * 100)

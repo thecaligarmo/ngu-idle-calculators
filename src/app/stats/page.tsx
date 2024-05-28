@@ -138,6 +138,22 @@ export default function Page() {
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalPower(playerStates), fmt)}</span></li>
                     </ul>
                 </ContentSubsection>
+                <ContentSubsection title="Adventure Toughness Calculation" defaultHide={true}>
+                    <ul className="ml-5">
+                        <li key="base">Base Adventure Toughness ({pn(v('baseAdventureToughness'), fmt)})</li>
+                        <li key="equipment">+ Equipment Toughness + Infinity Cube ({pn(equipmentInfo(playerStates, Stat.TOUGHNESS), fmt)})</li>
+                        <li key="subtotal" className="border-white border-t-2 border-solid">Subtotal: {pn(v('baseAdventureToughness').add(equipmentInfo(playerStates, Stat.TOUGHNESS)), fmt)}</li>
+                        <li key="at">x Advanced Training ({pn(advTrainingInfo(playerStates, Stat.TOUGHNESS), fmt)}%)</li>
+                        <li key="engu">x (Energy x Magic) NGU ({pn(nguInfo(playerStates, Stat.TOUGHNESS), fmt)}%)</li>
+                        <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.TOUGHNESS), fmt)}%)</li>
+                        <li key="basicChallenge">x Basic Challenge ({pn(challengeInfo(playerStates, Stat.TOUGHNESS), fmt)}%)</li>
+                        <li key="beardTemp">x Beard (this run) ({pn(beardInfoTemp(playerStates, Stat.TOUGHNESS), fmt)}%)</li>
+                        <li key="beardPerm">x Beard (permanent) ({pn(beardInfoPerm(playerStates, Stat.TOUGHNESS), fmt)}%)</li>
+                        <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.TOUGHNESS).round(), fmt)}%)</li>
+                        <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.TOUGHNESS).round(), fmt)}%)</li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalToughness(playerStates), fmt)}</span></li>
+                    </ul>
+                </ContentSubsection>
             </ContentSection>
             <ContentSection title="Misc Stats">
                 <ul>
@@ -177,6 +193,7 @@ export default function Page() {
                         <li key="beardTemp">x Beard (this run) ({pn(beardInfoTemp(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
                         <li key="beardPerm">x Beard (permanent) ({pn(beardInfoPerm(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
                         <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.DROP_CHANCE), fmt)}%)</li>
+                        <li key="acc">x Normal Bonus Acc Set Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.NORMAL_ACC) ? bd(125) : bd(100), fmt)}%) </li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalDropChance(playerStates), fmt)}%</span></li>
                     </ul>
                 </ContentSubsection>

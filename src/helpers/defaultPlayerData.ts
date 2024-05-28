@@ -48,9 +48,9 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 if (playerData.bloodMagic.lootSpellBlood == '0') {
                     return 0
                 }
-                return Math.log2(playerData.bloodMagic.lootSpellBlood / 10000)
+                return Math.ceil(Math.log2(playerData.bloodMagic.lootSpellBlood / 10000))
             case 'bloodMagicTimeMachine':
-                return Math.log2(playerData.bloodMagic.goldSpellBlood / 1000000) ** 2
+                return Math.ceil(Math.log2(playerData.bloodMagic.goldSpellBlood / 1000000) ** 2)
             case 'boostRecyclyingPurchase':
                 return playerData.purchases.boost
 
@@ -304,6 +304,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                         var b = BEARDS[index]
                         b.setLevel(beard.beardLevel)
                         b.setPermLevel(beard.permLevel)
+                        b.setActive(beard.active)
                         beards.push(b)
                     }
                 })
