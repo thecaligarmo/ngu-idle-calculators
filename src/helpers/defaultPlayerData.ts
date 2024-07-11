@@ -457,8 +457,36 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 }
                 playerData.inventory.macguffins.forEach((macguffin : any, index : number) => {
                     if(macguffin.id > 0) {
-                        // id will need to change for things higher than 12
-                        macguffins[macguffin.id - 198].setLevel(macguffin.level)
+                        var macID = 0;
+                        switch(macguffin.id) {
+                            case 250:
+                                macID = 14
+                                break;
+                            case 289:
+                                macID = 15
+                                break;
+                            case 290:
+                                macID = 16
+                                break;
+                            case 291:
+                                macID = 17
+                                break;
+                            case 228:
+                                macID = 18
+                                break;
+                            case 298:
+                                macID = 19
+                                break;
+                            case 299:
+                                macID = 20
+                                break;
+                            case 300:
+                                macID = 21
+                                break;
+                            default:
+                                macID = macguffin.id - 198
+                        }
+                        macguffins[macID].setLevel(macguffin.level)
                     }
                 })
 

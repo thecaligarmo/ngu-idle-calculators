@@ -33,18 +33,17 @@ export const MACGUFFINLIST = [
     new MacGuffin(10, 'dropChanceMacGuffin', 'Drop Chance MacGuffin', [[Stat.DROP_CHANCE, 1]]),
     new MacGuffin(11, 'goldenMacGuffin', 'Golden MacGuffin', [[Stat.GOLD_DROP, 1]]),
     new MacGuffin(12, 'augmentMacGuffin', 'Augment MacGuffin', [[Stat.AUGMENT_SPEED, 1]]),
+    new MacGuffin(13, 'energyWandoosMacGuffin', 'Energy Wandoos MacGuffin', [[Stat.ENERGY_WANDOOS_SPEED, 1]]),
 
     // Numbers after this aren't necessarily correct
-    new MacGuffin(13, 'energyWandoosMacGuffin', 'Energy Wandoos MacGuffin', [[Stat.ENERGY_WANDOOS_SPEED, 1]]),
     new MacGuffin(14, 'magicWandoosMacGuffin', 'Magic Wandoos MacGuffin', [[Stat.MAGIC_WANDOOS_SPEED, 1]]),
-    new MacGuffin(15, 'adventureMacGuffin', 'Adventure MacGuffin', [[Stat.POWER, 1], [Stat.TOUGHNESS, 1]]),
-    new MacGuffin(16, 'numberMacGuffin', 'Number MacGuffin', [[Stat.NUMBER, 1]]),
-    new MacGuffin(17, 'bloodMacGuffin', 'Blood MacGuffin', [[Stat.BLOOD, 1]]),
-    new MacGuffin(18, 'resource3PowerMacGuffin', 'Resource 3 Power MacGuffin', [[Stat.RES3_POWER, 1]]),
-
+    new MacGuffin(15, 'numberMacGuffin', 'Number MacGuffin', [[Stat.NUMBER, 1]]),
+    new MacGuffin(16, 'bloodMacGuffin', 'Blood MacGuffin', [[Stat.BLOOD, 1]]),
+    new MacGuffin(17, 'adventureMacGuffin', 'Adventure MacGuffin', [[Stat.POWER, 1], [Stat.TOUGHNESS, 1]]),
+    new MacGuffin(18, 'statMacGuffin', 'Stat MacGuffin', [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
+    new MacGuffin(19, 'resource3PowerMacGuffin', 'Resource 3 Power MacGuffin', [[Stat.RES3_POWER, 1]]),
     new MacGuffin(20, 'resource3CapMacGuffin', 'Resource 3 Cap MacGuffin', [[Stat.RES3_CAP, 1]]),
     new MacGuffin(21, 'resource3BarMacGuffin', 'Resource 3 Bar MacGuffin', [[Stat.RES3_BARS, 1]]),
-    new MacGuffin(19, 'statMacGuffin', 'Stat MacGuffin', [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
 ]
 
 export var MACGUFFINS = new ResourceContainer(MACGUFFINLIST);
