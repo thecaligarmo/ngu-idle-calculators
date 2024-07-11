@@ -135,6 +135,9 @@ export const StatType : {[index: number]: [string | string[], number]} = {
     43: [Stat.YGGDRASIL_YIELD, 100000],
     44: [Stat.DAYCARE_SPEED, 100000],
     45: [Stat.QUEST_DROP, 1000000],
+    47: [Stat.RES3_POWER, 1000000],
+    48: [Stat.RES3_BARS, 1000000],
+    49: [Stat.RES3_CAP, 10000000],
 }
 
 
