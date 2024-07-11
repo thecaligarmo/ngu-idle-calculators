@@ -5,6 +5,7 @@ import { Beard } from "@/assets/beards";
 import { Challenge } from "@/assets/challenges";
 import { Digger } from "@/assets/diggers";
 import { AttackStat, Enemy } from "@/assets/enemy";
+import { Hack } from "@/assets/hacks";
 import { Item } from "@/assets/items";
 import { MacGuffin } from "@/assets/macguffins";
 import { GameMode } from "@/assets/mode";
@@ -26,7 +27,7 @@ export function useLocalStorage(key: string, fallbackValue : any) {
     useEffect(() => {
         const stored = localStorage.getItem(key);
         if (stored) {
-            var x = ESSerializer.deserialize(stored, [AdvTraining, APItem, Beard, Challenge, Digger, Enemy, Item, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Zone, AttackStat, bigDecimal]);
+            var x = ESSerializer.deserialize(stored, [AdvTraining, APItem, Beard, Challenge, Digger, Enemy, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Zone, AttackStat, bigDecimal]);
             // var x = JSON.parse(stored)
             if (x != value) {
                 setValue(x); //

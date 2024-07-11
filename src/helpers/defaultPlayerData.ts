@@ -14,6 +14,7 @@ import { MACGUFFINS, MacGuffin } from "@/assets/macguffins";
 import { bd } from "./numbers";
 import { isMaxxedItem, isMaxxedItemSet } from "./resourceInfo";
 import { GameMode } from "../assets/mode";
+import { HACKS, Hack } from "@/assets/hacks";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
@@ -449,6 +450,20 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 })
                 return magicNGUs
 
+            case 'hacks':
+                var hacks: Hack[] = []
+                playerData.hacks.hacks.forEach((hackData : any, index : number) => {
+                    if(index < 15) {
+                        var hack : Hack = HACKS[index]
+                        if(!_.isUndefined(hack)) {
+                            hack.importStats(hackData)
+                            hacks.push(hack)
+                        }
+                    }
+                })
+                console.log(hacks)
+                return hacks
+
             case 'macguffins':
                 var macguffins : MacGuffin[] = []
 
@@ -715,6 +730,7 @@ export function getPlayerOptions() : string[] {
         'equipmentTest',
         'energyNGUs',
         'magicNGUs',
+        'hacks',
         'macguffins',
         'perks',
         'quirks',

@@ -41,6 +41,7 @@ export const Stat : {[k: string]: string} = {
     AUGMENT_SPEED: 'rawAugmentSpeed',
     HACK_SPEED: 'rawHackSpeed',
     WISH_SPEED: 'rawWishSpeed',
+    TIME_MACHINE_SPEED: 'rawTimeMachineSpeed',
     BOOSTS_BOOST: 'boostsBoost',
     MAYO_GENERATION: 'mayoGeneration',
     MAYO_SPEED: 'mayoSpeed',
