@@ -43,6 +43,10 @@ export default function Page() {
   var fmt = getNumberFormat();
   var defaultres3 = defaultPlayerData(playerData, "resource3Active") === 1
   const [res3Active, setRes3Active] = useState(defaultres3)
+  // force res3active if it's present
+  if(defaultres3 && !res3Active) {
+    setRes3Active(true);
+  }
   // Set data required (from playerData)
   var infoRequired = [["baseEnergyPower", "baseEnergyCap", "baseEnergyBar"], ["baseMagicPower", "baseMagicCap", "baseMagicBar"],["baseResource3Power", "baseResource3Cap", "baseResource3Bar"]]
   // Set extra required (not from playerData)
@@ -164,6 +168,15 @@ export default function Page() {
   )
 
   // Children of the extra inputs
+  var selectBoxCSS = "inline-block align-top mb-2 "
+  selectBoxCSS += res3Active ? 'w-1/3' : 'w-1/2'
+  var ratioOptions = (
+    <>
+      <option value="1:37500:1">1:37500:1</option>
+      <option value="5:160000:4">5:160000:4</option>
+      <option value="4:150000:1">4:150000:1</option>
+    </>
+  )
   var extraInputChildren = (
     <>
       <div className="mt-2">
@@ -183,7 +196,7 @@ export default function Page() {
           <option value="2:1">2:1</option>
         </select>
         <br />
-        <div className="inline-block align-top mb-2 w-1/2 ">
+        <div className={selectBoxCSS}>
         <select defaultValue='' className='text-black' onChange={(e) => {
           if (e.target.value){
             var [power, cap, bar] = e.target.value.split(":")
@@ -193,11 +206,10 @@ export default function Page() {
           }
         }}>
           <option value=''>Energy Ratio quick select</option>
-          <option value="1:37500:1">1:37500:1</option>
-          <option value="5:160000:4">5:160000:4</option>
+          {ratioOptions}
         </select>
         </div>
-        <div className="inline-block align-top mb-2 w-1/2 ">
+        <div className={selectBoxCSS}>
         <select defaultValue='' className='text-black' onChange={(e) => {
           if (e.target.value){
             var [power, cap, bar] = e.target.value.split(":")
@@ -207,10 +219,26 @@ export default function Page() {
           }
         }}>
           <option value=''>Magic Ratio quick select</option>
-          <option value="1:37500:1">1:37500:1</option>
-          <option value="5:160000:4">5:160000:4</option>
+          {ratioOptions}
         </select>
         </div>
+        {res3Active
+          ? 
+          <div className={selectBoxCSS}>
+            <select defaultValue='' className='text-black' onChange={(e) => {
+              if (e.target.value){
+                var [power, cap, bar] = e.target.value.split(":")
+                setInputValue(document.getElementById('resource3PowerRatio'), power)
+                setInputValue(document.getElementById('resource3CapRatio'), cap)
+                setInputValue(document.getElementById('resource3BarRatio'), bar)
+              }
+            }}>
+              <option value=''>Resource 3 Ratio quick select</option>
+              {ratioOptions}
+            </select>
+            </div>
+          : null
+        }
       </div>
     </>
   )
