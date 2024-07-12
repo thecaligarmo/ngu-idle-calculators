@@ -15,6 +15,7 @@ import { Quirk } from "@/assets/quirks";
 import Resource from "@/assets/resource";
 import { ItemSet } from "@/assets/sets";
 import { Stat } from "@/assets/stat";
+import { Wish } from "@/assets/wish";
 import Zone from "@/assets/zones";
 import bigDecimal from "js-big-decimal";
 import { useEffect, useState } from "react";
@@ -27,7 +28,7 @@ export function useLocalStorage(key: string, fallbackValue : any) {
     useEffect(() => {
         const stored = localStorage.getItem(key);
         if (stored) {
-            var x = ESSerializer.deserialize(stored, [AdvTraining, APItem, Beard, Challenge, Digger, Enemy, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Zone, AttackStat, bigDecimal]);
+            var x = ESSerializer.deserialize(stored, [AdvTraining, APItem, Beard, Challenge, Digger, Enemy, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Wish, Zone, AttackStat, bigDecimal]);
             // var x = JSON.parse(stored)
             if (x != value) {
                 setValue(x); //

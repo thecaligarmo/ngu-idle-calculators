@@ -15,6 +15,7 @@ import { bd } from "./numbers";
 import { isMaxxedItem, isMaxxedItemSet } from "./resourceInfo";
 import { GameMode } from "../assets/mode";
 import { HACKS, Hack } from "@/assets/hacks";
+import { WISHES, Wish } from "@/assets/wish";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
@@ -461,7 +462,6 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                         }
                     }
                 })
-                console.log(hacks)
                 return hacks
 
             case 'macguffins':
@@ -535,6 +535,20 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     }
                 })
                 return quirks;
+
+            case 'wishes':
+                var wishes : Wish[]= []
+                playerData.wishes.wishes.forEach((wish : any, index : number) => {
+                    if (!_.isUndefined(wish)) {
+                        if (!_.isUndefined(WISHES[index])) {
+                            var w = WISHES[index]
+                            w.setLevel(wish.level)
+                            wishes.push(w)
+                        }
+                    }
+                })
+                console.log(wishes)
+                return wishes;
             case 'itemSets':
                 var itemSets : {[key: string]: ItemSet} = {}
                 for (var set of Object.values(ItemSets)) {
@@ -734,6 +748,7 @@ export function getPlayerOptions() : string[] {
         'macguffins',
         'perks',
         'quirks',
+        'wishes',
         'maxxedItems',
         'itemSets',
     ]
