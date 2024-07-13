@@ -13,7 +13,7 @@ export default class Zone {
     exp: number[]
     // optional
     bossChanceVal: number
-    level: number
+    level: number // Only for ITOPOD and TItans
     constructor(id: number, key: string, name: string, boosts: number[][], exp: number[], enemies: Enemy[], level: number = 0,  bossChanceVal : number = -1) {
         this.id = id
         this.key = key
@@ -263,7 +263,8 @@ export const Zones : {[key: string]: Zone} = {
         ),
     AVSP: new Zone(
             14, 'avsp', 'A Very Strange Place',
-            [[20, 3, 25],[50, 3, 25]], [10, 1, 10],  [Enemies.THE_ENTIRE_ALPHABET_UP_A_COCONUT_TREE, Enemies.THE_LUMMOX, Enemies.A_METAL_SLIME, Enemies.A_GINORMOUS_SWORD, Enemies.AN_ORDINARY_CHICKEN, Enemies.SEVENFORTYTHREE_CHICKENS, Enemies.VIC, Enemies.KENNY]
+            [[20, 3, 25],[50, 3, 25]], [10, 1, 10],
+            [Enemies.THE_ENTIRE_ALPHABET_UP_A_COCONUT_TREE, Enemies.THE_LUMMOX, Enemies.A_METAL_SLIME, Enemies.A_GINORMOUS_SWORD, Enemies.AN_ORDINARY_CHICKEN, Enemies.SEVENFORTYTHREE_CHICKENS, Enemies.VIC, Enemies.KENNY]
         ),
     MEGA: new Zone(
             15, 'mega', 'Mega Lands',
@@ -278,7 +279,8 @@ export const Zones : {[key: string]: Zone} = {
         ),
     BEARDVERSE: new Zone(
             17, 'beardverse', 'The Beardverse',
-            [[50, 0.35, 25], [100, 0.35, 25]], [20, 0.2, 10],  [Enemies.A_BEARDED_LADY, Enemies.A_BEARDED_MAN, Enemies.COUSIN_ITT, Enemies.A_NAKED_MOLERAT, Enemies.ROB_BOSS, Enemies.GOSSAMER, Enemies.AN_ORANGE_TOUPEE_WITH_FISTS, Enemies.A_CLOGGED_SHOWER_DRAIN]
+            [[50, 0.35, 25], [100, 0.35, 25]], [20, 0.2, 10], 
+            [Enemies.A_BEARDED_LADY, Enemies.A_BEARDED_MAN, Enemies.COUSIN_ITT, Enemies.A_NAKED_MOLERAT, Enemies.ROB_BOSS, Enemies.GOSSAMER, Enemies.AN_ORANGE_TOUPEE_WITH_FISTS, Enemies.A_CLOGGED_SHOWER_DRAIN]
         ),
     WALDERP: new Zone(
             18, 'walderp', 'Walderp',
@@ -328,12 +330,12 @@ export const Zones : {[key: string]: Zone} = {
     EVIL: new Zone(
             23, 'edgy', 'The Evilverse',
             [[200, 0.012, 10], [500, 0.012, 10]], [30, 0.01, 3],
-            []
+            [Enemies.EVIL_MOUSE, Enemies.EVIL_GOBLIN, Enemies.EVIL_GOBLIN, Enemies.EVIL_MOLE, Enemies.EVIL_ICARUS_PROUDBOTTOM, Enemies.EVIL_BROWN_SLIME, Enemies.FLOCK_OF_CANADA_GEESE, Enemies.EVIL_SPIKY_HAIRED_GUY_BOSS, Enemies.EVIL_CHAD]
         ),
     PPPL: new Zone(
             24, 'pretty', 'Pretty Pink Princess Land',
             [[500, 0.01, 8], [1000, 0.01, 6]], [30, 0.03, 3],
-            []
+            [Enemies.THE_HUMKEYCORN, Enemies.POOKY_THE_BUNNY, Enemies.THE_MORE_YOU_KNOW_STAR, Enemies.A_FABULOUS_LEPRECHAUN, Enemies.AN_ORDINARY_POSSUM, Enemies.BARRY_THE_BEER_FAIRY, Enemies.AN_ASSHOLE_SWAN, Enemies.TINKLES]
         ),
     NERD: new Zone(
             25, 'nerd1', 'Greasy Nerd',
@@ -362,12 +364,12 @@ export const Zones : {[key: string]: Zone} = {
     META: new Zone(
             26, 'meta', 'Meta Land',
             [[1000, 0.005, 7], [2000, 0.005, 7]], [30, 0.001, 3],
-            []
+            [Enemies.A_HALF_EATEN_COOKIE, Enemies.A_RUSTY_CRANK, Enemies.AHH_A_SHARK, Enemies.THE_NUMBER_18X10308, Enemies.A_WEIRD_GOBLIN_DEMON_THING, Enemies.A_CUTE_KITTEN, Enemies.THE_DRAGON_OF_WISDOM, Enemies.THE_DRAGON_OF_DILDO]
         ),
     PARTY: new Zone(
             27, 'party', 'Interdimensional Party',
             [[1000, 0.003, 8], [2000, 0.003, 8]], [30, 0.003, 3],
-            []
+            [Enemies.THE_BOUNCER_PART_2, Enemies.JAMBI, Enemies.GOD_OF_THUNDER, Enemies.THE_ENTIRE_STATE_OF_SOUTH_DAKOTA, Enemies.A_HUGE_STACK_OF_POGS, Enemies.THREE_GUYS_SHOUTING_OUT_ED, Enemies.MR_CHOW, Enemies.THE_LIFE_OF_THE_PARTY]
         ),
     MOBSTER: new Zone(
             28, 'godMother1', 'The Godmother',
@@ -396,12 +398,12 @@ export const Zones : {[key: string]: Zone} = {
     TYPO: new Zone(
             29, 'typo', 'Typo Zonw',
             [[1000, 0.0022, 9], [2000, 0.0022, 9]], [35, 0.0022, 3],
-            []
+            [Enemies.PERMANENET, Enemies.COUDL, Enemies.LIEK, Enemies.BRIAN, Enemies.BLODO, Enemies.ODIGN, Enemies.HORUS, Enemies.ELDER_TYPO_GOD_ELXU]
         ),
     FAD: new Zone(
             30, 'fad', 'The Fad-lands',
             [[2000, 0.0018, 10], [5000, 0.0018, 10]], [40, 0.00018, 3],
-            []
+            [Enemies.A_VERY_SAD_SLINKY, Enemies.GIANT_METAL_SPINNING_TOP, Enemies.A_STACK_OF_KRAZY_BONEZ, Enemies.RARE_FOIL_POKEYMAN_CARD, Enemies.A_BUSTED_GAMEBOY, Enemies.A_WORTHLESS_BEANY_BABY, Enemies.THE_SLAMMER, Enemies.DEMONIC_FLURBIE]
         ),
     JRPG: new Zone(
             31, 'jrpg', 'JRPGVille',

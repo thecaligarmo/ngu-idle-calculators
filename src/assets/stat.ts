@@ -13,6 +13,7 @@ export const Stat : {[k: string]: string} = {
     DROP_CHANCE: 'dropChance',
     QUEST_DROP: 'questDrops',
     QUEST_REWARD: 'questReward',
+    QUEST_REWARD_ACTIVE: 'questRewardActive',
     // Ygg
     SEED_GAIN: 'seedGain',
     YGGDRASIL_YIELD: 'yggdrasilYield',
@@ -48,6 +49,7 @@ export const Stat : {[k: string]: string} = {
     CARD_GENERATION: 'cardGeneration',
     CARD_SPEED: 'cardSpeed',
     TAG_SPEED: 'tagSpeed',
+    TAG_BONUS: 'tagBonus',
     // junk
     AP: 'AP',
     PP: 'PP',
