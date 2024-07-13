@@ -6,7 +6,7 @@ import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
 import { parseObj, parseNum } from "./parsers";
-import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo } from "./resourceInfo";
+import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo } from "./resourceInfo";
 import { ItemSets } from "@/assets/sets";
 import { GameMode } from "@/assets/mode";
 import { Challenge } from "@/assets/challenges";
@@ -20,17 +20,37 @@ function calcAll(data : any, stat : string) : bigDecimal{
         return bd(0)
     }
 
+    if(false) {
+        if(Stat.ENERGY_POWER == stat) {
+            console.log('ap', apItemInfo(data, stat).getValue())    
+            console.log('beard', beardInfoTemp(data, stat).getValue())
+            console.log('beard', beardInfoPerm(data, stat).getValue())
+            console.log('challenge', challengeInfo(data, stat).getValue())
+            console.log('digger', diggerInfo(data, stat).getValue())
+            console.log('equipment', equipmentInfo(data, stat).getValue())
+            console.log('hack', hackInfo(data, stat).getValue())
+            console.log('ngu', nguInfo(data, stat).getValue())
+            console.log('macguffin', macguffinInfo(data, stat).getValue())
+            console.log('perk', perkInfo(data, stat).getValue())
+            console.log('quirk', quirkInfo(data, stat).getValue())
+            console.log('wish', wishInfo(data, stat).getValue())
+        }
+    }
+
     return bd(1)
-        .multiply(equipmentInfo(data, stat)).divide(base)
-        .multiply(perkInfo(data, stat)).divide(base)
-        .multiply(quirkInfo(data, stat)).divide(base)
-        .multiply(nguInfo(data, stat).divide(base))
+        .multiply(apItemInfo(data, stat).divide(base))    
         .multiply(beardInfoTemp(data, stat).divide(base))
         .multiply(beardInfoPerm(data, stat).divide(base))
-        .multiply(diggerInfo(data, stat).divide(base))
         .multiply(challengeInfo(data, stat))
-        .multiply(apItemInfo(data, stat).divide(base))
+        .multiply(diggerInfo(data, stat).divide(base))
+        .multiply(equipmentInfo(data, stat).divide(base))
+        .multiply(hackInfo(data, stat).divide(base))
+        .multiply(nguInfo(data, stat).divide(base))
         .multiply(macguffinInfo(data, stat).divide(base))
+        .multiply(perkInfo(data, stat).divide(base))
+        .multiply(quirkInfo(data, stat).divide(base))
+        .multiply(wishInfo(data, stat).divide(base))
+        
 }
 
 function isInitilizing(data : any ) : boolean {

@@ -8,7 +8,7 @@ import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
 import { Stat } from '@/assets/stat';
 import { totalAPBonus, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRespawnRate, totalToughness } from '@/helpers/calculators';
-import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo} from '@/helpers/resourceInfo';
+import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo} from '@/helpers/resourceInfo';
 import { ItemSets } from '@/assets/sets';
 
 export default function Page() {
@@ -55,8 +55,10 @@ export default function Page() {
                     <ul className="ml-5">
                         <li key="base">Base Energy Power ({pn(v('baseEnergyPower'), fmt, 2)})</li>
                         <li key="equip">x Equipment ({pn(equipmentInfo(playerStates, Stat.ENERGY_POWER), fmt, 2)}%) </li>
+                        <li key="macguffin">x Macguffin ({pn(macguffinInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
                         <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
                         <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
+                        <li key="wish">x Wish ({pn(wishInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
                         <li key="apitems">x Potions ({pn(apItemInfo(playerStates, Stat.ENERGY_POWER), fmt)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalEnergyPower(playerStates), fmt, 4)}</span></li>
                     </ul>

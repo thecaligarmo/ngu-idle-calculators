@@ -14,6 +14,9 @@ import { Perk } from "@/assets/perks";
 import { MacGuffin } from "@/assets/macguffins";
 import { Item } from "@/assets/items";
 import { ALL_GAME_MODES, GameMode } from "@/assets/mode";
+import { Hack } from "@/assets/hacks";
+import { Quirk } from "@/assets/quirks";
+import { Wish } from "@/assets/wish";
 
 
 export function achievementAPBonus(data : any) : bigDecimal {
@@ -354,6 +357,20 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
     return bd(stat).add(cube)//.round(0, bigDecimal.RoundingModes.DOWN)
 }
 
+export function hackInfo(data : any, key : string) : bigDecimal{
+    var hacks : Hack[] = parseObj(data, 'hacks')
+    var stat : number = 100
+    if (Object.values(Stat).includes(key)) {
+        if ( hacks.length > 0) {
+            hacks.forEach((g) => {
+                stat *= g.getStatValue(key) / 100
+            })
+        }
+    }
+
+    return bd(stat)
+}
+
 export function macguffinInfo(data : any, key : string) : bigDecimal {
     var macguffins : MacGuffin[] = parseObj(data, 'macguffins')
     var stat : number = 100
@@ -410,11 +427,25 @@ export function perkInfo(data : any, key : string) : bigDecimal{
 }
 
 export function quirkInfo(data : any, key : string) : bigDecimal{
-    var quirks : any = parseObj(data, 'quirks')
+    var quirks : Quirk[] = parseObj(data, 'quirks')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( quirks.length > 0) {
-            quirks.forEach((g : any) => {
+            quirks.forEach((g) => {
+                stat *= ((g.getStatValue(key) + 100) / 100)
+            })
+        }
+    }
+
+    return bd(stat)
+}
+
+export function wishInfo(data : any, key : string) : bigDecimal{
+    var wishes : Wish[] = parseObj(data, 'wishes')
+    var stat : number = 100
+    if (Object.values(Stat).includes(key)) {
+        if ( wishes.length > 0) {
+            wishes.forEach((g) => {
                 stat *= ((g.getStatValue(key) + 100) / 100)
             })
         }
