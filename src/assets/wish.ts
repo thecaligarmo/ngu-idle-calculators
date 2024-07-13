@@ -254,7 +254,7 @@ export const WISHLIST = [
     new Wish(227, 'iwishIhadBEEFYCardsIII', 'I wish I had BEEFY Cards III', GameMode.SADISTIC, [], bd('3.8e26')),
     new Wish(228, 'iwishIdidnthaveWIMPYcardsIII', 'I wish I didn\'t have WIMPY cards III', GameMode.SADISTIC, [], bd('350e24')),
     new Wish(229, 'iwishmychonkerswereCHONKIER', 'I wish my chonkers were CHONKIER', GameMode.SADISTIC, [], bd('3.4e26')),
-    new Wish(230, 'iwishmychonkerswereLESSNOTCHONKIER', 'I wish my chonkers were LESS NOT CHONKIER', GameMode.SADISTIC, [], bd('370e24"')),
+    new Wish(230, 'iwishmychonkerswereLESSNOTCHONKIER', 'I wish my chonkers were LESS NOT CHONKIER', GameMode.SADISTIC, [], bd('370e24')),
 ]
 
 export var WISHES = new ResourceContainer(WISHLIST);

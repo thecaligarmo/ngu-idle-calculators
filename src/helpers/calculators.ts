@@ -10,6 +10,7 @@ import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardIn
 import { ItemSets } from "@/assets/sets";
 import { GameMode } from "@/assets/mode";
 import { Challenge } from "@/assets/challenges";
+import { Item } from "@/assets/items";
 
 
 // General Calc - gives a percentage
@@ -20,8 +21,9 @@ function calcAll(data : any, stat : string) : bigDecimal{
         return bd(0)
     }
 
-    if(false) {
-        if(Stat.ENERGY_POWER == stat) {
+    if(true) {
+        if(Stat.POWER == stat) {
+            console.log('----------------------------------------')
             console.log('ap', apItemInfo(data, stat).getValue())    
             console.log('beard', beardInfoTemp(data, stat).getValue())
             console.log('beard', beardInfoPerm(data, stat).getValue())
@@ -103,44 +105,51 @@ export function totalMagicCap(data : any) : bigDecimal {
 }
 
 
+/** Resource 3 */
+
+export function totalRes3Power(data : any) : bigDecimal {
+    return parseNum(data, 'baseRes3Power')
+        .multiply(calcAll(data, Stat.RES3_POWER)).divide(bd(100));
+}
+
+export function totalRes3Bar(data : any) : bigDecimal {
+    return parseNum(data, 'baseRes3Bar')
+        .multiply(calcAll(data, Stat.RES3_BARS)).divide(bd(100));
+}
+
+export function totalRes3Cap(data : any) : bigDecimal {
+    return parseNum(data, 'baseRes3Cap')
+        .multiply(calcAll(data, Stat.RES3_CAP)).divide(bd(100));
+}
+
+
 /** NGU */
 export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
     var aNumberSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
+    var metaSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.META) ? bd(1.2) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.ENERGY_NGU_SPEED)
     
     return bd(1)
         .multiply(gen)
         .multiply(totalEnergyPower(data))
         .multiply(aNumberSetModifier)
+        .multiply(metaSetModifier)
 }
 
 export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
     var aNumberSetModifier : bigDecimal = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
+    var metaSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.META) ? bd(1.2) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.MAGIC_NGU_SPEED)
     var challenges : Challenge[] = parseObj(data, 'challenges')
     var trollChallenge = (!_.isUndefined(challenges[GameMode.NORMAL]) && challenges[GameMode.NORMAL][5])
     var tcNum : bigDecimal = (!_.isUndefined(trollChallenge) && trollChallenge.level > 0) ? bd(3) : bd(1);
     
-    // console.log('------')
-    // console.log(parseNum(data, 'baseEnergyCap'))
-    // console.log(calcAll(data, Stat.ENERGY_CAP))
-
-    var stat = Stat.MAGIC_NGU_SPEED
-    // console.log('equip', equipmentInfo(data, stat))
-    // console.log('perk', perkInfo(data, stat))
-    // console.log('quirk', quirkInfo(data, stat))
-    // console.log('ngu', nguInfo(data, stat))
-    // console.log('beard', beardInfoTemp(data, stat))
-    // console.log('beard2', beardInfoPerm(data, stat))
-    // console.log('digg', diggerInfo(data, stat))
-    // console.log('challenge', challengeInfo(data, stat))
-    // console.log('ap', apItemInfo(data, stat))
-    // console.log('mac', macguffinInfo(data, stat))
-
+    
     return bd(1)
         .multiply(gen)
         .multiply(totalMagicPower(data))
         .multiply(aNumberSetModifier)
+        .multiply(metaSetModifier)
         .multiply(tcNum)
 }
 
@@ -155,6 +164,7 @@ export function totalExpBonus(data : any) : bigDecimal {
 }
 
 export function totalAPBonus(data: any) : bigDecimal {
+    var gen : bigDecimal = calcAll(data, Stat.AP)
     var yellowHeartBonus : bigDecimal = isMaxxedItem(data, 129) ? bd(1.2) : bd(1)
     var achievBonus = achievementAPBonus(data)
 
@@ -162,7 +172,8 @@ export function totalAPBonus(data: any) : bigDecimal {
         return bd(0)
     }
 
-    return bd(100)
+    return bd(1)
+        .multiply(gen)
         .multiply(yellowHeartBonus)
         .multiply(achievBonus).divide(bd(100))
 }
@@ -170,6 +181,7 @@ export function totalAPBonus(data: any) : bigDecimal {
 export function totalPPBonus(data: any) : bigDecimal {
     var greenHeartBonus : bigDecimal = isMaxxedItem(data, 171) ? bd(1.2) : bd(1)
     var pissedOffKeyBonus : bigDecimal = isMaxxedItem(data, 172) ? bd(1.1) : bd(1)
+    var PPPSetBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.PINK) ? bd(1.1) : bd(1)
     var gen : bigDecimal = calcAll(data, Stat.PP)
     
 
@@ -177,6 +189,7 @@ export function totalPPBonus(data: any) : bigDecimal {
         .multiply(gen)
         .multiply(greenHeartBonus)
         .multiply(pissedOffKeyBonus)
+        .multiply(PPPSetBonus)
 }
 
 /** Adventure Stats */

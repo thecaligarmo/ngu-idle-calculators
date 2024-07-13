@@ -123,7 +123,7 @@ export const PERKLIST = [
     new Perk(52, 'aDiggerSlot!', 'A Digger Slot!', GameMode.NORMAL, 0, []),
     new Perk(53, 'oohAnotherDiggerSlot!', 'ooh, Another Digger Slot!', GameMode.NORMAL, 0, []),
     new Perk(54, 'statBoostforRichPerksII', 'Stat Boost for Rich Perks II', GameMode.NORMAL, 0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
-    new Perk(55, 'adventureBoostForRichPerksI', 'Adventure Boost For Rich Perks I', GameMode.NORMAL, 0, [[Stat.ATTACK, 0.1], [Stat.DEFENSE, 10]]),
+    new Perk(55, 'adventureBoostForRichPerksI', 'Adventure Boost For Rich Perks I', GameMode.NORMAL, 0, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]]),
     new Perk(56, 'macguffinDaycare!', 'Macguffin Daycare!', GameMode.EVIL, 0, []),
     new Perk(57, 'genericEnergyPowerPerkII', 'Generic Energy Power Perk II', GameMode.EVIL, 0, [[Stat.ENERGY_POWER, 1]]),
     new Perk(58, 'genericEnergyBarPerkII', 'Generic Energy Bar Perk II', GameMode.EVIL, 0, [[Stat.ENERGY_BARS, 1]]),

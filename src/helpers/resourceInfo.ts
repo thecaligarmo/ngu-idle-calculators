@@ -192,25 +192,25 @@ export function beardInfoPerm(data: any, key: string) : bigDecimal{
 
 export function challengeInfo(data : any, key : string, gameMode : number = GameMode.ALL) : bigDecimal{
     var challenges : {[key:number] : Challenge[]} = parseObj(data, 'challenges')
-    var stat : number = 100
+    var stat : number = 1
     if (Object.values(Stat).includes(key)) {
         if(gameMode === GameMode.ALL) {
             ALL_GAME_MODES.forEach((mode) => {
                 if(!_.isUndefined(challenges[mode]) && challenges[mode].length > 0) {
                     challenges[mode].forEach((g) => {
-                        stat += g.getStatValue(key)
+                        stat *= ((100 + g.getStatValue(key)) / 100)
                     })
                 }
             })
         } else {
             if(challenges[gameMode].length > 0) {
                 challenges[gameMode].forEach((g) => {
-                    stat += g.getStatValue(key)
+                    stat *= ((100 + g.getStatValue(key)) / 100)
                 })
             }
         }
     }
-    return bd(stat)
+    return bd(stat * 100)
 }
 
 function cubeInfo(data : any, key : string) : bigDecimal {
@@ -378,6 +378,9 @@ export function macguffinInfo(data : any, key : string) : bigDecimal {
         if ( macguffins.length > 0) {
             macguffins.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
+                    if(Stat.RES3_POWER == key) {
+                        console.log(key, g[key], g)
+                    }
                     stat = 100 * g[key]
                 }
             })

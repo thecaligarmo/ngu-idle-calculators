@@ -61,6 +61,10 @@ export class Hack extends Resource {
             level = this.level
         }
         if(!_.isUndefined(this[prop])) {
+            // if(prop == Stat.ENERGY_NGU_SPEED) {
+            //     console.log('main value', this[prop])
+            //     console.log('bonus', this.getMilestoneBonus(milestoneReduction))
+            // }
             return (100 + this[prop]) * this.getMilestoneBonus(milestoneReduction)
         }
         return 100
@@ -68,7 +72,7 @@ export class Hack extends Resource {
 
     getMilestoneBonus(milestoneReduction : number = 0) {
         var numMilestones = Math.floor(this.level / (this.baseMilestone - milestoneReduction))
-        return numMilestones * this.milestoneBonus
+        return this.milestoneBonus ** numMilestones
     }
     
 
@@ -240,21 +244,21 @@ export class Hack extends Resource {
 
 
 export const HACKLIST = [
-    new Hack(0, HACKKeys.POWER, 'Attack/Defense Hack', GameMode.ALL, [[Stat.ATTACK, 2.5], [Stat.DEFENSE, 2.5]], 10, 102.5, bd('1e8'), 7720),
-    new Hack(1, HACKKeys.ADVENTURE, 'Adventure Stats Hack', GameMode.ALL, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]], 50, 102, bd('2e8'), 7632),
-    new Hack(2, HACKKeys.TIME_MACHINE, 'Time Machine Speed Hack', GameMode.ALL, [[Stat.TIME_MACHINE_SPEED, 0.2]], 50, 102, bd('4e8'), 7544),
-    new Hack(3, HACKKeys.DROP_CHANCE, 'Drop Chance Hack', GameMode.ALL, [[Stat.DROP_CHANCE, 0.25]], 40, 103, bd('4e8'), 7544),
-    new Hack(4, HACKKeys.AUGMENT_SPEED, 'Augment Speed Hack', GameMode.ALL, [[Stat.AUGMENT_SPEED, 0.2]], 20, 101, bd('8e8'), 7456),
-    new Hack(5, HACKKeys.ENERGY_NGU, 'Energy NGU Speed Hack', GameMode.ALL, [[Stat.ENERGY_NGU_SPEED, 0.1]], 30, 101.5, bd('2e9'), 7340),
-    new Hack(6, HACKKeys.MAGIC_NGU, 'Magic NGU Speed Hack', GameMode.ALL, [[Stat.MAGIC_NGU_SPEED, 0.1]], 30, 101.5, bd('2e9'), 7340),
-    new Hack(7, HACKKeys.BLOOD, 'Blood Gain Hack', GameMode.ALL, [[Stat.BLOOD, 0.1]], 50, 104, bd('4e9'), 7252),
-    new Hack(8, HACKKeys.QUEST, 'QP Gain Hack', GameMode.ALL, [[Stat.QUEST_REWARD, 0.05]], 50, 100.8, bd('8e9'), 7164),
-    new Hack(9, HACKKeys.DAYCARE, 'Daycare Hack', GameMode.ALL, [[Stat.DAYCARE_SPEED, 0.02]], 45, 100.5, bd('2e10'), 7048),
-    new Hack(10, HACKKeys.EXP, 'EXP Hack', GameMode.ALL, [[Stat.EXPERIENCE, 0.025]], 75, 101, bd('4e10'), 6960),
-    new Hack(11, HACKKeys.NUMBER, 'Number Hack', GameMode.ALL, [[Stat.NUMBER, 5]], 40, 104, bd('8e10'), 6873),
-    new Hack(12, HACKKeys.PP, 'PP Hack', GameMode.ALL, [[Stat.PP, 0.05]], 25, 100.5, bd('2e11'), 6757),
-    new Hack(13, HACKKeys.HACK, 'Hack Hack', GameMode.ALL, [[Stat.HACK_SPEED, 0.05]], 100, 110, bd('2e11'), 6757),
-    new Hack(14, HACKKeys.WISH, 'Wish Hack', GameMode.ALL, [[Stat.WISH_SPEED, 0.01]], 50, 100.5, bd('1e13'), 6262),
+    new Hack(0, HACKKeys.POWER, 'Attack/Defense Hack', GameMode.ALL, [[Stat.ATTACK, 2.5], [Stat.DEFENSE, 2.5]], 10, 1.025, bd('1e8'), 7720),
+    new Hack(1, HACKKeys.ADVENTURE, 'Adventure Stats Hack', GameMode.ALL, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]], 50, 1.02, bd('2e8'), 7632),
+    new Hack(2, HACKKeys.TIME_MACHINE, 'Time Machine Speed Hack', GameMode.ALL, [[Stat.TIME_MACHINE_SPEED, 0.2]], 50, 1.02, bd('4e8'), 7544),
+    new Hack(3, HACKKeys.DROP_CHANCE, 'Drop Chance Hack', GameMode.ALL, [[Stat.DROP_CHANCE, 0.25]], 40, 1.03, bd('4e8'), 7544),
+    new Hack(4, HACKKeys.AUGMENT_SPEED, 'Augment Speed Hack', GameMode.ALL, [[Stat.AUGMENT_SPEED, 0.2]], 20, 1.01, bd('8e8'), 7456),
+    new Hack(5, HACKKeys.ENERGY_NGU, 'Energy NGU Speed Hack', GameMode.ALL, [[Stat.ENERGY_NGU_SPEED, 0.1]], 30, 1.015, bd('2e9'), 7340),
+    new Hack(6, HACKKeys.MAGIC_NGU, 'Magic NGU Speed Hack', GameMode.ALL, [[Stat.MAGIC_NGU_SPEED, 0.1]], 30, 1.015, bd('2e9'), 7340),
+    new Hack(7, HACKKeys.BLOOD, 'Blood Gain Hack', GameMode.ALL, [[Stat.BLOOD, 0.1]], 50, 1.04, bd('4e9'), 7252),
+    new Hack(8, HACKKeys.QUEST, 'QP Gain Hack', GameMode.ALL, [[Stat.QUEST_REWARD, 0.05]], 50, 1.008, bd('8e9'), 7164),
+    new Hack(9, HACKKeys.DAYCARE, 'Daycare Hack', GameMode.ALL, [[Stat.DAYCARE_SPEED, 0.02]], 45, 1.005, bd('2e10'), 7048),
+    new Hack(10, HACKKeys.EXP, 'EXP Hack', GameMode.ALL, [[Stat.EXPERIENCE, 0.025]], 75, 1.01, bd('4e10'), 6960),
+    new Hack(11, HACKKeys.NUMBER, 'Number Hack', GameMode.ALL, [[Stat.NUMBER, 5]], 40, 1.04, bd('8e10'), 6873),
+    new Hack(12, HACKKeys.PP, 'PP Hack', GameMode.ALL, [[Stat.PP, 0.05]], 25, 1.005, bd('2e11'), 6757),
+    new Hack(13, HACKKeys.HACK, 'Hack Hack', GameMode.ALL, [[Stat.HACK_SPEED, 0.05]], 100, 1.10, bd('2e11'), 6757),
+    new Hack(14, HACKKeys.WISH, 'Wish Hack', GameMode.ALL, [[Stat.WISH_SPEED, 0.01]], 50, 1.005, bd('1e13'), 6262),
 ]
 
 export var HACKS = new ResourceContainer(HACKLIST);

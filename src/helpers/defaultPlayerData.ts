@@ -37,11 +37,11 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.magic.capMagic;
             case 'baseMagicPower':
                 return playerData.magic.magicPower;
-            case 'baseResource3Bar':
+            case 'baseRes3Bar':
                 return playerData.res3.res3PerBar;
-            case 'baseResource3Cap':
+            case 'baseRes3Cap':
                 return playerData.res3.capRes3;
-            case 'baseResource3Power':
+            case 'baseRes3Power':
                 return playerData.res3.res3Power;
 
             case 'beastMode':
@@ -467,36 +467,38 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'macguffins':
                 var macguffins : MacGuffin[] = []
 
-                for (var c = 0; c < 22; c++) {
-                    macguffins.push(MACGUFFINS[c])
+                for (var c = 0; c < 25; c++) {
+                    if(!_.isUndefined(MACGUFFINS[c])) {
+                        macguffins.push(MACGUFFINS[c])
+                    }
                 }
                 playerData.inventory.macguffins.forEach((macguffin : any, index : number) => {
                     if(macguffin.id > 0) {
                         var macID = 0;
                         switch(macguffin.id) {
-                            case 250:
+                            case 228:
                                 macID = 14
                                 break;
-                            case 289:
+                            case 250:
                                 macID = 15
                                 break;
-                            case 290:
+                            case 289:
                                 macID = 16
                                 break;
-                            case 291:
+                            case 290:
                                 macID = 17
                                 break;
-                            case 228:
-                                macID = 18
-                                break;
-                            case 298:
+                            case 291:
                                 macID = 19
                                 break;
-                            case 299:
+                            case 298:
                                 macID = 20
                                 break;
-                            case 300:
+                            case 299:
                                 macID = 21
+                                break;
+                            case 300:
+                                macID = 22
                                 break;
                             default:
                                 macID = macguffin.id - 198
@@ -505,9 +507,9 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     }
                 })
 
-                for (var c = 0; c < 22; c++) {
-                    macguffins[c].importStats(playerData.inventory.macguffinBonuses);
-                }
+                macguffins.forEach((macguffin) => {
+                    macguffin.importStats(playerData.inventory.macguffinBonuses)
+                })
                 
                 return macguffins
             case 'perks':
@@ -547,7 +549,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                         }
                     }
                 })
-                console.log(wishes)
+                
                 return wishes;
             case 'itemSets':
                 var itemSets : {[key: string]: ItemSet} = {}
@@ -615,9 +617,9 @@ export function getPlayerNumberOptions() : string[]{
         'baseMagicBar',
         'baseMagicCap',
         'baseMagicPower',
-        'baseResource3Bar',
-        'baseResource3Cap',
-        'baseResource3Power',
+        'baseRes3Bar',
+        'baseRes3Cap',
+        'baseRes3Power',
         'beastMode',
         'bloodMagicDropChance',
         'bloodMagicTimeMachine',
