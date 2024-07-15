@@ -2,12 +2,11 @@ import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoTemp, beardInf
 import {defaultPlayerData} from '../../src/helpers/defaultPlayerData'
 import {Stat} from '../../src/assets/stat';
 import { ItemSets } from '../../src/assets/sets';
-import earlyNormal from './__data__/earlyNormal1';
-import earlyNormalTwo from './__data__/earlyNormal2';
-import { describe } from 'node:test';
-import midNormal from './__data__/midNormal1';
-import midNormalTwo from './__data__/midNormal2';
-import lateNormal from './__data__/lateNormal';
+import earlyNormal from '../__data__/earlyNormal1';
+import earlyNormalTwo from '../__data__/earlyNormal2';
+import midNormal from '../__data__/midNormal1';
+import midNormalTwo from '../__data__/midNormal2';
+import lateNormal from '../__data__/lateNormal';
 
 
 test('Achievement info - Early Normal', () => {

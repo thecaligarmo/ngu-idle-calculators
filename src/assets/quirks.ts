@@ -10,8 +10,6 @@ export class Quirk  extends Resource {
     }
 }
 
-// TODO - Finish adding all the Quirks
-
 
 export const QUIRKLIST = [
     new Quirk(0, 'babysFirstQuirk:EnergyPower', 'Baby\'s First Quirk: Energy Power', GameMode.NORMAL, 1, [[Stat.ENERGY_POWER, 10],]),
@@ -26,7 +24,7 @@ export const QUIRKLIST = [
     new Quirk(9, 'gOOOOOLLLLLLLLLLLD!', 'GOOOOOLLLLLLLLLLLD!', GameMode.NORMAL, 1, [[Stat.GOLD_DROP, 10]]),
     new Quirk(10, 'theBeastsSpecialBeardTonic', 'The Beast\'s Special Beard Tonic', GameMode.NORMAL, 1, [[Stat.MAGIC_BEARD_SPEED, 1], [Stat.ENERGY_BEARD_SPEED, 1]]),
     new Quirk(11, 'beastedBoostsI', 'Beasted Boosts I', GameMode.NORMAL, 1, [[Stat.BOOSTS_BOOST, 1]]),
-    new Quirk(12, 'theBeastsSeed)', 'The Beast\'s Seed ;)', GameMode.NORMAL, 1, []),
+    new Quirk(12, 'theBeastsSeed)', 'The Beast\'s Seed ;)', GameMode.NORMAL, 1, [[Stat.SEED_GAIN, 1]]),
     new Quirk(13, 'theBeasts Fertilizer', 'The Beast\'s Fertilizer', GameMode.NORMAL, 1, []),
     new Quirk(14, 'theBeastNGUQuirkEver', 'The Beast NGU Quirk Ever ', GameMode.EVIL, 1, []),
     new Quirk(15, 'energyWandoosBEAST-a', 'Energy Wandoos BEAST-a ', GameMode.EVIL, 1, [[Stat.ENERGY_WANDOOS_SPEED, 2]]),

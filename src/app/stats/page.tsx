@@ -11,26 +11,17 @@ import { totalAPBonus, totalDropChance, totalEnergyBar, totalEnergyCap, totalEne
 import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo} from '@/helpers/resourceInfo';
 import { ItemSet, ItemSets } from '@/assets/sets';
 import { defaultPlayerData } from '@/helpers/defaultPlayerData';
+import { parseNum, parseObj } from '@/helpers/parsers';
 
 export default function Page() {
     const playerStates = createStatesForData();
     var fmt = getNumberFormat();
     // Helper function - Needed in every isntance (makes code easier to read too)
     function v(key : string) : bigDecimal{
-        var x = playerStates[key][0]
-        if (x instanceof bigDecimal) {
-            return x
-        }
-        return bd(x)
+        return parseNum(playerStates, key)
     }
     function j(key : string) : any{
-        var x = playerStates[key][0]
-        if (typeof x === 'string') {
-            return JSON.parse(x)
-        } else if (typeof x === 'number') {
-            return {}
-        }
-        return x
+        return parseObj(playerStates, key)
     }
 
     var [res3Active, setRes3Active] = playerStates["resource3Active"]

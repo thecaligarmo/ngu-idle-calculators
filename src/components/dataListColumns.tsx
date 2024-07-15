@@ -37,11 +37,13 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
         if (d.type == 'checkbox') {
             var checked = val.getValue() == '1'
             return (<li key={'in-'+d.key} id={'in-'+d.id} className={disabled}>
-                <label className="inline-block text-black dark:text-white mt-2 mb-1 mr-2" htmlFor={d.id}>
+                <label className="inline-block text-black dark:text-white mt-2 mb-1 mr-2">
+                    {/* htmlFor={d.id} */}
                     {d.name}:
                 </label>
                 <ChoiceButton
                     text="Yes"
+                    
                     active={checked}
                     onClick={(e) => {
                         console.log('Yes', d.value)

@@ -3,6 +3,7 @@ export function camelToTitle(text: string) : string {
     result = result
                 .replace(/ N G U( |$)/g, ' NGU ')
                 .replace(/ P P( |$)/g, ' PP ')
+                .replace(/ A P( |$)/g, ' AP ')
                 .replace('%', ' (%)')
     return result.charAt(0).toUpperCase() + result.slice(1);
 }

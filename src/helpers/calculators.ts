@@ -6,7 +6,7 @@ import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
 import { parseObj, parseNum } from "./parsers";
-import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo } from "./resourceInfo";
+import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, perkLevel, quirkInfo, wishInfo } from "./resourceInfo";
 import { ItemSets } from "@/assets/sets";
 import { GameMode } from "@/assets/mode";
 import { Challenge } from "@/assets/challenges";
@@ -21,8 +21,8 @@ function calcAll(data : any, stat : string) : bigDecimal{
         return bd(0)
     }
 
-    if(true) {
-        if(Stat.POWER == stat) {
+    if(false) {
+        if(Stat.SEED_GAIN == stat) {
             console.log('----------------------------------------')
             console.log('ap', apItemInfo(data, stat).getValue())    
             console.log('beard', beardInfoTemp(data, stat).getValue())
@@ -166,6 +166,7 @@ export function totalExpBonus(data : any) : bigDecimal {
 export function totalAPBonus(data: any) : bigDecimal {
     var gen : bigDecimal = calcAll(data, Stat.AP)
     var yellowHeartBonus : bigDecimal = isMaxxedItem(data, 129) ? bd(1.2) : bd(1)
+    var fib : bigDecimal = perkLevel(data, 'fibonacciPerk') >= 89 ? bd(1.02) : bd(1)
     var achievBonus = achievementAPBonus(data)
 
     if (isInitilizing(data)) {
@@ -175,8 +176,10 @@ export function totalAPBonus(data: any) : bigDecimal {
     return bd(1)
         .multiply(gen)
         .multiply(yellowHeartBonus)
+        .multiply(fib)
         .multiply(achievBonus).divide(bd(100))
 }
+
 
 export function totalPPBonus(data: any) : bigDecimal {
     var greenHeartBonus : bigDecimal = isMaxxedItem(data, 171) ? bd(1.2) : bd(1)
@@ -268,4 +271,24 @@ export function totalDropChance(data : any) : bigDecimal {
         .multiply(yggdrasilModifier)
         .multiply(dropChanceSetModifier)
     
+}
+
+export function totalSeedGainBonus(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.SEED_GAIN)
+    return gen
+}
+
+export function totalYggdrasilYieldBonus(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.YGGDRASIL_YIELD)
+    return gen
+}
+
+export function totalQuestRewardBonus(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.QUEST_REWARD)
+    return gen
+}
+
+export function totalMayoSpeed(data : any) :bigDecimal {
+    var gen = calcAll(data, Stat.MAYO_SPEED)
+    return gen
 }

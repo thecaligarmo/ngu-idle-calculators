@@ -10,7 +10,7 @@ import { Beard } from "@/assets/beards";
 import { Challenge } from "@/assets/challenges";
 import { Digger } from "@/assets/diggers";
 import { NGU } from "@/assets/ngus";
-import { Perk } from "@/assets/perks";
+import { Perk, PERKS } from "@/assets/perks";
 import { MacGuffin } from "@/assets/macguffins";
 import { Item } from "@/assets/items";
 import { ALL_GAME_MODES, GameMode } from "@/assets/mode";
@@ -378,9 +378,6 @@ export function macguffinInfo(data : any, key : string) : bigDecimal {
         if ( macguffins.length > 0) {
             macguffins.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
-                    if(Stat.RES3_POWER == key) {
-                        console.log(key, g[key], g)
-                    }
                     stat = 100 * g[key]
                 }
             })
@@ -400,11 +397,11 @@ export function nguInfo(data : any, key : string) : bigDecimal{
             })
         }
         
-        var x = 1
+        // var x = 1
         if ( mngus.length > 0) {
             mngus.forEach((g) => {
                 stat *= g.getStatValue(key) / 100
-                x *= g.getStatValue(key) / 100
+                // x *= g.getStatValue(key) / 100
             })
         }
         
@@ -468,4 +465,17 @@ export function isMaxxedItem(data : any, itemId : number) : boolean {
 export function isMaxxedItemSet(data : any, itemSet : ItemSet) : boolean {
     var itemSets = parseObj(data, 'itemSets')
     return (itemSet.key in itemSets) ? itemSets[itemSet.key].isMaxxed : false;
+}
+
+export function perkLevel(data : any, key : string) : number {
+    var perks : Perk[] = parseObj(data, 'perks')
+    
+    if(perks.length > 0) {
+        for(var p of perks) {
+            if(p.key == key) {
+                return p.level
+            }
+        }
+    }
+    return 0
 }

@@ -16,6 +16,7 @@ import Resource from "@/assets/resource";
 import { ItemSet } from "@/assets/sets";
 import { Stat } from "@/assets/stat";
 import { Wish } from "@/assets/wish";
+import { FruitOfAdventure, FruitOfArbitrariness, FruitOfGold, FruitOfKnowledge, FruitOfLuck, FruitOfMacguffinA, FruitOfMacguffinB, FruitOfMayo, FruitOfNumbers, FruitOfPomegranate, FruitOfPowerA, FruitOfPowerB, FruitOfPowerD, FruitOfQuirks, FruitOfRage, FruitOfWatermelon, Yggdrasil } from "@/assets/yggdrasil";
 import Zone from "@/assets/zones";
 import bigDecimal from "js-big-decimal";
 import { useEffect, useState } from "react";
@@ -28,7 +29,14 @@ export function useLocalStorage(key: string, fallbackValue : any) {
     useEffect(() => {
         const stored = localStorage.getItem(key);
         if (stored) {
-            var x = ESSerializer.deserialize(stored, [AdvTraining, APItem, Beard, Challenge, Digger, Enemy, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Wish, Zone, AttackStat, bigDecimal]);
+            var x = ESSerializer.deserialize(
+                stored,
+                [
+                    AdvTraining, APItem, Beard, Challenge, Digger, Enemy, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Wish,
+                    Zone, AttackStat, bigDecimal,
+                    Yggdrasil, FruitOfGold, FruitOfPowerA, FruitOfAdventure, FruitOfKnowledge, FruitOfPomegranate, FruitOfLuck, FruitOfPowerB, FruitOfArbitrariness, FruitOfNumbers, FruitOfRage, FruitOfMacguffinA, FruitOfPowerD, FruitOfWatermelon, FruitOfMacguffinB, FruitOfQuirks, FruitOfMayo,
+                ]
+            );
             // var x = JSON.parse(stored)
             if (x != value) {
                 setValue(x); //

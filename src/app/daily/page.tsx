@@ -42,6 +42,10 @@ export default function Page() {
         return parseNum(playerStates, key)
     }
 
+    function c(key : string) : boolean {
+        return v(key).compareTo(bd(1)) == 0
+    }
+
     var hoursPerDay = v('hoursPerDay').compareTo(bd(0)) == 0 ? bd(24) : v('hoursPerDay')
     
 
@@ -62,8 +66,8 @@ export default function Page() {
     var itopodZone = Zones.ITOPOD;
     itopodZone.setLevel(itopodFloor)
 
-    var bluePillMultiplier = v('bluePill^').compareTo(bd(1)) == 0 
-                                ? (v('blueHeart^').compareTo(bd(1)) == 0 ? bd(2.2) : bd(2))
+    var bluePillMultiplier = c('bluePill^')
+                                ? (c('blueHeart^') ? bd(2.2) : bd(2))
                                 : bd(1)
 
     var floorAdd = 200

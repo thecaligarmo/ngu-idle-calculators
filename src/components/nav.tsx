@@ -30,6 +30,7 @@ export default function Nav({ children } : PropsWithChildren) {
             <NavElt href="/exp">Exp</NavElt>
             <NavElt href="/daily">Daily</NavElt>
             <NavElt href="/stats">Stats</NavElt>
+            <NavElt href="/ygg">Ygg</NavElt>
             <NavElt href="/about">About/Credits</NavElt>
 
             <li key="save" className="flex-grow">

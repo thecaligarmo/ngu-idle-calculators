@@ -6,16 +6,17 @@ import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { BEARDS, Beard } from "@/assets/beards";
 import { DIGGERS, Digger } from "@/assets/diggers";
 import { CHALLENGES, Challenge } from "@/assets/challenges";
-import { boostRecyclying, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalMagicCap, totalMagicNGUSpeedFactor, totalPPBonus, totalPower, totalRespawnRate } from "./calculators";
+import { boostRecyclying, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestRewardBonus, totalRespawnRate, totalSeedGainBonus, totalYggdrasilYieldBonus } from "./calculators";
 import { APITEMS, APItem } from "@/assets/apItems";
 import { ItemSet, ItemSets } from "@/assets/sets";
 import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
 import { MACGUFFINS, MacGuffin } from "@/assets/macguffins";
 import { bd } from "./numbers";
-import { isMaxxedItem, isMaxxedItemSet } from "./resourceInfo";
+import { isMaxxedItem, isMaxxedItemSet, perkLevel } from "./resourceInfo";
 import { GameMode } from "../assets/mode";
 import { HACKS, Hack } from "@/assets/hacks";
 import { WISHES, Wish } from "@/assets/wish";
+import { FRUITS, Yggdrasil } from "@/assets/yggdrasil";
 
 export function defaultPlayerData(playerData : any, info : string) : any {
     const playerExists = (playerData && Object.keys(playerData).length > 0)
@@ -255,6 +256,133 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'magicNGUAdventureBSadisticTarget':
                 return playerData.NGU.magicSkills[6].sadisticTarget;
 
+            case 'eatFruitOfGold^':
+                return playerData.yggdrasil.fruits[0].eatFruit;
+            case 'eatFruitOfPowerA^':
+                return playerData.yggdrasil.fruits[1].eatFruit;
+            case 'eatFruitOfAdventure^':
+                return playerData.yggdrasil.fruits[2].eatFruit;
+            case 'eatFruitOfKnowledge^':
+                return playerData.yggdrasil.fruits[3].eatFruit;
+            case 'eatFruitOfPomegranate^':
+                return playerData.yggdrasil.fruits[4].eatFruit;
+            case 'eatFruitOfLuck^':
+                return playerData.yggdrasil.fruits[5].eatFruit;
+            case 'eatFruitOfPowerB^':
+                return playerData.yggdrasil.fruits[6].eatFruit;
+            case 'eatFruitOfArbitrariness^':
+                return playerData.yggdrasil.fruits[7].eatFruit;
+            case 'eatFruitOfNumbers^':
+                return playerData.yggdrasil.fruits[8].eatFruit;
+            case 'eatFruitOfRage^':
+                return playerData.yggdrasil.fruits[9].eatFruit;
+            case 'eatFruitOfMacguffinA^':
+                return playerData.yggdrasil.fruits[10].eatFruit;
+            case 'eatFruitOfPowerD^':
+                return playerData.yggdrasil.fruits[11].eatFruit;
+            case 'eatFruitOfWatermelon^':
+                return playerData.yggdrasil.fruits[12].eatFruit;
+            case 'eatFruitOfMacguffinB^':
+                return playerData.yggdrasil.fruits[13].eatFruit;
+            case 'eatFruitOfQuirks^':
+                return playerData.yggdrasil.fruits[14].eatFruit;
+            case 'eatFruitOfAngryMayo^':
+                return playerData.yggdrasil.fruits[15].eatFruit;
+            case 'eatFruitOfSadMayo^':
+                return playerData.yggdrasil.fruits[16].eatFruit;
+            case 'eatFruitOfMoldyMayo^':
+                return playerData.yggdrasil.fruits[17].eatFruit;
+            case 'eatFruitOfAyyMayo^':
+                return playerData.yggdrasil.fruits[18].eatFruit;
+            case 'eatFruitOfCincoDeMayo^':
+                return playerData.yggdrasil.fruits[19].eatFruit;
+            case 'eatFruitOfPrettyMayo^':
+                return playerData.yggdrasil.fruits[20].eatFruit;
+            case 'poopFruitOfGold^':
+                return playerData.yggdrasil.fruits[0].usePoop;
+            case 'poopFruitOfPowerA^':
+                return playerData.yggdrasil.fruits[1].usePoop;
+            case 'poopFruitOfAdventure^':
+                return playerData.yggdrasil.fruits[2].usePoop;
+            case 'poopFruitOfKnowledge^':
+                return playerData.yggdrasil.fruits[3].usePoop;
+            case 'poopFruitOfPomegranate^':
+                return playerData.yggdrasil.fruits[4].usePoop;
+            case 'poopFruitOfLuck^':
+                return playerData.yggdrasil.fruits[5].usePoop;
+            case 'poopFruitOfPowerB^':
+                return playerData.yggdrasil.fruits[6].usePoop;
+            case 'poopFruitOfArbitrariness^':
+                return playerData.yggdrasil.fruits[7].usePoop;
+            case 'poopFruitOfNumbers^':
+                return playerData.yggdrasil.fruits[8].usePoop;
+            case 'poopFruitOfRage^':
+                return playerData.yggdrasil.fruits[9].usePoop;
+            case 'poopFruitOfMacguffinA^':
+                return playerData.yggdrasil.fruits[10].usePoop;
+            case 'poopFruitOfPowerD^':
+                return playerData.yggdrasil.fruits[11].usePoop;
+            case 'poopFruitOfWatermelon^':
+                return playerData.yggdrasil.fruits[12].usePoop;
+            case 'poopFruitOfMacguffinB^':
+                return playerData.yggdrasil.fruits[13].usePoop;
+            case 'poopFruitOfQuirks^':
+                return playerData.yggdrasil.fruits[14].usePoop;
+            case 'poopFruitOfAngryMayo^':
+                return playerData.yggdrasil.fruits[15].usePoop;
+            case 'poopFruitOfSadMayo^':
+                return playerData.yggdrasil.fruits[16].usePoop;
+            case 'poopFruitOfMoldyMayo^':
+                return playerData.yggdrasil.fruits[17].usePoop;
+            case 'poopFruitOfAyyMayo^':
+                return playerData.yggdrasil.fruits[18].usePoop;
+            case 'poopFruitOfCincoDeMayo^':
+                return playerData.yggdrasil.fruits[19].usePoop;
+            case 'poopFruitOfPrettyMayo^':
+                return playerData.yggdrasil.fruits[20].usePoop;
+            case 'tierFruitOfGold':
+                return playerData.yggdrasil.fruits[0].maxTier;
+            case 'tierFruitOfPowerA':
+                return playerData.yggdrasil.fruits[1].maxTier;
+            case 'tierFruitOfAdventure':
+                return playerData.yggdrasil.fruits[2].maxTier;
+            case 'tierFruitOfKnowledge':
+                return playerData.yggdrasil.fruits[3].maxTier;
+            case 'tierFruitOfPomegranate':
+                return playerData.yggdrasil.fruits[4].maxTier;
+            case 'tierFruitOfLuck':
+                return playerData.yggdrasil.fruits[5].maxTier;
+            case 'tierFruitOfPowerB':
+                return playerData.yggdrasil.fruits[6].maxTier;
+            case 'tierFruitOfArbitrariness':
+                return playerData.yggdrasil.fruits[7].maxTier;
+            case 'tierFruitOfNumbers':
+                return playerData.yggdrasil.fruits[8].maxTier;
+            case 'tierFruitOfRage':
+                return playerData.yggdrasil.fruits[9].maxTier;
+            case 'tierFruitOfMacguffinA':
+                return playerData.yggdrasil.fruits[10].maxTier;
+            case 'tierFruitOfPowerD':
+                return playerData.yggdrasil.fruits[11].maxTier;
+            case 'tierFruitOfWatermelon':
+                return playerData.yggdrasil.fruits[12].maxTier;
+            case 'tierFruitOfMacguffinB':
+                return playerData.yggdrasil.fruits[13].maxTier;
+            case 'tierFruitOfQuirks':
+                return playerData.yggdrasil.fruits[14].maxTier;
+            case 'tierFruitOfAngryMayo':
+                return playerData.yggdrasil.fruits[15].maxTier;
+            case 'tierFruitOfSadMayo':
+                return playerData.yggdrasil.fruits[16].maxTier;
+            case 'tierFruitOfMoldyMayo':
+                return playerData.yggdrasil.fruits[17].maxTier;
+            case 'tierFruitOfAyyMayo':
+                return playerData.yggdrasil.fruits[18].maxTier;
+            case 'tierFruitOfCincoDeMayo':
+                return playerData.yggdrasil.fruits[19].maxTier;
+            case 'tierFruitOfPrettyMayo':
+                return playerData.yggdrasil.fruits[20].maxTier;
+
 
             case 'gameMode':
                 return playerData.settings.rebirthDifficulty.value__;
@@ -425,7 +553,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'energyNGUs':
                 var energyNGUs : NGU[] = []
                 playerData.NGU.skills.forEach((engu : any, index : number) => {
-                    if (!_.isUndefined(engu.level)) {
+                    if (!_.isUndefined(engu.level) && index < 10) {
                         for (var i = 0; i < 3; i++) {
                             var ngu : NGU = ENERGY_NGUS[index + (i * 10)]
                             if (!_.isUndefined(ngu)) {
@@ -439,7 +567,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'magicNGUs':
                 var magicNGUs : NGU[] = []
                 playerData.NGU.magicSkills.forEach((mngu : any, index : number) => {
-                    if (!_.isUndefined(mngu.level)) {
+                    if (!_.isUndefined(mngu.level) && index < 10) {
                         for (var i = 0; i < 3; i++) {
                             var ngu : NGU = MAGIC_NGUS[index + (i * 10)]
                             if (!_.isUndefined(ngu)) {
@@ -551,6 +679,15 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 })
                 
                 return wishes;
+            case 'yggdrasil':
+                var yggdrasil: Yggdrasil[] = Object.values(FRUITS)
+                yggdrasil.forEach((fruit) => {
+                    var f = playerData.yggdrasil.fruits[fruit.id]
+                    f['totalPermStatBonus'] = playerData.yggdrasil.totalPermStatBonus
+                    f['totalPermNumberBonus'] = playerData.yggdrasil.totalPermNumberBonus
+                    fruit.importStats(f)
+                })
+                return yggdrasil
             case 'itemSets':
                 var itemSets : {[key: string]: ItemSet} = {}
                 for (var set of Object.values(ItemSets)) {
@@ -578,23 +715,42 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return totalEnergyCap(playerData);
             case 'currentMagicCap':
                 return totalMagicCap(playerData);
+            case 'firstHarvestPerk':
+                return bd(perkLevel(playerData, 'theFirstHarvestsTheBest'))
+            case 'fruitOfKnowledgeSucks^':
+                return bd(perkLevel(playerData, 'fruitOfKnowledgeSucks'))
+            case 'fruitOfKnowledgeSTILLSucks^':
+                return bd(perkLevel(playerData, 'fruitOfKnowledgeSTILLSucks'))
             case 'redLiquidBonus^':
                 // - Mysterious Red Liquid // 93
                 return isMaxxedItem(playerData, 93) ? bd(1) : bd(0)
             case 'spoopySetBonus^':
                 return isMaxxedItemSet(playerData, ItemSets.SPOOPY) ? bd(1) : bd(0)
+            case 'totalAPBonus%':
+                return totalAPBonus(playerData);
+            case 'totalDropChance%':
+                return totalDropChance(playerData);
             case 'totalEnergyNGUSpeedFactor%':
                 return totalEnergyNGUSpeedFactor(playerData);
+            case 'totalExpBonus%':
+                return totalExpBonus(playerData);
             case 'totalMagicNGUSpeedFactor%':
                 return totalMagicNGUSpeedFactor(playerData);
+            case 'totalMayoSpeed%':
+                return totalMayoSpeed(playerData);
             case 'totalPPBonus%':
                 return totalPPBonus(playerData)
             case 'totalPower':
                 return totalPower(playerData);
+            case 'totalQuestRewardBonus%':
+                return totalQuestRewardBonus(playerData);
             case 'totalRespawnTime':
                 return totalRespawnRate(playerData).divide(bd(25));
-            case 'totalDropChance%':
-                return totalDropChance(playerData);
+            case 'totalSeedGainBonus%':
+                return totalSeedGainBonus(playerData)
+            case 'totalYggdrasilYieldBonus%':
+                return totalYggdrasilYieldBonus(playerData)
+            
             
             
             default:
@@ -680,7 +836,6 @@ export function getPlayerNumberOptions() : string[]{
         'energyNGUDropChanceSadisticTarget',
         'energyNGUMagicNGUSadisticTarget',
         'energyNGUPPSadisticTarget',
-        'gameMode',
         'magicNGUYggdrasilLevel',
         'magicNGUExpLevel',
         'magicNGUPowerBLevel',
@@ -723,6 +878,70 @@ export function getPlayerNumberOptions() : string[]{
         'magicNGUTimeMachineSadisticTarget',
         'magicNGUEnergyNGUSadisticTarget',
         'magicNGUAdventureBSadisticTarget',
+        'eatFruitOfGold^',
+        'eatFruitOfPowerA^',
+        'eatFruitOfAdventure^',
+        'eatFruitOfKnowledge^',
+        'eatFruitOfPomegranate^',
+        'eatFruitOfLuck^',
+        'eatFruitOfPowerB^',
+        'eatFruitOfArbitrariness^',
+        'eatFruitOfNumbers^',
+        'eatFruitOfRage^',
+        'eatFruitOfMacguffinA^',
+        'eatFruitOfPowerD^',
+        'eatFruitOfWatermelon^',
+        'eatFruitOfMacguffinB^',
+        'eatFruitOfQuirks^',
+        'eatFruitOfAngryMayo^',
+        'eatFruitOfSadMayo^',
+        'eatFruitOfMoldyMayo^',
+        'eatFruitOfAyyMayo^',
+        'eatFruitOfCincoDeMayo^',
+        'eatFruitOfPrettyMayo^',
+        'poopFruitOfGold^',
+        'poopFruitOfPowerA^',
+        'poopFruitOfAdventure^',
+        'poopFruitOfKnowledge^',
+        'poopFruitOfPomegranate^',
+        'poopFruitOfLuck^',
+        'poopFruitOfPowerB^',
+        'poopFruitOfArbitrariness^',
+        'poopFruitOfNumbers^',
+        'poopFruitOfRage^',
+        'poopFruitOfMacguffinA^',
+        'poopFruitOfPowerD^',
+        'poopFruitOfWatermelon^',
+        'poopFruitOfMacguffinB^',
+        'poopFruitOfQuirks^',
+        'poopFruitOfAngryMayo^',
+        'poopFruitOfSadMayo^',
+        'poopFruitOfMoldyMayo^',
+        'poopFruitOfAyyMayo^',
+        'poopFruitOfCincoDeMayo^',
+        'poopFruitOfPrettyMayo^',
+        'tierFruitOfGold',
+        'tierFruitOfPowerA',
+        'tierFruitOfAdventure',
+        'tierFruitOfKnowledge',
+        'tierFruitOfPomegranate',
+        'tierFruitOfLuck',
+        'tierFruitOfPowerB',
+        'tierFruitOfArbitrariness',
+        'tierFruitOfNumbers',
+        'tierFruitOfRage',
+        'tierFruitOfMacguffinA',
+        'tierFruitOfPowerD',
+        'tierFruitOfWatermelon',
+        'tierFruitOfMacguffinB',
+        'tierFruitOfQuirks',
+        'tierFruitOfAngryMayo',
+        'tierFruitOfSadMayo',
+        'tierFruitOfMoldyMayo',
+        'tierFruitOfAyyMayo',
+        'tierFruitOfCincoDeMayo',
+        'tierFruitOfPrettyMayo',
+        'gameMode',
         'resource3Active',
         'yggdrasilDropChance',
     ]
@@ -751,6 +970,7 @@ export function getPlayerOptions() : string[] {
         'perks',
         'quirks',
         'wishes',
+        'yggdrasil',
         'maxxedItems',
         'itemSets',
     ]
@@ -762,13 +982,22 @@ export function getCalculatedOptions() : string[] {
         'boostRecyclying%',
         'currentEnergyCap',
         'currentMagicCap',
+        'firstHarvestPerk',
+        'fruitOfKnowledgeSucks^',
+        'fruitOfKnowledgeSTILLSucks^',
         'redLiquidBonus^',
         'spoopySetBonus^',
+        'totalAPBonus%',
+        'totalDropChance%',
         'totalEnergyNGUSpeedFactor%',
+        'totalExpBonus%',
         'totalMagicNGUSpeedFactor%',
+        'totalMayoSpeed%',
         'totalPPBonus%',
         'totalPower',
+        'totalQuestRewardBonus%',
         'totalRespawnTime',
-        'totalDropChance%',
+        'totalSeedGainBonus%',
+        'totalYggdrasilYieldBonus%',
     ]
 }

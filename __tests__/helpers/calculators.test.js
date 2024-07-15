@@ -1,44 +1,13 @@
 import {boostRecyclying, totalEnergyPower, totalEnergyBar, totalEnergyCap, totalMagicPower, totalMagicBar, totalMagicCap, totalEnergyNGUSpeedFactor, totalMagicNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalPower, totalToughness, totalGoldDrop, totalRespawnRate, totalDropChance}  from '../../src/helpers/calculators'
-import earlyNormal from './__data__/earlyNormal1'
-import {getPlayerNumberOptions, getPlayerOptions, getCalculatedOptions, defaultPlayerData} from '@/helpers/defaultPlayerData'
-import earlyNormalTwo from './__data__/earlyNormal2';
-import midNormal from './__data__/midNormal1';
-import midNormalTwo from './__data__/midNormal2';
-import lateNormal from './__data__/lateNormal';
-
-function expectClose(value, expect, range) {
-    var v = value / (10 ** range)
-    var e = expect / (10 ** range)
-    return [v, e]
-}
+import earlyNormal from '../__data__/earlyNormal1'
+import earlyNormalTwo from '../__data__/earlyNormal2';
+import midNormal from '../__data__/midNormal1';
+import midNormalTwo from '../__data__/midNormal2';
+import lateNormal from '../__data__/lateNormal';
+import { toDataObj, expectClose } from '../testHelperFunctions'
 
 
-function toDataObj(playerData, extraRequired=[]){
-    var playerNumberOptions = getPlayerNumberOptions();
-    var playerOptions = getPlayerOptions();
-    var calculatedOptions  = getCalculatedOptions();
-    for (var col of extraRequired) {
-        for (var key of col) {
-            playerNumberOptions.push(key)
-        }
-    }
-    var dataObj = {}
-    for (var key of playerNumberOptions) {
-        var defaultVal = defaultPlayerData(playerData, key)
-        dataObj[key] = [defaultVal]
-    }
-    for (var key of playerOptions) {
-        var defaultVal = defaultPlayerData(playerData, key)
-        dataObj[key] = [defaultVal]
-    }
 
-    for (var key of calculatedOptions) {
-        var defaultVal = defaultPlayerData(dataObj, key).getValue()
-        dataObj[key] = [defaultVal]
-    }
-
-    return dataObj;
-}
 
 // var playerStatesOne = {
 //     'boostRecyclyingPurchase': [5],

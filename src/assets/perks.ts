@@ -88,7 +88,7 @@ export const PERKLIST = [
     new Perk(17, 'quickerFruitOfNumbersBonusActivation', 'Quicker Fruit of Numbers Bonus Activation', GameMode.NORMAL, 0, []),
     new Perk(18, 'instantAdvancedTrainingLevels!', 'Instant Advanced Training Levels!', GameMode.NORMAL, 0, []),
     new Perk(19, 'fruitOfKnowledgeSucks', '"Fruit of Knowledge sucks, 1/5"', GameMode.NORMAL, 0, []),
-    new Perk(20, 'fruitOfKnowledgeSTILLSucks"', '"Fruit of Knowledge STILL sucks, 1/5"', GameMode.NORMAL, 0, []),
+    new Perk(20, 'fruitOfKnowledgeSTILLSucks', '"Fruit of Knowledge STILL sucks, 1/5"', GameMode.NORMAL, 0, []),
     new Perk(21, 'fiveOClockShadow', 'Five O\'Clock Shadow', GameMode.NORMAL, 0, []),
     new Perk(22, 'wandoosLover', 'Wandoos Lover', GameMode.NORMAL, 0, []),
     new Perk(23, 'goldenShowers', 'Golden Showers', GameMode.NORMAL, 0, [[Stat.GOLD_DROP, 5]]),

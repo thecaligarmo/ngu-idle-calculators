@@ -439,7 +439,7 @@ export const ENGULIST = [
 ]
 
 export const MNGULIST = [
-    new NGU(0, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.NORMAL, [[Stat.YGGDRASIL_YIELD, 0.1]], 'magic', 400, bd('4e11')),
+    new NGU(0, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.NORMAL, [[Stat.YGGDRASIL_YIELD, 0.1], [Stat.SEED_GAIN, 0.1]], 'magic', 400, bd('4e11')),
     new NGU(1, NGUKeys.EXP, 'NGU Exp', GameMode.NORMAL, [[Stat.EXPERIENCE, 0.01]], 'magic', 2000, bd('1.2e12')),
     new NGU(2, NGUKeys.POWER_B, 'NGU Power β', GameMode.NORMAL, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]], 'magic', 0,bd('4e12')),
     new NGU(3, NGUKeys.NUMBER, 'NGU Number', GameMode.NORMAL, [[Stat.NUMBER, 1]], 'magic', 1000, bd('1.2e13')),
@@ -447,7 +447,7 @@ export const MNGULIST = [
     new NGU(5, NGUKeys.ENERGY_NGU, 'NGU Energy NGU', GameMode.NORMAL, [[Stat.ENERGY_NGU_SPEED, 0.1]], 'magic', 1000, bd('1e15')),
     new NGU(6, NGUKeys.ADVENTURE_B, 'NGU Adventure β', GameMode.NORMAL, [[Stat.POWER, 0.03], [Stat.TOUGHNESS, 0.03]], 'magic', 1000, bd('1e16')),
 
-    new NGU(10, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.EVIL, [[Stat.YGGDRASIL_YIELD, 0.05]], 'magic', 400, bd('2e20')),
+    new NGU(10, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.EVIL, [[Stat.YGGDRASIL_YIELD, 0.05], [Stat.SEED_GAIN, 0.05]], 'magic', 400, bd('2e20')),
     new NGU(11, NGUKeys.EXP, 'NGU Exp', GameMode.EVIL, [[Stat.EXPERIENCE, 0.005]], 'magic', 2000, bd('2e21')),
     new NGU(12, NGUKeys.POWER_B, 'NGU Power β', GameMode.EVIL, [[Stat.ATTACK, 0.5], [Stat.DEFENSE, 0.5]], 'magic', 0, bd('2e22')),
     new NGU(13, NGUKeys.NUMBER, 'NGU Number', GameMode.EVIL, [[Stat.NUMBER, 0.5]], 'magic', 1000, bd('2e23')),
@@ -455,7 +455,7 @@ export const MNGULIST = [
     new NGU(15, NGUKeys.ENERGY_NGU, 'NGU Energy NGU', GameMode.EVIL, [[Stat.ENERGY_NGU_SPEED, 0.05]], 'magic', 1000, bd('2e25')),
     new NGU(16, NGUKeys.ADVENTURE_B, 'NGU Adventure β', GameMode.EVIL, [[Stat.POWER, 0.015], [Stat.TOUGHNESS, 0.015]], 'magic', 1000, bd('2e26')),
 
-    new NGU(20, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.SADISTIC, [[Stat.YGGDRASIL_YIELD, 0.04]], 'magic', 400, bd('1e40')),
+    new NGU(20, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.SADISTIC, [[Stat.YGGDRASIL_YIELD, 0.04], [Stat.SEED_GAIN, 0.04]], 'magic', 400, bd('1e40')),
     new NGU(21, NGUKeys.EXP, 'NGU Exp', GameMode.SADISTIC, [[Stat.EXPERIENCE, 0.005]], 'magic', 2000, bd('1e40')),
     new NGU(22, NGUKeys.POWER_B, 'NGU Power β', GameMode.SADISTIC, [[Stat.ATTACK, 0.5], [Stat.DEFENSE, 0.5]], 'magic', 0, bd('1e41')),
     new NGU(23, NGUKeys.NUMBER, 'NGU Number', GameMode.SADISTIC, [[Stat.NUMBER, 0.5]], 'magic', 1000, bd('1e42')),
