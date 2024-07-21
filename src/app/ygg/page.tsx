@@ -125,14 +125,14 @@ export default function Page() {
         blueHeart: blueHeart,
         yieldModifier: v('totalYggdrasilYieldBonus%'),
         noNGUYieldModifier: v('totalYggdrasilYieldBonus%').divide(nguYgg).multiply(bd(100)),
-        baseToughness: parseNum(playerStates, 'baseAdventureToughness'),
-        expBonus: v('totalExpBonus%'),
-        fokSucksPerk: c('fruitOfKnowledgeSucks^'),
-        fokStillSucksPerk: c('fruitOfKnowledgeSTILLSucks^'),
-        apBonus: v('totalAPBonus%'),
-        ppBonus: v('totalPPBonus%'),
-        qpRewardBonus: v('totalQuestRewardBonus%'),
-        mayoSpeed: v('totalMayoSpeed%'),
+        baseToughness: parseNum(playerStates, 'baseAdventureToughness'), // Adv
+        expBonus: v('totalExpBonus%'), // EXP
+        fokSucksPerk: c('fruitOfKnowledgeSucks^'), // EXP
+        fokStillSucksPerk: c('fruitOfKnowledgeSTILLSucks^'), // EXP
+        apBonus: v('totalAPBonus%'), // AP
+        ppBonus: v('totalPPBonus%'), // PP
+        qpRewardBonus: v('totalQuestRewardBonus%'), // Quest
+        mayoSpeed: v('totalMayoSpeed%'), // Mayo
     }
 
     // 1.25 (Quirk)

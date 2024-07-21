@@ -4,6 +4,8 @@ import { Titans } from "@/assets/enemy";
 import { GameMode } from "@/assets/mode";
 import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { ItemSets } from "@/assets/sets";
+import { Stat } from "@/assets/stat";
+import { FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
 import { Zones } from "@/assets/zones";
 import { ChoiceButton } from "@/components/buttons";
 import Content from "@/components/content";
@@ -11,8 +13,8 @@ import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
 import { bd, dn, pn} from "@/helpers/numbers";
-import { parseNum } from "@/helpers/parsers";
-import { isMaxxedItem, isMaxxedItemSet } from "@/helpers/resourceInfo";
+import { parseNum, parseObj } from "@/helpers/parsers";
+import { isMaxxedItem, isMaxxedItemSet, nguInfo } from "@/helpers/resourceInfo";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
 import { useState } from "react";
@@ -45,6 +47,11 @@ export default function Page() {
     function c(key : string) : boolean {
         return v(key).compareTo(bd(1)) == 0
     }
+
+    function j(key : string) : any{
+        return parseObj(playerStates, key)
+    }
+    
 
     var hoursPerDay = v('hoursPerDay').compareTo(bd(0)) == 0 ? bd(24) : v('hoursPerDay')
     
@@ -105,17 +112,41 @@ export default function Page() {
         // console.log(titan.name, titanPP, titanRespawn)
     })
 
+    /* Ygg Info */
+    var nguYgg = nguInfo(playerStates, Stat.YGGDRASIL_YIELD)
+    var firstHarvest = Number(v('firstHarvestPerk').getValue())
+    var blueHeart = c('blueHeart^')
+    var fruitYieldData = {
+        firstHarvest: firstHarvest,
+        blueHeart: blueHeart,
+        yieldModifier: v('totalYggdrasilYieldBonus%'),
+        noNGUYieldModifier: v('totalYggdrasilYieldBonus%').divide(nguYgg).multiply(bd(100)),
+        ppBonus: v('totalPPBonus%'),
+    }
 
+    
+    var f : Yggdrasil = new FruitOfRage();
+    var fruits : Yggdrasil[] = Object.values(j('yggdrasil'));
+    for (var fruit of fruits) {
+        if(fruit.key == FRUITS.RAGE.key) {
+            f = fruit
+        }
+    }
+    // @ts-ignore
+    var fruitYield = f.fruitYield(fruitYieldData)
 
     return (
         <Content title="Daily Gains" infoRequired={infoReq} extraRequired={extraReq}>
             <ContentSubsection title={"How many PP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
+                <strong className="text-green-500">Yggdrasil:</strong> <span className="text-red-500">{pn(fruitYield.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong>
+                <br />
                 <strong className="text-green-500">Tower:</strong>
                 <ul>
                     <li key="pppPerKill">{pn(pppPerKill, fmt)} ppp / kill on floor {pn(bd(itopodFloor), fmt)}</li>
                     <li key="killsPerDay">{pn(killsPerDay, fmt)} kills /  {pn(hoursPerDay, fmt)} hours (assuming 1-hit per kill)</li>
                     <li key="total" className="mt-2 border-white border-t-2 border-solid"><span className="text-red-500">{pn(killsPerDay.multiply(pppPerKill).divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong></li>
                 </ul>
+                
             </ContentSubsection>
         </Content>
     )
