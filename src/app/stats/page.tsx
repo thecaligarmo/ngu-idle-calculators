@@ -23,7 +23,7 @@ export default function Page() {
         return parseObj(playerStates, key)
     }
 
-    var [res3Active, setRes3Active] = playerStates["resource3Active"]
+    var [res3Active, setRes3Active] = playerStates["res3Active"]
     
     return (
         <Container title="Stats">

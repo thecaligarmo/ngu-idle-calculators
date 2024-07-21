@@ -407,7 +407,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                     + playerData.challenges.noRebirthChallenge.curSadisticCompletions
             case 'redLiquidBonus^':
                 return playerData.inventory.itemList.redLiquidComplete
-            case 'resource3Active':
+            case 'res3Active':
                 return playerData.res3.res3On;
             case 'spoopySetBonus^':
                 return playerData.inventory.itemList.ghostComplete
@@ -966,7 +966,7 @@ export function getPlayerNumberOptions() : string[]{
         'gameMode',
         'redLiquidBonus^',
         'numRebirthChallenges',
-        'resource3Active',
+        'res3Active',
         'spoopySetBonus^',
         'wishTitansHadBetterRewards',
         'yggdrasilDropChance',
