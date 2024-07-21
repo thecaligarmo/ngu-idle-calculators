@@ -591,7 +591,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     }
                 })
                 return hacks
-
+                
             case 'macguffins':
                 var macguffins : MacGuffin[] = []
 
@@ -704,6 +704,21 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     }
                 })
                 return maxxedItemIds
+            case 'titanKills' : 
+                return {
+                    1: playerData.adventure.titan1Kills,
+                    2: playerData.adventure.titan2Kills,
+                    3: playerData.adventure.titan3Kills,
+                    4: playerData.adventure.titan4Kills,
+                    5: playerData.adventure.titan5Kills,
+                    6: playerData.adventure.titan6Kills,
+                    7: playerData.adventure.titan7Kills,
+                    8: playerData.adventure.titan8Kills,
+                    9: playerData.adventure.titan9Kills,
+                    10: playerData.adventure.titan10Kills,
+                    11: playerData.adventure.titan11Kills,
+                    12: playerData.adventure.titan12Kills,
+                }
 
             // Calculations
             case 'blueHeart^':
@@ -973,6 +988,7 @@ export function getPlayerOptions() : string[] {
         'yggdrasil',
         'maxxedItems',
         'itemSets',
+        'titanKills',
     ]
 }
 

@@ -4,7 +4,7 @@ import { GameMode } from "./mode"
 
 
 
-const ChallengeKeys : {[key: string]: string} = {
+export const ChallengeKeys : {[key: string]: string} = {
     BASIC: 'basicChallenge',
     NO_AUG : 'noAugmentationsChallenge',
     TWENTY_FOUR : '24HourChallenge',

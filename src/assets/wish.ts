@@ -27,7 +27,7 @@ export const WISHLIST = [
     new Wish(0, 'iwishthatwisheskickedass', 'I wish that wishes kicked ass', GameMode.EVIL, [[Stat.ATTACK, 100], [Stat.DEFENSE, 100], [Stat.POWER, 20], [Stat.TOUGHNESS, 20], [Stat.ENERGY_BARS, 5], [Stat.ENERGY_CAP, 5], [Stat.ENERGY_POWER, 5], [Stat.MAGIC_BARS, 5], [Stat.MAGIC_CAP, 5], [Stat.MAGIC_POWER, 5], [Stat.RES3_BARS, 5], [Stat.RES3_CAP, 5], [Stat.RES3_POWER, 5]], bd('1e15')),
     new Wish(1, 'iWishthatwisheswerentsoslow:c', 'I Wish that wishes weren\'t so slow :c', GameMode.EVIL, [[Stat.WISH_SPEED, 5]], bd('1e15')),
     new Wish(2, 'iwishMacGuffindropsmattered', 'I wish MacGuffin drops mattered', GameMode.EVIL, [], bd('2e15')),
-    new Wish(3, 'iwishV2/3/4Titanshadbetterrewards', 'I wish V2/3/4 Titans had better rewards', GameMode.EVIL, [], bd('8e15')),
+    new Wish(3, 'iwishV234Titanshadbetterrewards', 'I wish V2/3/4 Titans had better rewards', GameMode.EVIL, [], bd('8e15')),
     new Wish(4, 'iwishmoneyPitdidntsuck', 'I wish money Pit didn\'t suck', GameMode.EVIL, [], bd('6e15')),
     new Wish(5, 'iwishIcouldbeatupmorebossesI', 'I wish I could beat up more bosses I', GameMode.EVIL, [[Stat.ATTACK, 100], [Stat.DEFENSE, 100]], bd('3e15')),
     new Wish(6, 'iwishIwasstrongerinAdventuremodeI', 'I wish I was stronger in Adventure mode I', GameMode.EVIL,  [[Stat.POWER, 3], [Stat.TOUGHNESS, 3]], bd('3e15')),

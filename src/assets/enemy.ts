@@ -112,10 +112,10 @@ export class Titan extends Enemy {
         return bd(0)
     }
     getPP(ppBonus : bigDecimal) : bigDecimal {
-        return ppBonus.multiply(bd(this.pp))
+        return ppBonus.multiply(bd(this.pp)).divide(bd(100))
     }
-    getRespawnTime(rbChallenges : bigDecimal) : bigDecimal{
-        return bigdec_max(bd(1), bd(this.respawnTime).subtract(rbChallenges.multiply(bd(1/4))))
+    getRespawnTime(rbChallenges : number) : bigDecimal{
+        return bigdec_max(bd(1), bd(this.respawnTime).subtract(bd(rbChallenges).multiply(bd(1/4))))
     }
 }
 

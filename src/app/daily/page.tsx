@@ -1,10 +1,12 @@
 'use client'
 
+import { Challenge, ChallengeKeys } from "@/assets/challenges";
 import { Titans } from "@/assets/enemy";
 import { GameMode } from "@/assets/mode";
 import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { ItemSets } from "@/assets/sets";
 import { Stat } from "@/assets/stat";
+import { Wish } from "@/assets/wish";
 import { FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
 import { Zones } from "@/assets/zones";
 import { ChoiceButton } from "@/components/buttons";
@@ -17,6 +19,7 @@ import { parseNum, parseObj } from "@/helpers/parsers";
 import { isMaxxedItem, isMaxxedItemSet, nguInfo } from "@/helpers/resourceInfo";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
+import _ from "lodash";
 import { useState } from "react";
 
 
@@ -106,11 +109,43 @@ export default function Page() {
 
     /* Titan Info */
     // average PPP per hour from Titans * hoursPerDay / 1000000
-    var tt = Object.values(Titans).map((titan, index) => {
-        var titanPP = titan.getPP(v('totalPPBonus%'))
-        var titanRespawn = titan.getRespawnTime(bd(0))
-        // console.log(titan.name, titanPP, titanRespawn)
+    var challenges : Challenge[][] = j('challenges')
+    var rbChallenges : number = 0
+    if (challenges && !_.isUndefined(challenges[0])){
+        rbChallenges += challenges[GameMode.NORMAL][6].level
+        rbChallenges += challenges[GameMode.EVIL][6].level
+        rbChallenges += challenges[GameMode.SADISTIC][6].level
+    }
+
+    // Need to look up current tier for Titan
+    var hourlyTitanPP : bigDecimal = bd(0);
+    var titanKills = j('titanKills');
+    var wishes : Wish[] = j('wishes');
+    var wishLevel : number = 0;
+    if (wishes && !_.isUndefined(wishes[3])) {
+        var chosenWish : Wish = wishes[3]
+        if(wishes[3].key != 'iwishV234Titanshadbetterrewards') {
+            console.log(wishes[3])
+        }
+        wishLevel = chosenWish.level
+    }
+    Object.values(Titans).forEach((titan) => {
+        if(titanKills[titan.id] > 0) {
+            var titanPP = titan.getPP(v('totalPPBonus%'))
+            if(titanKills[titan.id] > 1 && wishLevel > 0) {
+                if(titanKills[titan.id] == 2 && wishLevel > 0) {
+                    titanPP = titanPP.multiply(bd(1.1))
+                } else if(titanKills[titan.id] == 3 && wishLevel > 1) {
+                    titanPP = titanPP.multiply(bd(1.2))
+                } else if(titanKills[titan.id] > 3 && wishLevel == 3) {
+                    titanPP = titanPP.multiply(bd(1.3))
+                }
+            }
+            var titanRespawn = titan.getRespawnTime(rbChallenges)
+            hourlyTitanPP = hourlyTitanPP.add(titanPP.divide(titanRespawn))
+        }
     })
+    var totalTitanPP = hourlyTitanPP.multiply(hoursPerDay)
 
     /* Ygg Info */
     var nguYgg = nguInfo(playerStates, Stat.YGGDRASIL_YIELD)
@@ -133,19 +168,23 @@ export default function Page() {
         }
     }
     // @ts-ignore
-    var fruitYield = f.fruitYield(fruitYieldData)
+    var fruitYield = f.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
+
+    var totalPPPerDay = totalTitanPP.add(fruitYield).add(killsPerDay.multiply(pppPerKill))
 
     return (
         <Content title="Daily Gains" infoRequired={infoReq} extraRequired={extraReq}>
             <ContentSubsection title={"How many PP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
-                <strong className="text-green-500">Yggdrasil:</strong> <span className="text-red-500">{pn(fruitYield.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong>
-                <br />
-                <strong className="text-green-500">Tower:</strong>
-                <ul>
+                <strong className="text-green-500">Titans:</strong> <span className="text-red-500">{pn(totalTitanPP.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong><br />
+                <strong className="text-green-500">Yggdrasil:</strong> <span className="text-red-500">{pn(fruitYield.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong><br />
+                <strong className="text-green-500">Tower:</strong> <span className="text-red-500">{pn(killsPerDay.multiply(pppPerKill).divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong>
+                <ul className="ml-10">
                     <li key="pppPerKill">{pn(pppPerKill, fmt)} ppp / kill on floor {pn(bd(itopodFloor), fmt)}</li>
                     <li key="killsPerDay">{pn(killsPerDay, fmt)} kills /  {pn(hoursPerDay, fmt)} hours (assuming 1-hit per kill)</li>
-                    <li key="total" className="mt-2 border-white border-t-2 border-solid"><span className="text-red-500">{pn(killsPerDay.multiply(pppPerKill).divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong></li>
                 </ul>
+                <p className="mt-2 border-white border-t-2 border-solid">
+                    <strong>Total:</strong> <span className="text-red-500">{pn(totalPPPerDay.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong>
+                </p>
                 
             </ContentSubsection>
         </Content>
