@@ -7,11 +7,12 @@ import { bd, pn } from '@/helpers/numbers';
 import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
 import { Stat } from '@/assets/stat';
-import { totalAPBonus, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness } from '@/helpers/calculators';
+import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness } from '@/helpers/calculators';
 import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo} from '@/helpers/resourceInfo';
 import { ItemSet, ItemSets } from '@/assets/sets';
 import { defaultPlayerData } from '@/helpers/defaultPlayerData';
 import { parseNum, parseObj } from '@/helpers/parsers';
+import { GameMode } from '@/assets/mode';
 
 export default function Page() {
     const playerStates = createStatesForData();
@@ -121,6 +122,30 @@ export default function Page() {
                         <li key="ngu">x NGU ({pn(nguInfo(playerStates, Stat.PP), fmt)}%)</li>
                         <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.PP), fmt, 2)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalPPBonus(playerStates), fmt, 2)}%</span></li>
+                    </ul>
+                </ContentSubsection>
+            </ContentSection>
+            <ContentSection title="Misc.">
+                <ul>
+                    <li key="daycare"><strong>Total Daycare (Kitty) Bonus:</strong> <span className="text-red-500">{pn(totalDaycareSpeed(playerStates), fmt, 2)}%</span></li>
+                    <li key="hack"><strong>Total Hack Bonus:</strong> <span className="text-red-500">{pn(totalHackSpeed(playerStates), fmt, 2)}%</span></li>
+                </ul>
+                <ContentSubsection title="Daycare Calculation" defaultHide={true}>
+                    <ul className='ml-5'>
+                        <li key="base">Base Kitty Happiness (100%)</li>
+                        <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.DAYCARE_SPEED), fmt, 2)}%)</li>
+                        <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.DAYCARE_SPEED), fmt)}%)</li>
+                        <li key="challenges">x Challenges ({pn(challengeInfo(playerStates, Stat.DAYCARE_SPEED), fmt)}%)</li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalDaycareSpeed(playerStates), fmt, 2)}%</span></li>
+                    </ul>
+                </ContentSubsection>
+                <ContentSubsection title="Hack Calculation" defaultHide={true}>
+                    <ul className='ml-5'>
+                        <li key="base">Base Hack Speed (100%)</li>
+                        <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.HACK_SPEED), fmt)}%)</li>
+                        <li key="heart">x Grey Heart Bonus ({pn(isMaxxedItem(playerStates, 297) ? bd(125) : bd(100), fmt)}%)</li>
+                        <li key="challenges">x Evil No NGU Challenge ({pn(challengeInfo(playerStates, Stat.HACK_SPEED), fmt)}%)</li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalHackSpeed(playerStates), fmt, 2)}%</span></li>
                     </ul>
                 </ContentSubsection>
             </ContentSection>

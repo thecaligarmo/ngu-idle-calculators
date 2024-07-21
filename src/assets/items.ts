@@ -138,6 +138,7 @@ export const StatType : {[index: number]: [string | string[], number]} = {
     47: [Stat.RES3_POWER, 1000000],
     48: [Stat.RES3_BARS, 1000000],
     49: [Stat.RES3_CAP, 10000000],
+    51: [Stat.WISH_SPEED, 10000000],
 }
 
 
@@ -1599,6 +1600,7 @@ export const ITEMLIST = [
     new Item(285, 'aSpittoon', 'A Spittoon', Slot.OTHER, Zones.BEARDVERSE, 100, []),
     new Item(286, 'aSmallerCaterpillar', 'A Smaller Caterplillar', Slot.OTHER, Zones.PINK, 100, []),
     new Item(287, 'aUselessCollegeDiploma', 'A Useless College Diploma', Slot.OTHER, Zones.MEGA, 100, []),
+    new Item(288, 'theDeathNote', 'The Death Note', Slot.OTHER, Zones.MOBSTER, 100, []),
 
     new Item(293, 'myOrangeHeart<3', 'My Orange Heart <3', Slot.ACCESSORY, Zones.HEART, 100, [
         [Stat.POWER, 100],

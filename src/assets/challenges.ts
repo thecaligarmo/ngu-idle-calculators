@@ -47,7 +47,11 @@ export class Challenge extends Resource {
     }
     importStats(data: any) {
         if(this.mode == GameMode.NORMAL) {
-            this.level = data.curCompletions - data.curEvilCompletions - data.curSadisticCompletions
+            if(this.key == ChallengeKeys.BASIC) {
+                this.level = data.curCompletions - data.curEvilCompletions - data.curSadisticCompletions
+            } else {
+                this.level = data.curCompletions
+            }
         } else if (this.mode == GameMode.EVIL) {
             this.level = data.curEvilCompletions
         } else if (this.mode == GameMode.SADISTIC) {
@@ -66,7 +70,7 @@ export const CHALLENGELIST = [
     new Challenge(5, ChallengeKeys.TROLL, 'Troll Challenge',  GameMode.NORMAL, [], []),
     new Challenge(6, ChallengeKeys.NO_RB, 'No Rebirth Challenge',  GameMode.NORMAL, [], []),
     new Challenge(7, ChallengeKeys.LASER_SWORD, 'Laser Sword Challenge',  GameMode.NORMAL, [], []),
-    new Challenge(8, ChallengeKeys.BLIND, 'Blind Challenge',  GameMode.NORMAL, [[Stat.DAYCARE_SPEED, 1]], [[Stat.DAYCARE_SPEED, 5, 1]]),
+    new Challenge(8, ChallengeKeys.BLIND, 'Blind Challenge',  GameMode.NORMAL, [[Stat.DAYCARE_TIME, 1]], [[Stat.DAYCARE_TIME, 5, 1]]),
     new Challenge(9, ChallengeKeys.NO_NGU, 'No NGU Challenge',  GameMode.NORMAL, [[Stat.ENERGY_NGU_SPEED, 5], [Stat.MAGIC_NGU_SPEED, 5]], []),
     new Challenge(10, ChallengeKeys.NO_TM, 'No Time Machine Challenge',  GameMode.NORMAL, [[Stat.TIME_MACHINE, 100]], []),
 

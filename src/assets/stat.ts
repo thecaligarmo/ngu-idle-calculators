@@ -8,6 +8,7 @@ export const Stat : {[k: string]: string} = {
     MOVE_COOLDOWN: 'moveCooldown',
     RESPAWN: 'respawn',
     DAYCARE_SPEED: 'daycareSpeed',
+    DAYCARE_TIME: 'daycareTime',
     // Drop
     GOLD_DROP: 'goldDrops',
     DROP_CHANCE: 'dropChance',

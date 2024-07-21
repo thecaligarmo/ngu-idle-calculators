@@ -22,7 +22,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
     }
 
     if(false) {
-        if(Stat.SEED_GAIN == stat) {
+        if(Stat.AP == stat) {
             console.log('----------------------------------------')
             console.log('ap', apItemInfo(data, stat).getValue())    
             console.log('beard', beardInfoTemp(data, stat).getValue())
@@ -158,15 +158,13 @@ export function totalExpBonus(data : any) : bigDecimal {
     var redHeartBonus : bigDecimal = isMaxxedItem(data, 119) ? bd(1.1) : bd(1)
     var gen : bigDecimal = calcAll(data, Stat.EXPERIENCE)
 
-    return bd(1)
-        .multiply(gen)
+    return gen
         .multiply(redHeartBonus)
 }
 
 export function totalAPBonus(data: any) : bigDecimal {
     var gen : bigDecimal = calcAll(data, Stat.AP)
     var yellowHeartBonus : bigDecimal = isMaxxedItem(data, 129) ? bd(1.2) : bd(1)
-    var fib : bigDecimal = perkLevel(data, 'fibonacciPerk') >= 89 ? bd(1.02) : bd(1)
     var achievBonus = achievementAPBonus(data)
 
     if (isInitilizing(data)) {
@@ -176,7 +174,6 @@ export function totalAPBonus(data: any) : bigDecimal {
     return bd(1)
         .multiply(gen)
         .multiply(yellowHeartBonus)
-        .multiply(fib)
         .multiply(achievBonus).divide(bd(100))
 }
 
@@ -193,6 +190,22 @@ export function totalPPBonus(data: any) : bigDecimal {
         .multiply(greenHeartBonus)
         .multiply(pissedOffKeyBonus)
         .multiply(PPPSetBonus)
+}
+
+
+/** Misc. */
+export function totalDaycareSpeed(data : any) :bigDecimal {
+    var gen : bigDecimal = calcAll(data, Stat.DAYCARE_SPEED)
+
+    return gen
+}
+
+export function totalHackSpeed(data : any) :bigDecimal {
+    var gen : bigDecimal = calcAll(data, Stat.HACK_SPEED)
+    var greyHearthBonus : bigDecimal = isMaxxedItem(data, 297) ? bd(1.25) : bd(1)
+
+    return gen
+        .multiply(greyHearthBonus)
 }
 
 /** Adventure Stats */

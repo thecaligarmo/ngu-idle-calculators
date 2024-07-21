@@ -1,38 +1,38 @@
-var midNormalTwo = {
+var earlyEvil = {
     "playerName": "x",
     "firstTimePlaying": 0,
     "version": 1260,
-    "lastTime": 1716928827,
+    "lastTime": 1721438410,
     "nextRebirthDifficulty": {
-        "value__": 0,
+        "value__": 1,
         "__cname__": "difficulty"
     },
-    "maxHP": 4.262677876004014e+207,
-    "curHP": 4.262677876004014e+207,
+    "maxHP": 2747.9967604505027,
+    "curHP": 2747.9967604505027,
     "hpRegen": 1,
-    "attack": 4.262677876004014e+206,
-    "defense": 3.0095742339170534e+206,
+    "attack": 273.79967604505026,
+    "defense": 273.79967604505026,
     "gold": 0,
-    "realGold": 2.2571389703952716e+33,
-    "attackMulti": 2.2195493845094652e+138,
-    "defenseMulti": 2.2195493845094652e+138,
+    "realGold": 0,
+    "attackMulti": 3.740053811796005e+72,
+    "defenseMulti": 3.740053811796005e+72,
     "nextAttackMulti": 0,
     "nextDefenseMulti": 0,
-    "oldBossMulti": 3.2138760885179806e+60,
-    "timeMulti": 30.244303057176563,
-    "oldTimeMulti": 1.522643832464198,
+    "oldBossMulti": 79124735870541630000,
+    "timeMulti": 0.0012199592763214974,
+    "oldTimeMulti": 30.920516144153265,
     "exp": 0,
-    "realExp": 3290134,
-    "attackBoost": 21,
-    "defenseBoost": 21,
+    "realExp": 465916541,
+    "attackBoost": 1000,
+    "defenseBoost": 1000,
     "energySpeed": 50,
-    "capEnergy": 88320000,
-    "curEnergy": 1617782234,
-    "idleEnergy": 1617782234,
+    "capEnergy": 15165600000,
+    "curEnergy": 1618503168662,
+    "idleEnergy": 1618503168662,
     "energyGained": 3556647,
     "energyPerBar": 1,
-    "energyBars": 2208,
-    "energyPower": 2760,
+    "energyBars": 379140,
+    "energyPower": 473925,
     "energyBarProgress": 1,
     "training": {
         "_attackCaps": [
@@ -68,20 +68,20 @@ var midNormalTwo = {
             10000000
         ],
         "_attackTraining": [
-            504804090,
-            504799122,
-            504789156,
-            504774194,
-            504754238,
-            504729276
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
         "_defenseTraining": [
-            504804090,
-            504799124,
-            504789158,
-            504774198,
-            504754242,
-            504729282
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
         "_attackEnergy": [
             0,
@@ -99,8 +99,8 @@ var midNormalTwo = {
             0,
             0
         ],
-        "_totalAttackLevels": 3028650076,
-        "_totalDefenseLevels": 3028650094,
+        "_totalAttackLevels": 0,
+        "_totalDefenseLevels": 0,
         "_attackBarProgress": [
             0,
             0,
@@ -129,113 +129,113 @@ var midNormalTwo = {
         "_autoAdvanceToggle": 0,
         "__cname__": "Training"
     },
-    "bossID": 193,
-    "bossAttack": 1.9836425781250007e+191,
-    "bossDefense": 1.068115234375001e+191,
-    "bossRegen": 3.0517578125000017e+187,
-    "bossCurHP": 1.9836425781250007e+192,
-    "bossMaxHP": 1.9836425781250007e+192,
-    "bossMulti": 1.2554203470773362e+58,
-    "highestBoss": 201,
-    "highestHardBoss": 1,
+    "bossID": 0,
+    "bossAttack": 50000,
+    "bossDefense": 40000,
+    "bossRegen": 40,
+    "bossCurHP": 500000,
+    "bossMaxHP": 500000,
+    "bossMulti": 1,
+    "highestBoss": 301,
+    "highestHardBoss": 126,
     "highestSadisticBoss": 1,
     "firstBossEver": 0,
-    "currentHighestBoss": 201,
+    "currentHighestBoss": 301,
     "adventure": {
-        "attack": 25994,
-        "defense": 26141,
-        "regen": 842.3599243164062,
-        "curHP": 3571900416,
-        "maxHP": 82206,
+        "attack": 2346979,
+        "defense": 2347226,
+        "regen": 70449.40625,
+        "curHP": 5820232589377536,
+        "maxHP": 7046361,
         "respawnRate": 5,
         "attackSpeed": 0.800000011920929,
         "zone": -1,
         "autoattacking": 1,
         "boss1Spawn": {
-            "totalseconds": 2612.148256301065,
-            "seconds": 32.148256301064976,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss1Defeated": 0,
-        "titan1Kills": 1401,
+        "titan1Kills": 0,
         "boss2Spawn": {
-            "totalseconds": 2612.148256301065,
-            "seconds": 32.148256301064976,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss2Defeated": 0,
-        "titan2Kills": 1401,
+        "titan2Kills": 0,
         "boss3Spawn": {
-            "totalseconds": 2612.148256301065,
-            "seconds": 32.148256301064976,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss3Defeated": 0,
-        "titan3Kills": 1401,
+        "titan3Kills": 0,
         "boss4Spawn": {
-            "totalseconds": 2612.148256301065,
-            "seconds": 32.148256301064976,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss4Defeated": 0,
-        "titan4Kills": 1401,
+        "titan4Kills": 0,
         "boss5Spawn": {
-            "totalseconds": 6212.148256301065,
-            "seconds": 32.148256301064976,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
-            "hours": 1,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss5Defeated": 0,
         "waldoDefeats": 4,
         "waldoFinds": 4,
-        "boss5Kills": 207,
-        "titan5Kills": 700,
+        "boss5Kills": 741,
+        "titan5Kills": 0,
         "boss6Spawn": {
-            "totalseconds": 5381.169560106704,
-            "seconds": 41.16956010670401,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
-            "hours": 1,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss6Defeated": 0,
-        "titan6Kills": 1,
+        "titan6Kills": 0,
         "clue1Complete": 1,
         "clue2Complete": 1,
         "clue3Complete": 1,
         "clue4Complete": 1,
         "titan6Unlocked": 1,
-        "titan6Version": 0,
-        "boss6Kills": 50,
+        "titan6Version": 3,
+        "boss6Kills": 511,
         "titan6V1Kills": 0,
         "titan6V2Kills": 0,
         "titan6V3Kills": 0,
         "titan6V4Kills": 0,
         "boss7Spawn": {
-            "totalseconds": 12600,
-            "seconds": 0,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
-            "hours": 3,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boss7Defeated": 0,
-        "titan7questStarted": 0,
-        "titan7QuestSequence": 0,
+        "titan7questStarted": 1,
+        "titan7QuestSequence": 4,
         "titan7questComplete": 0,
         "titan7Kills": 0,
         "titan7Unlocked": 0,
@@ -246,10 +246,10 @@ var midNormalTwo = {
         "titan7V3Kills": 0,
         "titan7V4Kills": 0,
         "boss8Spawn": {
-            "totalseconds": 14400,
-            "seconds": 0,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
-            "hours": 4,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -271,10 +271,10 @@ var midNormalTwo = {
         "kingCircleWhacked": 0,
         "robBossWhacked": 0,
         "boss9Spawn": {
-            "totalseconds": 16200,
-            "seconds": 0,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
-            "hours": 4,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -291,10 +291,10 @@ var midNormalTwo = {
         "titan9V3Kills": 0,
         "titan9V4Kills": 0,
         "boss10Spawn": {
-            "totalseconds": 19800,
-            "seconds": 0,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
-            "hours": 5,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -310,10 +310,10 @@ var midNormalTwo = {
         "titan10V3Kills": 0,
         "titan10V4Kills": 0,
         "boss11Spawn": {
-            "totalseconds": 21600,
-            "seconds": 0,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
-            "hours": 6,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -327,10 +327,10 @@ var midNormalTwo = {
         "titan11V3Kills": 0,
         "titan11V4Kills": 0,
         "boss12Spawn": {
-            "totalseconds": 23400,
-            "seconds": 0,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
-            "hours": 6,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -345,25 +345,25 @@ var midNormalTwo = {
         "titan12V4Kills": 0,
         "ratTitanDefeated": 0,
         "boss13Spawn": {
-            "totalseconds": 23400,
-            "seconds": 30.335421259514987,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
-            "hours": 1,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "finalTitanDefeated": 0,
         "boss14Spawn": {
-            "totalseconds": 23400,
-            "seconds": 30.335421259514987,
+            "totalseconds": 562.157234528946,
+            "seconds": 22.15723452894599,
             "minutes": 0,
-            "hours": 1,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
-        "itopodStart": 311,
-        "itopodEnd": 311,
-        "highestItopodLevel": 332,
+        "itopodStart": 606,
+        "itopodEnd": 606,
+        "highestItopodLevel": 607,
         "itopod": {
             "perkLevel": [
                 1,
@@ -371,36 +371,79 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
+                937,
                 50,
-                0,
                 50,
-                0,
-                0,
-                0,
-                58,
-                2,
-                0,
+                50,
+                50,
+                50,
+                50,
+                60,
+                20,
+                20,
                 1,
-                0,
-                0,
+                1,
+                1,
                 2,
-                0,
-                0,
-                0,
-                0,
-                0,
+                1,
+                1,
+                1,
+                50,
+                200,
                 20,
                 0,
+                1,
+                5,
+                5,
+                1,
+                1,
+                12,
+                12,
+                60,
+                3,
+                0,
+                10,
+                10,
+                10,
+                10,
+                0,
+                10,
                 0,
                 0,
                 0,
                 0,
+                10,
+                10,
+                10,
+                10,
+                0,
+                5,
+                1,
                 1,
                 0,
                 0,
                 0,
-                1,
+                40,
+                4,
+                40,
+                40,
+                0,
+                40,
+                40,
+                40,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
                 0,
                 0,
                 0,
@@ -427,6 +470,8 @@ var midNormalTwo = {
                 0,
                 0,
                 0,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -446,52 +491,7 @@ var midNormalTwo = {
                 0,
                 0,
                 0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
+                1,
                 0,
                 0,
                 0,
@@ -623,22 +623,22 @@ var midNormalTwo = {
                 0,
                 0
             ],
-            "perkPoints": 877,
-            "lifetimePoints": 1358,
-            "pointProgress": 938816,
-            "enemiesKilled": 2402274,
-            "poopProgress": 758,
+            "perkPoints": 112290,
+            "lifetimePoints": 135676,
+            "pointProgress": 34229,
+            "enemiesKilled": 4581977,
+            "poopProgress": 2461,
             "buffedKills": 0,
             "filterDiff": 1,
             "filterAfford": 0,
             "filterMaxxed": 1,
             "orderType": {
-                "value__": 0,
+                "value__": 2,
                 "__cname__": "orderPerks"
             },
             "__cname__": "ITOPOD"
         },
-        "beastModeOn": 0,
+        "beastModeOn": 1,
         "didAdvAdvance": 0,
         "move69Unlocked": 0,
         "move69Used": 0,
@@ -646,169 +646,169 @@ var midNormalTwo = {
     },
     "inventory": {
         "spaces": 60,
-        "item1": -4,
-        "item2": 70,
+        "item1": 0,
+        "item2": 0,
         "head": {
-            "id": 173,
+            "id": 213,
             "type": {
                 "value__": 0,
                 "__cname__": "part"
             },
             "bossRequired": 100,
-            "capAttack": 5000,
-            "curAttack": 5050,
-            "capDefense": 112000,
-            "curDefense": 112993.3203125,
+            "capAttack": 40000,
+            "curAttack": 80000,
+            "capDefense": 502000,
+            "curDefense": 1004000,
             "spec1Type": {
-                "value__": 29,
+                "value__": 27,
                 "__cname__": "specType"
             },
-            "spec1Cur": 1700000,
-            "spec1Cap": 850000,
+            "spec1Cur": 7200000,
+            "spec1Cap": 3600000,
             "spec2Type": {
-                "value__": 33,
+                "value__": 38,
                 "__cname__": "specType"
             },
-            "spec2Cur": 2400000,
-            "spec2Cap": 1200000,
+            "spec2Cur": 6600000,
+            "spec2Cap": 3300000,
             "spec3Type": {
-                "value__": 37,
+                "value__": 36,
                 "__cname__": "specType"
             },
-            "spec3Cur": 1426364.25,
-            "spec3Cap": 900000,
+            "spec3Cur": 5200000,
+            "spec3Cap": 2600000,
             "removable": 1,
             "level": 100,
             "__cname__": "Equipment"
         },
         "chest": {
-            "id": 185,
+            "id": 178,
             "type": {
                 "value__": 1,
                 "__cname__": "part"
             },
             "bossRequired": 100,
-            "capAttack": 11000,
-            "curAttack": 16434.9609375,
-            "capDefense": 250000,
-            "curDefense": 262500,
+            "capAttack": 8000,
+            "curAttack": 16000,
+            "capDefense": 150000,
+            "curDefense": 300000,
             "spec1Type": {
+                "value__": 28,
+                "__cname__": "specType"
+            },
+            "spec1Cur": 4000000,
+            "spec1Cap": 2000000,
+            "spec2Type": {
                 "value__": 29,
                 "__cname__": "specType"
             },
-            "spec1Cur": 2079018.5,
-            "spec1Cap": 1500000,
-            "spec2Type": {
-                "value__": 34,
-                "__cname__": "specType"
-            },
-            "spec2Cur": 1414439.75,
-            "spec2Cap": 1400000,
+            "spec2Cur": 4200000,
+            "spec2Cap": 2100000,
             "spec3Type": {
-                "value__": 35,
+                "value__": 39,
                 "__cname__": "specType"
             },
-            "spec3Cur": 1200000,
-            "spec3Cap": 1200000,
-            "removable": 0,
-            "level": 68,
+            "spec3Cur": 4000000,
+            "spec3Cap": 2000000,
+            "removable": 1,
+            "level": 100,
             "__cname__": "Equipment"
         },
         "legs": {
-            "id": 186,
+            "id": 215,
             "type": {
                 "value__": 2,
                 "__cname__": "part"
             },
             "bossRequired": 100,
-            "capAttack": 10000,
-            "curAttack": 13100,
-            "capDefense": 245000,
-            "curDefense": 274400,
+            "capAttack": 30000,
+            "curAttack": 60000,
+            "capDefense": 555000,
+            "curDefense": 1110000,
             "spec1Type": {
-                "value__": 28,
+                "value__": 35,
                 "__cname__": "specType"
             },
-            "spec1Cur": 1581137.5,
-            "spec1Cap": 1000000,
+            "spec1Cur": 6600000,
+            "spec1Cap": 3300000,
             "spec2Type": {
-                "value__": 33,
+                "value__": 27,
                 "__cname__": "specType"
             },
-            "spec2Cur": 2808000,
-            "spec2Cap": 1800000,
+            "spec2Cur": 11000000,
+            "spec2Cap": 5500000,
             "spec3Type": {
                 "value__": 37,
                 "__cname__": "specType"
             },
-            "spec3Cur": 2496000,
-            "spec3Cap": 1600000,
+            "spec3Cur": 9000000,
+            "spec3Cap": 4500000,
             "removable": 0,
-            "level": 63,
+            "level": 100,
             "__cname__": "Equipment"
         },
         "boots": {
-            "id": 153,
+            "id": 219,
             "type": {
                 "value__": 3,
                 "__cname__": "part"
             },
             "bossRequired": 100,
-            "capAttack": 1000,
-            "curAttack": 2000,
-            "capDefense": 24000,
-            "curDefense": 34612.5234375,
+            "capAttack": 30000,
+            "curAttack": 60000,
+            "capDefense": 516000,
+            "curDefense": 1032000,
             "spec1Type": {
-                "value__": 12,
+                "value__": 38,
                 "__cname__": "specType"
             },
-            "spec1Cur": 26000,
-            "spec1Cap": 13000,
+            "spec1Cur": 9600000,
+            "spec1Cap": 4800000,
             "spec2Type": {
-                "value__": 22,
+                "value__": 36,
                 "__cname__": "specType"
             },
-            "spec2Cur": 12000,
-            "spec2Cap": 6000,
+            "spec2Cur": 9600000,
+            "spec2Cap": 4800000,
             "spec3Type": {
-                "value__": 0,
+                "value__": 34,
                 "__cname__": "specType"
             },
-            "spec3Cur": 0,
-            "spec3Cap": 0,
+            "spec3Cur": 9600000,
+            "spec3Cap": 4800000,
             "removable": 1,
             "level": 100,
             "__cname__": "Equipment"
         },
         "weapon": {
-            "id": 177,
+            "id": 188,
             "type": {
                 "value__": 4,
                 "__cname__": "part"
             },
             "bossRequired": 100,
-            "capAttack": 1000000,
-            "curAttack": 1033411,
-            "capDefense": 60000,
-            "curDefense": 61800,
+            "capAttack": 2200000,
+            "curAttack": 4400000,
+            "capDefense": 100000,
+            "curDefense": 200000,
             "spec1Type": {
-                "value__": 29,
+                "value__": 38,
                 "__cname__": "specType"
             },
-            "spec1Cur": 2400000,
-            "spec1Cap": 1200000,
+            "spec1Cur": 4000000,
+            "spec1Cap": 2000000,
             "spec2Type": {
-                "value__": 27,
+                "value__": 34,
                 "__cname__": "specType"
             },
-            "spec2Cur": 2400000,
-            "spec2Cap": 1200000,
+            "spec2Cur": 4000000,
+            "spec2Cap": 2000000,
             "spec3Type": {
-                "value__": 0,
+                "value__": 36,
                 "__cname__": "specType"
             },
-            "spec3Cur": 0,
-            "spec3Cap": 0,
+            "spec3Cur": 2400000,
+            "spec3Cap": 1200000,
             "removable": 1,
             "level": 100,
             "__cname__": "Equipment"
@@ -946,69 +946,69 @@ var midNormalTwo = {
             "__cname__": "Equipment"
         },
         "temp": {
-            "id": 187,
+            "id": 168,
             "type": {
-                "value__": 3,
+                "value__": 4,
                 "__cname__": "part"
             },
             "bossRequired": 100,
-            "capAttack": 10000,
-            "curAttack": 15423.009765625,
-            "capDefense": 240000,
-            "curDefense": 328800,
+            "capAttack": 500000,
+            "curAttack": 885627.625,
+            "capDefense": 25000,
+            "curDefense": 34500,
             "spec1Type": {
                 "value__": 29,
                 "__cname__": "specType"
             },
-            "spec1Cur": 2296000,
-            "spec1Cap": 1400000,
+            "spec1Cur": 1200000,
+            "spec1Cap": 600000,
             "spec2Type": {
-                "value__": 28,
-                "__cname__": "specType"
-            },
-            "spec2Cur": 2296000,
-            "spec2Cap": 1400000,
-            "spec3Type": {
                 "value__": 27,
                 "__cname__": "specType"
             },
-            "spec3Cur": 2296000,
-            "spec3Cap": 1400000,
-            "removable": 0,
-            "level": 64,
+            "spec2Cur": 1200000,
+            "spec2Cap": 600000,
+            "spec3Type": {
+                "value__": 30,
+                "__cname__": "specType"
+            },
+            "spec3Cur": 2400000,
+            "spec3Cap": 1200000,
+            "removable": 1,
+            "level": 100,
             "__cname__": "Equipment"
         },
         "trash": {
-            "id": 285,
+            "id": 213,
             "type": {
-                "value__": 10,
+                "value__": 0,
                 "__cname__": "part"
             },
-            "bossRequired": 0,
-            "capAttack": 0,
-            "curAttack": 0,
-            "capDefense": 0,
-            "curDefense": 0,
+            "bossRequired": 100,
+            "capAttack": 40000,
+            "curAttack": 40000,
+            "capDefense": 502000,
+            "curDefense": 502000,
             "spec1Type": {
-                "value__": 0,
+                "value__": 27,
                 "__cname__": "specType"
             },
-            "spec1Cur": 0,
-            "spec1Cap": 0,
+            "spec1Cur": 3600000,
+            "spec1Cap": 3600000,
             "spec2Type": {
-                "value__": 0,
+                "value__": 38,
                 "__cname__": "specType"
             },
-            "spec2Cur": 0,
-            "spec2Cap": 0,
+            "spec2Cur": 3300000,
+            "spec2Cap": 3300000,
             "spec3Type": {
-                "value__": 0,
+                "value__": 36,
                 "__cname__": "specType"
             },
-            "spec3Cur": 0,
-            "spec3Cap": 0,
+            "spec3Cur": 2600000,
+            "spec3Cap": 2600000,
             "removable": 1,
-            "level": 0,
+            "level": 1,
             "__cname__": "Equipment"
         },
         "items": [
@@ -1255,204 +1255,6 @@ var midNormalTwo = {
         },
         "inventory": [
             {
-                "id": 164,
-                "type": {
-                    "value__": 0,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 60000,
-                "curDefense": 108551.9765625,
-                "spec1Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 900000,
-                "spec1Cap": 450000,
-                "spec2Type": {
-                    "value__": 32,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 3200000,
-                "spec2Cap": 1600000,
-                "spec3Type": {
-                    "value__": 40,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 1286478.25,
-                "spec3Cap": 1200000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 184,
-                "type": {
-                    "value__": 0,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 11000,
-                "curAttack": 11000,
-                "capDefense": 242000,
-                "curDefense": 242000,
-                "spec1Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 1400000,
-                "spec1Cap": 1400000,
-                "spec2Type": {
-                    "value__": 38,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 1500000,
-                "spec2Cap": 1500000,
-                "spec3Type": {
-                    "value__": 36,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 1000000,
-                "spec3Cap": 1000000,
-                "removable": 1,
-                "level": 5,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 142,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 40000,
-                "curAttack": 40000,
-                "capDefense": 40000,
-                "curDefense": 40000,
-                "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 1000,
-                "spec1Cap": 1000,
-                "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 800,
-                "spec2Cap": 800,
-                "spec3Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 2700,
-                "spec3Cap": 2700,
-                "removable": 1,
-                "level": 2,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 283,
-                "type": {
-                    "value__": 10,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 283,
-                "type": {
-                    "value__": 10,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 283,
-                "type": {
-                    "value__": 10,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
                 "id": 0,
                 "type": {
                     "value__": 9,
@@ -1648,39 +1450,6 @@ var midNormalTwo = {
                 "spec3Cap": 0,
                 "removable": 1,
                 "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 163,
-                "type": {
-                    "value__": 10,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 64,
                 "__cname__": "Equipment"
             },
             {
@@ -2047,39 +1816,6 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 154,
-                "type": {
-                    "value__": 4,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 170000,
-                "curAttack": 170000,
-                "capDefense": 12000,
-                "curDefense": 12000,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 47,
-                "__cname__": "Equipment"
-            },
-            {
                 "id": 0,
                 "type": {
                     "value__": 9,
@@ -2245,39 +1981,6 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 283,
-                "type": {
-                    "value__": 10,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
                 "id": 0,
                 "type": {
                     "value__": 9,
@@ -2341,138 +2044,6 @@ var midNormalTwo = {
                 "spec3Cap": 0,
                 "removable": 1,
                 "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 283,
-                "type": {
-                    "value__": 10,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 116,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 82,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 82,
-                "curDefense": 164,
-                "spec1Type": {
-                    "value__": 22,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 12000,
-                "spec1Cap": 6000,
-                "spec2Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 2164,
-                "spec2Cap": 1082,
-                "spec3Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 400,
-                "spec3Cap": 200,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 120,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 0,
-                "level": 44,
                 "__cname__": "Equipment"
             },
             {
@@ -2740,111 +2311,12 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 189,
+                "id": 0,
                 "type": {
-                    "value__": 5,
+                    "value__": 9,
                     "__cname__": "part"
                 },
-                "bossRequired": 100,
-                "capAttack": 33333,
-                "curAttack": 34999,
-                "capDefense": 33333,
-                "curDefense": 34999,
-                "spec1Type": {
-                    "value__": 31,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 2053965.875,
-                "spec1Cap": 2000000,
-                "spec2Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 1500000,
-                "spec2Cap": 1500000,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 0,
-                "level": 19,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 178,
-                "type": {
-                    "value__": 1,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 8000,
-                "curAttack": 8000,
-                "capDefense": 150000,
-                "curDefense": 150000,
-                "spec1Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 2100000,
-                "spec1Cap": 2000000,
-                "spec2Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 2205000,
-                "spec2Cap": 2100000,
-                "spec3Type": {
-                    "value__": 39,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 2100000,
-                "spec3Cap": 2000000,
-                "removable": 0,
-                "level": 5,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 188,
-                "type": {
-                    "value__": 4,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 2200000,
-                "curAttack": 2508871.5,
-                "capDefense": 100000,
-                "curDefense": 111000,
-                "spec1Type": {
-                    "value__": 38,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 2013621.125,
-                "spec1Cap": 2000000,
-                "spec2Type": {
-                    "value__": 34,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 2000000,
-                "spec2Cap": 2000000,
-                "spec3Type": {
-                    "value__": 36,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 1200000,
-                "spec3Cap": 1200000,
-                "removable": 0,
-                "level": 95,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 92,
-                "type": {
-                    "value__": 10,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
+                "bossRequired": -1,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -2868,32 +2340,296 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 24,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
-                "id": 158,
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 220,
                 "type": {
                     "value__": 3,
                     "__cname__": "part"
                 },
                 "bossRequired": 100,
-                "capAttack": 1000,
-                "curAttack": 1300,
-                "capDefense": 24000,
-                "curDefense": 31200,
+                "capAttack": 60000,
+                "curAttack": 60600,
+                "capDefense": 540000,
+                "curDefense": 545400,
                 "spec1Type": {
-                    "value__": 15,
+                    "value__": 29,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 60000,
-                "spec1Cap": 30000,
+                "spec1Cur": 4242000,
+                "spec1Cap": 4200000,
                 "spec2Type": {
-                    "value__": 26,
+                    "value__": 28,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 80000,
-                "spec2Cap": 40000,
+                "spec2Cur": 4242000,
+                "spec2Cap": 4200000,
+                "spec3Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 4242000,
+                "spec3Cap": 4200000,
+                "removable": 0,
+                "level": 1,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 446,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 930000,
+                "curAttack": 939300,
+                "capDefense": 930000,
+                "curDefense": 939300,
+                "spec1Type": {
+                    "value__": 44,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 1212000,
+                "spec1Cap": 1200000,
+                "spec2Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 8585000,
+                "spec2Cap": 8500000,
+                "spec3Type": {
+                    "value__": 23,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 3030,
+                "spec3Cap": 3000,
+                "removable": 0,
+                "level": 1,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 226,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 50000,
+                "curAttack": 59000,
+                "capDefense": 50000,
+                "curDefense": 59000,
+                "spec1Type": {
+                    "value__": 33,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 3540000,
+                "spec1Cap": 3000000,
+                "spec2Type": {
+                    "value__": 37,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 2950000,
+                "spec2Cap": 2500000,
+                "spec3Type": {
+                    "value__": 35,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 2596000,
+                "spec3Cap": 2200000,
+                "removable": 0,
+                "level": 18,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 227,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 50000,
+                "curAttack": 62500,
+                "capDefense": 50000,
+                "curDefense": 62500,
+                "spec1Type": {
+                    "value__": 34,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 3750000,
+                "spec1Cap": 3000000,
+                "spec2Type": {
+                    "value__": 38,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 3125000,
+                "spec2Cap": 2500000,
+                "spec3Type": {
+                    "value__": 36,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 2750000,
+                "spec3Cap": 2200000,
+                "removable": 0,
+                "level": 25,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 235,
+                "type": {
+                    "value__": 4,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 7600000,
+                "curAttack": 7828000,
+                "capDefense": 440000,
+                "curDefense": 453200,
+                "spec1Type": {
+                    "value__": 37,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 5928000,
+                "spec1Cap": 5700000,
+                "spec2Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 6240000,
+                "spec2Cap": 6000000,
+                "spec3Type": {
+                    "value__": 36,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 3432000,
+                "spec3Cap": 3300000,
+                "removable": 0,
+                "level": 4,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
                 "spec3Type": {
                     "value__": 0,
                     "__cname__": "specType"
@@ -2901,106 +2637,601 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 100,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
-                "id": 128,
+                "id": 0,
                 "type": {
-                    "value__": 5,
+                    "value__": 9,
                     "__cname__": "part"
                 },
-                "bossRequired": 82,
-                "capAttack": 200,
-                "curAttack": 0,
-                "capDefense": 200,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 800,
-                "spec1Cap": 400,
-                "spec2Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 2000,
-                "spec2Cap": 1000,
-                "spec3Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 2000,
-                "spec3Cap": 1000,
-                "removable": 0,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 441,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 82,
+                "bossRequired": -1,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 26,
+                    "value__": 0,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 24000,
-                "spec1Cap": 12000,
+                "spec1Cur": 0,
+                "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 20,
+                    "value__": 0,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 12000,
-                "spec2Cap": 6000,
+                "spec2Cur": 0,
+                "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 17,
+                    "value__": 0,
                     "__cname__": "specType"
                 },
-                "spec3Cur": 9000,
-                "spec3Cap": 4500,
+                "spec3Cur": 0,
+                "spec3Cap": 0,
                 "removable": 1,
-                "level": 100,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
-                "id": 94,
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 220,
+                "type": {
+                    "value__": 3,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 60000,
+                "curAttack": 60000,
+                "capDefense": 540000,
+                "curDefense": 540000,
+                "spec1Type": {
+                    "value__": 29,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 4200000,
+                "spec1Cap": 4200000,
+                "spec2Type": {
+                    "value__": 28,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 4200000,
+                "spec2Cap": 4200000,
+                "spec3Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 4200000,
+                "spec3Cap": 4200000,
+                "removable": 0,
+                "level": 2,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 446,
                 "type": {
                     "value__": 5,
                     "__cname__": "part"
                 },
-                "bossRequired": 67,
-                "capAttack": 800,
-                "curAttack": 1200,
-                "capDefense": 800,
-                "curDefense": 200,
+                "bossRequired": 100,
+                "capAttack": 930000,
+                "curAttack": 930000,
+                "capDefense": 930000,
+                "curDefense": 930000,
                 "spec1Type": {
-                    "value__": 5,
+                    "value__": 44,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 800,
-                "spec1Cap": 400,
+                "spec1Cur": 1200000,
+                "spec1Cap": 1200000,
                 "spec2Type": {
-                    "value__": 7,
+                    "value__": 27,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 800,
-                "spec2Cap": 400,
+                "spec2Cur": 8500000,
+                "spec2Cap": 8500000,
                 "spec3Type": {
-                    "value__": 17,
+                    "value__": 23,
                     "__cname__": "specType"
                 },
-                "spec3Cur": 2000,
-                "spec3Cap": 1000,
+                "spec3Cur": 3000,
+                "spec3Cap": 3000,
                 "removable": 0,
-                "level": 100,
+                "level": 1,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 236,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 400000,
+                "curAttack": 400000,
+                "capDefense": 400000,
+                "curDefense": 400000,
+                "spec1Type": {
+                    "value__": 44,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 1000000,
+                "spec1Cap": 1000000,
+                "spec2Type": {
+                    "value__": 39,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 1700000,
+                "spec2Cap": 1700000,
+                "spec3Type": {
+                    "value__": 45,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 5000000,
+                "spec3Cap": 5000000,
+                "removable": 0,
+                "level": 1,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 233,
+                "type": {
+                    "value__": 2,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 50000,
+                "curAttack": 54000,
+                "capDefense": 755000,
+                "curDefense": 815400,
+                "spec1Type": {
+                    "value__": 35,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 5350000,
+                "spec1Cap": 5000000,
+                "spec2Type": {
+                    "value__": 33,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 7490000,
+                "spec2Cap": 7000000,
+                "spec3Type": {
+                    "value__": 29,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 6420000,
+                "spec3Cap": 6000000,
+                "removable": 0,
+                "level": 8,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 236,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 400000,
+                "curAttack": 404000,
+                "capDefense": 400000,
+                "curDefense": 404000,
+                "spec1Type": {
+                    "value__": 44,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 1010000,
+                "spec1Cap": 1000000,
+                "spec2Type": {
+                    "value__": 39,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 1717000,
+                "spec2Cap": 1700000,
+                "spec3Type": {
+                    "value__": 45,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 5050000,
+                "spec3Cap": 5000000,
+                "removable": 0,
+                "level": 1,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 232,
+                "type": {
+                    "value__": 1,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 60000,
+                "curAttack": 64200,
+                "capDefense": 740000,
+                "curDefense": 791800,
+                "spec1Type": {
+                    "value__": 29,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 5885000,
+                "spec1Cap": 5500000,
+                "spec2Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 5778000,
+                "spec2Cap": 5400000,
+                "spec3Type": {
+                    "value__": 36,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 5671000,
+                "spec3Cap": 5300000,
+                "removable": 0,
+                "level": 7,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 234,
+                "type": {
+                    "value__": 3,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 30000,
+                "curAttack": 30600,
+                "capDefense": 730000,
+                "curDefense": 744600,
+                "spec1Type": {
+                    "value__": 38,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 6426000,
+                "spec1Cap": 6300000,
+                "spec2Type": {
+                    "value__": 36,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 5100000,
+                "spec2Cap": 5000000,
+                "spec3Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 6630000,
+                "spec3Cap": 6500000,
+                "removable": 0,
+                "level": 2,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 231,
+                "type": {
+                    "value__": 0,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 60000,
+                "curAttack": 62400,
+                "capDefense": 742000,
+                "curDefense": 771680,
+                "spec1Type": {
+                    "value__": 34,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 5720000,
+                "spec1Cap": 5500000,
+                "spec2Type": {
+                    "value__": 29,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 5720000,
+                "spec2Cap": 5500000,
+                "spec3Type": {
+                    "value__": 28,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 3640000,
+                "spec3Cap": 3500000,
+                "removable": 0,
+                "level": 4,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 278,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 280,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 283,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 287,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 281,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 282,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
@@ -3013,1108 +3244,85 @@ var midNormalTwo = {
                 "capAttack": 100000,
                 "curAttack": 100000,
                 "capDefense": 100000,
-                "curDefense": 100000,
+                "curDefense": 101000,
                 "spec1Type": {
                     "value__": 41,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 1000000,
+                "spec1Cur": 1010000,
                 "spec1Cap": 1000000,
                 "spec2Type": {
                     "value__": 27,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 400000,
+                "spec2Cur": 404000,
                 "spec2Cap": 400000,
                 "spec3Type": {
                     "value__": 29,
                     "__cname__": "specType"
                 },
-                "spec3Cur": 400000,
+                "spec3Cur": 404000,
                 "spec3Cap": 400000,
                 "removable": 0,
-                "level": 0,
+                "level": 1,
                 "__cname__": "Equipment"
             },
             {
-                "id": 0,
+                "id": 170,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 283,
-                "type": {
-                    "value__": 10,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 168,
-                "type": {
-                    "value__": 4,
+                    "value__": 5,
                     "__cname__": "part"
                 },
                 "bossRequired": 100,
-                "capAttack": 500000,
-                "curAttack": 618859.875,
-                "capDefense": 25000,
-                "curDefense": 34500,
+                "capAttack": 100000,
+                "curAttack": 103000,
+                "capDefense": 100000,
+                "curDefense": 103000,
                 "spec1Type": {
+                    "value__": 45,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 5150000,
+                "spec1Cap": 5000000,
+                "spec2Type": {
                     "value__": 29,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 605070.5625,
-                "spec1Cap": 600000,
-                "spec2Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 600000,
-                "spec2Cap": 600000,
+                "spec2Cur": 1236000,
+                "spec2Cap": 1200000,
                 "spec3Type": {
-                    "value__": 30,
+                    "value__": 41,
                     "__cname__": "specType"
                 },
-                "spec3Cur": 1200000,
-                "spec3Cap": 1200000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 166,
-                "type": {
-                    "value__": 2,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 60000,
-                "curDefense": 88200,
-                "spec1Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 592305.3125,
-                "spec1Cap": 400000,
-                "spec2Type": {
-                    "value__": 36,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 1400000,
-                "spec2Cap": 1400000,
-                "spec3Type": {
-                    "value__": 37,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 1300000,
-                "spec3Cap": 1300000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 159,
-                "type": {
-                    "value__": 4,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 170000,
-                "curAttack": 227018.40625,
-                "capDefense": 12000,
-                "curDefense": 13920,
-                "spec1Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 1033439.5,
-                "spec1Cap": 1000000,
-                "spec2Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 1007307.9375,
-                "spec2Cap": 1000000,
-                "spec3Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 1000000,
-                "spec3Cap": 1000000,
+                "spec3Cur": 2575000,
+                "spec3Cap": 2500000,
                 "removable": 0,
-                "level": 43,
+                "level": 3,
                 "__cname__": "Equipment"
             },
             {
-                "id": 176,
+                "id": 189,
                 "type": {
-                    "value__": 3,
+                    "value__": 5,
                     "__cname__": "part"
                 },
                 "bossRequired": 100,
-                "capAttack": 5000,
-                "curAttack": 5050,
-                "capDefense": 122000,
-                "curDefense": 123220,
+                "capAttack": 33333,
+                "curAttack": 66666,
+                "capDefense": 33333,
+                "curDefense": 66666,
                 "spec1Type": {
+                    "value__": 31,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 4000000,
+                "spec1Cap": 2000000,
+                "spec2Type": {
                     "value__": 29,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 606000,
-                "spec1Cap": 600000,
-                "spec2Type": {
-                    "value__": 34,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 1414000,
-                "spec2Cap": 1400000,
-                "spec3Type": {
-                    "value__": 37,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 1414000,
-                "spec3Cap": 1400000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 140,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 1000,
-                "curAttack": 2000,
-                "capDefense": 1000,
-                "curDefense": 2000,
-                "spec1Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 5000,
-                "spec1Cap": 2500,
-                "spec2Type": {
-                    "value__": 19,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 2400,
-                "spec2Cap": 1200,
-                "spec3Type": {
-                    "value__": 21,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 8000,
-                "spec3Cap": 4000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 157,
-                "type": {
-                    "value__": 2,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 1000,
-                "curAttack": 1290,
-                "capDefense": 23000,
-                "curDefense": 29853.63671875,
-                "spec1Type": {
-                    "value__": 19,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 16000,
-                "spec1Cap": 8000,
-                "spec2Type": {
-                    "value__": 21,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 17000,
-                "spec2Cap": 8500,
-                "spec3Type": {
-                    "value__": 18,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 4000,
-                "spec3Cap": 2000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 137,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 6666,
-                "curAttack": 13332,
-                "capDefense": 6666,
-                "curDefense": 13332,
-                "spec1Type": {
-                    "value__": 14,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 2000,
-                "spec1Cap": 1000,
-                "spec2Type": {
-                    "value__": 23,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 4000,
-                "spec2Cap": 2000,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 118,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 82,
-                "capAttack": 500,
-                "curAttack": 1000,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 6000,
-                "spec1Cap": 3000,
-                "spec2Type": {
-                    "value__": 23,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 12000,
-                "spec2Cap": 6000,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 165,
-                "type": {
-                    "value__": 1,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 60000,
-                "curDefense": 84333.078125,
-                "spec1Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 900000,
-                "spec1Cap": 450000,
-                "spec2Type": {
-                    "value__": 38,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 2425270,
-                "spec2Cap": 1350000,
-                "spec3Type": {
-                    "value__": 33,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 1414000,
-                "spec3Cap": 1400000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 187,
-                "type": {
-                    "value__": 3,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 10000,
-                "curAttack": 15423.009765625,
-                "capDefense": 240000,
-                "curDefense": 328800,
-                "spec1Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 2296000,
-                "spec1Cap": 1400000,
-                "spec2Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 2296000,
-                "spec2Cap": 1400000,
-                "spec3Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 2296000,
-                "spec3Cap": 1400000,
-                "removable": 0,
-                "level": 64,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 184,
-                "type": {
-                    "value__": 0,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 11000,
-                "curAttack": 12870,
-                "capDefense": 242000,
-                "curDefense": 268620,
-                "spec1Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 1722000,
-                "spec1Cap": 1400000,
-                "spec2Type": {
-                    "value__": 38,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 1845000,
+                "spec2Cur": 3000000,
                 "spec2Cap": 1500000,
-                "spec3Type": {
-                    "value__": 36,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 1230000,
-                "spec3Cap": 1000000,
-                "removable": 0,
-                "level": 41,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 440,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 82,
-                "capAttack": 4000,
-                "curAttack": 8000,
-                "capDefense": 4000,
-                "curDefense": 8000,
-                "spec1Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 3200,
-                "spec1Cap": 1600,
-                "spec2Type": {
-                    "value__": 18,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 2000,
-                "spec2Cap": 1000,
-                "spec3Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 10000,
-                "spec3Cap": 5000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 155,
-                "type": {
-                    "value__": 0,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 1000,
-                "curAttack": 1600,
-                "capDefense": 21000,
-                "curDefense": 33600,
-                "spec1Type": {
-                    "value__": 21,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 17000,
-                "spec1Cap": 8500,
-                "spec2Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 15000,
-                "spec2Cap": 7500,
-                "spec3Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 4000,
-                "spec3Cap": 2000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 139,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 1000,
-                "curAttack": 2000,
-                "capDefense": 1000,
-                "curDefense": 2000,
-                "spec1Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 5000,
-                "spec1Cap": 2500,
-                "spec2Type": {
-                    "value__": 18,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 2400,
-                "spec2Cap": 1200,
-                "spec3Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 8000,
-                "spec3Cap": 4000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 148,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 8000,
-                "curAttack": 16000,
-                "capDefense": 8000,
-                "curDefense": 16000,
-                "spec1Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 9000,
-                "spec1Cap": 4500,
-                "spec2Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 7000,
-                "spec2Cap": 3500,
-                "spec3Type": {
-                    "value__": 26,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 20000,
-                "spec3Cap": 10000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 110,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 82,
-                "capAttack": 82,
-                "curAttack": 155,
-                "capDefense": 82,
-                "curDefense": 155,
-                "spec1Type": {
-                    "value__": 21,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 4335,
-                "spec1Cap": 2282,
-                "spec2Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 2055,
-                "spec2Cap": 1082,
-                "spec3Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 380,
-                "spec3Cap": 200,
-                "removable": 0,
-                "level": 90,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 142,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 100,
-                "capAttack": 40000,
-                "curAttack": 50800,
-                "capDefense": 40000,
-                "curDefense": 44800,
-                "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 1300,
-                "spec1Cap": 1000,
-                "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 1040,
-                "spec2Cap": 800,
-                "spec3Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 3510,
-                "spec3Cap": 2700,
-                "removable": 0,
-                "level": 36,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 437,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 21,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 1400,
-                "spec1Cap": 700,
-                "spec2Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 1400,
-                "spec2Cap": 700,
                 "spec3Type": {
                     "value__": 0,
                     "__cname__": "specType"
@@ -4154,12 +3362,78 @@ var midNormalTwo = {
                 },
                 "spec3Cur": 800000,
                 "spec3Cap": 400000,
-                "removable": 0,
+                "removable": 1,
                 "level": 100,
                 "__cname__": "Equipment"
             },
             {
-                "id": 121,
+                "id": 161,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 5000,
+                "curAttack": 10000,
+                "capDefense": 5000,
+                "curDefense": 10000,
+                "spec1Type": {
+                    "value__": 28,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 1000000,
+                "spec1Cap": 500000,
+                "spec2Type": {
+                    "value__": 22,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 30000,
+                "spec2Cap": 15000,
+                "spec3Type": {
+                    "value__": 12,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 24000,
+                "spec3Cap": 12000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 168,
+                "type": {
+                    "value__": 4,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 500000,
+                "curAttack": 885627.625,
+                "capDefense": 25000,
+                "curDefense": 34500,
+                "spec1Type": {
+                    "value__": 29,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 1200000,
+                "spec1Cap": 600000,
+                "spec2Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 1200000,
+                "spec2Cap": 600000,
+                "spec3Type": {
+                    "value__": 30,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 2400000,
+                "spec3Cap": 1200000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 443,
                 "type": {
                     "value__": 5,
                     "__cname__": "part"
@@ -4170,25 +3444,58 @@ var midNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 23,
+                    "value__": 27,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 4320,
-                "spec1Cap": 4000,
+                "spec1Cur": 2000000,
+                "spec1Cap": 1000000,
                 "spec2Type": {
-                    "value__": 0,
+                    "value__": 38,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
+                "spec2Cur": 3000000,
+                "spec2Cap": 1500000,
                 "spec3Type": {
-                    "value__": 0,
+                    "value__": 26,
                     "__cname__": "specType"
                 },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 0,
-                "level": 8,
+                "spec3Cur": 50000,
+                "spec3Cap": 25000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 164,
+                "type": {
+                    "value__": 0,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 60000,
+                "curDefense": 120000,
+                "spec1Type": {
+                    "value__": 28,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 900000,
+                "spec1Cap": 450000,
+                "spec2Type": {
+                    "value__": 32,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 3200000,
+                "spec2Cap": 1600000,
+                "spec3Type": {
+                    "value__": 40,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 2400000,
+                "spec3Cap": 1200000,
+                "removable": 1,
+                "level": 100,
                 "__cname__": "Equipment"
             },
             {
@@ -4222,6 +3529,600 @@ var midNormalTwo = {
                 "spec3Cap": 0,
                 "removable": 1,
                 "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 158,
+                "type": {
+                    "value__": 3,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 1000,
+                "curAttack": 1300,
+                "capDefense": 24000,
+                "curDefense": 31200,
+                "spec1Type": {
+                    "value__": 15,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 60000,
+                "spec1Cap": 30000,
+                "spec2Type": {
+                    "value__": 26,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 80000,
+                "spec2Cap": 40000,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 149,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 12000,
+                "curAttack": 24000,
+                "capDefense": 12000,
+                "curDefense": 24000,
+                "spec1Type": {
+                    "value__": 22,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 20000,
+                "spec1Cap": 10000,
+                "spec2Type": {
+                    "value__": 15,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 30000,
+                "spec2Cap": 15000,
+                "spec3Type": {
+                    "value__": 26,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 20000,
+                "spec3Cap": 10000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 142,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 40000,
+                "curAttack": 80000,
+                "capDefense": 40000,
+                "curDefense": 80000,
+                "spec1Type": {
+                    "value__": 5,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 2000,
+                "spec1Cap": 1000,
+                "spec2Type": {
+                    "value__": 7,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 1600,
+                "spec2Cap": 800,
+                "spec3Type": {
+                    "value__": 16,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 5400,
+                "spec3Cap": 2700,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 441,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 82,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 26,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 24000,
+                "spec1Cap": 12000,
+                "spec2Type": {
+                    "value__": 20,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 12000,
+                "spec2Cap": 6000,
+                "spec3Type": {
+                    "value__": 17,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 9000,
+                "spec3Cap": 4500,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 137,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 6666,
+                "curAttack": 13332,
+                "capDefense": 6666,
+                "curDefense": 13332,
+                "spec1Type": {
+                    "value__": 14,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 2000,
+                "spec1Cap": 1000,
+                "spec2Type": {
+                    "value__": 23,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 4000,
+                "spec2Cap": 2000,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 153,
+                "type": {
+                    "value__": 3,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 1000,
+                "curAttack": 2000,
+                "capDefense": 24000,
+                "curDefense": 34612.5234375,
+                "spec1Type": {
+                    "value__": 12,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 26000,
+                "spec1Cap": 13000,
+                "spec2Type": {
+                    "value__": 22,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 12000,
+                "spec2Cap": 6000,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 138,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 1000,
+                "curAttack": 2000,
+                "capDefense": 1000,
+                "curDefense": 2000,
+                "spec1Type": {
+                    "value__": 22,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 10000,
+                "spec1Cap": 5000,
+                "spec2Type": {
+                    "value__": 12,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 10000,
+                "spec2Cap": 5000,
+                "spec3Type": {
+                    "value__": 13,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 10000,
+                "spec3Cap": 5000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 440,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 82,
+                "capAttack": 4000,
+                "curAttack": 8000,
+                "capDefense": 4000,
+                "curDefense": 8000,
+                "spec1Type": {
+                    "value__": 16,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 3200,
+                "spec1Cap": 1600,
+                "spec2Type": {
+                    "value__": 18,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 2000,
+                "spec2Cap": 1000,
+                "spec3Type": {
+                    "value__": 20,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 10000,
+                "spec3Cap": 5000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 94,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 67,
+                "capAttack": 800,
+                "curAttack": 1200,
+                "capDefense": 800,
+                "curDefense": 200,
+                "spec1Type": {
+                    "value__": 5,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 800,
+                "spec1Cap": 400,
+                "spec2Type": {
+                    "value__": 7,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 800,
+                "spec2Cap": 400,
+                "spec3Type": {
+                    "value__": 17,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 2000,
+                "spec3Cap": 1000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 121,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 23,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 8000,
+                "spec1Cap": 4000,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 116,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 82,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 82,
+                "curDefense": 164,
+                "spec1Type": {
+                    "value__": 22,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 12000,
+                "spec1Cap": 6000,
+                "spec2Type": {
+                    "value__": 17,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 2164,
+                "spec2Cap": 1082,
+                "spec3Type": {
+                    "value__": 7,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 400,
+                "spec3Cap": 200,
+                "removable": 1,
+                "level": 100,
                 "__cname__": "Equipment"
             },
             {
@@ -4258,160 +4159,292 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 0,
-                "type": {
-                    "value__": 9,
-                    "__cname__": "part"
-                },
-                "bossRequired": -1,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 119,
+                "id": 110,
                 "type": {
                     "value__": 5,
                     "__cname__": "part"
                 },
-                "bossRequired": 0,
-                "capAttack": 100,
-                "curAttack": 69,
-                "capDefense": 100,
-                "curDefense": 69,
+                "bossRequired": 82,
+                "capAttack": 82,
+                "curAttack": 155,
+                "capDefense": 82,
+                "curDefense": 155,
                 "spec1Type": {
-                    "value__": 24,
+                    "value__": 21,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 25000,
+                "spec1Cur": 4564,
+                "spec1Cap": 2282,
+                "spec2Type": {
+                    "value__": 17,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 2164,
+                "spec2Cap": 1082,
+                "spec3Type": {
+                    "value__": 7,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 400,
+                "spec3Cap": 200,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 128,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 82,
+                "capAttack": 200,
+                "curAttack": 0,
+                "capDefense": 200,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 5,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 744,
+                "spec1Cap": 400,
+                "spec2Type": {
+                    "value__": 16,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 1860,
+                "spec2Cap": 1000,
+                "spec3Type": {
+                    "value__": 17,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 1860,
+                "spec3Cap": 1000,
+                "removable": 0,
+                "level": 86,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 193,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 50000,
+                "curAttack": 100000,
+                "capDefense": 50000,
+                "curDefense": 100000,
+                "spec1Type": {
+                    "value__": 15,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 100000,
                 "spec1Cap": 50000,
                 "spec2Type": {
-                    "value__": 5,
+                    "value__": 43,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 0,
-                "spec2Cap": 300,
+                "spec2Cur": 2000000,
+                "spec2Cap": 1000000,
                 "spec3Type": {
                     "value__": 0,
                     "__cname__": "specType"
@@ -4423,12 +4456,144 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 203,
+                "id": 192,
                 "type": {
-                    "value__": 11,
+                    "value__": 5,
                     "__cname__": "part"
                 },
-                "bossRequired": 0,
+                "bossRequired": 100,
+                "capAttack": 30000,
+                "curAttack": 60000,
+                "capDefense": 30000,
+                "curDefense": 60000,
+                "spec1Type": {
+                    "value__": 40,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 6000000,
+                "spec1Cap": 3000000,
+                "spec2Type": {
+                    "value__": 29,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 4000000,
+                "spec2Cap": 2000000,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 216,
+                "type": {
+                    "value__": 3,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 20000,
+                "curAttack": 40000,
+                "capDefense": 516000,
+                "curDefense": 1032000,
+                "spec1Type": {
+                    "value__": 37,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 9600000,
+                "spec1Cap": 4800000,
+                "spec2Type": {
+                    "value__": 35,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 9600000,
+                "spec2Cap": 4800000,
+                "spec3Type": {
+                    "value__": 33,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 9600000,
+                "spec3Cap": 4800000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 217,
+                "type": {
+                    "value__": 4,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 5600000,
+                "curAttack": 11200000,
+                "capDefense": 300000,
+                "curDefense": 600000,
+                "spec1Type": {
+                    "value__": 38,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 8400000,
+                "spec1Cap": 4200000,
+                "spec2Type": {
+                    "value__": 33,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 8800000,
+                "spec2Cap": 4400000,
+                "spec3Type": {
+                    "value__": 36,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 3400000,
+                "spec3Cap": 1700000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 214,
+                "type": {
+                    "value__": 1,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 30000,
+                "curAttack": 60000,
+                "capDefense": 540000,
+                "curDefense": 1080000,
+                "spec1Type": {
+                    "value__": 29,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 9200000,
+                "spec1Cap": 4600000,
+                "spec2Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 8200000,
+                "spec2Cap": 4100000,
+                "spec3Type": {
+                    "value__": 36,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 7400000,
+                "spec3Cap": 3700000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -4456,12 +4621,12 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 202,
+                "id": 0,
                 "type": {
-                    "value__": 11,
+                    "value__": 9,
                     "__cname__": "part"
                 },
-                "bossRequired": 0,
+                "bossRequired": -1,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -4485,16 +4650,16 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 4,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
-                "id": 207,
+                "id": 0,
                 "type": {
-                    "value__": 11,
+                    "value__": 9,
                     "__cname__": "part"
                 },
-                "bossRequired": 0,
+                "bossRequired": -1,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -4518,16 +4683,16 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 7,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
-                "id": 201,
+                "id": 0,
                 "type": {
-                    "value__": 11,
+                    "value__": 9,
                     "__cname__": "part"
                 },
-                "bossRequired": 0,
+                "bossRequired": -1,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -4551,16 +4716,16 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 12,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
-                "id": 200,
+                "id": 0,
                 "type": {
-                    "value__": 11,
+                    "value__": 9,
                     "__cname__": "part"
                 },
-                "bossRequired": 0,
+                "bossRequired": -1,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -4584,16 +4749,16 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 5,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
-                "id": 206,
+                "id": 0,
                 "type": {
-                    "value__": 11,
+                    "value__": 9,
                     "__cname__": "part"
                 },
-                "bossRequired": 0,
+                "bossRequired": -1,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -4617,16 +4782,16 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 5,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
-                "id": 204,
+                "id": 0,
                 "type": {
-                    "value__": 11,
+                    "value__": 9,
                     "__cname__": "part"
                 },
-                "bossRequired": 0,
+                "bossRequired": -1,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
@@ -4650,32 +4815,32 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 3,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
-                "id": 199,
+                "id": 76,
                 "type": {
-                    "value__": 11,
+                    "value__": 5,
                     "__cname__": "part"
                 },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
+                "bossRequired": 58,
+                "capAttack": 100,
+                "curAttack": 200,
+                "capDefense": 100,
+                "curDefense": 200,
                 "spec1Type": {
-                    "value__": 0,
+                    "value__": 5,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
+                "spec1Cur": 400,
+                "spec1Cap": 200,
                 "spec2Type": {
-                    "value__": 0,
+                    "value__": 7,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
+                "spec2Cur": 400,
+                "spec2Cap": 200,
                 "spec3Type": {
                     "value__": 0,
                     "__cname__": "specType"
@@ -4683,40 +4848,7 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 1,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 198,
-                "type": {
-                    "value__": 11,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 0,
-                "curAttack": 0,
-                "capDefense": 0,
-                "curDefense": 0,
-                "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 0,
-                "spec1Cap": 0,
-                "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 0,
-                "spec2Cap": 0,
-                "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 0,
-                "spec3Cap": 0,
-                "removable": 1,
-                "level": 7,
+                "level": 100,
                 "__cname__": "Equipment"
             },
             {
@@ -4753,36 +4885,696 @@ var midNormalTwo = {
                 "__cname__": "Equipment"
             },
             {
-                "id": 76,
+                "id": 0,
                 "type": {
-                    "value__": 5,
+                    "value__": 9,
                     "__cname__": "part"
                 },
-                "bossRequired": 58,
-                "capAttack": 100,
-                "curAttack": 200,
-                "capDefense": 100,
-                "curDefense": 200,
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
                 "spec1Type": {
-                    "value__": 5,
+                    "value__": 0,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 400,
-                "spec1Cap": 200,
+                "spec1Cur": 0,
+                "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 7,
+                    "value__": 0,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 400,
-                "spec2Cap": 200,
+                "spec2Cur": 0,
+                "spec2Cap": 0,
                 "spec3Type": {
                     "value__": 0,
                     "__cname__": "specType"
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 222,
+                "type": {
+                    "value__": 1,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 20000,
+                "curAttack": 40000,
+                "capDefense": 370000,
+                "curDefense": 740000,
+                "spec1Type": {
+                    "value__": 29,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 6000000,
+                "spec1Cap": 3000000,
+                "spec2Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 5800000,
+                "spec2Cap": 2900000,
+                "spec3Type": {
+                    "value__": 36,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 5000000,
+                "spec3Cap": 2500000,
+                "removable": 1,
                 "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 224,
+                "type": {
+                    "value__": 3,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 20000,
+                "curAttack": 40000,
+                "capDefense": 366000,
+                "curDefense": 732000,
+                "spec1Type": {
+                    "value__": 37,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 6800000,
+                "spec1Cap": 3400000,
+                "spec2Type": {
+                    "value__": 35,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 6800000,
+                "spec2Cap": 3400000,
+                "spec3Type": {
+                    "value__": 33,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 6800000,
+                "spec3Cap": 3400000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 445,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 666000,
+                "curAttack": 666000,
+                "capDefense": 666000,
+                "curDefense": 666000,
+                "spec1Type": {
+                    "value__": 38,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 6000000,
+                "spec1Cap": 6000000,
+                "spec2Type": {
+                    "value__": 39,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 2500000,
+                "spec2Cap": 2500000,
+                "spec3Type": {
+                    "value__": 33,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 6000000,
+                "spec3Cap": 6000000,
+                "removable": 1,
+                "level": 5,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 225,
+                "type": {
+                    "value__": 4,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 3800000,
+                "curAttack": 7600000,
+                "capDefense": 200000,
+                "curDefense": 400000,
+                "spec1Type": {
+                    "value__": 38,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 5800000,
+                "spec1Cap": 2900000,
+                "spec2Type": {
+                    "value__": 33,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 6000000,
+                "spec2Cap": 3000000,
+                "spec3Type": {
+                    "value__": 28,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 3600000,
+                "spec3Cap": 1800000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 282,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 0,
+                "type": {
+                    "value__": 9,
+                    "__cname__": "part"
+                },
+                "bossRequired": -1,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 282,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 282,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 282,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 282,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 282,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 282,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 282,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 282,
+                "type": {
+                    "value__": 10,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 0,
                 "__cname__": "Equipment"
             },
             {
@@ -4800,13 +5592,13 @@ var midNormalTwo = {
                     "value__": 25,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 50000,
+                "spec1Cur": 200000,
                 "spec1Cap": 100000,
                 "spec2Type": {
                     "value__": 7,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 0,
+                "spec2Cur": 600,
                 "spec2Cap": 300,
                 "spec3Type": {
                     "value__": 0,
@@ -4816,6 +5608,402 @@ var midNormalTwo = {
                 "spec3Cap": 0,
                 "removable": 1,
                 "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 119,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 100,
+                "curAttack": 69,
+                "capDefense": 100,
+                "curDefense": 69,
+                "spec1Type": {
+                    "value__": 24,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 100000,
+                "spec1Cap": 50000,
+                "spec2Type": {
+                    "value__": 5,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 600,
+                "spec2Cap": 300,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 196,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 420,
+                "curAttack": 69,
+                "capDefense": 420,
+                "curDefense": 69,
+                "spec1Type": {
+                    "value__": 7,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 200,
+                "spec1Cap": 100,
+                "spec2Type": {
+                    "value__": 39,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 800000,
+                "spec2Cap": 400000,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 293,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 100,
+                "curAttack": 69,
+                "capDefense": 1000,
+                "curDefense": 69,
+                "spec1Type": {
+                    "value__": 45,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 10000000,
+                "spec1Cap": 5000000,
+                "spec2Type": {
+                    "value__": 7,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 600,
+                "spec2Cap": 300,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 202,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 16,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 199,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 1,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 206,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 11,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 204,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 14,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 208,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 63,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 228,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 6,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 211,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 19,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 250,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 1,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 207,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 11,
                 "__cname__": "Equipment"
             },
             {
@@ -4848,7 +6036,7 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 14,
+                "level": 26,
                 "__cname__": "Equipment"
             },
             {
@@ -4939,282 +6127,270 @@ var midNormalTwo = {
             [
                 null,
                 null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
             ]
         ],
         "accs": [
             {
-                "id": 149,
+                "id": 218,
                 "type": {
                     "value__": 5,
                     "__cname__": "part"
                 },
                 "bossRequired": 100,
-                "capAttack": 12000,
-                "curAttack": 24000,
-                "capDefense": 12000,
-                "curDefense": 24000,
+                "capAttack": 150000,
+                "curAttack": 300000,
+                "capDefense": 150000,
+                "curDefense": 300000,
                 "spec1Type": {
-                    "value__": 22,
+                    "value__": 27,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 20000,
-                "spec1Cap": 10000,
+                "spec1Cur": 9000000,
+                "spec1Cap": 4500000,
                 "spec2Type": {
-                    "value__": 15,
+                    "value__": 29,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 30000,
-                "spec2Cap": 15000,
+                "spec2Cur": 7200000,
+                "spec2Cap": 3600000,
                 "spec3Type": {
-                    "value__": 26,
+                    "value__": 28,
                     "__cname__": "specType"
                 },
-                "spec3Cur": 20000,
-                "spec3Cap": 10000,
-                "removable": 1,
+                "spec3Cur": 6400000,
+                "spec3Cap": 3200000,
+                "removable": 0,
                 "level": 100,
                 "__cname__": "Equipment"
             },
             {
-                "id": 161,
+                "id": 444,
                 "type": {
                     "value__": 5,
                     "__cname__": "part"
                 },
                 "bossRequired": 100,
-                "capAttack": 5000,
-                "curAttack": 5000,
-                "capDefense": 5000,
-                "curDefense": 5000,
-                "spec1Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 615000,
-                "spec1Cap": 500000,
-                "spec2Type": {
-                    "value__": 22,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 18450,
-                "spec2Cap": 15000,
-                "spec3Type": {
-                    "value__": 12,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 14760,
-                "spec3Cap": 12000,
-                "removable": 0,
-                "level": 23,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 443,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
                 "capAttack": 0,
                 "curAttack": 0,
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 27,
+                    "value__": 28,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 1000000,
-                "spec1Cap": 1000000,
+                "spec1Cur": 4000000,
+                "spec1Cap": 2000000,
                 "spec2Type": {
-                    "value__": 38,
+                    "value__": 15,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 1500000,
-                "spec2Cap": 1500000,
+                "spec2Cur": 100000,
+                "spec2Cap": 50000,
                 "spec3Type": {
-                    "value__": 26,
+                    "value__": 39,
                     "__cname__": "specType"
                 },
-                "spec3Cur": 25000,
-                "spec3Cap": 25000,
+                "spec3Cur": 4000000,
+                "spec3Cap": 2000000,
                 "removable": 1,
                 "level": 100,
                 "__cname__": "Equipment"
             },
             {
-                "id": 138,
+                "id": 190,
                 "type": {
                     "value__": 5,
                     "__cname__": "part"
                 },
                 "bossRequired": 100,
-                "capAttack": 1000,
-                "curAttack": 2000,
-                "capDefense": 1000,
-                "curDefense": 2000,
+                "capAttack": 66666,
+                "curAttack": 133332,
+                "capDefense": 66666,
+                "curDefense": 133332,
                 "spec1Type": {
-                    "value__": 22,
+                    "value__": 42,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 10000,
-                "spec1Cap": 5000,
+                "spec1Cur": 4000000,
+                "spec1Cap": 2000000,
                 "spec2Type": {
-                    "value__": 12,
+                    "value__": 39,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 10000,
-                "spec2Cap": 5000,
+                "spec2Cur": 4000000,
+                "spec2Cap": 2000000,
                 "spec3Type": {
-                    "value__": 13,
+                    "value__": 0,
                     "__cname__": "specType"
                 },
-                "spec3Cur": 10000,
-                "spec3Cap": 5000,
+                "spec3Cur": 0,
+                "spec3Cap": 0,
                 "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 194,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 250000,
+                "curAttack": 500000,
+                "capDefense": 250000,
+                "curDefense": 500000,
+                "spec1Type": {
+                    "value__": 27,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 6000000,
+                "spec1Cap": 3000000,
+                "spec2Type": {
+                    "value__": 28,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 6000000,
+                "spec2Cap": 3000000,
+                "spec3Type": {
+                    "value__": 29,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 6000000,
+                "spec3Cap": 3000000,
+                "removable": 0,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 171,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 100,
+                "curAttack": 200,
+                "capDefense": 100,
+                "curDefense": 200,
+                "spec1Type": {
+                    "value__": 41,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 1000000,
+                "spec1Cap": 500000,
+                "spec2Type": {
+                    "value__": 23,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 8000,
+                "spec2Cap": 4000,
+                "spec3Type": {
+                    "value__": 42,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 600000,
+                "spec3Cap": 300000,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 118,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 82,
+                "capAttack": 500,
+                "curAttack": 1000,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 20,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 6000,
+                "spec1Cap": 3000,
+                "spec2Type": {
+                    "value__": 23,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 12000,
+                "spec2Cap": 6000,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 195,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 100000,
+                "curAttack": 200000,
+                "capDefense": 100000,
+                "curDefense": 200000,
+                "spec1Type": {
+                    "value__": 38,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 12000000,
+                "spec1Cap": 6000000,
+                "spec2Type": {
+                    "value__": 34,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 12000000,
+                "spec2Cap": 6000000,
+                "spec3Type": {
+                    "value__": 33,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 12000000,
+                "spec3Cap": 6000000,
+                "removable": 0,
+                "level": 100,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 445,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 666000,
+                "curAttack": 1332000,
+                "capDefense": 666000,
+                "curDefense": 1332000,
+                "spec1Type": {
+                    "value__": 38,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 12000000,
+                "spec1Cap": 6000000,
+                "spec2Type": {
+                    "value__": 39,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 5000000,
+                "spec2Cap": 2500000,
+                "spec3Type": {
+                    "value__": 33,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 12000000,
+                "spec3Cap": 6000000,
+                "removable": 0,
                 "level": 100,
                 "__cname__": "Equipment"
             },
@@ -5247,26 +6423,10 @@ var midNormalTwo = {
                 },
                 "spec3Cur": 16000,
                 "spec3Cap": 8000,
-                "removable": 0,
+                "removable": 1,
                 "level": 100,
                 "__cname__": "Equipment"
             },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
             [
                 null,
                 null
@@ -5274,7 +6434,7 @@ var midNormalTwo = {
         ],
         "macguffins": [
             {
-                "id": 208,
+                "id": 198,
                 "type": {
                     "value__": 11,
                     "__cname__": "part"
@@ -5303,111 +6463,276 @@ var midNormalTwo = {
                 "spec3Cur": 0,
                 "spec3Cap": 0,
                 "removable": 1,
-                "level": 12,
+                "level": 246,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 200,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 205,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 203,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 116,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 201,
+                "type": {
+                    "value__": 11,
+                    "__cname__": "part"
+                },
+                "bossRequired": 0,
+                "capAttack": 0,
+                "curAttack": 0,
+                "capDefense": 0,
+                "curDefense": 0,
+                "spec1Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 0,
+                "spec1Cap": 0,
+                "spec2Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 0,
+                "spec2Cap": 0,
+                "spec3Type": {
+                    "value__": 0,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 0,
+                "spec3Cap": 0,
+                "removable": 1,
+                "level": 25,
                 "__cname__": "Equipment"
             }
         ],
         "daycare": [
             {
-                "id": 171,
-                "type": {
-                    "value__": 5,
-                    "__cname__": "part"
-                },
-                "bossRequired": 0,
-                "capAttack": 100,
-                "curAttack": 69,
-                "capDefense": 100,
-                "curDefense": 69,
-                "spec1Type": {
-                    "value__": 41,
-                    "__cname__": "specType"
-                },
-                "spec1Cur": 500000,
-                "spec1Cap": 500000,
-                "spec2Type": {
-                    "value__": 23,
-                    "__cname__": "specType"
-                },
-                "spec2Cur": 4000,
-                "spec2Cap": 4000,
-                "spec3Type": {
-                    "value__": 42,
-                    "__cname__": "specType"
-                },
-                "spec3Cur": 300000,
-                "spec3Cap": 300000,
-                "removable": 0,
-                "level": 18,
-                "__cname__": "Equipment"
-            },
-            {
-                "id": 160,
+                "id": 169,
                 "type": {
                     "value__": 5,
                     "__cname__": "part"
                 },
                 "bossRequired": 100,
-                "capAttack": 15000,
-                "curAttack": 15000,
-                "capDefense": 15000,
-                "curDefense": 15000,
+                "capAttack": 100000,
+                "curAttack": 100000,
+                "capDefense": 100000,
+                "curDefense": 100000,
                 "spec1Type": {
+                    "value__": 41,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 1000000,
+                "spec1Cap": 1000000,
+                "spec2Type": {
                     "value__": 27,
                     "__cname__": "specType"
                 },
-                "spec1Cur": 500000,
-                "spec1Cap": 500000,
+                "spec2Cur": 400000,
+                "spec2Cap": 400000,
+                "spec3Type": {
+                    "value__": 29,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 400000,
+                "spec3Cap": 400000,
+                "removable": 1,
+                "level": 3,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 170,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 100000,
+                "curAttack": 10000,
+                "capDefense": 100000,
+                "curDefense": 10000,
+                "spec1Type": {
+                    "value__": 45,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 5000000,
+                "spec1Cap": 5000000,
                 "spec2Type": {
                     "value__": 29,
                     "__cname__": "specType"
                 },
-                "spec2Cur": 300000,
-                "spec2Cap": 300000,
+                "spec2Cur": 1200000,
+                "spec2Cap": 1200000,
                 "spec3Type": {
-                    "value__": 5,
+                    "value__": 41,
                     "__cname__": "specType"
                 },
-                "spec3Cur": 300,
-                "spec3Cap": 300,
-                "removable": 0,
-                "level": 11,
+                "spec3Cur": 2500000,
+                "spec3Cap": 2500000,
+                "removable": 1,
+                "level": 5,
                 "__cname__": "Equipment"
             },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+            {
+                "id": 227,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 50000,
+                "curAttack": 50000,
+                "capDefense": 50000,
+                "curDefense": 50000,
+                "spec1Type": {
+                    "value__": 34,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 3000000,
+                "spec1Cap": 3000000,
+                "spec2Type": {
+                    "value__": 38,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 2500000,
+                "spec2Cap": 2500000,
+                "spec3Type": {
+                    "value__": 36,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 2200000,
+                "spec3Cap": 2200000,
+                "removable": 0,
+                "level": 5,
+                "__cname__": "Equipment"
+            },
+            {
+                "id": 226,
+                "type": {
+                    "value__": 5,
+                    "__cname__": "part"
+                },
+                "bossRequired": 100,
+                "capAttack": 50000,
+                "curAttack": 50000,
+                "capDefense": 50000,
+                "curDefense": 50000,
+                "spec1Type": {
+                    "value__": 33,
+                    "__cname__": "specType"
+                },
+                "spec1Cur": 3000000,
+                "spec1Cap": 3000000,
+                "spec2Type": {
+                    "value__": 37,
+                    "__cname__": "specType"
+                },
+                "spec2Cur": 2500000,
+                "spec2Cap": 2500000,
+                "spec3Type": {
+                    "value__": 35,
+                    "__cname__": "specType"
+                },
+                "spec3Cur": 2200000,
+                "spec3Cap": 2200000,
+                "removable": 0,
+                "level": 6,
+                "__cname__": "Equipment"
+            }
         ],
         "daycareTimers": [
             {
-                "totalseconds": 6208010.289430309,
-                "seconds": 50.28943030908704,
+                "totalseconds": 5972369.556316142,
+                "seconds": 29.556316141970456,
                 "minutes": 0,
-                "hours": 20,
+                "hours": 2,
                 "days": 0,
                 "__cname__": "PlayerTime"
             },
             {
-                "totalseconds": 5137764.701159129,
-                "seconds": 24.701159128919244,
+                "totalseconds": 6773533.035810498,
+                "seconds": 13.03581049758941,
+                "minutes": 0,
+                "hours": 9,
+                "days": 0,
+                "__cname__": "PlayerTime"
+            },
+            {
+                "totalseconds": 6265411.205305886,
+                "seconds": 31.20530588645488,
+                "minutes": 0,
+                "hours": 12,
+                "days": 0,
+                "__cname__": "PlayerTime"
+            },
+            {
+                "totalseconds": 6608650.878425148,
+                "seconds": 10.878425148315728,
                 "minutes": 0,
                 "hours": 11,
                 "days": 0,
                 "__cname__": "PlayerTime"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+            }
         ],
         "itemList": {
             "itemDropped": [
@@ -5421,7 +6746,7 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
+                1,
                 0,
                 0,
                 0,
@@ -5434,7 +6759,7 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
+                1,
                 0,
                 0,
                 0,
@@ -5447,7 +6772,7 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
+                1,
                 0,
                 0,
                 0,
@@ -5581,7 +6906,6 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
                 1,
                 1,
                 1,
@@ -5601,13 +6925,6 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
                 1,
                 1,
                 1,
@@ -5616,39 +6933,46 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
                 1,
                 1,
                 1,
                 1,
                 1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
+                1,
+                1,
+                1,
                 0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
                 0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -5662,6 +6986,7 @@ var midNormalTwo = {
                 0,
                 0,
                 0,
+                1,
                 0,
                 0,
                 0,
@@ -5691,7 +7016,7 @@ var midNormalTwo = {
                 0,
                 1,
                 1,
-                0,
+                1,
                 1,
                 1,
                 1,
@@ -5704,7 +7029,7 @@ var midNormalTwo = {
                 0,
                 0,
                 1,
-                0,
+                1,
                 0,
                 0,
                 0,
@@ -5855,9 +7180,9 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
-                0,
+                1,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -6446,8 +7771,8 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -6459,8 +7784,8 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -6472,8 +7797,8 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -6547,7 +7872,6 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
                 1,
                 1,
                 1,
@@ -6558,7 +7882,6 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
                 1,
                 1,
                 1,
@@ -6579,7 +7902,6 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
                 1,
                 1,
                 1,
@@ -6596,10 +7918,6 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
-                0,
-                0,
                 1,
                 1,
                 1,
@@ -6607,6 +7925,12 @@ var midNormalTwo = {
                 1,
                 1,
                 0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
                 0,
                 1,
@@ -6615,44 +7939,33 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
                 1,
                 1,
                 1,
                 1,
                 1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
                 1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
+                1,
                 0,
                 0,
+                1,
                 0,
                 0,
                 0,
@@ -6662,7 +7975,19 @@ var midNormalTwo = {
                 0,
                 0,
                 0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -6717,7 +8042,7 @@ var midNormalTwo = {
                 0,
                 1,
                 1,
-                0,
+                1,
                 1,
                 1,
                 1,
@@ -6730,7 +8055,7 @@ var midNormalTwo = {
                 0,
                 0,
                 1,
-                0,
+                1,
                 0,
                 0,
                 0,
@@ -6881,8 +8206,8 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -7464,42 +8789,42 @@ var midNormalTwo = {
             ],
             "itemFiltered": [
                 0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
                 0,
                 0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
                 0,
                 0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -7555,7 +8880,6 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
                 1,
                 1,
                 1,
@@ -7573,7 +8897,6 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
                 1,
                 1,
                 1,
@@ -7582,8 +8905,17 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
                 1,
                 1,
@@ -7605,7 +8937,8 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
+                1,
+                1,
                 1,
                 1,
                 1,
@@ -7622,9 +8955,8 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
-                0,
+                1,
+                1,
                 0,
                 0,
                 1,
@@ -7632,47 +8964,28 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
-                0,
                 1,
                 1,
                 1,
                 1,
                 1,
                 1,
-                0,
                 1,
                 1,
                 1,
                 1,
                 1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
                 1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -7688,7 +9001,19 @@ var midNormalTwo = {
                 0,
                 0,
                 0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
+                1,
+                1,
+                1,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -7756,7 +9081,7 @@ var midNormalTwo = {
                 0,
                 0,
                 1,
-                0,
+                1,
                 0,
                 0,
                 0,
@@ -7907,8 +9232,8 @@ var midNormalTwo = {
                 1,
                 1,
                 1,
-                0,
-                0,
+                1,
+                1,
                 0,
                 0,
                 0,
@@ -8488,8 +9813,8 @@ var midNormalTwo = {
                 0,
                 0
             ],
-            "totalDiscovered": 208,
-            "totalMaxxed": 178,
+            "totalDiscovered": 248,
+            "totalMaxxed": 224,
             "trainingComplete": 1,
             "sewersComplete": 1,
             "forestComplete": 1,
@@ -8508,10 +9833,10 @@ var midNormalTwo = {
             "antiWaldoComplete": 1,
             "badlyDrawnComplete": 1,
             "stealthComplete": 1,
-            "beast1complete": 0,
-            "chocoComplete": 0,
-            "edgyComplete": 0,
-            "edgyBootsComplete": 0,
+            "beast1complete": 1,
+            "chocoComplete": 1,
+            "edgyComplete": 1,
+            "edgyBootsComplete": 1,
             "prettyComplete": 0,
             "nerdComplete": 0,
             "metaComplete": 0,
@@ -8537,20 +9862,20 @@ var midNormalTwo = {
             "wandoosComplete": 1,
             "tutorialCubeComplete": 1,
             "numberComplete": 1,
-            "flubberComplete": 0,
+            "flubberComplete": 1,
             "seedComplete": 1,
             "uugComplete": 1,
             "uugRingComplete": 1,
             "redLiquidComplete": 1,
             "brownHeartComplete": 0,
             "xlComplete": 1,
-            "greenHeartComplete": 0,
+            "greenHeartComplete": 1,
             "itopodKeyComplete": 1,
-            "purpleLiquidComplete": 0,
-            "blueHeartComplete": 0,
+            "purpleLiquidComplete": 1,
+            "blueHeartComplete": 1,
             "jakeNoteComplete": 1,
             "purpleHeartComplete": 0,
-            "orangeHeartComplete": 0,
+            "orangeHeartComplete": 1,
             "greyHeartComplete": 0,
             "sigilComplete": 1,
             "evidenceComplete": 0,
@@ -8558,22 +9883,22 @@ var midNormalTwo = {
             "severedHeadComplete": 0,
             "rainbowHeartComplete": 0,
             "beatingHeartComplete": 0,
-            "normalBonusAccComplete": 0,
+            "normalBonusAccComplete": 1,
             "evilBonusAccComplete": 0,
             "__cname__": "ItemList"
         },
         "autoMergeSlot1": 0,
         "mergeTime": {
-            "totalseconds": 854.9884760574205,
-            "seconds": 14.988476057420485,
+            "totalseconds": 1087.2661285120703,
+            "seconds": 7.266128512070281,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "boostTime": {
-            "totalseconds": 1800,
-            "seconds": 0.0008805704419501126,
+            "totalseconds": 257.12301820961875,
+            "seconds": 17.12301820961875,
             "minutes": 0,
             "hours": 0,
             "days": 0,
@@ -8581,66 +9906,90 @@ var midNormalTwo = {
         },
         "loadouts": [
             {
-                "head": -1,
-                "chest": -2,
+                "head": 52,
+                "chest": 100,
                 "legs": -3,
-                "boots": 70,
-                "weapon": -5,
+                "boots": 51,
+                "weapon": 40,
                 "weapon2": -1000,
                 "accessories": [
-                    10002,
-                    87,
-                    51,
-                    45,
-                    10004,
-                    -1000,
-                    -1000,
-                    -1000
-                ],
-                "temp": -1000,
-                "loadoutName": "Loadout 1",
-                "__cname__": "Loadout"
-            },
-            {
-                "head": 0,
-                "chest": -2,
-                "legs": -3,
-                "boots": 70,
-                "weapon": -5,
-                "weapon2": -1000,
-                "accessories": [
+                    37,
+                    97,
+                    10007,
+                    10000,
+                    10008,
+                    10005,
+                    10006,
                     10003,
-                    90,
-                    45,
-                    87,
                     10004,
-                    -1000,
-                    -1000,
-                    -1000
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 2",
+                "loadoutName": "Time Machine",
+                "__cname__": "Loadout"
+            },
+            {
+                "head": 52,
+                "chest": 100,
+                "legs": -3,
+                "boots": 98,
+                "weapon": 65,
+                "weapon2": -1000,
+                "accessories": [
+                    38,
+                    10007,
+                    37,
+                    10006,
+                    10008,
+                    10005,
+                    10003,
+                    10000,
+                    10004,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "temp": -1000,
+                "loadoutName": "Aug",
                 "__cname__": "Loadout"
             },
             {
                 "head": -1,
-                "chest": 46,
+                "chest": -2,
                 "legs": -3,
-                "boots": 70,
+                "boots": 51,
                 "weapon": -5,
                 "weapon2": -1000,
                 "accessories": [
                     10000,
                     10001,
-                    35,
+                    10002,
                     10003,
                     10004,
-                    -1000,
-                    -1000,
-                    -1000
+                    10005,
+                    10006,
+                    10007,
+                    10008,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 3",
+                "loadoutName": "NGU",
                 "__cname__": "Loadout"
             },
             {
@@ -8658,7 +10007,15 @@ var midNormalTwo = {
                     -1000,
                     -1000,
                     -1000,
-                    -1000
+                    -1000,
+                    -1000,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 "temp": -1000,
                 "loadoutName": "Loadout 4",
@@ -8679,7 +10036,15 @@ var midNormalTwo = {
                     -1000,
                     -1000,
                     -1000,
-                    -1000
+                    -1000,
+                    -1000,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 "temp": -1000,
                 "loadoutName": "Loadout 5",
@@ -8700,7 +10065,15 @@ var midNormalTwo = {
                     -1000,
                     -1000,
                     -1000,
-                    -1000
+                    -1000,
+                    -1000,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 "temp": -1000,
                 "loadoutName": "Loadout 6",
@@ -8721,7 +10094,15 @@ var midNormalTwo = {
                     -1000,
                     -1000,
                     -1000,
-                    -1000
+                    -1000,
+                    -1000,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 "temp": -1000,
                 "loadoutName": "Loadout 7",
@@ -8742,7 +10123,15 @@ var midNormalTwo = {
                     -1000,
                     -1000,
                     -1000,
-                    -1000
+                    -1000,
+                    -1000,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 "temp": -1000,
                 "loadoutName": "Loadout 8",
@@ -8763,7 +10152,15 @@ var midNormalTwo = {
                     -1000,
                     -1000,
                     -1000,
-                    -1000
+                    -1000,
+                    -1000,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 "temp": -1000,
                 "loadoutName": "Loadout 9",
@@ -8784,7 +10181,15 @@ var midNormalTwo = {
                     -1000,
                     -1000,
                     -1000,
-                    -1000
+                    -1000,
+                    -1000,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 "temp": -1000,
                 "loadoutName": "Loadout 10",
@@ -8815,9 +10220,9 @@ var midNormalTwo = {
                 null
             ]
         ],
-        "cubePower": 349794.34375,
-        "cubeToughness": 348826.75,
-        "selectedGraphic": 3,
+        "cubePower": 60812568,
+        "cubeToughness": 60732380,
+        "selectedGraphic": 6,
         "disabled": 0,
         "kittyArt": 1,
         "unlockedKittyArt": [
@@ -8839,17 +10244,17 @@ var midNormalTwo = {
             0
         ],
         "macguffinBonuses": [
+            1.1093177795410156,
+            1,
+            1.0935345888137817,
+            1.008034348487854,
+            1,
+            1.044132113456726,
             1,
             1,
             1,
             1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1.0114115476608276,
+            1.062496304512024,
             1,
             1,
             1,
@@ -8880,11 +10285,11 @@ var midNormalTwo = {
             0
         ],
         "level": [
-            24491,
-            40000,
-            2500,
-            200,
-            200,
+            2,
+            2,
+            2,
+            2,
+            2,
             0,
             0,
             0,
@@ -8892,11 +10297,11 @@ var midNormalTwo = {
             0
         ],
         "bankedLevel": [
-            0,
-            0,
-            0,
-            0,
-            0,
+            23213480,
+            23213288,
+            399999,
+            16620797,
+            16620658,
             0,
             0,
             0,
@@ -8916,7 +10321,7 @@ var midNormalTwo = {
             0
         ],
         "barProgress": [
-            0.5278854370117188,
+            0,
             0,
             0,
             0,
@@ -8928,18 +10333,18 @@ var midNormalTwo = {
             0
         ],
         "levelTarget": [
-            40000,
-            40000,
-            2500,
-            200,
-            200,
+            0,
+            0,
+            1000000,
+            0,
+            0,
             0,
             0,
             0,
             0,
             0
         ],
-        "transferredBankedLevels": 1,
+        "transferredBankedLevels": 0,
         "autoAdvance": 1,
         "__cname__": "AdvancedTraining"
     },
@@ -8952,50 +10357,6 @@ var midNormalTwo = {
                 "upgradeProgress": 0,
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
-                "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
-            },
-            {
-                "augLevel": 0,
-                "augProgress": 0,
-                "upgradeLevel": 0,
-                "upgradeProgress": 0,
-                "augEnergy": 0,
-                "upgradeEnergy": 0,
-                "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
-            },
-            {
-                "augLevel": 0,
-                "augProgress": 0,
-                "upgradeLevel": 0,
-                "upgradeProgress": 0,
-                "augEnergy": 0,
-                "upgradeEnergy": 0,
-                "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
-            },
-            {
-                "augLevel": 0,
-                "augProgress": 0,
-                "upgradeLevel": 0,
-                "upgradeProgress": 0,
-                "augEnergy": 0,
-                "upgradeEnergy": 0,
-                "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
-            },
-            {
-                "augLevel": 0,
-                "augProgress": 0,
-                "upgradeLevel": 0,
-                "upgradeProgress": 0,
-                "augEnergy": 0,
-                "upgradeEnergy": 0,
                 "augmentTarget": 0,
                 "upgradeTarget": 0,
                 "__cname__": "Aug"
@@ -9012,14 +10373,58 @@ var midNormalTwo = {
                 "__cname__": "Aug"
             },
             {
-                "augLevel": 51,
-                "augProgress": 0.000009429028068552725,
-                "upgradeLevel": 49,
-                "upgradeProgress": 0.000009072106877283659,
+                "augLevel": 0,
+                "augProgress": 0,
+                "upgradeLevel": 0,
+                "upgradeProgress": 0,
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
-                "augmentTarget": 0,
-                "upgradeTarget": 0,
+                "augmentTarget": -1,
+                "upgradeTarget": -1,
+                "__cname__": "Aug"
+            },
+            {
+                "augLevel": 0,
+                "augProgress": 0,
+                "upgradeLevel": 0,
+                "upgradeProgress": 0,
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": -1,
+                "upgradeTarget": -1,
+                "__cname__": "Aug"
+            },
+            {
+                "augLevel": 0,
+                "augProgress": 0,
+                "upgradeLevel": 0,
+                "upgradeProgress": 0,
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": -1,
+                "upgradeTarget": -1,
+                "__cname__": "Aug"
+            },
+            {
+                "augLevel": 0,
+                "augProgress": 0,
+                "upgradeLevel": 0,
+                "upgradeProgress": 0,
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": -1,
+                "upgradeTarget": -1,
+                "__cname__": "Aug"
+            },
+            {
+                "augLevel": 0,
+                "augProgress": 0,
+                "upgradeLevel": 0,
+                "upgradeProgress": 0,
+                "augEnergy": 0,
+                "upgradeEnergy": 0,
+                "augmentTarget": -1,
+                "upgradeTarget": -1,
                 "__cname__": "Aug"
             }
         ],
@@ -9027,13 +10432,13 @@ var midNormalTwo = {
         "__cname__": "Augmentation"
     },
     "magic": {
-        "capMagic": 29440000,
-        "curMagic": 281061326,
-        "idleMagic": 281061326,
+        "capMagic": 1471200000,
+        "curMagic": 309027642136,
+        "idleMagic": 309027642136,
         "magicBarSpeed": 50,
-        "magicPerBar": 736,
+        "magicPerBar": 36780,
         "magicGained": 0,
-        "magicPower": 920,
+        "magicPower": 45975,
         "magicBarProgress": 0,
         "__cname__": "Magic"
     },
@@ -9041,24 +10446,24 @@ var midNormalTwo = {
         "baseGold": 0,
         "machineProgress": 0,
         "machineEnergy": 0,
-        "realBaseGold": 1701378257125.8955,
+        "realBaseGold": 0,
         "speedLevel": 0,
-        "levelSpeed": 81304,
+        "levelSpeed": 0,
         "speedBuildTime": 100000,
-        "speedProgress": 0.46892133355140686,
+        "speedProgress": 0,
         "speedEnergy": 0,
         "speedGoldCost": 1000000000,
         "goldMultiLevel": 0,
-        "levelGoldMulti": 15883,
+        "levelGoldMulti": 0,
         "goldMultiBuildTime": 1000000,
-        "goldMultiProgress": 0.41304662823677063,
+        "goldMultiProgress": 0,
         "goldMultiMagic": 0,
         "goldMultiGoldCost": 1000000000,
         "speedTarget": 0,
         "multiTarget": 0,
-        "speedBankLevels": 0,
+        "speedBankLevels": 20,
         "goldMultiBankLevels": 0,
-        "transferredBankLevels": 1,
+        "transferredBankLevels": 0,
         "__cname__": "TimeMachine"
     },
     "bloodMagic": {
@@ -9106,9 +10511,9 @@ var midNormalTwo = {
                 "__cname__": "Ritual"
             },
             {
-                "progress": 0.9063668847084045,
+                "progress": 0,
                 "magic": 0,
-                "level": 3808,
+                "level": 0,
                 "__cname__": "Ritual"
             },
             {
@@ -9119,10 +10524,10 @@ var midNormalTwo = {
             }
         ],
         "bloodPoints": 0,
-        "rebirthPower": 269415133040.368,
+        "rebirthPower": 1,
         "adventureSpellTime": {
-            "totalseconds": 5197601.001220225,
-            "seconds": 41.00122022535652,
+            "totalseconds": 5886244.196694452,
+            "seconds": 4.196694452315569,
             "minutes": 0,
             "hours": 3,
             "days": 0,
@@ -9144,41 +10549,41 @@ var midNormalTwo = {
             "days": 0,
             "__cname__": "PlayerTime"
         },
-        "goldSpellBlood": 930590235214,
-        "lootSpellBlood": 590715372959,
-        "rebirthAutoSpell": 0,
+        "goldSpellBlood": 0,
+        "lootSpellBlood": 0,
+        "rebirthAutoSpell": 1,
         "lootAutoSpell": 0,
-        "goldAutoSpell": 1,
+        "goldAutoSpell": 0,
         "__cname__": "BloodMagic"
     },
     "rebirthTime": {
-        "totalseconds": 5053415.56828011,
-        "seconds": 35.568280110135674,
+        "totalseconds": 562.157234528946,
+        "seconds": 22.15723452894599,
         "minutes": 0,
-        "hours": 11,
+        "hours": 0,
         "days": 0,
         "__cname__": "PlayerTime"
     },
     "totalPlaytime": {
-        "totalseconds": 11531969.481738841,
-        "seconds": 29.481738841161132,
+        "totalseconds": 15915812.255624346,
+        "seconds": 32.25562434643507,
         "minutes": 0,
-        "hours": 11,
+        "hours": 5,
         "days": 0,
         "__cname__": "PlayerTime"
     },
     "lootState": {
-        "s0": 1793347754,
-        "s1": -409466041,
-        "s2": 716181208,
-        "s3": 1602082090,
+        "s0": 1418994392,
+        "s1": -559037149,
+        "s2": 1029295948,
+        "s3": 2103831979,
         "__cname__": "UnityEngine.Random+State"
     },
     "boostState": {
-        "s0": -188257346,
-        "s1": -2073066378,
-        "s2": -1071649280,
-        "s3": 664326420,
+        "s0": 1698541720,
+        "s1": -618504387,
+        "s2": -841733636,
+        "s3": 1777771098,
         "__cname__": "UnityEngine.Random+State"
     },
     "purchases": {
@@ -9211,10 +10616,10 @@ var midNormalTwo = {
         "hasBeardSlot1": 1,
         "hasDaycare": 1,
         "hasDaycareSlot2": 1,
-        "hasDaycareSlot3": 0,
+        "hasDaycareSlot3": 1,
         "hasDiggerSlot1": 1,
         "hasDiggerSlot2": 0,
-        "hasMacguffinSlot1": 0,
+        "hasMacguffinSlot1": 1,
         "hasMacguffinSlot2": 0,
         "hasSpecialPrize1": 1,
         "choseKitty": 1,
@@ -9223,18 +10628,18 @@ var midNormalTwo = {
         "__cname__": "Purchases"
     },
     "stats": {
-        "rebirthNumber": 522,
-        "highestBoss": 201,
-        "lifeTimeEnergy": 41183373811,
-        "advBossesKilled": 96617,
-        "highestDamageDealt": 33848346624,
-        "highestDamageTaken": 566986624,
-        "totalExp": 5371409,
-        "totalGold": 2.300298199240601e+33,
-        "titansDefeated": 7958,
-        "bossesDefeated": 30999,
-        "lastBloodMagic": 7420549764217.494,
-        "poopUsed": 61,
+        "rebirthNumber": 711,
+        "highestBoss": 301,
+        "lifeTimeEnergy": 15423564512363,
+        "advBossesKilled": 142079,
+        "highestDamageDealt": 12864636084813824,
+        "highestDamageTaken": 48222475124736,
+        "totalExp": 709070076,
+        "totalGold": 5.964968514096624e+42,
+        "titansDefeated": 13382,
+        "bossesDefeated": 56104,
+        "lastBloodMagic": 11530208112,
+        "poopUsed": 259,
         "__cname__": "Stats"
     },
     "perks": {
@@ -9397,9 +10802,9 @@ var midNormalTwo = {
         "specialAdvHpBars": 1,
         "filterOn": 0,
         "wandoos98On": 1,
-        "customEnergy1": 100000000,
-        "customEnergy2": 10000000,
-        "customMagic1": 100000,
+        "customEnergy1": 100000000000,
+        "customEnergy2": 10000000000,
+        "customMagic1": 1000000000000,
         "customMagic2": 6,
         "yggdrasilOn": 1,
         "filterHead": 0,
@@ -9409,18 +10814,18 @@ var midNormalTwo = {
         "filterWeapon": 0,
         "filterAccessory": 0,
         "filterBoosts": 0,
-        "filterBoostAtk": 0,
-        "filterBoostDef": 0,
-        "filterBoostSpec": 0,
+        "filterBoostAtk": 1,
+        "filterBoostDef": 1,
+        "filterBoostSpec": 1,
         "filterMisc": 0,
         "filterTitan": 0,
         "syncTraining": 1,
         "hasHyperRegen": 1,
         "rebirthDifficulty": {
-            "value__": 0,
+            "value__": 1,
             "__cname__": "difficulty"
         },
-        "rebirthLevels": 202925,
+        "rebirthLevels": 2043,
         "speedrunCount": 3,
         "gotSpeedrunSecret": 1,
         "nguOn": 1,
@@ -9435,19 +10840,19 @@ var midNormalTwo = {
         "tutorial1Complete": 0,
         "expPopups": 1,
         "dailySaveRewardTime": {
-            "totalseconds": 5358.169560106704,
-            "seconds": 18.16956010670401,
+            "totalseconds": 0,
+            "seconds": 0,
             "minutes": 0,
-            "hours": 1,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "submitHighscores": 1,
         "timedTooltipsOn": 1,
-        "autoMergeOn": 0,
-        "inputAmount": 100000000,
+        "autoMergeOn": 1,
+        "inputAmount": 100000000000,
         "autoKillTitans": 1,
-        "autoBoostOn": 0,
+        "autoBoostOn": 1,
         "customEnergyPercent1": 1,
         "customEnergyPercent2": 1,
         "customMagicPercent1": 1,
@@ -9473,25 +10878,25 @@ var midNormalTwo = {
         "itopodOn": 1,
         "itopodConfirmation": 1,
         "buffedKillsOn": 0,
-        "customPowerAmount": 15,
-        "customBarAmount": 12,
-        "customCapAmount": 480000,
-        "customMagicPowerAmount": 5,
-        "customMagicBarAmount": 4,
-        "customMagicCapAmount": 160000,
+        "customPowerAmount": 1500,
+        "customBarAmount": 1200,
+        "customCapAmount": 48000000,
+        "customMagicPowerAmount": 5000,
+        "customMagicBarAmount": 4000,
+        "customMagicCapAmount": 160000000,
         "customRes3PowerAmount": 1,
         "customRes3BarAmount": 1,
         "customRes3CapAmount": 10000,
-        "customAttackInput": 100,
-        "customDefenseInput": 100,
+        "customAttackInput": 10000,
+        "customDefenseInput": 10000,
         "customPowerInput": 10000,
         "customToughnessInput": 10000,
         "customHPInput": 100000,
         "customRegenInput": 10000,
-        "beastModeUnlocked": 0,
+        "beastModeUnlocked": 1,
         "diggersOn": 1,
         "nguLevelTrack": {
-            "value__": 0,
+            "value__": 1,
             "__cname__": "difficulty"
         },
         "pitUnlocked": 1,
@@ -9525,8 +10930,8 @@ var midNormalTwo = {
     "challenges": {
         "basicChallenge": {
             "inChallenge": 0,
-            "curCompletions": 5,
-            "curEvilCompletions": 0,
+            "curCompletions": 6,
+            "curEvilCompletions": 1,
             "curSadisticCompletions": 0,
             "bestTime": 11847,
             "challengeType": {
@@ -9569,10 +10974,10 @@ var midNormalTwo = {
         },
         "hour24Challenge": {
             "inChallenge": 0,
-            "curCompletions": 3,
+            "curCompletions": 7,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
-            "bestTime": 5008,
+            "bestTime": 2430,
             "challengeType": {
                 "value__": 1,
                 "__cname__": "challengeType"
@@ -9585,7 +10990,7 @@ var midNormalTwo = {
                 "days": 0,
                 "__cname__": "PlayerTime"
             },
-            "highScore": 110,
+            "highScore": 214,
             "unlocked": 0,
             "__cname__": "Challenge"
         },
@@ -9635,10 +11040,10 @@ var midNormalTwo = {
         },
         "noRebirthChallenge": {
             "inChallenge": 0,
-            "curCompletions": 4,
+            "curCompletions": 10,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
-            "bestTime": 28577,
+            "bestTime": 43817,
             "challengeType": {
                 "value__": 1,
                 "__cname__": "challengeType"
@@ -9651,16 +11056,16 @@ var midNormalTwo = {
                 "days": 0,
                 "__cname__": "PlayerTime"
             },
-            "highScore": 55,
+            "highScore": 85,
             "unlocked": 1,
             "__cname__": "Challenge"
         },
         "trollChallenge": {
             "inChallenge": 0,
-            "curCompletions": 4,
+            "curCompletions": 7,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
-            "bestTime": 7077,
+            "bestTime": 2623,
             "challengeType": {
                 "value__": 1,
                 "__cname__": "challengeType"
@@ -9679,10 +11084,10 @@ var midNormalTwo = {
         },
         "laserSwordChallenge": {
             "inChallenge": 0,
-            "curCompletions": 5,
+            "curCompletions": 20,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
-            "bestTime": 5048034,
+            "bestTime": 1748,
             "challengeType": {
                 "value__": 1,
                 "__cname__": "challengeType"
@@ -9701,10 +11106,10 @@ var midNormalTwo = {
         },
         "blindChallenge": {
             "inChallenge": 0,
-            "curCompletions": 5,
+            "curCompletions": 10,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
-            "bestTime": 4405,
+            "bestTime": 1778,
             "challengeType": {
                 "value__": 1,
                 "__cname__": "challengeType"
@@ -9723,10 +11128,10 @@ var midNormalTwo = {
         },
         "nguChallenge": {
             "inChallenge": 0,
-            "curCompletions": 7,
+            "curCompletions": 10,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
-            "bestTime": 11938,
+            "bestTime": 13021,
             "challengeType": {
                 "value__": 1,
                 "__cname__": "challengeType"
@@ -9745,10 +11150,10 @@ var midNormalTwo = {
         },
         "timeMachineChallenge": {
             "inChallenge": 0,
-            "curCompletions": 4,
+            "curCompletions": 6,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
-            "bestTime": 19269,
+            "bestTime": 6214,
             "challengeType": {
                 "value__": 1,
                 "__cname__": "challengeType"
@@ -9783,21 +11188,21 @@ var midNormalTwo = {
         "__cname__": "Challenges"
     },
     "pit": {
-        "totalGold": 4.576839012884031e+29,
+        "totalGold": 3.095525803789018e+40,
         "highestTier": 0,
         "tossedGold": 0,
         "pitState": {
-            "s0": -1629071220,
-            "s1": 413952678,
-            "s2": 378342905,
-            "s3": -922017832,
+            "s0": 775697968,
+            "s1": -481905338,
+            "s2": 1152203243,
+            "s3": -1024075534,
             "__cname__": "UnityEngine.Random+State"
         },
         "pitTime": {
-            "totalseconds": 4971100,
-            "seconds": 40,
+            "totalseconds": 5093617,
+            "seconds": 37,
             "minutes": 0,
-            "hours": 12,
+            "hours": 22,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -9806,7 +11211,7 @@ var midNormalTwo = {
         "tier3TRewarded": 1,
         "tier4TRewarded": 1,
         "tier5TRewarded": 1,
-        "tossCount": 3,
+        "tossCount": 0,
         "__cname__": "Pit"
     },
     "lootBoxes": {
@@ -9842,20 +11247,20 @@ var midNormalTwo = {
         "bootupProgress": 0,
         "wandoosEnergy": 0,
         "wandoosMagic": 0,
-        "energyLevel": 248290247,
-        "magicLevel": 248290147,
+        "energyLevel": 0,
+        "magicLevel": 0,
         "baseEnergyTime": 0,
         "baseMagicTime": 0,
         "OSlevel": 100,
-        "pitOSLevels": 26,
-        "XLLevels": 71,
+        "pitOSLevels": 49,
+        "XLLevels": 100,
         "installed": 1,
         "disabled": 0,
         "bootupTime": {
-            "totalseconds": 3600,
-            "seconds": 0,
+            "totalseconds": 562.2199874334037,
+            "seconds": 22.21998743340373,
             "minutes": 0,
-            "hours": 1,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -9948,7 +11353,7 @@ var midNormalTwo = {
         },
         "fruits": [
             {
-                "seconds": 86400,
+                "seconds": 562,
                 "activated": 1,
                 "unlockCost": 0,
                 "totalLevels": 0,
@@ -9960,55 +11365,127 @@ var midNormalTwo = {
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 18000,
+                "seconds": 562,
                 "activated": 1,
                 "unlockCost": 0,
                 "totalLevels": 0,
-                "maxTier": 5,
+                "maxTier": 24,
                 "permCostPaid": 1,
                 "usePoop": 0,
                 "eatFruit": 0,
-                "harvests": 2,
+                "harvests": 0,
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 18000,
+                "seconds": 562,
                 "activated": 1,
                 "unlockCost": 0,
                 "totalLevels": 0,
-                "maxTier": 5,
+                "maxTier": 24,
                 "permCostPaid": 1,
-                "usePoop": 0,
+                "usePoop": 1,
                 "eatFruit": 1,
-                "harvests": 2,
+                "harvests": 0,
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 43200,
+                "seconds": 562,
+                "activated": 1,
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 24,
+                "permCostPaid": 1,
+                "usePoop": 1,
+                "eatFruit": 1,
+                "harvests": 0,
+                "__cname__": "Fruit"
+            },
+            {
+                "seconds": 562,
+                "activated": 1,
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 24,
+                "permCostPaid": 1,
+                "usePoop": 1,
+                "eatFruit": 0,
+                "harvests": 0,
+                "__cname__": "Fruit"
+            },
+            {
+                "seconds": 562,
+                "activated": 1,
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 24,
+                "permCostPaid": 1,
+                "usePoop": 1,
+                "eatFruit": 1,
+                "harvests": 0,
+                "__cname__": "Fruit"
+            },
+            {
+                "seconds": 562,
+                "activated": 1,
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 24,
+                "permCostPaid": 1,
+                "usePoop": 0,
+                "eatFruit": 1,
+                "harvests": 0,
+                "__cname__": "Fruit"
+            },
+            {
+                "seconds": 562,
+                "activated": 1,
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 24,
+                "permCostPaid": 1,
+                "usePoop": 1,
+                "eatFruit": 1,
+                "harvests": 0,
+                "__cname__": "Fruit"
+            },
+            {
+                "seconds": 562,
+                "activated": 1,
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 24,
+                "permCostPaid": 1,
+                "usePoop": 0,
+                "eatFruit": 1,
+                "harvests": 0,
+                "__cname__": "Fruit"
+            },
+            {
+                "seconds": 562,
+                "activated": 1,
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 24,
+                "permCostPaid": 1,
+                "usePoop": 1,
+                "eatFruit": 1,
+                "harvests": 0,
+                "__cname__": "Fruit"
+            },
+            {
+                "seconds": 562,
                 "activated": 1,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 12,
                 "permCostPaid": 1,
-                "usePoop": 1,
+                "usePoop": 0,
                 "eatFruit": 1,
-                "harvests": 1,
-                "__cname__": "Fruit"
-            },
-            {
-                "seconds": 86400,
-                "activated": 1,
-                "unlockCost": 0,
-                "totalLevels": 0,
-                "maxTier": 24,
-                "permCostPaid": 1,
-                "usePoop": 1,
-                "eatFruit": 0,
                 "harvests": 0,
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 10800,
+                "seconds": 562,
                 "activated": 1,
                 "unlockCost": 0,
                 "totalLevels": 0,
@@ -10016,11 +11493,23 @@ var midNormalTwo = {
                 "permCostPaid": 1,
                 "usePoop": 0,
                 "eatFruit": 1,
-                "harvests": 2,
+                "harvests": 0,
                 "__cname__": "Fruit"
             },
             {
-                "seconds": 7200,
+                "seconds": 562,
+                "activated": 1,
+                "unlockCost": 0,
+                "totalLevels": 0,
+                "maxTier": 9,
+                "permCostPaid": 1,
+                "usePoop": 0,
+                "eatFruit": 0,
+                "harvests": 0,
+                "__cname__": "Fruit"
+            },
+            {
+                "seconds": 562,
                 "activated": 1,
                 "unlockCost": 0,
                 "totalLevels": 0,
@@ -10028,30 +11517,6 @@ var midNormalTwo = {
                 "permCostPaid": 1,
                 "usePoop": 0,
                 "eatFruit": 1,
-                "harvests": 2,
-                "__cname__": "Fruit"
-            },
-            {
-                "seconds": 7200,
-                "activated": 1,
-                "unlockCost": 0,
-                "totalLevels": 0,
-                "maxTier": 2,
-                "permCostPaid": 1,
-                "usePoop": 0,
-                "eatFruit": 1,
-                "harvests": 2,
-                "__cname__": "Fruit"
-            },
-            {
-                "seconds": 0,
-                "activated": 0,
-                "unlockCost": 0,
-                "totalLevels": 0,
-                "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
                 "harvests": 0,
                 "__cname__": "Fruit"
             },
@@ -10060,67 +11525,7 @@ var midNormalTwo = {
                 "activated": 0,
                 "unlockCost": 0,
                 "totalLevels": 0,
-                "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
-                "harvests": 0,
-                "__cname__": "Fruit"
-            },
-            {
-                "seconds": 0,
-                "activated": 0,
-                "unlockCost": 0,
-                "totalLevels": 0,
-                "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
-                "harvests": 0,
-                "__cname__": "Fruit"
-            },
-            {
-                "seconds": 0,
-                "activated": 0,
-                "unlockCost": 0,
-                "totalLevels": 0,
-                "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
-                "harvests": 0,
-                "__cname__": "Fruit"
-            },
-            {
-                "seconds": 0,
-                "activated": 0,
-                "unlockCost": 0,
-                "totalLevels": 0,
-                "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
-                "harvests": 0,
-                "__cname__": "Fruit"
-            },
-            {
-                "seconds": 0,
-                "activated": 0,
-                "unlockCost": 0,
-                "totalLevels": 0,
-                "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
-                "harvests": 0,
-                "__cname__": "Fruit"
-            },
-            {
-                "seconds": 0,
-                "activated": 0,
-                "unlockCost": 0,
-                "totalLevels": 0,
-                "maxTier": 0,
+                "maxTier": 4,
                 "permCostPaid": 0,
                 "usePoop": 0,
                 "eatFruit": 1,
@@ -10246,12 +11651,12 @@ var midNormalTwo = {
         ],
         "resetFactor": 0,
         "statBonus": 0,
-        "seeds": 3033,
-        "totalLuck": 1245,
-        "totalPermStatBonus": 809,
-        "permBonusOn": 1,
-        "totalPermStatBonus2": 0,
-        "totalPermNumberBonus": 0,
+        "seeds": 1785658,
+        "totalLuck": 114763,
+        "totalPermStatBonus": 98536,
+        "permBonusOn": 0,
+        "totalPermStatBonus2": 64737,
+        "totalPermNumberBonus": 278182,
         "permNumberBonusOn": 0,
         "usePoop": 0,
         "__cname__": "Yggdrasil"
@@ -10260,127 +11665,127 @@ var midNormalTwo = {
         "skills": [
             {
                 "progress": 0,
-                "level": 50000,
-                "evilProgress": 0,
-                "evilLevel": 0,
+                "level": 79760292,
+                "evilProgress": 0.46837326884269714,
+                "evilLevel": 21373,
                 "sadisticProgress": 0,
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 50000,
-                "evilTarget": 0,
+                "target": 0,
+                "evilTarget": 40000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": 31000,
-                "evilProgress": 0,
-                "evilLevel": 0,
+                "level": 79760262,
+                "evilProgress": 0.6479107141494751,
+                "evilLevel": 20720,
                 "sadisticProgress": 0,
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 31000,
-                "evilTarget": 0,
+                "target": 0,
+                "evilTarget": 40000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": 2000,
-                "evilProgress": 0,
-                "evilLevel": 0,
+                "level": 79753218,
+                "evilProgress": 0.7322415113449097,
+                "evilLevel": 8465,
                 "sadisticProgress": 0,
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 2000,
-                "evilTarget": 0,
+                "target": 0,
+                "evilTarget": 20000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": 60000,
-                "evilProgress": 0,
-                "evilLevel": 0,
+                "level": 79755815,
+                "evilProgress": 0.39357560873031616,
+                "evilLevel": 4841,
                 "sadisticProgress": 0,
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 60000,
-                "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            {
-                "progress": 0.12559770047664642,
-                "level": 696870,
-                "evilProgress": 0,
-                "evilLevel": 0,
-                "sadisticProgress": 0,
-                "sadisticLevel": 0,
-                "energy": 0,
-                "magic": 0,
-                "target": 2500000,
-                "evilTarget": 0,
+                "target": 0,
+                "evilTarget": 10000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": 30000,
-                "evilProgress": 0,
-                "evilLevel": 0,
+                "level": 90428562,
+                "evilProgress": 0.4509176015853882,
+                "evilLevel": 1103,
                 "sadisticProgress": 0,
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 30000,
-                "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            {
-                "progress": 0.015751568600535393,
-                "level": 84213,
-                "evilProgress": 0,
-                "evilLevel": 0,
-                "sadisticProgress": 0,
-                "sadisticLevel": 0,
-                "energy": 0,
-                "magic": 0,
-                "target": 250000,
-                "evilTarget": 0,
+                "target": 0,
+                "evilTarget": 5000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": 500,
-                "evilProgress": 0,
-                "evilLevel": 0,
+                "level": 79782251,
+                "evilProgress": 0.571152925491333,
+                "evilLevel": 402,
                 "sadisticProgress": 0,
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 500,
-                "evilTarget": 0,
+                "target": 0,
+                "evilTarget": 1000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
             {
                 "progress": 0,
-                "level": 100,
+                "level": 44895120,
                 "evilProgress": 0,
-                "evilLevel": 0,
+                "evilLevel": 500,
                 "sadisticProgress": 0,
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 100,
-                "evilTarget": 0,
+                "target": 0,
+                "evilTarget": 500,
+                "sadisticTarget": 0,
+                "__cname__": "NGU"
+            },
+            {
+                "progress": 0,
+                "level": 43260814,
+                "evilProgress": 0.7204505801200867,
+                "evilLevel": 68,
+                "sadisticProgress": 0,
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 100,
+                "sadisticTarget": 0,
+                "__cname__": "NGU"
+            },
+            {
+                "progress": 0.4552370011806488,
+                "level": 23418328,
+                "evilProgress": 0.5046178102493286,
+                "evilLevel": 12,
+                "sadisticProgress": 0,
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 50,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
@@ -10435,100 +11840,100 @@ var midNormalTwo = {
         ],
         "magicSkills": [
             {
-                "progress": 0.02930242195725441,
-                "level": 141073,
+                "progress": 0,
+                "level": 83437461,
+                "evilProgress": 0.13755497336387634,
+                "evilLevel": 6182,
+                "sadisticProgress": 0,
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 10000,
+                "sadisticTarget": 0,
+                "__cname__": "NGU"
+            },
+            {
+                "progress": 0,
+                "level": 73975798,
                 "evilProgress": 0,
+                "evilLevel": 2000,
+                "sadisticProgress": 0,
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 2000,
+                "sadisticTarget": 0,
+                "__cname__": "NGU"
+            },
+            {
+                "progress": 0.9999998807907104,
+                "level": 39536740,
+                "evilProgress": 0.2832968235015869,
+                "evilLevel": 294,
+                "sadisticProgress": 0,
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 1000,
+                "sadisticTarget": 0,
+                "__cname__": "NGU"
+            },
+            {
+                "progress": 0,
+                "level": 35378677,
+                "evilProgress": 0.4516794681549072,
+                "evilLevel": 87,
+                "sadisticProgress": 0,
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 250,
+                "sadisticTarget": 0,
+                "__cname__": "NGU"
+            },
+            {
+                "progress": 0.9999976754188538,
+                "level": 25961789,
+                "evilProgress": 0.434769868850708,
+                "evilLevel": 49,
+                "sadisticProgress": 0,
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 100,
+                "sadisticTarget": 0,
+                "__cname__": "NGU"
+            },
+            {
+                "progress": 0.20878370106220245,
+                "level": 16789686,
+                "evilProgress": 0.004308344330638647,
+                "evilLevel": 20,
+                "sadisticProgress": 0,
+                "sadisticLevel": 0,
+                "energy": 0,
+                "magic": 0,
+                "target": 0,
+                "evilTarget": 50,
+                "sadisticTarget": 0,
+                "__cname__": "NGU"
+            },
+            {
+                "progress": 0.959205150604248,
+                "level": 4668532,
+                "evilProgress": 0.09641659259796143,
                 "evilLevel": 0,
                 "sadisticProgress": 0,
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
                 "target": 0,
-                "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            {
-                "progress": 0,
-                "level": 2000,
-                "evilProgress": 0,
-                "evilLevel": 0,
-                "sadisticProgress": 0,
-                "sadisticLevel": 0,
-                "energy": 0,
-                "magic": 0,
-                "target": 2000,
-                "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            {
-                "progress": 0,
-                "level": 400,
-                "evilProgress": 0,
-                "evilLevel": 0,
-                "sadisticProgress": 0,
-                "sadisticLevel": 0,
-                "energy": 0,
-                "magic": 0,
-                "target": 400,
-                "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            {
-                "progress": 0,
-                "level": 400,
-                "evilProgress": 0,
-                "evilLevel": 0,
-                "sadisticProgress": 0,
-                "sadisticLevel": 0,
-                "energy": 0,
-                "magic": 0,
-                "target": 400,
-                "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            {
-                "progress": 0.17052502930164337,
-                "level": 100,
-                "evilProgress": 0,
-                "evilLevel": 0,
-                "sadisticProgress": 0,
-                "sadisticLevel": 0,
-                "energy": 0,
-                "magic": 0,
-                "target": 200,
-                "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            {
-                "progress": 0.819579005241394,
-                "level": 50,
-                "evilProgress": 0,
-                "evilLevel": 0,
-                "sadisticProgress": 0,
-                "sadisticLevel": 0,
-                "energy": 0,
-                "magic": 0,
-                "target": 100,
-                "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            {
-                "progress": 0,
-                "level": 0,
-                "evilProgress": 0,
-                "evilLevel": 0,
-                "sadisticProgress": 0,
-                "sadisticLevel": 0,
-                "energy": 0,
-                "magic": 0,
-                "target": -1,
-                "evilTarget": 0,
+                "evilTarget": 20,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
             },
@@ -10616,20 +12021,20 @@ var midNormalTwo = {
     "arbitrary": {
         "arbitraryPoints": 0,
         "lifetimePoints": 0,
-        "curArbitraryPoints": 604127,
-        "curLifetimePoints": 1269127,
-        "energyPotion1Count": 3,
+        "curArbitraryPoints": 1347011,
+        "curLifetimePoints": 4432011,
+        "energyPotion1Count": 9,
         "energyPotion1Time": {
             "totalseconds": 0,
-            "seconds": 0,
+            "seconds": -0.0020960979745723307,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
-        "energyPotion2Count": 1,
+        "energyPotion2Count": 9,
         "energyPotion2InUse": 0,
-        "magicPotion1Count": 2,
+        "magicPotion1Count": 8,
         "magicPotion1Time": {
             "totalseconds": 0,
             "seconds": 0,
@@ -10638,41 +12043,41 @@ var midNormalTwo = {
             "days": 0,
             "__cname__": "PlayerTime"
         },
-        "magicPotion2Count": 1,
+        "magicPotion2Count": 7,
         "magicPotion2InUse": 0,
-        "lootCharm1Count": 3,
+        "lootCharm1Count": 7,
         "lootcharm1Time": {
             "totalseconds": 0,
-            "seconds": 0,
+            "seconds": -0.0012672403827309608,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
-        "energyBarBar1Count": 3,
+        "energyBarBar1Count": 8,
         "energyBarBar1Time": {
             "totalseconds": 0,
-            "seconds": 0,
+            "seconds": -0.0025738905533216894,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
-        "magicBarBar1Count": 3,
+        "magicBarBar1Count": 9,
         "magicBarBar1Time": {
             "totalseconds": 0,
-            "seconds": 0,
+            "seconds": -0.0026407933910377324,
             "minutes": 0,
             "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
-        "macGuffinBooster1Count": 0,
+        "macGuffinBooster1Count": 4,
         "macGuffinBooster1Time": {
             "totalseconds": 0,
-            "seconds": -25,
+            "seconds": -48,
             "minutes": 0,
-            "hours": 0,
+            "hours": -22,
             "days": 0,
             "__cname__": "PlayerTime"
         },
@@ -10689,39 +12094,39 @@ var midNormalTwo = {
         "lootFilter": 1,
         "improvedAutoBoostMerge": 0,
         "instaTrain": 0,
-        "inventorySpaces": 0,
+        "inventorySpaces": 12,
         "hasStarterPack": 0,
-        "hasAcc4": 0,
-        "hasAcc5": 0,
-        "hasAcc6": 0,
+        "hasAcc4": 1,
+        "hasAcc5": 1,
+        "hasAcc6": 1,
         "hasAcc7": 0,
         "hasAcc8": 0,
         "hasAcc9": 0,
         "hasYggdrasilReminder": 0,
-        "hasExtendedSpinBank": 0,
+        "hasExtendedSpinBank": 1,
         "curLoadoutSlots": 0,
-        "poop1Count": 220,
-        "energyPotion3Count": 0,
-        "magicPotion3Count": 0,
-        "beardSlots": 0,
+        "poop1Count": 399,
+        "energyPotion3Count": 6,
+        "magicPotion3Count": 6,
+        "beardSlots": 4,
         "hasCubeFilter": 1,
-        "lootCharm2Count": 0,
+        "lootCharm2Count": 6,
         "hasDaycareSpeed": 0,
-        "boughtNewbiePack": 0,
-        "boughtAscendedNewbiePack": 0,
+        "boughtNewbiePack": 1,
+        "boughtAscendedNewbiePack": 1,
         "boughtAscendedNewbiePack2": 0,
         "boughtAscendedNewbiePack3": 0,
         "boughtAscendedNewbiePack4": 0,
         "boughtFashionPack1": 0,
-        "boughtLazyITOPOD": 0,
-        "lazyITOPODOn": 0,
+        "boughtLazyITOPOD": 1,
+        "lazyITOPODOn": 1,
         "boughtRes3Pack": 0,
-        "diggerSlots": 0,
-        "macguffinSlots": 0,
+        "diggerSlots": 1,
+        "macguffinSlots": 1,
         "nameSlotsBought": 0,
-        "beastButterCount": 0,
+        "beastButterCount": 4,
         "hasQuestLight": 0,
-        "hasFasterQuests": 0,
+        "hasFasterQuests": 1,
         "hasExtendedQuestBank": 0,
         "boughtDaycareArt": 0,
         "hasNGUCapModifier": 0,
@@ -10773,28 +12178,6 @@ var midNormalTwo = {
             1,
             1,
             1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
             1,
             1,
             1,
@@ -10805,12 +12188,6 @@ var midNormalTwo = {
             1,
             1,
             1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
             1,
             1,
             1,
@@ -10820,13 +12197,30 @@ var midNormalTwo = {
             1,
             1,
             1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
             1,
             1,
             1,
@@ -10838,11 +12232,6 @@ var midNormalTwo = {
             1,
             1,
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
             1,
             1,
             1,
@@ -10852,13 +12241,7 @@ var midNormalTwo = {
             1,
             1,
             1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            1,
             1,
             1,
             1,
@@ -10881,29 +12264,51 @@ var midNormalTwo = {
             1,
             0,
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            1,
-            1,
-            1,
-            0,
-            1,
-            1,
-            0,
             1,
             1,
             1,
             1,
             1,
             1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
             0,
             0,
             0,
@@ -10912,10 +12317,10 @@ var midNormalTwo = {
             1,
             1,
             1,
-            0,
-            0,
-            0,
-            0,
+            1,
+            1,
+            1,
+            1,
             0,
             0,
             0,
@@ -11024,20 +12429,20 @@ var midNormalTwo = {
         "__cname__": "AchievementList"
     },
     "daily": {
-        "totalSpins": 83,
+        "totalSpins": 132,
         "spinTime": {
-            "totalseconds": 129600,
+            "totalseconds": 604800,
             "seconds": 0,
             "minutes": 0,
-            "hours": 12,
+            "hours": 0,
             "days": 0,
             "__cname__": "PlayerTime"
         },
         "dailyRewardState": {
-            "s0": 206214819,
-            "s1": -47284467,
-            "s2": 178460720,
-            "s3": -1077277601,
+            "s0": 975086580,
+            "s1": 1309735188,
+            "s2": -849348641,
+            "s3": 2078874354,
             "__cname__": "UnityEngine.Random+State"
         },
         "freeSpins": 0,
@@ -11046,58 +12451,58 @@ var midNormalTwo = {
     "beards": {
         "beards": [
             {
-                "progress": 0,
-                "active": 0,
-                "beardLevel": 0,
-                "permLevel": 234,
+                "progress": 0.8406612873077393,
+                "active": 1,
+                "beardLevel": 2888197,
+                "permLevel": 99344,
                 "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
-                "progress": 0.17701417207717896,
-                "active": 0,
-                "beardLevel": 23174,
-                "permLevel": 6256,
+                "progress": 0.518002986907959,
+                "active": 1,
+                "beardLevel": 9648292,
+                "permLevel": 219247,
                 "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
-                "progress": 0,
-                "active": 0,
-                "beardLevel": 0,
-                "permLevel": 173,
+                "progress": 0.7765430808067322,
+                "active": 1,
+                "beardLevel": 1667558,
+                "permLevel": 72987,
                 "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
-                "progress": 0.09695833921432495,
-                "active": 0,
-                "beardLevel": 12692,
-                "permLevel": 3901,
+                "progress": 0.4126482307910919,
+                "active": 1,
+                "beardLevel": 5285075,
+                "permLevel": 184034,
                 "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
-                "progress": 0,
-                "active": 0,
-                "beardLevel": 0,
-                "permLevel": 15,
+                "progress": 0.620265543460846,
+                "active": 1,
+                "beardLevel": 913370,
+                "permLevel": 49091,
                 "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
-                "progress": 0.055981505662202835,
-                "active": 0,
-                "beardLevel": 7327,
-                "permLevel": 3918,
+                "progress": 0.4020189642906189,
+                "active": 1,
+                "beardLevel": 3051456,
+                "permLevel": 141044,
                 "bankedLevel": 0,
                 "__cname__": "Beard"
             },
             {
-                "progress": 0,
-                "active": 0,
-                "beardLevel": 0,
-                "permLevel": 0,
+                "progress": 0.3504331409931183,
+                "active": 1,
+                "beardLevel": 527338,
+                "permLevel": 61367,
                 "bankedLevel": 0,
                 "__cname__": "Beard"
             },
@@ -11107,14 +12512,18 @@ var midNormalTwo = {
             ]
         ],
         "activeBeards": [
+            5,
+            6,
+            3,
+            2,
             0,
-            0,
-            0,
+            4,
+            1,
             0
         ],
         "capBeards": 1,
-        "energyBeardCount": 0,
-        "magicBeardCount": 0,
+        "energyBeardCount": 3,
+        "magicBeardCount": 4,
         "disabled": 0,
         "transferredBankedLevels": 1,
         "__cname__": "Beards"
@@ -11122,8 +12531,64 @@ var midNormalTwo = {
     "diggers": {
         "diggers": [
             {
+                "curLevel": 114,
+                "maxLevel": 141,
+                "active": 0,
+                "cooldown": {
+                    "totalseconds": 0,
+                    "seconds": 0,
+                    "minutes": 0,
+                    "hours": 0,
+                    "days": 0,
+                    "__cname__": "PlayerTime"
+                },
+                "__cname__": "GoldDigger"
+            },
+            {
+                "curLevel": 124,
+                "maxLevel": 136,
+                "active": 0,
+                "cooldown": {
+                    "totalseconds": 0,
+                    "seconds": 0,
+                    "minutes": 0,
+                    "hours": 0,
+                    "days": 0,
+                    "__cname__": "PlayerTime"
+                },
+                "__cname__": "GoldDigger"
+            },
+            {
+                "curLevel": 124,
+                "maxLevel": 138,
+                "active": 0,
+                "cooldown": {
+                    "totalseconds": 0,
+                    "seconds": 0,
+                    "minutes": 0,
+                    "hours": 0,
+                    "days": 0,
+                    "__cname__": "PlayerTime"
+                },
+                "__cname__": "GoldDigger"
+            },
+            {
+                "curLevel": 122,
+                "maxLevel": 144,
+                "active": 0,
+                "cooldown": {
+                    "totalseconds": 0,
+                    "seconds": 0,
+                    "minutes": 0,
+                    "hours": 0,
+                    "days": 0,
+                    "__cname__": "PlayerTime"
+                },
+                "__cname__": "GoldDigger"
+            },
+            {
                 "curLevel": 77,
-                "maxLevel": 84,
+                "maxLevel": 93,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -11136,22 +12601,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": 79,
-                "maxLevel": 80,
-                "active": 1,
-                "cooldown": {
-                    "totalseconds": 0,
-                    "seconds": 0,
-                    "minutes": 0,
-                    "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
-            },
-            {
-                "curLevel": 80,
-                "maxLevel": 80,
+                "curLevel": 77,
+                "maxLevel": 93,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -11164,8 +12615,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": 60,
-                "maxLevel": 81,
+                "curLevel": 66,
+                "maxLevel": 76,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -11178,36 +12629,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": 46,
-                "maxLevel": 46,
-                "active": 1,
-                "cooldown": {
-                    "totalseconds": 0,
-                    "seconds": 0,
-                    "minutes": 0,
-                    "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
-            },
-            {
-                "curLevel": 43,
-                "maxLevel": 44,
-                "active": 1,
-                "cooldown": {
-                    "totalseconds": 0,
-                    "seconds": 0,
-                    "minutes": 0,
-                    "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
-            },
-            {
-                "curLevel": 32,
-                "maxLevel": 32,
+                "curLevel": 67,
+                "maxLevel": 76,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -11220,8 +12643,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": 0,
-                "maxLevel": 32,
+                "curLevel": 56,
+                "maxLevel": 69,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -11234,8 +12657,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": 23,
-                "maxLevel": 25,
+                "curLevel": 50,
+                "maxLevel": 62,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -11248,8 +12671,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": 13,
-                "maxLevel": 19,
+                "curLevel": 38,
+                "maxLevel": 50,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -11262,22 +12685,8 @@ var midNormalTwo = {
                 "__cname__": "GoldDigger"
             },
             {
-                "curLevel": 5,
-                "maxLevel": 7,
-                "active": 0,
-                "cooldown": {
-                    "totalseconds": 0,
-                    "seconds": 0,
-                    "minutes": 0,
-                    "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
-            },
-            {
-                "curLevel": 1,
-                "maxLevel": 5,
+                "curLevel": 44,
+                "maxLevel": 58,
                 "active": 0,
                 "cooldown": {
                     "totalseconds": 0,
@@ -11307,15 +12716,23 @@ var midNormalTwo = {
             ]
         ],
         "activeDiggers": [
-            4,
-            5,
-            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "loadoutDiggers": [
             3,
             4,
+            5,
+            6,
+            7,
             8,
+            11,
             0
         ],
         "__cname__": "GoldDiggers"
@@ -11331,10 +12748,11 @@ var midNormalTwo = {
             1,
             0,
             0,
-            13,
+            25,
             0,
             50,
             25,
+            1,
             0,
             0,
             0,
@@ -11356,12 +12774,11 @@ var midNormalTwo = {
             0,
             0,
             0,
+            50,
+            50,
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            42,
+            31,
             0,
             0,
             0,
@@ -11579,40 +12996,40 @@ var midNormalTwo = {
             0,
             0
         ],
-        "quirkPoints": 29,
+        "quirkPoints": 5534,
         "lifetimePoints": 0,
         "questsUnlocked": 0,
         "inQuest": 1,
-        "idleMode": 0,
-        "questID": 283,
-        "targetDrops": 57,
-        "curDrops": 10,
+        "idleMode": 1,
+        "questID": 278,
+        "targetDrops": 54,
+        "curDrops": 2,
         "dailyQuestTimer": {
-            "totalseconds": 7086.164523415733,
-            "seconds": 6.164523415733129,
+            "totalseconds": 14288.938899448578,
+            "seconds": 8.938899448578013,
             "minutes": 0,
-            "hours": 1,
+            "hours": 3,
             "days": 0,
             "__cname__": "PlayerTime"
         },
-        "curBankedQuests": 10,
+        "curBankedQuests": 0,
         "maxBankedQuests": 10,
         "questState": {
-            "s0": 286501437,
-            "s1": -814207804,
-            "s2": -1556804669,
-            "s3": 1828983007,
+            "s0": -1546572319,
+            "s1": -74495485,
+            "s2": -1581399805,
+            "s3": -966523102,
             "__cname__": "UnityEngine.Random+State"
         },
-        "reducedRewards": 0,
-        "allActive": 1,
+        "reducedRewards": 1,
+        "allActive": 0,
         "usedButter": 0,
-        "idleProgress": 0,
+        "idleProgress": 0.39765632152557373,
         "filterDiff": 1,
         "filterAfford": 0,
         "filterMaxxed": 1,
         "orderType": {
-            "value__": 0,
+            "value__": 2,
             "__cname__": "orderQuirks"
         },
         "__cname__": "BeastQuest"
@@ -13747,9 +15164,9 @@ var midNormalTwo = {
             1,
             1,
             1,
-            0,
-            0,
-            0,
+            1,
+            1,
+            1,
             0,
             0,
             0,
@@ -13856,131 +15273,47 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 302,
+                "kills": 553,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 352,
+                "kills": 620,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 368,
+                "kills": 671,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4989,
+                "kills": 8626,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4758,
+                "kills": 8176,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4642,
+                "kills": 8082,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4645,
+                "kills": 8032,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 5643,
+                "kills": 7623,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 5641,
+                "kills": 7740,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 5662,
+                "kills": 7731,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 5768,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5631,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5618,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5631,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5676,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5688,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1941,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1911,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1932,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1909,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1841,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1867,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1885,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1891,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1844,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1873,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1897,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1827,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1973,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1863,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 1897,
+                "kills": 7861,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -13988,7 +15321,83 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 7761,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7717,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7613,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7769,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7770,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2008,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1972,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1996,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1979,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1913,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1931,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1962,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1968,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1913,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1959,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1970,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1893,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2054,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1930,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 1986,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -14000,35 +15409,39 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 1978,
+                "kills": 0,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4726,
+                "kills": 0,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4886,
+                "kills": 2051,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4702,
+                "kills": 4771,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4722,
+                "kills": 4924,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4837,
+                "kills": 4753,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4756,
+                "kills": 4776,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4739,
+                "kills": 4870,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4794,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -14036,983 +15449,15 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4665,
+                "kills": 4818,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 4569,
+                "kills": 4718,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3624,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3625,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3555,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3636,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3597,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3508,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3532,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3673,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3560,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3666,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2160,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2088,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2121,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2094,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2028,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2083,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2136,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 4210,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3548,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3506,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3572,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3533,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3480,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3634,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3560,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3544,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3445,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3336,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3520,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3549,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3498,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3476,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3590,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3487,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3989,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 4068,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3984,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 4095,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 4196,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 4114,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3958,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 4117,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5214,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5209,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5107,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5019,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5092,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5187,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5225,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5098,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 10198,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3185,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3273,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3349,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3296,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3119,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3308,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3182,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 3230,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5074,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5241,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5268,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5198,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5362,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5222,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5264,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 5215,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2151,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2086,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2068,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2165,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2135,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2098,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 2194,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 4248,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            {
-                "kills": 0,
+                "kills": 4607,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -15020,51 +15465,51 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 5770,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 5673,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 5695,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 5785,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 5803,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 5670,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 5677,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 5792,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 5731,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 5882,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 2789,
+                "kills": 2301,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 2623,
+                "kills": 2250,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -15072,7 +15517,979 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 2129,
+                "kills": 2238,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2183,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2229,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2293,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4534,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 6221,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 6140,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 6304,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 6216,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 6257,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 6296,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 6235,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 6197,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3508,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3390,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3569,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3612,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3562,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3530,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3655,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3553,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5408,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5678,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5422,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5528,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5700,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5591,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5463,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5655,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7343,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7280,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7198,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7124,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7320,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7254,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7366,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 7260,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 14381,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4488,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4486,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4623,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4536,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4379,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4580,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4466,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4474,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5171,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5372,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5378,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5301,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5467,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5299,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5372,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 5337,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4052,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4061,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3955,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4129,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4007,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4059,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 4103,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 8218,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2728,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2725,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2664,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2715,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2670,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2739,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2822,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2726,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2688,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2782,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2721,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2787,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 2770,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 0,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3960,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3794,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3415,
+                "__cname__": "BestiaryInfo"
+            },
+            {
+                "kills": 3287,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -15092,7 +16509,7 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 987,
+                "kills": 2744,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -15100,91 +16517,91 @@ var midNormalTwo = {
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 50,
+                "kills": 71,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 244,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 117,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 1911,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 2313,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 2282,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 2335,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 2306,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 2279,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 2273,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 2295,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 2261,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 2292,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 221,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 213,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 254,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 234,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 251,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 226,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 249,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 241,
                 "__cname__": "BestiaryInfo"
             },
             {
-                "kills": 0,
+                "kills": 2,
                 "__cname__": "BestiaryInfo"
             },
             {
@@ -16124,4 +17541,6 @@ var midNormalTwo = {
     "__cname__": "PlayerData"
 }
 
-export default midNormalTwo;
+
+
+export default earlyEvil;

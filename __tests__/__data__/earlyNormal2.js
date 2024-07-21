@@ -1,5 +1,5 @@
 var earlyNormalTwo = {
-    "playerName": "thecaligarmo",
+    "playerName": "x",
     "firstTimePlaying": 0,
     "version": 1260,
     "lastTime": 1716923330,

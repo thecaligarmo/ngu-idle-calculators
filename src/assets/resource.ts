@@ -42,6 +42,9 @@ export default class Resource {
         }
         return 0
     }
+    appliesToGameMode(gameMode : number) : boolean {
+        return this.mode <= gameMode
+    }
 }
 
 export class ResourceContainer {

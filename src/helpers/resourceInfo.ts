@@ -203,7 +203,7 @@ export function challengeInfo(data : any, key : string, gameMode : number = Game
                 }
             })
         } else {
-            if(challenges[gameMode].length > 0) {
+            if(!_.isUndefined(challenges[gameMode]) && challenges[gameMode].length > 0) {
                 challenges[gameMode].forEach((g) => {
                     stat *= ((100 + g.getStatValue(key)) / 100)
                 })
@@ -353,17 +353,31 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
         case Stat.ENERGY_BARS:
         case Stat.MAGIC_BARS:
             return bd(stat).add(cube).round(1, bigDecimal.RoundingModes.FLOOR)
+        case Stat.EXPERIENCE:
+            if (isMaxxedItem(data, 119)) {
+                if ( accs.length > 0) {
+                    accs.forEach((g) => {
+                        if(g.id == 119) {
+                            stat -= g.getStatValue(key)
+                        }
+                    })
+                }
+            }
     }
+    
     return bd(stat).add(cube)//.round(0, bigDecimal.RoundingModes.DOWN)
 }
 
 export function hackInfo(data : any, key : string) : bigDecimal{
     var hacks : Hack[] = parseObj(data, 'hacks')
     var stat : number = 100
+    var gameMode : number = getGameMode(data)
     if (Object.values(Stat).includes(key)) {
         if ( hacks.length > 0) {
             hacks.forEach((g) => {
-                stat *= g.getStatValue(key) / 100
+                if(g.appliesToGameMode(gameMode)) {
+                    stat *= g.getStatValue(key) / 100
+                }
             })
         }
     }
@@ -389,19 +403,23 @@ export function macguffinInfo(data : any, key : string) : bigDecimal {
 export function nguInfo(data : any, key : string) : bigDecimal{
     var engus : NGU[] = parseObj(data, 'energyNGUs')
     var mngus : NGU[] = parseObj(data, 'magicNGUs')
+    var gameMode : number = getGameMode(data)
     var stat : number = 1
     if (Object.values(Stat).includes(key)) {
         if ( engus.length > 0) {
             engus.forEach((g) => {
-                stat *= g.getStatValue(key) / 100
+                if(g.appliesToGameMode(gameMode)){
+                    stat *= g.getStatValue(key) / 100
+                }
             })
         }
         
         // var x = 1
         if ( mngus.length > 0) {
             mngus.forEach((g) => {
-                stat *= g.getStatValue(key) / 100
-                // x *= g.getStatValue(key) / 100
+                if(g.appliesToGameMode(gameMode)) {
+                    stat *= g.getStatValue(key) / 100
+                }
             })
         }
         
@@ -413,11 +431,12 @@ export function nguInfo(data : any, key : string) : bigDecimal{
 export function perkInfo(data : any, key : string) : bigDecimal{
     var perks : Perk[] = parseObj(data, 'perks')
     var stat : number = 100
+    var gameMode : number = getGameMode(data)
     
     if (Object.values(Stat).includes(key)) {
         if ( perks.length > 0) {
             perks.forEach((g) => {
-                if(g.getStatValue(key) > 0) {
+                if(g.getStatValue(key) > 0 && g.appliesToGameMode(gameMode)) {
                     stat *= (100 + g.getStatValue(key)) / 100.0
                 }
             })
@@ -429,10 +448,14 @@ export function perkInfo(data : any, key : string) : bigDecimal{
 export function quirkInfo(data : any, key : string) : bigDecimal{
     var quirks : Quirk[] = parseObj(data, 'quirks')
     var stat : number = 100
+    var gameMode : number = getGameMode(data)
+
     if (Object.values(Stat).includes(key)) {
         if ( quirks.length > 0) {
             quirks.forEach((g) => {
-                stat *= ((g.getStatValue(key) + 100) / 100)
+                if(g.appliesToGameMode(gameMode)) {
+                    stat *= ((g.getStatValue(key) + 100) / 100)
+                }
             })
         }
     }
@@ -443,10 +466,14 @@ export function quirkInfo(data : any, key : string) : bigDecimal{
 export function wishInfo(data : any, key : string) : bigDecimal{
     var wishes : Wish[] = parseObj(data, 'wishes')
     var stat : number = 100
+    var gameMode : number = getGameMode(data)
+
     if (Object.values(Stat).includes(key)) {
         if ( wishes.length > 0) {
             wishes.forEach((g) => {
-                stat *= ((g.getStatValue(key) + 100) / 100)
+                if(g.appliesToGameMode(gameMode)) {
+                    stat *= ((g.getStatValue(key) + 100) / 100)
+                }
             })
         }
     }
@@ -478,4 +505,16 @@ export function perkLevel(data : any, key : string) : number {
         }
     }
     return 0
+}
+
+
+export function getGameMode(data : any) : number{
+    var gameMode = parseNum(data, 'gameMode') 
+    if(gameMode.compareTo(bd(GameMode.EVIL)) == 0) {
+        return GameMode.EVIL
+    }
+    if(gameMode.compareTo(bd(GameMode.SADISTIC)) == 0) {
+        return GameMode.SADISTIC
+    }
+    return GameMode.NORMAL
 }

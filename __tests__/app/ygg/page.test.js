@@ -208,6 +208,7 @@ test('Yggdrasil for Late Normal', () => {
     var data = {
         'energyNGUs' : [defaultPlayerData(lateNormal, 'energyNGUs')],
         'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
+        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
     }
     var nguYgg = nguInfo(data, Stat.YGGDRASIL_YIELD)
 
