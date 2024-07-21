@@ -16,7 +16,7 @@ export function ListInputSwitcher({text, onClick} : {text: ReactNode, onClick: M
 export function ChoiceButton({text, onClick, active=false} : {text: ReactNode, onClick: MouseEventHandler, active?: boolean}){
     return (
         <button
-            className="bg-transparent hover:bg-blue-500 inline-flex items-center py-2 px-4 text-blue-700 hover:text-white dark:hover:text-black font-semibold"
+            className="bg-transparent hover:bg-blue-500 inline-flex items-center py-1 px-2 text-blue-700 hover:text-white dark:hover:text-black font-semibold"
             onClick={onClick}
             >
             {!active 

@@ -61,10 +61,6 @@ export class Hack extends Resource {
             level = this.level
         }
         if(!_.isUndefined(this[prop])) {
-            // if(prop == Stat.ENERGY_NGU_SPEED) {
-            //     console.log('main value', this[prop])
-            //     console.log('bonus', this.getMilestoneBonus(milestoneReduction))
-            // }
             return (100 + this[prop]) * this.getMilestoneBonus(milestoneReduction)
         }
         return 100

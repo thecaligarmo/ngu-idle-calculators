@@ -118,7 +118,6 @@ export default function Page() {
         })
     } else {
         var tt = optMaxTitan.split('-')
-        console.log(optMaxTitan, tt)
         Object.values(Titans).forEach((titan) => {
             if (titan.id == Number(tt[0])) {
                 maxTitan = [titan, Number(tt[1])]
@@ -153,7 +152,6 @@ export default function Page() {
             hourlyTitanPP = hourlyTitanPP.add(titanPP.divide(titanRespawn))
         }
     })
-    // console.log(hourlyTitanPP, titanKills, wishLevel)
     var totalTitanPP = hourlyTitanPP.multiply(hoursPerDay)
 
     /* Ygg Info */

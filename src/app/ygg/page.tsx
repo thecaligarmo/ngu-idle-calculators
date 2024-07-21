@@ -134,13 +134,6 @@ export default function Page() {
         qpRewardBonus: v('totalQuestRewardBonus%'), // Quest
         mayoSpeed: v('totalMayoSpeed%'), // Mayo
     }
-
-    // 1.25 (Quirk)
-    // 2 (Perk)
-    // 1.3 (1st harvest perk)
-
-    console.log(v('totalSeedGainBonus%'), firstHarvest, blueHeart)
-
     
     var fruitInfo = fruits.map((fruit) => {
         return (

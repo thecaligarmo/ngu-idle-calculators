@@ -46,7 +46,6 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                     
                     active={checked}
                     onClick={(e) => {
-                        console.log('Yes', d.value)
                         setPlayerDataUpdated(false);
                         d.value[1]('1')
                     }}
@@ -55,12 +54,45 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                     text="No"
                     active={!checked}
                     onClick={() => {
-                        console.log('no')
                         setPlayerDataUpdated(false);
                         d.value[1]('0')
                     }}
                     />
             </li>)
+        }
+        // Game mode is weird
+        if (d.key == 'gameMode') {
+            return (<li key={'in-'+d.key} id={'in-'+d.id} className={disabled}>
+                <label className="inline-block text-black dark:text-white mt-2 mb-1 mr-2">
+                    {/* htmlFor={d.id} */}
+                    {d.name}:
+                </label>
+                <ChoiceButton
+                    text="Normal"
+                    active={val.getValue() == '0'}
+                    onClick={(e) => {
+                        setPlayerDataUpdated(false);
+                        d.value[1]('0')
+                    }}
+                    />
+                <ChoiceButton
+                    text="Evil"
+                    active={val.getValue() == '1'}
+                    onClick={() => {
+                        setPlayerDataUpdated(false);
+                        d.value[1]('1')
+                    }}
+                    />
+                <ChoiceButton
+                    text="Sadistic"
+                    active={val.getValue() == '2'}
+                    onClick={() => {
+                        setPlayerDataUpdated(false);
+                        d.value[1]('2')
+                    }}
+                    />
+            </li>)
+        
         }
 
         return (<li key={'in-'+d.key} id={'in-'+d.id} className={disabled}>
@@ -83,6 +115,17 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
         var dVal = pn(val, fmt)
         if (d.type == 'checkbox') {
             dVal = (d.value[0] == '1') ? 'Yes' : 'No'
+        }
+        if (d.key == 'gameMode') {
+            if(d.value[0] == '0') {
+                dVal = 'Normal'
+            }
+            if(d.value[0] == '1') {
+                dVal = 'Evil'
+            }
+            if(d.value[0] == '2') {
+                dVal = 'Sadistic'
+            }
         }
         return (<li key={d.key} className={disabled}>
                 {d.name}: {dVal}
