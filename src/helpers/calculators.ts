@@ -1,16 +1,12 @@
-/**
- * This file eventually needs to be split up
- */
 import _ from "lodash";
 import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
 import { parseObj, parseNum } from "./parsers";
-import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, perkLevel, quirkInfo, wishInfo } from "./resourceInfo";
+import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, perkLevel, quirkInfo, wishInfo } from "./resourceInfo";
 import { ItemSets } from "@/assets/sets";
 import { GameMode } from "@/assets/mode";
 import { Challenge } from "@/assets/challenges";
-import { Item } from "@/assets/items";
 
 
 // General Calc - gives a percentage
@@ -155,7 +151,7 @@ export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
 
 /** Exp, AP, PP */
 export function totalExpBonus(data : any) : bigDecimal {
-    var redHeartBonus : bigDecimal = isMaxxedItem(data, 119) ? bd(1.1) : bd(1)
+    var redHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.RED_HEART) ? bd(1.1) : bd(1)
     var gen : bigDecimal = calcAll(data, Stat.EXPERIENCE)
 
     return gen
@@ -164,7 +160,7 @@ export function totalExpBonus(data : any) : bigDecimal {
 
 export function totalAPBonus(data: any) : bigDecimal {
     var gen : bigDecimal = calcAll(data, Stat.AP)
-    var yellowHeartBonus : bigDecimal = isMaxxedItem(data, 129) ? bd(1.2) : bd(1)
+    var yellowHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.YELLOW_HEART) ? bd(1.2) : bd(1)
     var achievBonus = achievementAPBonus(data)
 
     if (isInitilizing(data)) {
@@ -179,9 +175,9 @@ export function totalAPBonus(data: any) : bigDecimal {
 
 
 export function totalPPBonus(data: any) : bigDecimal {
-    var greenHeartBonus : bigDecimal = isMaxxedItem(data, 171) ? bd(1.2) : bd(1)
-    var pissedOffKeyBonus : bigDecimal = isMaxxedItem(data, 172) ? bd(1.1) : bd(1)
-    var PPPSetBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.PINK) ? bd(1.1) : bd(1)
+    var greenHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.GREEN_HEART) ? bd(1.2) : bd(1)
+    var pissedOffKeyBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.PISSED_OFF_KEY) ? bd(1.1) : bd(1)
+    var PPPSetBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.PRETTY) ? bd(1.1) : bd(1)
     var gen : bigDecimal = calcAll(data, Stat.PP)
     
 
@@ -202,7 +198,7 @@ export function totalDaycareSpeed(data : any) :bigDecimal {
 
 export function totalHackSpeed(data : any) :bigDecimal {
     var gen : bigDecimal = calcAll(data, Stat.HACK_SPEED)
-    var greyHearthBonus : bigDecimal = isMaxxedItem(data, 297) ? bd(1.25) : bd(1)
+    var greyHearthBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.GREY_HEART) ? bd(1.25) : bd(1)
 
     return gen
         .multiply(greyHearthBonus)
@@ -220,10 +216,8 @@ export function totalPower(data : any) : bigDecimal {
 
     // Beast multiplier
     var beast = (parseNum(data, 'beastMode').compareTo(bd(1)) == 0)
-                ? ( (isMaxxedItem(data, 191)) ? bd(1.5) : bd(1.4))
+                ? ( (isMaxxedItemSet(data, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(1.5) : bd(1.4))
                 : bd(1)
-
-    // console.log(isMaxxedItem(data, 191))
     
     return subtotal
         .multiply(gen).divide(bd(100))

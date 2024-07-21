@@ -354,7 +354,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
         case Stat.MAGIC_BARS:
             return bd(stat).add(cube).round(1, bigDecimal.RoundingModes.FLOOR)
         case Stat.EXPERIENCE:
-            if (isMaxxedItem(data, 119)) {
+            if (isMaxxedItemSet(data, ItemSets.RED_HEART)) {
                 if ( accs.length > 0) {
                     accs.forEach((g) => {
                         if(g.id == 119) {
@@ -481,13 +481,13 @@ export function wishInfo(data : any, key : string) : bigDecimal{
     return bd(stat)
 }
 
-export function isMaxxedItem(data : any, itemId : number) : boolean {
-    var itemList = parseObj(data, 'maxxedItems')
-    if(_.isArray(itemList)){
-        return parseObj(data, 'maxxedItems').includes(itemId)
-    }
-    return false
-}
+// export function isMaxxedItem(data : any, itemId : number) : boolean {
+//     var itemList = parseObj(data, 'maxxedItems')
+//     if(_.isArray(itemList)){
+//         return parseObj(data, 'maxxedItems').includes(itemId)
+//     }
+//     return false
+// }
 
 export function isMaxxedItemSet(data : any, itemSet : ItemSet) : boolean {
     var itemSets = parseObj(data, 'itemSets')

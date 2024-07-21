@@ -1,26 +1,21 @@
 'use client'
 
-import { Challenge, ChallengeKeys } from "@/assets/challenges";
+import { Challenge } from "@/assets/challenges";
 import { Titans } from "@/assets/enemy";
 import { GameMode } from "@/assets/mode";
-import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
-import { ItemSets } from "@/assets/sets";
 import { Stat } from "@/assets/stat";
 import { Wish } from "@/assets/wish";
 import { FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
 import { Zones } from "@/assets/zones";
-import { ChoiceButton } from "@/components/buttons";
 import Content from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
-import { disableItem } from "@/components/dataListColumns";
-import { bd, dn, pn} from "@/helpers/numbers";
+import { bd, pn} from "@/helpers/numbers";
 import { parseNum, parseObj } from "@/helpers/parsers";
-import { isMaxxedItem, isMaxxedItemSet, nguInfo } from "@/helpers/resourceInfo";
+import { nguInfo } from "@/helpers/resourceInfo";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
-import { useState } from "react";
 
 
 
@@ -93,14 +88,7 @@ export default function Page() {
                         .multiply(bd(itopodFloor + floorAdd))
                         .floor()
 
-    // PPP Per Day
-    // TODO - Still need to add Sadistic "bonus pp"
-    // PP Bonus -> stats
-    // * 
-    // little Blue Pills = 2 (with blue heart = 2.2) else 1
-    // *
-    // ITOPOD floor
-    //     + if evil 700; if sadistic 2000 + sadistic bonus pp else (normal) 200
+
 
     // Kills Per Day
     var idleAttackCooldown = v('redLiquidBonus^').compareTo(bd(1)) == 0 ? bd(0.8) : bd(1)

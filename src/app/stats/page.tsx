@@ -8,11 +8,9 @@ import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
 import { Stat } from '@/assets/stat';
 import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness } from '@/helpers/calculators';
-import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItem, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo} from '@/helpers/resourceInfo';
-import { ItemSet, ItemSets } from '@/assets/sets';
-import { defaultPlayerData } from '@/helpers/defaultPlayerData';
+import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo} from '@/helpers/resourceInfo';
+import { ItemSets } from '@/assets/sets';
 import { parseNum, parseObj } from '@/helpers/parsers';
-import { GameMode } from '@/assets/mode';
 
 export default function Page() {
     const playerStates = createStatesForData();
@@ -98,7 +96,7 @@ export default function Page() {
                 <ContentSubsection title="Exp Calculation" defaultHide={true}>
                     <ul className='ml-5'>
                         <li key="base">Base Exp Gain (100%)</li>
-                        <li key="heart">x Red Heart Bonus ({pn(isMaxxedItem(playerStates, 119) ? bd(110) : bd(100), fmt)}%)</li>
+                        <li key="heart">x Red Heart Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.RED_HEART) ? bd(110) : bd(100), fmt)}%)</li>
                         <li key="ngu">x NGU ({pn(nguInfo(playerStates, Stat.EXPERIENCE), fmt, 2)}%)</li>
                         <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.EXPERIENCE), fmt, 2)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalExpBonus(playerStates), fmt, 2)}%</span></li>
@@ -107,7 +105,7 @@ export default function Page() {
                 <ContentSubsection title="AP Calculation" defaultHide={true}>
                     <ul className='ml-5'>
                     <li key="base">Base AP Gain (100%)</li>
-                        <li key="heart">x Yellow Heart Bonus ({pn(isMaxxedItem(playerStates, 129) ? bd(120) : bd(100), fmt)}%)</li>
+                        <li key="heart">x Yellow Heart Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.YELLOW_HEART) ? bd(120) : bd(100), fmt)}%)</li>
                         <li key="ngu">x Achievements ({pn(achievementAPBonus(playerStates), fmt, 2)}%)</li>
                         <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.AP), fmt, 2)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalAPBonus(playerStates), fmt, 2)}%</span></li>
@@ -116,9 +114,9 @@ export default function Page() {
                 <ContentSubsection title="PP Calculation" defaultHide={true}>
                     <ul className='ml-5'>
                         <li key="base">Base PP Gain (100%)</li>
-                        <li key="heart">x Green Heart Bonus ({pn(isMaxxedItem(playerStates, 171) ? bd(120) : bd(100), fmt)}%)</li>
-                        <li key="podKey">x Pissed Off Key Bonus ({pn(isMaxxedItem(playerStates, 172) ? bd(110) : bd(100), fmt)}%)</li>
-                        <li key="PPPL">x PPP Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.PINK) ? bd(110) : bd(100), fmt)}%)</li>
+                        <li key="heart">x Green Heart Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.GREEN_HEART) ? bd(120) : bd(100), fmt)}%)</li>
+                        <li key="podKey">x Pissed Off Key Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.PISSED_OFF_KEY) ? bd(110) : bd(100), fmt)}%)</li>
+                        <li key="PPPL">x PPP Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.PRETTY) ? bd(110) : bd(100), fmt)}%)</li>
                         <li key="ngu">x NGU ({pn(nguInfo(playerStates, Stat.PP), fmt)}%)</li>
                         <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.PP), fmt, 2)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalPPBonus(playerStates), fmt, 2)}%</span></li>
@@ -143,7 +141,7 @@ export default function Page() {
                     <ul className='ml-5'>
                         <li key="base">Base Hack Speed (100%)</li>
                         <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.HACK_SPEED), fmt)}%)</li>
-                        <li key="heart">x Grey Heart Bonus ({pn(isMaxxedItem(playerStates, 297) ? bd(125) : bd(100), fmt)}%)</li>
+                        <li key="heart">x Grey Heart Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.GREY_HEART) ? bd(125) : bd(100), fmt)}%)</li>
                         <li key="challenges">x Evil No NGU Challenge ({pn(challengeInfo(playerStates, Stat.HACK_SPEED), fmt)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalHackSpeed(playerStates), fmt, 2)}%</span></li>
                     </ul>
@@ -170,7 +168,7 @@ export default function Page() {
                         <li key="wish">x Wish ({pn(wishInfo(playerStates, Stat.POWER).round(), fmt)}%)</li>
                         <li key="macguffin">x Macguffin ({pn(macguffinInfo(playerStates, Stat.POWER), fmt, 2)}%)</li>
                         <li key="hack">x Hack ({pn(hackInfo(playerStates, Stat.POWER).round(), fmt)}%)</li>
-                        <li key="beastMode">x Beast Mode ({pn( (v('beastMode').compareTo(bd(1)) == 0 ? ( (isMaxxedItem(playerStates, 191)) ? bd(150) : bd(140)) : bd(100)), fmt)}%)</li>
+                        <li key="beastMode">x Beast Mode ({pn( (v('beastMode').compareTo(bd(1)) == 0 ? ( (isMaxxedItemSet(playerStates, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(150) : bd(140)) : bd(100)), fmt)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalPower(playerStates), fmt)}</span></li>
                     </ul>
                 </ContentSubsection>

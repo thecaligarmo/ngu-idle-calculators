@@ -12,7 +12,7 @@ import { ItemSet, ItemSets } from "@/assets/sets";
 import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
 import { MACGUFFINS, MacGuffin } from "@/assets/macguffins";
 import { bd } from "./numbers";
-import { isMaxxedItem, isMaxxedItemSet, perkLevel } from "./resourceInfo";
+import { isMaxxedItemSet, perkLevel } from "./resourceInfo";
 import { GameMode } from "../assets/mode";
 import { HACKS, Hack } from "@/assets/hacks";
 import { WISHES, Wish } from "@/assets/wish";
@@ -694,7 +694,6 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     set.updateStats(playerData)
                     itemSets[set.key] = set
                 }
-                
                 return itemSets
             case 'maxxedItems':
                 var maxxedItemIds : number[] = []
@@ -723,7 +722,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             // Calculations
             case 'blueHeart^':
                 // Blue Heart // 196
-                return isMaxxedItem(playerData, 196) ? bd(1) : bd(0)
+                return isMaxxedItemSet(playerData, ItemSets.BLUE_HEART) ? bd(1) : bd(0)
             case 'boostRecyclying%':
                 return boostRecyclying(playerData);
             case 'currentEnergyCap':
@@ -737,8 +736,7 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'fruitOfKnowledgeSTILLSucks^':
                 return bd(perkLevel(playerData, 'fruitOfKnowledgeSTILLSucks'))
             case 'redLiquidBonus^':
-                // - Mysterious Red Liquid // 93
-                return isMaxxedItem(playerData, 93) ? bd(1) : bd(0)
+                return isMaxxedItemSet(playerData, ItemSets.MYSTERIOUS_RED_LIQUID) ? bd(1) : bd(0)
             case 'spoopySetBonus^':
                 return isMaxxedItemSet(playerData, ItemSets.SPOOPY) ? bd(1) : bd(0)
             case 'totalAPBonus%':
