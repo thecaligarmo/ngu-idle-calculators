@@ -7,7 +7,7 @@ import { bd, pn } from '@/helpers/numbers';
 import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
 import { Stat } from '@/assets/stat';
-import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness } from '@/helpers/calculators';
+import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalHealth, totalToughness } from '@/helpers/calculators';
 import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo} from '@/helpers/resourceInfo';
 import { ItemSets } from '@/assets/sets';
 import { parseNum, parseObj } from '@/helpers/parsers';
@@ -151,6 +151,8 @@ export default function Page() {
                 <ul>
                     <li key="power" className=""><strong>Total Power:</strong> <span className="text-red-500">{pn(totalPower(playerStates), fmt)}</span></li>
                     <li key="toughness" className=""><strong>Total Toughness:</strong> <span className="text-red-500">{pn(totalToughness(playerStates), fmt)}</span></li>
+                    <li key="health" className=""><strong>Total Health:</strong> <span className="text-red-500">{pn(totalHealth(playerStates), fmt)}</span></li>
+                    <li key="regen" className=""><strong>Total Regen:</strong> <span className="text-red-500">{pn(totalRegen(playerStates), fmt)}</span></li>
                 </ul>
                 <ContentSubsection title="Adventure Power Calculation" defaultHide={true}>
                     <ul className="ml-5">
@@ -185,7 +187,30 @@ export default function Page() {
                         <li key="beardPerm">x Beard (permanent) ({pn(beardInfoPerm(playerStates, Stat.TOUGHNESS), fmt)}%)</li>
                         <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.TOUGHNESS).round(), fmt)}%)</li>
                         <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.TOUGHNESS).round(), fmt)}%)</li>
+                        <li key="wish">x Wish ({pn(wishInfo(playerStates, Stat.TOUGHNESS).round(), fmt)}%)</li>
+                        <li key="macguffin">x Macguffin ({pn(macguffinInfo(playerStates, Stat.TOUGHNESS), fmt, 2)}%)</li>
+                        <li key="hack">x Hack ({pn(hackInfo(playerStates, Stat.TOUGHNESS).round(), fmt)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalToughness(playerStates), fmt)}</span></li>
+                    </ul>
+                </ContentSubsection>
+                <ContentSubsection title="Adventure Health Calculation" defaultHide={true}>
+                    <ul className="ml-5">
+                        <li key="base">Base Adventure Health ({pn(v('baseAdventureHealth'), fmt)})</li>
+                        <li key="equipment">+ Equipment Health + Infinity Cube ({pn(equipmentInfo(playerStates, Stat.HEALTH), fmt)})</li>
+                        <li key="subtotal" className="border-white border-t-2 border-solid">Subtotal: {pn(v('baseAdventureHealth').add(equipmentInfo(playerStates, Stat.HEALTH)), fmt)}</li>
+                        <li key="at">x Advanced Training ({pn(advTrainingInfo(playerStates, Stat.HEALTH), fmt)}%)</li>
+                        <li key="engu">x (Energy x Magic) NGU ({pn(nguInfo(playerStates, Stat.HEALTH), fmt)}%)</li>
+                        <li key="digger">x Digger ({pn(diggerInfo(playerStates, Stat.HEALTH), fmt)}%)</li>
+                        <li key="basicChallenge">x Basic Challenge ({pn(challengeInfo(playerStates, Stat.HEALTH), fmt)}%)</li>
+                        <li key="beardTemp">x Beard (this run) ({pn(beardInfoTemp(playerStates, Stat.HEALTH), fmt)}%)</li>
+                        <li key="beardPerm">x Beard (permanent) ({pn(beardInfoPerm(playerStates, Stat.HEALTH), fmt)}%)</li>
+                        <li key="perk">x Perk ({pn(perkInfo(playerStates, Stat.HEALTH).round(), fmt)}%)</li>
+                        <li key="quirk">x Quirk ({pn(quirkInfo(playerStates, Stat.HEALTH).round(), fmt)}%)</li>
+                        <li key="wish">x Wish ({pn(wishInfo(playerStates, Stat.HEALTH).round(), fmt)}%)</li>
+                        <li key="macguffin">x Macguffin ({pn(macguffinInfo(playerStates, Stat.HEALTH), fmt, 2)}%)</li>
+                        <li key="hack">x Hack ({pn(hackInfo(playerStates, Stat.HEALTH).round(), fmt)}%)</li>
+                        
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalHealth(playerStates), fmt)}</span></li>
                     </ul>
                 </ContentSubsection>
             </ContentSection>

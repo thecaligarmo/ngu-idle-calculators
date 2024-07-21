@@ -223,6 +223,10 @@ function cubeInfo(data : any, key : string) : bigDecimal {
             return power
         case Stat.TOUGHNESS:
             return toughness
+        case Stat.HEALTH:
+            return power.multiply(bd(3))
+        case Stat.REGEN:
+            return toughness.multiply(bd(3/100))
         case Stat.DROP_CHANCE:
             if (digits < 3) {
                 return bd(0)
@@ -310,7 +314,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
         parseObj(data, 'equipmentWeapon'),
     ]
     var accs : Item[] = parseObj(data, 'equipmentAccesories')
-    var stat : number = (key == Stat.POWER || key == Stat.TOUGHNESS) ? 0 : 100;
+    var stat : number = (key == Stat.POWER || key == Stat.TOUGHNESS || key == Stat.HEALTH || key == Stat.REGEN) ? 0 : 100;
     if (Object.values(Stat).includes(key)) {
             gear.forEach((g) => {
                 if(g instanceof Item) {
@@ -348,6 +352,26 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             }
             
             return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube.add(bd(extraTough)))
+        case Stat.HEALTH:
+            var baseHealth = parseNum(data, 'baseAdventureHealth')
+            var maxCubeHealth = baseHealth.add(bd(stat))
+            var extraHealth = 0
+            if(maxCubeHealth.compareTo(cube) == -1) {
+                extraHealth = Math.sqrt(Number(cube.subtract(maxCubeHealth).getValue()))
+                cube = maxCubeHealth
+            }
+            
+            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube.add(bd(extraHealth)))
+        case Stat.REGEN:
+            var baseRegen = parseNum(data, 'baseAdventureRegen')
+            var maxCubeRegen = baseRegen.add(bd(stat))
+            var extraRegen = 0
+            if(maxCubeRegen.compareTo(cube) == -1) {
+                extraRegen = Math.sqrt(Number(cube.subtract(maxCubeRegen).getValue()))
+                cube = maxCubeRegen
+            }
+            
+            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube.add(bd(extraRegen)))
         case Stat.ENERGY_POWER:
         case Stat.MAGIC_POWER:
         case Stat.ENERGY_BARS:

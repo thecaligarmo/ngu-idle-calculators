@@ -62,7 +62,7 @@ export class Challenge extends Resource {
 }
 
 export const CHALLENGELIST = [
-    new Challenge(0, ChallengeKeys.BASIC, 'Basic Challenge', GameMode.NORMAL, [[Stat.POWER, 5], [Stat.TOUGHNESS, 5]], [[Stat.POWER, 10, 1], [Stat.TOUGHNESS, 10, 1]]),
+    new Challenge(0, ChallengeKeys.BASIC, 'Basic Challenge', GameMode.NORMAL, [[Stat.POWER, 5], [Stat.TOUGHNESS, 5], [Stat.HEALTH, 5], [Stat.REGEN, 5]], [[Stat.POWER, 10, 1], [Stat.TOUGHNESS, 10, 1], [Stat.HEALTH, 10, 1], [Stat.REGEN, 10, 1]]),
     new Challenge(1, ChallengeKeys.NO_AUG, 'No Augmentations Challenge',  GameMode.NORMAL, [[Stat.AUGMENT_SPEED, 25]], [[Stat.AUGMENT_SPEED, 10, 1]]),
     new Challenge(2, ChallengeKeys.TWENTY_FOUR, '24 Hour Challenge',  GameMode.NORMAL, [], []),
     new Challenge(3, ChallengeKeys.ONE_HUNDRED, '100 Levels Challenge',  GameMode.NORMAL, [[Stat.ENERGY_WANDOOS_SPEED, 20],[Stat.MAGIC_WANDOOS_SPEED, 20]], []),
@@ -75,7 +75,7 @@ export const CHALLENGELIST = [
     new Challenge(10, ChallengeKeys.NO_TM, 'No Time Machine Challenge',  GameMode.NORMAL, [[Stat.TIME_MACHINE, 100]], []),
 
     //id: number, key: string, name: string, mode : number, level: number, props: prop, extraProps: prop = []
-    new Challenge(100, ChallengeKeys.BASIC, 'Basic Challenge', GameMode.EVIL, [[Stat.POWER, 10], [Stat.TOUGHNESS, 10]], []),
+    new Challenge(100, ChallengeKeys.BASIC, 'Basic Challenge', GameMode.EVIL, [[Stat.POWER, 10], [Stat.TOUGHNESS, 10], [Stat.HEALTH, 10], [Stat.REGEN, 10]], []),
     new Challenge(101, ChallengeKeys.NO_AUG, 'No Augmentations Challenge',  GameMode.EVIL, [[Stat.AUGMENT_SPEED, 5]], [[Stat.AUGMENT_SPEED, 25, 5]]),
     new Challenge(102, ChallengeKeys.TWENTY_FOUR, '24 Hour Challenge',  GameMode.EVIL, [], []),
     new Challenge(103, ChallengeKeys.ONE_HUNDRED, '100 Levels Challenge',  GameMode.EVIL, [], []),

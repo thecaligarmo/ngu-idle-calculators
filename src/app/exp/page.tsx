@@ -1,12 +1,10 @@
 "use client"
-import { ItemSets } from '@/assets/sets';
 import { Zones } from '@/assets/zones';
 import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat} from '@/components/context';
 import { pn, bd, bigdec_max } from '@/helpers/numbers';
 import { parseNum } from '@/helpers/parsers';
-import { isMaxxedItem, isMaxxedItemSet } from '@/helpers/resourceInfo';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
 import _ from 'lodash';

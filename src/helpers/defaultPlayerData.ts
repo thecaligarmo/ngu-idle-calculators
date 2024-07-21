@@ -6,7 +6,7 @@ import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { BEARDS, Beard } from "@/assets/beards";
 import { DIGGERS, Digger } from "@/assets/diggers";
 import { CHALLENGES, Challenge } from "@/assets/challenges";
-import { boostRecyclying, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestRewardBonus, totalRespawnRate, totalSeedGainBonus, totalYggdrasilYieldBonus } from "./calculators";
+import { boostRecyclying, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
 import { APITEMS, APItem } from "@/assets/apItems";
 import { ItemSet, ItemSets } from "@/assets/sets";
 import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
@@ -18,7 +18,11 @@ import { HACKS, Hack } from "@/assets/hacks";
 import { WISHES, Wish } from "@/assets/wish";
 import { FRUITS, Yggdrasil } from "@/assets/yggdrasil";
 
-export function defaultPlayerData(playerData : any, info : string) : any {
+export function defaultPlayerData(playerData : any, info : string | [string, number]) : any {
+    // If we're given an array, the second object is the default value from the "extraRequired", stuff, so use that.
+    if(_.isArray(info)) {
+        return info[1]
+    }
     const playerExists = (playerData && Object.keys(playerData).length > 0)
     if (playerExists) {
         switch(info) {
@@ -26,6 +30,10 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return playerData.adventure.attack
             case 'baseAdventureToughness':
                 return playerData.adventure.defense
+            case 'baseAdventureHealth':
+                return playerData.adventure.maxHP
+            case 'baseAdventureRegen':
+                return playerData.adventure.regen
             case 'baseEnergyPower':
                 return playerData.energyPower;
             case 'baseEnergyBar':
@@ -54,6 +62,8 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return Math.ceil(Math.log2(playerData.bloodMagic.lootSpellBlood / 10000))
             case 'bloodMagicTimeMachine':
                 return Math.ceil(Math.log2(playerData.bloodMagic.goldSpellBlood / 1000000) ** 2)
+            case 'blueHeart^':
+                return playerData.inventory.itemList.blueHeartComplete
             case 'boostRecyclyingPurchase':
                 return playerData.purchases.boost
 
@@ -383,11 +393,26 @@ export function defaultPlayerData(playerData : any, info : string) : any {
             case 'tierFruitOfPrettyMayo':
                 return playerData.yggdrasil.fruits[20].maxTier;
 
-
+            case 'firstHarvestPerk':
+                return playerData.adventure.itopod.perkLevel[51]
+            case 'fruitOfKnowledgeSucks^':
+                return playerData.adventure.itopod.perkLevel[19]
+            case 'fruitOfKnowledgeSTILLSucks^':
+                return playerData.adventure.itopod.perkLevel[20]
             case 'gameMode':
-                return playerData.settings.rebirthDifficulty.value__;
+                return playerData.settings.rebirthDifficulty.value__; 
+            case 'numRebirthChallenges':
+                return playerData.challenges.noRebirthChallenge.curCompletions
+                    + playerData.challenges.noRebirthChallenge.curEvilCompletions
+                    + playerData.challenges.noRebirthChallenge.curSadisticCompletions
+            case 'redLiquidBonus^':
+                return playerData.inventory.itemList.redLiquidComplete
             case 'resource3Active':
                 return playerData.res3.res3On;
+            case 'spoopySetBonus^':
+                return playerData.inventory.itemList.ghostComplete
+            case 'wishTitansHadBetterRewards':
+                return playerData.wishes.wishes[3].level
             case 'yggdrasilDropChance':
                 return playerData.yggdrasil.totalLuck / 20 + 100
 
@@ -703,42 +728,14 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                     }
                 })
                 return maxxedItemIds
-            case 'titanKills' : 
-                return {
-                    1: playerData.adventure.titan1Kills,
-                    2: playerData.adventure.titan2Kills,
-                    3: playerData.adventure.titan3Kills,
-                    4: playerData.adventure.titan4Kills,
-                    5: playerData.adventure.titan5Kills,
-                    6: playerData.adventure.titan6Kills,
-                    7: playerData.adventure.titan7Kills,
-                    8: playerData.adventure.titan8Kills,
-                    9: playerData.adventure.titan9Kills,
-                    10: playerData.adventure.titan10Kills,
-                    11: playerData.adventure.titan11Kills,
-                    12: playerData.adventure.titan12Kills,
-                }
 
             // Calculations
-            case 'blueHeart^':
-                // Blue Heart // 196
-                return isMaxxedItemSet(playerData, ItemSets.BLUE_HEART) ? bd(1) : bd(0)
             case 'boostRecyclying%':
                 return boostRecyclying(playerData);
             case 'currentEnergyCap':
                 return totalEnergyCap(playerData);
             case 'currentMagicCap':
                 return totalMagicCap(playerData);
-            case 'firstHarvestPerk':
-                return bd(perkLevel(playerData, 'theFirstHarvestsTheBest'))
-            case 'fruitOfKnowledgeSucks^':
-                return bd(perkLevel(playerData, 'fruitOfKnowledgeSucks'))
-            case 'fruitOfKnowledgeSTILLSucks^':
-                return bd(perkLevel(playerData, 'fruitOfKnowledgeSTILLSucks'))
-            case 'redLiquidBonus^':
-                return isMaxxedItemSet(playerData, ItemSets.MYSTERIOUS_RED_LIQUID) ? bd(1) : bd(0)
-            case 'spoopySetBonus^':
-                return isMaxxedItemSet(playerData, ItemSets.SPOOPY) ? bd(1) : bd(0)
             case 'totalAPBonus%':
                 return totalAPBonus(playerData);
             case 'totalDropChance%':
@@ -747,6 +744,8 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return totalEnergyNGUSpeedFactor(playerData);
             case 'totalExpBonus%':
                 return totalExpBonus(playerData);
+            case 'totalHealth':
+                return totalHealth(playerData);
             case 'totalMagicNGUSpeedFactor%':
                 return totalMagicNGUSpeedFactor(playerData);
             case 'totalMayoSpeed%':
@@ -755,6 +754,10 @@ export function defaultPlayerData(playerData : any, info : string) : any {
                 return totalPPBonus(playerData)
             case 'totalPower':
                 return totalPower(playerData);
+            case 'totalRegen':
+                return totalRegen(playerData);
+            case 'totalToughness':
+                return totalToughness(playerData);
             case 'totalQuestRewardBonus%':
                 return totalQuestRewardBonus(playerData);
             case 'totalRespawnTime':
@@ -780,6 +783,8 @@ export function getPlayerNumberOptions() : string[]{
     return [
         'baseAdventurePower',
         'baseAdventureToughness',
+        'baseAdventureHealth',
+        'baseAdventureRegen',
         'baseEnergyPower',
         'baseEnergyBar',
         'baseEnergyCap',
@@ -792,6 +797,7 @@ export function getPlayerNumberOptions() : string[]{
         'beastMode',
         'bloodMagicDropChance',
         'bloodMagicTimeMachine',
+        'blueHeart^',
         'boostRecyclyingPurchase',
         'cubePower',
         'cubeToughness',
@@ -954,8 +960,15 @@ export function getPlayerNumberOptions() : string[]{
         'tierFruitOfAyyMayo',
         'tierFruitOfCincoDeMayo',
         'tierFruitOfPrettyMayo',
+        'firstHarvestPerk',
+        'fruitOfKnowledgeSucks^',
+        'fruitOfKnowledgeSTILLSucks^',
         'gameMode',
+        'redLiquidBonus^',
+        'numRebirthChallenges',
         'resource3Active',
+        'spoopySetBonus^',
+        'wishTitansHadBetterRewards',
         'yggdrasilDropChance',
     ]
 }
@@ -986,29 +999,25 @@ export function getPlayerOptions() : string[] {
         'yggdrasil',
         'maxxedItems',
         'itemSets',
-        'titanKills',
     ]
 }
 
 export function getCalculatedOptions() : string[] {
-    return [
-        'blueHeart^',
+    return [        
         'boostRecyclying%',
         'currentEnergyCap',
         'currentMagicCap',
-        'firstHarvestPerk',
-        'fruitOfKnowledgeSucks^',
-        'fruitOfKnowledgeSTILLSucks^',
-        'redLiquidBonus^',
-        'spoopySetBonus^',
         'totalAPBonus%',
         'totalDropChance%',
         'totalEnergyNGUSpeedFactor%',
         'totalExpBonus%',
+        'totalHealth',
         'totalMagicNGUSpeedFactor%',
         'totalMayoSpeed%',
         'totalPPBonus%',
         'totalPower',
+        'totalRegen',
+        'totalToughness',
         'totalQuestRewardBonus%',
         'totalRespawnTime',
         'totalSeedGainBonus%',

@@ -4,10 +4,10 @@ import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
 import _ from "lodash";
 import { camelToTitle } from "./strings";
 
-export function createStatesForData(extraRequired: string[][] = []) : any{
+export function createStatesForData(extraRequired: (string | [string, number])[][] = []) : any{
     const playerData = getPlayerData();
-    var playerNumberOptions : string[] = getPlayerNumberOptions();
-    var playerOptions : string[]= getPlayerOptions();
+    var playerNumberOptions : (string | [string, number])[] = getPlayerNumberOptions();
+    var playerOptions : string[] = getPlayerOptions();
     var calculatedOptions : string[] = getCalculatedOptions();
     for (var col of extraRequired) {
         for (var key of col) {
@@ -15,31 +15,32 @@ export function createStatesForData(extraRequired: string[][] = []) : any{
         }
     }
     var dataObj : {[key: string] : any}= {}
-    for (var key of playerNumberOptions) {
-        var defaultVal = defaultPlayerData(playerData, key)
-        var dataStateNum = useLocalStorageNumber(key, defaultVal)
+    for (var pnKey of playerNumberOptions) {
+        var pnKeyString : string = _.isArray(pnKey) ? pnKey[0] : pnKey
+        var defaultVal = defaultPlayerData(playerData, pnKey)
+        var dataStateNum = useLocalStorageNumber(pnKeyString, defaultVal)
         if (isPlayerDataUpdated() && dataStateNum[0] != defaultVal) {
             // dataState[1]({"value": defaultVal})
             dataStateNum[1](defaultVal)
         }
-        dataObj[key] = dataStateNum
+        dataObj[pnKeyString] = dataStateNum
     }
-    for (var key of playerOptions) {
-        var defaultVal = defaultPlayerData(playerData, key)
-        var dataState = useLocalStorage(key, defaultVal);
+    for (var poKey of playerOptions) {
+        var defaultVal = defaultPlayerData(playerData, poKey)
+        var dataState = useLocalStorage(poKey, defaultVal);
         if (isPlayerDataUpdated() && ! _.isEqual(dataState[0], defaultVal)) {
             dataState[1](defaultVal)
         }
-        dataObj[key] = dataState
+        dataObj[poKey] = dataState
     }
 
-    for (var key of calculatedOptions) {
-        var defaultVal = defaultPlayerData(dataObj, key).getValue()
-        var dataStateNum = useLocalStorageNumber(key, defaultVal, true);
+    for (var coKey of calculatedOptions) {
+        var defaultVal = defaultPlayerData(dataObj, coKey).getValue()
+        var dataStateNum = useLocalStorageNumber(coKey, defaultVal, true);
         if (isPlayerDataUpdated() && dataStateNum[0] != defaultVal) {
             dataStateNum[1](defaultVal)
         }
-        dataObj[key] = dataStateNum
+        dataObj[coKey] = dataStateNum
     }
 
     return dataObj;
@@ -50,18 +51,19 @@ export function getRequiredStates(data : any, states : any, nameMap : any = {} )
     for (var col of data) {
         let colDr = []
         for (var k of col) {
-            var dataState = states[k]
+            var kName : string = _.isArray(k) ? k[0] : k;
+            var dataState = states[kName]
             var ty = 'number'
-            var name = (k in nameMap) ? nameMap[k] : camelToTitle(k)
-            if (k.slice(-1) == '%') {
+            var name = (kName in nameMap) ? nameMap[kName] : camelToTitle(kName)
+            if (kName.slice(-1) == '%') {
                 ty = 'percent'
-            } else if (k.slice(-1) == '^') {
+            } else if (kName.slice(-1) == '^') {
                 ty = 'checkbox'
-                name = camelToTitle(k.slice(0, -1))
+                name = camelToTitle(kName.slice(0, -1))
             }
-            var id = k.replace('^', '').replace('%', '')
+            var id = kName.replace('^', '').replace('%', '')
             colDr.push({
-                key: k,
+                key: kName,
                 value: dataState,
                 disabled: false,
                 name: name,

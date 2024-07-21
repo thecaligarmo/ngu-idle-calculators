@@ -66,7 +66,7 @@ export const DIGGERLIST = [
     new Digger(0, DiggerKeys.DROP_CHANCE, 'Drop Chance Digger', [[Stat.DROP_CHANCE, 1],]),
     new Digger(1, DiggerKeys.WANDOOS, 'Wandoos Digger', [[Stat.ENERGY_WANDOOS_SPEED, 1],[Stat.MAGIC_WANDOOS_SPEED, 1]]),
     new Digger(2, DiggerKeys.STAT, 'Stat Digger', [[Stat.ATTACK, 1],[ Stat.DEFENSE, 1]]),
-    new Digger(3, DiggerKeys.ADVENTURE, 'Adventure Digger', [[Stat.POWER, 1], [Stat.TOUGHNESS, 1]]),
+    new Digger(3, DiggerKeys.ADVENTURE, 'Adventure Digger', [[Stat.POWER, 1], [Stat.TOUGHNESS, 1], [Stat.HEALTH, 1], [Stat.REGEN, 1]]),
 
     new Digger(4, DiggerKeys.ENERGY_NGU, 'Energy NGU Digger', [[Stat.ENERGY_NGU_SPEED, 1],]),
     new Digger(5, DiggerKeys.MAGIC_NGU, 'Magic NGU Digger', [[Stat.MAGIC_NGU_SPEED, 1],]),

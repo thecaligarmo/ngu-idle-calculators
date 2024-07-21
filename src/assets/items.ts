@@ -56,7 +56,9 @@ export class Item extends Resource {
         })
 
         this[Stat.POWER] = Math.floor(data.curAttack)
+        this[Stat.HEALTH] = Math.floor(data.curAttack * 3)
         this[Stat.TOUGHNESS] = Math.floor(data.curDefense)
+        this[Stat.REGEN] = Math.floor(data.curDefense / 100 * 3)
         this.level = data.level;
     }
     updateStat() {

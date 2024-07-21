@@ -242,6 +242,37 @@ export function totalToughness(data : any) : bigDecimal {
         .divide((equipPower.compareTo(bd(0)) > 0) ? equipPower : bd(1)) // adding Instead
 }
 
+export function totalHealth(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.HEALTH)
+    var equipHealth = equipmentInfo(data, Stat.HEALTH)
+    var advTraining = advTrainingInfo(data, Stat.HEALTH)
+    var baseHealth = parseNum(data, 'baseAdventureHealth')
+
+    // Want to add equipHealth instead of multiply
+    var subtotal = baseHealth.add(equipHealth)
+
+    return subtotal
+        .multiply(gen).divide(bd(100))
+        .multiply(advTraining)// .divide(bd(100))
+        .divide((equipHealth.compareTo(bd(0)) > 0) ? equipHealth : bd(1))
+}
+
+export function totalRegen(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.REGEN)
+    var equipRegen = equipmentInfo(data, Stat.REGEN)
+    var advTraining = advTrainingInfo(data, Stat.REGEN)
+    var baseRegen = parseNum(data, 'baseAdventureRegen')
+
+    // Want to add equipRegen instead of multiply
+    var subtotal = baseRegen.add(equipRegen)
+    
+    return subtotal
+        .multiply(gen).divide(bd(100))
+        .multiply(advTraining)
+        .divide((equipRegen.compareTo(bd(0)) > 0) ? equipRegen : bd(1)) // adding Instead
+}
+
+
 /** Misc Adventure */
 export function totalGoldDrop(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.GOLD_DROP);

@@ -18,8 +18,8 @@ export class AdvTraining extends Resource{
 
 
 export const ADVTRAININGLIST = [
-    new AdvTraining(0, 'adventureToughness', 'The Fu Manchu', GameMode.ALL, 0, [[Stat.TOUGHNESS, 1]]),
-    new AdvTraining(1, 'adventurePower', 'The Neckbeard', GameMode.ALL, 0, [[Stat.POWER, 1]]),
+    new AdvTraining(0, 'adventureToughness', 'The Fu Manchu', GameMode.ALL, 0, [[Stat.TOUGHNESS, 1], [Stat.REGEN, 1]]),
+    new AdvTraining(1, 'adventurePower', 'The Neckbeard', GameMode.ALL, 0, [[Stat.POWER, 1], [Stat.HEALTH, 1]]),
     new AdvTraining(2, 'blockDamage', 'The Revese Hitler', GameMode.ALL, 0, []),
     new AdvTraining(3, 'wandoosEnergyDump', 'The Beard Cage', GameMode.ALL, 0, [[Stat.ENERGY_WANDOOS_SPEED, 1]]),
     new AdvTraining(4, 'wandoosMagicDump', 'The LadyBeard', GameMode.ALL, 0, [[Stat.MAGIC_WANDOOS_SPEED, 1]]),

@@ -24,3 +24,6 @@ export function parseNum(state: any, key: string) : bigDecimal{
     }
     return bd(x)
 }
+
+
+

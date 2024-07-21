@@ -1,12 +1,12 @@
 'use client'
 
 import { Challenge } from "@/assets/challenges";
-import { Titans } from "@/assets/enemy";
+import { AttackStat, Titan, Titans } from "@/assets/enemy";
 import { GameMode } from "@/assets/mode";
 import { Stat } from "@/assets/stat";
 import { Wish } from "@/assets/wish";
 import { FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
-import { Zones } from "@/assets/zones";
+import Zone, { Zones } from "@/assets/zones";
 import Content from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
@@ -16,21 +16,21 @@ import { nguInfo } from "@/helpers/resourceInfo";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
-
-
+import { useState } from "react";
 
 
 export default function Page() {
+    var [optMaxTitan, setOptMaxTitan] = useState("current")
     var fmt = getNumberFormat();
 
     // Set data required (from playerData)
     var infoRequired = [
-        ['gameMode'], [],
-        ['totalRespawnTime', 'totalPPBonus%', 'totalPower'], [ 'blueHeart^', 'redLiquidBonus^','spoopySetBonus^']
+        ['gameMode'], ['numRebirthChallenges', 'wishTitansHadBetterRewards'],
+        ['totalRespawnTime', 'totalPPBonus%', 'totalYggdrasilYieldBonus%', 'totalPower'], [ 'blueHeart^', 'redLiquidBonus^','spoopySetBonus^'],
     ]
 
     // Set extra required (not from playerData)
-    var extraRequired = [['itopodFloor', 'bluePill^', 'hoursPerDay']]
+    var extraRequired : (string | [string, number])[][] = [['itopodFloor', 'bluePill^', ['hoursPerDay', 24]]]
     const playerStates = createStatesForData(extraRequired);
 
     // Get required data
@@ -51,7 +51,7 @@ export default function Page() {
     }
     
 
-    var hoursPerDay = v('hoursPerDay').compareTo(bd(0)) == 0 ? bd(24) : v('hoursPerDay')
+    var hoursPerDay = v('hoursPerDay')//.compareTo(bd(0)) == 0 ? bd(24) : v('hoursPerDay')
     
 
 
@@ -97,42 +97,63 @@ export default function Page() {
 
     /* Titan Info */
     // average PPP per hour from Titans * hoursPerDay / 1000000
-    var challenges : Challenge[][] = j('challenges')
-    var rbChallenges : number = 0
-    if (challenges && !_.isUndefined(challenges[0])){
-        rbChallenges += challenges[GameMode.NORMAL][6].level
-        rbChallenges += challenges[GameMode.EVIL][6].level
-        rbChallenges += challenges[GameMode.SADISTIC][6].level
-    }
+    var rbChallenges : bigDecimal = v('numRebirthChallenges')
 
     // Need to look up current tier for Titan
     var hourlyTitanPP : bigDecimal = bd(0);
-    var titanKills = j('titanKills');
-    var wishes : Wish[] = j('wishes');
-    var wishLevel : number = 0;
-    if (wishes && !_.isUndefined(wishes[3])) {
-        var chosenWish : Wish = wishes[3]
-        if(wishes[3].key != 'iwishV234Titanshadbetterrewards') {
-            console.log(wishes[3])
-        }
-        wishLevel = chosenWish.level
-    }
-    Object.values(Titans).forEach((titan) => {
-        if(titanKills[titan.id] > 0) {
-            var titanPP = titan.getPP(v('totalPPBonus%'))
-            if(titanKills[titan.id] > 1 && wishLevel > 0) {
-                if(titanKills[titan.id] == 2 && wishLevel > 0) {
-                    titanPP = titanPP.multiply(bd(1.1))
-                } else if(titanKills[titan.id] == 3 && wishLevel > 1) {
-                    titanPP = titanPP.multiply(bd(1.2))
-                } else if(titanKills[titan.id] > 3 && wishLevel == 3) {
-                    titanPP = titanPP.multiply(bd(1.3))
+    // var titanKills = j('titanKills');
+    var wishLevel : number = Number(v('wishTitansHadBetterRewards').getValue());
+    var playerAttack = new AttackStat(1, v('totalPower'), v('totalToughness'), v('totalRegen'), v('totalHealth'))
+
+    var maxTitan : [Titan, number] = [Titans.GORDON_RAMSEY, 1]
+    if(optMaxTitan == 'current') {
+        Object.values(Titans).forEach((titan) => {
+            if (titan.id < 13) {
+                for(var i = 0; i < titan.versions; i++) {
+                    if(titan.canAutoKill(playerAttack, i)) {
+                        maxTitan = [titan, i]
+                    }
                 }
             }
+        })
+    } else {
+        var tt = optMaxTitan.split('-')
+        console.log(optMaxTitan, tt)
+        Object.values(Titans).forEach((titan) => {
+            if (titan.id == Number(tt[0])) {
+                maxTitan = [titan, Number(tt[1])]
+            }
+        })
+    }
+    
+    Object.values(Titans).forEach((titan) => {
+        if(titan.id <= maxTitan[0].id) {
+            var titanPP = titan.getPP(v('totalPPBonus%'))
+            if(titan.id < maxTitan[0].id) {
+                if(titan.versions == 4) {
+                    if(wishLevel == 3) {
+                        titanPP = titanPP.multiply(bd(1.3))
+                    } else if (wishLevel == 2) {
+                        titanPP = titanPP.multiply(bd(1.2))
+                    } else if (wishLevel == 1) {
+                        titanPP = titanPP.multiply(bd(1.1))
+                    }
+                }
+            } else {
+                if(maxTitan[1] == 3 && wishLevel == 3) {
+                    titanPP = titanPP.multiply(bd(1.3))
+                } else if (maxTitan[1] >= 2 && wishLevel >= 2) {
+                    titanPP = titanPP.multiply(bd(1.2))
+                } else if (maxTitan[1] >= 1 && wishLevel >= 1) {
+                    titanPP = titanPP.multiply(bd(1.1))
+                }
+            }
+            
             var titanRespawn = titan.getRespawnTime(rbChallenges)
             hourlyTitanPP = hourlyTitanPP.add(titanPP.divide(titanRespawn))
         }
     })
+    // console.log(hourlyTitanPP, titanKills, wishLevel)
     var totalTitanPP = hourlyTitanPP.multiply(hoursPerDay)
 
     /* Ygg Info */
@@ -160,10 +181,39 @@ export default function Page() {
 
     var totalPPPerDay = totalTitanPP.add(fruitYield).add(killsPerDay.multiply(pppPerKill))
 
+    var titanList = Object.values(Titans).map((titan) => {
+        if (titan.id < 13) {
+            var rows = []
+            if (titan.versions != 4) {
+                rows.push(<option key={titan.key} value={titan.id + '-' + 0}>
+                    {titan.name}
+                </option>)
+            } else {
+                for(var i = 0; i < titan.versions; i++) {
+                    rows.push(<option key={titan.key + "v" + i} value={titan.id +'-' + i}>
+                        {titan.name} v{i+1}
+                    </option>)
+                }
+            }
+            return rows
+        }
+    })
+
     return (
         <Content title="Daily Gains" infoRequired={infoReq} extraRequired={extraReq}>
             <ContentSubsection title={"How many PP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
-                <strong className="text-green-500">Titans:</strong> <span className="text-red-500">{pn(totalTitanPP.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong><br />
+                <strong className="text-green-500">Titans:</strong> <span className="text-red-500">{pn(totalTitanPP.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong>
+                - Max Titan:<select
+                    className="ml-2 text-black"
+                    onChange={(e) =>{
+                        setOptMaxTitan(e.target.value)
+                    }}
+                    value={optMaxTitan}
+                >
+                    <option key="current" value="current">Highest Titan by Autokill</option>
+                    {titanList}
+                </select>
+                <br />
                 <strong className="text-green-500">Yggdrasil:</strong> <span className="text-red-500">{pn(fruitYield.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong><br />
                 <strong className="text-green-500">Tower:</strong> <span className="text-red-500">{pn(killsPerDay.multiply(pppPerKill).divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong>
                 <ul className="ml-10">

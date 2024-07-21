@@ -42,7 +42,7 @@ export const MACGUFFINLIST = [
     new MacGuffin(16, 'numberMacGuffin', 'Number MacGuffin', [[Stat.NUMBER, 1]]),//id
     new MacGuffin(17, 'bloodMacGuffin', 'Blood MacGuffin', [[Stat.BLOOD, 1]]),//id
 
-    new MacGuffin(19, 'adventureMacGuffin', 'Adventure MacGuffin', [[Stat.POWER, 1], [Stat.TOUGHNESS, 1]]),
+    new MacGuffin(19, 'adventureMacGuffin', 'Adventure MacGuffin', [[Stat.POWER, 1], [Stat.TOUGHNESS, 1], [Stat.HEALTH, 1], [Stat.REGEN, 1]]),
     new MacGuffin(20, 'resource3PowerMacGuffin', 'Resource 3 Power MacGuffin', [[Stat.RES3_POWER, 1]]),
     new MacGuffin(21, 'resource3CapMacGuffin', 'Resource 3 Cap MacGuffin', [[Stat.RES3_CAP, 1]]),//id
     new MacGuffin(22, 'resource3BarMacGuffin', 'Resource 3 Bar MacGuffin', [[Stat.RES3_BARS, 1]]),//id

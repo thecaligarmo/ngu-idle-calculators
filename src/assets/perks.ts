@@ -14,44 +14,61 @@ export class Perk extends Resource{
         // Fibonacci Perk
         if (this.id == 94) {
             // Switch goes down, so we just put things in backwards order and we're good =)
-            switch(this.level) {
-                case 1597:
-                    // Kitty art!
-                case 987:
-                    this.setStat(Stat.EXPERIENCE, 5)
-                case 610:
-                    // Quests always require 50 instead of RNG
-                case 377:
-                    this.setStat(Stat.ATTACK, 377)
-                    this.setStat(Stat.DEFENSE, 377)
-                case 233:
-                    this.setStat(Stat.QUEST_REWARD, 10)
-                case 144:
-                    // +5% chance for +1 lvl on loot
-                case 89:
-                    this.setStat(Stat.AP, 2)
-                case 55:
-                    this.setStat(Stat.DAYCARE_SPEED, 5)
-                case 34:
-                    this.setStat(Stat.POWER, 13)
-                    this.setStat(Stat.TOUGHNESS, 13)
-                case 21:
-                    this.setStat(Stat.ENERGY_BARS, 10)
-                    this.setStat(Stat.MAGIC_BARS, 10)
-                case 13:
-                    this.setStat(Stat.PP, 5)
-                case 8:
-                    this.setStat(Stat.MAGIC_NGU_SPEED, 5)
-                case 5:
-                    this.setStat(Stat.ENERGY_NGU_SPEED, 5)
-                case 3:
-                    this.setStat(Stat.MAGIC_CAP, 10)
-                case 2:
+            if (this.level >= 1 ) {
+                this.setStat(Stat.ENERGY_POWER, 10)
+                this.setStat(Stat.MAGIC_POWER, 10)
+                if (this.level >= 2 ) {
                     this.setStat(Stat.ENERGY_CAP, 10)
-                case 1:
-                    this.setStat(Stat.ENERGY_POWER, 10)
-                    this.setStat(Stat.MAGIC_POWER, 10)
+                    if (this.level >= 3 ) {
+                        this.setStat(Stat.MAGIC_CAP, 10)
+                        if (this.level >= 5 ) {
+                            this.setStat(Stat.ENERGY_NGU_SPEED, 5)
+                            if (this.level >= 8 ) {
+                                this.setStat(Stat.MAGIC_NGU_SPEED, 5)
+                                if (this.level >= 13 ) {
+                                    this.setStat(Stat.PP, 5)
+                                    if (this.level >= 21 ) {
+                                        this.setStat(Stat.ENERGY_BARS, 10)
+                                        this.setStat(Stat.MAGIC_BARS, 10)
+                                        if (this.level >= 34 ) {
+                                            this.setStat(Stat.POWER, 13)
+                                            this.setStat(Stat.TOUGHNESS, 13)
+                                            this.setStat(Stat.HEALTH, 13)
+                                            this.setStat(Stat.REGEN, 13)
+                                            if (this.level >= 55 ) {
+                                                this.setStat(Stat.DAYCARE_SPEED, 5)
+                                                if (this.level >= 89 ) {
+                                                    this.setStat(Stat.AP, 2)
+                                                    if (this.level >= 144 ) {
+                                                        // +5% chance for +1 lvl on loot
+                                                        if (this.level >= 233 ) {
+                                                            this.setStat(Stat.QUEST_REWARD, 10)
+                                                            if (this.level >= 377 ) {
+                                                                this.setStat(Stat.ATTACK, 377)
+                                                                this.setStat(Stat.DEFENSE, 377)
+                                                                if (this.level >= 610 ) {
+                                                                    // Quests always require 50 instead of RNG
+                                                                    if (this.level >= 987 ) {
+                                                                        this.setStat(Stat.EXPERIENCE, 5)
+                                                                        if(this.level >= 1597) {
+                                                                            // Kitty art!
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
+            
         }
         this.updateStats()
     }
@@ -70,7 +87,7 @@ export class Perk extends Resource{
 export const PERKLIST = [
     new Perk(0, 'theNewbieEnergyPerk', 'The Newbie Energy Perk', GameMode.NORMAL, 0, []), // Added to base energy
     new Perk(1, 'theNewbieMagicPerk', 'The Newbie Magic Perk', GameMode.NORMAL, 0, []), // Added to base magic
-    new Perk(2, 'heNewbieAdventurePerk', 'The Newbie Adventure Perk', GameMode.NORMAL, 0, [[Stat.POWER, 10], [Stat.TOUGHNESS, 10]]), 
+    new Perk(2, 'heNewbieAdventurePerk', 'The Newbie Adventure Perk', GameMode.NORMAL, 0, [[Stat.POWER, 10], [Stat.TOUGHNESS, 10], [Stat.HEALTH, 10], [Stat.REGEN, 10]]), 
     new Perk(3, 'theNewbieDropChancePerk', 'The Newbie Drop Chance Perk', GameMode.NORMAL, 0, [[Stat.DROP_CHANCE, 10],]),
     new Perk(4, 'theNewbieStatPerk', 'The Newbie Stat Perk', GameMode.NORMAL, 0, [[Stat.ATTACK, 100],[Stat.DEFENSE, 100],]),
     new Perk(5, 'statBoostForRichPerksI', 'Stat Boost for Rich Perks I', GameMode.NORMAL, 0, [[Stat.ATTACK, 10],[Stat.DEFENSE, 10],]),
@@ -123,7 +140,7 @@ export const PERKLIST = [
     new Perk(52, 'aDiggerSlot!', 'A Digger Slot!', GameMode.NORMAL, 0, []),
     new Perk(53, 'oohAnotherDiggerSlot!', 'ooh, Another Digger Slot!', GameMode.NORMAL, 0, []),
     new Perk(54, 'statBoostforRichPerksII', 'Stat Boost for Rich Perks II', GameMode.NORMAL, 0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
-    new Perk(55, 'adventureBoostForRichPerksI', 'Adventure Boost For Rich Perks I', GameMode.NORMAL, 0, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1]]),
+    new Perk(55, 'adventureBoostForRichPerksI', 'Adventure Boost For Rich Perks I', GameMode.NORMAL, 0, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1], [Stat.HEALTH, 0.1], [Stat.REGEN, 0.1]]),
     new Perk(56, 'macguffinDaycare!', 'Macguffin Daycare!', GameMode.EVIL, 0, []),
     new Perk(57, 'genericEnergyPowerPerkII', 'Generic Energy Power Perk II', GameMode.EVIL, 0, [[Stat.ENERGY_POWER, 1]]),
     new Perk(58, 'genericEnergyBarPerkII', 'Generic Energy Bar Perk II', GameMode.EVIL, 0, [[Stat.ENERGY_BARS, 1]]),
@@ -212,17 +229,17 @@ export const PERKLIST = [
     new Perk(141, 'genericResource3PowerPerkVI', 'Generic Resource 3 Power Perk VI', GameMode.SADISTIC, 0, [[Stat.RES3_POWER, 1]]),
     new Perk(142, 'genericResource3BarPerkVI', 'Generic Resource 3 Bar Perk VI', GameMode.SADISTIC, 0, [[Stat.RES3_BARS, 0.5]]),
     new Perk(143, 'genericResource3CapPerkVI', 'Generic Resource 3 Cap Perk VI', GameMode.SADISTIC, 0, [[Stat.RES3_CAP, 0.5]]),
-    new Perk(144, 'welcometoSadisticDifficulty', 'Welcome to Sadistic Difficulty', GameMode.SADISTIC, 0, [[Stat.ATTACK, 1000], [Stat.DEFENSE, 1000], [Stat.POWER, 15], [Stat.TOUGHNESS, 15], [Stat.AUGMENT_SPEED, 20], [Stat.ENERGY_NGU_SPEED, 20], [Stat.MAGIC_NGU_SPEED, 20]]),
+    new Perk(144, 'welcometoSadisticDifficulty', 'Welcome to Sadistic Difficulty', GameMode.SADISTIC, 0, [[Stat.ATTACK, 1000], [Stat.DEFENSE, 1000], [Stat.POWER, 15], [Stat.TOUGHNESS, 15], [Stat.HEALTH, 15], [Stat.REGEN, 15], [Stat.AUGMENT_SPEED, 20], [Stat.ENERGY_NGU_SPEED, 20], [Stat.MAGIC_NGU_SPEED, 20]]),
     new Perk(145, 'bonusQuestHandinProgessI', 'Bonus Quest Handin Progess I', GameMode.EVIL, 0, []),
     new Perk(146, 'bonusQuestHandinProgessII', 'Bonus Quest Handin Progess II', GameMode.EVIL, 0, []),
     new Perk(147, 'improvedMajorQuestQPRewards', 'Improved Major Quest QP Rewards', GameMode.SADISTIC, 0, []),
     new Perk(148, 'improvedMinorQuestQPRewards', 'Improved Minor Quest QP Rewards', GameMode.SADISTIC, 0, []),
     new Perk(149, 'statBoostforrichPerksIV', 'Stat Boost for rich Perks IV', GameMode.EVIL, 0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
-    new Perk(150, 'adventureBoostForRichPerksIII', 'Adventure Boost For Rich Perks III', GameMode.EVIL, 0, [[Stat.POWER, 0.05], [Stat.TOUGHNESS, 0.05]]),
+    new Perk(150, 'adventureBoostForRichPerksIII', 'Adventure Boost For Rich Perks III', GameMode.EVIL, 0, [[Stat.POWER, 0.05], [Stat.TOUGHNESS, 0.05], [Stat.HEALTH, 0.05], [Stat.REGEN, 0.05]]),
     new Perk(151, 'statBoostforrichPerksV', 'Stat Boost for rich Perks V', GameMode.SADISTIC, 0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
-    new Perk(152, 'adventureBoostForRichPerksIV', 'Adventure Boost For Rich Perks IV', GameMode.SADISTIC, 0, [[Stat.POWER, 0.05], [Stat.TOUGHNESS, 0.05]]),
+    new Perk(152, 'adventureBoostForRichPerksIV', 'Adventure Boost For Rich Perks IV', GameMode.SADISTIC, 0, [[Stat.POWER, 0.05], [Stat.TOUGHNESS, 0.05], [Stat.HEALTH, 0.05], [Stat.REGEN, 0.05]]),
     new Perk(153, 'statBoostforrichPerksVI', 'Stat Boost for rich Perks VI', GameMode.SADISTIC, 0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
-    new Perk(154, 'adventureBoostForRichPerksV', 'Adventure Boost For Rich Perks V', GameMode.SADISTIC, 0, [[Stat.POWER, 0.05], [Stat.TOUGHNESS, 0.05]]),
+    new Perk(154, 'adventureBoostForRichPerksV', 'Adventure Boost For Rich Perks V', GameMode.SADISTIC, 0, [[Stat.POWER, 0.05], [Stat.TOUGHNESS, 0.05], [Stat.HEALTH, 0.05], [Stat.REGEN, 0.05]]),
     new Perk(155, 'fasterWishesII', 'Faster Wishes II', GameMode.EVIL, 0, [[Stat.WISH_SPEED, 0.1]]),
     new Perk(156, 'fasterWishesIII', 'Faster Wishes III', GameMode.EVIL, 0, [[Stat.WISH_SPEED, 0.1]]),
     new Perk(157, 'improvedSadisticBossMultiplierI', 'Improved Sadistic Boss Multiplier I', GameMode.SADISTIC, 0, []),

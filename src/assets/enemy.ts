@@ -20,6 +20,14 @@ export class AttackStat {
                     this.toughness.divide(bd(2))
                 )
     }
+
+    isWeaker(other : AttackStat) {
+        return (this.attackRate < other.attackRate) 
+            && (this.power.compareTo(other.power) < 0) 
+            && (this.toughness.compareTo(other.toughness) < 0) 
+            && (this.regen.compareTo(other.regen) < 0) 
+            && (this.hp.compareTo(other.hp) < 0) 
+    }
 }
 
 export const ENEMY_TYPE : {[k: string]: number} = {
@@ -50,7 +58,6 @@ export class Enemy {
         this.name = name
         this.type = type
         
-
         this.attackStat = (attackStat instanceof AttackStat) ? [attackStat] : attackStat
 
         this.isBoss = isBoss
@@ -72,12 +79,7 @@ export class Enemy {
         return this.attackStat[version].hp
     }
     oneHitPower(attackModifier: bigDecimal = bd(1), version : number = 0) : bigDecimal{
-        return this.isTitan || _.isArray(this.hp) || _.isArray(this.toughness)
-                ? this.autoKill()
-                : this.attackStat[version].oneHitPower(attackModifier)
-    }
-    autoKill() : bigDecimal{
-        return bd(0)
+        return this.attackStat[version].oneHitPower(attackModifier)
     }
 }
 
@@ -89,13 +91,14 @@ export class Titan extends Enemy {
     ap: number
     pp: number
     qp: number
+    autokill : AttackStat[]
     constructor(
         id: number, key: string, name: string,
         attackStat: AttackStat | AttackStat[],
+        autokill: AttackStat | AttackStat[],
         respawnTime: number,
         exp: bigDecimal, gold: bigDecimal[], ap: number, pp: number, qp: number
     ) {
-
         super(id, key, name, ENEMY_TYPE.NORMAL, attackStat)
         this.isTitan = true
         this.versions = _.isArray(attackStat) ? attackStat.length : 1
@@ -107,15 +110,21 @@ export class Titan extends Enemy {
         this.ap = ap
         this.pp = pp
         this.qp = qp
+        this.autokill = (autokill instanceof AttackStat) ? [autokill] : autokill
     }
-    autoKill() : bigDecimal {
-        return bd(0)
+    canAutoKill(player : AttackStat, version : number = 0, kills : number = 0) : boolean {
+        // Walderp needs 3 kills
+        // IT Hungers, Rock Lobster, Amalgamate - 5 kills allows you to AK
+        return this.autokill[version].isWeaker(player)
     }
     getPP(ppBonus : bigDecimal) : bigDecimal {
         return ppBonus.multiply(bd(this.pp)).divide(bd(100))
     }
-    getRespawnTime(rbChallenges : number) : bigDecimal{
-        return bigdec_max(bd(1), bd(this.respawnTime).subtract(bd(rbChallenges).multiply(bd(1/4))))
+    getRespawnTime(rbChallenges : number | bigDecimal) : bigDecimal{
+        if(typeof rbChallenges == 'number') {
+            rbChallenges = bd(rbChallenges)
+        }
+        return bigdec_max(bd(1), bd(this.respawnTime).subtract(rbChallenges.multiply(bd(1/4))))
     }
 }
 
@@ -470,24 +479,28 @@ export const Titans : {[k: string]: Titan} = {
     GORDON_RAMSEY: new Titan(
         1, 'gordonRamsayBolton', 'Gordon Ramsay Bolton',
         new AttackStat(2, bd(666), bd(666), bd(66), bd(300000)),
+        new AttackStat(0, bd(3000), bd(2500), bd(0), bd(0)),
         1,
         bd(35), [bd(1000000), bd(1250000)], 10, 0, 0
     ),
     GRAND_TREE: new Titan(
         2, 'grandCorruptedTree', 'Grand Corrupted Tree',
         new AttackStat(2, bd(2000), bd(2000), bd(200), bd(750000)),
+        new AttackStat(0, bd(9000), bd(7000), bd(0), bd(0)),
         1,
         bd(60), [bd(1600000), bd(2000000)], 15, 0, 0
     ),
     JAKE: new Titan(
         3, 'jakeFromAccounting', 'Jake From Accounting',
         new AttackStat(2, bd(8000), bd(8000), bd(1000), bd(3000000)),
+        new AttackStat(0, bd(25000), bd(15000), bd(0), bd(0)),
         2,
         bd(200), [bd('1.2e6'), bd('1.5e6')], 50, 0, 0
     ),
     UUG: new Titan(
         4, 'uUGTheUnmentionable', 'UGG, The Unmentionable',
         new AttackStat(2, bd(200000), bd(200000), bd(30000), bd('1e8')),
+        new AttackStat(0, bd(800000), bd(400000), bd(14000), bd(0)),
         2,
         bd(300), [bd('2e6'), bd('2.5e6')], 60, 0, 0
     ),
@@ -500,6 +513,13 @@ export const Titans : {[k: string]: Titan} = {
             new AttackStat(3, bd('2.2e6'), bd('1.5e6'), bd(230000), bd('8e8')),
             new AttackStat(3, bd('3e6'), bd('2e6'), bd(300000), bd('1e9')),
         ],
+        [
+            new AttackStat(0, bd(13e6), bd(7e6), bd(150000), bd(0)),
+            new AttackStat(0, bd(13e6), bd(7e6), bd(150000), bd(0)),
+            new AttackStat(0, bd(13e6), bd(7e6), bd(150000), bd(0)),
+            new AttackStat(0, bd(13e6), bd(7e6), bd(150000), bd(0)),
+            new AttackStat(0, bd(13e6), bd(7e6), bd(150000), bd(0)),
+        ],
         3,
         bd(500), [bd('4e6'), bd('5e6')], 70, 0, 0
     ),
@@ -510,6 +530,12 @@ export const Titans : {[k: string]: Titan} = {
             new AttackStat(2, bd('5e9'), bd('5e9'), bd('5e8'), bd('5e11')),
             new AttackStat(1.9, bd('5e10'), bd('5e10'), bd('5e9'), bd('5e12')),
             new AttackStat(1.8, bd('5e11'), bd('5e11'), bd('5e10'), bd('5e13')),
+        ],
+        [
+            new AttackStat(0, bd(2.5e9), bd(1.6e9), bd(2.5e6), bd(0)),
+            new AttackStat(0, bd(2.5e10), bd(1.6e10), bd(2.5e7), bd(0)),
+            new AttackStat(0, bd(2.5e11), bd(1.6e11), bd(2.5e8), bd(0)),
+            new AttackStat(0, bd(2.5e12), bd(1.6e12), bd(2.5e9), bd(0)),
         ],
         3.5,
         bd(750), [bd('2e7'), bd('2.5e7')], 0, 250000, 1
@@ -522,6 +548,12 @@ export const Titans : {[k: string]: Titan} = {
             new AttackStat(1.9, bd('4e16'), bd('4e16'), bd('4e15'), bd('4e18')),
             new AttackStat(1.8, bd('1e18'), bd('1e18'), bd('1e17'), bd('1e20')),
         ],
+        [
+            new AttackStat(0, bd(5e14), bd(2.5e14), bd(5e12), bd(0)),
+            new AttackStat(0, bd(1e16), bd(5e15), bd(1e14), bd(0)),
+            new AttackStat(0, bd(2e17), bd(1e17), bd(2e15), bd(0)),
+            new AttackStat(0, bd(5e18), bd(2.5e18), bd(5e16), bd(0)),
+        ],
         4.5,
         bd(1100), [bd('4e10'), bd('5e10')], 0, 250000, 1
     ),
@@ -533,8 +565,14 @@ export const Titans : {[k: string]: Titan} = {
             new AttackStat(1.9, bd('4e20'), bd('4e20'), bd('4e19'), bd('4e22')),
             new AttackStat(1.8, bd('1e22'), bd('1e22'), bd('1e21'), bd('1e24')),
         ],
+        [
+            new AttackStat(0, bd(5e18), bd(2.5e18), bd(5e16), bd(0)),
+            new AttackStat(0, bd(1e20), bd(5e19), bd(1e17), bd(0)),
+            new AttackStat(0, bd(2e21), bd(1e21), bd(2e19), bd(0)),
+            new AttackStat(0, bd(5e22), bd(2.5e22), bd(5e20), bd(0)),
+        ],
         5,
-        bd(1500), [bd('4e11'), bd('5e11')], 0, 250000, 2
+        bd(1500), [bd('4e11'), bd('5e11')], 0, 300000, 2
     ),
     EXILE: new Titan(
         9, 'theExile', 'The Exile',
@@ -543,6 +581,12 @@ export const Titans : {[k: string]: Titan} = {
             new AttackStat(2, bd('4e23'), bd('4e23'), bd('2e22'), bd('2e25')),
             new AttackStat(1.9, bd('8e24'), bd('8e24'), bd('4e23'), bd('4e26')),
             new AttackStat(1.8, bd('1.5e26'), bd('1.5e26'), bd('1e24'), bd('1.5e28')),
+        ],
+        [
+            new AttackStat(0, bd(1e23), bd(5e22), bd(1e21), bd(0)),
+            new AttackStat(0, bd(2e24), bd(1e24), bd(2e22), bd(0)),
+            new AttackStat(0, bd(4e25), bd(2e25), bd(4e23), bd(0)),
+            new AttackStat(0, bd(7.5e26), bd(3.7e26), bd(7.5e24), bd(0)),
         ],
         5.5,
         bd(2500), [bd('4e12'), bd('5e12')], 0, 400000, 3
@@ -555,6 +599,12 @@ export const Titans : {[k: string]: Titan} = {
             new AttackStat(1.7, bd('5e29'), bd('1e30'), bd('1e29'), bd('2.5e31')),
             new AttackStat(1.5, bd('2.5e30'), bd('5e30'), bd('5e29'), bd('1.25e32')),
         ],
+        [
+            new AttackStat(0, bd(4e28), bd(2e28), bd(4e26), bd(0)),
+            new AttackStat(0, bd(3.2e29), bd(1.6e29), bd(1.6e27), bd(0)),
+            new AttackStat(0, bd(2e30), bd(1e30), bd(1e28), bd(0)),
+            new AttackStat(0, bd(1e31), bd(5e30), bd(5e28), bd(0)),
+        ],
         6.5,
         bd(4000), [bd('8e15'), bd('1e16')], 0, 500000, 4
     ),
@@ -565,6 +615,12 @@ export const Titans : {[k: string]: Titan} = {
             new AttackStat(1.9, bd('6e31'), bd('2e31'), bd('1.5e31'), bd('5e33')),
             new AttackStat(1.8, bd('8e31'), bd('2.5e32'), bd('6e31'), bd('2e34')),
             new AttackStat(1.7, bd('2.5e32'), bd('7.5e32'), bd('1.2e32'), bd('6e34')),
+        ],
+        [
+            new AttackStat(0, bd(1.8e31), bd(6e30), bd(1.2e29), bd(0)),
+            new AttackStat(0, bd(9e31), bd(3e31), bd(6e29), bd(0)),
+            new AttackStat(0, bd(3.6e32), bd(1.2e32), bd(2.5e30), bd(0)),
+            new AttackStat(0, bd(1.1e33), bd(3.6e32), bd(7.5e30), bd(0)),
         ],
         7,
         bd(6000), [bd('8e16'), bd('1e17')], 0, 700000, 5
@@ -577,18 +633,26 @@ export const Titans : {[k: string]: Titan} = {
             new AttackStat(1.8, bd('6e33'), bd('1.8e34'), bd('4.8e33'), bd('1.5e36')),
             new AttackStat(1.7, bd('1.2e34'), bd('3.6e34'), bd('9.6e33'), bd('3e36')),
         ],
+        [
+            new AttackStat(0, bd(3e33), bd(1e33), bd(2e31), bd(0)),
+            new AttackStat(0, bd(1.2e34), bd(4e33), bd(8e31), bd(0)),
+            new AttackStat(0, bd(3.6e34), bd(1.2e34), bd(2.4e32), bd(0)),
+            new AttackStat(0, bd(7.2e34), bd(2.4e34), bd(4.8e32), bd(0)),
+        ],
         7.45,
         bd(8000), [bd('6e17'), bd('7.5e17')], 0, 1000000, 6
     ),
     TIPPI: new Titan(
         13, 'tippiTheTutorialMouse', 'Tippi The Tutorial Mouse',
         new AttackStat(2, bd('2e34'), bd('4e34'), bd('1e32'), bd('2e36')),
+        new AttackStat(0, bd(0), bd(0), bd(0), bd(0)),
         0,
         bd(0), [bd(0), bd(0)], 0, 0, 0
     ),
     TRAITOR: new Titan(
         14, 'theTraitor', 'The Traitor',
         new AttackStat(1.8, bd('5e34'), bd('1e35'), bd('1e33'), bd('2e37')),
+        new AttackStat(0, bd(0), bd(0), bd(0), bd(0)),
         0,
         bd(0), [bd(0), bd(0)], 0, 0, 0
     ),
