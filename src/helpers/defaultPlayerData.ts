@@ -6,7 +6,7 @@ import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { BEARDS, Beard } from "@/assets/beards";
 import { DIGGERS, Digger } from "@/assets/diggers";
 import { CHALLENGES, Challenge } from "@/assets/challenges";
-import { boostRecyclying, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
+import { boostRecyclying, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
 import { APITEMS, APItem } from "@/assets/apItems";
 import { ItemSet, ItemSets } from "@/assets/sets";
 import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
@@ -393,6 +393,12 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'tierFruitOfPrettyMayo':
                 return playerData.yggdrasil.fruits[20].maxTier;
 
+            case 'fadLandsSetBonus^':
+                return playerData.inventory.itemList.fadComplete
+            case 'fasterQuesting^':
+                return playerData.arbitrary.hasFasterQuests
+            case 'fibQuestRNG^':
+                return (playerData.adventure.itopod.perkLevel[94] >= 610) ? 1 : 0;
             case 'firstHarvestPerk':
                 return playerData.adventure.itopod.perkLevel[51]
             case 'fruitOfKnowledgeSucks^':
@@ -405,6 +411,21 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.challenges.noRebirthChallenge.curCompletions
                     + playerData.challenges.noRebirthChallenge.curEvilCompletions
                     + playerData.challenges.noRebirthChallenge.curSadisticCompletions
+            case 'questIdleDivider':
+                return 8
+                        - playerData.adventure.itopod.perkLevel[91] // Advanced
+                        - playerData.adventure.itopod.perkLevel[92] // Even More Adv
+                        - (2 * playerData.adventure.itopod.perkLevel[105]) // Gooder
+                        - playerData.adventure.itopod.perkLevel[106] // Another Gooder
+            case 'questMinorQP' :
+                return 10
+                        + (2 * playerData.adventure.itopod.perkLevel[87]) // Not So Minor Anymore
+                        + playerData.adventure.itopod.perkLevel[148] // Improved Minor Quest QP Rewards
+                        + playerData.wishes.wishes[102].level // I wish Minor Quests had better Base QP Rewards
+            case 'questMajorQP' :
+                return 50
+                        + playerData.adventure.itopod.perkLevel[147] // Improved Major Quest QP Rewards
+                        + playerData.wishes.wishes[101].level // I wish Major Quests had better Base QP Rewards
             case 'redLiquidBonus^':
                 return playerData.inventory.itemList.redLiquidComplete
             case 'res3Active':
@@ -760,6 +781,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return totalToughness(playerData);
             case 'totalQuestRewardBonus%':
                 return totalQuestRewardBonus(playerData);
+            case 'totalQuestDropBonus%':
+                return totalQuestDropBonus(playerData)
             case 'totalRespawnTime':
                 return totalRespawnRate(playerData).divide(bd(25));
             case 'totalSeedGainBonus%':
@@ -960,12 +983,18 @@ export function getPlayerNumberOptions() : string[]{
         'tierFruitOfAyyMayo',
         'tierFruitOfCincoDeMayo',
         'tierFruitOfPrettyMayo',
+        'fadLandsSetBonus^',
+        'fasterQuesting^',
+        'fibQuestRNG^',
         'firstHarvestPerk',
         'fruitOfKnowledgeSucks^',
         'fruitOfKnowledgeSTILLSucks^',
         'gameMode',
         'redLiquidBonus^',
         'numRebirthChallenges',
+        'questIdleDivider',
+        'questMinorQP',
+        'questMajorQP',
         'res3Active',
         'spoopySetBonus^',
         'wishTitansHadBetterRewards',
@@ -1019,6 +1048,7 @@ export function getCalculatedOptions() : string[] {
         'totalRegen',
         'totalToughness',
         'totalQuestRewardBonus%',
+        'totalQuestDropBonus%',
         'totalRespawnTime',
         'totalSeedGainBonus%',
         'totalYggdrasilYieldBonus%',

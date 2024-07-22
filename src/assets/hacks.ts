@@ -5,7 +5,7 @@ import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { GameMode } from "./mode"
 
-const HACKKeys : {[key: string]: string} = {
+const HackKeys : {[key: string]: string} = {
     POWER: 'PowerHack',
     ADVENTURE : 'AdventureHack',
     TIME_MACHINE : 'TimeMachineHack',
@@ -240,21 +240,21 @@ export class Hack extends Resource {
 
 
 export const HACKLIST = [
-    new Hack(0, HACKKeys.POWER, 'Attack/Defense Hack', GameMode.EVIL, [[Stat.ATTACK, 2.5], [Stat.DEFENSE, 2.5]], 10, 1.025, bd('1e8'), 7720),
-    new Hack(1, HACKKeys.ADVENTURE, 'Adventure Stats Hack', GameMode.EVIL, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1], [Stat.HEALTH, 0.1], [Stat.REGEN, 0.1]], 50, 1.02, bd('2e8'), 7632),
-    new Hack(2, HACKKeys.TIME_MACHINE, 'Time Machine Speed Hack', GameMode.EVIL, [[Stat.TIME_MACHINE_SPEED, 0.2]], 50, 1.02, bd('4e8'), 7544),
-    new Hack(3, HACKKeys.DROP_CHANCE, 'Drop Chance Hack', GameMode.EVIL, [[Stat.DROP_CHANCE, 0.25]], 40, 1.03, bd('4e8'), 7544),
-    new Hack(4, HACKKeys.AUGMENT_SPEED, 'Augment Speed Hack', GameMode.EVIL, [[Stat.AUGMENT_SPEED, 0.2]], 20, 1.01, bd('8e8'), 7456),
-    new Hack(5, HACKKeys.ENERGY_NGU, 'Energy NGU Speed Hack', GameMode.EVIL, [[Stat.ENERGY_NGU_SPEED, 0.1]], 30, 1.015, bd('2e9'), 7340),
-    new Hack(6, HACKKeys.MAGIC_NGU, 'Magic NGU Speed Hack', GameMode.EVIL, [[Stat.MAGIC_NGU_SPEED, 0.1]], 30, 1.015, bd('2e9'), 7340),
-    new Hack(7, HACKKeys.BLOOD, 'Blood Gain Hack', GameMode.EVIL, [[Stat.BLOOD, 0.1]], 50, 1.04, bd('4e9'), 7252),
-    new Hack(8, HACKKeys.QUEST, 'QP Gain Hack', GameMode.EVIL, [[Stat.QUEST_REWARD, 0.05]], 50, 1.008, bd('8e9'), 7164),
-    new Hack(9, HACKKeys.DAYCARE, 'Daycare Hack', GameMode.EVIL, [[Stat.DAYCARE_SPEED, 0.02]], 45, 1.005, bd('2e10'), 7048),
-    new Hack(10, HACKKeys.EXP, 'EXP Hack', GameMode.EVIL, [[Stat.EXPERIENCE, 0.025]], 75, 1.01, bd('4e10'), 6960),
-    new Hack(11, HACKKeys.NUMBER, 'Number Hack', GameMode.EVIL, [[Stat.NUMBER, 5]], 40, 1.04, bd('8e10'), 6873),
-    new Hack(12, HACKKeys.PP, 'PP Hack', GameMode.EVIL, [[Stat.PP, 0.05]], 25, 1.005, bd('2e11'), 6757),
-    new Hack(13, HACKKeys.HACK, 'Hack Hack', GameMode.EVIL, [[Stat.HACK_SPEED, 0.05]], 100, 1.10, bd('2e11'), 6757),
-    new Hack(14, HACKKeys.WISH, 'Wish Hack', GameMode.EVIL, [[Stat.WISH_SPEED, 0.01]], 50, 1.005, bd('1e13'), 6262),
+    new Hack(0, HackKeys.POWER, 'Attack/Defense Hack', GameMode.EVIL, [[Stat.ATTACK, 2.5], [Stat.DEFENSE, 2.5]], 10, 1.025, bd('1e8'), 7720),
+    new Hack(1, HackKeys.ADVENTURE, 'Adventure Stats Hack', GameMode.EVIL, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1], [Stat.HEALTH, 0.1], [Stat.REGEN, 0.1]], 50, 1.02, bd('2e8'), 7632),
+    new Hack(2, HackKeys.TIME_MACHINE, 'Time Machine Speed Hack', GameMode.EVIL, [[Stat.TIME_MACHINE_SPEED, 0.2]], 50, 1.02, bd('4e8'), 7544),
+    new Hack(3, HackKeys.DROP_CHANCE, 'Drop Chance Hack', GameMode.EVIL, [[Stat.DROP_CHANCE, 0.25]], 40, 1.03, bd('4e8'), 7544),
+    new Hack(4, HackKeys.AUGMENT_SPEED, 'Augment Speed Hack', GameMode.EVIL, [[Stat.AUGMENT_SPEED, 0.2]], 20, 1.01, bd('8e8'), 7456),
+    new Hack(5, HackKeys.ENERGY_NGU, 'Energy NGU Speed Hack', GameMode.EVIL, [[Stat.ENERGY_NGU_SPEED, 0.1]], 30, 1.015, bd('2e9'), 7340),
+    new Hack(6, HackKeys.MAGIC_NGU, 'Magic NGU Speed Hack', GameMode.EVIL, [[Stat.MAGIC_NGU_SPEED, 0.1]], 30, 1.015, bd('2e9'), 7340),
+    new Hack(7, HackKeys.BLOOD, 'Blood Gain Hack', GameMode.EVIL, [[Stat.BLOOD, 0.1]], 50, 1.04, bd('4e9'), 7252),
+    new Hack(8, HackKeys.QUEST, 'QP Gain Hack', GameMode.EVIL, [[Stat.QUEST_REWARD, 0.05]], 50, 1.008, bd('8e9'), 7164),
+    new Hack(9, HackKeys.DAYCARE, 'Daycare Hack', GameMode.EVIL, [[Stat.DAYCARE_SPEED, 0.02]], 45, 1.005, bd('2e10'), 7048),
+    new Hack(10, HackKeys.EXP, 'EXP Hack', GameMode.EVIL, [[Stat.EXPERIENCE, 0.025]], 75, 1.01, bd('4e10'), 6960),
+    new Hack(11, HackKeys.NUMBER, 'Number Hack', GameMode.EVIL, [[Stat.NUMBER, 5]], 40, 1.04, bd('8e10'), 6873),
+    new Hack(12, HackKeys.PP, 'PP Hack', GameMode.EVIL, [[Stat.PP, 0.05]], 25, 1.005, bd('2e11'), 6757),
+    new Hack(13, HackKeys.HACK, 'Hack Hack', GameMode.EVIL, [[Stat.HACK_SPEED, 0.05]], 100, 1.10, bd('2e11'), 6757),
+    new Hack(14, HackKeys.WISH, 'Wish Hack', GameMode.EVIL, [[Stat.WISH_SPEED, 0.01]], 50, 1.005, bd('1e13'), 6262),
 ]
 
 export var HACKS = new ResourceContainer(HACKLIST);

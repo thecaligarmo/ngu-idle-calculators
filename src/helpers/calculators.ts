@@ -3,7 +3,7 @@ import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
 import bigDecimal from "js-big-decimal";
 import { parseObj, parseNum } from "./parsers";
-import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, perkLevel, quirkInfo, wishInfo } from "./resourceInfo";
+import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, perkLevel, quirkInfo, wishInfo } from "./resourceInfo";
 import { ItemSets } from "@/assets/sets";
 import { GameMode } from "@/assets/mode";
 import { Challenge } from "@/assets/challenges";
@@ -18,7 +18,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
     }
 
     if(false) {
-        if(Stat.AP == stat) {
+        if(Stat.QUEST_REWARD == stat) {
             console.log('----------------------------------------')
             console.log('ap', apItemInfo(data, stat).getValue())    
             console.log('beard', beardInfoTemp(data, stat).getValue())
@@ -323,7 +323,23 @@ export function totalYggdrasilYieldBonus(data : any) : bigDecimal {
 
 export function totalQuestRewardBonus(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.QUEST_REWARD)
+    var questSet =  bd(1.02 ** maxxedItemSetNum(data, ItemSets.QUESTS))
+    var mobsterSet = isMaxxedItemSet(data, ItemSets.MOBSTER) ? bd(1.15) : bd(1)
+    var orangeHeart = isMaxxedItemSet(data, ItemSets.ORANGE_HEART) ? bd(1.2) : bd(1)
+    
     return gen
+        .multiply(questSet)
+        .multiply(mobsterSet)
+        .multiply(orangeHeart)
+}
+
+
+export function totalQuestDropBonus(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.QUEST_DROP)
+    var sigilSet = isMaxxedItemSet(data, ItemSets.SIGIL) ? bd(1.1) : bd(1)
+    
+    return gen
+        .multiply(sigilSet)
 }
 
 export function totalMayoSpeed(data : any) :bigDecimal {

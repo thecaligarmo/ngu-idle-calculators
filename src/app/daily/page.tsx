@@ -5,7 +5,7 @@ import { AttackStat, Titan, Titans } from "@/assets/enemy";
 import { GameMode } from "@/assets/mode";
 import { Stat } from "@/assets/stat";
 import { Wish } from "@/assets/wish";
-import { FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
+import { FruitOfQuirks, FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
 import Zone, { Zones } from "@/assets/zones";
 import Content from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
@@ -25,12 +25,19 @@ export default function Page() {
 
     // Set data required (from playerData)
     var infoRequired = [
-        ['gameMode'], ['numRebirthChallenges', 'wishTitansHadBetterRewards'],
-        ['totalRespawnTime', 'totalPPBonus%', 'totalYggdrasilYieldBonus%', 'totalPower'], [ 'blueHeart^', 'redLiquidBonus^','spoopySetBonus^'],
+        ['gameMode'],
+        ['numRebirthChallenges', 'questMinorQP', 'questMajorQP', 'questIdleDivider', 'wishTitansHadBetterRewards'],
+        
+        ['totalRespawnTime', 'totalPPBonus%', 'totalQuestRewardBonus%', 'totalQuestDropBonus%', 'totalYggdrasilYieldBonus%', 'totalPower'],
+        [ 'blueHeart^', 'redLiquidBonus^','spoopySetBonus^', 'fadLandsSetBonus^', 'fibQuestRNG^', 'fasterQuesting^'],
     ]
 
     // Set extra required (not from playerData)
-    var extraRequired : (string | [string, number])[][] = [['itopodFloor', 'bluePill^', ['hoursPerDay', 24]]]
+    var extraRequired : (string | [string, number])[][] = [
+        [['hoursPerDay', 24], 'hoursOfflinePerDay'],
+        ['itopodFloor', 'bluePill^'],
+        ['beastButter^', 'includeMajorQuests^', 'idleMajorQuests^']
+    ]
     const playerStates = createStatesForData(extraRequired);
 
     // Get required data
@@ -91,16 +98,106 @@ export default function Page() {
 
 
     // Kills Per Day
-    var idleAttackCooldown = v('redLiquidBonus^').compareTo(bd(1)) == 0 ? bd(0.8) : bd(1)
-    var respawnTime = v('totalRespawnTime').round(2, bigDecimal.RoundingModes.CEILING)
+    var idleAttackCooldown = c('redLiquidBonus^') ? bd(0.8) : bd(1)
+    var respawnTime = v('totalRespawnTime').round(2, bigDecimal.RoundingModes.FLOOR)
     var killsPerDay = bd(60 * 60).multiply(hoursPerDay).divide( respawnTime.add(idleAttackCooldown))
 
+
+
+    /* Quest info */
+    // TODO - Allow for manualling (major?), also, minor # looks wrong for QP w/ idle Majors
+    var itemsPerQuest = bd(c('fibQuestRNG^') ? 50 : 54.5)
+    var secondsPerIdleQuestItemDrop = bd(60)
+        .multiply(idleAttackCooldown.add(respawnTime))
+        .multiply(bd(50))
+        .multiply(v('questIdleDivider'))
+        .divide(v('totalQuestDropBonus%').compareTo(bd(0)) > 0 ? v('totalQuestDropBonus%').divide(bd(100)) : bd(1)) // Quest Drop (Idle)
+        .divide(bd(3))
+        .round(0)
+        .divide(bd(50))
+    var secondsPerManualQuestItemDrop = bd(60)
+        .multiply(idleAttackCooldown.add(respawnTime))
+        .multiply(bd(50))
+        .divide(v('totalQuestDropBonus%').compareTo(bd(0)) > 0 ? v('totalQuestDropBonus%').divide(bd(100)) : bd(1)) // Quest Drop (Idle)
+        .divide(bd(3))
+        .round(0)
+        .divide(bd(50))
+
+    
+    
+    var secondsPerIdleQuest = secondsPerIdleQuestItemDrop
+        .multiply(
+            v('hoursOfflinePerDay').compareTo(bd(0)) > 0 
+            ?   (
+                    v('hoursOfflinePerDay').multiply(bd(60))
+                    .add(
+                        (hoursPerDay.subtract(v('hoursOfflinePerDay'))).multiply(itemsPerQuest)
+                    )
+                ).divide(hoursPerDay)
+            : itemsPerQuest
+        )
+
+
+    var majorsPerDay = bd(0)
+    var totalSecondsMajorQuest = bd(0)
+    if (c('includeMajorQuests^')) {
+        majorsPerDay = bd(60)
+            .multiply(hoursPerDay)
+            .divide(bd(470))
+            .divide(c('fasterQuesting^') ? bd(0.8) : bd(1))
+            .divide(c('fadLandsSetBonus^') ? bd(0.9) : bd(1))
+
+        if(c('idleMajorQuests^')) {
+            totalSecondsMajorQuest = secondsPerIdleQuest.multiply(majorsPerDay)
+        } else {
+            var secondsPerManualQuest = itemsPerQuest
+                .multiply(secondsPerManualQuestItemDrop)
+            totalSecondsMajorQuest = secondsPerManualQuest.multiply(majorsPerDay)
+        }
+        
+    }
+
+    try{
+        var minorsPerDay = (bd(60 * 60)
+                .multiply(hoursPerDay)
+                .subtract(totalSecondsMajorQuest)
+            )
+            .divide(secondsPerIdleQuest)
+
+    } catch(exception) {
+        var minorsPerDay = bd(1)
+    }
+
+    var QPPerMinor = v('questMinorQP')
+        .multiply(v('totalQuestRewardBonus%').divide(bd(100)))
+        .floor()
+
+    var beastButterMultiplier = c('beastButter^')
+        ? (c('blueHeart^') ? bd(2.2) : bd(2))
+        : bd(1)
+
+    var QPPerMajor = v('questMajorQP')
+        .multiply(v('totalQuestRewardBonus%').divide(bd(100)))
+        .multiply(beastButterMultiplier)
+        .multiply(c('idleMajorQuests^') ? bd(1) : bd(2))
+        .floor()
+
+    var QPFromMajors = QPPerMajor.multiply(majorsPerDay).floor()
+    var QPFromMinors = QPPerMinor.multiply(minorsPerDay).floor()
+
+
+
+
+
+
+
     /* Titan Info */
-    // average PPP per hour from Titans * hoursPerDay / 1000000
+    // TODO - Add Titan QP
     var rbChallenges : bigDecimal = v('numRebirthChallenges')
 
     // Need to look up current tier for Titan
     var hourlyTitanPP : bigDecimal = bd(0);
+    var hourlyTitanQP : bigDecimal = bd(0);
     // var titanKills = j('titanKills');
     var wishLevel : number = Number(v('wishTitansHadBetterRewards').getValue());
     var playerAttack = new AttackStat(1, v('totalPower'), v('totalToughness'), v('totalRegen'), v('totalHealth'))
@@ -153,31 +250,7 @@ export default function Page() {
         }
     })
     var totalTitanPP = hourlyTitanPP.multiply(hoursPerDay)
-
-    /* Ygg Info */
-    var nguYgg = nguInfo(playerStates, Stat.YGGDRASIL_YIELD)
-    var firstHarvest = Number(v('firstHarvestPerk').getValue())
-    var blueHeart = c('blueHeart^')
-    var fruitYieldData = {
-        firstHarvest: firstHarvest,
-        blueHeart: blueHeart,
-        yieldModifier: v('totalYggdrasilYieldBonus%'),
-        noNGUYieldModifier: v('totalYggdrasilYieldBonus%').divide(nguYgg).multiply(bd(100)),
-        ppBonus: v('totalPPBonus%'),
-    }
-
-    
-    var f : Yggdrasil = new FruitOfRage();
-    var fruits : Yggdrasil[] = Object.values(j('yggdrasil'));
-    for (var fruit of fruits) {
-        if(fruit.key == FRUITS.RAGE.key) {
-            f = fruit
-        }
-    }
-    // @ts-ignore
-    var fruitYield = f.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
-
-    var totalPPPerDay = totalTitanPP.add(fruitYield).add(killsPerDay.multiply(pppPerKill))
+    var totalTitanQP = hourlyTitanQP.multiply(hoursPerDay)
 
     var titanList = Object.values(Titans).map((titan) => {
         if (titan.id < 13) {
@@ -197,6 +270,47 @@ export default function Page() {
         }
     })
 
+
+
+
+    /* Ygg Info */
+    var nguYgg = nguInfo(playerStates, Stat.YGGDRASIL_YIELD)
+    var firstHarvest = Number(v('firstHarvestPerk').getValue())
+    var blueHeart = c('blueHeart^')
+    var fruitYieldData = {
+        firstHarvest: firstHarvest,
+        blueHeart: blueHeart,
+        yieldModifier: v('totalYggdrasilYieldBonus%'),
+        noNGUYieldModifier: v('totalYggdrasilYieldBonus%').divide(nguYgg).multiply(bd(100)),
+        ppBonus: v('totalPPBonus%'),
+        qpRewardBonus: v('totalQuestRewardBonus%'),
+    }
+
+    
+    var fruitOfRage : FruitOfRage = new FruitOfRage();
+    var fruitOfQuirks : FruitOfQuirks = new FruitOfQuirks();
+    var fruits : Yggdrasil[] = Object.values(j('yggdrasil'));
+    for (var fruit of fruits) {
+        if(fruit.key == FRUITS.RAGE.key) {
+            fruitOfRage = fruit
+        } else if(fruit.key == FRUITS.QUIRKS.key) {
+            fruitOfQuirks = fruit
+        }
+    }
+
+
+    // @ts-ignore
+    var fruitPPYield = fruitOfRage.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
+    var fruitQPYield = fruitOfQuirks.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
+
+    
+
+
+
+
+    var totalPPPerDay = totalTitanPP.add(fruitPPYield).add(killsPerDay.multiply(pppPerKill))
+    var totalQPPerDay = QPFromMajors.add(QPFromMinors).add(fruitQPYield)
+
     return (
         <Content title="Daily Gains" infoRequired={infoReq} extraRequired={extraReq}>
             <ContentSubsection title={"How many PP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
@@ -212,16 +326,38 @@ export default function Page() {
                     {titanList}
                 </select>
                 <br />
-                <strong className="text-green-500">Yggdrasil:</strong> <span className="text-red-500">{pn(fruitYield.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong><br />
+                <strong className="text-green-500">Yggdrasil:</strong> <span className="text-red-500">{pn(fruitPPYield.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong><br />
                 <strong className="text-green-500">Tower:</strong> <span className="text-red-500">{pn(killsPerDay.multiply(pppPerKill).divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong>
                 <ul className="ml-10">
                     <li key="pppPerKill">{pn(pppPerKill, fmt)} ppp / kill on floor {pn(bd(itopodFloor), fmt)}</li>
                     <li key="killsPerDay">{pn(killsPerDay, fmt)} kills /  {pn(hoursPerDay, fmt)} hours (assuming 1-hit per kill)</li>
                 </ul>
                 <p className="mt-2 border-white border-t-2 border-solid">
-                    <strong>Total:</strong> <span className="text-red-500">{pn(totalPPPerDay.divide(bd(1000000)), fmt, 2)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong>
+                    <strong>Total:</strong> <span className="text-red-500">{pn(totalPPPerDay.divide(bd(1000000)), fmt)}</span> <strong>PP per {pn(hoursPerDay, fmt)} hours</strong>
                 </p>
                 
+            </ContentSubsection>
+            <ContentSubsection title={"How many QP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
+                <strong className="text-green-500">Titans:</strong> <span className="text-red-500">{pn(totalTitanQP, fmt, 2)}</span> <strong>QP per {pn(hoursPerDay, fmt)} hours</strong>
+                - Max Titan:<select
+                    className="ml-2 text-black"
+                    onChange={(e) =>{
+                        setOptMaxTitan(e.target.value)
+                    }}
+                    value={optMaxTitan}
+                >
+                    <option key="current" value="current">Highest Titan by Autokill</option>
+                    {titanList}
+                </select> <i>(Not yet added)</i>
+                <br />
+                <strong className="text-green-500">Yggdrasil:</strong> <span className="text-red-500">{pn(fruitQPYield, fmt, 2)}</span> <strong>QP per {pn(hoursPerDay, fmt)} hours</strong><br />                
+                <strong className="text-green-500">Quests:</strong> <ul className="ml-10">
+                    <li key="major"><strong>Major:</strong> <span className="text-red-500">{pn(QPFromMajors, fmt, 2)}</span> QP ({pn(QPPerMajor, fmt)} QP per major)</li>
+                    <li key="minor"><strong>Minor:</strong> <span className="text-red-500">{pn(QPFromMinors, fmt, 2)}</span> QP ({pn(QPPerMinor, fmt)} QP per major)</li>
+                    </ul>
+                <p className="mt-2 border-white border-t-2 border-solid">
+                    <strong>Total:</strong> <span className="text-red-500">{pn(totalQPPerDay, fmt)}</span> <strong>QP per {pn(hoursPerDay, fmt)} hours</strong>
+                </p>
             </ContentSubsection>
         </Content>
     )
