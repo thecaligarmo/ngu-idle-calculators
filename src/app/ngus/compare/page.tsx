@@ -13,6 +13,7 @@ import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
 
 
+// TODO - Should eventually integrate the NGU->NGU perk stuff for comparison
 export default function Page() {
     var fmt = getNumberFormat();
 

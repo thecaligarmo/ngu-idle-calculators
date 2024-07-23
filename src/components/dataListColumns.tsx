@@ -94,13 +94,19 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
             </li>)
         
         }
+        var inputClass = "text-black font-normal rounded border border-black dark:border-white"
+        if(d.pre == '') {
+            inputClass += " w-32"
+        } else {
+            inputClass += " w-16"
+        }
 
         return (<li key={'in-'+d.key} id={'in-'+d.id} className={disabled}>
             <label className="inline-block text-black dark:text-white mt-2 mb-1 mr-2" htmlFor={d.id}>
                 {d.name}:
             </label>
-            <input
-                className="text-black font-normal rounded border border-black dark:border-white w-32"
+            {d.pre}<input
+                className={inputClass}
                 type="number"
                 name={d.id}
                 id={d.id}
@@ -128,7 +134,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
             }
         }
         return (<li key={d.key} className={disabled}>
-                {d.name}: {dVal}
+                {d.name}: {d.pre}{dVal}
         </li>)
     }
 }

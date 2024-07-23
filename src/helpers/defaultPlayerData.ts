@@ -26,6 +26,10 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
     const playerExists = (playerData && Object.keys(playerData).length > 0)
     if (playerExists) {
         switch(info) {
+            case 'activeQuestWishI':
+                return playerData.wishes.wishes[19].level
+            case 'activeQuestWishII':
+                return playerData.wishes.wishes[62].level
             case 'baseAdventurePower':
                 return playerData.adventure.attack
             case 'baseAdventureToughness':
@@ -64,6 +68,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return Math.ceil(Math.log2(playerData.bloodMagic.goldSpellBlood / 1000000) ** 2)
             case 'blueHeart^':
                 return playerData.inventory.itemList.blueHeartComplete
+            case 'bonusTitanEXPPerk':
+                return playerData.adventure.itopod.perkLevel[34]
             case 'boostRecyclyingPurchase':
                 return playerData.purchases.boost
 
@@ -432,6 +438,12 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.res3.res3On;
             case 'spoopySetBonus^':
                 return playerData.inventory.itemList.ghostComplete
+            case 'twentyFourHourChallenge':
+                return playerData.challenges.hour24Challenge.curCompletions
+            case 'twentyFourHourEvilChallenge':
+                return playerData.challenges.hour24Challenge.curEvilCompletions
+            case 'twentyFourHourSadisticChallenge':
+                return playerData.challenges.hour24Challenge.curSadisticCompletions
             case 'wishTitansHadBetterRewards':
                 return playerData.wishes.wishes[3].level
             case 'yggdrasilDropChance':
@@ -804,6 +816,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
 
 export function getPlayerNumberOptions() : string[]{
     return [
+        'activeQuestWishI',
+        'activeQuestWishII',
         'baseAdventurePower',
         'baseAdventureToughness',
         'baseAdventureHealth',
@@ -821,6 +835,7 @@ export function getPlayerNumberOptions() : string[]{
         'bloodMagicDropChance',
         'bloodMagicTimeMachine',
         'blueHeart^',
+        'bonusTitanEXPPerk',
         'boostRecyclyingPurchase',
         'cubePower',
         'cubeToughness',
@@ -997,6 +1012,9 @@ export function getPlayerNumberOptions() : string[]{
         'questMajorQP',
         'res3Active',
         'spoopySetBonus^',
+        'twentyFourHourChallenge',
+        'twentyFourHourEvilChallenge',
+        'twentyFourHourSadisticChallenge',
         'wishTitansHadBetterRewards',
         'yggdrasilDropChance',
     ]

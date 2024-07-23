@@ -55,11 +55,16 @@ export function getRequiredStates(data : any, states : any, nameMap : any = {} )
             var dataState = states[kName]
             var ty = 'number'
             var name = (kName in nameMap) ? nameMap[kName] : camelToTitle(kName)
+            var pre = ''
             if (kName.slice(-1) == '%') {
                 ty = 'percent'
             } else if (kName.slice(-1) == '^') {
                 ty = 'checkbox'
                 name = camelToTitle(kName.slice(0, -1))
+            } else if (kName.includes('?')) {
+                var sp = kName.split('?')
+                name = camelToTitle(sp[0])
+                pre = camelToTitle(sp[1])
             }
             var id = kName.replace('^', '').replace('%', '')
             colDr.push({
@@ -69,6 +74,7 @@ export function getRequiredStates(data : any, states : any, nameMap : any = {} )
                 name: name,
                 type: ty,
                 id: id,
+                pre: pre,
             })
         }
         ir.push(colDr)

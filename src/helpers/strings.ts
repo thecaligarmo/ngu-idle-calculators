@@ -6,6 +6,10 @@ export function camelToTitle(text: string) : string {
                 .replace(/ P P( |$)/g, ' PP ')
                 .replace(/ Q P( |$)/g, ' QP ')
                 .replace(/ A P( |$)/g, ' AP ')
+                .replace(/ E X P( |$)/g, ' EXP ')
+                .replace(/ I I( |$)/g, ' II ')
+                .replace(/ I I I( |$)/g, ' III ')
+                .replace(/ S T I L L( |$)/g, ' STILL ')
                 .replace('%', ' (%)')
     return result.charAt(0).toUpperCase() + result.slice(1);
 }

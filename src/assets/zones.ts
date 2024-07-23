@@ -177,6 +177,18 @@ export default class Zone {
         return bigdec_min(bd(this.exp[2]).divide(bd(100)), maxChance).multiply(this.bossChance())
     }
 
+    // ITOPOD Specific things
+    // TODO - Make it a subclass of Zone
+    cycleLength() : bigDecimal {
+        if (this.id === 0) { 
+            return bd(Math.max(20, 40 - Math.ceil((this.level + 1) / 50)))
+        }
+        return bd(1)
+    }
+    getOptimalFloor(power : bigDecimal, idleAttackModifier : bigDecimal) : number {
+        return Math.max(0, Math.floor(Math.log(Number(power.divide(bd(765)).multiply(idleAttackModifier).getValue())) / Math.log(1.05)))
+    }
+
 }
 
 // Need to add "Boss Chance" as this is not as simple as ratio

@@ -1,6 +1,7 @@
 import { bd, bigdec_max } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
+import { Wish } from "./wish"
 
 export class AttackStat {
     attackRate: number
@@ -112,13 +113,90 @@ export class Titan extends Enemy {
         this.qp = qp
         this.autokill = (autokill instanceof AttackStat) ? [autokill] : autokill
     }
+    getFullName(i : number = 0) : string{
+        if (this.versions != 4) {
+            return this.name
+        } 
+        return this.name + " v" + (i+1)
+        
+    }
+    getFullKey(i : number = 0) : string{
+        if (this.versions != 4) {
+            return this.key
+        }
+        return this.key + "v" + (i+1)
+        
+    }
     canAutoKill(player : AttackStat, version : number = 0, kills : number = 0) : boolean {
         // Walderp needs 3 kills
         // IT Hungers, Rock Lobster, Amalgamate - 5 kills allows you to AK
         return this.autokill[version].isWeaker(player)
     }
+    getAP(apBonus : bigDecimal) : bigDecimal {
+        return apBonus.multiply(bd(this.ap)).divide(bd(100))
+    }
+    getEXP(expBonus : bigDecimal, twentyFourHourChallenge : bigDecimal, twentyFourHourEvilChallenge : bigDecimal, twentyFourHourSadisticChallenge : bigDecimal) : bigDecimal {
+        return expBonus.multiply(this.exp).divide(bd(100))
+            .multiply(
+                bd(1)
+                .add(twentyFourHourChallenge.multiply(bd(0.1)))
+                .add(twentyFourHourEvilChallenge.multiply(bd(0.04)))
+                .add(twentyFourHourSadisticChallenge.multiply(bd(0.02)))
+            )
+    }
     getPP(ppBonus : bigDecimal) : bigDecimal {
         return ppBonus.multiply(bd(this.pp)).divide(bd(100))
+    }
+    getQP(wishes : Wish[], qpBonus : bigDecimal) : bigDecimal {
+        // Beast - 73
+        // Nerd - 74
+        // Godmother - 40
+        // Exile - 41
+        // Titan 10 - 100
+        // Titan 11 - 187
+        // Titan 12 - 204
+        var qpAmount = bd(0)
+        if(_.isUndefined(wishes[73])) {
+            return bd(0)
+        }
+        switch(this.id) {
+            case 6:
+                if(wishes[73].level >0) {
+                    qpAmount = bd(this.qp)
+                }
+                break;
+            case 7:
+                if(wishes[74].level >0) {
+                    qpAmount = bd(this.qp)
+                }
+                break;
+            case 8:
+                if(wishes[40].level >0) {
+                    qpAmount = bd(this.qp)
+                }
+                break;
+            case 9:
+                if(wishes[41].level >0) {
+                    qpAmount = bd(this.qp)
+                }
+                break;
+            case 10:
+                if(wishes[100].level >0) {
+                    qpAmount = bd(this.qp)
+                }
+                break;
+            case 11:
+                if(wishes[187].level >0) {
+                    qpAmount = bd(this.qp)
+                }
+                break;
+            case 12:
+                if(wishes[204].level >0) {
+                    qpAmount = bd(this.qp)
+                }
+                break;
+        }
+        return qpBonus.multiply(qpAmount).divide(bd(100))
     }
     getRespawnTime(rbChallenges : number | bigDecimal) : bigDecimal{
         if(typeof rbChallenges == 'number') {
