@@ -509,6 +509,7 @@ export default function Page() {
 
 
     var totalAPPerDay = apDailySave.add(apDailySpin).add(APFromTower).add(apMoneyPit).add(apRebirth).add(fruitAPYield).add(APFromMajors).add(APFromMinors).add(totalTitanAP)
+    var totalEXPPerDay = totalTitanEXP.add(fruitEXPYield).add(EXPFromTower)
     var totalPPPerDay = totalTitanPP.add(fruitPPYield).add(PPFromTower)
     var totalQPPerDay = QPFromMajors.add(QPFromMinors).add(fruitQPYield).add(totalTitanQP)
 
@@ -561,7 +562,7 @@ export default function Page() {
                 <strong className="text-green-500">Titans:</strong> <span className="text-red-500">{pn(totalTitanEXP, fmt)}</span> <strong>EXP per {pn(hoursPerDay, fmt)} hours</strong> - Up to {maxTitan[0].getFullName(maxTitan[1])}<br />
                 <strong className="text-green-500">Yggdrasil:</strong> <span className="text-red-500">{pn(fruitEXPYield, fmt)}</span> <strong>EXP per {pn(hoursPerDay, fmt)} hours</strong><br />
                 <p className="mt-2 border-white border-t-2 border-solid">
-                    <strong>Total:</strong> <span className="text-red-500">{pn(totalAPPerDay, fmt)}</span> <strong>EXP per {pn(hoursPerDay, fmt)} hours</strong>
+                    <strong>Total:</strong> <span className="text-red-500">{pn(totalEXPPerDay, fmt)}</span> <strong>EXP per {pn(hoursPerDay, fmt)} hours</strong>
                 </p>
             </ContentSubsection>
             <ContentSubsection title={"How many PP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
