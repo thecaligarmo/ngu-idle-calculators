@@ -120,7 +120,7 @@ export default function Page() {
             itopodZone.cycleLength()
         ).multiply(
             bd(itopodZone.exp[0])
-        ).multiply(v('totalExpBonus%'))
+        ).multiply(v('totalExpBonus%')).divide(bd(100))
 
 
 
