@@ -302,7 +302,7 @@ export default function Page() {
             hourlyTitanAP = hourlyTitanAP.add(titan.getAP(totalAPBonus).divide(titanRespawn).floor())
             hourlyTitanEXP = hourlyTitanEXP.add(titan.getEXP(v('totalExpBonus%'), v('twentyFourHourChallenge'), v('twentyFourHourEvilChallenge'), v('twentyFourHourSadisticChallenge')).multiply(titanMultiplier).divide(titanRespawn).floor())
             hourlyTitanPP = hourlyTitanPP.add(titan.getPP(v('totalPPBonus%')).multiply(titanMultiplier).divide(titanRespawn))
-            hourlyTitanQP = hourlyTitanQP.add(titan.getQP(j('wishes'), v('totalQuestRewardBonus%').multiply(titanMultiplier).divide(titanRespawn)))
+            hourlyTitanQP = hourlyTitanQP.add(titan.getQP(j('wishes'), v('totalQuestRewardBonus%').multiply(titanMultiplier).divide(titanRespawn)).floor())
         }
     })
     
