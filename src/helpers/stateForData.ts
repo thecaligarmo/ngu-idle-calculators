@@ -56,6 +56,7 @@ export function getRequiredStates(data : any, states : any, nameMap : any = {} )
             var ty = 'number'
             var name = (kName in nameMap) ? nameMap[kName] : camelToTitle(kName)
             var pre = ''
+            var inputLength = 0
             if (kName.slice(-1) == '%') {
                 ty = 'percent'
             } else if (kName.slice(-1) == '^') {
@@ -65,6 +66,10 @@ export function getRequiredStates(data : any, states : any, nameMap : any = {} )
                 var sp = kName.split('?')
                 name = camelToTitle(sp[0])
                 pre = camelToTitle(sp[1])
+            } else if(kName.includes('-')) {
+                var sp = kName.split('-')
+                name = camelToTitle(sp[0])
+                inputLength = Number(sp[1])
             }
             var id = kName.replace('^', '').replace('%', '')
             colDr.push({
@@ -75,6 +80,7 @@ export function getRequiredStates(data : any, states : any, nameMap : any = {} )
                 type: ty,
                 id: id,
                 pre: pre,
+                inputLength: inputLength,
             })
         }
         ir.push(colDr)

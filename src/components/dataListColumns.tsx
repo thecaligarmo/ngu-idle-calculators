@@ -94,11 +94,40 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
             </li>)
         
         }
+
         var inputClass = "text-black font-normal rounded border border-black dark:border-white"
         if(d.pre == '') {
             inputClass += " w-32"
         } else {
             inputClass += " w-16"
+        }
+        // Giving an input length overrides old one
+        if (d.inputLength > 0) {
+            inputClass = inputClass.replace(' w-32', '').replace(' w-16', '')
+            switch(d.inputLength) {
+                case 1:
+                    inputClass += ' w-8'
+                    break
+                case 2:
+                    inputClass += ' w-12'
+                    break
+                case 3:
+                    inputClass += ' w-14'
+                    break
+                case 4:
+                    inputClass += ' w-16'
+                    break
+                case 5:
+                case 6:
+                    inputClass += ' w-20'
+                    break
+                case 7:
+                case 8:
+                    inputClass += ' w-28'
+                    break
+            }
+            
+            // inputClass += " w-" + d.inputLength
         }
 
         return (<li key={'in-'+d.key} id={'in-'+d.id} className={disabled}>

@@ -356,47 +356,47 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.yggdrasil.fruits[19].usePoop;
             case 'poopFruitOfPrettyMayo^':
                 return playerData.yggdrasil.fruits[20].usePoop;
-            case 'tierFruitOfGold':
+            case 'tierFruitOfGold-2':
                 return playerData.yggdrasil.fruits[0].maxTier;
-            case 'tierFruitOfPowerA':
+            case 'tierFruitOfPowerA-2':
                 return playerData.yggdrasil.fruits[1].maxTier;
-            case 'tierFruitOfAdventure':
+            case 'tierFruitOfAdventure-2':
                 return playerData.yggdrasil.fruits[2].maxTier;
-            case 'tierFruitOfKnowledge':
+            case 'tierFruitOfKnowledge-2':
                 return playerData.yggdrasil.fruits[3].maxTier;
-            case 'tierFruitOfPomegranate':
+            case 'tierFruitOfPomegranate-2':
                 return playerData.yggdrasil.fruits[4].maxTier;
-            case 'tierFruitOfLuck':
+            case 'tierFruitOfLuck-2':
                 return playerData.yggdrasil.fruits[5].maxTier;
-            case 'tierFruitOfPowerB':
+            case 'tierFruitOfPowerB-2':
                 return playerData.yggdrasil.fruits[6].maxTier;
-            case 'tierFruitOfArbitrariness':
+            case 'tierFruitOfArbitrariness-2':
                 return playerData.yggdrasil.fruits[7].maxTier;
-            case 'tierFruitOfNumbers':
+            case 'tierFruitOfNumbers-2':
                 return playerData.yggdrasil.fruits[8].maxTier;
-            case 'tierFruitOfRage':
+            case 'tierFruitOfRage-2':
                 return playerData.yggdrasil.fruits[9].maxTier;
-            case 'tierFruitOfMacguffinA':
+            case 'tierFruitOfMacguffinA-2':
                 return playerData.yggdrasil.fruits[10].maxTier;
-            case 'tierFruitOfPowerD':
+            case 'tierFruitOfPowerD-2':
                 return playerData.yggdrasil.fruits[11].maxTier;
-            case 'tierFruitOfWatermelon':
+            case 'tierFruitOfWatermelon-2':
                 return playerData.yggdrasil.fruits[12].maxTier;
-            case 'tierFruitOfMacguffinB':
+            case 'tierFruitOfMacguffinB-2':
                 return playerData.yggdrasil.fruits[13].maxTier;
-            case 'tierFruitOfQuirks':
+            case 'tierFruitOfQuirks-2':
                 return playerData.yggdrasil.fruits[14].maxTier;
-            case 'tierFruitOfAngryMayo':
+            case 'tierFruitOfAngryMayo-2':
                 return playerData.yggdrasil.fruits[15].maxTier;
-            case 'tierFruitOfSadMayo':
+            case 'tierFruitOfSadMayo-2':
                 return playerData.yggdrasil.fruits[16].maxTier;
-            case 'tierFruitOfMoldyMayo':
+            case 'tierFruitOfMoldyMayo-2':
                 return playerData.yggdrasil.fruits[17].maxTier;
-            case 'tierFruitOfAyyMayo':
+            case 'tierFruitOfAyyMayo-2':
                 return playerData.yggdrasil.fruits[18].maxTier;
-            case 'tierFruitOfCincoDeMayo':
+            case 'tierFruitOfCincoDeMayo-2':
                 return playerData.yggdrasil.fruits[19].maxTier;
-            case 'tierFruitOfPrettyMayo':
+            case 'tierFruitOfPrettyMayo-2':
                 return playerData.yggdrasil.fruits[20].maxTier;
 
             case 'fadLandsSetBonus^':
@@ -977,27 +977,27 @@ export function getPlayerNumberOptions() : string[]{
         'poopFruitOfAyyMayo^',
         'poopFruitOfCincoDeMayo^',
         'poopFruitOfPrettyMayo^',
-        'tierFruitOfGold',
-        'tierFruitOfPowerA',
-        'tierFruitOfAdventure',
-        'tierFruitOfKnowledge',
-        'tierFruitOfPomegranate',
-        'tierFruitOfLuck',
-        'tierFruitOfPowerB',
-        'tierFruitOfArbitrariness',
-        'tierFruitOfNumbers',
-        'tierFruitOfRage',
-        'tierFruitOfMacguffinA',
-        'tierFruitOfPowerD',
-        'tierFruitOfWatermelon',
-        'tierFruitOfMacguffinB',
-        'tierFruitOfQuirks',
-        'tierFruitOfAngryMayo',
-        'tierFruitOfSadMayo',
-        'tierFruitOfMoldyMayo',
-        'tierFruitOfAyyMayo',
-        'tierFruitOfCincoDeMayo',
-        'tierFruitOfPrettyMayo',
+        'tierFruitOfGold-2',
+        'tierFruitOfPowerA-2',
+        'tierFruitOfAdventure-2',
+        'tierFruitOfKnowledge-2',
+        'tierFruitOfPomegranate-2',
+        'tierFruitOfLuck-2',
+        'tierFruitOfPowerB-2',
+        'tierFruitOfArbitrariness-2',
+        'tierFruitOfNumbers-2',
+        'tierFruitOfRage-2',
+        'tierFruitOfMacguffinA-2',
+        'tierFruitOfPowerD-2',
+        'tierFruitOfWatermelon-2',
+        'tierFruitOfMacguffinB-2',
+        'tierFruitOfQuirks-2',
+        'tierFruitOfAngryMayo-2',
+        'tierFruitOfSadMayo-2',
+        'tierFruitOfMoldyMayo-2',
+        'tierFruitOfAyyMayo-2',
+        'tierFruitOfCincoDeMayo-2',
+        'tierFruitOfPrettyMayo-2',
         'fadLandsSetBonus^',
         'fasterQuesting^',
         'fibQuestRNG^',

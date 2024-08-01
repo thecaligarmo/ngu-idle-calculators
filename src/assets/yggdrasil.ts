@@ -49,7 +49,7 @@ export class Yggdrasil {
     }
 
     tierKey() : string {
-        return 'tier' + this.key.charAt(0).toUpperCase() + this.key.slice(1)
+        return 'tier' + this.key.charAt(0).toUpperCase() + this.key.slice(1) + '-2'
     }
 
     eatKey() : string {
