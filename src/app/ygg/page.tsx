@@ -18,7 +18,9 @@ export default function Page() {
 
     // Set data required (from playerData)
     var infoRequired = [
-        ['totalSeedGainBonus%', 'totalYggdrasilYieldBonus%', 'totalAPBonus%', 'totalExpBonus%', 'totalPPBonus%', 'totalQuestRewardBonus%', 'totalMayoSpeed%'], ['blueHeart^', 'firstHarvestPerk', 'fruitOfKnowledgeSucks^', 'fruitOfKnowledgeSTILLSucks^'],
+        ['totalSeedGainBonus%', 'totalYggdrasilYieldBonus%', 'totalAPBonus%', 'totalExpBonus%', 'totalPPBonus%', 'totalQuestRewardBonus%', 'totalMayoSpeed%'],
+        ['blueHeart^', 'firstHarvestPerk', 'fruitOfKnowledgeSucks^', 'fruitOfKnowledgeSTILLSucks^'],
+        [],
         [
             'tierFruitOfGold',
             'tierFruitOfPowerA',
@@ -86,7 +88,7 @@ export default function Page() {
             'poopFruitOfAyyMayo^',
             'poopFruitOfCincoDeMayo^',
             'poopFruitOfPrettyMayo^',
-        ], []
+        ],
     ]
     // Set extra required (not from playerData)
     var extraRequired = [[]]
@@ -111,6 +113,7 @@ export default function Page() {
 
     var fruits : Yggdrasil[] = Object.values(j('yggdrasil'));
     fruits.forEach((fruit) => {
+        fruit.tier = Number(v(fruit.tierKey()).getValue())
         fruit.usePoop = c(fruit.poopKey())
         fruit.eatFruit = c(fruit.eatKey())
     })

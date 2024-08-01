@@ -48,6 +48,10 @@ export class Yggdrasil {
         return 'poop' + this.key.charAt(0).toUpperCase() + this.key.slice(1) + '^'
     }
 
+    tierKey() : string {
+        return 'tier' + this.key.charAt(0).toUpperCase() + this.key.slice(1)
+    }
+
     eatKey() : string {
         return 'eat' + this.key.charAt(0).toUpperCase() + this.key.slice(1) + '^'
     }
