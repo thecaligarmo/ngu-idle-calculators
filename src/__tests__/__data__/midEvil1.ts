@@ -1,4 +1,4 @@
-var midEvil = {
+var midEvil : any = {
     "playerName": "x",
     "firstTimePlaying": 0,
     "version": 1260,

@@ -742,6 +742,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 yggdrasil.forEach((fruit) => {
                     var f = playerData.yggdrasil.fruits[fruit.id]
                     f['totalPermStatBonus'] = playerData.yggdrasil.totalPermStatBonus
+                    f['totalPermStatBonus2'] = playerData.yggdrasil.totalPermStatBonus2
                     f['totalPermNumberBonus'] = playerData.yggdrasil.totalPermNumberBonus
                     fruit.importStats(f)
                 })

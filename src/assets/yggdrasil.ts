@@ -84,6 +84,7 @@ export class Yggdrasil {
     }
 }
 
+// TODO - Gold is given "per minute" but we should really multiply this by the "gross gold production" (from the Time Machine)
 export class FruitOfGold extends Yggdrasil {
     constructor() {
         super(0, 'fruitOfGold', 'Fruit of Gold')
@@ -359,23 +360,33 @@ export class FruitOfMacguffinA extends Yggdrasil {
 }
 
 export class FruitOfPowerD extends Yggdrasil {
+    level: number
     constructor() {
         super(11, 'fruitOfPowerD', 'Fruit of Power D')
-        this.baseSeedFactor = 3
+        this.baseSeedFactor = 7
+        this.level = 0
+    }
+    importStats(data : any) {
+        this.tier = data.maxTier
+        this.usePoop = data.usePoop
+        this.eatFruit = data.eatFruit
+        this.level = data.totalPermStatBonus2
+    }
+    levelToNum(level : number) : bigDecimal {
+        return bd(level ** 1.3 * 0.0001)
     }
     fruitYield({yieldModifier, firstHarvest = 0, blueHeart = false} : {yieldModifier: bigDecimal,  firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
         if(!this.eatFruit) {
             return bd(0)
         }
-        return bd(
-                Math.ceil(
+        var levelInc = Math.ceil(
                     Math.ceil(this.tier ** 1.5)
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
                     * Number(yieldModifier.divide(bd(100)).getValue()) 
                     * this.baseSeedFactor
                 )
-            )
+        return this.levelToNum(this.level + levelInc).subtract(this.levelToNum(this.level))
     }
     upgradeToTierCost(tier : number) : number {
         return tier ** 2 * 30000
@@ -385,7 +396,7 @@ export class FruitOfPowerD extends Yggdrasil {
 export class FruitOfWatermelon extends Yggdrasil {
     constructor() {
         super(12, 'fruitOfWatermelon', 'Fruit of Watermelon')
-        this.baseSeedFactor = 12
+        this.baseSeedFactor = 30
         this.alwaysHarvest = true
     }
     upgradeToTierCost(tier : number) : number {
@@ -396,7 +407,7 @@ export class FruitOfWatermelon extends Yggdrasil {
 export class FruitOfMacguffinB extends Yggdrasil {
     constructor() {
         super(13, 'fruitOfMacguffinB', 'Fruit of Macguffin B')
-        this.baseSeedFactor = 7.8
+        this.baseSeedFactor = 8
     }
     fruitYield({yieldModifier, nguYgg, firstHarvest = 0, blueHeart = false} : {yieldModifier: bigDecimal,  nguYgg : bigDecimal, firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
         if(!this.eatFruit) {
@@ -408,7 +419,7 @@ export class FruitOfMacguffinB extends Yggdrasil {
                     Math.ceil(this.tier ** 1.5)
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                    * Number(noNGUYieldModifier.divide(bd(100)).getValue())
+                    * Number(noNGUYieldModifier.getValue())
                     * 0.1
                 )
             )
@@ -421,6 +432,7 @@ export class FruitOfMacguffinB extends Yggdrasil {
 export class FruitOfQuirks extends Yggdrasil {
     constructor() {
         super(14, 'fruitOfQuirks', 'Fruit of Quirks')
+        this.baseSeedFactor = 7
     }
     fruitYield({yieldModifier, nguYgg, qpRewardBonus = bd(1), firstHarvest = 0, blueHeart = false} : {yieldModifier : bigDecimal, nguYgg: bigDecimal, qpRewardBonus ?: bigDecimal, firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
         if(!this.eatFruit) {
@@ -432,11 +444,21 @@ export class FruitOfQuirks extends Yggdrasil {
                     this.tier
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                    * Number(noNGUYieldModifier.divide(bd(100)).getValue())
+                    * Number(noNGUYieldModifier.getValue())
                     * Number(qpRewardBonus.divide(bd(100)).getValue()) 
                     * 3
                 )
             )
+    }
+
+    seedYield(seedModifier: bigDecimal, firstHarvest : number = 0, blueHeart : boolean = false) : bigDecimal {
+        return seedModifier.multiply(bd(
+                (this.eatFruit ? this.baseSeedFactor * this.tier: Math.ceil(this.tier ** 1.5) * 2 * this.baseSeedFactor)
+                * (1 + firstHarvest / 10.0)
+                * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
+                * (!this.eatFruit || this.alwaysHarvest ? 2 : 1)
+                )
+            ).divide(bd(100)).ceil()
     }
     upgradeToTierCost(tier : number) : number {
         return tier ** 2 * 25000
