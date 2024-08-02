@@ -1,34 +1,9 @@
 'use client'
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
-import { getNumberFormat } from '@/components/context';
-import { bd} from '@/helpers/numbers';
-import { createStatesForData } from '@/helpers/stateForData';
 import Link from 'next/link';
-import bigDecimal from "js-big-decimal";
 
 export default function Page() {
-    const playerStates = createStatesForData();
-    var fmt = getNumberFormat();
-    // Helper function - Needed in every isntance (makes code easier to read too)
-    function v(key : string) : bigDecimal{
-        var x = playerStates[key][0]
-        if (x instanceof bigDecimal) {
-            return x
-        }
-        return bd(x)
-    }
-    function j(key : string) : any{
-        var x = playerStates[key][0]
-        if (typeof x === 'string') {
-            return JSON.parse(x)
-        } else if (typeof x === 'number') {
-            return {}
-        }
-        return x
-    }
-
-    
     return (
         <Container title="About/Credits">
             <ContentSection title="Credits">
