@@ -1,7 +1,7 @@
-import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoTemp, beardInfoPerm, challengeInfo, diggerInfo, equipmentInfo, macguffinInfo, nguInfo, perkInfo, quirkInfo, isMaxxedItem, isMaxxedItemSet} from '../../src/helpers/resourceInfo'
-import {defaultPlayerData} from '../../src/helpers/defaultPlayerData'
-import {Stat} from '../../src/assets/stat';
-import { ItemSets } from '../../src/assets/sets';
+import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoTemp, beardInfoPerm, challengeInfo, diggerInfo, equipmentInfo, macguffinInfo, nguInfo, perkInfo, quirkInfo, isMaxxedItem, isMaxxedItemSet} from '@/helpers/resourceInfo'
+import {defaultPlayerData} from '@/helpers/defaultPlayerData'
+import {Stat} from '@/assets/stat';
+import { ItemSets } from '@/assets/sets';
 import { expectClose } from '../testHelperFunctions';
 
 import earlyNormal from '../__data__/earlyNormal1';

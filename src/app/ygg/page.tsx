@@ -1,7 +1,7 @@
 'use client'
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
-import { FRUITS, Yggdrasil } from '@/assets/yggdrasil';
+import { FRUITS, fruitYieldType, Yggdrasil } from '@/assets/yggdrasil';
 import { bd, pn } from '@/helpers/numbers';
 import { getNumberFormat, getPlayerData } from '@/components/context';
 import { totalSeedGainBonus, totalYggdrasilYieldBonus } from '@/helpers/calculators';
@@ -12,6 +12,25 @@ import { parseNum, parseObj } from '@/helpers/parsers';
 import bigDecimal from 'js-big-decimal';
 import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
+import { ReactElement } from 'react';
+
+
+export function fruitInfoRows(fruits : Yggdrasil[], fruitYieldData : fruitYieldType, fmt : string = 'scientific') : ReactElement[]{
+
+    return  fruits.map((fruit) => {
+        return (
+            <tr key={fruit.key}>
+                <td>{fruit.name}</td>
+                <td>{fruit.tier}</td>
+                <td>{fruit.usePoop ? 'Yes' : 'No'}</td>
+                <td>{fruit.eatFruit ? 'Eat' : 'Harvest'}</td>
+                <td>{pn(fruit.seedYield(fruitYieldData.totalSeedGainBonus, fruitYieldData.firstHarvest, fruitYieldData.blueHeart), fmt)}</td>
+                <td>{pn(fruit.fruitYield(fruitYieldData), fmt)}</td>
+            </tr>
+        )
+    })
+
+}
 
 export default function Page() {
     var fmt = getNumberFormat();
@@ -126,8 +145,9 @@ export default function Page() {
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
+        nguYgg: nguYgg,
+        totalSeedGainBonus: v('totalSeedGainBonus%'), 
         yieldModifier: v('totalYggdrasilYieldBonus%'),
-        noNGUYieldModifier: v('totalYggdrasilYieldBonus%').divide(nguYgg).multiply(bd(100)),
         baseToughness: parseNum(playerStates, 'baseAdventureToughness'), // Adv
         expBonus: v('totalExpBonus%'), // EXP
         fokSucksPerk: c('fruitOfKnowledgeSucks^'), // EXP
@@ -138,18 +158,8 @@ export default function Page() {
         mayoSpeed: v('totalMayoSpeed%'), // Mayo
     }
     
-    var fruitInfo = fruits.map((fruit) => {
-        return (
-            <tr key={fruit.key}>
-                <td>{fruit.name}</td>
-                <td>{fruit.tier}</td>
-                <td>{fruit.usePoop ? 'Yes' : 'No'}</td>
-                <td>{fruit.eatFruit ? 'Eat' : 'Harvest'}</td>
-                <td>{pn(fruit.seedYield(v('totalSeedGainBonus%'), firstHarvest, blueHeart), fmt)}</td>
-                <td>{pn(fruit.fruitYield(fruitYieldData), fmt)}</td>
-            </tr>
-        )
-    })
+    var fruitInfo = fruitInfoRows(fruits, fruitYieldData, fmt)
+
     return (
         <Content title="Yggdrasil" infoRequired={infoReq} extraRequired={extraReq}>
             <ContentSubsection title="What will you get if you harvest/eat fruits?">

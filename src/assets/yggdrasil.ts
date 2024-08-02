@@ -1,6 +1,23 @@
 import { bd } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 
+
+export type fruitYieldType = {
+    apBonus: bigDecimal, // AP
+    baseToughness: bigDecimal, // Adv
+    blueHeart: boolean,
+    expBonus: bigDecimal, // EXP
+    firstHarvest: number,
+    fokSucksPerk: boolean, // EXP
+    fokStillSucksPerk: boolean, // EXP
+    mayoSpeed: bigDecimal, // Mayo
+    nguYgg: bigDecimal, 
+    ppBonus: bigDecimal, // PP
+    qpRewardBonus: bigDecimal, // Quest
+    totalSeedGainBonus: bigDecimal, 
+    yieldModifier: bigDecimal,
+}
+
 export class Yggdrasil {
     id: number
     key: string
@@ -295,16 +312,17 @@ export class FruitOfRage extends Yggdrasil {
         super(9, 'fruitOfRage', 'Fruit of Rage')
         this.baseSeedFactor = 5
     }
-    fruitYield({noNGUYieldModifier, ppBonus = bd(1), firstHarvest = 0, blueHeart = false} : {noNGUYieldModifier: bigDecimal, ppBonus ?: bigDecimal,  firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
+    fruitYield({yieldModifier, nguYgg, ppBonus = bd(1), firstHarvest = 0, blueHeart = false} : {yieldModifier:bigDecimal, nguYgg: bigDecimal, ppBonus ?: bigDecimal,  firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
         if(!this.eatFruit) {
             return bd(0)
         }
+        var noNGUYieldModifier = yieldModifier.divide(nguYgg)
         return bd(
                 Math.ceil(
                     Math.ceil(this.tier ** 1.5)
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                    * Number(noNGUYieldModifier.divide(bd(100)).getValue())
+                    * Number(noNGUYieldModifier.getValue())
                     * 60000
                     * Number(ppBonus.divide(bd(100)).getValue())
                 )
@@ -320,16 +338,17 @@ export class FruitOfMacguffinA extends Yggdrasil {
         super(10, 'fruitOfMacguffinA', 'Fruit of Macguffin A')
         this.baseSeedFactor = 6
     }
-    fruitYield({noNGUYieldModifier, firstHarvest = 0, blueHeart = false} : {noNGUYieldModifier: bigDecimal,  firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
+    fruitYield({yieldModifier, nguYgg, firstHarvest = 0, blueHeart = false} : {yieldModifier: bigDecimal,  nguYgg : bigDecimal, firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
         if(!this.eatFruit) {
             return bd(0)
         }
+        var noNGUYieldModifier = yieldModifier.divide(nguYgg)
         return bd(
                 Math.ceil(
                     Math.ceil(this.tier ** 1.5)
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                    * Number(noNGUYieldModifier.divide(bd(100)).getValue())
+                    * Number(noNGUYieldModifier.getValue())
                     * 0.5
                 )
             )
@@ -379,10 +398,11 @@ export class FruitOfMacguffinB extends Yggdrasil {
         super(13, 'fruitOfMacguffinB', 'Fruit of Macguffin B')
         this.baseSeedFactor = 7.8
     }
-    fruitYield({noNGUYieldModifier, firstHarvest = 0, blueHeart = false} : {noNGUYieldModifier: bigDecimal,  firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
+    fruitYield({yieldModifier, nguYgg, firstHarvest = 0, blueHeart = false} : {yieldModifier: bigDecimal,  nguYgg : bigDecimal, firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
         if(!this.eatFruit) {
             return bd(0)
         }
+        var noNGUYieldModifier = yieldModifier.divide(nguYgg)
         return bd(
                 Math.ceil(
                     Math.ceil(this.tier ** 1.5)
@@ -402,10 +422,11 @@ export class FruitOfQuirks extends Yggdrasil {
     constructor() {
         super(14, 'fruitOfQuirks', 'Fruit of Quirks')
     }
-    fruitYield({noNGUYieldModifier, qpRewardBonus = bd(1), firstHarvest = 0, blueHeart = false} : {noNGUYieldModifier: bigDecimal, qpRewardBonus ?: bigDecimal, firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
+    fruitYield({yieldModifier, nguYgg, qpRewardBonus = bd(1), firstHarvest = 0, blueHeart = false} : {yieldModifier : bigDecimal, nguYgg: bigDecimal, qpRewardBonus ?: bigDecimal, firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
         if(!this.eatFruit) {
             return bd(0)
         }
+        var noNGUYieldModifier = yieldModifier.divide(nguYgg)
         return bd(
                 Math.ceil(
                     this.tier

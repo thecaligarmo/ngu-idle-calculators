@@ -1,13 +1,15 @@
-import { toDataObj } from '../../testHelperFunctions'
-import { bd } from '../../../src/helpers/numbers';
-import {defaultPlayerData} from '../../../src/helpers/defaultPlayerData'
-import {nguInfo} from '../../../src/helpers/resourceInfo'
-import {Stat} from '../../../src/assets/stat';
+import { toDataObj } from '@/__tests__/testHelperFunctions'
+import { bd } from '@/helpers/numbers';
+import {defaultPlayerData} from '@/helpers/defaultPlayerData'
+import {nguInfo} from '@/helpers/resourceInfo'
+import {Stat} from '@/assets/stat';
+import  { fruitInfoRows } from '@/app/ygg/page';
 
-import earlyNormalTwo from '../../__data__/earlyNormal2';
-import midNormal from '../../__data__/midNormal1';
-import midNormalTwo from '../../__data__/midNormal2';
-import lateNormal from '../../__data__/lateNormal';
+import earlyNormalTwo from '@/__tests__/__data__/earlyNormal2';
+import midNormal from '@/__tests__/__data__/midNormal1';
+import midNormalTwo from '@/__tests__/__data__/midNormal2';
+import lateNormal from '@/__tests__/__data__/lateNormal';
+import renderer from 'react-test-renderer';
 
 
 test('Yggdrasil for Early Normal 2', () => {
@@ -17,10 +19,18 @@ test('Yggdrasil for Early Normal 2', () => {
     var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
     var firstHarvest = playerData['firstHarvestPerk'][0]
 
+    var data = {
+        'energyNGUs' : [defaultPlayerData(lateNormal, 'energyNGUs')],
+        'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
+        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
+    }
+
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
+        totalSeedGainBonus: seedModifier,
         yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
+        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
         baseToughness: bd(playerData['baseAdventureToughness'][0]),
         expBonus: bd(playerData['totalExpBonus%'][0]),
         fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
@@ -50,6 +60,10 @@ test('Yggdrasil for Early Normal 2', () => {
     expect(Number(ygg[4].seedYield(seedModifier, firstHarvest, blueHeart).getValue())).toBe(11)
     expect(ygg[4].upgradeCost()).toBe(240)
     expect(Number(ygg[4].fruitYield(fruitYieldData).getValue())).toBe(0)
+
+    var fruitInfo = fruitInfoRows(ygg, fruitYieldData)
+    const fruitInfoSnap = renderer.create(<table><tbody>{fruitInfo}</tbody></table>).toJSON();
+    expect(fruitInfoSnap).toMatchSnapshot();
 });
 
 
@@ -71,10 +85,18 @@ test('Yggdrasil for Mid Normal 1', () => {
     var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
     var firstHarvest = playerData['firstHarvestPerk'][0]
 
+    var data = {
+        'energyNGUs' : [defaultPlayerData(lateNormal, 'energyNGUs')],
+        'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
+        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
+    }
+
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
+        totalSeedGainBonus: seedModifier,
         yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
+        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
         baseToughness: bd(playerData['baseAdventureToughness'][0]),
         expBonus: bd(playerData['totalExpBonus%'][0]),
         fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
@@ -84,7 +106,6 @@ test('Yggdrasil for Mid Normal 1', () => {
         qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
         mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
     }
-
     // Gold
     expect(Number(ygg[0].seedYield(seedModifier, firstHarvest, blueHeart).getValue())).toBe(73)
     expect(ygg[0].upgradeCost()).toBe(121)
@@ -114,6 +135,11 @@ test('Yggdrasil for Mid Normal 1', () => {
     expect(Number(ygg[5].seedYield(seedModifier, firstHarvest, blueHeart).getValue())).toBe(7)
     expect(ygg[5].upgradeCost()).toBe(1600)
     expect(Number(ygg[5].fruitYield(fruitYieldData).getValue())).toBe(0.25)
+
+    
+    var fruitInfo = fruitInfoRows(ygg, fruitYieldData)
+    const fruitInfoSnap = renderer.create(<table><tbody>{fruitInfo}</tbody></table>).toJSON();
+    expect(fruitInfoSnap).toMatchSnapshot();
 })
 
 
@@ -137,10 +163,18 @@ test('Yggdrasil for Mid Normal 2', () => {
     var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
     var firstHarvest = playerData['firstHarvestPerk'][0]
 
+    var data = {
+        'energyNGUs' : [defaultPlayerData(lateNormal, 'energyNGUs')],
+        'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
+        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
+    }
+
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
+        totalSeedGainBonus: seedModifier,
         yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
+        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
         baseToughness: bd(playerData['baseAdventureToughness'][0]),
         expBonus: bd(playerData['totalExpBonus%'][0]),
         fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
@@ -191,6 +225,10 @@ test('Yggdrasil for Mid Normal 2', () => {
     expect(Number(ygg[7].seedYield(seedModifier, firstHarvest, blueHeart).getValue())).toBe(144)
     expect(ygg[7].upgradeCost()).toBe(1530)
     expect(Number(ygg[7].fruitYield(fruitYieldData).getValue())).toBe(91)
+
+    var fruitInfo = fruitInfoRows(ygg, fruitYieldData)
+    const fruitInfoSnap = renderer.create(<table><tbody>{fruitInfo}</tbody></table>).toJSON();
+    expect(fruitInfoSnap).toMatchSnapshot();
 })
 
 
@@ -210,13 +248,13 @@ test('Yggdrasil for Late Normal', () => {
         'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
         'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
     }
-    var nguYgg = nguInfo(data, Stat.YGGDRASIL_YIELD)
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
+        totalSeedGainBonus: seedModifier,
         yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        noNGUYieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]).divide(nguYgg).multiply(bd(100)),
+        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
         baseToughness: bd(playerData['baseAdventureToughness'][0]),
         expBonus: bd(playerData['totalExpBonus%'][0]),
         fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
@@ -278,4 +316,9 @@ test('Yggdrasil for Late Normal', () => {
     expect(Number(ygg[9].seedYield(seedModifier, firstHarvest, blueHeart).getValue())).toBe(42399)
     expect(ygg[9].upgradeCost()).toBe(288000)
     expect(Number(ygg[9].fruitYield(fruitYieldData).getValue())).toBe(19152704)
+
+
+    var fruitInfo = fruitInfoRows(ygg, fruitYieldData)
+    const fruitInfoSnap = renderer.create(<table><tbody>{fruitInfo}</tbody></table>).toJSON();
+    expect(fruitInfoSnap).toMatchSnapshot();
 })
