@@ -5,12 +5,12 @@ import {nguInfo} from '@/helpers/resourceInfo'
 import {Stat} from '@/assets/stat';
 import  { fruitInfoRows } from '@/app/ygg/page';
 import {expectClose} from '@/__tests__/testHelperFunctions';
+import renderer from 'react-test-renderer';
 
 import earlyNormalTwo from '@/__tests__/__data__/earlyNormal2';
 import midNormal from '@/__tests__/__data__/midNormal1';
 import midNormalTwo from '@/__tests__/__data__/midNormal2';
 import lateNormal from '@/__tests__/__data__/lateNormal';
-import renderer from 'react-test-renderer';
 import earlyEvil from '../../__data__/earlyEvil1';
 import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
 import midEvil from '@/__tests__/__data__/midEvil1';
