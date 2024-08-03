@@ -30,7 +30,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/helpers/inputUpdater.js", "src/components/ImportSaveForm/deserializeDotNet.js", "src/components/ImportSaveForm/importSaveForm.js", "src/__tests__/testHelperFunctions.ts", "src/__tests__/app/ygg/page.test.js"  ],
+, "src/helpers/inputUpdater.js", "src/components/ImportSaveForm/deserializeDotNet.js", "src/components/ImportSaveForm/importSaveForm.js", "src/__tests__/testHelperFunctions.ts", "src/__tests__/helpers/pages/ygg.test.js"  ],
   "exclude": [
     "node_modules"
   ]

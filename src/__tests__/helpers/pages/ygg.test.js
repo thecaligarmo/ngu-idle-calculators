@@ -3,7 +3,7 @@ import { bd } from '@/helpers/numbers';
 import {defaultPlayerData} from '@/helpers/defaultPlayerData'
 import {nguInfo} from '@/helpers/resourceInfo'
 import {Stat} from '@/assets/stat';
-import  { fruitInfoRows } from '@/app/ygg/page';
+import  { fruitInfoRows } from '@/helpers/pages/ygg';
 import {expectClose} from '@/__tests__/testHelperFunctions';
 import renderer from 'react-test-renderer';
 

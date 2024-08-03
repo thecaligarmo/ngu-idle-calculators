@@ -1,10 +1,7 @@
 'use client'
-import Container from '@/components/container';
-import ContentSection from '@/components/contentSection';
-import { FRUITS, fruitYieldType, Yggdrasil } from '@/assets/yggdrasil';
-import { bd, pn } from '@/helpers/numbers';
-import { getNumberFormat, getPlayerData } from '@/components/context';
-import { totalSeedGainBonus, totalYggdrasilYieldBonus } from '@/helpers/calculators';
+import {Yggdrasil } from '@/assets/yggdrasil';
+import { bd } from '@/helpers/numbers';
+import { getNumberFormat } from '@/components/context';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import { nguInfo } from '@/helpers/resourceInfo';
 import { Stat } from '@/assets/stat';
@@ -12,25 +9,8 @@ import { parseNum, parseObj } from '@/helpers/parsers';
 import bigDecimal from 'js-big-decimal';
 import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
-import { ReactElement } from 'react';
+import { fruitInfoRows } from '@/helpers/pages/ygg';
 
-
-export function fruitInfoRows(fruits : Yggdrasil[], fruitYieldData : fruitYieldType, fmt : string = 'scientific') : ReactElement[]{
-
-    return  fruits.map((fruit) => {
-        return (
-            <tr key={fruit.key}>
-                <td>{fruit.name}</td>
-                <td>{fruit.tier}</td>
-                <td>{fruit.usePoop ? 'Yes' : 'No'}</td>
-                <td>{fruit.eatFruit ? 'Eat' : 'Harvest'}</td>
-                <td>{pn(fruit.seedYield(fruitYieldData.totalSeedGainBonus, fruitYieldData.firstHarvest, fruitYieldData.blueHeart), fmt)}</td>
-                <td>{pn(fruit.fruitYield(fruitYieldData), fmt)}</td>
-            </tr>
-        )
-    })
-
-}
 
 export default function Page() {
     var fmt = getNumberFormat();

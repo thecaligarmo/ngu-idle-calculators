@@ -1,5 +1,5 @@
 import { bd } from '@/helpers/numbers';
-import  { getRatioInfo } from '@/app/ratios/page';
+import { getRatioInfo } from '@/helpers/pages/ratios';
 
 var cases = [
     [false, 'Energy Cap', {
