@@ -186,7 +186,12 @@ export default class Zone {
         return bd(1)
     }
     getOptimalFloor(power : bigDecimal, idleAttackModifier : bigDecimal) : number {
-        return Math.max(0, Math.floor(Math.log(Number(power.divide(bd(765)).multiply(idleAttackModifier).getValue())) / Math.log(1.05)))
+        return Math.max(
+            0,
+            Math.floor(
+                Math.log(Number(power.multiply(idleAttackModifier).divide(bd(765)).getValue())) / Math.log(1.05)
+            )
+        )
     }
 
 }

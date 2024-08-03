@@ -436,6 +436,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.inventory.itemList.redLiquidComplete
             case 'res3Active':
                 return playerData.res3.res3On;
+            case 'sadisticNoEquipmentChallenges':
+                return playerData.challenges.noEquipmentChallenge.curSadisticCompletions
             case 'spoopySetBonus^':
                 return playerData.inventory.itemList.ghostComplete
             case 'twentyFourHourChallenge':
@@ -1012,6 +1014,7 @@ export function getPlayerNumberOptions() : string[]{
         'questMinorQP',
         'questMajorQP',
         'res3Active',
+        'sadisticNoEquipmentChallenges',
         'spoopySetBonus^',
         'twentyFourHourChallenge',
         'twentyFourHourEvilChallenge',

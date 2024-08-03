@@ -26,8 +26,7 @@ export default function Nav({ children } : PropsWithChildren) {
             <NavElt href="/">Home</NavElt>
             <NavElt href="/ratios">Ratios</NavElt>
             <NavElt href="/ngus" hasChildren={true}>NGUs</NavElt>
-            <NavElt href="/boosts">Boosts</NavElt>
-            <NavElt href="/exp">Exp</NavElt>
+            <NavElt href="/zone">Optimal Zone</NavElt>
             <NavElt href="/daily">Daily</NavElt>
             <NavElt href="/stats">Stats</NavElt>
             <NavElt href="/ygg">Ygg</NavElt>
