@@ -19,7 +19,7 @@ export default function Page() {
     
     // Set data required (from playerData)
     var infoRequired = [
-        ['totalPower', 'totalDropChance%', 'totalRespawnTime', 'boostRecyclying%', 'sadisticNoEquipmentChallenges'],
+        ['totalPower', 'totalDropChance%', 'totalRespawnTime', 'boostRecyclying%', 'sadisticNoEquipmentChallenges-2'],
         ['redLiquidBonus^', 'spoopySetBonus^']]
     // Set extra required (not from playerData)
     var extraRequired = [[]]
@@ -46,7 +46,7 @@ export default function Page() {
     var data = {
         boostRecyclying: v('boostRecyclying%'),
         redLiquidBonus : c('redLiquidBonus^'),
-        sadisticNoEquipmentChallenges: v('sadisticNoEquipmentChallenges'),
+        sadisticNoEquipmentChallenges: v('sadisticNoEquipmentChallenges-2'),
         spoopySetBonus: c('spoopySetBonus^'),
         totalDropChance: v('totalDropChance%'),
         totalPower: v('totalPower'),

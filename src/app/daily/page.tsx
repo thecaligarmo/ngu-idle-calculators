@@ -55,21 +55,21 @@ export default function Page() {
 
     // Set data required (from playerData)
     var infoRequired = [
-        ['gameMode', 'numRebirthChallenges', 'twentyFourHourChallenge', 'twentyFourHourEvilChallenge', 'twentyFourHourSadisticChallenge', 'sadisticNoEquipmentChallenges'],
-        ['questMinorQP', 'questMajorQP', 'questIdleDivider', 'activeQuestWishI', 'activeQuestWishII'],
+        ['gameMode', 'numRebirthChallenges-2', 'twentyFourHourChallenge-2', 'twentyFourHourEvilChallenge-2', 'twentyFourHourSadisticChallenge-2', 'sadisticNoEquipmentChallenges-2'],
+        ['questMinorQP-2', 'questMajorQP-2', 'questIdleDivider-1', 'activeQuestWishI-2', 'activeQuestWishII-2'],
         
         ['totalRespawnTime', 'totalAPBonus%', 'totalExpBonus%', 'totalPPBonus%', 'totalQuestRewardBonus%', 'totalQuestDropBonus%', 'totalYggdrasilYieldBonus%', 'totalPower'],
         [ 'blueHeart^', 'redLiquidBonus^','spoopySetBonus^', 'fadLandsSetBonus^', 'fibQuestRNG^', 'fasterQuesting^', 'fruitOfKnowledgeSucks^','fruitOfKnowledgeSTILLSucks^',],
 
-        [ 'bonusTitanEXPPerk', 'wishTitansHadBetterRewards', ],
+        [ 'bonusTitanEXPPerk-2', 'wishTitansHadBetterRewards-2', ],
         []
     ]
 
     // Set extra required (not from playerData)
     var extraRequired : (string | [string, number])[][] = [
-        [['hoursPerDay', 24], 'hoursOfflinePerDay', 'itopodFloor',],
+        [['hoursPerDay-2', 24], 'hoursOfflinePerDay-2', 'itopodFloor-5',],
         [ 'bluePill^','beastButter^', 'includeMajorQuests^', 'idleMajorQuests^'],
-        ['dailySpinTier', 'includeDailySpinJackpots^', 'includeValueOfConsumables^',  'moneyPitGoldToss?1e', 'moneyPitTossesPerDay',],
+        ['dailySpinTier-1', 'includeDailySpinJackpots^', 'includeValueOfConsumables^',  'moneyPitGoldToss?1e', 'moneyPitTossesPerDay-2',],
         
     ]
     const playerStates = createStatesForData(extraRequired);
@@ -93,7 +93,7 @@ export default function Page() {
     
 
     // Variables we use a lot
-    var hoursPerDay = v('hoursPerDay')//.compareTo(bd(0)) == 0 ? bd(24) : v('hoursPerDay')
+    var hoursPerDay = v('hoursPerDay-2')//.compareTo(bd(0)) == 0 ? bd(24) : v('hoursPerDay-2')
     var totalAPBonus = v('totalAPBonus%')
     var totalExpBonus = v('totalExpBonus%')
     var totalPPBonus = v('totalPPBonus%')
@@ -108,11 +108,11 @@ export default function Page() {
     /* ITOPOD */
     var itopodZone = Zones.ITOPOD;
     var itopodFloor = 0
-    if (v('itopodFloor').compareTo(bd(0)) == 0) {
-        var idleAttackModifier = getIdleAttackModifier(c('spoopySetBonus^'), v('sadisticNoEquipmentChallenges'));
+    if (v('itopodFloor-5').compareTo(bd(0)) == 0) {
+        var idleAttackModifier = getIdleAttackModifier(c('spoopySetBonus^'), v('sadisticNoEquipmentChallenges-2'));
         itopodFloor = itopodZone.getOptimalFloor(v('totalPower'), idleAttackModifier)
     } else {
-        itopodFloor = Number(v('itopodFloor').getValue())
+        itopodFloor = Number(v('itopodFloor-5').getValue())
     }
     itopodZone.setLevel(itopodFloor)
 
@@ -138,21 +138,21 @@ export default function Page() {
 
     /* Quest info */
     var questData = {
-        activeQuestWishI : v('activeQuestWishI'),
-        activeQuestWishII : v('activeQuestWishII'),
+        activeQuestWishI : v('activeQuestWishI-2'),
+        activeQuestWishII : v('activeQuestWishII-2'),
         beastButter : c('beastButter^'),
         blueHeart: c('blueHeart^'),
         fadLandsSetBonus : c('fadLandsSetBonus^'),
         fasterQuesting : c('fasterQuesting^'),
         fibQuestRNG : c('fibQuestRNG^'),
-        hoursOfflinePerDay : v('hoursOfflinePerDay'),
+        hoursOfflinePerDay : v('hoursOfflinePerDay-2'),
         hoursPerDay : hoursPerDay,
         idleMajorQuests : c('idleMajorQuests^'),
         includeMajorQuests: c('includeMajorQuests^'),
         redLiquidBonus: c('redLiquidBonus^'),
-        questIdleDivider : v('questIdleDivider'),
-        questMinorQP: v('questMinorQP'),
-        questMajorQP : v('questMajorQP'),
+        questIdleDivider : v('questIdleDivider-1'),
+        questMinorQP: v('questMinorQP-2'),
+        questMajorQP : v('questMajorQP-2'),
         totalQuestDropBonus: v('totalQuestDropBonus%'),
         totalAPBonus: totalAPBonus,
         totalQPBonus: totalQPBonus,
@@ -177,16 +177,16 @@ export default function Page() {
 
     /* Titan Info */
     var titanData = {
-        bonusTitanEXPPerk : v('bonusTitanEXPPerk'),
-        numRebirthChallenges: v('numRebirthChallenges'),
-        twentyFourHourChallenge: v('twentyFourHourChallenge'),
-        twentyFourHourEvilChallenge: v('twentyFourHourEvilChallenge'),
-        twentyFourHourSadisticChallenge: v('twentyFourHourSadisticChallenge'),
+        bonusTitanEXPPerk : v('bonusTitanEXPPerk-2'),
+        numRebirthChallenges: v('numRebirthChallenges-2'),
+        twentyFourHourChallenge: v('twentyFourHourChallenge-2'),
+        twentyFourHourEvilChallenge: v('twentyFourHourEvilChallenge-2'),
+        twentyFourHourSadisticChallenge: v('twentyFourHourSadisticChallenge-2'),
         totalAPBonus: totalAPBonus,
         totalExpBonus: totalExpBonus,
         totalPPBonus : totalPPBonus,
         totalQPBonus: totalQPBonus,
-        wishTitansHadBetterRewards: v('wishTitansHadBetterRewards'),
+        wishTitansHadBetterRewards: v('wishTitansHadBetterRewards-2'),
         wishes : j('wishes'),
     }
     var playerAttack = new AttackStat(1, v('totalPower'), v('totalToughness'), v('totalRegen'), v('totalHealth'))
@@ -258,9 +258,9 @@ export default function Page() {
 
     // AP Stuff
     var apRebirth = getRebirthAP(totalAPBonus, hoursPerDay)
-    var apMoneyPit = getMoneyPitAP(v('moneyPitGoldToss?1e'), v('moneyPitTossesPerDay'), totalAPBonus);
+    var apMoneyPit = getMoneyPitAP(v('moneyPitGoldToss?1e'), v('moneyPitTossesPerDay-2'), totalAPBonus);
     var apDailySave = getDailySaveAP(totalAPBonus, hoursPerDay);
-    var apDailySpin = getDailySpinAP(v('dailySpinTier'), totalAPBonus, hoursPerDay, c('includeValueOfConsumables^'), c('includeDailySpinJackpots^'));
+    var apDailySpin = getDailySpinAP(v('dailySpinTier-1'), totalAPBonus, hoursPerDay, c('includeValueOfConsumables^'), c('includeDailySpinJackpots^'));
 
     
 

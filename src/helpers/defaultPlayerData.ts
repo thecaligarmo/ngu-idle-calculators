@@ -26,9 +26,9 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
     const playerExists = (playerData && Object.keys(playerData).length > 0)
     if (playerExists) {
         switch(info) {
-            case 'activeQuestWishI':
+            case 'activeQuestWishI-2':
                 return playerData.wishes.wishes[19].level
-            case 'activeQuestWishII':
+            case 'activeQuestWishII-2':
                 return playerData.wishes.wishes[62].level
             case 'baseAdventurePower':
                 return playerData.adventure.attack
@@ -68,7 +68,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return Math.ceil(Math.log2(playerData.bloodMagic.goldSpellBlood / 1000000) ** 2)
             case 'blueHeart^':
                 return playerData.inventory.itemList.blueHeartComplete
-            case 'bonusTitanEXPPerk':
+            case 'bonusTitanEXPPerk-2':
                 return playerData.adventure.itopod.perkLevel[34]
             case 'boostRecyclyingPurchase':
                 return playerData.purchases.boost
@@ -413,22 +413,22 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.adventure.itopod.perkLevel[20]
             case 'gameMode':
                 return playerData.settings.rebirthDifficulty.value__; 
-            case 'numRebirthChallenges':
+            case 'numRebirthChallenges-2':
                 return playerData.challenges.noRebirthChallenge.curCompletions
                     + playerData.challenges.noRebirthChallenge.curEvilCompletions
                     + playerData.challenges.noRebirthChallenge.curSadisticCompletions
-            case 'questIdleDivider':
+            case 'questIdleDivider-1':
                 return 8
                         - playerData.adventure.itopod.perkLevel[91] // Advanced
                         - playerData.adventure.itopod.perkLevel[92] // Even More Adv
                         - (2 * playerData.adventure.itopod.perkLevel[105]) // Gooder
                         - playerData.adventure.itopod.perkLevel[106] // Another Gooder
-            case 'questMinorQP' :
+            case 'questMinorQP-2' :
                 return 10
                         + (2 * playerData.adventure.itopod.perkLevel[87]) // Not So Minor Anymore
                         + playerData.adventure.itopod.perkLevel[148] // Improved Minor Quest QP Rewards
                         + playerData.wishes.wishes[102].level // I wish Minor Quests had better Base QP Rewards
-            case 'questMajorQP' :
+            case 'questMajorQP-2' :
                 return 50
                         + playerData.adventure.itopod.perkLevel[147] // Improved Major Quest QP Rewards
                         + playerData.wishes.wishes[101].level // I wish Major Quests had better Base QP Rewards
@@ -436,17 +436,17 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.inventory.itemList.redLiquidComplete
             case 'res3Active':
                 return playerData.res3.res3On;
-            case 'sadisticNoEquipmentChallenges':
+            case 'sadisticNoEquipmentChallenges-2':
                 return playerData.challenges.noEquipmentChallenge.curSadisticCompletions
             case 'spoopySetBonus^':
                 return playerData.inventory.itemList.ghostComplete
-            case 'twentyFourHourChallenge':
+            case 'twentyFourHourChallenge-2':
                 return playerData.challenges.hour24Challenge.curCompletions
-            case 'twentyFourHourEvilChallenge':
+            case 'twentyFourHourEvilChallenge-2':
                 return playerData.challenges.hour24Challenge.curEvilCompletions
-            case 'twentyFourHourSadisticChallenge':
+            case 'twentyFourHourSadisticChallenge-2':
                 return playerData.challenges.hour24Challenge.curSadisticCompletions
-            case 'wishTitansHadBetterRewards':
+            case 'wishTitansHadBetterRewards-2':
                 return playerData.wishes.wishes[3].level
             case 'yggdrasilDropChance':
                 return playerData.yggdrasil.totalLuck / 20 + 100
@@ -819,8 +819,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
 
 export function getPlayerNumberOptions() : string[]{
     return [
-        'activeQuestWishI',
-        'activeQuestWishII',
+        'activeQuestWishI-2',
+        'activeQuestWishII-2',
         'baseAdventurePower',
         'baseAdventureToughness',
         'baseAdventureHealth',
@@ -838,7 +838,7 @@ export function getPlayerNumberOptions() : string[]{
         'bloodMagicDropChance',
         'bloodMagicTimeMachine',
         'blueHeart^',
-        'bonusTitanEXPPerk',
+        'bonusTitanEXPPerk-2',
         'boostRecyclyingPurchase',
         'cubePower',
         'cubeToughness',
@@ -1009,17 +1009,17 @@ export function getPlayerNumberOptions() : string[]{
         'fruitOfKnowledgeSTILLSucks^',
         'gameMode',
         'redLiquidBonus^',
-        'numRebirthChallenges',
-        'questIdleDivider',
-        'questMinorQP',
-        'questMajorQP',
+        'numRebirthChallenges-2',
+        'questIdleDivider-1',
+        'questMinorQP-2',
+        'questMajorQP-2',
         'res3Active',
-        'sadisticNoEquipmentChallenges',
+        'sadisticNoEquipmentChallenges-2',
         'spoopySetBonus^',
-        'twentyFourHourChallenge',
-        'twentyFourHourEvilChallenge',
-        'twentyFourHourSadisticChallenge',
-        'wishTitansHadBetterRewards',
+        'twentyFourHourChallenge-2',
+        'twentyFourHourEvilChallenge-2',
+        'twentyFourHourSadisticChallenge-2',
+        'wishTitansHadBetterRewards-2',
         'yggdrasilDropChance',
     ]
 }

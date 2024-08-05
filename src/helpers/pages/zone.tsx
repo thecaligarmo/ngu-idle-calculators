@@ -15,7 +15,7 @@ export function getZoneInfo(v : any) : zoneType[]{
     
     // idle attack cooldown
     var idleAttackCooldown = v['redLiquidBonus'] ? bd(0.8) : bd(1)
-    var idleAttackModifier = getIdleAttackModifier(v['spoopySetBonus'], v['sadisticNoEquipmentChallenges'])
+    var idleAttackModifier = getIdleAttackModifier(v['spoopySetBonus'], v['sadisticNoEquipmentChallenges-2'])
 
     
     // get the optimal itopod zone
