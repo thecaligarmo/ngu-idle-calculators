@@ -458,7 +458,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'advTrainings':
                 var advTrainings: AdvTraining[] = []
                 for (var c = 0; c < 5; c++) {
-                    advTrainings.push(ADVTRAININGS[c])
+                    advTrainings.push(_.cloneDeep(ADVTRAININGS[c]))
                 }
                 for (var c = 0; c < 5; c++) {
                     advTrainings[c].setLevel(playerData.advancedTraining.level[c])
@@ -491,7 +491,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 var beards : Beard[] = []
                 playerData.beards.beards.forEach((beard : any, index : number) => {
                     if (!_.isUndefined(BEARDS[index])) {
-                        var b = BEARDS[index]
+                        var b = _.cloneDeep(BEARDS[index])
                         b.setLevel(beard.beardLevel)
                         b.setPermLevel(beard.permLevel)
                         b.setActive(beard.active)
@@ -505,9 +505,9 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 var evilChallenges : Challenge[] = []
                 var sadChallenges : Challenge[] = []
                 for (var c = 0; c < 11; c++) {
-                    challenges.push(CHALLENGES[c])
-                    evilChallenges.push(CHALLENGES[c + 100])
-                    sadChallenges.push(CHALLENGES[c + 200])
+                    challenges.push(_.cloneDeep(CHALLENGES[c]))
+                    evilChallenges.push(_.cloneDeep(CHALLENGES[c + 100]))
+                    sadChallenges.push(_.cloneDeep(CHALLENGES[c + 200]))
                 }
                 challenges[0].importStats(playerData.challenges.basicChallenge)
                 challenges[1].importStats(playerData.challenges.noAugsChallenge)
@@ -555,7 +555,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'diggers':
                 var diggers : Digger[] = []
                 playerData.diggers.diggers.forEach((digger : any, id : number) => {
-                    var d = DIGGERS[id]
+                    var d = _.cloneDeep(DIGGERS[id])
                     if (!_.isUndefined(d)) {
                         d.active = digger.active == 1 ? true : false;
                         d.setLevel(digger.curLevel)
@@ -615,7 +615,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 playerData.NGU.skills.forEach((engu : any, index : number) => {
                     if (!_.isUndefined(engu.level) && index < 10) {
                         for (var i = 0; i < 3; i++) {
-                            var ngu : NGU = ENERGY_NGUS[index + (i * 10)]
+                            var ngu : NGU = _.cloneDeep(ENERGY_NGUS[index + (i * 10)])
                             if (!_.isUndefined(ngu)) {
                                 ngu.importStats(engu)
                                 energyNGUs.push(ngu)
@@ -629,7 +629,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 playerData.NGU.magicSkills.forEach((mngu : any, index : number) => {
                     if (!_.isUndefined(mngu.level) && index < 10) {
                         for (var i = 0; i < 3; i++) {
-                            var ngu : NGU = MAGIC_NGUS[index + (i * 10)]
+                            var ngu : NGU = _.cloneDeep(MAGIC_NGUS[index + (i * 10)])
                             if (!_.isUndefined(ngu)) {
                                 ngu.importStats(mngu)
                                 magicNGUs.push(ngu)
@@ -643,7 +643,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 var hacks: Hack[] = []
                 playerData.hacks.hacks.forEach((hackData : any, index : number) => {
                     if(index < 15) {
-                        var hack : Hack = HACKS[index]
+                        var hack : Hack = _.cloneDeep(HACKS[index])
                         if(!_.isUndefined(hack)) {
                             hack.importStats(hackData)
                             hacks.push(hack)
@@ -657,7 +657,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
 
                 for (var c = 0; c < 25; c++) {
                     if(!_.isUndefined(MACGUFFINS[c])) {
-                        macguffins.push(MACGUFFINS[c])
+                        macguffins.push(_.cloneDeep(MACGUFFINS[c]))
                     }
                 }
                 playerData.inventory.macguffins.forEach((macguffin : any, index : number) => {
@@ -705,7 +705,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 playerData.adventure.itopod.perkLevel.forEach((perk : any, index : number) => {
                     if (!_.isUndefined(perk) && perk > 0) {
                         if (!_.isUndefined(PERKS[index])) {
-                            var p = PERKS[index]
+                            var p = _.cloneDeep(PERKS[index])
                             p.setLevel(perk)
                             perks.push(p)
                         }
@@ -718,7 +718,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 playerData.beastQuest.quirkLevel.forEach((quirk : any, index : number) => {
                     if (!_.isUndefined(quirk) && quirk > 0) {
                         if (!_.isUndefined(QUIRKS[index])) {
-                            var q = QUIRKS[index]
+                            var q = _.cloneDeep(QUIRKS[index])
                             q.setLevel(quirk)
                             quirks.push(q)
                         }
@@ -731,7 +731,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 playerData.wishes.wishes.forEach((wish : any, index : number) => {
                     if (!_.isUndefined(wish)) {
                         if (!_.isUndefined(WISHES[index])) {
-                            var w = WISHES[index]
+                            var w = _.cloneDeep(WISHES[index])
                             w.setLevel(wish.level)
                             wishes.push(w)
                         }
@@ -740,7 +740,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 
                 return wishes;
             case 'yggdrasil':
-                var yggdrasil: Yggdrasil[] = Object.values(FRUITS)
+                var yggdrasil: Yggdrasil[] = _.cloneDeep(Object.values(FRUITS))
                 yggdrasil.forEach((fruit) => {
                     var f = playerData.yggdrasil.fruits[fruit.id]
                     f['totalPermStatBonus'] = playerData.yggdrasil.totalPermStatBonus
@@ -753,7 +753,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 var itemSets : {[key: string]: ItemSet} = {}
                 for (var set of Object.values(ItemSets)) {
                     set.updateStats(playerData)
-                    itemSets[set.key] = set
+                    itemSets[set.key] = _.cloneDeep(set)
                 }
                 return itemSets
             case 'maxxedItems':

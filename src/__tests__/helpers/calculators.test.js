@@ -11,19 +11,55 @@ import earlyEvilTwo from '../__data__/earlyEvil2';
 import midEvil from '../__data__/midEvil1';
 
 
+var earlyNormalData = toDataObj(earlyNormal);
+var earlyNormalTwoData = toDataObj(earlyNormalTwo);
+var midNormalData = toDataObj(midNormal);
+var midNormalTwoData = toDataObj(midNormalTwo);
+var lateNormalData = toDataObj(lateNormal);
+var earlyEvilTwoData = toDataObj(earlyEvilTwo);
+var earlyEvilData = toDataObj(earlyEvil);
 
-test('Energy for Early Normal 1', () => {
-    var playerData = toDataObj(earlyNormal)
-    expect(Number(totalEnergyPower(playerData).getValue())).toBeCloseTo(20.8, 1)
-    expect(Number(totalEnergyBar(playerData).getValue())).toBeCloseTo(16.9, 1)
-    expect(Number(totalEnergyCap(playerData).getValue())).toBeCloseTo(412500, 0)
-});
-test('Magic for Early Normal 1', () => {
-    var playerData = toDataObj(earlyNormal)
-    expect(Number(totalMagicPower(playerData).getValue())).toBeCloseTo(6.4, 1)
-    expect(Number(totalMagicBar(playerData).getValue())).toBeCloseTo(5, 1)
-    expect(Number(totalMagicCap(playerData).getValue())).toBeCloseTo(60000, 0)
-});
+
+
+describe('Calculators - Energy', () => {
+    // var earlyNormalData = toDataObj(earlyNormal);
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'power': 20.8, 'bar': 16.9, 'cap': 412500}]
+    ]
+    test.each(cases)(
+        "Calculators - Energy - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(Number(totalEnergyPower(data).getValue()), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(Number(totalEnergyBar(data).getValue()), expectedValues['bar'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(Number(totalEnergyCap(data).getValue()), expectedValues['cap'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+describe('Calculators - Magic', () => {
+    // var earlyNormalData = toDataObj(earlyNormal);
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'power': 6.4, 'bar': 5, 'cap': 60000}]
+    ]
+    test.each(cases)(
+        "Calculators - Magic - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(Number(totalMagicPower(data).getValue()), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(Number(totalMagicBar(data).getValue()), expectedValues['bar'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(Number(totalMagicCap(data).getValue()), expectedValues['cap'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+
 test('NGU for Early Normal 1', () => {
     var playerData = toDataObj(earlyNormal)
     expect(Number(totalEnergyNGUSpeedFactor(playerData).getValue())).toBeCloseTo(2080, 0)

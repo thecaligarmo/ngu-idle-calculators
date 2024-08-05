@@ -206,7 +206,7 @@ export default function Page() {
     var titanHourlInfo = getTitanHourlyInfo(maxTitan, titanData);
     var totalTitanAP = titanHourlInfo['ap'].multiply(hoursPerDay)
     var totalTitanEXP = titanHourlInfo['exp'].multiply(hoursPerDay)
-    var totalTitanPP = titanHourlInfo['pp'].multiply(hoursPerDay)
+    var totalTitanPP = titanHourlInfo['ppp'].multiply(hoursPerDay).divide(bd(1000000))
     var totalTitanQP = titanHourlInfo['qp'].multiply(hoursPerDay)
     var titanList = getTitanList();
 
@@ -338,7 +338,7 @@ export default function Page() {
                                 </ul>
                             </>
                         ))}
-                    {itemLine("Titans", totalTitanPP.divide(bd(1000000)), fmt, "PP", (<> - Up to {maxTitan[0].getFullName(maxTitan[1])}</>))}
+                    {itemLine("Titans", totalTitanPP, fmt, "PP", (<> - Up to {maxTitan[0].getFullName(maxTitan[1])}</>))}
                     {itemLine("Yggdrasil", ppYggdrasil.divide(bd(1000000)), fmt, "PP")}
                     <p className="mt-2 border-white border-t-2 border-solid">
                         <strong className="text-blue-500">Total:</strong> <span className="text-red-500">{pn(totalPPPerDay.divide(bd(1000000)), fmt)}</span> <strong>PP</strong>

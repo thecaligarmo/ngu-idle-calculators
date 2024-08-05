@@ -18,7 +18,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
     }
 
     if(false) {
-        if(Stat.QUEST_REWARD == stat) {
+        if(Stat.GOLD_DROP == stat) {
             console.log('----------------------------------------')
             console.log('ap', apItemInfo(data, stat).getValue())    
             console.log('beard', beardInfoTemp(data, stat).getValue())

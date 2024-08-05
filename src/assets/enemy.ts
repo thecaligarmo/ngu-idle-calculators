@@ -554,6 +554,13 @@ export const Enemies :  {[k: string]: Enemy} = {
 
 export const Titans : {[k: string]: Titan} = {
     // Titans
+    NONE: new Titan(
+        0, 'none', 'No Titan',
+        new AttackStat(0, bd(0), bd(0), bd(0), bd(0)),
+        new AttackStat(0, bd(0), bd(0), bd(0), bd(0)),
+        1,
+        bd(0), [bd(0), bd(0)], 0, 0, 0
+    ),
     GORDON_RAMSEY: new Titan(
         1, 'gordonRamsayBolton', 'Gordon Ramsay Bolton',
         new AttackStat(2, bd(666), bd(666), bd(66), bd(300000)),
@@ -610,10 +617,10 @@ export const Titans : {[k: string]: Titan} = {
             new AttackStat(1.8, bd('5e11'), bd('5e11'), bd('5e10'), bd('5e13')),
         ],
         [
-            new AttackStat(0, bd(2.5e9), bd(1.6e9), bd(2.5e6), bd(0)),
-            new AttackStat(0, bd(2.5e10), bd(1.6e10), bd(2.5e7), bd(0)),
-            new AttackStat(0, bd(2.5e11), bd(1.6e11), bd(2.5e8), bd(0)),
-            new AttackStat(0, bd(2.5e12), bd(1.6e12), bd(2.5e9), bd(0)),
+            new AttackStat(0, bd(2.5e9), bd(1.6e9), bd(2.5e7), bd(0)),
+            new AttackStat(0, bd(2.5e10), bd(1.6e10), bd(2.5e8), bd(0)),
+            new AttackStat(0, bd(2.5e11), bd(1.6e11), bd(2.5e9), bd(0)),
+            new AttackStat(0, bd(2.5e12), bd(1.6e12), bd(2.5e10), bd(0)),
         ],
         3.5,
         bd(750), [bd('2e7'), bd('2.5e7')], 0, 250000, 1

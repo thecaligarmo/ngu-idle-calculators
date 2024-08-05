@@ -62,14 +62,18 @@ export function getQuestInfo(
     var respawnTime = totalRespawnTime.round(2, bigDecimal.RoundingModes.CEILING)
 
 
-    var secondsPerIdleQuestItemDrop = bd(60)
-        .multiply(idleAttackCooldown.add(respawnTime))
-        .multiply(bd(50))
-        .multiply(questIdleDivider)
-        .divide(totalQuestDropBonus.compareTo(bd(0)) > 0 ? totalQuestDropBonus.divide(bd(100)) : bd(1)) // Quest Drop (Idle)
-        .divide(bd(3))
+    var secondsPerIdleQuestItemDrop = (bd(60)
+                .multiply(idleAttackCooldown.add(respawnTime))
+                .multiply(bd(50))
+                .multiply(questIdleDivider)
+                .divide(totalQuestDropBonus.compareTo(bd(0)) > 0 ? totalQuestDropBonus.divide(bd(100)) : bd(1)) // Quest Drop (Idle)
+                .divide(bd(3))
+        )
         .round(0)
         .divide(bd(50))
+
+    // =ROUND( 60 * ( IF(B10,0.8,1)+B11 ) / (3 * B19) * B18 * 50  ,0) / 50
+
     var secondsPerManualQuestItemDrop = bd(60)
         .multiply(idleAttackCooldown.add(respawnTime))
         .multiply(bd(50))
@@ -77,6 +81,9 @@ export function getQuestInfo(
         .divide(bd(3))
         .round(0)
         .divide(bd(50))
+
+
+
 
     
     
@@ -92,10 +99,13 @@ export function getQuestInfo(
             : itemsPerQuest
         )
 
+    
 
     var majorsPerDay = bd(0)
     var totalSecondsMajorQuest = bd(0)
     if (includeMajorQuests) {
+
+        // =60*B15/(470 * (1-0.1*D29) * (1-0.2*D28))
         majorsPerDay = bd(60)
             .multiply(hoursPerDay)
             .divide(bd(470))
@@ -134,6 +144,7 @@ export function getQuestInfo(
         .multiply(totalQPBonus.divide(bd(100)))
         .multiply(beastButterMultiplier)
         .floor()
+    
     var APPerMajor = bd(50).multiply(totalAPBonus).divide(bd(100)).floor()
 
     // If we are manualling, make the amounts active
@@ -189,7 +200,7 @@ export function getTitanList() : ReactElement[]{
 
 
 export function getMaxTitanByAK(playerAttack : AttackStat) : [Titan, number]{
-    var maxTitanByAK : [Titan, number] = [Titans.GORDON_RAMSEY, 1]
+    var maxTitanByAK : [Titan, number] = [Titans.NONE, 0]
     Object.values(Titans).forEach((titan) => {
         if (titan.id < 13) {
             for(var i = 0; i < titan.versions; i++) {
@@ -230,7 +241,7 @@ export function getTitanHourlyInfo(maxTitan : [Titan, number], {
 }) : {
     'ap' : bigDecimal,
     'exp' : bigDecimal,
-    'pp' : bigDecimal,
+    'ppp' : bigDecimal,
     'qp' : bigDecimal,
 } {
     // Need to look up current tier for Titan
@@ -267,18 +278,23 @@ export function getTitanHourlyInfo(maxTitan : [Titan, number], {
             }
             
             var titanRespawn = titan.getRespawnTime(rbChallenges)
-            
-            hourlyTitanAP = hourlyTitanAP.add(titan.getAP(totalAPBonus).divide(titanRespawn).floor())
-            hourlyTitanEXP = hourlyTitanEXP.add(titan.getEXP(totalExpBonus, twentyFourHourChallenge, twentyFourHourEvilChallenge, twentyFourHourSadisticChallenge).multiply(titanMultiplier).divide(titanRespawn).floor())
-            hourlyTitanPP = hourlyTitanPP.add(titan.getPP(totalPPBonus).multiply(titanMultiplier).divide(titanRespawn))
-            hourlyTitanQP = hourlyTitanQP.add(titan.getQP(wishes, totalQPBonus).multiply(titanMultiplier).divide(titanRespawn).floor())
+
+            var titanAP = titan.getAP(totalAPBonus).floor().divide(titanRespawn)
+            var titanEXP = titan.getEXP(totalExpBonus, twentyFourHourChallenge, twentyFourHourEvilChallenge, twentyFourHourSadisticChallenge).multiply(titanMultiplier).floor().divide(titanRespawn)
+            var titanPP = (titan.getPP(totalPPBonus).multiply(titanMultiplier).floor()).divide(titanRespawn)
+            var titanQP = titan.getQP(wishes, totalQPBonus).multiply(titanMultiplier).floor().divide(titanRespawn)
+
+            hourlyTitanAP = hourlyTitanAP.add(titanAP)
+            hourlyTitanEXP = hourlyTitanEXP.add(titanEXP)
+            hourlyTitanPP = hourlyTitanPP.add(titanPP)
+            hourlyTitanQP = hourlyTitanQP.add(titanQP)
         }
     })
     hourlyTitanEXP = hourlyTitanEXP.multiply(bonusExpPerk)
     return {
         'ap' : hourlyTitanAP,
         'exp' : hourlyTitanEXP,
-        'pp' : hourlyTitanPP,
+        'ppp' : hourlyTitanPP,
         'qp' : hourlyTitanQP,
     }
 }
@@ -289,14 +305,16 @@ export function getRebirthAP(totalAPBonus : bigDecimal, hoursPerDay : bigDecimal
         .divide(bd(500))
         .multiply(totalAPBonus)
         .divide(bd(100))
+        .floor()
 }
 
 
 export function getMoneyPitAP(goldToss: bigDecimal, numTosses: bigDecimal, totalAPBonus : bigDecimal) : bigDecimal {
     if(goldToss.compareTo(bd(0)) > 0) {
-        return goldToss
-            .multiply(totalAPBonus)
-            .divide(bd(100))
+        return (goldToss
+                .multiply(totalAPBonus)
+                .divide(bd(100))
+            ).floor()
             .multiply(numTosses)
     }
     return bd(0)

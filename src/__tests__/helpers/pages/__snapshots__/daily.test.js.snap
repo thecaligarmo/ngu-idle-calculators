@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Daily Page - Title List 1`] = `
+[
+  <option
+    value="0-0"
+  >
+    No Titan
+  </option>,
+  <option
+    value="1-0"
+  >
+    Gordon Ramsay Bolton
+  </option>,
+  <option
+    value="2-0"
+  >
+    Grand Corrupted Tree
+  </option>,
+  <option
+    value="3-0"
+  >
+    Jake From Accounting
+  </option>,
+  <option
+    value="4-0"
+  >
+    UGG, The Unmentionable
+  </option>,
+  <option
+    value="5-0"
+  >
+    Walderp
+  </option>,
+  <option
+    value="6-0"
+  >
+    The Beast v1
+  </option>,
+  <option
+    value="6-1"
+  >
+    The Beast v2
+  </option>,
+  <option
+    value="6-2"
+  >
+    The Beast v3
+  </option>,
+  <option
+    value="6-3"
+  >
+    The Beast v4
+  </option>,
+  <option
+    value="7-0"
+  >
+    Greasy Nerd v1
+  </option>,
+  <option
+    value="7-1"
+  >
+    Greasy Nerd v2
+  </option>,
+  <option
+    value="7-2"
+  >
+    Greasy Nerd v3
+  </option>,
+  <option
+    value="7-3"
+  >
+    Greasy Nerd v4
+  </option>,
+  <option
+    value="8-0"
+  >
+    The Godmother v1
+  </option>,
+  <option
+    value="8-1"
+  >
+    The Godmother v2
+  </option>,
+  <option
+    value="8-2"
+  >
+    The Godmother v3
+  </option>,
+  <option
+    value="8-3"
+  >
+    The Godmother v4
+  </option>,
+  <option
+    value="9-0"
+  >
+    The Exile v1
+  </option>,
+  <option
+    value="9-1"
+  >
+    The Exile v2
+  </option>,
+  <option
+    value="9-2"
+  >
+    The Exile v3
+  </option>,
+  <option
+    value="9-3"
+  >
+    The Exile v4
+  </option>,
+  <option
+    value="10-0"
+  >
+    IT HUNGERS v1
+  </option>,
+  <option
+    value="10-1"
+  >
+    IT HUNGERS v2
+  </option>,
+  <option
+    value="10-2"
+  >
+    IT HUNGERS v3
+  </option>,
+  <option
+    value="10-3"
+  >
+    IT HUNGERS v4
+  </option>,
+  <option
+    value="11-0"
+  >
+    Rock Lobster v1
+  </option>,
+  <option
+    value="11-1"
+  >
+    Rock Lobster v2
+  </option>,
+  <option
+    value="11-2"
+  >
+    Rock Lobster v3
+  </option>,
+  <option
+    value="11-3"
+  >
+    Rock Lobster v4
+  </option>,
+  <option
+    value="12-0"
+  >
+    Amalgamate v1
+  </option>,
+  <option
+    value="12-1"
+  >
+    Amalgamate v2
+  </option>,
+  <option
+    value="12-2"
+  >
+    Amalgamate v3
+  </option>,
+  <option
+    value="12-3"
+  >
+    Amalgamate v4
+  </option>,
+]
+`;

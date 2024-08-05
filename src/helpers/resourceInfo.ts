@@ -520,7 +520,7 @@ export function isMaxxedItemSet(data : any, itemSet : ItemSet) : boolean {
 
 export function maxxedItemSetNum(data : any, itemSet : ItemSet) : number {
     var itemSets = parseObj(data, 'itemSets')
-    return (isMaxxedItemSet(data, itemSet)) ? itemSets[itemSet.key].numMaxxed : 0;
+    return (itemSet.key in itemSets) ? itemSets[itemSet.key].numMaxxed : 0;
 }
 
 export function perkLevel(data : any, key : string) : number {
