@@ -1,6 +1,7 @@
 import { Zones } from "@/assets/zones";
 import { bd, bigdec_max } from "../numbers";
 import bigDecimal from "js-big-decimal";
+import { getIdleAttackModifier } from "../calculators";
 
 
 type zoneType = {
@@ -14,13 +15,7 @@ export function getZoneInfo(v : any) : zoneType[]{
     
     // idle attack cooldown
     var idleAttackCooldown = v['redLiquidBonus'] ? bd(0.8) : bd(1)
-    var sadNEC = v['sadisticNoEquipmentChallenges']
-    var idleAttackModifier = (v['spoopySetBonus'] ? bd(1.5) : bd(1.2))
-        .multiply(
-            bd(1)
-            .add(sadNEC.multiply(bd(0.02)))
-            .add((sadNEC.compareTo(bd(5)) >= 0) ? bd(0.1) : bd(0))
-        )
+    var idleAttackModifier = getIdleAttackModifier(v['spoopySetBonus'], v['sadisticNoEquipmentChallenges'])
 
     
     // get the optimal itopod zone

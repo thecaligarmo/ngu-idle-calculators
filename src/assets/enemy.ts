@@ -132,10 +132,10 @@ export class Titan extends Enemy {
         // IT Hungers, Rock Lobster, Amalgamate - 5 kills allows you to AK
         return this.autokill[version].isWeaker(player)
     }
-    getAP(apBonus : bigDecimal) : bigDecimal {
+    getAP(apBonus : bigDecimal = bd(1)) : bigDecimal {
         return apBonus.multiply(bd(this.ap)).divide(bd(100))
     }
-    getEXP(expBonus : bigDecimal, twentyFourHourChallenge : bigDecimal, twentyFourHourEvilChallenge : bigDecimal, twentyFourHourSadisticChallenge : bigDecimal) : bigDecimal {
+    getEXP(expBonus : bigDecimal = bd(1), twentyFourHourChallenge : bigDecimal = bd(0), twentyFourHourEvilChallenge : bigDecimal = bd(0), twentyFourHourSadisticChallenge : bigDecimal = bd(0)) : bigDecimal {
         return expBonus.multiply(this.exp).divide(bd(100))
             .multiply(
                 bd(1)
@@ -144,10 +144,10 @@ export class Titan extends Enemy {
                 .add(twentyFourHourSadisticChallenge.multiply(bd(0.02)))
             )
     }
-    getPP(ppBonus : bigDecimal) : bigDecimal {
+    getPP(ppBonus : bigDecimal = bd(1)) : bigDecimal {
         return ppBonus.multiply(bd(this.pp)).divide(bd(100))
     }
-    getQP(wishes : Wish[], qpBonus : bigDecimal) : bigDecimal {
+    getQP(wishes : Wish[], qpBonus : bigDecimal = bd(1)) : bigDecimal {
         // Beast - 73
         // Nerd - 74
         // Godmother - 40

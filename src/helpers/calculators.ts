@@ -346,3 +346,13 @@ export function totalMayoSpeed(data : any) :bigDecimal {
     var gen = calcAll(data, Stat.MAYO_SPEED)
     return gen
 }
+
+
+export function getIdleAttackModifier(spoopySetBonus : boolean, sadNEC : bigDecimal) : bigDecimal {
+    return (spoopySetBonus ? bd(1.5) : bd(1.2))
+        .multiply(
+            bd(1)
+            .add(sadNEC.multiply(bd(0.02)))
+            .add((sadNEC.compareTo(bd(5)) >= 0) ? bd(0.1) : bd(0))
+        )
+}

@@ -1,6 +1,7 @@
 import { bd, bigdec_min } from "@/helpers/numbers"
 import { ENEMY_TYPE, Enemies, Enemy } from "./enemy"
 import bigDecimal from "js-big-decimal"
+import { GameMode } from "./mode"
 
 var boostTable : number[] = [0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
 
@@ -176,6 +177,11 @@ export default class Zone {
         }
         return bigdec_min(bd(this.exp[2]).divide(bd(100)), maxChance).multiply(this.bossChance())
     }
+    getKillsPerHour(redLiquidBonus : boolean = false, totalRespawnTime : bigDecimal = bd(4)) : bigDecimal {
+        var idleAttackCooldown = redLiquidBonus ? bd(0.8) : bd(1)
+        var respawnTime = totalRespawnTime.round(2, bigDecimal.RoundingModes.CEILING)
+        return bd(60 * 60).divide( respawnTime.add(idleAttackCooldown))
+    }
 
     // ITOPOD Specific things
     // TODO - Make it a subclass of Zone
@@ -193,6 +199,26 @@ export default class Zone {
             )
         )
     }
+    getPPPPerKill(gameMode:bigDecimal, totalPPBonus : bigDecimal = bd(1), bluePill : boolean = false, blueHeart : boolean = false) : bigDecimal{
+        var bluePillMultiplier = bluePill
+                                    ? (blueHeart ? bd(2.2) : bd(2))
+                                    : bd(1)
+    
+        var floorAdd = 200
+        if(gameMode.compareTo(bd(GameMode.EVIL)) == 0) {
+            floorAdd = 700
+        } else if(gameMode.compareTo(bd(GameMode.SADISTIC)) == 0) {
+            floorAdd = 2000
+        }
+    
+        return totalPPBonus
+                            .divide(bd(100))
+                            .multiply(bluePillMultiplier)
+                            .multiply(bd(this.level + floorAdd))
+                            .floor()
+    
+    }
+
 
 }
 
