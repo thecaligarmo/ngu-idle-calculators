@@ -55,7 +55,6 @@ export default function Page() {
     var zoneInfo = getZoneInfo(data)
     var optimalBoostZone = getOptimalBoostZone(zoneInfo);
     var optimalExpZone = getOptimalExpZone(zoneInfo);
-    console.log(zoneInfo);
 
     var zoneList = zoneInfo.map(function(zone) {
         return (
