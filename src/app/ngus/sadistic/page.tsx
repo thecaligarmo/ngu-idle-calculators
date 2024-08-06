@@ -1,7 +1,7 @@
 'use client'
 
 import { GameMode } from "@/assets/mode";
-import NGUInfo from "@/components/nguInfo";
+import NGUInfo from "@/components/nguInfo/nguInfo";
 
 
 export default function Page() {
