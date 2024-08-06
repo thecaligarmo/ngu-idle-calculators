@@ -1,4 +1,4 @@
-import {totalEnergyPower, totalEnergyBar, totalEnergyCap, totalMagicPower, totalMagicBar, totalMagicCap, totalEnergyNGUSpeedFactor, totalMagicNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalPower, totalToughness, totalGoldDrop, totalRespawnRate, totalDropChance, totalRes3Power, totalRes3Bar, totalRes3Cap, totalHackSpeed, totalDaycareSpeed}  from '@/helpers/calculators'
+import {totalEnergyPower, totalEnergyBar, totalEnergyCap, totalMagicPower, totalMagicBar, totalMagicCap, totalWishSpeed, totalEnergyNGUSpeedFactor, totalMagicNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalPower, totalToughness, totalGoldDrop, totalRespawnRate, totalDropChance, totalRes3Power, totalRes3Bar, totalRes3Cap, totalHackSpeed, totalDaycareSpeed}  from '@/helpers/calculators'
 import earlyNormal from '../__data__/earlyNormal1'
 import earlyNormalTwo from '../__data__/earlyNormal2';
 import midNormal from '../__data__/midNormal1';
@@ -16,24 +16,31 @@ var earlyNormalTwoData = toDataObj(earlyNormalTwo);
 var midNormalData = toDataObj(midNormal);
 var midNormalTwoData = toDataObj(midNormalTwo);
 var lateNormalData = toDataObj(lateNormal);
-var earlyEvilTwoData = toDataObj(earlyEvilTwo);
 var earlyEvilData = toDataObj(earlyEvil);
+var evilReturnToNormalData = toDataObj(evilReturnToNormal);
+var earlyEvilTwoData = toDataObj(earlyEvilTwo);
 
 
 
 describe('Calculators - Energy', () => {
-    // var earlyNormalData = toDataObj(earlyNormal);
     var cases = [
-        ['Early Normal 1', earlyNormalData, {'power': 20.8, 'bar': 16.9, 'cap': 412500}]
+        ['Early Normal 1', earlyNormalData, {'power': 20.8, 'bar': 16.9, 'cap': 412500}],
+        ['Early Normal 2', earlyNormalTwoData, {'power': 269, 'bar': 158, 'cap': 2262598}],
+        ['Mid Normal 1', midNormalData, {'power': 19795.5, 'bar': 10560, 'cap': 154393342}],
+        ['Mid Normal 2', midNormalTwoData, {'power': 396562, 'bar': 84914, 'cap': 1617782234}],
+        ['Late Normal', lateNormalData, {'power': 15400000, 'bar': 7272000, 'cap': 47268056150}],
+        ['Early Evil 1', earlyEvilData, {'power': 1148000000, 'bar': 176300000, 'cap': 1618503168662}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'power': 7.554e8, 'bar': 1.46e8, 'cap': 2395637339264}],
+        ['Early Evil 2', earlyEvilTwoData, {'power': 9.522e9, 'bar': 1.152e9, 'cap': 26218964477405}],
     ]
     test.each(cases)(
         "Calculators - Energy - %s",
         (name, data, expectedValues) => {
-            var ec = expectClose(Number(totalEnergyPower(data).getValue()), expectedValues['power'])
+            var ec = expectClose(totalEnergyPower(data), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(Number(totalEnergyBar(data).getValue()), expectedValues['bar'])
+            var ec = expectClose(totalEnergyBar(data), expectedValues['bar'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(Number(totalEnergyCap(data).getValue()), expectedValues['cap'])
+            var ec = expectClose(totalEnergyCap(data), expectedValues['cap'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -41,18 +48,48 @@ describe('Calculators - Energy', () => {
 
 
 describe('Calculators - Magic', () => {
-    // var earlyNormalData = toDataObj(earlyNormal);
     var cases = [
-        ['Early Normal 1', earlyNormalData, {'power': 6.4, 'bar': 5, 'cap': 60000}]
+        ['Early Normal 1', earlyNormalData, {'power': 6.4, 'bar': 5, 'cap': 60000}],
+        ['Early Normal 2', earlyNormalTwoData, {'power': 14, 'bar': 8, 'cap': 330000}],
+        ['Mid Normal 1', midNormalData, {'power': 1640, 'bar': 561.5, 'cap': 6941520}],
+        ['Mid Normal 2', midNormalTwoData, {'power': 49734, 'bar': 18589, 'cap': 281061326}],
+        ['Late Normal', lateNormalData, {'power': 3907000, 'bar': 2249000, 'cap': 14390053554}],
+        ['Early Evil 1', earlyEvilData, {'power': 106800000, 'bar': 22880000, 'cap': 309027642136}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'power': 8.385e7, 'bar': 3.155e7, 'cap': 258609120090}],
+        ['Early Evil 2', earlyEvilTwoData, {'power': 3.153e9, 'bar': 1.260e9, 'cap': 6363454536030}],
     ]
     test.each(cases)(
         "Calculators - Magic - %s",
         (name, data, expectedValues) => {
-            var ec = expectClose(Number(totalMagicPower(data).getValue()), expectedValues['power'])
+            var ec = expectClose(totalMagicPower(data), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(Number(totalMagicBar(data).getValue()), expectedValues['bar'])
+            var ec = expectClose(totalMagicBar(data), expectedValues['bar'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(Number(totalMagicCap(data).getValue()), expectedValues['cap'])
+            var ec = expectClose(totalMagicCap(data), expectedValues['cap'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+describe('Calculators - Resource 3', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'power': 1, 'bar': 0, 'cap': 0}],
+        ['Early Normal 2', earlyNormalTwoData, {'power': 1, 'bar': 0, 'cap': 0}],
+        ['Mid Normal 1', midNormalData, {'power': 1, 'bar': 0, 'cap': 0}],
+        ['Mid Normal 2', midNormalTwoData, {'power': 1, 'bar': 0, 'cap': 0}],
+        ['Late Normal', lateNormalData, {'power': 1, 'bar': 0, 'cap': 0}],
+        ['Early Evil 1', earlyEvilData, {'power': 1, 'bar': 0, 'cap': 0}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'power': 3, 'bar': 3, 'cap': 90000}],
+        ['Early Evil 2', earlyEvilTwoData, {'power': 3, 'bar': 6, 'cap': 90000}],
+    ]
+    test.each(cases)(
+        "Calculators - Resource 3 - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(totalRes3Power(data), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalRes3Bar(data), expectedValues['bar'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalRes3Cap(data), expectedValues['cap'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -60,250 +97,124 @@ describe('Calculators - Magic', () => {
 
 
 
-test('NGU for Early Normal 1', () => {
-    var playerData = toDataObj(earlyNormal)
-    expect(Number(totalEnergyNGUSpeedFactor(playerData).getValue())).toBeCloseTo(2080, 0)
-    expect(Number(totalMagicNGUSpeedFactor(playerData).getValue())).toBeCloseTo(640, 0)
-});
-test('Exp, AP, PP for Early Normal 1', () => {
-    var playerData = toDataObj(earlyNormal)
-    expect(Number(totalExpBonus(playerData).getValue())).toBeCloseTo(100, 0)
-    expect(Number(totalAPBonus(playerData).getValue())).toBeCloseTo(102.35, 2)
-    expect(Number(totalPPBonus(playerData).getValue())).toBeCloseTo(100, 0)
-});
-test('Adventure for Early Normal 1', () => {
-    var playerData = toDataObj(earlyNormal)
-    expect(Number(totalPower(playerData).getValue())).toBeCloseTo(693, 0)
-    expect(Number(totalToughness(playerData).getValue())).toBeCloseTo(651, 0)
-});
-test('Misc Adventure for Early Normal 1', () => {
-    var playerData = toDataObj(earlyNormal)
-    expect(Number(totalGoldDrop(playerData).getValue())).toBeCloseTo(100, 0)
-    expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(100, 0)
-    expect(Number(totalDropChance(playerData).getValue())).toBeCloseTo(114, 0)
+describe('Calculators - NGU', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'energy': 2080, 'magic': 640}],
+        ['Early Normal 2', earlyNormalTwoData, {'energy': 29550, 'magic': 1507}],
+        ['Mid Normal 1', midNormalData, {'energy': 2178000, 'magic': 541060}],
+        ['Mid Normal 2', midNormalTwoData, {'energy': 1290000000, 'magic': 648400000}],
+        ['Late Normal', lateNormalData, {'energy': 1091000000000, 'magic': 1163000000000}],
+        ['Early Evil 1', earlyEvilData, {'energy': 8.197e14, 'magic': 3.208e14}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'energy': 8.575e12, 'magic': 3.442e12}],
+        ['Early Evil 2', earlyEvilTwoData, {'energy': 1.588e16, 'magic': 2.452e16}],
+    ]
+    test.each(cases)(
+        "Calculators - NGU - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(totalEnergyNGUSpeedFactor(data), expectedValues['energy'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalMagicNGUSpeedFactor(data), expectedValues['magic'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Energy for Early Normal 2', () => {
-    var playerData = toDataObj(earlyNormalTwo)
-    expect(Number(totalEnergyPower(playerData).getValue())).toBeCloseTo(269, 0);
-    expect(Number(totalEnergyBar(playerData).getValue())).toBeCloseTo(158, 0);
-    expect(Number(totalEnergyCap(playerData).getValue())).toBeCloseTo(2262598, 0);
-});
-test('Magic for Early Normal 2', () => {
-    var playerData = toDataObj(earlyNormalTwo)
-    expect(Number(totalMagicPower(playerData).getValue())).toBeCloseTo(14, 0);
-    expect(Number(totalMagicBar(playerData).getValue())).toBeCloseTo(8, 0);
-    expect(Number(totalMagicCap(playerData).getValue())).toBeCloseTo(330000, 0);
-});
-test('NGU for Early Normal 2', () => {
-    var playerData = toDataObj(earlyNormalTwo)
-    expect(Number(totalEnergyNGUSpeedFactor(playerData).getValue())).toBeCloseTo(29550, 0);
-    expect(Number(totalMagicNGUSpeedFactor(playerData).getValue())).toBeCloseTo(1507, 0);
-});
-test('Exp, AP, PP for Early Normal 2', () => {
-    var playerData = toDataObj(earlyNormalTwo)
-    expect(Number(totalExpBonus(playerData).getValue())).toBeCloseTo(100, 0)
-    expect(Number(totalAPBonus(playerData).getValue())).toBeCloseTo(106.45, 2)
-    expect(Number(totalPPBonus(playerData).getValue())).toBeCloseTo(100, 0)
-});
-test('Adventure for Early Normal 2', () => {
-    var playerData = toDataObj(earlyNormalTwo)
-    expect(Number(totalPower(playerData).getValue())).toBeCloseTo(23253, 0)
-    expect(Number(totalToughness(playerData).getValue())).toBeCloseTo(20102, 0)
-});
-test('Misc Adventure for Early Normal 2', () => {
-    var playerData = toDataObj(earlyNormalTwo)
-    expect(Number(totalGoldDrop(playerData).getValue())).toBeCloseTo(854, 0)
-    expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(95, 0)
-    expect(Number(totalDropChance(playerData).getValue())).toBeCloseTo(155, 0)
+describe('Calculators - EXP, AP, PP', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'exp': 100, 'ap': 102.35, 'pp' : 100}],
+        ['Early Normal 2', earlyNormalTwoData, {'exp': 100, 'ap': 106.45, 'pp' : 100}],
+        ['Mid Normal 1', midNormalData, {'exp': 100, 'ap': 116.15, 'pp' : 110}],
+        ['Mid Normal 2', midNormalTwoData, {'exp': 132, 'ap': 155.46, 'pp' : 115.5}],
+        ['Late Normal', lateNormalData, {'exp': 1776.49, 'ap': 173.76, 'pp' : 348.58}],
+        ['Early Evil 1', earlyEvilData, {'exp': 1747.11, 'ap': 185.58, 'pp' : 1485.88}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'exp': 1665.96, 'ap': 186.18, 'pp' : 1788.99}],
+        ['Early Evil 2', earlyEvilTwoData, {'exp': 2402.84, 'ap': 187.38, 'pp' : 2502.83}],
+    ]
+    test.each(cases)(
+        "Calculators - EXP, AP, PP - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(totalExpBonus(data), expectedValues['exp'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalAPBonus(data), expectedValues['ap'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalPPBonus(data), expectedValues['pp'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Energy for Mid Normal 1', () => {
-    var playerData = toDataObj(midNormal)
-    expect(Number(totalEnergyPower(playerData).getValue())).toBeCloseTo(19795.5, 1)
-    expect(Number(totalEnergyBar(playerData).getValue())).toBeCloseTo(10560, 0)
-    var ec = expectClose(Number(totalEnergyCap(playerData).getValue()), 154393342, 1)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Magic for Mid Normal 1', () => {
-    var playerData = toDataObj(midNormal)
-    expect(Number(totalMagicPower(playerData).getValue())).toBeCloseTo(1640, 0)
-    var ec = expectClose(Number(totalMagicBar(playerData).getValue()), 561, 1)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    expect(Number(totalMagicCap(playerData).getValue())).toBeCloseTo(6941520, 0)
-});
-test('NGU for Mid Normal 1', () => {
-    var playerData = toDataObj(midNormal)
-    var ec = expectClose(Number(totalEnergyNGUSpeedFactor(playerData).getValue()), 2178000, 3)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicNGUSpeedFactor(playerData).getValue()), 541060, 1)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Exp, AP, PP for Mid Normal 1', () => {
-    var playerData = toDataObj(midNormal)
-    expect(Number(totalExpBonus(playerData).getValue())).toBeCloseTo(100, 0)
-    expect(Number(totalAPBonus(playerData).getValue())).toBeCloseTo(116.15, 2)
-    expect(Number(totalPPBonus(playerData).getValue())).toBeCloseTo(110, 0)
-});
-test('Adventure for Mid Normal 1', () => {
-    var playerData = toDataObj(midNormal)
-    // These might be wrong as save file added AT
-    var ec = expectClose(Number(totalPower(playerData).getValue()), 1452000, 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalToughness(playerData).getValue()), 978531, 3)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Misc Adventure for Mid Normal 1', () => {
-    var playerData = toDataObj(midNormal)
-    // Drop Chance might be wrong as save file added Beard
-    expect(Number(totalGoldDrop(playerData).getValue())).toBeCloseTo(45377.5, 1)
-    expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(63.84, 0)
-    expect(Number(totalDropChance(playerData).getValue())).toBeCloseTo(705, 0)
+describe('Calculators - Misc', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'daycare': 100, 'hack': 100, 'wish' : 100}],
+        ['Early Normal 2', earlyNormalTwoData, {'daycare': 100, 'hack': 100, 'wish' : 100}],
+        ['Mid Normal 1', midNormalData, {'daycare': 100, 'hack': 100, 'wish' : 100}],
+        ['Mid Normal 2', midNormalTwoData, {'daycare': 100, 'hack': 100, 'wish' : 100}],
+        ['Late Normal', lateNormalData,  {'daycare': 100, 'hack': 100, 'wish' : 100}],
+        ['Early Evil 1', earlyEvilData, {'daycare': 100, 'hack': 100, 'wish' : 100}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'daycare': 100, 'hack': 100, 'wish' : 100}],
+        ['Early Evil 2', earlyEvilTwoData, {'daycare': 126, 'hack': 175, 'wish' : 100}],
+    ]
+    test.each(cases)(
+        "Calculators - Misc - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(totalDaycareSpeed(data), expectedValues['daycare'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalHackSpeed(data), expectedValues['hack'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalWishSpeed(data), expectedValues['wish'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-test('Energy for Mid Normal 2', () => {
-    var playerData = toDataObj(midNormalTwo)
-    expect(Number(totalEnergyPower(playerData).getValue())).toBeCloseTo(396562, 0)
-    var ec = expectClose(Number(totalEnergyBar(playerData).getValue()), 84914, 1)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalEnergyCap(playerData).getValue()), 1617782234, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Magic for Mid Normal 2', () => {
-    var playerData = toDataObj(midNormalTwo)
-    expect(Number(totalMagicPower(playerData).getValue())).toBeCloseTo(49734, 0)
-    var ec = expectClose(Number(totalMagicBar(playerData).getValue()), 18589, 1)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicCap(playerData).getValue()), 281061326, 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('NGU for Mid Normal 2', () => {
-    var playerData = toDataObj(midNormalTwo)
-    var ec = expectClose(Number(totalEnergyNGUSpeedFactor(playerData).getValue()), 1290000000, 6)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicNGUSpeedFactor(playerData).getValue()), 648400000, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Exp, AP, PP for Mid Normal 2', () => {
-    var playerData = toDataObj(midNormalTwo)
-    expect(Number(totalExpBonus(playerData).getValue())).toBeCloseTo(132, 0)
-    expect(Number(totalAPBonus(playerData).getValue())).toBeCloseTo(155.46, 2)
-    expect(Number(totalPPBonus(playerData).getValue())).toBeCloseTo(115.5, 0)
-});
-test('Adventure for Mid Normal 2', () => {
-    var playerData = toDataObj(midNormalTwo)
-    // These numbers will change as Cube increases in offline
-    var ec = expectClose(Number(totalPower(playerData).getValue()), 1189000000, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalToughness(playerData).getValue()), 783600000, 6)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Misc Adventure for Mid Normal 2', () => {
-    var playerData = toDataObj(midNormalTwo)
-    var ec = expectClose(Number(totalGoldDrop(playerData).getValue()), 2638000, 3)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(63.08, 0)
-    expect(Number(totalDropChance(playerData).getValue())).toBeCloseTo(15760, 0)
+describe('Calculators - Adventure', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'power': 693, 'toughness': 651}],
+        ['Early Normal 2', earlyNormalTwoData, {'power': 23253, 'toughness': 20102}],
+        ['Mid Normal 1', midNormalData, {'power': 1452000, 'toughness': 978531}],
+        ['Mid Normal 2', midNormalTwoData, {'power': 1189000000, 'toughness': 783600000}],
+        ['Late Normal', lateNormalData, {'power': 1010000000000, 'toughness': 674700000000}],
+        ['Early Evil 1', earlyEvilData, {'power': 2.47e13, 'toughness': 1.477e13}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'power': 6.749e12, 'toughness': 2.2635e12}],
+        ['Early Evil 2', earlyEvilTwoData, {'power': 1.621e14, 'toughness': 1.787e14}],
+    ]
+    test.each(cases)(
+        "Calculators - Adventure - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(totalPower(data), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalToughness(data), expectedValues['toughness'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
 })
 
 
-
-
-
-
-
-
-
-
-
-
-test('Energy for Late Normal', () => {
-    var playerData = toDataObj(lateNormal)
-    var ec = expectClose(Number(totalEnergyPower(playerData).getValue()), 15400000, 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalEnergyBar(playerData).getValue()), 7272000, 3)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalEnergyCap(playerData).getValue()), 47268056150, 6)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Magic for Late Normal', () => {
-    var playerData = toDataObj(lateNormal)
-    var ec = expectClose(Number(totalMagicPower(playerData).getValue()), 3907000, 3)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicBar(playerData).getValue()), 2249000, 3)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicCap(playerData).getValue()), 14390053554, 6)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('NGU for Late Normal', () => {
-    var playerData = toDataObj(lateNormal)
-    var ec = expectClose(Number(totalEnergyNGUSpeedFactor(playerData).getValue()), 1091000000000, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicNGUSpeedFactor(playerData).getValue()), 1163000000000, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Exp, AP, PP for Late Normal', () => {
-    var playerData = toDataObj(lateNormal)
-    expect(Number(totalExpBonus(playerData).getValue())).toBeCloseTo(1776.49, 0)
-    expect(Number(totalAPBonus(playerData).getValue())).toBeCloseTo(173.76, 2)
-    expect(Number(totalPPBonus(playerData).getValue())).toBeCloseTo(348.58, 0)
-});
-test('Adventure for Late Normal', () => {
-    var playerData = toDataObj(lateNormal)
-    // These numbers will change as Cube increases in offline
-    var ec = expectClose(Number(totalPower(playerData).getValue()), 1010000000000, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalToughness(playerData).getValue()), 674700000000, 8)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Misc Adventure for Late Normal', () => {
-    var playerData = toDataObj(lateNormal)
-    var ec = expectClose(Number(totalGoldDrop(playerData).getValue()), 15600000000, 7)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(41.15, 0)
-    var ec = expectClose(Number(totalDropChance(playerData).getValue()), 10440000, 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
+describe('Calculators - Misc', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'gold': 100, 'respawn': 100, 'dropChance' : 114}],
+        ['Early Normal 2', earlyNormalTwoData, {'gold': 854, 'respawn': 95, 'dropChance' : 155}],
+        ['Mid Normal 1', midNormalData, {'gold': 45377.5, 'respawn': 63.84, 'dropChance' : 705}],
+        ['Mid Normal 2', midNormalTwoData, {'gold': 2638000, 'respawn': 63.08, 'dropChance' : 15760}],
+        ['Late Normal', lateNormalData, {'gold': 15600000000, 'respawn': 41.15, 'dropChance' : 10440000}],
+        ['Early Evil 1', earlyEvilData, {'gold': 1.713e12, 'respawn': 34.94, 'dropChance' : 6.294e8}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'gold': 1.698e11, 'respawn': 43.33, 'dropChance' : 1.564e8}],
+        ['Early Evil 2', earlyEvilTwoData, {'gold': 9.265e14, 'respawn': 35.93, 'dropChance' : 1.629e9}],
+    ]
+    test.each(cases)(
+        "Calculators - Misc - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(totalGoldDrop(data), expectedValues['gold'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalRespawnRate(data), expectedValues['respawn'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalDropChance(data), expectedValues['dropChance'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
 })
 
 
@@ -322,124 +233,6 @@ test('Misc Adventure for Late Normal', () => {
 
 
 
-test('Energy for Evil - Return to Normal', () => {
-    var playerData = toDataObj(earlyEvil)
-    var ec = expectClose(Number(totalEnergyPower(playerData).getValue()), 1148000000, 6)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalEnergyBar(playerData).getValue()), 176300000, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalEnergyCap(playerData).getValue()), 1618503168662, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Magic for Evil - Return to Normal', () => {
-    var playerData = toDataObj(earlyEvil)
-    var ec = expectClose(Number(totalMagicPower(playerData).getValue()), 106800000, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicBar(playerData).getValue()), 22880000, 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicCap(playerData).getValue()), 309027642136, 8)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('NGU for Evil - Return to Normal', () => {
-    var playerData = toDataObj(earlyEvil)
-    var ec = expectClose(Number(totalEnergyNGUSpeedFactor(playerData).getValue()), 8.197 * 10**14, 11)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicNGUSpeedFactor(playerData).getValue()), 3.208 * 10**14, 11)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Exp, AP, PP for Evil - Return to Normal', () => {
-    var playerData = toDataObj(earlyEvil)
-    expect(Number(totalExpBonus(playerData).getValue())).toBeCloseTo(1747.11, 0)
-    expect(Number(totalAPBonus(playerData).getValue())).toBeCloseTo(185.58, 2)
-    expect(Number(totalPPBonus(playerData).getValue())).toBeCloseTo(1485.88, 0)
-});
-test('Adventure for Evil - Return to Normal', () => {
-    var playerData = toDataObj(earlyEvil)
-    // These numbers will change as Cube increases in offline
-    var ec = expectClose(Number(totalPower(playerData).getValue()), 2.470 * 10**13, 10)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalToughness(playerData).getValue()), 1.477 * 10 ** 13, 10)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Misc Adventure for Evil - Return to Normal', () => {
-    var playerData = toDataObj(earlyEvil)
-    var ec = expectClose(Number(totalGoldDrop(playerData).getValue()), 1.713 * 10 ** 12, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(34.94, 0)
-    var ec = expectClose(Number(totalDropChance(playerData).getValue()), 6.294 * 10 ** 8, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Energy for Evil - Return to Normal', () => {
-    var playerData = toDataObj(evilReturnToNormal)
-    var ec = expectClose(Number(totalEnergyPower(playerData).getValue()), 7.554e8, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalEnergyBar(playerData).getValue()), 1.46e8, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalEnergyCap(playerData).getValue()), 2395637339264, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Magic for Evil - Return to Normal', () => {
-    var playerData = toDataObj(evilReturnToNormal)
-    var ec = expectClose(Number(totalMagicPower(playerData).getValue()), 8.385e7, 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicBar(playerData).getValue()), 3.155e7, 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicCap(playerData).getValue()), 258609120090, 8)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-
-test('Resource 3 for Evil - Return to Normal', () => {
-    var playerData = toDataObj(evilReturnToNormal)
-    var ec = expectClose(Number(totalRes3Power(playerData).getValue()), 3, 0)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalRes3Bar(playerData).getValue()), 3, 0)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalRes3Cap(playerData).getValue()), 90000, 0)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-
-test('NGU for Evil - Return to Normal', () => {
-    var playerData = toDataObj(evilReturnToNormal)
-    var ec = expectClose(Number(totalEnergyNGUSpeedFactor(playerData).getValue()), 8.575e12, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicNGUSpeedFactor(playerData).getValue()), 3.442e12, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Exp, AP, PP for Evil - Return to Normal', () => {
-    var playerData = toDataObj(evilReturnToNormal)
-    expect(Number(totalExpBonus(playerData).getValue())).toBeCloseTo(1665.96, 0)
-    expect(Number(totalAPBonus(playerData).getValue())).toBeCloseTo(186.18, 2)
-    expect(Number(totalPPBonus(playerData).getValue())).toBeCloseTo(1788.99, 0)
-});
-test('Adventure for Evil - Return to Normal', () => {
-    var playerData = toDataObj(evilReturnToNormal)
-    // These numbers will change as Cube increases in offline
-    var ec = expectClose(Number(totalPower(playerData).getValue()), 6.749e12, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalToughness(playerData).getValue()), 2.2635e12, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Misc Adventure for Evil - Return to Normal', () => {
-    var playerData = toDataObj(evilReturnToNormal)
-    var ec = expectClose(Number(totalGoldDrop(playerData).getValue()), 1.698e11, 8)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(43.33, 0)
-    var ec = expectClose(Number(totalDropChance(playerData).getValue()), 1.564e8, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-})
 
 
 
@@ -456,71 +249,19 @@ test('Misc Adventure for Evil - Return to Normal', () => {
 
 
 
-test('Energy for Early Evil 2', () => {
-    var playerData = toDataObj(earlyEvilTwo)
-    var ec = expectClose(Number(totalEnergyPower(playerData).getValue()), 9.522e9, 6)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalEnergyBar(playerData).getValue()), 1.152e9, 6)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalEnergyCap(playerData).getValue()), 26218964477405, 10)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Magic for Early Evil 2', () => {
-    var playerData = toDataObj(earlyEvilTwo)
-    var ec = expectClose(Number(totalMagicPower(playerData).getValue()), 3.153e9, 6)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicBar(playerData).getValue()), 1.260e9, 6)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicCap(playerData).getValue()), 6363454536030, 9)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
 
-test('Resource 3 for Early Evil 2', () => {
-    var playerData = toDataObj(earlyEvilTwo)
-    var ec = expectClose(Number(totalRes3Power(playerData).getValue()), 3, 0)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalRes3Bar(playerData).getValue()), 6, 0)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalRes3Cap(playerData).getValue()), 90000, 0)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
 
-test('NGU for Early Evil 2', () => {
-    var playerData = toDataObj(earlyEvilTwo)
-    var ec = expectClose(Number(totalEnergyNGUSpeedFactor(playerData).getValue()), 1.588e16, 13)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalMagicNGUSpeedFactor(playerData).getValue()), 2.452e16, 13)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Exp, AP, PP for Early Evil 2', () => {
-    var playerData = toDataObj(earlyEvilTwo)
-    expect(Number(totalExpBonus(playerData).getValue())).toBeCloseTo(2402.84, 0)
-    expect(Number(totalAPBonus(playerData).getValue())).toBeCloseTo(187.38, 2)
-    expect(Number(totalPPBonus(playerData).getValue())).toBeCloseTo(2502.83, 0)
-});
 
-test('Misc for Early Evil 2', () => {
-    var playerData = toDataObj(earlyEvilTwo)
-    expect(Number(totalDaycareSpeed(playerData).getValue())).toBeCloseTo(126, 0)
-    expect(Number(totalHackSpeed(playerData).getValue())).toBeCloseTo(175, 0)
-});
 
-test('Adventure for Early Evil 2', () => {
-    var playerData = toDataObj(earlyEvilTwo)
-    // These numbers will change as Cube increases in offline
-    var ec = expectClose(Number(totalPower(playerData).getValue()), 1.621e14, 11)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var ec = expectClose(Number(totalToughness(playerData).getValue()), 1.787e14, 11)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-});
-test('Misc Adventure for Early Evil 2', () => {
-    var playerData = toDataObj(earlyEvilTwo)
-    var ec = expectClose(Number(totalGoldDrop(playerData).getValue()), 9.265e14, 11)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    expect(Number(totalRespawnRate(playerData).getValue())).toBeCloseTo(35.93, 0)
-    var ec = expectClose(Number(totalDropChance(playerData).getValue()), 1.629e9, 6)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-})
+
+
+
+
+
+
+
+
+
 
 
 

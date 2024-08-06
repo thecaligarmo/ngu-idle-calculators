@@ -17,148 +17,574 @@ import midEvil from '../__data__/midEvil1';
 
 
 
-test('Achievement info - Early Normal', () => {
-    var data = {'achievements' : [defaultPlayerData(earlyNormal, 'achievements')]}
-    expect(achievementAPBonus(data).getValue()).toBe('102.35')
-});
+describe('Resource Info - Achievement Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, 102.35],
+        ['Early Normal 2', earlyNormalTwo, 106.45],
+        ['Mid Normal 1', midNormal, 116.15],
+        ['Mid Normal 2', midNormalTwo, 129.55],
+        ['Late Normal', lateNormal, 144.8],
+        ['Early Evil 1', earlyEvil, 154.65],
+        ['Evil Return to Normal', evilReturnToNormal, 155.15],
+        ['Early Evil 2', earlyEvilTwo, 156.15],
+    ]
+    test.each(cases)(
+        "Achievement Info - %s",
+        (name, obj, expectedValues) => {
+            var data = {'achievements' : [defaultPlayerData(obj, 'achievements')]}
+            var ec = expectClose(achievementAPBonus(data), expectedValues)
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
 
-test('Advanced Training info - Early Normal', () => {
-    var data = { 'advTrainings' : [defaultPlayerData(earlyNormal, 'advTrainings')]}
-    var val = Number(advTrainingInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(110, 0)
-    var val = Number(advTrainingInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('AP - Early Normal', () => {
-    var data = { 'apItems' : [defaultPlayerData(earlyNormal, 'apItems')]}
-    var val = Number(apItemInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Temp - Early Normal', () => {
-    var data = { 'beards' : [defaultPlayerData(earlyNormal, 'beards')]}
-    var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Perm - Early Normal', () => {
-    var data = { 'beards' : [defaultPlayerData(earlyNormal, 'beards')]}
-    var val = Number(beardInfoPerm(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(beardInfoPerm(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Challenges - Early Normal', () => {
-    var data = { 'challenges' : [defaultPlayerData(earlyNormal, 'challenges')]}
-    var val = Number(challengeInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(challengeInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Digger - Early Normal', () => {
-    var data = {
-        'diggers' : [defaultPlayerData(earlyNormal, 'diggers')],
-        'challenges' : [defaultPlayerData(earlyNormal, 'challenges')],
-        'itemSets' : [defaultPlayerData(earlyNormal, 'itemSets')],
-    }
-    var val = Number(diggerInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Equipment - Early Normal', () => {
-    var data = {
-        'equipmentHead' : [defaultPlayerData(earlyNormal, 'equipmentHead')],
-        'equipmentChest' : [defaultPlayerData(earlyNormal, 'equipmentChest')],
-        'equipmentLegs' : [defaultPlayerData(earlyNormal, 'equipmentLegs')],
-        'equipmentBoots' : [defaultPlayerData(earlyNormal, 'equipmentBoots')],
-        'equipmentWeapon' : [defaultPlayerData(earlyNormal, 'equipmentWeapon')],
-        'equipmentAccesories' : [defaultPlayerData(earlyNormal, 'equipmentAccesories')],
-        'cubePower' : [defaultPlayerData(earlyNormal, 'cubePower')],
-        'cubeToughness' : [defaultPlayerData(earlyNormal, 'cubeToughness')],
-        'baseAdventurePower' : [defaultPlayerData(earlyNormal, 'baseAdventurePower')],
-        'baseAdventureToughness' : [defaultPlayerData(earlyNormal, 'baseAdventureToughness')],
-    }
-    var val = Number(equipmentInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(435, 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(160, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(104, 0)
-    var val = Number(equipmentInfo(data, Stat.RESPAWN).getValue())
-    expect(val).toBeCloseTo(100, 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
+describe('Resource Info - Adv Training Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {'power' : 110, 'epower' : 100}],
+        ['Early Normal 2', earlyNormalTwo, {'power' : 301.3, 'epower' : 100}],
+        ['Mid Normal 1', midNormal, {'power' : 113.2, 'epower' : 100}],
+        ['Mid Normal 2', midNormalTwo, {'power' : 793.15, 'epower' : 100}],
+        ['Late Normal', lateNormal, {'power' : 1670.14, 'epower' : 100}],
+        ['Early Evil 1', earlyEvil, {'power' : 113.2, 'epower' : 100}],
+        ['Evil Return to Normal', evilReturnToNormal, {'power' : 163.1, 'epower' : 100}],
+        ['Early Evil 2', earlyEvilTwo, {'power' : 163.1, 'epower' : 100}],
+    ]
+    test.each(cases)(
+        "Adv Training Info - %s",
+        (name, obj, expectedValues) => {
+            var data = { 'advTrainings' : [defaultPlayerData(obj, 'advTrainings')]}
+            var ec = expectClose(advTrainingInfo(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(advTrainingInfo(data, Stat.ENERGY_POWER), expectedValues['epower'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
 
 
-test('MacGuffin - Early Normal', () => {
-    var data = {
-        'macguffins' : [defaultPlayerData(earlyNormal, 'macguffins')],
-    }
-    var val = Number(macguffinInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
+describe('Resource Info - AP Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, 100],
+        ['Early Normal 2', earlyNormalTwo, 100],
+        ['Mid Normal 1', midNormal, 100],
+        ['Mid Normal 2', midNormalTwo, 100],
+        ['Late Normal', lateNormal, 100],
+        ['Early Evil 1', earlyEvil, 100],
+        ['Evil Return to Normal', evilReturnToNormal, 100],
+        ['Early Evil 2', earlyEvilTwo, 100],
+    ]
+    test.each(cases)(
+        "AP Info - %s",
+        (name, obj, expectedValues) => {
+            var data = {'apItems' : [defaultPlayerData(obj, 'apItems')]}
+            var ec = expectClose(apItemInfo(data, Stat.POWER), expectedValues)
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
 
-test('NGU - Early Normal', () => {
-    var data = {
-        'energyNGUs' : [defaultPlayerData(earlyNormal, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(earlyNormal, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(earlyNormal, 'gameMode')],
-    }
-    var val = Number(nguInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(nguInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
 
-test('Perks - Early Normal', () => {
-    var data = {
-        'perks' : [defaultPlayerData(earlyNormal, 'perks')],
-        'gameMode' : [defaultPlayerData(earlyNormal, 'gameMode')],
-    }
-    var val = Number(perkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(110, 0)
-    var val = Number(perkInfo(data, Stat.BOOSTS_BOOST).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(perkInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
 
-test('Quirks - Early Normal', () => {
-    var data = {
-        'quirks' : [defaultPlayerData(earlyNormal, 'quirks')],
-        'gameMode' : [defaultPlayerData(earlyNormal, 'gameMode')],
-    }
-    var val = Number(quirkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(quirkInfo(data, Stat.ENERGY_CAP).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(quirkInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
+
+describe('Resource Info - Beard Temp Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {'power' : 100, 'dc' : 100}],
+        ['Early Normal 2', earlyNormalTwo, {'power' : 100, 'dc' : 100}],
+        ['Mid Normal 1', midNormal, {'power' : 100, 'dc' : 100}],
+        ['Mid Normal 2', midNormalTwo, {'power' : 100, 'dc' : 100}],
+        ['Late Normal', lateNormal, {'power' : 100, 'dc' : 100}],
+        ['Early Evil 1', earlyEvil, {'power' : 1210, 'dc' : 884}],
+        ['Evil Return to Normal', evilReturnToNormal, {'power' : 100, 'dc' : 100}],
+        ['Early Evil 2', earlyEvilTwo, {'power' : 100, 'dc' : 100}],
+    ]
+    test.each(cases)(
+        "Beard Temp Info - %s",
+        (name, obj, expectedValues) => {
+            var data = { 'beards' : [defaultPlayerData(obj, 'beards')]}
+            var ec = expectClose(beardInfoTemp(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(beardInfoTemp(data, Stat.DROP_CHANCE), expectedValues['dc'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+describe('Resource Info - Beard Perm Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {'power' : 100, 'dc' : 100}],
+        ['Early Normal 2', earlyNormalTwo, {'power' : 100, 'dc' : 100}],
+        ['Mid Normal 1', midNormal, {'power' : 141, 'dc' : 148}],
+        ['Mid Normal 2', midNormalTwo, {'power' : 199, 'dc' : 192}],
+        ['Late Normal', lateNormal, {'power' : 341, 'dc' : 267}],
+        ['Early Evil 1', earlyEvil, {'power' : 695, 'dc' : 396}],
+        ['Evil Return to Normal', evilReturnToNormal, {'power' : 730, 'dc' : 408}],
+        ['Early Evil 2', earlyEvilTwo, {'power' : 908, 'dc' : 466}],
+    ]
+    test.each(cases)(
+        "Beard Perm Info - %s",
+        (name, obj, expectedValues) => {
+            var data = { 'beards' : [defaultPlayerData(obj, 'beards')]}
+            var ec = expectClose(beardInfoPerm(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(beardInfoPerm(data, Stat.DROP_CHANCE), expectedValues['dc'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+describe('Resource Info - Challenge Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {'power' : 100, 'mngu' : 100}],
+        ['Early Normal 2', earlyNormalTwo, {'power' : 100, 'mngu' : 100}],
+        ['Mid Normal 1', midNormal, {'power' : 135, 'mngu' : 100}],
+        ['Mid Normal 2', midNormalTwo, {'power' : 135, 'mngu' : 135}],
+        ['Late Normal', lateNormal, {'power' : 135, 'mngu' : 150}],
+        ['Early Evil 1', earlyEvil, {'power' : 149, 'mngu' : 150}],
+        ['Evil Return to Normal', evilReturnToNormal, {'power' : 149, 'mngu' : 150}],
+        ['Early Evil 2', earlyEvilTwo, {'power' : 203, 'mngu' : 150}],
+    ]
+    test.each(cases)(
+        "Challenge Info - %s",
+        (name, obj, expectedValues) => {
+            var data = { 'challenges' : [defaultPlayerData(obj, 'challenges')]}
+            var ec = expectClose(challengeInfo(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(challengeInfo(data, Stat.MAGIC_NGU_SPEED), expectedValues['mngu'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+describe('Resource Info - Digger Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {'power' : 100}],
+        ['Early Normal 2', earlyNormalTwo, {'power' : 100}],
+        ['Mid Normal 1', midNormal, {'power' : 100}],
+        ['Mid Normal 2', midNormalTwo, {'power' : 100}],
+        ['Late Normal', lateNormal, {'power' : 235.64}],
+        ['Early Evil 1', earlyEvil, {'power' : 100}],
+        ['Evil Return to Normal', evilReturnToNormal, {'power' : 100}],
+        ['Early Evil 2', earlyEvilTwo, {'power' : 100}],
+    ]
+    test.each(cases)(
+        "Digger Info - %s",
+        (name, obj, expectedValues) => {
+            var data = {
+                'diggers' : [defaultPlayerData(obj, 'diggers')],
+                'challenges' : [defaultPlayerData(obj, 'challenges')],
+                'itemSets' : [defaultPlayerData(obj, 'itemSets')],
+            }
+            var ec = expectClose(diggerInfo(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+
+describe('Resource Info - Equipment Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {
+            'power' : 435,
+            'toughness' : 404,
+            'epower' : 160,
+            'mcap' : 100,
+            'dc' : 104,
+            'respawn' : 100,
+            'engu' : 100,
+            'mwandoos' : 100,
+        }],
+        ['Early Normal 2', earlyNormalTwo, {
+            'power' : 6736,
+            'toughness' : 5779,
+            'epower' : 511,
+            'mcap' : 110,
+            'dc' : 140.8,
+            'respawn' : 100,
+            'engu' : 100,
+            'mwandoos' : 104,
+        }],
+        ['Mid Normal 1', midNormal, {
+            'power' : 198896,
+            'toughness' : 130210+1627,
+            'epower' : 3112.5,
+            'mcap' : 482,
+            'dc' : 290,
+            'respawn' : 116,
+            'engu' : 100,
+            'mwandoos' : 100,
+        }],
+        ['Mid Normal 2', midNormalTwo, {
+            'power' : 1450789,
+            'toughness' : 777305+348826.75,
+            'epower' : 8708,
+            'mcap' : 868,
+            'dc' : 330,
+            'respawn' : 116,
+            'engu' : 704.5,
+            'mwandoos' : 607.6,
+        }],
+        ['Late Normal', lateNormal, {
+            'power' : 5956238,
+            'toughness' : 5.969e6,// 2.761e6+20327854,
+            'epower' : 24500,
+            'mcap' : 2820,
+            'dc' : 370,
+            'respawn' : 128,
+            'engu' : 1600,
+            'mwandoos' : 340,
+        }],
+        ['Early Evil 1', earlyEvil, {
+            'power' : (1.887e7 ) - (2.347e6),
+            'toughness' : 1.45775e7, //6.112e6+60732380,
+            'epower' : 57300,
+            'mcap' : 6260,
+            'dc' : 490,
+            'respawn' : 136,
+            'engu' : 1800,
+            'mwandoos' : 100,
+        }],
+        ['Evil Return to Normal', evilReturnToNormal, {
+            'power' :  1.83e7 + 2.152e7,
+            'toughness' : 1.84356e7,//7.606e6+33232670,
+            'epower' : 42111,
+            'mcap' : 4856,
+            'dc' : 1389.374,
+            'respawn' : 124,
+            'engu' : 100,
+            'mwandoos' : 100,
+        }],
+        ['Early Evil 2', earlyEvilTwo, {
+            'power' : 3.445e7 + 3.982e7,
+            'toughness' : 8.239e7,//3.851e7+88385088,
+            'epower' : 107542,
+            'mcap' : 7476,
+            'dc' : 990,
+            'respawn' : 130,
+            'engu' : 1700,
+            'mwandoos' : 500,
+        }],
+    ]
+    test.each(cases)(
+        "Equipment Info - %s",
+        (name, obj, expectedValues) => {
+            var data = {
+                'equipmentHead' : [defaultPlayerData(obj, 'equipmentHead')],
+                'equipmentChest' : [defaultPlayerData(obj, 'equipmentChest')],
+                'equipmentLegs' : [defaultPlayerData(obj, 'equipmentLegs')],
+                'equipmentBoots' : [defaultPlayerData(obj, 'equipmentBoots')],
+                'equipmentWeapon' : [defaultPlayerData(obj, 'equipmentWeapon')],
+                'equipmentAccesories' : [defaultPlayerData(obj, 'equipmentAccesories')],
+                'cubePower' : [defaultPlayerData(obj, 'cubePower')],
+                'cubeToughness' : [defaultPlayerData(obj, 'cubeToughness')],
+                'baseAdventurePower' : [defaultPlayerData(obj, 'baseAdventurePower')],
+                'baseAdventureToughness' : [defaultPlayerData(obj, 'baseAdventureToughness')],
+            }
+            var ec = expectClose(equipmentInfo(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(equipmentInfo(data, Stat.TOUGHNESS), expectedValues['toughness'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(equipmentInfo(data, Stat.ENERGY_POWER), expectedValues['epower'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(equipmentInfo(data, Stat.MAGIC_CAP), expectedValues['mcap'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(equipmentInfo(data, Stat.DROP_CHANCE), expectedValues['dc'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(equipmentInfo(data, Stat.RESPAWN), expectedValues['respawn'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(equipmentInfo(data, Stat.ENERGY_NGU_SPEED), expectedValues['engu'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED), expectedValues['mwandoos'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+describe('Resource Info - Macguffin Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {
+            'power' : 100,
+            'epower' : 100,
+            'dc' : 100,
+            'attack' : 100,
+        }],
+        ['Early Normal 2', earlyNormalTwo, {
+            'power' : 100,
+            'epower' : 100,
+            'dc' : 100,
+            'attack' : 100,
+        }],
+        ['Mid Normal 1', midNormal, {
+            'power' : 100,
+            'epower' : 100,
+            'dc' : 100,
+            'attack' : 100,
+        }],
+        ['Mid Normal 2', midNormalTwo, {
+            'power' : 100,
+            'epower' : 100,
+            'dc' : 101.141,
+            'attack' : 100,
+        }],
+        ['Late Normal', lateNormal, {
+            'power' : 100,
+            'epower' : 100,
+            'dc' : 104.248,
+            'attack' : 100,
+        }],
+        ['Early Evil 1', earlyEvil, {
+            'power' : 100,
+            'epower' : 111,
+            'dc' : 106.25,
+            'attack' : 100,
+        }],
+        ['Evil Return to Normal', evilReturnToNormal, {
+            'power' :  104,
+            'epower' : 116,
+            'dc' : 106.25,
+            'attack' : 100,
+        }],
+        ['Early Evil 2', earlyEvilTwo, {
+            'power' : 114,
+            'epower' : 128,
+            'dc' : 106.25,
+            'attack' : 100,
+        }],
+    ]
+    test.each(cases)(
+        "Macguffin Info - %s",
+        (name, obj, expectedValues) => {
+            var data = {
+                'macguffins' : [defaultPlayerData(obj, 'macguffins')],
+            }
+            var ec = expectClose(macguffinInfo(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(macguffinInfo(data, Stat.ENERGY_POWER), expectedValues['epower'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(macguffinInfo(data, Stat.DROP_CHANCE), expectedValues['dc'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(macguffinInfo(data, Stat.ATTACK), expectedValues['attack'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+
+
+describe('Resource Info - NGU Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {
+            'power' : 100,
+            'ygg' : 100,
+            'dc' : 100,
+            'attack' : 100,
+            'engu' : 100,
+        }],
+        ['Early Normal 2', earlyNormalTwo, {
+            'power' : 100,
+            'ygg' : 101.4,
+            'dc' : 100,
+            'attack' : 915,
+            'engu' : 100,
+        }],
+        ['Mid Normal 1', midNormal, {
+            'power' : 300,
+            'ygg' : 113.8,
+            'dc' : 123.3,
+            'attack' : 2780,
+            'engu' : 100,
+        }],
+        ['Mid Normal 2', midNormalTwo, {
+            'power' : 2746,
+            'ygg' : 377.22,
+            'dc' : 1019.92,
+            'attack' : 750500,
+            'engu' : 105,
+        }],
+        ['Late Normal', lateNormal, {
+            'power' : 42222,
+            'ygg' : 1851.98,
+            'dc' : 11140.88,
+            'attack' : 129483517932,
+            'engu' : 423.38,
+        }],
+        ['Early Evil 1', earlyEvil, {
+            'power' : 45749 * 9.8111,
+            'ygg' : 3003.45,
+            'dc' : 26675.27,
+            'attack' : 3.522e15,
+            'engu' : 1971,
+        }],
+        ['Evil Return to Normal', evilReturnToNormal, {
+            'power' :  31895*12.92,
+            'ygg' : 2465.97,
+            'dc' : 23561,
+            'attack' : 2.221e14,
+            'engu' : 2196,
+        }],
+        ['Early Evil 2', earlyEvilTwo, {
+            'power' : 123413*16.14,
+            'ygg' : 3968.5,
+            'dc' : 90096,
+            'attack' : 2.255e21,
+            'engu' : 4298,
+        }],
+    ]
+    test.each(cases)(
+        "NGU Info - %s",
+        (name, obj, expectedValues) => {
+            var data = {
+                'energyNGUs' : [defaultPlayerData(obj, 'energyNGUs')],
+                'magicNGUs' : [defaultPlayerData(obj, 'magicNGUs')],
+                'gameMode' : [defaultPlayerData(obj, 'gameMode')],
+            }
+            var ec = expectClose(nguInfo(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(nguInfo(data, Stat.YGGDRASIL_YIELD), expectedValues['ygg'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(nguInfo(data, Stat.DROP_CHANCE), expectedValues['dc'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(nguInfo(data, Stat.ATTACK), expectedValues['attack'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(nguInfo(data, Stat.ENERGY_NGU_SPEED), expectedValues['engu'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+describe('Resource Info - Perk Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {
+            'power' : 110,
+            'boosts': 100,
+            'epower': 100,
+        }],
+        ['Early Normal 2', earlyNormalTwo, {
+            'power' : 110,
+            'boosts': 100,
+            'epower': 103,
+        }],
+        ['Mid Normal 1', midNormal, {
+            'power' : 110,
+            'boosts': 100,
+            'epower': 106,
+        }],
+        ['Mid Normal 2', midNormalTwo, {
+            'power' : 110,
+            'boosts': 245,
+            'epower': 150,
+        }],
+        ['Late Normal', lateNormal, {
+            'power' : 110,
+            'boosts': 550,
+            'epower': 150,
+        }],
+        ['Early Evil 1', earlyEvil, {
+            'power' : 110,
+            'boosts': 550,
+            'epower': 231,
+        }],
+        ['Evil Return to Normal', evilReturnToNormal, {
+            'power' : 110,
+            'boosts': 550,
+            'epower': 165,
+        }],
+        ['Early Evil 2', earlyEvilTwo, {
+            'power' : 150.5273,
+            'boosts': 550,
+            'epower': 330,
+        }],
+    ]
+    test.each(cases)(
+        "Perk Info - %s",
+        (name, obj, expectedValues) => {
+            var data = {
+                'perks' : [defaultPlayerData(obj, 'perks')],
+                'gameMode' : [defaultPlayerData(obj, 'gameMode')],
+            }
+            var ec = expectClose(perkInfo(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(perkInfo(data, Stat.BOOSTS_BOOST), expectedValues['boosts'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(perkInfo(data, Stat.ENERGY_POWER), expectedValues['epower'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+
+describe('Resource Info - Quirk Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {
+            'power' : 100,
+            'ecap': 100,
+            'mngu': 100,
+        }],
+        ['Early Normal 2', earlyNormalTwo, {
+            'power' : 100,
+            'ecap': 100,
+            'mngu': 100,
+        }],
+        ['Mid Normal 1', midNormal, {
+            'power' : 100,
+            'ecap': 100,
+            'mngu': 100,
+        }],
+        ['Mid Normal 2', midNormalTwo, {
+            'power' : 125,
+            'ecap': 110,
+            'mngu': 100,
+        }],
+        ['Late Normal', lateNormal, {
+            'power' : 125,
+            'ecap': 146.3,
+            'mngu': 100,
+        }],
+        ['Early Evil 1', earlyEvil, {
+            'power' : 125,
+            'ecap': 165,
+            'mngu': 100,
+        }],
+        ['Evil Return to Normal', evilReturnToNormal, {
+            'power' : 125,
+            'ecap': 165,
+            'mngu': 100,
+        }],
+        ['Early Evil 2', earlyEvilTwo, {
+            'power' : 128,
+            'ecap': 165,
+            'mngu': 100,
+        }],
+    ]
+    test.each(cases)(
+        "Quirk Info - %s",
+        (name, obj, expectedValues) => {
+            var data = {
+                'quirks' : [defaultPlayerData(obj, 'quirks')],
+                'gameMode' : [defaultPlayerData(obj, 'gameMode')],
+            }
+            var ec = expectClose(quirkInfo(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(quirkInfo(data, Stat.ENERGY_CAP), expectedValues['ecap'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(quirkInfo(data, Stat.MAGIC_NGU_SPEED), expectedValues['mngu'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+
+
+
+
+
 
 
 test('Maxxed Items/Sets - Early Normal', () => {
@@ -182,184 +608,6 @@ test('Maxxed Items/Sets - Early Normal', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Achievement info - Early Normal 2', () => {
-    var data = {'achievements' : [defaultPlayerData(earlyNormalTwo, 'achievements')]}
-    expect(achievementAPBonus(data).getValue()).toBe('106.45')
-});
-
-test('Advanced Training info - Early Normal 2', () => {
-    var data = { 'advTrainings' : [defaultPlayerData(earlyNormalTwo, 'advTrainings')]}
-    var val = Number(advTrainingInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(301.3, 0)
-    var val = Number(advTrainingInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('AP - Early Normal 2', () => {
-    var data = { 'apItems' : [defaultPlayerData(earlyNormalTwo, 'apItems')]}
-    var val = Number(apItemInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Temp - Early Normal 2', () => {
-    var data = { 'beards' : [defaultPlayerData(earlyNormalTwo, 'beards')]}
-    var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Perm - Early Normal 2', () => {
-    var data = { 'beards' : [defaultPlayerData(earlyNormalTwo, 'beards')]}
-    var val = Number(beardInfoPerm(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(beardInfoPerm(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Challenges - Early Normal 2', () => {
-    var data = { 'challenges' : [defaultPlayerData(earlyNormalTwo, 'challenges')]}
-    var val = Number(challengeInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(challengeInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Digger - Early Normal 2', () => {
-    var data = {
-        'diggers' : [defaultPlayerData(earlyNormalTwo, 'diggers')],
-        'challenges' : [defaultPlayerData(earlyNormalTwo, 'challenges')],
-        'itemSets' : [defaultPlayerData(earlyNormalTwo, 'itemSets')],
-    }
-    var val = Number(diggerInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Equipment - Early Normal 2', () => {
-    var data = {
-        'equipmentHead' : [defaultPlayerData(earlyNormalTwo, 'equipmentHead')],
-        'equipmentChest' : [defaultPlayerData(earlyNormalTwo, 'equipmentChest')],
-        'equipmentLegs' : [defaultPlayerData(earlyNormalTwo, 'equipmentLegs')],
-        'equipmentBoots' : [defaultPlayerData(earlyNormalTwo, 'equipmentBoots')],
-        'equipmentWeapon' : [defaultPlayerData(earlyNormalTwo, 'equipmentWeapon')],
-        'equipmentAccesories' : [defaultPlayerData(earlyNormalTwo, 'equipmentAccesories')],
-        'cubePower' : [defaultPlayerData(earlyNormalTwo, 'cubePower')],
-        'cubeToughness' : [defaultPlayerData(earlyNormalTwo, 'cubeToughness')],
-        'baseAdventurePower' : [defaultPlayerData(earlyNormalTwo, 'baseAdventurePower')],
-        'baseAdventureToughness' : [defaultPlayerData(earlyNormalTwo, 'baseAdventureToughness')],
-    }
-    var val = Number(equipmentInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(6736, 0)
-    var val = Number(equipmentInfo(data, Stat.TOUGHNESS).getValue())
-    expect(val).toBeCloseTo(5779, 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(511, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
-    expect(val).toBeCloseTo(110, 0)
-    var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(140.8, 1)
-    var val = Number(equipmentInfo(data, Stat.RESPAWN).getValue())
-    expect(val).toBeCloseTo(100, 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED).getValue())
-    expect(val).toBeCloseTo(104, 0)
-});
-
-
-test('MacGuffin - Early Normal 2', () => {
-    var data = {
-        'macguffins' : [defaultPlayerData(earlyNormalTwo, 'macguffins')],
-    }
-    var val = Number(macguffinInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('NGU - Early Normal 2', () => {
-    var data = {
-        'energyNGUs' : [defaultPlayerData(earlyNormalTwo, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(earlyNormalTwo, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(earlyNormalTwo, 'gameMode')],
-    }
-    var val = Number(nguInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(101.4, 0)
-    var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(nguInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(915, 0)
-    var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Perks - Early Normal 2', () => {
-    var data = {
-        'perks' : [defaultPlayerData(earlyNormalTwo, 'perks')],
-        'gameMode' : [defaultPlayerData(earlyNormalTwo, 'gameMode')],
-    }
-    var val = Number(perkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(110, 0)
-    var val = Number(perkInfo(data, Stat.BOOSTS_BOOST).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(perkInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(103, 0)
-});
-
-test('Quirks - Early Normal 2', () => {
-    var data = {
-        'quirks' : [defaultPlayerData(earlyNormalTwo, 'quirks')],
-        'gameMode' : [defaultPlayerData(earlyNormalTwo, 'gameMode')],
-    }
-    var val = Number(quirkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(quirkInfo(data, Stat.ENERGY_CAP).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(quirkInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-
 test('Maxxed Items/Sets - Early Normal 2', () => {
     var data = {
         'itemSets' : [defaultPlayerData(earlyNormalTwo, 'itemSets')],
@@ -379,181 +627,6 @@ test('Maxxed Items/Sets - Early Normal 2', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Achievement info - Mid Normal 1', () => {
-    var data = {'achievements' : [defaultPlayerData(midNormal, 'achievements')]}
-    expect(achievementAPBonus(data).getValue()).toBe('116.15')
-});
-
-test('Advanced Training info - Mid Normal 1', () => {
-    var data = { 'advTrainings' : [defaultPlayerData(midNormal, 'advTrainings')]}
-    var val = Number(advTrainingInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(113.2, 1)
-    var val = Number(advTrainingInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('AP - Mid Normal 1', () => {
-    var data = { 'apItems' : [defaultPlayerData(midNormal, 'apItems')]}
-    var val = Number(apItemInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Temp - Mid Normal 1', () => {
-    var data = { 'beards' : [defaultPlayerData(midNormal, 'beards')]}
-    var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Perm - Mid Normal 1', () => {
-    var data = { 'beards' : [defaultPlayerData(midNormal, 'beards')]}
-    var val = Number(beardInfoPerm(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(141, 0)
-    var val = Number(beardInfoPerm(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(148, 0)
-});
-
-test('Challenges - Mid Normal 1', () => {
-    var data = { 'challenges' : [defaultPlayerData(midNormal, 'challenges')]}
-    var val = Number(challengeInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(135, 0)
-    var val = Number(challengeInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Digger - Mid Normal 1', () => {
-    var data = {
-        'diggers' : [defaultPlayerData(midNormal, 'diggers')],
-        'challenges' : [defaultPlayerData(midNormal, 'challenges')],
-        'itemSets' : [defaultPlayerData(midNormal, 'itemSets')],
-    }
-    var val = Number(diggerInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Equipment - Mid Normal 1', () => {
-    var data = {
-        'equipmentHead' : [defaultPlayerData(midNormal, 'equipmentHead')],
-        'equipmentChest' : [defaultPlayerData(midNormal, 'equipmentChest')],
-        'equipmentLegs' : [defaultPlayerData(midNormal, 'equipmentLegs')],
-        'equipmentBoots' : [defaultPlayerData(midNormal, 'equipmentBoots')],
-        'equipmentWeapon' : [defaultPlayerData(midNormal, 'equipmentWeapon')],
-        'equipmentAccesories' : [defaultPlayerData(midNormal, 'equipmentAccesories')],
-        'cubePower' : [defaultPlayerData(midNormal, 'cubePower')],
-        'cubeToughness' : [defaultPlayerData(midNormal, 'cubeToughness')],
-        'baseAdventurePower' : [defaultPlayerData(midNormal, 'baseAdventurePower')],
-        'baseAdventureToughness' : [defaultPlayerData(midNormal, 'baseAdventureToughness')],
-    }
-    var val = Number(equipmentInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(198896, 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(3112.5, 1)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
-    expect(val).toBeCloseTo(482, 0)
-    var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(290, 0)
-    var val = Number(equipmentInfo(data, Stat.RESPAWN).getValue())
-    expect(val).toBeCloseTo(116, 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-
-test('MacGuffin - Mid Normal 1', () => {
-    var data = {
-        'macguffins' : [defaultPlayerData(midNormal, 'macguffins')],
-    }
-    var val = Number(macguffinInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('NGU - Mid Normal 1', () => {
-    var data = {
-        'energyNGUs' : [defaultPlayerData(midNormal, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(midNormal, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(midNormal, 'gameMode')],
-    }
-    var val = Number(nguInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(300, 0)
-    var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(113.8, 1)
-    var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(123.3, 1)
-    var val = Number(nguInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(2780, 0)
-    var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Perks - Mid Normal 1', () => {
-    var data = {
-        'perks' : [defaultPlayerData(midNormal, 'perks')],
-        'gameMode' : [defaultPlayerData(midNormal, 'gameMode')],
-    }
-    var val = Number(perkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(110, 0)
-    var val = Number(perkInfo(data, Stat.BOOSTS_BOOST).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(perkInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(106, 0)
-});
-
-test('Quirks - Mid Normal 1', () => {
-    var data = {
-        'quirks' : [defaultPlayerData(midNormal, 'quirks')],
-        'gameMode' : [defaultPlayerData(midNormal, 'gameMode')],
-    }
-    var val = Number(quirkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(quirkInfo(data, Stat.ENERGY_CAP).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(quirkInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
 
 
 test('Maxxed Items/Sets - Mid Normal 1', () => {
@@ -576,179 +649,6 @@ test('Maxxed Items/Sets - Mid Normal 1', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Achievement info - Mid Normal 2', () => {
-    var data = {'achievements' : [defaultPlayerData(midNormalTwo, 'achievements')]}
-    expect(achievementAPBonus(data).getValue()).toBe('129.55')
-});
-
-test('Advanced Training info - Mid Normal 2', () => {
-    var data = { 'advTrainings' : [defaultPlayerData(midNormalTwo, 'advTrainings')]}
-    var val = Number(advTrainingInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(793.15, 1)
-    var val = Number(advTrainingInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('AP - Mid Normal 2', () => {
-    var data = { 'apItems' : [defaultPlayerData(midNormalTwo, 'apItems')]}
-    var val = Number(apItemInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Temp - Mid Normal 2', () => {
-    var data = { 'beards' : [defaultPlayerData(midNormalTwo, 'beards')]}
-    var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 1)
-    var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 1)
-});
-
-test('Beard Perm - Mid Normal 2', () => {
-    var data = { 'beards' : [defaultPlayerData(midNormalTwo, 'beards')]}
-    var val = Number(beardInfoPerm(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(199, 0)
-    var val = Number(beardInfoPerm(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(192, 0)
-});
-
-test('Challenges - Mid Normal 2', () => {
-    var data = { 'challenges' : [defaultPlayerData(midNormalTwo, 'challenges')]}
-    var val = Number(challengeInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(135, 0)
-    var val = Number(challengeInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(135, 0)
-});
-
-test('Digger - Mid Normal 2', () => {
-    var data = {
-        'diggers' : [defaultPlayerData(midNormalTwo, 'diggers')],
-        'challenges' : [defaultPlayerData(midNormalTwo, 'challenges')],
-        'itemSets' : [defaultPlayerData(midNormalTwo, 'itemSets')],
-    }
-    var val = Number(diggerInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Equipment - Mid Normal 2', () => {
-    var data = {
-        'equipmentHead' : [defaultPlayerData(midNormalTwo, 'equipmentHead')],
-        'equipmentChest' : [defaultPlayerData(midNormalTwo, 'equipmentChest')],
-        'equipmentLegs' : [defaultPlayerData(midNormalTwo, 'equipmentLegs')],
-        'equipmentBoots' : [defaultPlayerData(midNormalTwo, 'equipmentBoots')],
-        'equipmentWeapon' : [defaultPlayerData(midNormalTwo, 'equipmentWeapon')],
-        'equipmentAccesories' : [defaultPlayerData(midNormalTwo, 'equipmentAccesories')],
-        'cubePower' : [defaultPlayerData(midNormalTwo, 'cubePower')],
-        'cubeToughness' : [defaultPlayerData(midNormalTwo, 'cubeToughness')],
-        'baseAdventurePower' : [defaultPlayerData(midNormalTwo, 'baseAdventurePower')],
-        'baseAdventureToughness' : [defaultPlayerData(midNormalTwo, 'baseAdventureToughness')],
-    }
-    // Cube may be wrong due to offline increases
-    var val = Number(equipmentInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(1450789, 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(8708, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
-    expect(val).toBeCloseTo(868, 0)
-    var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(330, 0)
-    var val = Number(equipmentInfo(data, Stat.RESPAWN).getValue())
-    expect(val).toBeCloseTo(116, 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(704.5, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED).getValue())
-    expect(val).toBeCloseTo(607.6, 0)
-});
-
-
-test('MacGuffin - Mid Normal 2', () => {
-    var data = {
-        'macguffins' : [defaultPlayerData(midNormalTwo, 'macguffins')],
-    }
-    var val = Number(macguffinInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(101.141, 3)
-    var val = Number(macguffinInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('NGU - Mid Normal 2', () => {
-    var data = {
-        'energyNGUs' : [defaultPlayerData(midNormalTwo, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(midNormalTwo, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(midNormalTwo, 'gameMode')],
-    }
-    var val = Number(nguInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(2746, 0)
-    var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(377.22, 1)
-    var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(1019.92, 1)
-    var val = Number(nguInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(750500, 0)
-    var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(105, 0)
-});
-
-test('Perks - Mid Normal 2', () => {
-    var data = {
-        'perks' : [defaultPlayerData(midNormalTwo, 'perks')],
-        'gameMode' : [defaultPlayerData(midNormalTwo, 'gameMode')],
-    }
-    var val = Number(perkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(110, 0)
-    var val = Number(perkInfo(data, Stat.BOOSTS_BOOST).getValue())
-    expect(val).toBeCloseTo(245, 0)
-    var val = Number(perkInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(150, 0)
-});
-
-test('Quirks - Mid Normal 2', () => {
-    var data = {
-        'quirks' : [defaultPlayerData(midNormalTwo, 'quirks')],
-        'gameMode' : [defaultPlayerData(midNormalTwo, 'gameMode')],
-    }
-    var val = Number(quirkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(125, 0)
-    var val = Number(quirkInfo(data, Stat.ENERGY_CAP).getValue())
-    expect(val).toBeCloseTo(110, 0)
-    var val = Number(quirkInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-
 test('Maxxed Items/Sets - Mid Normal 2', () => {
     var data = {
         'itemSets' : [defaultPlayerData(midNormalTwo, 'itemSets')],
@@ -769,180 +669,6 @@ test('Maxxed Items/Sets - Mid Normal 2', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Achievement info - Late Normal', () => {
-    var data = {'achievements' : [defaultPlayerData(lateNormal, 'achievements')]}
-    expect(achievementAPBonus(data).getValue()).toBe('144.8')
-});
-
-test('Advanced Training info - Late Normal', () => {
-    var data = { 'advTrainings' : [defaultPlayerData(lateNormal, 'advTrainings')]}
-    var val = Number(advTrainingInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(1670.14, 1)
-    var val = Number(advTrainingInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('AP - Late Normal', () => {
-    var data = { 'apItems' : [defaultPlayerData(lateNormal, 'apItems')]}
-    var val = Number(apItemInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Temp - Late Normal', () => {
-    var data = { 'beards' : [defaultPlayerData(lateNormal, 'beards')]}
-    var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 1)
-    var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 1)
-});
-
-test('Beard Perm - Late Normal', () => {
-    var data = { 'beards' : [defaultPlayerData(lateNormal, 'beards')]}
-    var val = Number(beardInfoPerm(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(341, 0)
-    var val = Number(beardInfoPerm(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(267, 0)
-});
-
-test('Challenges - Late Normal', () => {
-    var data = { 'challenges' : [defaultPlayerData(lateNormal, 'challenges')]}
-    var val = Number(challengeInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(135, 0)
-    var val = Number(challengeInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(150, 0)
-});
-
-test('Digger - Late Normal', () => {
-    var data = {
-        'diggers' : [defaultPlayerData(lateNormal, 'diggers')],
-        'challenges' : [defaultPlayerData(lateNormal, 'challenges')],
-        'itemSets' : [defaultPlayerData(lateNormal, 'itemSets')],
-    }
-    var val = Number(diggerInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(235.64, 2)
-});
-
-test('Equipment - Late Normal', () => {
-    var data = {
-        'equipmentHead' : [defaultPlayerData(lateNormal, 'equipmentHead')],
-        'equipmentChest' : [defaultPlayerData(lateNormal, 'equipmentChest')],
-        'equipmentLegs' : [defaultPlayerData(lateNormal, 'equipmentLegs')],
-        'equipmentBoots' : [defaultPlayerData(lateNormal, 'equipmentBoots')],
-        'equipmentWeapon' : [defaultPlayerData(lateNormal, 'equipmentWeapon')],
-        'equipmentAccesories' : [defaultPlayerData(lateNormal, 'equipmentAccesories')],
-        'cubePower' : [defaultPlayerData(lateNormal, 'cubePower')],
-        'cubeToughness' : [defaultPlayerData(lateNormal, 'cubeToughness')],
-        'baseAdventurePower' : [defaultPlayerData(lateNormal, 'baseAdventurePower')],
-        'baseAdventureToughness' : [defaultPlayerData(lateNormal, 'baseAdventureToughness')],
-    }
-    // Cube may be wrong due to offline increases
-    var val = Number(equipmentInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(5956238, 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(24500, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
-    expect(val).toBeCloseTo(2820, 0)
-    var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(370, 0)
-    var val = 200 - Number(equipmentInfo(data, Stat.RESPAWN).getValue())
-    expect(val).toBeCloseTo(72, 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(1600, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED).getValue())
-    expect(val).toBeCloseTo(340, 0)
-});
-
-
-test('MacGuffin - Late Normal', () => {
-    var data = {
-        'macguffins' : [defaultPlayerData(lateNormal, 'macguffins')],
-    }
-    var val = Number(macguffinInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(104.248, 3)
-    var val = Number(macguffinInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('NGU - Late Normal', () => {
-    var data = {
-        'energyNGUs' : [defaultPlayerData(lateNormal, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
-    }
-    var val = Number(nguInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(42222, 0)
-    var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(1851.98, 1)
-    var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(11140.88, 1)
-    var val = Number(nguInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(129483517932, 0)
-    var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(423.38, 0)
-});
-
-test('Perks - Late Normal', () => {
-    var data = {
-        'perks' : [defaultPlayerData(lateNormal, 'perks')],
-        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
-    }
-    var val = Number(perkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(110, 0)
-    var val = Number(perkInfo(data, Stat.BOOSTS_BOOST).getValue())
-    expect(val).toBeCloseTo(550, 0)
-    var val = Number(perkInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(150, 0)
-});
-
-test('Quirks - Late Normal', () => {
-    var data = {
-        'quirks' : [defaultPlayerData(lateNormal, 'quirks')],
-        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
-    }
-    var val = Number(quirkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(125, 0)
-    var val = Number(quirkInfo(data, Stat.ENERGY_CAP).getValue())
-    expect(val).toBeCloseTo(146.3, 1)
-    var val = Number(quirkInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-
 test('Maxxed Items/Sets - Late Normal', () => {
     var data = {
         'itemSets' : [defaultPlayerData(lateNormal, 'itemSets')],
@@ -961,164 +687,6 @@ test('Maxxed Items/Sets - Late Normal', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Achievement info - Early Evil 1', () => {
-    var data = {'achievements' : [defaultPlayerData(earlyEvil, 'achievements')]}
-    expect(achievementAPBonus(data).getValue()).toBe('154.65')
-});
-
-test('Advanced Training info - Early Evil 1', () => {
-    var data = { 'advTrainings' : [defaultPlayerData(earlyEvil, 'advTrainings')]}
-    var val = Number(advTrainingInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(113.2, 1)
-    var val = Number(advTrainingInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('AP - Early Evil 1', () => {
-    var data = { 'apItems' : [defaultPlayerData(earlyEvil, 'apItems')]}
-    var val = Number(apItemInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Temp - Early Evil 1', () => {
-    var data = { 'beards' : [defaultPlayerData(earlyEvil, 'beards')]}
-    var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(1210, 0)
-    var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(884, 0)
-});
-
-test('Beard Perm - Early Evil 1', () => {
-    var data = { 'beards' : [defaultPlayerData(earlyEvil, 'beards')]}
-    var val = Number(beardInfoPerm(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(695, 0)
-    var val = Number(beardInfoPerm(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(396, 0)
-});
-
-test('Challenges - Early Evil 1', () => {
-    var data = { 'challenges' : [defaultPlayerData(earlyEvil, 'challenges')]}
-    var val = Number(challengeInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(149, 0)
-    var val = Number(challengeInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(150, 0)
-});
-
-test('Digger - Early Evil 1', () => {
-    var data = {
-        'diggers' : [defaultPlayerData(earlyEvil, 'diggers')],
-        'challenges' : [defaultPlayerData(earlyEvil, 'challenges')],
-        'itemSets' : [defaultPlayerData(earlyEvil, 'itemSets')],
-    }
-    var val = Number(diggerInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Equipment - Early Evil 1', () => {
-    var data = {
-        'equipmentHead' : [defaultPlayerData(earlyEvil, 'equipmentHead')],
-        'equipmentChest' : [defaultPlayerData(earlyEvil, 'equipmentChest')],
-        'equipmentLegs' : [defaultPlayerData(earlyEvil, 'equipmentLegs')],
-        'equipmentBoots' : [defaultPlayerData(earlyEvil, 'equipmentBoots')],
-        'equipmentWeapon' : [defaultPlayerData(earlyEvil, 'equipmentWeapon')],
-        'equipmentAccesories' : [defaultPlayerData(earlyEvil, 'equipmentAccesories')],
-        'cubePower' : [defaultPlayerData(earlyEvil, 'cubePower')],
-        'cubeToughness' : [defaultPlayerData(earlyEvil, 'cubeToughness')],
-        'baseAdventurePower' : [defaultPlayerData(earlyEvil, 'baseAdventurePower')],
-        'baseAdventureToughness' : [defaultPlayerData(earlyEvil, 'baseAdventureToughness')],
-    }
-    // Cube may be wrong due to offline increases
-    var ec = expectClose(Number(equipmentInfo(data, Stat.POWER).getValue()), (1.887 * 10 ** 7 ) - (2.347 * 10 ** 6), 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(57300, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
-    expect(val).toBeCloseTo(6260, 0)
-    var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(490, 0)
-    var val = 200 - Number(equipmentInfo(data, Stat.RESPAWN).getValue())
-    expect(val).toBeCloseTo(64, 0)
-    var val = Number(equipmentInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(1800, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-
-test('MacGuffin - Early Evil 1', () => {
-    var data = {
-        'macguffins' : [defaultPlayerData(earlyEvil, 'macguffins')],
-    }
-    var val = Number(macguffinInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(macguffinInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(111, 0)
-    var val = Number(macguffinInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(106.25, 3)
-    var val = Number(macguffinInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('NGU - Early Evil 1', () => {
-    var data = {
-        'energyNGUs' : [defaultPlayerData(earlyEvil, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(earlyEvil, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(earlyEvil, 'gameMode')],
-    }
-    var ec = expectClose(Number(nguInfo(data, Stat.POWER).getValue()), 45749 * 9.8111, 2)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(3003.45, 1)
-    var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(26675.27, 1)
-    var ec = expectClose(Number(nguInfo(data, Stat.ATTACK).getValue()), 3.522 * 10**15, 12)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(1971, 0)
-});
-
-test('Perks - Early Evil 1', () => {
-    var data = {
-        'perks' : [defaultPlayerData(earlyEvil, 'perks')],
-        'gameMode' : [defaultPlayerData(earlyEvil, 'gameMode')],
-    }
-    var val = Number(perkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(110, 0)
-    var val = Number(perkInfo(data, Stat.BOOSTS_BOOST).getValue())
-    expect(val).toBeCloseTo(550, 0)
-    var val = Number(perkInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(231, 0)
-});
-
-test('Quirks - Early Evil 1', () => {
-    var data = {
-        'quirks' : [defaultPlayerData(earlyEvil, 'quirks')],
-        'gameMode' : [defaultPlayerData(earlyEvil, 'gameMode')],
-    }
-    var val = Number(quirkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(125, 0)
-    var val = Number(quirkInfo(data, Stat.ENERGY_CAP).getValue())
-    expect(val).toBeCloseTo(165, 1)
-    var val = Number(quirkInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-
 test('Maxxed Items/Sets - Early Evil 1', () => {
     var data = {
         'itemSets' : [defaultPlayerData(earlyEvil, 'itemSets')],
@@ -1132,167 +700,6 @@ test('Maxxed Items/Sets - Early Evil 1', () => {
     expect(isMaxxedItemSet(data, ItemSets.FOREST)).toBeTruthy()
     expect(isMaxxedItemSet(data, ItemSets.BADLY_DRAWN)).toBeTruthy()
     expect(isMaxxedItemSet(data, ItemSets.PRETTY)).toBeFalsy()
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Achievement info - Evil - Return to Normal', () => {
-    var data = {'achievements' : [defaultPlayerData(evilReturnToNormal, 'achievements')]}
-    expect(achievementAPBonus(data).getValue()).toBe('155.15')
-});
-
-test('Advanced Training info - Evil - Return to Normal', () => {
-    var data = { 'advTrainings' : [defaultPlayerData(evilReturnToNormal, 'advTrainings')]}
-    var val = Number(advTrainingInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(163.1, 1)
-    var val = Number(advTrainingInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('AP - Evil - Return to Normal', () => {
-    var data = { 'apItems' : [defaultPlayerData(evilReturnToNormal, 'apItems')]}
-    var val = Number(apItemInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Temp - Evil - Return to Normal', () => {
-    var data = { 'beards' : [defaultPlayerData(evilReturnToNormal, 'beards')]}
-    var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Perm - Evil - Return to Normal', () => {
-    var data = { 'beards' : [defaultPlayerData(evilReturnToNormal, 'beards')]}
-    var val = Number(beardInfoPerm(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(730, 0)
-    var val = Number(beardInfoPerm(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(408, 0)
-});
-
-test('Challenges - Evil - Return to Normal', () => {
-    var data = { 'challenges' : [defaultPlayerData(evilReturnToNormal, 'challenges')]}
-    var val = Number(challengeInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(149, 0)
-    var val = Number(challengeInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(150, 0)
-});
-
-test('Digger - Evil - Return to Normal', () => {
-    var data = {
-        'diggers' : [defaultPlayerData(evilReturnToNormal, 'diggers')],
-        'challenges' : [defaultPlayerData(evilReturnToNormal, 'challenges')],
-        'itemSets' : [defaultPlayerData(evilReturnToNormal, 'itemSets')],
-    }
-    var val = Number(diggerInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Equipment - Evil - Return to Normal', () => {
-    var data = {
-        'equipmentHead' : [defaultPlayerData(evilReturnToNormal, 'equipmentHead')],
-        'equipmentChest' : [defaultPlayerData(evilReturnToNormal, 'equipmentChest')],
-        'equipmentLegs' : [defaultPlayerData(evilReturnToNormal, 'equipmentLegs')],
-        'equipmentBoots' : [defaultPlayerData(evilReturnToNormal, 'equipmentBoots')],
-        'equipmentWeapon' : [defaultPlayerData(evilReturnToNormal, 'equipmentWeapon')],
-        'equipmentAccesories' : [defaultPlayerData(evilReturnToNormal, 'equipmentAccesories')],
-        'cubePower' : [defaultPlayerData(evilReturnToNormal, 'cubePower')],
-        'cubeToughness' : [defaultPlayerData(evilReturnToNormal, 'cubeToughness')],
-        'baseAdventurePower' : [defaultPlayerData(evilReturnToNormal, 'baseAdventurePower')],
-        'baseAdventureToughness' : [defaultPlayerData(evilReturnToNormal, 'baseAdventureToughness')],
-    }
-    // Cube may be wrong due to offline increases
-    var ec = expectClose(Number(equipmentInfo(data, Stat.POWER).getValue()), 1.83e7 + 2.152e7, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(42111, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
-    expect(val).toBeCloseTo(4856, 0)
-    var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(1389.374, 0)
-    var val = 200 - Number(equipmentInfo(data, Stat.RESPAWN).getValue())
-    expect(val).toBeCloseTo(76, 0)
-    var val = Number(equipmentInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-
-test('MacGuffin - Evil - Return to Normal', () => {
-    var data = {
-        'macguffins' : [defaultPlayerData(evilReturnToNormal, 'macguffins')],
-    }
-    var val = Number(macguffinInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(104, 0)
-    var val = Number(macguffinInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(116, 0)
-    var val = Number(macguffinInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(106.25, 3)
-    var val = Number(macguffinInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('NGU - Evil - Return to Normal', () => {
-    var data = {
-        'energyNGUs' : [defaultPlayerData(evilReturnToNormal, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(evilReturnToNormal, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(evilReturnToNormal, 'gameMode')],
-    }
-    var ec = expectClose(Number(nguInfo(data, Stat.POWER).getValue()), 31895 * 1292 / 100, 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(2465.97, 0)
-    var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(23561, 0)
-    var ec = expectClose(Number(nguInfo(data, Stat.ATTACK).getValue()), 2.221e14, 11)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(2196, 0)
-});
-
-test('Perks - Evil - Return to Normal', () => {
-    var data = {
-        'perks' : [defaultPlayerData(evilReturnToNormal, 'perks')],
-        'gameMode' : [defaultPlayerData(evilReturnToNormal, 'gameMode')],
-    }
-    var val = Number(perkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(110, 0)
-    var val = Number(perkInfo(data, Stat.BOOSTS_BOOST).getValue())
-    expect(val).toBeCloseTo(550, 0)
-    var val = Number(perkInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(165, 0)
-});
-
-test('Quirks - Evil - Return to Normal', () => {
-    var data = {
-        'quirks' : [defaultPlayerData(evilReturnToNormal, 'quirks')],
-        'gameMode' : [defaultPlayerData(evilReturnToNormal, 'gameMode')],
-    }
-    var val = Number(quirkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(125, 0)
-    var val = Number(quirkInfo(data, Stat.ENERGY_CAP).getValue())
-    expect(val).toBeCloseTo(165, 1)
-    var val = Number(quirkInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
 });
 
 
@@ -1312,183 +719,6 @@ test('Maxxed Items/Sets - Evil - Return to Normal', () => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Achievement info - Early Evil 2', () => {
-    var data = {'achievements' : [defaultPlayerData(earlyEvilTwo, 'achievements')]}
-    expect(achievementAPBonus(data).getValue()).toBe('156.15')
-});
-
-test('Advanced Training info - Early Evil 2', () => {
-    var data = { 'advTrainings' : [defaultPlayerData(earlyEvilTwo, 'advTrainings')]}
-    var val = Number(advTrainingInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(163.1, 1)
-    var val = Number(advTrainingInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('AP - Early Evil 2', () => {
-    var data = { 'apItems' : [defaultPlayerData(earlyEvilTwo, 'apItems')]}
-    var val = Number(apItemInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Temp - Early Evil 2', () => {
-    var data = { 'beards' : [defaultPlayerData(earlyEvilTwo, 'beards')]}
-    var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Perm - Early Evil 2', () => {
-    var data = { 'beards' : [defaultPlayerData(earlyEvilTwo, 'beards')]}
-    var val = Number(beardInfoPerm(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(908, 0)
-    var val = Number(beardInfoPerm(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(466, 0)
-});
-
-test('Challenges - Early Evil 2', () => {
-    var data = { 'challenges' : [defaultPlayerData(earlyEvilTwo, 'challenges')]}
-    var val = Number(challengeInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(203, 0)
-    var val = Number(challengeInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(150, 0)
-});
-
-test('Digger - Early Evil 2', () => {
-    var data = {
-        'diggers' : [defaultPlayerData(earlyEvilTwo, 'diggers')],
-        'challenges' : [defaultPlayerData(earlyEvilTwo, 'challenges')],
-        'itemSets' : [defaultPlayerData(earlyEvilTwo, 'itemSets')],
-    }
-    var val = Number(diggerInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Equipment - Early Evil 2', () => {
-    var data = {
-        'equipmentHead' : [defaultPlayerData(earlyEvilTwo, 'equipmentHead')],
-        'equipmentChest' : [defaultPlayerData(earlyEvilTwo, 'equipmentChest')],
-        'equipmentLegs' : [defaultPlayerData(earlyEvilTwo, 'equipmentLegs')],
-        'equipmentBoots' : [defaultPlayerData(earlyEvilTwo, 'equipmentBoots')],
-        'equipmentWeapon' : [defaultPlayerData(earlyEvilTwo, 'equipmentWeapon')],
-        'equipmentAccesories' : [defaultPlayerData(earlyEvilTwo, 'equipmentAccesories')],
-        'cubePower' : [defaultPlayerData(earlyEvilTwo, 'cubePower')],
-        'cubeToughness' : [defaultPlayerData(earlyEvilTwo, 'cubeToughness')],
-        'baseAdventurePower' : [defaultPlayerData(earlyEvilTwo, 'baseAdventurePower')],
-        'baseAdventureToughness' : [defaultPlayerData(earlyEvilTwo, 'baseAdventureToughness')],
-    }
-    // Cube may be wrong due to offline increases
-    var ec = expectClose(Number(equipmentInfo(data, Stat.POWER).getValue()), 3.445e7 + 3.982e7, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(107542, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
-    expect(val).toBeCloseTo(7476, 0)
-    var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(990, 0)
-    var val = 200 - Number(equipmentInfo(data, Stat.RESPAWN).getValue())
-    expect(val).toBeCloseTo(70, 0)
-    var val = Number(equipmentInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(1700, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED).getValue())
-    expect(val).toBeCloseTo(500, 0)
-});
-
-
-test('MacGuffin - Early Evil 2', () => {
-    var data = {
-        'macguffins' : [defaultPlayerData(earlyEvilTwo, 'macguffins')],
-    }
-    var val = Number(macguffinInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(114, 0)
-    var val = Number(macguffinInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(128, 0)
-    var val = Number(macguffinInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(106.25, 3)
-    var val = Number(macguffinInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('NGU - Early Evil 2', () => {
-    var data = {
-        'energyNGUs' : [defaultPlayerData(earlyEvilTwo, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(earlyEvilTwo, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(earlyEvilTwo, 'gameMode')],
-    }
-    var ec = expectClose(Number(nguInfo(data, Stat.POWER).getValue()), 123413 * 1614 / 100, 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(3968.5, 0)
-    var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(90096, 0)
-    var ec = expectClose(Number(nguInfo(data, Stat.ATTACK).getValue()), 2.255e21, 18)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(4298, 0)
-});
-
-test('Perks - Early Evil 2', () => {
-    var data = {
-        'perks' : [defaultPlayerData(earlyEvilTwo, 'perks')],
-        'gameMode' : [defaultPlayerData(earlyEvilTwo, 'gameMode')],
-    }
-    var val = Number(perkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(150.5273, 0)
-    var val = Number(perkInfo(data, Stat.BOOSTS_BOOST).getValue())
-    expect(val).toBeCloseTo(550, 0)
-    var val = Number(perkInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(330, 0)
-});
-
-test('Quirks - Early Evil 2', () => {
-    var data = {
-        'quirks' : [defaultPlayerData(earlyEvilTwo, 'quirks')],
-        'gameMode' : [defaultPlayerData(earlyEvilTwo, 'gameMode')],
-    }
-    var val = Number(quirkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(128, 0)
-    var val = Number(quirkInfo(data, Stat.ENERGY_CAP).getValue())
-    expect(val).toBeCloseTo(165, 1)
-    var val = Number(quirkInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
 
 
 test('Maxxed Items/Sets - Early Evil 2', () => {

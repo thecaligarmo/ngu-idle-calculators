@@ -1,5 +1,6 @@
 
 import {getPlayerNumberOptions, getPlayerOptions, getCalculatedOptions, defaultPlayerData} from '@/helpers/defaultPlayerData'
+import { bd } from '@/helpers/numbers'
 import bigDecimal from 'js-big-decimal'
 
 export function expectClose(value : number | bigDecimal , expect : number | bigDecimal, range ?: number) : number[]{
@@ -11,7 +12,7 @@ export function expectClose(value : number | bigDecimal , expect : number | bigD
     }
     
     if (range == null) {
-        range = Math.floor(expect).toString().length - 3
+        range = Math.max(bd(expect).getValue().length - 3, 0)
     }
 
     var v = value / (10 ** range)

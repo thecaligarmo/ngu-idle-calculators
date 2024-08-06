@@ -567,34 +567,34 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
 
             case 'equipmentWeapon':
                 var weapon : any = playerData.inventory.weapon;
-                var item : Item = ITEMS[weapon.id]
+                var item : Item = _.cloneDeep(ITEMS[weapon.id])
                 item.importStats(weapon)
                 return item
             case 'equipmentHead':
                 var head : any = playerData.inventory.head;
-                var item : Item = ITEMS[head.id]
+                var item : Item = _.cloneDeep(ITEMS[head.id])
                 item.importStats(head)
                 return item
             case 'equipmentChest':
                 var chest : any = playerData.inventory.chest;
-                var item : Item= ITEMS[chest.id]
+                var item : Item= _.cloneDeep(ITEMS[chest.id])
                 item.importStats(chest)
                 return item
             case 'equipmentLegs':
                 var legs : any = playerData.inventory.legs;
-                var item : Item = ITEMS[legs.id]
+                var item : Item = _.cloneDeep(ITEMS[legs.id])
                 item.importStats(legs)
                 return item
             case 'equipmentBoots':
                 var boots : any = playerData.inventory.boots;
-                var item : Item = ITEMS[boots.id]
+                var item : Item = _.cloneDeep(ITEMS[boots.id])
                 item.importStats(boots)
                 return item
             case 'equipmentAccesories':
                 var accesories : any = playerData.inventory.accs.filter((acc : any) => !_.isUndefined(acc.id) && !_.isNaN(acc.id))
                 
                 return accesories.map((acc : any) => {
-                    var item : Item = ITEMS[acc.id]
+                    var item : Item = _.cloneDeep(ITEMS[acc.id])
                     item.importStats(acc)
 
                     return item
@@ -604,7 +604,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 
                 return items.map((it : any) => {
                     if(!_.isUndefined(ITEMS[it.id])) {
-                        var item : Item = ITEMS[it.id]
+                        var item : Item = _.cloneDeep(ITEMS[it.id])
                         return item
                     } else {
                         console.log(it, " is missing from item list.")
