@@ -1,4 +1,4 @@
-import { bd, bigdec_max, bigdec_min } from "@/helpers/numbers"
+import { bd, bigdec_max, bigdec_min, bigdec_round } from "@/helpers/numbers"
 import Resource, { ResourceContainer, prop } from "./resource"
 import { Stat } from "./stat"
 import bigDecimal from "js-big-decimal"
@@ -327,49 +327,63 @@ export class NGU extends Resource {
 
         // Grab base amount of time things will take
         var baseCost = this.baseCost
-        var baseFactor = bd(1)
-        var i = 0
+        var roundingDigs = cap.floor().getValue().length + speedFactor.floor().getValue().length + this.baseCost.getValue().length
         try {            
-            var baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap).divide(speedFactor)
-            while(level.compareTo(target) != 0 && baseTimePerLevel.floor().compareTo(bd(0)) == 0) {
-                i += 1
-                baseFactor = baseFactor.multiply(bd(1000000000))
-                baseTimePerLevel = baseCost.multiply(bd(100)).multiply(baseFactor).divide(cap).divide(speedFactor)
-            }
+            var baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap, roundingDigs).divide(speedFactor, roundingDigs)
+
+
+            // while(level.compareTo(target) != 0 && baseTimePerLevel.floor().compareTo(bd(0)) == 0) {
+            //     i += 1
+            //     baseFactor = baseFactor.multiply(bd(1000000000))
+            //     baseTimePerLevel = baseCost.multiply(bd(100)).multiply(baseFactor).divide(cap).divide(speedFactor)
+            // }
         } catch (error) {
             var baseTimePerLevel = bd(0)
         }
+
+        
+
+        
         
         // Grab the starting time and the ending time
-        var startingSpeed = baseTimePerLevel.multiply(level.add(bd(1))).divide(baseFactor).round(2, bigDecimal.RoundingModes.CEILING)
-        var endingSpeed = baseTimePerLevel.multiply(target).divide(baseFactor).round(2, bigDecimal.RoundingModes.CEILING)
+        var startingSpeed = baseTimePerLevel.multiply(level.add(bd(1))).round(2, bigDecimal.RoundingModes.CEILING)
+        var endingSpeed = baseTimePerLevel.multiply(target).round(2, bigDecimal.RoundingModes.CEILING)
 
         // We can never go faster than 50 levels/second
-        startingSpeed = startingSpeed.compareTo(bd(0.02)) <= 0 ? bd(0.02) : startingSpeed
-        endingSpeed = endingSpeed.compareTo(bd(0.02)) <= 0 ? bd(0.02) : endingSpeed
+        startingSpeed = startingSpeed.compareTo(bd(0.02)) <= 0 ? bd(0.02) : bigdec_round(startingSpeed, bd(0.02))
+        endingSpeed = endingSpeed.compareTo(bd(0.02)) <= 0 ? bd(0.02) : bigdec_round(endingSpeed, bd(0.02))
 
         
         // Grab the number of levels that will be calculated with starting, middle (average) and end times
         try {
             var startingSpeedLevels = bigdec_max(
-                bigdec_min(startingSpeed.multiply(baseFactor).divide(baseTimePerLevel), target).subtract(level).floor(),
+                (bigdec_min(startingSpeed.divide(baseTimePerLevel, roundingDigs), target).subtract(level)).floor(),
                 bd(0)
             )
 
-            var x = endingSpeed.subtract(bd(0.02)).multiply(baseFactor).divide(baseTimePerLevel).subtract(level).subtract(startingSpeedLevels).floor()
+            var x = (endingSpeed.subtract(bd(0.02))).divide(baseTimePerLevel, roundingDigs).floor().subtract(level).subtract(startingSpeedLevels)
             var middleSpeedLevels = x.compareTo(bd(0)) == 1 ? x : bd(0);
 
-            x = bigdec_min(endingSpeed.multiply(baseFactor).divide(baseTimePerLevel), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
+            x = bigdec_min(endingSpeed.divide(baseTimePerLevel, roundingDigs), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
             var endingSpeedLevels = x.compareTo(bd(0)) == 1 ? x : bd(0);
+
+            // if(this.key == NGUKeys.ENERGY_NGU) {
+            //     console.log(baseTimePerLevel, roundingDigs);
+            //     console.log('hiya', startingSpeed, endingSpeed, startingSpeedLevels, middleSpeedLevels, endingSpeedLevels)
+            //     console.log('what', (endingSpeed.subtract(bd(0.02))).divide(baseTimePerLevel, roundingDigs))
+            //     console.log('deets', level, startingSpeedLevels, endingSpeed)
+            // }
         } catch(error) {
             var startingSpeedLevels = bd(0);
             var middleSpeedLevels = bd(0);
             var endingSpeedLevels = bd(0);
         }
 
+
+
         var seconds = startingSpeedLevels.multiply(startingSpeed)
                 .add(endingSpeed.multiply(endingSpeedLevels))
-                .add((endingSpeed.add(startingSpeed)).divide(bd(2)).multiply(middleSpeedLevels))
+                .add((endingSpeed.add(startingSpeed)).divide(bd(2), roundingDigs).multiply(middleSpeedLevels))
 
         return seconds
     

@@ -81,7 +81,8 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
             'magicNGUTimeMachine' + modeText + 'Target',
             'magicNGUEnergyNGU' + modeText + 'Target',
             'magicNGUAdventureB' + modeText + 'Target'
-        ]
+        ],
+        [],[]
     ]
 
     // Set extra required (not from playerData)
@@ -169,8 +170,6 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
             return total.add(current)
         }, bd(0))
     })
-
-
 
 
 

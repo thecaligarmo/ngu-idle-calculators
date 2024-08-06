@@ -8406,7 +8406,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8420,7 +8420,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8434,7 +8434,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8448,7 +8448,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 200,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8462,7 +8462,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8476,7 +8476,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 200,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8490,7 +8490,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8504,7 +8504,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8518,7 +8518,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8582,7 +8582,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8596,7 +8596,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8610,7 +8610,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8624,7 +8624,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8638,7 +8638,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8652,7 +8652,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -8666,7 +8666,7 @@ var earlyNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"

@@ -1,0 +1,8371 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 1 Normal NGU - Early Normal 1 - Cap Day Table - Energy 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.076E+18
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.076E+18
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.076E+18
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.076E+18
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.076E+18
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.076E+18
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.076E+20
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.153E+21
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.038E+23
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 1 Normal NGU - Early Normal 1 - Cap Day Table - Magic 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.350E+19
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.050E+19
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.350E+20
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.050E+20
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.375E+21
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.375E+22
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.375E+23
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 1 Normal NGU - Early Normal 1 - Cap Table - Energy 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.807E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.807E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.807E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.807E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.807E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.807E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.807E+14
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          9.615E+15
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.403E+17
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 1 Normal NGU - Early Normal 1 - Cap Table - Magic 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.125E+13
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          9.375E+13
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.125E+14
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          9.375E+14
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          7.812E+15
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          7.812E+16
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          7.812E+17
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 1 Normal NGU - Early Normal 1 - Target Table - Energy 1`] = `
+<table
+  className="inline-block w-full align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Time
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+      <th
+        className="px-2"
+      >
+        Current Value
+      </th>
+      <th
+        className="px-2"
+      >
+        Increase Amount
+      </th>
+      <th
+        className="px-2"
+      >
+        Value at target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          14:20:07:31
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          14:20:07:31
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.01 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        101%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          14:20:07:31
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        99.5%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          14:20:07:31
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          14:20:07:31
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.01 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        101%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          14:20:07:31
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.5 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        150%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.01 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        101%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.01 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        101%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        100.5%
+      </td>
+    </tr>
+    <tr
+      className="text-left border-t-1 border border-b-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Total:
+      </th>
+      <th
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </th>
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 1 Normal NGU - Early Normal 1 - Target Table - Magic 1`] = `
+<table
+  className="inline-block w-full align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Time
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+      <th
+        className="px-2"
+      >
+        Current Value
+      </th>
+      <th
+        className="px-2"
+      >
+        Increase Amount
+      </th>
+      <th
+        className="px-2"
+      >
+        Value at target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.01 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        101%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        100.1%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.02 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        102%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.01 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        101%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        100.3%
+      </td>
+    </tr>
+    <tr
+      className="text-left border-t-1 border border-b-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Total:
+      </th>
+      <th
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </th>
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 2 Normal NGU - Early Normal 2 - Cap Day Table - Energy 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.461E+17
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.461E+17
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.461E+17
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.461E+17
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.461E+17
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.461E+17
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.461E+19
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.923E+20
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          7.309E+21
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 2 Normal NGU - Early Normal 2 - Cap Day Table - Magic 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          5.734E+18
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.720E+19
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          5.734E+19
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.720E+20
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.433E+21
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.433E+22
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.433E+23
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 2 Normal NGU - Early Normal 2 - Cap Table - Energy 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.384E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.384E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.384E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.768E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.384E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.768E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.384E+14
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.768E+15
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.692E+17
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 2 Normal NGU - Early Normal 2 - Cap Table - Magic 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.327E+14
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.982E+14
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.327E+15
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.982E+15
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.318E+16
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.318E+17
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.318E+18
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 2 Normal NGU - Early Normal 2 - Target Table - Energy 1`] = `
+<table
+  className="inline-block w-full align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Time
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+      <th
+        className="px-2"
+      >
+        Current Value
+      </th>
+      <th
+        className="px-2"
+      >
+        Increase Amount
+      </th>
+      <th
+        className="px-2"
+      >
+        Value at target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          17:11:36:53
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        200%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          17:11:36:53
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          17:11:36:53
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 0.95 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        95%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          30:21:35:45
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        249
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        300%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          17:11:36:53
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          23:07:32:29
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        915
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        1,100%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.05 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        105%
+      </td>
+    </tr>
+    <tr
+      className="text-left border-t-1 border border-b-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Total:
+      </th>
+      <th
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </th>
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Early Normal 2 Normal NGU - Early Normal 2 - Target Table - Magic 1`] = `
+<table
+  className="inline-block w-full align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Time
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+      <th
+        className="px-2"
+      >
+        Current Value
+      </th>
+      <th
+        className="px-2"
+      >
+        Increase Amount
+      </th>
+      <th
+        className="px-2"
+      >
+        Value at target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        101.4
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.08 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.01 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        101%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        200%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        200%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        120%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.03 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        103%
+      </td>
+    </tr>
+    <tr
+      className="text-left border-t-1 border border-b-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Total:
+      </th>
+      <th
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </th>
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Late Normal Normal NGU - Late Normal - Cap Day Table - Energy 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          8.542E+9
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          8.542E+9
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          8.542E+9
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          8.542E+9
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          5.637E+10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          8.542E+9
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.507E+12
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          8.286E+12
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.003E+14
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Late Normal Normal NGU - Late Normal - Cap Day Table - Magic 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          7.216E+10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.362E+11
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          8.317E+10
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.393E+11
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.899E+12
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.878E+13
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.861E+14
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Late Normal Normal NGU - Late Normal - Cap Table - Energy 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.416E+9
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          7,000,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.416E+9
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          7,000,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.416E+9
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          7,000,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.416E+9
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          7,000,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.874E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          75,000,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.416E+9
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          7,000,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.374E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          15,000,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          9.166E+11
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          500,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.583E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100,000
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Late Normal Normal NGU - Late Normal - Cap Table - Magic 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          8.596E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          50,000,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.289E+11
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          25,000,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.375E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          800,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.094E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          600,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          8.596E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.298E+11
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          8.596E+11
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          20,000
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Late Normal Normal NGU - Late Normal - Target Table - Energy 1`] = `
+<table
+  className="inline-block w-full align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Time
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+      <th
+        className="px-2"
+      >
+        Current Value
+      </th>
+      <th
+        className="px-2"
+      >
+        Increase Amount
+      </th>
+      <th
+        className="px-2"
+      >
+        Value at target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          11:06:40
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          7,000,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        5,000,100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.4 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        7,000,100%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          11:06:40
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          7,000,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        500,100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.4 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        700,100%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          11:06:40
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          7,000,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        60.16
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        60.11%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          11:06:40
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          7,000,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        5,000,100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.4 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        7,000,100%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          8:05:56:59
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          75,000,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        24,071.7
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.14 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        27,553%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          11:06:40
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          7,000,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        25,000,100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.4 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        35,000,100%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          17:19:02:28
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          15,000,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        11,140.9
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.11 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        12,377.4%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          23:27:39
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          500,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        590.2
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.26 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        745.2%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          19:38:29
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        264.08
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.13 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        299.07%
+      </td>
+    </tr>
+    <tr
+      className="text-left border-t-1 border border-b-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Total:
+      </th>
+      <th
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          30:03:38:57
+        </span>
+      </th>
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Late Normal Normal NGU - Late Normal - Target Table - Magic 1`] = `
+<table
+  className="inline-block w-full align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Time
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+      <th
+        className="px-2"
+      >
+        Current Value
+      </th>
+      <th
+        className="px-2"
+      >
+        Increase Amount
+      </th>
+      <th
+        className="px-2"
+      >
+        Value at target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          16:04:13:15
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          50,000,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        1,852
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.09 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        2,023.8%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          5:23:57:04
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          25,000,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        928.81
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.05 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        970.78%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          01:34:03
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          800,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        517,932
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.54 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        800,100%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          03:20:09
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          600,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        18,054
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.37 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        24,655%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          02:46:04
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        8,062.1
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.73 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        13,962.6%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          06:21:44
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        423.4
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.18 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        498.1%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          02:31:01
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          20,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        175.4
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.14 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        199.49%
+      </td>
+    </tr>
+    <tr
+      className="text-left border-t-1 border border-b-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Total:
+      </th>
+      <th
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          22:20:43:23
+        </span>
+      </th>
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 1 Normal NGU - Mid Normal 1 - Cap Day Table - Energy 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.984E+15
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.984E+15
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.984E+15
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.985E+15
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.985E+15
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.984E+15
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.984E+17
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.967E+18
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          9.919E+19
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 1 Normal NGU - Mid Normal 1 - Cap Day Table - Magic 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.596E+16
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.790E+16
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.596E+17
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.790E+17
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.992E+18
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.992E+19
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.992E+20
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 1 Normal NGU - Mid Normal 1 - Cap Table - Energy 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.296E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.296E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.836E+11
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          400
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.296E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.296E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.296E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.296E+13
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          500
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          9.184E+13
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          2.296E+15
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 1 Normal NGU - Mid Normal 1 - Cap Table - Magic 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          7.392E+11
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.108E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.696E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.108E+13
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          9.241E+13
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          9.241E+14
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          9.241E+15
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 1 Normal NGU - Mid Normal 1 - Target Table - Energy 1`] = `
+<table
+  className="inline-block w-full align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Time
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+      <th
+        className="px-2"
+      >
+        Current Value
+      </th>
+      <th
+        className="px-2"
+      >
+        Increase Amount
+      </th>
+      <th
+        className="px-2"
+      >
+        Value at target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          8:12:24:29
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        616
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 8.28 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        5,100%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          8:12:24:58
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        151.5
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 3.96 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        600%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          00:00
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          400
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        80
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        80%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          6:11:14:20
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        2,593
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.97 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        5,100%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          3:02:58:07
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        300.3
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.08 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        324.2%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          8:12:14:25
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        2,780
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 9.03 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        25,100%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          6:17:55:38
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          500
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        123.3
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.22 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        150%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          6:22:54:07
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          173:20:32:47
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.05 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        105%
+      </td>
+    </tr>
+    <tr
+      className="text-left border-t-1 border border-b-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Total:
+      </th>
+      <th
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          222:16:38:53
+        </span>
+      </th>
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 1 Normal NGU - Mid Normal 1 - Target Table - Magic 1`] = `
+<table
+  className="inline-block w-full align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Time
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+      <th
+        className="px-2"
+      >
+        Current Value
+      </th>
+      <th
+        className="px-2"
+      >
+        Increase Amount
+      </th>
+      <th
+        className="px-2"
+      >
+        Value at target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          1:07:05:24
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        113.8
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.05 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        120%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          1:20:49:12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.01 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        101%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          6:05:23:59
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        200%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          18:16:11:55
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        200%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          155:14:59:14
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        120%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.1 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        110%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.03 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        103%
+      </td>
+    </tr>
+    <tr
+      className="text-left border-t-1 border border-b-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Total:
+      </th>
+      <th
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          ∞
+        </span>
+      </th>
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 2 Normal NGU - Mid Normal 2 - Cap Day Table - Energy 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.387E+12
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.372E+12
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.350E+12
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.395E+12
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.888E+12
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.372E+12
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.414E+14
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.698E+15
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.674E+17
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 2 Normal NGU - Mid Normal 2 - Cap Day Table - Magic 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.376E+13
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.999E+13
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.332E+14
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.997E+14
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.331E+15
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.331E+16
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.331E+17
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 2 Normal NGU - Mid Normal 2 - Cap Table - Energy 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          7.751E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.875E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          50,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.875E+9
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          7.751E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          7.751E+11
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          1,000,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.875E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          50,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          7.751E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.550E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          1,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.937E+13
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          500
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 2 Normal NGU - Mid Normal 2 - Cap Table - Magic 1`] = `
+<table
+  className="inline-block w-full md:w-1/2 align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Cap
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          6.168E+11
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          3.701E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          4,000
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.542E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          500
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          4.626E+10
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          500
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.542E+11
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200
+        </span>
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          1.542E+12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          0
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          -1
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 2 Normal NGU - Mid Normal 2 - Target Table - Energy 1`] = `
+<table
+  className="inline-block w-full align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Energy
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Time
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+      <th
+        className="px-2"
+      >
+        Current Value
+      </th>
+      <th
+        className="px-2"
+      >
+        Increase Amount
+      </th>
+      <th
+        className="px-2"
+      >
+        Value at target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Augments
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          10:07:18
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        50,100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        100,100%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Wandoos
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          02:06:02
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          50,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        3,200
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.59 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        5,100%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Respawn
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          02:14
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          5,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        79.05
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 0.98 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        77.78%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Gold
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          08:37:44
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        60,100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.67 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        100,100%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure α
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          28:13:28:50
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          1,000,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        2,746.3
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.19 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        3,270%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power α
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          02:11:02
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          50,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        150,100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.67 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        250,100%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Drop Chance
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          16:03:07:41
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          100,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        1,019.9
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.08 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        1,102.4%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Magic NGU
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          02:00:00
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          1,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        150
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.33 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        200%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU PP
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          16:00:00
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          500
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        105
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.19 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        125%
+      </td>
+    </tr>
+    <tr
+      className="text-left border-t-1 border border-b-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Total:
+      </th>
+      <th
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          46:09:40:54
+        </span>
+      </th>
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`NGU Page - Normal NGU Normal NGU - Mid Normal 2 Normal NGU - Mid Normal 2 - Target Table - Magic 1`] = `
+<table
+  className="inline-block w-full align-top mb-2"
+>
+  <thead>
+    <tr
+      className="text-left border-b-1 border border-t-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Magic
+         NGU
+      </th>
+      <th
+        className="px-2"
+      >
+        Time
+      </th>
+      <th
+        className="px-2"
+      >
+        Target
+      </th>
+      <th
+        className="px-2"
+      >
+        Current Value
+      </th>
+      <th
+        className="px-2"
+      >
+        Increase Amount
+      </th>
+      <th
+        className="px-2"
+      >
+        Value at target
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Yggdrasil
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          25:12:51:05
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        377.2
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.09 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        411.1%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Exp
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          01:06:11
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          4,000
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        120
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.05 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        126.4%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Power β
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          01:39
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          500
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        500
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        600%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Number
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          04:57
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          500
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        500
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.2 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        600%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Time Machine
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          13:47
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        120
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.17 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        140%
+      </td>
+    </tr>
+    <tr
+      className=""
+    >
+      <td
+        className="px-2"
+      >
+        NGU Energy NGU
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          02:52:12
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          200
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        105
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+         x 1.14 = 
+      </td>
+      <td
+        className="px-2"
+      >
+        120%
+      </td>
+    </tr>
+    <tr
+      className="bg-slate-200 dark:bg-slate-900"
+    >
+      <td
+        className="px-2"
+      >
+        NGU Adventure β
+      </td>
+      <td
+        className="px-2 text-right"
+      >
+        <span
+          className="text-red-500"
+        >
+          00:00
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        <span
+          className="text-blue-500"
+        >
+          -1
+        </span>
+      </td>
+      <td
+        className="px-2"
+      >
+        100
+        %
+      </td>
+      <td
+        className="px-2 text-green-500"
+      >
+        -
+      </td>
+      <td
+        className="px-2"
+      >
+        -
+      </td>
+    </tr>
+    <tr
+      className="text-left border-t-1 border border-b-0 border-x-0"
+    >
+      <th
+        className="px-2"
+      >
+        Total:
+      </th>
+      <th
+        className="px-2"
+      >
+        <span
+          className="text-red-500"
+        >
+          25:17:09:54
+        </span>
+      </th>
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+      <th
+        className="px-2"
+      />
+    </tr>
+  </tbody>
+</table>
+`;

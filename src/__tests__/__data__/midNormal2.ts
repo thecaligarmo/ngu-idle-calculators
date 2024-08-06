@@ -10267,7 +10267,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 50000,
+                "target": 100000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10281,7 +10281,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 31000,
+                "target": 50000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10295,7 +10295,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 2000,
+                "target": 5000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10309,7 +10309,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 60000,
+                "target": 100000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10323,7 +10323,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 2500000,
+                "target": 1000000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10337,7 +10337,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 30000,
+                "target": 50000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10351,7 +10351,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 250000,
+                "target": 100000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10365,7 +10365,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 500,
+                "target": 1000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10379,7 +10379,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 100,
+                "target": 500,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10443,7 +10443,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 200000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10457,7 +10457,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 2000,
+                "target": 4000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10471,7 +10471,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 400,
+                "target": 500,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10485,7 +10485,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 400,
+                "target": 500,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10513,7 +10513,7 @@ var midNormalTwo = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 100,
+                "target": 200,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"

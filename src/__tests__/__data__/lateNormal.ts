@@ -10768,7 +10768,7 @@ var lateNormal = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 5000000,
+                "target": 7000000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10782,7 +10782,7 @@ var lateNormal = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 5000000,
+                "target": 7000000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10796,7 +10796,7 @@ var lateNormal = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 5000000,
+                "target": 7000000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10810,7 +10810,7 @@ var lateNormal = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 5000000,
+                "target": 7000000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10824,7 +10824,7 @@ var lateNormal = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 75000000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10838,7 +10838,7 @@ var lateNormal = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 5000000,
+                "target": 7000000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10852,7 +10852,7 @@ var lateNormal = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 15000000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10866,7 +10866,7 @@ var lateNormal = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 200000,
+                "target": 500000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -10880,7 +10880,7 @@ var lateNormal = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 52500,
+                "target": 100000,
                 "evilTarget": 0,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"

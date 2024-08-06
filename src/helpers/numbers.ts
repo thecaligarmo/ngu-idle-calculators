@@ -28,6 +28,10 @@ export function bigdec_min(...args : bigDecimal[]) : bigDecimal {
     return m;
 }
 
+export function bigdec_round(num: bigDecimal, precision : bigDecimal) {
+    return precision.multiply( (num.divide(precision)).round(0, bigDecimal.RoundingModes.HALF_UP) )
+}
+
 // print/pretty number
 export function pn(num : bigDecimal, numberFormat : string = 'scientific', precision : number = 0) : string {
     // Get the floor of the number for processing

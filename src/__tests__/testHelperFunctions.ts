@@ -12,7 +12,7 @@ export function expectClose(value : number | bigDecimal , expect : number | bigD
     }
     
     if (range == null) {
-        range = Math.max(bd(expect).getValue().length - 3, 0)
+        range = Math.max(bd(expect).floor().getValue().length - 3, 0)
     }
 
     var v = value / (10 ** range)
