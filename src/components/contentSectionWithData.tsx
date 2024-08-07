@@ -10,9 +10,10 @@ interface ContentSectionWithDataProps {
     data : any;
     listChildren ?: ReactNode;
     inputChildren ?: ReactNode;
+    description ?: string;
 }
 
-export default function ContentSectionWithData({children, idKey, title, data, listChildren, inputChildren} : ContentSectionWithDataProps) {
+export default function ContentSectionWithData({children, idKey, title, data, listChildren, inputChildren, description} : ContentSectionWithDataProps) {
     const [showInputs, setShowInputs] = useState(false)
     
     const inputs = dataToCols(data, true)
@@ -27,6 +28,7 @@ export default function ContentSectionWithData({children, idKey, title, data, li
             />}
             >
                 <>
+                    {description ? <p className="pb-2"><small>{description}</small></p> : null}
                     <div id={idKey + "-info-lists"} className={!showInputs ? "block" : "hidden"}>
                         {lists}
                         {listChildren}

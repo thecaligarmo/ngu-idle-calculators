@@ -143,15 +143,16 @@ export default function Page() {
     return (
         <Content title="Yggdrasil" infoRequired={infoReq} extraRequired={extraReq}>
             <ContentSubsection title="What will you get if you harvest/eat fruits?">
-                <table>
+                <table className="inline-block w-full align-top mb-2">
                     <thead>
-                        <tr>
+                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
                             <th className="px-2">Fruit</th>
                             <th className="px-2">Current Tier</th>
                             <th className="px-2">Poop?</th>
                             <th className="px-2">Eat / Harvest?</th>
                             <th className="px-2">Seed Gain</th>
                             <th className="px-2">Yggdrasil Yield</th>
+                            <th className="px-2">Upgrade Cost</th>
                         </tr>
                     </thead>
                     <tbody>

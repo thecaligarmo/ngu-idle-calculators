@@ -33,7 +33,10 @@ export function bigdec_round(num: bigDecimal, precision : bigDecimal) {
 }
 
 // print/pretty number
-export function pn(num : bigDecimal, numberFormat : string = 'scientific', precision : number = 0) : string {
+export function pn(num : bigDecimal | number, numberFormat : string = 'scientific', precision : number = 0) : string {
+    if (typeof num == 'number') {
+        num = bd(num)
+    }
     // Get the floor of the number for processing
     var n = num.floor().getValue();
     var nl = n.length // number length

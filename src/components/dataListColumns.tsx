@@ -161,6 +161,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                 dVal = 'Sadistic'
             }
         }
+
         return (<li key={d.key} className={disabled}>
                 {d.name}: {d.pre}{dVal}
         </li>)
@@ -173,7 +174,8 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
 export function dataToCols(dr : any, input : boolean = false) : ReactNode{
     const cols = []
     
-    for (var col of dr) {
+    for (var colNum in dr) {
+        var col = dr[colNum]
         var colKey = ''
         for (var d of col) {
             if(d.key.includes('DISABLED')) {
@@ -181,6 +183,10 @@ export function dataToCols(dr : any, input : boolean = false) : ReactNode{
                 d.disabled = true
             }
             colKey += d.key
+        }
+        // Handle empty colKeys
+        if(colKey == ''){
+            colKey = colNum.toString()
         }
         var cc = 'inline-block align-top mb-5 '
         // We can't do dynamic classnames for tailwind =(

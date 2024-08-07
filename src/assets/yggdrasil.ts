@@ -109,7 +109,7 @@ export class FruitOfGold extends Yggdrasil {
 
 export class FruitOfPowerA extends Yggdrasil {
     constructor() {
-        super(1, 'fruitOfPowerA', 'Fruit of Power A')
+        super(1, 'fruitOfPowerA', 'Fruit of Power α')
     }
     fruitYield({yieldModifier, firstHarvest = 0, blueHeart = false} : {yieldModifier: bigDecimal, firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
         if(!this.eatFruit) {
@@ -218,7 +218,7 @@ export class FruitOfLuck extends Yggdrasil {
 export class FruitOfPowerB extends Yggdrasil {
     level : number
     constructor() {
-        super(6, 'fruitOfPowerB', 'Fruit of Power B')
+        super(6, 'fruitOfPowerB', 'Fruit of Power β')
         this.level = 0
     }
     importStats(data : any) {
@@ -336,7 +336,7 @@ export class FruitOfRage extends Yggdrasil {
 
 export class FruitOfMacguffinA extends Yggdrasil {
     constructor() {
-        super(10, 'fruitOfMacguffinA', 'Fruit of Macguffin A')
+        super(10, 'fruitOfMacguffinA', 'Fruit of Macguffin α')
         this.baseSeedFactor = 6
     }
     fruitYield({yieldModifier, nguYgg, firstHarvest = 0, blueHeart = false} : {yieldModifier: bigDecimal,  nguYgg : bigDecimal, firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {
@@ -362,7 +362,7 @@ export class FruitOfMacguffinA extends Yggdrasil {
 export class FruitOfPowerD extends Yggdrasil {
     level: number
     constructor() {
-        super(11, 'fruitOfPowerD', 'Fruit of Power D')
+        super(11, 'fruitOfPowerD', 'Fruit of Power δ')
         this.baseSeedFactor = 7
         this.level = 0
     }
@@ -406,7 +406,7 @@ export class FruitOfWatermelon extends Yggdrasil {
 
 export class FruitOfMacguffinB extends Yggdrasil {
     constructor() {
-        super(13, 'fruitOfMacguffinB', 'Fruit of Macguffin B')
+        super(13, 'fruitOfMacguffinB', 'Fruit of Macguffin β')
         this.baseSeedFactor = 8
     }
     fruitYield({yieldModifier, nguYgg, firstHarvest = 0, blueHeart = false} : {yieldModifier: bigDecimal,  nguYgg : bigDecimal, firstHarvest ?: number, blueHeart ?: boolean}) : bigDecimal {

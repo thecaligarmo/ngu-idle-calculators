@@ -77,42 +77,46 @@ export default function Page() {
                     The optimal zone for getting boosts is <span className="text-red-500">{optimalBoostZone.name}</span> which will give you an average boost value of <span className="text-blue-500">{pn(optimalBoostZone['boost'], fmt, 2)}</span>.
                 </p>
                 <br />
-                <p>
-                    Compare the optimal zone with:
-                    <select
-                    className='ml-2 text-black'
-                    onChange={(e) => {
-                        setOptZoneChosen(e.target.value)
-                    }}
-                    value={optZoneChosen}
-                    >
-                    {zoneList}
-                    </select>
-                </p>
-                <ul>
-                    {zoneBoonList}
-                </ul>
+                <div className="pl-10">
+                    <p>
+                        Compare the optimal zone with:
+                        <select
+                        className='ml-2 text-black'
+                        onChange={(e) => {
+                            setOptZoneChosen(e.target.value)
+                        }}
+                        value={optZoneChosen}
+                        >
+                        {zoneList}
+                        </select>
+                    </p>
+                    <ul>
+                        {zoneBoonList}
+                    </ul>
+                </div>
             </ContentSubsection>
             <ContentSubsection title="What is the optimal zone for getting experience?">
                 <p>
                     The optimal zone for getting experience is <span className="text-red-500">{optimalExpZone.name}</span> which will give you an average exp value of <span className="text-blue-500">{pn(optimalExpZone['exp'], fmt, 2)}</span>.
                 </p>
                 <br />
-                <p>
-                    Compare the optimal zone with:
-                    <select
-                    className='ml-2 text-black'
-                    onChange={(e) => {
-                        setOptZoneChosen(e.target.value)
-                    }}
-                    value={optZoneChosen}
-                    >
-                    {zoneList}
-                    </select>
-                </p>
-                <ul>
-                    {zoneBoonList}
-                </ul>
+                <div className="pl-10">
+                    <p>
+                        Compare the optimal zone with:
+                        <select
+                        className='ml-2 text-black'
+                        onChange={(e) => {
+                            setOptZoneChosen(e.target.value)
+                        }}
+                        value={optZoneChosen}
+                        >
+                        {zoneList}
+                        </select>
+                    </p>
+                    <ul>
+                        {zoneBoonList}
+                    </ul>
+                </div>
             </ContentSubsection>
         </Content>
     )
