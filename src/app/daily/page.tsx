@@ -311,7 +311,7 @@ export default function Page() {
                                         },
                                         fmt, "AP")}
                     {itemLine("Rebirth", apRebirth, fmt, "AP")}
-                    {itemLine("Titans", totalTitanAP, fmt, "AP", (<> - Up to {maxTitan[0].getFullName(maxTitan[1])}</>))}
+                    {itemLine("Titans", totalTitanAP, fmt, "AP", (<> - Up to {maxTitan[0].getFullName(maxTitan[1])}<br /></>))}
                     {itemLine("Yggdrasil", apYggdrasil, fmt, "AP")}
                     <p className="mt-2 border-white border-t-2 border-solid">
                         <strong className="text-blue-500">Total:</strong> <span className="text-red-500">{pn(totalAPPerDay, fmt)}</span> <strong>AP</strong>
@@ -321,7 +321,7 @@ export default function Page() {
             <ContentSubsection title={"How many EXP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
                 <div className="pl-10">
                     {itemLine("ITOPOD Tower", EXPFromTower, fmt, "EXP")}
-                    {itemLine("Titans", totalTitanEXP, fmt, "EXP", (<> - Up to {maxTitan[0].getFullName(maxTitan[1])}</>))}
+                    {itemLine("Titans", totalTitanEXP, fmt, "EXP", (<> - Up to {maxTitan[0].getFullName(maxTitan[1])}<br /></>))}
                     {itemLine("Yggdrasil", expYggdrasil, fmt, "EXP")}
                     <p className="mt-2 border-white border-t-2 border-solid">
                         <strong className="text-blue-500">Total:</strong> <span className="text-red-500">{pn(totalEXPPerDay, fmt)}</span> <strong>EXP</strong>
@@ -338,7 +338,7 @@ export default function Page() {
                                 </ul>
                             </>
                         ))}
-                    {itemLine("Titans", totalTitanPP, fmt, "PP", (<> - Up to {maxTitan[0].getFullName(maxTitan[1])}</>))}
+                    {itemLine("Titans", totalTitanPP, fmt, "PP", (<> - Up to {maxTitan[0].getFullName(maxTitan[1])}<br /></>))}
                     {itemLine("Yggdrasil", ppYggdrasil.divide(bd(1000000)), fmt, "PP")}
                     <p className="mt-2 border-white border-t-2 border-solid">
                         <strong className="text-blue-500">Total:</strong> <span className="text-red-500">{pn(totalPPPerDay.divide(bd(1000000)), fmt)}</span> <strong>PP</strong>
@@ -352,7 +352,7 @@ export default function Page() {
                                         'minor': {'elt': QPFromMinors, 'name': 'Minor', 'extra': (<> ({pn(QPPerMinor, fmt)} QP per minor)</>)},
                                         },
                                         fmt, "QP")}
-                    {itemLine("Titans", totalTitanQP, fmt, "QP", (<> - Up to {maxTitan[0].getFullName(maxTitan[1])}</>))}
+                    {itemLine("Titans", totalTitanQP, fmt, "QP", (<> - Up to {maxTitan[0].getFullName(maxTitan[1])}<br /></>))}
                     {itemLine("Yggdrasil", qpYggdrasil, fmt, "QP")}
                     <p className="mt-2 border-white border-t-2 border-solid">
                         <strong className="text-blue-500">Total:</strong> <span className="text-red-500">{pn(totalQPPerDay, fmt)}</span> <strong>QP</strong>
