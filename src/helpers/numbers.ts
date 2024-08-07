@@ -1,6 +1,6 @@
 import bigDecimal from "js-big-decimal";
-import { getLargeSuffix } from "./largeNumbers";
 import _ from "lodash";
+import { getLargeSuffix } from "./largeNumbers";
 
 export function bigdec_max(...args : bigDecimal[]) : bigDecimal {
     if (args.length < 1){ 

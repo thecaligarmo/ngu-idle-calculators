@@ -1,5 +1,4 @@
 // https://upmostly.com/next-js/using-localstorage-in-next-js
-import ESSerializer from 'esserializer';
 import { AdvTraining } from "@/assets/advTraining";
 import { APItem } from "@/assets/apItems";
 import { Beard } from "@/assets/beards";
@@ -19,6 +18,7 @@ import { Stat } from "@/assets/stat";
 import { Wish } from "@/assets/wish";
 import { FruitOfAdventure, FruitOfArbitrariness, FruitOfGold, FruitOfKnowledge, FruitOfLuck, FruitOfMacguffinA, FruitOfMacguffinB, FruitOfMayo, FruitOfNumbers, FruitOfPomegranate, FruitOfPowerA, FruitOfPowerB, FruitOfPowerD, FruitOfQuirks, FruitOfRage, FruitOfWatermelon, Yggdrasil } from "@/assets/yggdrasil";
 import Zone from "@/assets/zones";
+import ESSerializer from 'esserializer';
 import bigDecimal from "js-big-decimal";
 import { useEffect, useState } from "react";
 

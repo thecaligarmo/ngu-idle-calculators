@@ -1,5 +1,4 @@
 import _ from "lodash"
-import { GameMode } from "./mode"
 
 
 export type prop = [string, number][] | [string, number, number][]

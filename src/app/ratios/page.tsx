@@ -1,15 +1,14 @@
 "use client"
 import { ChoiceButton } from '@/components/buttons';
 import Content from '@/components/content';
-import { getNumberFormat, getPlayerData} from '@/components/context';
+import { getNumberFormat, getPlayerData } from '@/components/context';
 import { defaultPlayerData } from '@/helpers/defaultPlayerData';
 import { setInputValue } from '@/helpers/inputUpdater';
-import {pn } from '@/helpers/numbers';
+import { pn } from '@/helpers/numbers';
 import { getRatioInfo } from '@/helpers/pages/ratios';
 import { parseNum } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
-import _ from 'lodash';
 import { useState } from 'react';
 
 

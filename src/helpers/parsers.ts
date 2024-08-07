@@ -1,6 +1,5 @@
 import bigDecimal from "js-big-decimal"
 import { bd } from "./numbers"
-import { GameMode } from "@/assets/mode"
 
 
 // Parse an object to get something back properly

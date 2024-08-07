@@ -1,7 +1,7 @@
 'use client'
 
 import { NGU } from "@/assets/ngus";
-import { pn} from "@/helpers/numbers";
+import { pn } from "@/helpers/numbers";
 import bigDecimal from "js-big-decimal";
 import { ReactElement, ReactNode } from "react";
 

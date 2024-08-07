@@ -3,18 +3,17 @@
 import { AttackStat, Titan, Titans } from "@/assets/enemy";
 import { Stat } from "@/assets/stat";
 import { FruitOfArbitrariness, FruitOfKnowledge, FruitOfQuirks, FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
-import  { Zones } from "@/assets/zones";
+import { Zones } from "@/assets/zones";
 import Content from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { getIdleAttackModifier } from "@/helpers/calculators";
-import { bd, pn} from "@/helpers/numbers";
+import { bd, pn } from "@/helpers/numbers";
 import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from "@/helpers/pages/daily";
 import { parseNum, parseObj } from "@/helpers/parsers";
 import { nguInfo } from "@/helpers/resourceInfo";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
-import _ from "lodash";
 import { ReactElement, useState } from "react";
 
 

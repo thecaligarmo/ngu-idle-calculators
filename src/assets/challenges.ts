@@ -1,6 +1,6 @@
-import { Stat } from "./stat"
-import Resource, { ResourceContainer, prop } from "./resource"
-import { GameMode } from "./mode"
+import { GameMode } from "./mode";
+import Resource, { ResourceContainer, prop } from "./resource";
+import { Stat } from "./stat";
 
 
 

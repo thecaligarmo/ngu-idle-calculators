@@ -1,14 +1,12 @@
 "use client"
-import { Zones } from '@/assets/zones';
 import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
-import { getNumberFormat} from '@/components/context';
-import { pn, bd, bigdec_max } from '@/helpers/numbers';
+import { getNumberFormat } from '@/components/context';
+import { bd, pn } from '@/helpers/numbers';
 import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo } from '@/helpers/pages/zone';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
-import _ from 'lodash';
 import { useState } from 'react';
 
 

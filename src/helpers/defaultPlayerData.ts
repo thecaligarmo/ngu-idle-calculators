@@ -1,22 +1,21 @@
-import { ITEMS, Item } from "../assets/items";
-import _ from "lodash";
-import { PERKS, Perk } from "../assets/perks";
-import { QUIRKS, Quirk } from "../assets/quirks";
-import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
-import { BEARDS, Beard } from "@/assets/beards";
-import { DIGGERS, Digger } from "@/assets/diggers";
-import { CHALLENGES, Challenge } from "@/assets/challenges";
-import { boostRecyclying, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
-import { APITEMLIST, APITEMS, APItem } from "@/assets/apItems";
-import { ItemSet, ItemSets } from "@/assets/sets";
 import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
-import { MACGUFFINS, MacGuffin } from "@/assets/macguffins";
-import { bd } from "./numbers";
-import { isMaxxedItemSet, perkLevel } from "./resourceInfo";
-import { GameMode } from "../assets/mode";
+import { APITEMLIST, APITEMS, APItem } from "@/assets/apItems";
+import { BEARDS, Beard } from "@/assets/beards";
+import { CHALLENGES, Challenge } from "@/assets/challenges";
+import { DIGGERS, Digger } from "@/assets/diggers";
 import { HACKS, Hack } from "@/assets/hacks";
+import { MACGUFFINS, MacGuffin } from "@/assets/macguffins";
+import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
+import { ItemSet, ItemSets } from "@/assets/sets";
 import { WISHES, Wish } from "@/assets/wish";
 import { FRUITS, Yggdrasil } from "@/assets/yggdrasil";
+import _ from "lodash";
+import { ITEMS, Item } from "../assets/items";
+import { GameMode } from "../assets/mode";
+import { PERKS, Perk } from "../assets/perks";
+import { QUIRKS, Quirk } from "../assets/quirks";
+import { boostRecyclying, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
+import { bd } from "./numbers";
 
 export function defaultPlayerData(playerData : any, info : string | [string, number]) : any {
     // If we're given an array, the second object is the default value from the "extraRequired", stuff, so use that.

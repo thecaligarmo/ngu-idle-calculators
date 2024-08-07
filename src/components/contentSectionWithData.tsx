@@ -1,7 +1,7 @@
 import { ReactNode, useState } from "react";
-import { dataToCols } from "./dataListColumns";
-import {  ListInputSwitcher } from "./buttons";
+import { ListInputSwitcher } from "./buttons";
 import ContentSection from "./contentSection";
+import { dataToCols } from "./dataListColumns";
 
 interface ContentSectionWithDataProps {
     children ?: ReactNode;

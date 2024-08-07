@@ -1,6 +1,6 @@
-import { Stat } from "./stat"
-import Resource, { ResourceContainer } from "./resource"
 import { GameMode } from "./mode"
+import Resource, { ResourceContainer } from "./resource"
+import { Stat } from "./stat"
 
 export class AdvTraining extends Resource{
     updateStats() {

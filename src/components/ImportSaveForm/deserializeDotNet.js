@@ -1,7 +1,7 @@
 // Heavily inspired by https://github.com/AxesOfEvil/NGU-save-parser
-import { Buffer }  from 'buffer'
-import struct from 'python-struct'
+import { Buffer } from 'buffer';
 import Long from 'long';
+import struct from 'python-struct';
 
 const DEFERRED = 'deferred'
 

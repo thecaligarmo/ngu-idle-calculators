@@ -1,15 +1,15 @@
 'use client'
-import {Yggdrasil } from '@/assets/yggdrasil';
-import { bd } from '@/helpers/numbers';
-import { getNumberFormat } from '@/components/context';
-import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
-import { nguInfo } from '@/helpers/resourceInfo';
 import { Stat } from '@/assets/stat';
-import { parseNum, parseObj } from '@/helpers/parsers';
-import bigDecimal from 'js-big-decimal';
+import { Yggdrasil } from '@/assets/yggdrasil';
 import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
+import { getNumberFormat } from '@/components/context';
+import { bd } from '@/helpers/numbers';
 import { fruitInfoRows } from '@/helpers/pages/ygg';
+import { parseNum, parseObj } from '@/helpers/parsers';
+import { nguInfo } from '@/helpers/resourceInfo';
+import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
+import bigDecimal from 'js-big-decimal';
 
 
 export default function Page() {

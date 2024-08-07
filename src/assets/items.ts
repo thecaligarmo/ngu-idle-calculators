@@ -1,8 +1,8 @@
 import _ from "lodash";
-import { Stat } from "./stat";
-import Resource, { ResourceContainer, prop } from "./resource";
-import Zone, { Zones } from "./zones";
 import { GameMode } from "./mode";
+import Resource, { ResourceContainer, prop } from "./resource";
+import { Stat } from "./stat";
+import Zone, { Zones } from "./zones";
 
 type slotType = (string | number)[]
 

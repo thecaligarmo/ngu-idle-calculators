@@ -1,16 +1,16 @@
 'use client'
-import ContentSubsection from '@/components/contentSubsection';
+import { ItemSets } from '@/assets/sets';
+import { Stat } from '@/assets/stat';
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
+import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
+import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness, totalWishSpeed } from '@/helpers/calculators';
 import { bd, pn } from '@/helpers/numbers';
+import { parseNum, parseObj } from '@/helpers/parsers';
+import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo } from '@/helpers/resourceInfo';
 import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
-import { Stat } from '@/assets/stat';
-import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalHealth, totalToughness, totalWishSpeed } from '@/helpers/calculators';
-import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo} from '@/helpers/resourceInfo';
-import { ItemSets } from '@/assets/sets';
-import { parseNum, parseObj } from '@/helpers/parsers';
 
 export default function Page() {
     const playerStates = createStatesForData();

@@ -1,6 +1,6 @@
 import { fruitYieldType, Yggdrasil } from "@/assets/yggdrasil"
-import { pn } from "../numbers"
 import { ReactElement } from "react"
+import { pn } from "../numbers"
 
 export function fruitInfoRows(fruits : Yggdrasil[], fruitYieldData : fruitYieldType, fmt : string = 'scientific') : ReactElement[]{
 

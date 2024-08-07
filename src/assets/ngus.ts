@@ -1,9 +1,9 @@
 import { bd, bigdec_max, bigdec_min, bigdec_round } from "@/helpers/numbers"
-import Resource, { ResourceContainer, prop } from "./resource"
-import { Stat } from "./stat"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { GameMode } from "./mode"
+import Resource, { ResourceContainer, prop } from "./resource"
+import { Stat } from "./stat"
 
 const NGUKeys : {[key: string]: string} = {
     AUGMENTS: 'NGUAugments',

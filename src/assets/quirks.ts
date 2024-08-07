@@ -1,6 +1,6 @@
 import { GameMode } from "./mode";
-import Resource, { ResourceContainer } from "./resource"
-import { Stat } from "./stat"
+import Resource, { ResourceContainer } from "./resource";
+import { Stat } from "./stat";
 
 export class Quirk  extends Resource {
     updateStats() {

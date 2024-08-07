@@ -1,12 +1,12 @@
+import { Challenge } from "@/assets/challenges";
+import { GameMode } from "@/assets/mode";
+import { ItemSets } from "@/assets/sets";
+import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { Stat } from "../assets/stat";
 import { bd } from "./numbers";
-import bigDecimal from "js-big-decimal";
-import { parseObj, parseNum } from "./parsers";
-import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, perkLevel, quirkInfo, wishInfo } from "./resourceInfo";
-import { ItemSets } from "@/assets/sets";
-import { GameMode } from "@/assets/mode";
-import { Challenge } from "@/assets/challenges";
+import { parseNum, parseObj } from "./parsers";
+import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wishInfo } from "./resourceInfo";
 
 
 // General Calc - gives a percentage

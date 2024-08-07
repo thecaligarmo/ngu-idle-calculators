@@ -1,15 +1,12 @@
 'use client'
-import { Inter } from "next/font/google";
-import "./ui/globals.css";
-import {  DataWrapper } from "@/components/context";
+import { DataWrapper } from "@/components/context";
 import Nav from "@/components/nav";
+import { Inter } from "next/font/google";
 import { PropsWithChildren } from "react";
-
-// BigInt.prototype.toJSON = function() { return this.toString() }
+import "./ui/globals.css";
 
 
 const inter = Inter({ subsets: ["latin"] });
-
 
 export default function RootLayout({ children } : PropsWithChildren) {
   return (

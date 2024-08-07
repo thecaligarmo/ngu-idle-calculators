@@ -7,16 +7,16 @@ import Content from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
-import { bd, pn} from "@/helpers/numbers";
+import { bd } from "@/helpers/numbers";
+import { nguExtraNameChanges, nguInfoNameChanges, nguTargetElts, nguValueElts } from "@/helpers/pages/ngus";
 import { parseNum } from "@/helpers/parsers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
 import { ReactNode, useState } from "react";
 import TimeText from "../timeText";
-import NGUTargetTable from "./nguTargetTable";
-import NGUCapTable from "./nguCapTable";
-import { nguExtraNameChanges, nguInfoNameChanges, nguTargetElts, nguValueElts } from "@/helpers/pages/ngus";
 import NGUCapDayTable from "./nguCapDayTable";
+import NGUCapTable from "./nguCapTable";
+import NGUTargetTable from "./nguTargetTable";
 
 const NGU_TARGET = 'target'
 const NGU_PERCENTAGE = 'percentage'

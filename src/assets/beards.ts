@@ -1,7 +1,7 @@
-import { Stat } from "./stat"
 import _ from "lodash"
-import Resource, { ResourceContainer, prop } from "./resource"
 import { GameMode } from "./mode"
+import Resource, { ResourceContainer, prop } from "./resource"
+import { Stat } from "./stat"
 
 export class Beard extends Resource{
     permLevel: number

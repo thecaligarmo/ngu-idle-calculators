@@ -1,6 +1,6 @@
 import { bd, bigdec_min } from "@/helpers/numbers"
-import { ENEMY_TYPE, Enemies, Enemy } from "./enemy"
 import bigDecimal from "js-big-decimal"
+import { ENEMY_TYPE, Enemies, Enemy } from "./enemy"
 import { GameMode } from "./mode"
 
 var boostTable : number[] = [0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]

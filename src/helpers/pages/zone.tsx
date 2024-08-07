@@ -1,7 +1,7 @@
 import { Zones } from "@/assets/zones";
-import { bd, bigdec_max } from "../numbers";
 import bigDecimal from "js-big-decimal";
 import { getIdleAttackModifier } from "../calculators";
+import { bd, bigdec_max } from "../numbers";
 
 
 type zoneType = {

@@ -1,7 +1,6 @@
 'use client'
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
-import { PropsWithChildren } from 'react';
 
 
 

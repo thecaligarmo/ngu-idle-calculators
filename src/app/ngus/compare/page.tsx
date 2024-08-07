@@ -7,7 +7,7 @@ import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
 import TimeText from "@/components/timeText";
-import { bd, bigdec_min, dn, pn} from "@/helpers/numbers";
+import { bd, bigdec_min, dn, pn } from "@/helpers/numbers";
 import { parseNum } from "@/helpers/parsers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";

@@ -1,7 +1,7 @@
-import { defaultPlayerData, getCalculatedOptions, getPlayerNumberOptions, getPlayerOptions } from "./defaultPlayerData";
-import { getPlayerData, isPlayerDataUpdated } from "../components/context";
-import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
 import _ from "lodash";
+import { getPlayerData, isPlayerDataUpdated } from "../components/context";
+import { defaultPlayerData, getCalculatedOptions, getPlayerNumberOptions, getPlayerOptions } from "./defaultPlayerData";
+import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
 import { camelToTitle } from "./strings";
 
 export function createStatesForData(extraRequired: (string | [string, number])[][] = []) : any{

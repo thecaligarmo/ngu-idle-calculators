@@ -1,8 +1,8 @@
 import { bd } from "@/helpers/numbers";
-import { GameMode } from "./mode";
-import Resource, { ResourceContainer, prop } from "./resource"
-import { Stat } from "./stat"
 import bigDecimal from "js-big-decimal";
+import { GameMode } from "./mode";
+import Resource, { ResourceContainer, prop } from "./resource";
+import { Stat } from "./stat";
 
 
 
