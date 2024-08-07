@@ -1,19 +1,18 @@
-import { toDataObj } from '@/__tests__/testHelperFunctions'
+import { expectClose, toDataObj } from '@/__tests__/testHelperFunctions';
+import { Stat } from '@/assets/stat';
+import { defaultPlayerData } from '@/helpers/defaultPlayerData';
 import { bd } from '@/helpers/numbers';
-import {defaultPlayerData} from '@/helpers/defaultPlayerData'
-import {nguInfo} from '@/helpers/resourceInfo'
-import {Stat} from '@/assets/stat';
-import  { fruitInfoRows } from '@/helpers/pages/ygg';
-import {expectClose} from '@/__tests__/testHelperFunctions';
+import { fruitInfoRows } from '@/helpers/pages/ygg';
+import { nguInfo } from '@/helpers/resourceInfo';
 import renderer from 'react-test-renderer';
 
+import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
 import earlyNormalTwo from '@/__tests__/__data__/earlyNormal2';
+import lateNormal from '@/__tests__/__data__/lateNormal';
+import midEvil from '@/__tests__/__data__/midEvil1';
 import midNormal from '@/__tests__/__data__/midNormal1';
 import midNormalTwo from '@/__tests__/__data__/midNormal2';
-import lateNormal from '@/__tests__/__data__/lateNormal';
 import earlyEvil from '../../__data__/earlyEvil1';
-import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
-import midEvil from '@/__tests__/__data__/midEvil1';
 
 
 test('Yggdrasil for Early Normal 2', () => {

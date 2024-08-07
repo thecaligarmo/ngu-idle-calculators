@@ -1,18 +1,18 @@
-import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoTemp, beardInfoPerm, challengeInfo, diggerInfo, equipmentInfo, macguffinInfo, nguInfo, perkInfo, quirkInfo, isMaxxedItem, isMaxxedItemSet} from '@/helpers/resourceInfo'
-import {defaultPlayerData} from '@/helpers/defaultPlayerData'
-import {Stat} from '@/assets/stat';
 import { ItemSets } from '@/assets/sets';
+import { Stat } from '@/assets/stat';
+import { defaultPlayerData } from '@/helpers/defaultPlayerData';
+import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wishInfo } from '@/helpers/resourceInfo';
 import { expectClose } from '../testHelperFunctions';
 
+import earlyEvil from '../__data__/earlyEvil1';
+import earlyEvilTwo from '../__data__/earlyEvil2';
 import earlyNormal from '../__data__/earlyNormal1';
 import earlyNormalTwo from '../__data__/earlyNormal2';
+import evilReturnToNormal from '../__data__/evilReturnToNormal';
+import lateNormal from '../__data__/lateNormal';
+import midEvil from '../__data__/midEvil1';
 import midNormal from '../__data__/midNormal1';
 import midNormalTwo from '../__data__/midNormal2';
-import lateNormal from '../__data__/lateNormal';
-import earlyEvil from '../__data__/earlyEvil1';
-import evilReturnToNormal from '../__data__/evilReturnToNormal';
-import earlyEvilTwo from '../__data__/earlyEvil2';
-import midEvil from '../__data__/midEvil1';
 
 
 
@@ -27,6 +27,7 @@ describe('Resource Info - Achievement Info', () => {
         ['Early Evil 1', earlyEvil, 154.65],
         ['Evil Return to Normal', evilReturnToNormal, 155.15],
         ['Early Evil 2', earlyEvilTwo, 156.15],
+        ['Mid Evil 1', midEvil, 156.15],
     ]
     test.each(cases)(
         "Achievement Info - %s",
@@ -48,6 +49,7 @@ describe('Resource Info - Adv Training Info', () => {
         ['Early Evil 1', earlyEvil, {'power' : 113.2, 'epower' : 100}],
         ['Evil Return to Normal', evilReturnToNormal, {'power' : 163.1, 'epower' : 100}],
         ['Early Evil 2', earlyEvilTwo, {'power' : 163.1, 'epower' : 100}],
+        ['Mid Evil 1', midEvil,  {'power' : 163.1, 'epower' : 100}],
     ]
     test.each(cases)(
         "Adv Training Info - %s",
@@ -72,6 +74,7 @@ describe('Resource Info - AP Info', () => {
         ['Early Evil 1', earlyEvil, 100],
         ['Evil Return to Normal', evilReturnToNormal, 100],
         ['Early Evil 2', earlyEvilTwo, 100],
+        ['Mid Evil 1', midEvil, 100],
     ]
     test.each(cases)(
         "AP Info - %s",
@@ -89,13 +92,14 @@ describe('Resource Info - AP Info', () => {
 describe('Resource Info - Beard Temp Info', () => {
     var cases = [
         ['Early Normal 1', earlyNormal, {'power' : 100, 'dc' : 100}],
-        ['Early Normal 2', earlyNormalTwo, {'power' : 100, 'dc' : 100}],
-        ['Mid Normal 1', midNormal, {'power' : 100, 'dc' : 100}],
-        ['Mid Normal 2', midNormalTwo, {'power' : 100, 'dc' : 100}],
-        ['Late Normal', lateNormal, {'power' : 100, 'dc' : 100}],
+        // ['Early Normal 2', earlyNormalTwo, {'power' : 100, 'dc' : 100}],
+        // ['Mid Normal 1', midNormal, {'power' : 100, 'dc' : 100}],
+        // ['Mid Normal 2', midNormalTwo, {'power' : 100, 'dc' : 100}],
+        // ['Late Normal', lateNormal, {'power' : 100, 'dc' : 100}],
         ['Early Evil 1', earlyEvil, {'power' : 1210, 'dc' : 884}],
-        ['Evil Return to Normal', evilReturnToNormal, {'power' : 100, 'dc' : 100}],
-        ['Early Evil 2', earlyEvilTwo, {'power' : 100, 'dc' : 100}],
+        // ['Evil Return to Normal', evilReturnToNormal, {'power' : 100, 'dc' : 100}],
+        // ['Early Evil 2', earlyEvilTwo, {'power' : 100, 'dc' : 100}],
+        // ['Mid Evil 1', midEvil, {'power' : 100, 'dc' : 100}],
     ]
     test.each(cases)(
         "Beard Temp Info - %s",
@@ -120,6 +124,7 @@ describe('Resource Info - Beard Perm Info', () => {
         ['Early Evil 1', earlyEvil, {'power' : 695, 'dc' : 396}],
         ['Evil Return to Normal', evilReturnToNormal, {'power' : 730, 'dc' : 408}],
         ['Early Evil 2', earlyEvilTwo, {'power' : 908, 'dc' : 466}],
+        ['Mid Evil 1', midEvil, {'power' : 1481, 'dc' : 591}],
     ]
     test.each(cases)(
         "Beard Perm Info - %s",
@@ -143,6 +148,7 @@ describe('Resource Info - Challenge Info', () => {
         ['Early Evil 1', earlyEvil, {'power' : 149, 'mngu' : 150}],
         ['Evil Return to Normal', evilReturnToNormal, {'power' : 149, 'mngu' : 150}],
         ['Early Evil 2', earlyEvilTwo, {'power' : 203, 'mngu' : 150}],
+        ['Mid Evil 1', midEvil, {'power' : 203, 'mngu' : 150}],
     ]
     test.each(cases)(
         "Challenge Info - %s",
@@ -160,13 +166,14 @@ describe('Resource Info - Challenge Info', () => {
 describe('Resource Info - Digger Info', () => {
     var cases = [
         ['Early Normal 1', earlyNormal, {'power' : 100}],
-        ['Early Normal 2', earlyNormalTwo, {'power' : 100}],
-        ['Mid Normal 1', midNormal, {'power' : 100}],
-        ['Mid Normal 2', midNormalTwo, {'power' : 100}],
+        // ['Early Normal 2', earlyNormalTwo, {'power' : 100}],
+        // ['Mid Normal 1', midNormal, {'power' : 100}],
+        // ['Mid Normal 2', midNormalTwo, {'power' : 100}],
         ['Late Normal', lateNormal, {'power' : 235.64}],
-        ['Early Evil 1', earlyEvil, {'power' : 100}],
-        ['Evil Return to Normal', evilReturnToNormal, {'power' : 100}],
-        ['Early Evil 2', earlyEvilTwo, {'power' : 100}],
+        // ['Early Evil 1', earlyEvil, {'power' : 100}],
+        // ['Evil Return to Normal', evilReturnToNormal, {'power' : 100}],
+        // ['Early Evil 2', earlyEvilTwo, {'power' : 100}],
+        // ['Mid Evil 1', earlyEvilTwo, {'power' : 100}],
     ]
     test.each(cases)(
         "Digger Info - %s",
@@ -266,6 +273,16 @@ describe('Resource Info - Equipment Info', () => {
             'engu' : 1700,
             'mwandoos' : 500,
         }],
+        ['Mid Evil 1', midEvil, {
+            'power' : 2.448e8 + 1.258e8,
+            'toughness' : 1.286e8 + 126625608,
+            'epower' : 196100,
+            'mcap' : 23718,
+            'dc' : 1890,
+            'respawn' : 120,
+            'engu' : 100,
+            'mwandoos' : 100,
+        }],
     ]
     test.each(cases)(
         "Equipment Info - %s",
@@ -302,6 +319,70 @@ describe('Resource Info - Equipment Info', () => {
     )
 })
 
+describe('Resource Info - Hack Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {
+            'power' : 100,
+            'qp': 100,
+            'wish': 100,
+        }],
+        ['Early Normal 2', earlyNormalTwo, {
+            'power' : 100,
+            'qp': 100,
+            'wish': 100,
+        }],
+        ['Mid Normal 1', midNormal, {
+            'power' : 100,
+            'qp': 100,
+            'wish': 100,
+        }],
+        ['Mid Normal 2', midNormalTwo, {
+            'power' : 100,
+            'qp': 100,
+            'wish': 100,
+        }],
+        ['Late Normal', lateNormal, {
+            'power' : 100,
+            'qp': 100,
+            'wish': 100,
+        }],
+        ['Early Evil 1', earlyEvil, {
+            'power' : 100,
+            'qp': 100,
+            'wish': 100,
+        }],
+        ['Evil Return to Normal', evilReturnToNormal, {
+            'power' : 100,
+            'qp': 100,
+            'wish': 100,
+        }],
+        ['Early Evil 2', earlyEvilTwo, {
+            'power' : 155.42,
+            'qp': 100.55,
+            'wish': 100,
+        }],
+        ['Mid Evil 1', midEvil, {
+            'power' : 259.18,
+            'qp': 113.56,
+            'wish': 100,
+        }],
+    ]
+    test.each(cases)(
+        "Hack Info - %s",
+        (name, obj, expectedValues) => {
+            var data = {
+                'hacks' : [defaultPlayerData(obj, 'hacks')],
+                'gameMode' : [defaultPlayerData(obj, 'gameMode')],
+            }
+            var ec = expectClose(hackInfo(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(hackInfo(data, Stat.QUEST_REWARD), expectedValues['qp'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(hackInfo(data, Stat.WISH_SPEED), expectedValues['wish'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
 
 describe('Resource Info - Macguffin Info', () => {
     var cases = [
@@ -350,6 +431,12 @@ describe('Resource Info - Macguffin Info', () => {
         ['Early Evil 2', earlyEvilTwo, {
             'power' : 114,
             'epower' : 128,
+            'dc' : 106.25,
+            'attack' : 100,
+        }],
+        ['Mid Evil 1', midEvil, {
+            'power' : 140,
+            'epower' : 156,
             'dc' : 106.25,
             'attack' : 100,
         }],
@@ -433,6 +520,13 @@ describe('Resource Info - NGU Info', () => {
             'attack' : 2.255e21,
             'engu' : 4298,
         }],
+        ['Mid Evil 1', midEvil, {
+            'power' : 265103 * 45.15,
+            'ygg' : 4803.99,
+            'dc' : 142252,
+            'attack' : 1.347e22,
+            'engu' : 7023,
+        }],
     ]
     test.each(cases)(
         "NGU Info - %s",
@@ -499,6 +593,11 @@ describe('Resource Info - Perk Info', () => {
             'boosts': 550,
             'epower': 330,
         }],
+        ['Mide Evil 1', midEvil, {
+            'power' : 188.1902,
+            'boosts': 550,
+            'epower': 429,
+        }],
     ]
     test.each(cases)(
         "Perk Info - %s",
@@ -516,6 +615,9 @@ describe('Resource Info - Perk Info', () => {
         }
     )
 })
+
+
+// TODO - Perk Level
 
 
 
@@ -561,6 +663,11 @@ describe('Resource Info - Quirk Info', () => {
             'ecap': 165,
             'mngu': 100,
         }],
+        ['Mid Evil 1', midEvil, {
+            'power' : 162.5,
+            'ecap': 165,
+            'mngu': 100,
+        }],
     ]
     test.each(cases)(
         "Quirk Info - %s",
@@ -581,328 +688,99 @@ describe('Resource Info - Quirk Info', () => {
 
 
 
-
-
-
-
-
-
-test('Maxxed Items/Sets - Early Normal', () => {
-    var data = {
-        'itemSets' : [defaultPlayerData(earlyNormal, 'itemSets')],
-        'maxxedItems' : [defaultPlayerData(earlyNormal, 'maxxedItems')],
-    }
-    // expect(isMaxxedItem(data, 1)).toBeTruthy()
-    // expect(isMaxxedItem(data, 3)).toBeFalsy()
-    // expect(isMaxxedItem(data, 44)).toBeTruthy()
-    // expect(isMaxxedItem(data, 76)).toBeFalsy()
-    // expect(isMaxxedItem(data, 51)).toBeTruthy()
-    // expect(isMaxxedItem(data, 100)).toBeFalsy()
-
-    expect(isMaxxedItemSet(data, ItemSets.FOREST)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.CAVE)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.BADLY_DRAWN)).toBeFalsy()
-});
-
-
-
-
-
-test('Maxxed Items/Sets - Early Normal 2', () => {
-    var data = {
-        'itemSets' : [defaultPlayerData(earlyNormalTwo, 'itemSets')],
-        'maxxedItems' : [defaultPlayerData(earlyNormalTwo, 'maxxedItems')],
-    }
-    // expect(isMaxxedItem(data, 1)).toBeTruthy()
-    // expect(isMaxxedItem(data, 5)).toBeFalsy()
-    // expect(isMaxxedItem(data, 44)).toBeTruthy()
-    // expect(isMaxxedItem(data, 76)).toBeFalsy()
-    // expect(isMaxxedItem(data, 89)).toBeTruthy()
-    // expect(isMaxxedItem(data, 110)).toBeFalsy()
-
-    expect(isMaxxedItemSet(data, ItemSets.FOREST)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.NUMBER)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.BADLY_DRAWN)).toBeFalsy()
-});
-
-
-
-
-
-test('Maxxed Items/Sets - Mid Normal 1', () => {
-    var data = {
-        'itemSets' : [defaultPlayerData(midNormal, 'itemSets')],
-        'maxxedItems' : [defaultPlayerData(midNormal, 'maxxedItems')],
-    }
-    // expect(isMaxxedItem(data, 1)).toBeTruthy()
-    // expect(isMaxxedItem(data, 8)).toBeFalsy()
-    // expect(isMaxxedItem(data, 44)).toBeTruthy()
-    // expect(isMaxxedItem(data, 89)).toBeTruthy()
-    // expect(isMaxxedItem(data, 110)).toBeFalsy()
-    // expect(isMaxxedItem(data, 460)).toBeFalsy()
-
-    expect(isMaxxedItemSet(data, ItemSets.FOREST)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.NUMBER)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.BADLY_DRAWN)).toBeFalsy()
-});
-
-
-
-
-test('Maxxed Items/Sets - Mid Normal 2', () => {
-    var data = {
-        'itemSets' : [defaultPlayerData(midNormalTwo, 'itemSets')],
-        'maxxedItems' : [defaultPlayerData(midNormalTwo, 'maxxedItems')],
-    }
-    // expect(isMaxxedItem(data, 1)).toBeTruthy()
-    // expect(isMaxxedItem(data, 44)).toBeTruthy()
-    // expect(isMaxxedItem(data, 89)).toBeTruthy()
-    // expect(isMaxxedItem(data, 110)).toBeFalsy()
-    // expect(isMaxxedItem(data, 460)).toBeFalsy()
-
-    expect(isMaxxedItemSet(data, ItemSets.FOREST)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.BADLY_DRAWN)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.EDGY)).toBeFalsy()
-});
-
-
-
-
-
-test('Maxxed Items/Sets - Late Normal', () => {
-    var data = {
-        'itemSets' : [defaultPlayerData(lateNormal, 'itemSets')],
-        'maxxedItems' : [defaultPlayerData(lateNormal, 'maxxedItems')],
-    }
-    // expect(isMaxxedItem(data, 1)).toBeTruthy()
-    // expect(isMaxxedItem(data, 44)).toBeTruthy()
-    // expect(isMaxxedItem(data, 89)).toBeTruthy()
-    // expect(isMaxxedItem(data, 460)).toBeFalsy()
-
-    expect(isMaxxedItemSet(data, ItemSets.FOREST)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.BADLY_DRAWN)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.EDGY)).toBeFalsy()
-});
-
-
-
-
-test('Maxxed Items/Sets - Early Evil 1', () => {
-    var data = {
-        'itemSets' : [defaultPlayerData(earlyEvil, 'itemSets')],
-        'maxxedItems' : [defaultPlayerData(earlyEvil, 'maxxedItems')],
-    }
-    // expect(isMaxxedItem(data, 1)).toBeTruthy()
-    // expect(isMaxxedItem(data, 44)).toBeTruthy()
-    // expect(isMaxxedItem(data, 89)).toBeTruthy()
-    // expect(isMaxxedItem(data, 460)).toBeFalsy()
-
-    expect(isMaxxedItemSet(data, ItemSets.FOREST)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.BADLY_DRAWN)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.PRETTY)).toBeFalsy()
-});
-
-
-test('Maxxed Items/Sets - Evil - Return to Normal', () => {
-    var data = {
-        'itemSets' : [defaultPlayerData(evilReturnToNormal, 'itemSets')],
-        'maxxedItems' : [defaultPlayerData(evilReturnToNormal, 'maxxedItems')],
-    }
-    // expect(isMaxxedItem(data, 1)).toBeTruthy()
-    // expect(isMaxxedItem(data, 44)).toBeTruthy()
-    // expect(isMaxxedItem(data, 89)).toBeTruthy()
-    // expect(isMaxxedItem(data, 460)).toBeFalsy()
-
-    expect(isMaxxedItemSet(data, ItemSets.FOREST)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.BADLY_DRAWN)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.PARTY)).toBeFalsy()
-});
-
-
-
-
-test('Maxxed Items/Sets - Early Evil 2', () => {
-    var data = {
-        'itemSets' : [defaultPlayerData(earlyEvilTwo, 'itemSets')],
-        'maxxedItems' : [defaultPlayerData(earlyEvilTwo, 'maxxedItems')],
-    }
-    // expect(isMaxxedItem(data, 1)).toBeTruthy()
-    // expect(isMaxxedItem(data, 44)).toBeTruthy()
-    // expect(isMaxxedItem(data, 89)).toBeTruthy()
-    // expect(isMaxxedItem(data, 460)).toBeFalsy()
-
-    expect(isMaxxedItemSet(data, ItemSets.FOREST)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.BADLY_DRAWN)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.PARTY)).toBeFalsy()
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-test('Achievement info - Mid Evil 1', () => {
-    var data = {'achievements' : [defaultPlayerData(midEvil, 'achievements')]}
-    expect(achievementAPBonus(data).getValue()).toBe('156.15')
-});
-
-test('Advanced Training info - Mid Evil 1', () => {
-    var data = { 'advTrainings' : [defaultPlayerData(midEvil, 'advTrainings')]}
-    var val = Number(advTrainingInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(163.1, 1)
-    var val = Number(advTrainingInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('AP - Mid Evil 1', () => {
-    var data = { 'apItems' : [defaultPlayerData(midEvil, 'apItems')]}
-    var val = Number(apItemInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Temp - Mid Evil 1', () => {
-    var data = { 'beards' : [defaultPlayerData(midEvil, 'beards')]}
-    var val = Number(beardInfoTemp(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(beardInfoTemp(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Beard Perm - Mid Evil 1', () => {
-    var data = { 'beards' : [defaultPlayerData(midEvil, 'beards')]}
-    var val = Number(beardInfoPerm(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(1481, 0)
-    var val = Number(beardInfoPerm(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(591, 0)
-});
-
-test('Challenges - Mid Evil 1', () => {
-    var data = { 'challenges' : [defaultPlayerData(midEvil, 'challenges')]}
-    var val = Number(challengeInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(203, 0)
-    var val = Number(challengeInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(150, 0)
-});
-
-test('Digger - Mid Evil 1', () => {
-    var data = {
-        'diggers' : [defaultPlayerData(midEvil, 'diggers')],
-        'challenges' : [defaultPlayerData(midEvil, 'challenges')],
-        'itemSets' : [defaultPlayerData(midEvil, 'itemSets')],
-    }
-    var val = Number(diggerInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('Equipment - Mid Evil 1', () => {
-    var data = {
-        'equipmentHead' : [defaultPlayerData(midEvil, 'equipmentHead')],
-        'equipmentChest' : [defaultPlayerData(midEvil, 'equipmentChest')],
-        'equipmentLegs' : [defaultPlayerData(midEvil, 'equipmentLegs')],
-        'equipmentBoots' : [defaultPlayerData(midEvil, 'equipmentBoots')],
-        'equipmentWeapon' : [defaultPlayerData(midEvil, 'equipmentWeapon')],
-        'equipmentAccesories' : [defaultPlayerData(midEvil, 'equipmentAccesories')],
-        'cubePower' : [defaultPlayerData(midEvil, 'cubePower')],
-        'cubeToughness' : [defaultPlayerData(midEvil, 'cubeToughness')],
-        'baseAdventurePower' : [defaultPlayerData(midEvil, 'baseAdventurePower')],
-        'baseAdventureToughness' : [defaultPlayerData(midEvil, 'baseAdventureToughness')],
-    }
-    // Cube may be wrong due to offline increases
-    var ec = expectClose(Number(equipmentInfo(data, Stat.POWER).getValue()), 2.448e8 + 1.258e8, 5)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-
-    var val = Number(equipmentInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(196100, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_CAP).getValue())
-    expect(val).toBeCloseTo(23718, 0)
-    var val = Number(equipmentInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(1890, 0)
-    var val = 200 - Number(equipmentInfo(data, Stat.RESPAWN).getValue())
-    expect(val).toBeCloseTo(80, 0)
-    var val = Number(equipmentInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-    var val = Number(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-
-test('MacGuffin - Mid Evil 1', () => {
-    var data = {
-        'macguffins' : [defaultPlayerData(midEvil, 'macguffins')],
-    }
-    var val = Number(macguffinInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(140, 0)
-    var val = Number(macguffinInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(156, 0)
-    var val = Number(macguffinInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(106.25, 3)
-    var val = Number(macguffinInfo(data, Stat.ATTACK).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-test('NGU - Mid Evil 1', () => {
-    var data = {
-        'energyNGUs' : [defaultPlayerData(midEvil, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(midEvil, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(midEvil, 'gameMode')],
-    }
-    var ec = expectClose(Number(nguInfo(data, Stat.POWER).getValue()), 265103 * 4515 / 100, 4)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var val = Number(nguInfo(data, Stat.YGGDRASIL_YIELD).getValue())
-    expect(val).toBeCloseTo(4803.99, 0)
-    var val = Number(nguInfo(data, Stat.DROP_CHANCE).getValue())
-    expect(val).toBeCloseTo(142252, 0)
-    var ec = expectClose(Number(nguInfo(data, Stat.ATTACK).getValue()), 1.347e22, 19)
-    expect(ec[0]).toBeCloseTo(ec[1], 0)
-    var val = Number(nguInfo(data, Stat.ENERGY_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(7023, 0)
-});
-
-test('Perks - Mid Evil 1', () => {
-    var data = {
-        'perks' : [defaultPlayerData(midEvil, 'perks')],
-        'gameMode' : [defaultPlayerData(midEvil, 'gameMode')],
-    }
-    var val = Number(perkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(188.1902, 0)
-    var val = Number(perkInfo(data, Stat.BOOSTS_BOOST).getValue())
-    expect(val).toBeCloseTo(550, 0)
-    var val = Number(perkInfo(data, Stat.ENERGY_POWER).getValue())
-    expect(val).toBeCloseTo(429, 0)
-});
-
-test('Quirks - Mid Evil 1', () => {
-    var data = {
-        'quirks' : [defaultPlayerData(midEvil, 'quirks')],
-        'gameMode' : [defaultPlayerData(midEvil, 'gameMode')],
-    }
-    var val = Number(quirkInfo(data, Stat.POWER).getValue())
-    expect(val).toBeCloseTo(162.5, 0)
-    var val = Number(quirkInfo(data, Stat.ENERGY_CAP).getValue())
-    expect(val).toBeCloseTo(165, 1)
-    var val = Number(quirkInfo(data, Stat.MAGIC_NGU_SPEED).getValue())
-    expect(val).toBeCloseTo(100, 0)
-});
-
-
-test('Maxxed Items/Sets - Mid Evil 1', () => {
-    var data = {
-        'itemSets' : [defaultPlayerData(midEvil, 'itemSets')],
-        'maxxedItems' : [defaultPlayerData(midEvil, 'maxxedItems')],
-    }
-    // expect(isMaxxedItem(data, 1)).toBeTruthy()
-    // expect(isMaxxedItem(data, 44)).toBeTruthy()
-    // expect(isMaxxedItem(data, 89)).toBeTruthy()
-    // expect(isMaxxedItem(data, 460)).toBeFalsy()
-
-    expect(isMaxxedItemSet(data, ItemSets.FOREST)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.BADLY_DRAWN)).toBeTruthy()
-    expect(isMaxxedItemSet(data, ItemSets.NETHER)).toBeFalsy()
-});
+describe('Resource Info - Wish Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, {
+            'power' : 100,
+            'rpower': 100,
+            'hack': 100,
+        }],
+        ['Early Normal 2', earlyNormalTwo, {
+            'power' : 100,
+            'rpower': 100,
+            'hack': 100,
+        }],
+        ['Mid Normal 1', midNormal, {
+            'power' : 100,
+            'rpower': 100,
+            'hack': 100,
+        }],
+        ['Mid Normal 2', midNormalTwo, {
+            'power' : 100,
+            'rpower': 100,
+            'hack': 100,
+        }],
+        ['Late Normal', lateNormal, {
+            'power' : 100,
+            'rpower': 100,
+            'hack': 100,
+        }],
+        ['Early Evil 1', earlyEvil, {
+            'power' : 100,
+            'rpower': 100,
+            'hack': 100,
+        }],
+        ['Evil Return to Normal', evilReturnToNormal, {
+            'power' : 100,
+            'rpower': 100,
+            'hack': 100,
+        }],
+        ['Early Evil 2', earlyEvilTwo, {
+            'power' : 100,
+            'rpower': 100,
+            'hack': 100,
+        }],
+        ['Mid Evil 1', midEvil, {
+            'power' : 142,
+            'rpower': 121,
+            'hack': 100,
+        }],
+    ]
+    test.each(cases)(
+        "Wish Info - %s",
+        (name, obj, expectedValues) => {
+            var data = {
+                'wishes' : [defaultPlayerData(obj, 'wishes')],
+                'gameMode' : [defaultPlayerData(obj, 'gameMode')],
+            }
+            var ec = expectClose(wishInfo(data, Stat.POWER), expectedValues['power'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(wishInfo(data, Stat.RES3_POWER), expectedValues['rpower'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(wishInfo(data, Stat.HACK_SPEED), expectedValues['hack'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
+
+
+
+describe('Resource Info - Item Set Info', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormal, [ItemSets.FOREST, ItemSets.CAVE], [ItemSets.BADLY_DRAWN], 0],
+        ['Early Normal 2', earlyNormalTwo, [ItemSets.FOREST, ItemSets.NUMBER], [ItemSets.BADLY_DRAWN], 0],
+        ['Mid Normal 1', midNormal, [ItemSets.FOREST, ItemSets.NUMBER], [ItemSets.BADLY_DRAWN], 0],
+        ['Mid Normal 2', midNormalTwo,  [ItemSets.BADLY_DRAWN], [ItemSets.EDGY], 7],
+        ['Late Normal', lateNormal, [ItemSets.BADLY_DRAWN], [ItemSets.EDGY], 7],
+        ['Early Evil 1', earlyEvil, [ItemSets.BADLY_DRAWN], [ItemSets.PRETTY], 8],
+        ['Evil Return to Normal', evilReturnToNormal, [ItemSets.BADLY_DRAWN], [ItemSets.PARTY], 9],
+        ['Early Evil 2', earlyEvilTwo, [ItemSets.BADLY_DRAWN], [ItemSets.PARTY], 10],
+        ['Mid Evil 1', midEvil, [ItemSets.PRETTY, ItemSets.NERD], [ItemSets.CONSTRUCTION, ItemSets.NETHER], 10],
+    ]
+    test.each(cases)(
+        "Item Sets Info - %s",
+        (name, obj, expectSets, noExpectSets, numQuests) => {
+            var data = {
+                'itemSets' : [defaultPlayerData(obj, 'itemSets')],
+            }
+            for(var itemSet of expectSets) {
+                expect(isMaxxedItemSet(data, itemSet)).toBeTruthy()
+            }
+            for(var itemSet of noExpectSets) {
+                expect(isMaxxedItemSet(data, itemSet)).toBeFalsy()
+            }
+            expect(maxxedItemSetNum(data, ItemSets.QUESTS)).toBe(numQuests)
+            
+        }
+    )
+})

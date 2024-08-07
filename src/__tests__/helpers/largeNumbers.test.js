@@ -1,4 +1,4 @@
-import {getLargeSuffix} from '@/helpers/largeNumbers'
+import { getLargeSuffix } from '@/helpers/largeNumbers';
 
 
 test('Large Numbers return expected strings', () => {

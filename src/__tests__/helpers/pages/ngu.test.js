@@ -1,22 +1,20 @@
-
-
-import renderer from 'react-test-renderer';
-import { toDataObj, expectClose } from '@/__tests__/testHelperFunctions'
+import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
 import earlyNormal from '@/__tests__/__data__/earlyNormal1';
 import earlyNormalTwo from '@/__tests__/__data__/earlyNormal2';
+import lateNormal from '@/__tests__/__data__/lateNormal';
+import midEvil from '@/__tests__/__data__/midEvil1';
 import midNormal from '@/__tests__/__data__/midNormal1';
 import midNormalTwo from '@/__tests__/__data__/midNormal2';
-import lateNormal from '@/__tests__/__data__/lateNormal';
-import earlyEvil from '../../__data__/earlyEvil1';
-import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
-import { ENERGY_NGUS, MAGIC_NGUS, NGU } from '@/assets/ngus';
-import { bd } from '@/helpers/numbers';
-import NGUTargetTable from '@/components/nguInfo/nguTargetTable';
+import { expectClose, toDataObj } from '@/__tests__/testHelperFunctions';
 import { GameMode } from '@/assets/mode';
-import NGUCapTable from '@/components/nguInfo/nguCapTable';
 import NGUCapDayTable from '@/components/nguInfo/nguCapDayTable';
-import {test, describe } from '@jest/globals';
+import NGUCapTable from '@/components/nguInfo/nguCapTable';
+import NGUTargetTable from '@/components/nguInfo/nguTargetTable';
+import { bd } from '@/helpers/numbers';
+import { describe, test } from '@jest/globals';
 import _ from 'lodash';
+import renderer from 'react-test-renderer';
+import earlyEvil from '../../__data__/earlyEvil1';
 
 
 
@@ -28,6 +26,7 @@ var midNormalTwoData = toDataObj(midNormalTwo);
 var lateNormalData = toDataObj(lateNormal)
 var earlyEvilData = toDataObj(earlyEvil);
 var earlyEvilTwoData = toDataObj(earlyEvilTwo);
+var midEvilData = toDataObj(midEvil);
 
 var types = ['energy', 'magic']
 var nguNames = [
@@ -201,6 +200,42 @@ var earlyEvilTwoExpected = {
     }
 }
 
+// Changed targets to:
+//      Normal: 200M All
+//          Magic: 200M All
+// Evil : 7.5M, 7.5M, 5M, 20M, 10M, 500k, 500k, 100k, 50k
+//          20M, 10M, 500k, 250k, 250k, 50k, 100k
+var midEvilExpected = {
+    [GameMode.NORMAL] : {
+        'seconds': [
+            [303953.04, 303953.04, 304096.72, 304045.2, 83822.8, 303606.16, 1036817.68, 1071384.4, 1460947.28],
+            [220396.24, 415312.08, 1138522, 1225680.4, 1426186.96, 1642145.2, 1939454.48]
+        ],
+        'cap' : [
+            [15811918, 15811918, 15811918, 15811918, 15811918, 15811918, 1581191732, 31623834640, 790595865999],
+            [20769342, 62308024, 207693411, 623080233, 5192335271, 51923352701, 519233527004]
+        ],
+        'capDay': [
+            [14951935, 14951935, 14951367, 14951571, 15822105, 14953306, 1205493588, 23836588693, 518918016702],
+            [20073588, 57184558, 153063710, 445614459, 3453179499, 31728476018, 278691523659]
+        ]
+    },
+    [GameMode.EVIL] : {
+        'seconds': [
+            [64349.14, 95826.14, 129167.72, 15735031.34, 4301354.05, 1453990.2, 12578634.86, 2102403.9, 14493040.96],
+            [3198266.8, 2349285.04, 21008.72, 544995.53, 2950616.14, 927274.89, 53180082.87]
+        ],
+        'cap' : [
+            [5.929e+14, 5.929e+14, 3.953e+14, 1.581e+16, 7.906e+16, 3.953e+16, 3.953e+17, 7.906e+17, 3.953e+18],
+            [1.038e+15, 5.192e+15, 2.596e+15, 1.298e+16, 1.298e+17, 2.596e+17, 5.192e+18]
+        ],
+        'capDay': [
+            [8.904e+14, 8.655e+14, 5.866e+14, 1.397e+16, 1.108e+17, 3.583e+17, 3.628e+18, 3.482e+19, 3.432e+20],
+            [8.172e+14, 6.880e+15, 2.493e+16, 2.308e+17, 2.343e+18, 2.264e+19, 2.281e+20]
+        ]
+    }
+}
+
 
 // TODO - Add tests for % and other
 
@@ -225,6 +260,7 @@ for(let gm = 0; gm < 3; gm++) {
             ['Late Normal', lateNormalData, lateNormalExpected],
             ['Early Evil 1', earlyEvilData, earlyEvilExpected],
             ['Early Evil 2', earlyEvilTwoData, earlyEvilTwoExpected],
+            ['Mid Evil 1', midEvilData, midEvilExpected],
         ]
         describe.each(cases)(
             gameModeName + " NGU - %s",

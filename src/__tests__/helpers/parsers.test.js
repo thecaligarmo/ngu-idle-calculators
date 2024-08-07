@@ -1,4 +1,4 @@
-import {parseObj, parseNum} from '@/helpers/parsers'
+import { parseNum, parseObj } from '@/helpers/parsers';
 import bigDecimal from 'js-big-decimal';
 
 test('Parseing of Objects', () => {

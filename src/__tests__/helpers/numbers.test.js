@@ -1,5 +1,6 @@
-import {bigdec_max, bigdec_min, pn, bd, dn} from '@/helpers/numbers'
+import { bd, bigdec_max, bigdec_min, bigdec_round, dn, pn } from '@/helpers/numbers';
 import bigDecimal from 'js-big-decimal';
+
 
 test('Max of Big Decimal', () => {
     var one = bd(1)
@@ -34,11 +35,23 @@ test('Ensure we get big decimals', () => {
     expect(decimal.getValue()).toBe("3.1415926535");
 });
 
-
-test('Rounding of big decimals', () => {
-    var decimal = bd('3.1415926535')
-    expect(decimal.round(2, bigDecimal.RoundingModes.CEILING).getValue()).toBe("3.15");
-});
+describe('Rounding of big decimals', () => {
+    test('Rounding of big decimals', () => {
+        var decimal = bd('3.1415926535')
+        expect(decimal.round(2, bigDecimal.RoundingModes.CEILING).getValue()).toBe("3.15");
+    });
+    
+    test.each([
+        [bd(1.3), bd(0.2), bd(1.4)],
+        [bd(1.75), bd(0.3), bd(1.8)],
+        [bd(22), bd(5), bd(20)],
+    ])(
+        'Rounding of big decimals - %#',
+        (num, precision, expected) => {
+            expect(bigdec_round(num, precision).compareTo(expected)).toBe(0)
+        }
+    )
+})
 
 test('Date numbers', () => {
     var seconds = bd(5)

@@ -1,18 +1,16 @@
-import { bd } from '@/helpers/numbers';
-import { getQuestInfo, getTitanList, getMaxTitanByAK, getTitanHourlyInfo, getRebirthAP, getMoneyPitAP, getDailySaveAP, getDailySpinAP} from '@/helpers/pages/daily';
-import {  AttackStat, Titans } from "@/assets/enemy";
-import {  Wishes } from "@/assets/wish";
-
-import renderer from 'react-test-renderer';
-import { toDataObj, expectClose } from '@/__tests__/testHelperFunctions'
+import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
 import earlyNormal from '@/__tests__/__data__/earlyNormal1';
 import earlyNormalTwo from '@/__tests__/__data__/earlyNormal2';
+import lateNormal from '@/__tests__/__data__/lateNormal';
+import midEvil from '@/__tests__/__data__/midEvil1';
 import midNormal from '@/__tests__/__data__/midNormal1';
 import midNormalTwo from '@/__tests__/__data__/midNormal2';
-import lateNormal from '@/__tests__/__data__/lateNormal';
+import { expectClose, toDataObj } from '@/__tests__/testHelperFunctions';
+import { AttackStat, Titans } from "@/assets/enemy";
+import { bd } from '@/helpers/numbers';
+import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from '@/helpers/pages/daily';
+import renderer from 'react-test-renderer';
 import earlyEvil from '../../__data__/earlyEvil1';
-import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
-import midEvil from '@/__tests__/__data__/midEvil1';
 
 
 

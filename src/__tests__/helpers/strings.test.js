@@ -1,4 +1,4 @@
-import {camelToTitle} from '@/helpers/strings'
+import { camelToTitle } from '@/helpers/strings';
 
 test('Camel to Title', () => {
     expect(camelToTitle('totalPower')).toBe('Total Power')

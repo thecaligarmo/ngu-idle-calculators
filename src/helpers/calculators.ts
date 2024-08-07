@@ -110,7 +110,8 @@ export function totalRes3Power(data : any) : bigDecimal {
 
 export function totalRes3Bar(data : any) : bigDecimal {
     return parseNum(data, 'baseRes3Bar')
-        .multiply(calcAll(data, Stat.RES3_BARS)).divide(bd(100));
+        .multiply(calcAll(data, Stat.RES3_BARS)).divide(bd(100))
+        .floor();
 }
 
 export function totalRes3Cap(data : any) : bigDecimal {

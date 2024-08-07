@@ -1,6 +1,6 @@
-import { bd } from '@/helpers/numbers';
-import { getZoneInfo, getOptimalBoostZone, getOptimalExpZone } from '@/helpers/pages/zone';
 import { Zones } from "@/assets/zones";
+import { bd } from '@/helpers/numbers';
+import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo } from '@/helpers/pages/zone';
 
 
 var cases = [

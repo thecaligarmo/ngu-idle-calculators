@@ -1,14 +1,14 @@
-import {totalEnergyPower, totalEnergyBar, totalEnergyCap, totalMagicPower, totalMagicBar, totalMagicCap, totalWishSpeed, totalEnergyNGUSpeedFactor, totalMagicNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalPower, totalToughness, totalGoldDrop, totalRespawnRate, totalDropChance, totalRes3Power, totalRes3Bar, totalRes3Cap, totalHackSpeed, totalDaycareSpeed}  from '@/helpers/calculators'
-import earlyNormal from '../__data__/earlyNormal1'
+import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness, totalWishSpeed } from '@/helpers/calculators';
+import earlyEvil from '../__data__/earlyEvil1';
+import earlyEvilTwo from '../__data__/earlyEvil2';
+import earlyNormal from '../__data__/earlyNormal1';
 import earlyNormalTwo from '../__data__/earlyNormal2';
+import evilReturnToNormal from '../__data__/evilReturnToNormal';
+import lateNormal from '../__data__/lateNormal';
+import midEvil from '../__data__/midEvil1';
 import midNormal from '../__data__/midNormal1';
 import midNormalTwo from '../__data__/midNormal2';
-import lateNormal from '../__data__/lateNormal';
-import { toDataObj, expectClose } from '../testHelperFunctions'
-import earlyEvil from '../__data__/earlyEvil1';
-import evilReturnToNormal from '../__data__/evilReturnToNormal';
-import earlyEvilTwo from '../__data__/earlyEvil2';
-import midEvil from '../__data__/midEvil1';
+import { expectClose, toDataObj } from '../testHelperFunctions';
 
 
 var earlyNormalData = toDataObj(earlyNormal);
@@ -19,6 +19,7 @@ var lateNormalData = toDataObj(lateNormal);
 var earlyEvilData = toDataObj(earlyEvil);
 var evilReturnToNormalData = toDataObj(evilReturnToNormal);
 var earlyEvilTwoData = toDataObj(earlyEvilTwo);
+var midEvilData = toDataObj(midEvil);
 
 
 
@@ -32,6 +33,7 @@ describe('Calculators - Energy', () => {
         ['Early Evil 1', earlyEvilData, {'power': 1148000000, 'bar': 176300000, 'cap': 1618503168662}],
         ['Evil Return to Normal', evilReturnToNormalData, {'power': 7.554e8, 'bar': 1.46e8, 'cap': 2395637339264}],
         ['Early Evil 2', earlyEvilTwoData, {'power': 9.522e9, 'bar': 1.152e9, 'cap': 26218964477405}],
+        ['Mid Evil 1', midEvilData, {'power': 4.299e10, 'bar': 5.743e9, 'cap':111846015531154 }],
     ]
     test.each(cases)(
         "Calculators - Energy - %s",
@@ -57,6 +59,7 @@ describe('Calculators - Magic', () => {
         ['Early Evil 1', earlyEvilData, {'power': 106800000, 'bar': 22880000, 'cap': 309027642136}],
         ['Evil Return to Normal', evilReturnToNormalData, {'power': 8.385e7, 'bar': 3.155e7, 'cap': 258609120090}],
         ['Early Evil 2', earlyEvilTwoData, {'power': 3.153e9, 'bar': 1.260e9, 'cap': 6363454536030}],
+        ['Mid Evil 1', midEvilData, {'power': 1.439e10, 'bar': 1.914e9, 'cap': 44967554132115}],
     ]
     test.each(cases)(
         "Calculators - Magic - %s",
@@ -81,6 +84,7 @@ describe('Calculators - Resource 3', () => {
         ['Early Evil 1', earlyEvilData, {'power': 1, 'bar': 0, 'cap': 0}],
         ['Evil Return to Normal', evilReturnToNormalData, {'power': 3, 'bar': 3, 'cap': 90000}],
         ['Early Evil 2', earlyEvilTwoData, {'power': 3, 'bar': 6, 'cap': 90000}],
+        ['Mid Evil 1', midEvilData, {'power': 188, 'bar': 30, 'cap': 5549251}],
     ]
     test.each(cases)(
         "Calculators - Resource 3 - %s",
@@ -107,6 +111,7 @@ describe('Calculators - NGU', () => {
         ['Early Evil 1', earlyEvilData, {'energy': 8.197e14, 'magic': 3.208e14}],
         ['Evil Return to Normal', evilReturnToNormalData, {'energy': 8.575e12, 'magic': 3.442e12}],
         ['Early Evil 2', earlyEvilTwoData, {'energy': 1.588e16, 'magic': 2.452e16}],
+        ['Mid Evil 1', midEvilData, {'energy': 1.265e16, 'magic': 1.926e16}],
     ]
     test.each(cases)(
         "Calculators - NGU - %s",
@@ -130,6 +135,7 @@ describe('Calculators - EXP, AP, PP', () => {
         ['Early Evil 1', earlyEvilData, {'exp': 1747.11, 'ap': 185.58, 'pp' : 1485.88}],
         ['Evil Return to Normal', evilReturnToNormalData, {'exp': 1665.96, 'ap': 186.18, 'pp' : 1788.99}],
         ['Early Evil 2', earlyEvilTwoData, {'exp': 2402.84, 'ap': 187.38, 'pp' : 2502.83}],
+        ['Mid Evil 1', midEvilData, {'exp': 3504.79, 'ap': 191.12, 'pp' : 3884.76}],
     ]
     test.each(cases)(
         "Calculators - EXP, AP, PP - %s",
@@ -155,6 +161,7 @@ describe('Calculators - Misc', () => {
         ['Early Evil 1', earlyEvilData, {'daycare': 100, 'hack': 100, 'wish' : 100}],
         ['Evil Return to Normal', evilReturnToNormalData, {'daycare': 100, 'hack': 100, 'wish' : 100}],
         ['Early Evil 2', earlyEvilTwoData, {'daycare': 126, 'hack': 175, 'wish' : 100}],
+        ['Mid Evil 1', midEvilData, {'daycare': 145, 'hack': 202, 'wish' : 250}],
     ]
     test.each(cases)(
         "Calculators - Misc - %s",
@@ -180,6 +187,7 @@ describe('Calculators - Adventure', () => {
         ['Early Evil 1', earlyEvilData, {'power': 2.47e13, 'toughness': 1.477e13}],
         ['Evil Return to Normal', evilReturnToNormalData, {'power': 6.749e12, 'toughness': 2.2635e12}],
         ['Early Evil 2', earlyEvilTwoData, {'power': 1.621e14, 'toughness': 1.787e14}],
+        ['Mid Evil 1', midEvilData, {'power': 5.401e16, 'toughness': 2.537e16}],
     ]
     test.each(cases)(
         "Calculators - Adventure - %s",
@@ -203,6 +211,7 @@ describe('Calculators - Misc', () => {
         ['Early Evil 1', earlyEvilData, {'gold': 1.713e12, 'respawn': 34.94, 'dropChance' : 6.294e8}],
         ['Evil Return to Normal', evilReturnToNormalData, {'gold': 1.698e11, 'respawn': 43.33, 'dropChance' : 1.564e8}],
         ['Early Evil 2', earlyEvilTwoData, {'gold': 9.265e14, 'respawn': 35.93, 'dropChance' : 1.629e9}],
+        ['Mid Evil 1', midEvilData, {'gold': 4.011e17, 'respawn': 41.05, 'dropChance' : 2.975e10}],
     ]
     test.each(cases)(
         "Calculators - Misc - %s",

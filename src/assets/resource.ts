@@ -70,5 +70,5 @@ export class ResourceContainer {
             this[r.id] = r;
             // this.modes[r.mode][r.key] = r
         }
-    }
+    } 
 }

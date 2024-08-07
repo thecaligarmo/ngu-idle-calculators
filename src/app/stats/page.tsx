@@ -7,7 +7,7 @@ import { bd, pn } from '@/helpers/numbers';
 import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
 import { Stat } from '@/assets/stat';
-import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalHealth, totalToughness } from '@/helpers/calculators';
+import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalHealth, totalToughness, totalWishSpeed } from '@/helpers/calculators';
 import {achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo} from '@/helpers/resourceInfo';
 import { ItemSets } from '@/assets/sets';
 import { parseNum, parseObj } from '@/helpers/parsers';
@@ -127,6 +127,7 @@ export default function Page() {
                 <ul>
                     <li key="daycare"><strong>Total Daycare (Kitty) Bonus:</strong> <span className="text-red-500">{pn(totalDaycareSpeed(playerStates), fmt, 2)}%</span></li>
                     <li key="hack"><strong>Total Hack Bonus:</strong> <span className="text-red-500">{pn(totalHackSpeed(playerStates), fmt, 2)}%</span></li>
+                    <li key="wish"><strong>Total Wish Bonus:</strong> <span className="text-red-500">{pn(totalWishSpeed(playerStates), fmt, 2)}%</span></li>
                 </ul>
                 <ContentSubsection title="Daycare Calculation" defaultHide={true}>
                     <ul className='ml-5'>
@@ -144,6 +145,16 @@ export default function Page() {
                         <li key="heart">x Grey Heart Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.GREY_HEART) ? bd(125) : bd(100), fmt)}%)</li>
                         <li key="challenges">x Evil No NGU Challenge ({pn(challengeInfo(playerStates, Stat.HACK_SPEED), fmt)}%)</li>
                         <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalHackSpeed(playerStates), fmt, 2)}%</span></li>
+                    </ul>
+                </ContentSubsection>
+                <ContentSubsection title="Wish Calculation" defaultHide={true}>
+                    <ul className='ml-5'>
+                        <li key="base">Base Wish Speed (100%)</li>
+                        <li key="equipment">x Equipment ({pn(equipmentInfo(playerStates, Stat.WISH_SPEED), fmt)}%)</li>
+                        <li key="heart">x Severed Head Bonus ({pn(isMaxxedItemSet(playerStates, ItemSets.SEVERED_HEAD) ? bd(113.37) : bd(100), fmt)}%)</li>
+                        <li key="wish">x Wish Modifier ({pn(wishInfo(playerStates, Stat.WISH_SPEED), fmt)}%)</li>
+                        <li key="ap">x Faster Wish (AP item) Modifier ({pn(apItemInfo(playerStates, Stat.WISH_SPEED), fmt)}%)</li>
+                        <li key="total" className="mt-2 border-white border-t-2 border-solid"><strong>Total:</strong> <span className="text-red-500">{pn(totalWishSpeed(playerStates), fmt, 2)}%</span></li>
                     </ul>
                 </ContentSubsection>
             </ContentSection>

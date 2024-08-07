@@ -7,7 +7,7 @@ import { BEARDS, Beard } from "@/assets/beards";
 import { DIGGERS, Digger } from "@/assets/diggers";
 import { CHALLENGES, Challenge } from "@/assets/challenges";
 import { boostRecyclying, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
-import { APITEMS, APItem } from "@/assets/apItems";
+import { APITEMLIST, APITEMS, APItem } from "@/assets/apItems";
 import { ItemSet, ItemSets } from "@/assets/sets";
 import { ADVTRAININGS, AdvTraining } from "@/assets/advTraining";
 import { MACGUFFINS, MacGuffin } from "@/assets/macguffins";
@@ -456,55 +456,87 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'achievements':
                 return playerData.achievements.achievementComplete
             case 'advTrainings':
-                var advTrainings: AdvTraining[] = []
-                for (var c = 0; c < 5; c++) {
+                let advTrainings: AdvTraining[] = []
+                for (let c = 0; c < 5; c++) {
                     advTrainings.push(_.cloneDeep(ADVTRAININGS[c]))
                 }
-                for (var c = 0; c < 5; c++) {
+                for (let c = 0; c < 5; c++) {
                     advTrainings[c].setLevel(playerData.advancedTraining.level[c])
                 }
                 return advTrainings
             case 'apItems':
-                var apItems : APItem[] = []
-                if (playerData.arbitrary.energyPotion1Time.totalseconds > 0) {
-                    var apItem = APITEMS['energyPotionA'];
-                    apItem.setLevel(1)
-                    apItems.push(apItem)
-                }
-                if (playerData.arbitrary.magicPotion1Time.totalseconds > 0) {
-                    var apItem = APITEMS['magicPotionA'];
-                    apItem.setLevel(1)
-                    apItems.push(apItem)
-                }
-                if (playerData.arbitrary.energyPotion2InUse == 1) {
-                    var apItem = APITEMS['energyPotionB'];
-                    apItem.setLevel(1)
-                    apItems.push(apItem)
-                }
-                if (playerData.arbitrary.magicPotion2InUse == 1) {
-                    var apItem = APITEMS['magicPotionB'];
-                    apItem.setLevel(1)
-                    apItems.push(apItem)
+                let apItems : APItem[] = []
+                let apToAdd : {[key:string]: number} = {};
+                if (playerData.arbitrary.energyPotion1Time.totalseconds > 0) apToAdd['energyPotionA'] = 1;
+                if (playerData.arbitrary.magicPotion1Time.totalseconds > 0) apToAdd['magicPotionA'] = 1;
+                if (playerData.arbitrary.res3Potion1Time.totalseconds > 0) apToAdd['resource3PotionA'] = 1;
+                if (playerData.arbitrary.energyPotion2InUse == 1) apToAdd['energyPotionB'] = 1;
+                if (playerData.arbitrary.magicPotion2InUse == 1)  apToAdd['magicPotionB'] = 1;
+                if (playerData.arbitrary.res3Potion2InUse == 1)  apToAdd['resource3PotionB'] = 1;
+                if (playerData.arbitrary.lootcharm1Time.totalseconds > 0) apToAdd['luckyCharm'] = 1;
+                if (playerData.arbitrary.energyBarBar1Time.totalseconds > 0)  apToAdd['energyBarBar'] = 1;
+                if (playerData.arbitrary.magicBarBar1Time.totalseconds > 0) apToAdd['magicBarBar'] = 1;
+                if (playerData.arbitrary.macGuffinBooster1Time.totalseconds > 0) apToAdd['macGuffinMuffin'] = 1;
+                if (playerData.arbitrary.boughtAutoNuke == 1) apToAdd['autoNuker'] = 1;
+                if (playerData.arbitrary.lootFilter == 1) apToAdd['improvedLootFilter'] = 1;
+                if (playerData.arbitrary.improvedAutoBoostMerge == 1) apToAdd['autoMergeandBoostTimers'] = 1;
+                if (playerData.arbitrary.instaTrain == 1) apToAdd['instaTrainingCap'] = 1;
+                if (playerData.arbitrary.inventorySpaces > 0) apToAdd['extraInventorySpace'] = playerData.arbitrary.inventorySpaces;
+                if (playerData.arbitrary.hasAcc4 == 1) apToAdd['extraAccessorySlot'] = 1;
+                if (playerData.arbitrary.hasAcc5 == 1) apToAdd['anotherExtraAccessorySlot'] = 1;
+                if (playerData.arbitrary.hasAcc6 == 1) apToAdd['anotherExtraAccessorySlot2'] = 1;
+                if (playerData.arbitrary.hasAcc7 == 1) apToAdd['yetAnotherExtraAccessorySlot'] = 1;
+                if (playerData.arbitrary.hasAcc8 == 1) apToAdd['anEvilAccessorySlot'] = 1;
+                if (playerData.arbitrary.hasAcc9 == 1) apToAdd['extraAccessorySlot2'] = 1;
+                if (playerData.arbitrary.hasYggdrasilReminder == 1) apToAdd['yggdrasilHarvestLight'] = 1;
+                if (playerData.arbitrary.hasExtendedSpinBank == 1) apToAdd['7DayTimeBankforDailySpin'] = 1;
+                if (playerData.arbitrary.curLoadoutSlots > 0) apToAdd['loadoutSlot'] = playerData.arbitrary.curLoadoutSlots;
+                if (playerData.arbitrary.beardSlots > 0) apToAdd['anExtraBeardSlot'] = playerData.arbitrary.beardSlots;
+                if (playerData.arbitrary.hasCubeFilter == 1) apToAdd['filterBoostsintoInfinityCube'] = 1;
+                if (playerData.arbitrary.hasDaycareSpeed == 1) apToAdd['daycareSpeedBoost'] = 1;
+                if (playerData.arbitrary.boughtLazyITOPOD == 1) apToAdd['lazyITOPODFloorShifter'] = 1;
+                if (playerData.arbitrary.diggerSlots > 0) apToAdd['diggerSlots'] = playerData.arbitrary.diggerSlots;
+                if (playerData.arbitrary.macguffinSlots > 0) apToAdd['aMacGuffinSlot'] = playerData.arbitrary.macguffinSlots;
+                if (playerData.arbitrary.hasQuestLight == 1) apToAdd['questReminder'] = 1;
+                if (playerData.arbitrary.hasFasterQuests == 1) apToAdd['fasterQuesting'] = 1;
+                if (playerData.arbitrary.hasExtendedQuestBank == 1) apToAdd['extendedQuestBank'] = 1;
+                if (playerData.arbitrary.wishSpeedBoster == 1) apToAdd['fasterWishes'] = 1;
+                if (playerData.arbitrary.gotTagslot1 == 1) apToAdd['extraTagSlot'] = 1;
+                if (playerData.arbitrary.mayoGenSlots > 0) apToAdd['mayoGenerator'] = playerData.arbitrary.mayoGenSlots;
+                if (playerData.arbitrary.deckSpaceBought == 1) apToAdd['extraDeckSize'] = 1;
+                if (playerData.arbitrary.mayoSpeedPotTime.totalSeconds > 0) apToAdd['mayoInfuser'] = 1;
+                if (playerData.arbitrary.invMergeSlots > 0) apToAdd['inventoryMergeSlots'] = playerData.arbitrary.invMergeSlots;
+                if (playerData.arbitrary.advLightBought == 1) apToAdd['adventureLight'] = 1;
+                if (playerData.arbitrary.advAdvancerBought == 1) apToAdd['adventureAdvancer'] = 1;
+                if (playerData.arbitrary.goToQuestZoneBought == 1) apToAdd['goToQuestZoneButton'] = 1;
+                if (playerData.arbitrary.hasCubeFilter == 1) apToAdd['filterBoostsintoInfinityCube'] = 1;
+                
+
+                for(let apItem of APITEMLIST) {
+                    if(Object.keys(apToAdd).includes(apItem.key)){
+                        let ap = _.cloneDeep(APITEMS[apItem.id]);
+                        ap.setLevel(apToAdd[apItem.key])
+                        apItems.push(ap)
+                    }
                 }
                 return apItems;
             case 'beards':
-                var beards : Beard[] = []
+                let beards : Beard[] = []
                 playerData.beards.beards.forEach((beard : any, index : number) => {
                     if (!_.isUndefined(BEARDS[index])) {
-                        var b = _.cloneDeep(BEARDS[index])
+                        let b = _.cloneDeep(BEARDS[index])
                         b.setLevel(beard.beardLevel)
                         b.setPermLevel(beard.permLevel)
                         b.setActive(beard.active)
                         beards.push(b)
                     }
                 })
-                
                 return beards
             case 'challenges':
-                var challenges : Challenge[] = []
-                var evilChallenges : Challenge[] = []
-                var sadChallenges : Challenge[] = []
-                for (var c = 0; c < 11; c++) {
+                let challenges : Challenge[] = []
+                let evilChallenges : Challenge[] = []
+                let sadChallenges : Challenge[] = []
+                for (let c = 0; c < 11; c++) {
                     challenges.push(_.cloneDeep(CHALLENGES[c]))
                     evilChallenges.push(_.cloneDeep(CHALLENGES[c + 100]))
                     sadChallenges.push(_.cloneDeep(CHALLENGES[c + 200]))
@@ -545,7 +577,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 sadChallenges[9].importStats(playerData.challenges.nguChallenge)
                 sadChallenges[10].importStats(playerData.challenges.timeMachineChallenge);
 
-                var cc : {[key:number] : Challenge[]} = {}
+                let cc : {[key:number] : Challenge[]} = {}
                 cc[GameMode.NORMAL] = challenges
                 cc[GameMode.EVIL] = evilChallenges;
                 cc[GameMode.SADISTIC] = sadChallenges;
@@ -553,9 +585,9 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 // return challenges.concat(evilChallenges, sadChallenges)
                 return cc
             case 'diggers':
-                var diggers : Digger[] = []
+                let diggers : Digger[] = []
                 playerData.diggers.diggers.forEach((digger : any, id : number) => {
-                    var d = _.cloneDeep(DIGGERS[id])
+                    let d = _.cloneDeep(DIGGERS[id])
                     if (!_.isUndefined(d)) {
                         d.active = digger.active == 1 ? true : false;
                         d.setLevel(digger.curLevel)
@@ -566,56 +598,55 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return diggers;
 
             case 'equipmentWeapon':
-                var weapon : any = playerData.inventory.weapon;
-                var item : Item = _.cloneDeep(ITEMS[weapon.id])
-                item.importStats(weapon)
-                return item
+                let weapon : any = playerData.inventory.weapon;
+                let weaponItem : Item = _.cloneDeep(ITEMS[weapon.id])
+                weaponItem.importStats(weapon)
+                return weaponItem
             case 'equipmentHead':
-                var head : any = playerData.inventory.head;
-                var item : Item = _.cloneDeep(ITEMS[head.id])
-                item.importStats(head)
-                return item
+                let head : any = playerData.inventory.head;
+                let headItem : Item = _.cloneDeep(ITEMS[head.id])
+                headItem.importStats(head)
+                return headItem
             case 'equipmentChest':
-                var chest : any = playerData.inventory.chest;
-                var item : Item= _.cloneDeep(ITEMS[chest.id])
-                item.importStats(chest)
-                return item
+                let chest : any = playerData.inventory.chest;
+                let chestItem : Item= _.cloneDeep(ITEMS[chest.id])
+                chestItem.importStats(chest)
+                return chestItem
             case 'equipmentLegs':
-                var legs : any = playerData.inventory.legs;
-                var item : Item = _.cloneDeep(ITEMS[legs.id])
-                item.importStats(legs)
-                return item
+                let legs : any = playerData.inventory.legs;
+                let legsItem : Item = _.cloneDeep(ITEMS[legs.id])
+                legsItem.importStats(legs)
+                return legsItem
             case 'equipmentBoots':
-                var boots : any = playerData.inventory.boots;
-                var item : Item = _.cloneDeep(ITEMS[boots.id])
-                item.importStats(boots)
-                return item
+                let boots : any = playerData.inventory.boots;
+                let bootsItem : Item = _.cloneDeep(ITEMS[boots.id])
+                bootsItem.importStats(boots)
+                return bootsItem
             case 'equipmentAccesories':
-                var accesories : any = playerData.inventory.accs.filter((acc : any) => !_.isUndefined(acc.id) && !_.isNaN(acc.id))
+                let accesories : any = playerData.inventory.accs.filter((acc : any) => !_.isUndefined(acc.id) && !_.isNaN(acc.id))
                 
                 return accesories.map((acc : any) => {
-                    var item : Item = _.cloneDeep(ITEMS[acc.id])
-                    item.importStats(acc)
-
-                    return item
+                    let accItem : Item = _.cloneDeep(ITEMS[acc.id])
+                    accItem.importStats(acc)
+                    return accItem
                 })
             case 'equipmentTest':
-                var items : any = playerData.inventory.inventory.filter((it : any) => !_.isUndefined(it.id) && !_.isNaN(it.id) && it.id > 0)
+                let items : any = playerData.inventory.inventory.filter((it : any) => !_.isUndefined(it.id) && !_.isNaN(it.id) && it.id > 0)
                 
                 return items.map((it : any) => {
                     if(!_.isUndefined(ITEMS[it.id])) {
-                        var item : Item = _.cloneDeep(ITEMS[it.id])
+                        let item : Item = _.cloneDeep(ITEMS[it.id])
                         return item
                     } else {
                         console.log(it, " is missing from item list.")
                     }
                 })
             case 'energyNGUs':
-                var energyNGUs : NGU[] = []
+                let energyNGUs : NGU[] = []
                 playerData.NGU.skills.forEach((engu : any, index : number) => {
                     if (!_.isUndefined(engu.level) && index < 10) {
-                        for (var i = 0; i < 3; i++) {
-                            var ngu : NGU = _.cloneDeep(ENERGY_NGUS[index + (i * 10)])
+                        for (let i = 0; i < 3; i++) {
+                            let ngu : NGU = _.cloneDeep(ENERGY_NGUS[index + (i * 10)])
                             if (!_.isUndefined(ngu)) {
                                 ngu.importStats(engu)
                                 energyNGUs.push(ngu)
@@ -625,11 +656,11 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 })
                 return energyNGUs
             case 'magicNGUs':
-                var magicNGUs : NGU[] = []
+                let magicNGUs : NGU[] = []
                 playerData.NGU.magicSkills.forEach((mngu : any, index : number) => {
                     if (!_.isUndefined(mngu.level) && index < 10) {
-                        for (var i = 0; i < 3; i++) {
-                            var ngu : NGU = _.cloneDeep(MAGIC_NGUS[index + (i * 10)])
+                        for (let i = 0; i < 3; i++) {
+                            let ngu : NGU = _.cloneDeep(MAGIC_NGUS[index + (i * 10)])
                             if (!_.isUndefined(ngu)) {
                                 ngu.importStats(mngu)
                                 magicNGUs.push(ngu)
@@ -640,10 +671,10 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return magicNGUs
 
             case 'hacks':
-                var hacks: Hack[] = []
+                let hacks: Hack[] = []
                 playerData.hacks.hacks.forEach((hackData : any, index : number) => {
                     if(index < 15) {
-                        var hack : Hack = _.cloneDeep(HACKS[index])
+                        let hack : Hack = _.cloneDeep(HACKS[index])
                         if(!_.isUndefined(hack)) {
                             hack.importStats(hackData)
                             hacks.push(hack)
@@ -653,16 +684,16 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return hacks
                 
             case 'macguffins':
-                var macguffins : MacGuffin[] = []
+                let macguffins : MacGuffin[] = []
 
-                for (var c = 0; c < 25; c++) {
+                for (let c = 0; c < 25; c++) {
                     if(!_.isUndefined(MACGUFFINS[c])) {
                         macguffins.push(_.cloneDeep(MACGUFFINS[c]))
                     }
                 }
                 playerData.inventory.macguffins.forEach((macguffin : any, index : number) => {
                     if(macguffin.id > 0) {
-                        var macID = 0;
+                        let macID = 0;
                         switch(macguffin.id) {
                             case 228:
                                 macID = 14
@@ -701,11 +732,11 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 
                 return macguffins
             case 'perks':
-                var perks : Perk[] = []
+                let perks : Perk[] = []
                 playerData.adventure.itopod.perkLevel.forEach((perk : any, index : number) => {
                     if (!_.isUndefined(perk) && perk > 0) {
                         if (!_.isUndefined(PERKS[index])) {
-                            var p = _.cloneDeep(PERKS[index])
+                            let p = _.cloneDeep(PERKS[index])
                             p.setLevel(perk)
                             perks.push(p)
                         }
@@ -714,11 +745,11 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 
                 return perks
             case 'quirks':
-                var quirks : Quirk[]= []
+                let quirks : Quirk[]= []
                 playerData.beastQuest.quirkLevel.forEach((quirk : any, index : number) => {
                     if (!_.isUndefined(quirk) && quirk > 0) {
                         if (!_.isUndefined(QUIRKS[index])) {
-                            var q = _.cloneDeep(QUIRKS[index])
+                            let q = _.cloneDeep(QUIRKS[index])
                             q.setLevel(quirk)
                             quirks.push(q)
                         }
@@ -727,11 +758,11 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return quirks;
 
             case 'wishes':
-                var wishes : Wish[]= []
+                let wishes : Wish[]= []
                 playerData.wishes.wishes.forEach((wish : any, index : number) => {
                     if (!_.isUndefined(wish)) {
                         if (!_.isUndefined(WISHES[index])) {
-                            var w = _.cloneDeep(WISHES[index])
+                            let w = _.cloneDeep(WISHES[index])
                             w.setLevel(wish.level)
                             wishes.push(w)
                         }
@@ -740,9 +771,9 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 
                 return wishes;
             case 'yggdrasil':
-                var yggdrasil: Yggdrasil[] = _.cloneDeep(Object.values(FRUITS))
+                let yggdrasil: Yggdrasil[] = _.cloneDeep(Object.values(FRUITS))
                 yggdrasil.forEach((fruit) => {
-                    var f = playerData.yggdrasil.fruits[fruit.id]
+                    let f = playerData.yggdrasil.fruits[fruit.id]
                     f['totalPermStatBonus'] = playerData.yggdrasil.totalPermStatBonus
                     f['totalPermStatBonus2'] = playerData.yggdrasil.totalPermStatBonus2
                     f['totalPermNumberBonus'] = playerData.yggdrasil.totalPermNumberBonus
@@ -750,14 +781,14 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 })
                 return yggdrasil
             case 'itemSets':
-                var itemSets : {[key: string]: ItemSet} = {}
-                for (var set of Object.values(ItemSets)) {
+                let itemSets : {[key: string]: ItemSet} = {}
+                for (let set of Object.values(ItemSets)) {
                     set.updateStats(playerData)
                     itemSets[set.key] = _.cloneDeep(set)
                 }
                 return itemSets
             case 'maxxedItems':
-                var maxxedItemIds : number[] = []
+                let maxxedItemIds : number[] = []
                 playerData.inventory.itemList.itemMaxxed.forEach((maxxed: number, item: number) => {
                     if (maxxed == 1) {
                         maxxedItemIds.push(item)

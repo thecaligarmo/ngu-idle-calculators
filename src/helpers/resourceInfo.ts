@@ -10,7 +10,7 @@ import { Beard } from "@/assets/beards";
 import { Challenge } from "@/assets/challenges";
 import { Digger } from "@/assets/diggers";
 import { NGU } from "@/assets/ngus";
-import { Perk, PERKS } from "@/assets/perks";
+import { Perk } from "@/assets/perks";
 import { MacGuffin } from "@/assets/macguffins";
 import { Item } from "@/assets/items";
 import { ALL_GAME_MODES, GameMode } from "@/assets/mode";
@@ -156,11 +156,12 @@ export function apItemInfo(data: any, key: string) : bigDecimal {
         if(apItems.length > 0) {
             apItems.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
-                    stat *= g[key] / 100
+                    stat *= (100 + g[key]) / 100
                 }
             })
         }
     }
+
     return bd(stat > 0 ? stat : 100)
 }
 
@@ -469,6 +470,20 @@ export function perkInfo(data : any, key : string) : bigDecimal{
     return bd(stat)
 }
 
+
+export function perkLevel(data : any, key : string) : number {
+    var perks : Perk[] = parseObj(data, 'perks')
+    
+    if(perks.length > 0) {
+        for(var p of perks) {
+            if(p.key == key) {
+                return p.level
+            }
+        }
+    }
+    return 0
+}
+
 export function quirkInfo(data : any, key : string) : bigDecimal{
     var quirks : Quirk[] = parseObj(data, 'quirks')
     var stat : number = 100
@@ -521,19 +536,6 @@ export function isMaxxedItemSet(data : any, itemSet : ItemSet) : boolean {
 export function maxxedItemSetNum(data : any, itemSet : ItemSet) : number {
     var itemSets = parseObj(data, 'itemSets')
     return (itemSet.key in itemSets) ? itemSets[itemSet.key].numMaxxed : 0;
-}
-
-export function perkLevel(data : any, key : string) : number {
-    var perks : Perk[] = parseObj(data, 'perks')
-    
-    if(perks.length > 0) {
-        for(var p of perks) {
-            if(p.key == key) {
-                return p.level
-            }
-        }
-    }
-    return 0
 }
 
 
