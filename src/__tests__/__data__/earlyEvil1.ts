@@ -11672,7 +11672,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100000000,
                 "evilTarget": 40000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11686,7 +11686,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100000000,
                 "evilTarget": 40000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11700,7 +11700,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100000000,
                 "evilTarget": 20000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11714,7 +11714,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100000000,
                 "evilTarget": 10000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11728,7 +11728,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100000000,
                 "evilTarget": 5000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11742,7 +11742,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100000000,
                 "evilTarget": 1000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11756,7 +11756,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 50000000,
                 "evilTarget": 500,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11770,7 +11770,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 50000000,
                 "evilTarget": 100,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11784,7 +11784,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 50000000,
                 "evilTarget": 50,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11848,7 +11848,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100000000,
                 "evilTarget": 10000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11862,7 +11862,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 100000000,
                 "evilTarget": 2000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11876,7 +11876,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 50000000,
                 "evilTarget": 1000,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11890,7 +11890,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 50000000,
                 "evilTarget": 250,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11904,7 +11904,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 50000000,
                 "evilTarget": 100,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11918,7 +11918,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 50000000,
                 "evilTarget": 50,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"
@@ -11932,7 +11932,7 @@ var earlyEvil = {
                 "sadisticLevel": 0,
                 "energy": 0,
                 "magic": 0,
-                "target": 0,
+                "target": 10000000,
                 "evilTarget": 20,
                 "sadisticTarget": 0,
                 "__cname__": "NGU"

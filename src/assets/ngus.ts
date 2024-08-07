@@ -202,7 +202,7 @@ export class NGU extends Resource {
                 case NGUKeys.PP: 
                     return (value / 6.295) ** (10/3)
                 case NGUKeys.YGGDRASIL:
-                    return (value / 5.54) ** 3
+                    return (value / 5.54) ** (100/33)
                 case NGUKeys.EXP:
                     return (value / 0.9566) ** (2.5)
                 case NGUKeys.NUMBER:
@@ -287,17 +287,23 @@ export class NGU extends Resource {
         if (percent instanceof bigDecimal) {
             percent = Number(percent.getValue())
         }
-        var prop = this.statnames[0]
         
-        if (this.isRespawn()) { // Respawn has weird scaling so we need to fix it.
-            var curVal = this.getStatValueInternal(this.level, prop) - 100 // Make it < 0
-            percent = ((curVal * (100 + percent) / 100)) > 39.999 ? ((40 - curVal) / curVal) : (percent / 100)
-            var desiredVal = (curVal) * (percent + 1)
-        } else {
-            var curVal = this.getStatValueInternal(this.level, prop)
-            var desiredVal = curVal * (percent/100 + 1)
-        }
+        var prop = this.statnames[0]
+        var curVal = this.getStatValueInternal(this.level, prop)
 
+        if (this.isRespawn()) { // Respawn has weird scaling so we need to fix it.
+            curVal = curVal - 100 // Make it < 0
+            // If our number is too high for respawn, take a percentage of the current level as the desired level
+            // instead
+            // *NOTE*: This is different than how the spreadsheet "NGU Calculator" handles it
+            if (this.mode == GameMode.NORMAL && ((curVal * (100 + percent) / 100)) > 39.999) {
+                return bd(this.level * (1 + percent / 100))
+            } else if (this.mode != GameMode.NORMAL && ((curVal * (100 + percent) / 100)) > 9.999) {
+                return bd(this.level * (1 + percent / 100))
+            }
+        }
+        
+        var desiredVal = curVal * (percent/100 + 1)
         return (this.valueIncrease(desiredVal))
     }
 
@@ -316,6 +322,7 @@ export class NGU extends Resource {
             desiredLevel = this.getLevelFromVal(desiredVal, prop, false, true)
         }
         var maxLvl = Math.min(Math.max(0, desiredLevel), 1000000000)
+
         return bd(maxLvl).ceil()
     }
 
@@ -330,19 +337,9 @@ export class NGU extends Resource {
         var roundingDigs = cap.floor().getValue().length + speedFactor.floor().getValue().length + this.baseCost.getValue().length
         try {            
             var baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap, roundingDigs).divide(speedFactor, roundingDigs)
-
-
-            // while(level.compareTo(target) != 0 && baseTimePerLevel.floor().compareTo(bd(0)) == 0) {
-            //     i += 1
-            //     baseFactor = baseFactor.multiply(bd(1000000000))
-            //     baseTimePerLevel = baseCost.multiply(bd(100)).multiply(baseFactor).divide(cap).divide(speedFactor)
-            // }
         } catch (error) {
             var baseTimePerLevel = bd(0)
         }
-
-        
-
         
         
         // Grab the starting time and the ending time
@@ -367,12 +364,6 @@ export class NGU extends Resource {
             x = bigdec_min(endingSpeed.divide(baseTimePerLevel, roundingDigs), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
             var endingSpeedLevels = x.compareTo(bd(0)) == 1 ? x : bd(0);
 
-            // if(this.key == NGUKeys.ENERGY_NGU) {
-            //     console.log(baseTimePerLevel, roundingDigs);
-            //     console.log('hiya', startingSpeed, endingSpeed, startingSpeedLevels, middleSpeedLevels, endingSpeedLevels)
-            //     console.log('what', (endingSpeed.subtract(bd(0.02))).divide(baseTimePerLevel, roundingDigs))
-            //     console.log('deets', level, startingSpeedLevels, endingSpeed)
-            // }
         } catch(error) {
             var startingSpeedLevels = bd(0);
             var middleSpeedLevels = bd(0);
