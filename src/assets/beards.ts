@@ -5,11 +5,13 @@ import { Stat } from "./stat"
 
 export class Beard extends Resource{
     permLevel: number
-    constructor(id: number, key: string, name: string, props: prop) {
+    type: string
+    constructor(id: number, key: string, name: string, type: string, props: prop) {
         // level and perm level always start at 0
         super(id, key, name, GameMode.ALL, 0, props)
         this.permLevel = 0
         this.active = false
+        this.type = type
     }
     setPermLevel(permLevel: number) {
         this.permLevel = permLevel
@@ -18,8 +20,9 @@ export class Beard extends Resource{
     setActive(active : boolean | number) {
         if(typeof active == 'boolean') {
             this.active = active
+        } else {
+            this.active = (active == 1)
         }
-        this.active = (active == 1)
     }
     getTempStatValue(prop: string) : number {
         if(this.active && !_.isUndefined(this[prop])) {
@@ -121,13 +124,13 @@ export class Beard extends Resource{
 
 
 export const BEARDLIST = [
-    new Beard(0, 'fuManchu', 'The Fu Manchu', [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
-    new Beard(1, 'neckbeard', 'The Neckbeard', [[Stat.DROP_CHANCE, 1]]),
-    new Beard(2, 'reverseHitler', 'The Revese Hitler', [[Stat.NUMBER, 1]]),
-    new Beard(3, 'beardCage', 'The Beard Cage', [[Stat.ENERGY_NGU_SPEED, 1], [Stat.MAGIC_NGU_SPEED, 1]]),
-    new Beard(4, 'ladybeard', 'The LadyBeard', [[Stat.ENERGY_WANDOOS_SPEED, 1], [Stat.MAGIC_WANDOOS_SPEED, 1]]),
-    new Beard(5, 'BEARd', 'The BEARd', [[Stat.POWER, 1], [Stat. TOUGHNESS, 1], [Stat.HEALTH, 1], [Stat.REGEN, 1]]),
-    new Beard(6, 'goldenBeard', 'The Golden Beard', [[Stat.TIME_MACHINE, 1]]),    
+    new Beard(0, 'fuManchu', 'The Fu Manchu', 'magic', [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
+    new Beard(1, 'neckbeard', 'The Neckbeard', 'energy', [[Stat.DROP_CHANCE, 1]]),
+    new Beard(2, 'reverseHitler', 'The Revese Hitler', 'magic', [[Stat.NUMBER, 1]]),
+    new Beard(3, 'beardCage', 'The Beard Cage', 'energy', [[Stat.ENERGY_NGU_SPEED, 1], [Stat.MAGIC_NGU_SPEED, 1]]),
+    new Beard(4, 'ladybeard', 'The LadyBeard', 'magic', [[Stat.ENERGY_WANDOOS_SPEED, 1], [Stat.MAGIC_WANDOOS_SPEED, 1]]),
+    new Beard(5, 'BEARd', 'The BEARd', 'energy', [[Stat.POWER, 1], [Stat. TOUGHNESS, 1], [Stat.HEALTH, 1], [Stat.REGEN, 1]]),
+    new Beard(6, 'goldenBeard', 'The Golden Beard', 'magic', [[Stat.TIME_MACHINE, 1]]),    
 ]
 
 export var BEARDS = new ResourceContainer(BEARDLIST);

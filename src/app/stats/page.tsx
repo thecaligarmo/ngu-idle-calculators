@@ -5,7 +5,7 @@ import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
-import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness, totalWishSpeed } from '@/helpers/calculators';
+import { totalAPBonus, totalAugmentSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalPPBonus, totalPower, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness, totalWishSpeed } from '@/helpers/calculators';
 import { bd, pn } from '@/helpers/numbers';
 import { describeStat, getStatInfo } from '@/helpers/pages/stat';
 import { parseNum, parseObj } from '@/helpers/parsers';
@@ -60,6 +60,14 @@ export default function Page() {
                 </ul>
                 <ContentSubsection title="Energy Power Calculation" defaultHide={true}>
                     {describeStat(pageData['energyPower'], fmt)}
+                </ContentSubsection>
+            </ContentSection>
+            <ContentSection title="Augments">
+                <ul>
+                    <li key="eNGU" className=""><strong>Total Augment Speed Factor:</strong> <span className="text-red-500">{pn(totalAugmentSpeed(playerStates), fmt)}%</span></li>
+                </ul>
+                <ContentSubsection title="Total Augment Speed Factor Calculation" defaultHide={true}>
+                    {describeStat(pageData['augments'], fmt)}
                 </ContentSubsection>
             </ContentSection>
             <ContentSection title="NGU">
@@ -134,6 +142,24 @@ export default function Page() {
                 </ContentSubsection>
                 <ContentSubsection title="Drop Chance Calculation" defaultHide={true}>
                     {describeStat(pageData['dropChance'], fmt)}
+                </ContentSubsection>
+            </ContentSection>
+            <ContentSection title="Beards Stats">
+                <ul>
+                    <li key="eBeards"><strong>Total Energy Beard Speed Factor:</strong> <span className="text-red-500">{pn(totalEnergyBeardSpeed(playerStates), fmt)}%</span></li>
+                    <li key="mBeards"><strong>Total Magic Beard Speed Factor:</strong> <span className="text-red-500">{pn(totalMagicBeardSpeed(playerStates), fmt)}%</span></li>
+                </ul>
+                <ContentSubsection title="Energy Beards Calculation" defaultHide={true}>
+                    {describeStat(pageData['eBeards'], fmt)}
+                </ContentSubsection>
+            </ContentSection>
+            <ContentSection title="Wandoos Stats">
+                <ul>
+                    <li key="eWandoos"><strong>Total Wandoos Energy Speed:</strong> <span className="text-red-500">{pn(totalEnergyWandoosSpeed(playerStates), fmt)}%</span></li>
+                    <li key="mWandoos"><strong>Total Wandoos Magic Speed:</strong> <span className="text-red-500">{pn(totalMagicWandoosSpeed(playerStates), fmt)}%</span></li>
+                </ul>
+                <ContentSubsection title="Energy Wandoos Calculation" defaultHide={true}>
+                    {describeStat(pageData['eWandoos'], fmt)}
                 </ContentSubsection>
             </ContentSection>
         </Container>

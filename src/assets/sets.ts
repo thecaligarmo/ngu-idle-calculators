@@ -109,7 +109,7 @@ export const ItemSets : {[k: string]: ItemSet} = {
     MYSTERIOUS_RED_LIQUID: new ItemSet('redLiquid', 93),
     NUMBER: new ItemSet('number', 102),
     FLUBBER: new ItemSet('flubber', 121),
-    UUG: new ItemSet('uug', 141), // Armpit?
+    UUG: new ItemSet('uug', 141), // Armpit
     WANDOOS_XL: new ItemSet('xl', 163),
     PISSED_OFF_KEY: new ItemSet('itopodKey', 172),
     MYSTERIOUS_PURPLE_LIQUID: new ItemSet('purpleLiquid', 191),

@@ -1,17 +1,17 @@
 import { ItemSets } from "@/assets/sets"
 import { Stat } from "@/assets/stat"
 import _ from "lodash"
-import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance } from "../calculators"
-import { bd, pn } from "../numbers"
-import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo } from "../resourceInfo"
+import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed } from "../calculators"
+import { bd, bigdec_max, pn } from "../numbers"
+import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel } from "../resourceInfo"
 import bigDecimal from "js-big-decimal"
 import { parseNum, parseObj } from "../parsers"
 
 
 export function describeStat(data : any, fmt : string, isRespawn : boolean = false) {
     var rows = Object.keys(data).map((k) => {
-        if(k != 'base' && k!= 'total' && data[k].val.compareTo(bd(100)) == 0) {
-            return (<></>)
+        if(k != 'base' && k != 'total' && data[k].val.compareTo(bd(100)) == 0) {
+            return null
         }
         var sigFigs = (!_.isUndefined(data[k].sigFig)) ? data[k].sigFig : 0
         var percent = (!_.isUndefined(data[k].noPer) && data[k].noPer) ? '': '%'
@@ -94,6 +94,37 @@ export function getStatInfo(playerStates : any) {
                 'val' : totalEnergyPower(playerStates),
                 'sigFig': 4,
                 'noPer' : true,
+            }
+        },
+        'augments' : {
+            'base' : {
+                'name' : 'Base Augment Speed',
+                'val' : bd(100),
+            },
+            'energyPower' : {
+                'name' : 'x Energy Power',
+                'val' : totalEnergyPower(playerStates).multiply(bd(100)),
+            },
+            'equipment' : {
+                'name': 'x Equipment',
+                'val' : equipmentInfo(playerStates, Stat.AUGMENT_SPEED),
+            },
+            'challenges' : {
+                'name': 'x Challenges',
+                'val' : challengeInfo(playerStates, Stat.AUGMENT_SPEED),
+                'sigFig' : 2,
+            },
+            'macguffin' : {
+                'name': 'x Macguffin',
+                'val' : macguffinInfo(playerStates, Stat.AUGMENT_SPEED),
+                'sigFig' : 2,
+            },
+            'hacks' : {
+                'name': 'x Hacks',
+                'val' : hackInfo(playerStates, Stat.AUGMENT_SPEED),
+            },
+            'total' : {
+                'val' : totalAugmentSpeed(playerStates),
             }
         },
         'enguSpeed' : {
@@ -612,5 +643,78 @@ export function getStatInfo(playerStates : any) {
                 'val' : totalDropChance(playerStates),
             },
         },
+        'eBeards' : {
+            'base' : {
+                'name' : 'Base Energy Beard Speed',
+                'val' : bd(100),
+            },
+            'eBar' : {
+                'name' : 'x Energy Bar',
+                'val' : totalEnergyBar(playerStates).multiply(bd(100)),
+            },
+            'ePower' : {
+                'name' : 'x Energy Power',
+                'val' : bd(Math.sqrt(Number(totalEnergyPower(playerStates).getValue()))).multiply(bd(100)),
+            },
+            'equipment' : {
+                'name' : 'x Equipment',
+                'val' : equipmentInfo(playerStates, Stat.ENERGY_BEARD_SPEED),
+            },
+            'setBonus' : {
+                'name' : 'x (UUG) Armpit Set',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.UUG) ? bd(110) : bd(100),
+            },
+            'countDiv' : {
+                'name' : '/ Count Divider',
+                'val' : bigdec_max(activeBeards(playerStates, 'energy').multiply(isMaxxedItemSet(playerStates, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)), bd(1)),
+                'sigFig' : 1,
+                'noPer' : true,
+            },
+            'total' : {
+                'val' : totalEnergyBeardSpeed(playerStates),
+            }
+        },
+        'eWandoos' : {
+            'base' : {
+                'name' : 'Base Wandoos Energy Speed',
+                'val' : bd(100),
+            },
+            'equipment' : {
+                'name' : 'x Equipment',
+                'val' : equipmentInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+            },
+            'osLevel' : {
+                'name' : 'x OS Level',
+                'val' : (wandoosOSLevel(playerStates).add(bd(1))).multiply(bd(4)),
+            },
+            'bootup' : {
+                'name' : 'x Bootup',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.WANDOOS) ? bd(110) : bd(100)
+            },
+            'at' : {
+                'name' : 'x Advanced Training',
+                'val' : advTrainingInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+            },
+            'ngu' : {
+                'name' : 'x NGU',
+                'val' : nguInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+            },
+            'challenges': {
+                'name' : 'x Challenges',
+                'val' : challengeInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+            },
+            'beardTemp' : {
+                'name' : 'x Beard (this run)',
+                'val' : beardInfoTemp(playerStates, Stat.ENERGY_WANDOOS_SPEED)
+            },
+            'beardPerm' : {
+                'name' : 'x Beard (permanent)',
+                'val' : beardInfoPerm(playerStates, Stat.ENERGY_WANDOOS_SPEED)
+            },
+            'total' : {
+                'val' : totalEnergyWandoosSpeed(playerStates),
+            }
+
+        }
     }
 }

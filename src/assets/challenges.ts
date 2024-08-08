@@ -37,7 +37,11 @@ export class Challenge extends Resource {
             for (var eprop of this.extraProps) {
                 if (this.level >= eprop[2]) {
                     if (this.statnames.includes(eprop[0])) {
-                        this[eprop[0]] += eprop[1]
+                        if(eprop[0] == Stat.AUGMENT_SPEED) {
+                            this[eprop[0]] = ((this[eprop[0]] + 100) * (eprop[1] + 100) / 100) - 100
+                        } else {
+                            this[eprop[0]] += eprop[1]
+                        }
                     } else {
                         this[eprop[0]] = eprop[1]
                     }
@@ -63,7 +67,7 @@ export class Challenge extends Resource {
 
 export const CHALLENGELIST = [
     new Challenge(0, ChallengeKeys.BASIC, 'Basic Challenge', GameMode.NORMAL, [[Stat.POWER, 5], [Stat.TOUGHNESS, 5], [Stat.HEALTH, 5], [Stat.REGEN, 5]], [[Stat.POWER, 10, 1], [Stat.TOUGHNESS, 10, 1], [Stat.HEALTH, 10, 1], [Stat.REGEN, 10, 1]]),
-    new Challenge(1, ChallengeKeys.NO_AUG, 'No Augmentations Challenge',  GameMode.NORMAL, [[Stat.AUGMENT_SPEED, 25]], [[Stat.AUGMENT_SPEED, 10, 1]]),
+    new Challenge(1, ChallengeKeys.NO_AUG, 'No Augmentations Challenge',  GameMode.NORMAL, [], [[Stat.AUGMENT_SPEED, 10, 1]]),
     new Challenge(2, ChallengeKeys.TWENTY_FOUR, '24 Hour Challenge',  GameMode.NORMAL, [], []),
     new Challenge(3, ChallengeKeys.ONE_HUNDRED, '100 Levels Challenge',  GameMode.NORMAL, [[Stat.ENERGY_WANDOOS_SPEED, 20],[Stat.MAGIC_WANDOOS_SPEED, 20]], []),
     new Challenge(4, ChallengeKeys.NO_EQUIP, 'No Equipment Challenge',  GameMode.NORMAL, [], []),

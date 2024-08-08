@@ -43,6 +43,7 @@ export const Stat : {[k: string]: string} = {
     // raw speed
     AT_SPEED: 'rawATSpeed',
     AUGMENT_SPEED: 'rawAugmentSpeed',
+    AUGMENT_EFFECT: 'augmentEffect', // TODO - No idea what this is for
     HACK_SPEED: 'rawHackSpeed',
     WISH_SPEED: 'rawWishSpeed',
     TIME_MACHINE_SPEED: 'rawTimeMachineSpeed',

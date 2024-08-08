@@ -16,6 +16,7 @@ import { PERKS, Perk } from "../assets/perks";
 import { QUIRKS, Quirk } from "../assets/quirks";
 import { boostRecyclying, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
 import { bd } from "./numbers";
+import { Wandoos, WANDOOSLIST, WANDOOSS } from "@/assets/wandoos";
 
 export function defaultPlayerData(playerData : any, info : string | [string, number]) : any {
     // If we're given an array, the second object is the default value from the "extraRequired", stuff, so use that.
@@ -755,6 +756,12 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                     }
                 })
                 return quirks;
+            case 'wandoos' :
+                let wandoos : Wandoos[] = _.cloneDeep(WANDOOSLIST)
+                wandoos[0].importStats(playerData)
+                wandoos[1].importStats(playerData)
+                return wandoos
+
 
             case 'wishes':
                 let wishes : Wish[]= []
@@ -1076,6 +1083,7 @@ export function getPlayerOptions() : string[] {
         'macguffins',
         'perks',
         'quirks',
+        'wandoos',
         'wishes',
         'yggdrasil',
         'maxxedItems',

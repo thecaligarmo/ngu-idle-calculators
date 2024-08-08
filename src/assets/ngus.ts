@@ -412,7 +412,7 @@ export class NGU extends Resource {
 
 
 export const ENGULIST = [
-    new NGU(0, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.NORMAL, [[Stat.AUGMENT_SPEED, 1]], 'energy', 0, bd('2e11')),
+    new NGU(0, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.NORMAL, [[Stat.AUGMENT_EFFECT, 1]], 'energy', 0, bd('2e11')),
     new NGU(1, NGUKeys.WANDOOS, 'NGU Wandoos', GameMode.NORMAL, [[Stat.ENERGY_WANDOOS_SPEED, 0.1], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy', 0, bd('2e11')),
     new NGU(2, NGUKeys.RESPAWN, 'NGU Respawn', GameMode.NORMAL, [[Stat.RESPAWN, 0.05]], 'energy', 400, bd('2e11')),
     new NGU(3, NGUKeys.GOLD, 'NGU Gold', GameMode.NORMAL, [[Stat.GOLD_DROP, 1]], 'energy', 0, bd('2e11')),
@@ -422,7 +422,7 @@ export const ENGULIST = [
     new NGU(7, NGUKeys.MAGIC_NGU, 'NGU Magic NGU', GameMode.NORMAL, [[Stat.MAGIC_NGU_SPEED, 0.1]], 'energy', 1000, bd('4e14')),
     new NGU(8, NGUKeys.PP, 'NGU PP', GameMode.NORMAL, [[Stat.PP, 0.05]], 'energy', 1000, bd('1e16')),
 
-    new NGU(10, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.EVIL, [[Stat.AUGMENT_SPEED, 0.5]], 'energy', 0, bd('2e20')),
+    new NGU(10, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.EVIL, [[Stat.AUGMENT_EFFECT, 0.5]], 'energy', 0, bd('2e20')),
     new NGU(11, NGUKeys.WANDOOS, 'NGU Wandoos', GameMode.EVIL, [[Stat.ENERGY_WANDOOS_SPEED, 0.1], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy', 1000, bd('2e20')),
     new NGU(12, NGUKeys.RESPAWN, 'NGU Respawn', GameMode.EVIL, [[Stat.RESPAWN, 0.0005]], 'energy', 10000, bd('2e20')),
     new NGU(13, NGUKeys.GOLD, 'NGU Gold', GameMode.EVIL, [[Stat.GOLD_DROP, 0.5]], 'energy', 0, bd('2e21')),
@@ -432,7 +432,7 @@ export const ENGULIST = [
     new NGU(17, NGUKeys.MAGIC_NGU, 'NGU Magic NGU', GameMode.EVIL, [[Stat.MAGIC_NGU_SPEED, 0.05]], 'energy', 1000, bd('2e25')),
     new NGU(18, NGUKeys.PP, 'NGU PP', GameMode.EVIL, [[Stat.PP, 0.02]], 'energy', 1000, bd('2e26')),
 
-    new NGU(20, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.SADISTIC, [[Stat.AUGMENT_SPEED, 0.4]], 'energy', 0, bd('1e40')),
+    new NGU(20, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.SADISTIC, [[Stat.AUGMENT_EFFECT, 0.4]], 'energy', 0, bd('1e40')),
     new NGU(21, NGUKeys.WANDOOS, 'NGU Wandoos', GameMode.SADISTIC, [[Stat.ENERGY_WANDOOS_SPEED, 0.06], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy', 1000, bd('1e40')),
     new NGU(22, NGUKeys.RESPAWN, 'NGU Respawn', GameMode.SADISTIC, [[Stat.RESPAWN, 0.0005]], 'energy', 10000, bd('1e40')),
     new NGU(23, NGUKeys.GOLD, 'NGU Gold', GameMode.SADISTIC, [[Stat.GOLD_DROP, 0.5]], 'energy', 1000, bd('1e40')),

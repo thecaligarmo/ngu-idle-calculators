@@ -17,6 +17,7 @@ import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { bd } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
+import { Wandoos } from "@/assets/wandoos";
 
 
 export function achievementAPBonus(data : any) : bigDecimal {
@@ -189,6 +190,23 @@ export function beardInfoPerm(data: any, key: string) : bigDecimal{
         }
     }
     return bd(stat)
+}
+
+export function activeBeards(data : any, type : string = '') : bigDecimal {
+    var beards : Beard[] = parseObj(data, 'beards')
+    var activeBeards = 0
+    if ( beards.length > 0) {
+        beards.forEach((g) => {
+            if(g.active) {
+                if(type == '') {
+                    activeBeards += 1
+                } else {
+                    activeBeards += (g.type == type) ? 1 : 0
+                }
+            }
+        })
+    }
+    return bd(activeBeards);
 }
 
 export function challengeInfo(data : any, key : string, gameMode : number = GameMode.ALL) : bigDecimal{
@@ -500,6 +518,14 @@ export function quirkInfo(data : any, key : string) : bigDecimal{
     }
 
     return bd(stat)
+}
+
+export function wandoosOSLevel(data : any) : bigDecimal {
+    var wandoos : Wandoos[] = parseObj(data, 'wandoos')
+    if(!_.isUndefined(wandoos[0])){
+        return bd(wandoos[0].osLevel)
+    }
+    return bd(0)
 }
 
 export function wishInfo(data : any, key : string) : bigDecimal{

@@ -4,9 +4,9 @@ import { ItemSets } from "@/assets/sets";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { Stat } from "../assets/stat";
-import { bd } from "./numbers";
+import { bd, bigdec_max } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
-import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wishInfo } from "./resourceInfo";
+import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
 
 
 // General Calc - gives a percentage
@@ -18,8 +18,9 @@ function calcAll(data : any, stat : string) : bigDecimal{
     }
 
     if(false) {
-        if(Stat.ENERGY_BARS == stat) {
+        if(Stat.ENERGY_WANDOOS_SPEED == stat) {
             console.log('----------------------------------------')
+            console.log('advTraining', advTrainingInfo(data, stat).getValue())
             console.log('ap', apItemInfo(data, stat).getValue())    
             console.log('beard', beardInfoTemp(data, stat).getValue())
             console.log('beard', beardInfoPerm(data, stat).getValue())
@@ -36,6 +37,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
     }
 
     return bd(1)
+        .multiply(advTrainingInfo(data, stat).divide(base))    
         .multiply(apItemInfo(data, stat).divide(base))    
         .multiply(beardInfoTemp(data, stat).divide(base))
         .multiply(beardInfoPerm(data, stat).divide(base))
@@ -119,6 +121,14 @@ export function totalRes3Cap(data : any) : bigDecimal {
         .multiply(calcAll(data, Stat.RES3_CAP)).divide(bd(100));
 }
 
+/** Augments */
+export function totalAugmentSpeed(data : any) : bigDecimal {
+    var gen : bigDecimal = calcAll(data, Stat.AUGMENT_SPEED)
+
+    return gen
+        .multiply(totalEnergyPower(data))
+}
+
 
 /** NGU */
 export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
@@ -126,8 +136,7 @@ export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
     var metaSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.META) ? bd(1.2) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.ENERGY_NGU_SPEED)
     
-    return bd(1)
-        .multiply(gen)
+    return gen
         .multiply(totalEnergyPower(data))
         .multiply(aNumberSetModifier)
         .multiply(metaSetModifier)
@@ -137,6 +146,7 @@ export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
     var aNumberSetModifier : bigDecimal = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
     var metaSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.META) ? bd(1.2) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.MAGIC_NGU_SPEED)
+
     var challenges : Challenge[] = parseObj(data, 'challenges')
     var trollChallenge = (!_.isUndefined(challenges[GameMode.NORMAL]) && challenges[GameMode.NORMAL][5])
     var tcNum : bigDecimal = (!_.isUndefined(trollChallenge) && trollChallenge.level > 0) ? bd(3) : bd(1);
@@ -222,7 +232,6 @@ export function totalWishSpeed(data : any) :bigDecimal {
 export function totalPower(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.POWER)
     var equipPower = equipmentInfo(data, Stat.POWER)
-    var advTraining = advTrainingInfo(data, Stat.POWER)
     var basePower = parseNum(data, 'baseAdventurePower')
 
     // Want to add equipPower instead of multiply
@@ -234,8 +243,7 @@ export function totalPower(data : any) : bigDecimal {
                 : bd(1)
     
     return subtotal
-        .multiply(gen).divide(bd(100))
-        .multiply(advTraining)// .divide(bd(100))
+        .multiply(gen) //.divide(bd(100))
         .divide((equipPower.compareTo(bd(0)) > 0) ? equipPower : bd(1))
         .multiply(beast)
         //.multiply(bd(100)) % not a percentage
@@ -244,45 +252,39 @@ export function totalPower(data : any) : bigDecimal {
 export function totalToughness(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.TOUGHNESS)
     var equipPower = equipmentInfo(data, Stat.TOUGHNESS)
-    var advTraining = advTrainingInfo(data, Stat.TOUGHNESS)
     var basePower = parseNum(data, 'baseAdventureToughness')
 
     // Want to add equipPower instead of multiply
     var subtotal = basePower.add(equipPower)
     
     return subtotal
-        .multiply(gen).divide(bd(100))
-        .multiply(advTraining)
+        .multiply(gen) //.divide(bd(100))
         .divide((equipPower.compareTo(bd(0)) > 0) ? equipPower : bd(1)) // adding Instead
 }
 
 export function totalHealth(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.HEALTH)
     var equipHealth = equipmentInfo(data, Stat.HEALTH)
-    var advTraining = advTrainingInfo(data, Stat.HEALTH)
     var baseHealth = parseNum(data, 'baseAdventureHealth')
 
     // Want to add equipHealth instead of multiply
     var subtotal = baseHealth.add(equipHealth)
 
     return subtotal
-        .multiply(gen).divide(bd(100))
-        .multiply(advTraining)// .divide(bd(100))
+        .multiply(gen) //.divide(bd(100))
         .divide((equipHealth.compareTo(bd(0)) > 0) ? equipHealth : bd(1))
 }
 
 export function totalRegen(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.REGEN)
     var equipRegen = equipmentInfo(data, Stat.REGEN)
-    var advTraining = advTrainingInfo(data, Stat.REGEN)
     var baseRegen = parseNum(data, 'baseAdventureRegen')
 
     // Want to add equipRegen instead of multiply
     var subtotal = baseRegen.add(equipRegen)
     
     return subtotal
-        .multiply(gen).divide(bd(100))
-        .multiply(advTraining)
+        .multiply(gen) //.divide(bd(100))
         .divide((equipRegen.compareTo(bd(0)) > 0) ? equipRegen : bd(1)) // adding Instead
 }
 
@@ -325,6 +327,63 @@ export function totalDropChance(data : any) : bigDecimal {
     
 }
 
+/** Beards */
+export function totalEnergyBeardSpeed(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.ENERGY_BEARD_SPEED)
+    var eBar = totalEnergyBar(data);
+    var ePower = bd(Math.sqrt(Number(totalEnergyPower(data).getValue())))
+    var armpitSet = isMaxxedItemSet(data, ItemSets.UUG) ? bd(1.1) : bd(1);
+    var beardSet = isMaxxedItemSet(data, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)
+    var abeards = bigdec_max(activeBeards(data, 'energy').multiply(beardSet), bd(1))
+    return gen
+        .multiply(eBar)
+        .multiply(ePower)
+        .multiply(armpitSet)
+        .divide(bd(abeards))
+}
+
+export function totalMagicBeardSpeed(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.MAGIC_BEARD_SPEED)
+    var mBar = totalMagicBar(data);
+    var mPower = bd(Math.sqrt(Number(totalMagicPower(data).getValue())))
+    var armpitSet = isMaxxedItemSet(data, ItemSets.UUG) ? bd(1.1) : bd(1);
+    var beardSet = isMaxxedItemSet(data, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)
+    var abeards = bigdec_max(activeBeards(data, 'magic').multiply(beardSet), bd(1))
+    return gen
+        .multiply(mBar)
+        .multiply(mPower)
+        .multiply(armpitSet)
+        .divide(bd(abeards))
+}
+
+
+/** Wandoos */
+export function totalEnergyWandoosSpeed(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.ENERGY_WANDOOS_SPEED)
+    var osLevel = (wandoosOSLevel(data).add(bd(1))).multiply(bd(0.04))
+    var bootup = isMaxxedItemSet(data, ItemSets.WANDOOS) ? bd(1.1) : bd(1)
+    
+    // OS Level
+    // Bootup
+    return gen
+        .multiply(osLevel)
+        .multiply(bootup)
+}
+
+export function totalMagicWandoosSpeed(data : any) : bigDecimal {
+    var gen = calcAll(data, Stat.MAGIC_WANDOOS_SPEED)
+    var osLevel = (wandoosOSLevel(data).add(bd(1))).multiply(bd(0.04))
+    var bootup = isMaxxedItemSet(data, ItemSets.WANDOOS) ? bd(1.1) : bd(1)
+    
+    // OS Level
+    // Bootup
+    return gen
+        .multiply(osLevel)
+        .multiply(bootup)
+}
+
+
+/** Other */
 export function totalSeedGainBonus(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.SEED_GAIN)
     return gen
