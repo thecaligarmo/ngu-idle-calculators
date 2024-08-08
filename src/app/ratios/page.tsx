@@ -1,7 +1,9 @@
 "use client"
 import { ChoiceButton } from '@/components/buttons';
 import Content from '@/components/content';
+import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat, getPlayerData } from '@/components/context';
+import { disableItem } from '@/components/dataListColumns';
 import { defaultPlayerData } from '@/helpers/defaultPlayerData';
 import { setInputValue } from '@/helpers/inputUpdater';
 import { pn } from '@/helpers/numbers';
@@ -9,6 +11,7 @@ import { getRatioInfo } from '@/helpers/pages/ratios';
 import { parseNum } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
+import _ from 'lodash';
 import { useState } from 'react';
 
 
@@ -73,8 +76,8 @@ export default function Page() {
 
 
     if (!res3Active) {
-        infoReq.pop()
-        extraReq.pop()
+        extraReq = disableItem(extraReq, ["res3Ratio", "res3PowerRatio", "res3CapRatio", "res3BarRatio"])
+        infoReq = disableItem(infoReq, ["baseRes3Power", "baseRes3Cap", "baseRes3Bar"])
     }
 
     // Children of the extra information
@@ -86,7 +89,7 @@ export default function Page() {
     )
 
     // Children of the extra inputs
-    var selectBoxCSS = "inline-block align-top mb-2 "
+    var selectBoxCSS = "inline-block align-top my-2 "
     selectBoxCSS += res3Active ? 'w-1/3' : 'w-1/2'
     var ratioOptions = (
         <>
@@ -98,67 +101,108 @@ export default function Page() {
 
     var extraInputChildren = (
         <>
-        <div className="mt-2">
-            <p>Quick Selectors:</p>
-            <select defaultValue='' className='text-black' onChange={(e) => {
-            if (e.target.value){
-                var [energy, magic] = e.target.value.split(":")            
-                setInputValue(document.getElementById('energyRatio'), energy)
-                setInputValue(document.getElementById('magicRatio'), magic)
+            <div className="mt-2">
+                <p>Quick Selectors:</p>
+                <div className={selectBoxCSS}>
+                <select defaultValue='' className='text-black' id="emRatio" onChange={(e) => {
+                    if (e.target.value){
+                        var [energy, magic] = e.target.value.split(":")
 
-            }
-            }}>
-            <option value=''>Energy to Magic Ratio</option>
-            <option value="10:1">10:1</option>
-            <option value="5:1">5:1</option>
-            <option value="3:1">3:1</option>
-            <option value="2:1">2:1</option>
-            </select>
-            <br />
-            <div className={selectBoxCSS}>
-            <select defaultValue='' className='text-black' onChange={(e) => {
-            if (e.target.value){
-                var [power, cap, bar] = e.target.value.split(":")
-                setInputValue(document.getElementById('energyPowerRatio'), power)
-                setInputValue(document.getElementById('energyCapRatio'), cap)
-                setInputValue(document.getElementById('energyBarRatio'), bar)
-            }
-            }}>
-            <option value=''>Energy Ratio quick select</option>
-            {ratioOptions}
-            </select>
-            </div>
-            <div className={selectBoxCSS}>
-            <select defaultValue='' className='text-black' onChange={(e) => {
-            if (e.target.value){
-                var [power, cap, bar] = e.target.value.split(":")
-                setInputValue(document.getElementById('magicPowerRatio'), power)
-                setInputValue(document.getElementById('magicCapRatio'), cap)
-                setInputValue(document.getElementById('magicBarRatio'), bar)
-            }
-            }}>
-            <option value=''>Magic Ratio quick select</option>
-            {ratioOptions}
-            </select>
-            </div>
-            {res3Active
-            ? 
-            <div className={selectBoxCSS}>
-                <select defaultValue='' className='text-black' onChange={(e) => {
-                if (e.target.value){
-                    var [power, cap, bar] = e.target.value.split(":")
-                    setInputValue(document.getElementById('res3PowerRatio'), power)
-                    setInputValue(document.getElementById('res3CapRatio'), cap)
-                    setInputValue(document.getElementById('res3BarRatio'), bar)
-                }
-                }}>
-                <option value=''>Resource 3 Ratio quick select</option>
-                {ratioOptions}
+                        var erRatio : HTMLSelectElement | null = document.querySelector('select#erRatio')
+                        var [energyRes, res3] = (!_.isNull(erRatio) && erRatio.value)
+                                                ? erRatio.value.split(":")
+                                                : [0, 0]
+
+                        if(Number(energyRes) > 0) {
+                            setInputValue(document.getElementById('res3Ratio'), res3)
+                            setInputValue(document.getElementById('energyRatio'), energyRes)
+                            setInputValue(document.getElementById('magicRatio'), Math.floor(Number(magic) * Number(energyRes) / Number(energy)))
+
+                        } else {
+                            setInputValue(document.getElementById('energyRatio'), energy)
+                            setInputValue(document.getElementById('magicRatio'), magic)
+                        }
+                    }
+                    }}>
+                    <option value=''>Energy to Magic Ratio</option>
+                    <option value="10:1">10:1</option>
+                    <option value="5:1">5:1</option>
+                    <option value="3:1">3:1</option>
+                    <option value="2:1">2:1</option>
                 </select>
                 </div>
-            : null
-            }
-        </div>
+                <div className={selectBoxCSS}></div>
+                {res3Active
+                ? 
+                <div className={selectBoxCSS}>
+                    <select defaultValue='' className='text-black' id='erRatio' onChange={(e) => {
+                    if (e.target.value){
+                        var [energy, res3] = e.target.value.split(":")
+                        var emRatio : HTMLSelectElement | null = document.querySelector('select#emRatio')
+                        var [energyMagic, magic] = (!_.isNull(emRatio) && emRatio.value)
+                                                ? emRatio.value.split(":")
+                                                : [0, 0]
+                        
+                        setInputValue(document.getElementById('res3Ratio'), res3)
+                        setInputValue(document.getElementById('energyRatio'), energy)
+                        if(Number(energyMagic) > 0) {
+                            setInputValue(document.getElementById('magicRatio'), Math.round(Number(magic) * Number(energy) / Number(energyMagic)))
+                        }
+                    }
+                    }}>
+                        <option value=''>Energy to Resource 3 Ratio</option>
+                        <option value="100000:1">100,000:1</option>
+                        <option value="200000:1">200,000:1</option>
+                        <option value="500000:1">500,000:1</option>
+                        <option value="1000000:1">1,000,000:1</option>
+                    </select>
+                    </div>
+                : null
+                }
+                <div className={selectBoxCSS}>
+                    <select defaultValue='' className='text-black' onChange={(e) => {
+                    if (e.target.value){
+                        var [power, cap, bar] = e.target.value.split(":")
+                        setInputValue(document.getElementById('energyPowerRatio'), power)
+                        setInputValue(document.getElementById('energyCapRatio'), cap)
+                        setInputValue(document.getElementById('energyBarRatio'), bar)
+                    }
+                    }}>
+                        <option value=''>Energy Ratio quick select</option>
+                        {ratioOptions}
+                    </select>
+                </div>
+                <div className={selectBoxCSS}>
+                    <select defaultValue='' className='text-black' onChange={(e) => {
+                    if (e.target.value){
+                        var [power, cap, bar] = e.target.value.split(":")
+                        setInputValue(document.getElementById('magicPowerRatio'), power)
+                        setInputValue(document.getElementById('magicCapRatio'), cap)
+                        setInputValue(document.getElementById('magicBarRatio'), bar)
+                    }
+                    }}>
+                        <option value=''>Magic Ratio quick select</option>
+                        {ratioOptions}
+                    </select>
+                </div>
+                {res3Active
+                ? 
+                <div className={selectBoxCSS}>
+                    <select defaultValue='' className='text-black' onChange={(e) => {
+                    if (e.target.value){
+                        var [power, cap, bar] = e.target.value.split(":")
+                        setInputValue(document.getElementById('res3PowerRatio'), power)
+                        setInputValue(document.getElementById('res3CapRatio'), cap)
+                        setInputValue(document.getElementById('res3BarRatio'), bar)
+                    }
+                    }}>
+                    <option value=''>Resource 3 Ratio quick select</option>
+                    {ratioOptions}
+                    </select>
+                    </div>
+                : null
+                }
+            </div>
         </>
     )
 
@@ -238,16 +282,17 @@ export default function Page() {
             </div>
         </div>
 
-        <h4 className="text-xl mt-5">How much EXP do I need to achieve ratio?</h4>
-        <ul>
-            <li key="energy"><strong>Energy:</strong> {pn(cost['energy'], fmt)} exp</li>
-            <li key="magic"><strong>Magic:</strong> {pn(cost['magic'], fmt)} exp</li>
-            {res3Active ? <li key="resource"><strong>Resource 3:</strong> {pn(cost['res3'], fmt)} exp</li> : null}
-            <li key="total">
-            <span className="border-t-2 border-white border-solid"><strong>Total Amount:</strong> {pn(cost['total'], fmt)} exp</span>
-            </li>
-        </ul>
-        <p><strong>Suggested next thing to buy:</strong> {suggestedBuy}</p>
+        <ContentSubsection title="How much EXP do I need to achieve ratio?">
+            <ul>
+                <li key="energy"><strong>Energy:</strong> {pn(cost['energy'], fmt)} exp</li>
+                <li key="magic"><strong>Magic:</strong> {pn(cost['magic'], fmt)} exp</li>
+                {res3Active ? <li key="resource"><strong>Resource 3:</strong> {pn(cost['res3'], fmt)} exp</li> : null}
+                <li key="total">
+                <span className="border-t-2 border-white border-solid"><strong>Total Amount:</strong> {pn(cost['total'], fmt)} exp</span>
+                </li>
+            </ul>
+            <p><strong>Suggested next thing to buy:</strong> {suggestedBuy}</p>
+        </ContentSubsection>
         </Content>
     )
 }
