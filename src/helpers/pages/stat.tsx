@@ -650,7 +650,7 @@ export function getStatInfo(playerStates : any) {
             },
             'eBar' : {
                 'name' : 'x Energy Bar',
-                'val' : totalEnergyBar(playerStates).multiply(bd(100)),
+                'val' : totalEnergyBar(playerStates).floor().multiply(bd(100)),
             },
             'ePower' : {
                 'name' : 'x Energy Power',

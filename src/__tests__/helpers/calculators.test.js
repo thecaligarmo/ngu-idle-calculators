@@ -1,4 +1,4 @@
-import { totalAPBonus, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalPPBonus, totalPower, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness, totalWishSpeed } from '@/helpers/calculators';
+import { totalAPBonus, totalAugmentSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness, totalWishSpeed } from '@/helpers/calculators';
 import earlyEvil from '../__data__/earlyEvil1';
 import earlyEvilTwo from '../__data__/earlyEvil2';
 import earlyNormal from '../__data__/earlyNormal1';
@@ -100,8 +100,26 @@ describe('Calculators - Resource 3', () => {
 })
 
 
-// TODO - Augment Test
-
+describe('Calculators - Augments', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, 2080],
+        ['Early Normal 2', earlyNormalTwoData, 26864],
+        ['Mid Normal 1', midNormalData, 1.98e6],
+        ['Mid Normal 2', midNormalTwoData, 4.362e7],
+        ['Late Normal', lateNormalData, 1.694e9],
+        ['Early Evil 1', earlyEvilData, 1.263e11],
+        ['Evil Return to Normal', evilReturnToNormalData, 8.309e10],
+        ['Early Evil 2', earlyEvilTwoData, 1.719e12],
+        ['Mid Evil 1', midEvilData, 1.373e13],
+    ]
+    test.each(cases)(
+        "Calculators - Augments - %s",
+        (name, data, expectedValue) => {
+            var ec = expectClose(totalAugmentSpeed(data), expectedValue)
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
 
 
 describe('Calculators - NGU', () => {
@@ -233,11 +251,77 @@ describe('Calculators - Misc', () => {
 
 
 
+describe('Calculators - Beards', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'energy': 7297, 'magic': 1265}],
+        ['Early Normal 2', earlyNormalTwoData, {'energy': 258965, 'magic': 2961}],
+        ['Mid Normal 1', midNormalData, {'energy': 2.133e8, 'magic': 3.262e6}],
+        ['Mid Normal 2', midNormalTwoData, {'energy': 8.529e9, 'magic': 6.612e8}],
+        ['Late Normal', lateNormalData, {'energy': 4.004e13, 'magic': 2.445e12}],
+        ['Early Evil 1', earlyEvilData, {'energy': 1.363e15, 'magic': 4.047e13}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'energy': 7.061e14, 'magic': 5.085e13}],
+        ['Early Evil 2', earlyEvilTwoData, {'energy': 7.169e16, 'magic': 4.514e16}],
+        ['Mid Evil 1', midEvilData, {'energy': 1.310e17, 'magic': 2.526e16}],
+    ]
+    test.each(cases)(
+        "Calculators - Beards - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(totalEnergyBeardSpeed(data), expectedValues['energy'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalMagicBeardSpeed(data), expectedValues['magic'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
 
-// TODO - Beards Test
+
+
+describe('Calculators - Wandoos', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'energy': 4.04, 'magic': 4.04}],
+        ['Early Normal 2', earlyNormalTwoData, {'energy': 103, 'magic': 103}],
+        ['Mid Normal 1', midNormalData, {'energy': 1237, 'magic': 1237}],
+        ['Mid Normal 2', midNormalTwoData, {'energy': 3.131e6, 'magic': 3.131e6}],
+        ['Late Normal', lateNormalData, {'energy': 3.729e9, 'magic': 3.729e9}],
+        ['Early Evil 1', earlyEvilData, {'energy': 3.698e11, 'magic': 3.698e11}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'energy': 9.078e9, 'magic': 9.078e9}],
+        ['Early Evil 2', earlyEvilTwoData, {'energy': 6.854e11, 'magic': 6.854e11}],
+        ['Mid Evil 1', midEvilData, {'energy': 6.318e11, 'magic': 6.318e11}],
+    ]
+    test.each(cases)(
+        "Calculators - Beards - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(totalEnergyWandoosSpeed(data), expectedValues['energy'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalMagicWandoosSpeed(data), expectedValues['magic'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+        }
+    )
+})
 
 
 
-// TODO - Wandoos Test
-
-
+// Found on Questing page
+describe('Calculators - Quests', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'reward': 100, 'drop': 100}],
+        ['Early Normal 2', earlyNormalTwoData, {'reward': 100, 'drop': 100}],
+        ['Mid Normal 1', midNormalData, {'reward': 100, 'drop': 100}],
+        ['Mid Normal 2', midNormalTwoData, {'reward': 115, 'drop': 110}],
+        ['Late Normal', lateNormalData, {'reward': 115, 'drop': 110}],
+        ['Early Evil 1', earlyEvilData, {'reward': 141, 'drop': 110}],
+        ['Evil Return to Normal', evilReturnToNormalData, {'reward': 143, 'drop': 116.66}],
+        ['Early Evil 2', earlyEvilTwoData, {'reward': 162, 'drop': 139.15}],
+        ['Mid Evil 1', midEvilData, {'reward': 210, 'drop': 139.15}],
+    ]
+    test.each(cases)(
+        "Calculators - Quests - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(totalQuestRewardBonus(data), expectedValues['reward'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalQuestDropBonus(data), expectedValues['drop'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            
+        }
+    )
+})

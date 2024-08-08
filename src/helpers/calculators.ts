@@ -330,7 +330,7 @@ export function totalDropChance(data : any) : bigDecimal {
 /** Beards */
 export function totalEnergyBeardSpeed(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.ENERGY_BEARD_SPEED)
-    var eBar = totalEnergyBar(data);
+    var eBar = totalEnergyBar(data).floor();
     var ePower = bd(Math.sqrt(Number(totalEnergyPower(data).getValue())))
     var armpitSet = isMaxxedItemSet(data, ItemSets.UUG) ? bd(1.1) : bd(1);
     var beardSet = isMaxxedItemSet(data, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)
@@ -344,7 +344,7 @@ export function totalEnergyBeardSpeed(data : any) : bigDecimal {
 
 export function totalMagicBeardSpeed(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.MAGIC_BEARD_SPEED)
-    var mBar = totalMagicBar(data);
+    var mBar = totalMagicBar(data).floor();
     var mPower = bd(Math.sqrt(Number(totalMagicPower(data).getValue())))
     var armpitSet = isMaxxedItemSet(data, ItemSets.UUG) ? bd(1.1) : bd(1);
     var beardSet = isMaxxedItemSet(data, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)
