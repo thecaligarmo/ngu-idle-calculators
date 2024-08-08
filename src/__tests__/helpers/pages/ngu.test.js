@@ -298,7 +298,7 @@ for(let gm = 0; gm < 3; gm++) {
                         ty = ty[0].toUpperCase() + ty.substring(1)
                         return tyNGUs.map((ngu, innerIndex) => {
                             return ngu.calcSecondsToTarget(
-                                bd(data["current" + ty + "Cap"][0]),
+                                bd(data["total" + ty + "Cap"][0]),
                                 bd(data["total" + ty + "NGUSpeedFactor%"][0]),
                                 targets[index][innerIndex]
                             )

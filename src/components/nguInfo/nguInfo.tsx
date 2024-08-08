@@ -42,8 +42,8 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
 
     // Set data required (from playerData)
     var infoRequired = [
-        ['currentEnergyCap', 'totalEnergyNGUSpeedFactor%'],
-        ['currentMagicCap', 'totalMagicNGUSpeedFactor%'],
+        ['totalEnergyCap', 'totalEnergyNGUSpeedFactor%'],
+        ['totalMagicCap', 'totalMagicNGUSpeedFactor%'],
         [
             'energyNGUAugments' + modeText + 'Level',
             'energyNGUWandoos' + modeText + 'Level',
@@ -160,7 +160,7 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
         var ty = types[index]
         ty = ty[0].toUpperCase() + ty.substring(1)
         return tyNGUs.map((ngu, innerIndex) => {
-            return ngu.calcSecondsToTarget(v("current" + ty + "Cap"), v("total" + ty + "NGUSpeedFactor%"), targets[index][innerIndex])
+            return ngu.calcSecondsToTarget(v("total" + ty + "Cap"), v("total" + ty + "NGUSpeedFactor%"), targets[index][innerIndex])
         })
     })
     

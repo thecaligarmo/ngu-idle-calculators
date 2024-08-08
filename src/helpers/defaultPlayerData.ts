@@ -446,6 +446,10 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.challenges.hour24Challenge.curEvilCompletions
             case 'twentyFourHourSadisticChallenge-2':
                 return playerData.challenges.hour24Challenge.curSadisticCompletions
+            case 'wandoosEnergyAllocated' :
+                return playerData.wandoos98.wandoosEnergy;
+            case 'wandoosMagicAllocated' : 
+                return playerData.wandoos98.wandoosMagic;
             case 'wishTitansHadBetterRewards-2':
                 return playerData.wishes.wishes[3].level
             case 'yggdrasilDropChance':
@@ -757,12 +761,11 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 })
                 return quirks;
             case 'wandoos' :
-                let wandoos : Wandoos[] = _.cloneDeep(WANDOOSLIST)
-                wandoos[0].importStats(playerData)
-                wandoos[1].importStats(playerData)
+                let wandoos : Wandoos[] = _.cloneDeep(Object.values(WANDOOSLIST))
+                wandoos.forEach((wandoo) => {
+                    wandoo.importStats(playerData)
+                })
                 return wandoos
-
-
             case 'wishes':
                 let wishes : Wish[]= []
                 playerData.wishes.wishes.forEach((wish : any, index : number) => {
@@ -805,9 +808,9 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             // Calculations
             case 'boostRecyclying%':
                 return boostRecyclying(playerData);
-            case 'currentEnergyCap':
+            case 'totalEnergyCap':
                 return totalEnergyCap(playerData);
-            case 'currentMagicCap':
+            case 'totalMagicCap':
                 return totalMagicCap(playerData);
             case 'totalAPBonus%':
                 return totalAPBonus(playerData);
@@ -1056,6 +1059,8 @@ export function getPlayerNumberOptions() : string[]{
         'twentyFourHourChallenge-2',
         'twentyFourHourEvilChallenge-2',
         'twentyFourHourSadisticChallenge-2',
+        'wandoosEnergyAllocated',
+        'wandoosMagicAllocated',
         'wishTitansHadBetterRewards-2',
         'yggdrasilDropChance',
     ]
@@ -1094,8 +1099,8 @@ export function getPlayerOptions() : string[] {
 export function getCalculatedOptions() : string[] {
     return [        
         'boostRecyclying%',
-        'currentEnergyCap',
-        'currentMagicCap',
+        'totalEnergyCap',
+        'totalMagicCap',
         'totalAPBonus%',
         'totalDropChance%',
         'totalEnergyNGUSpeedFactor%',

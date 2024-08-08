@@ -20,8 +20,8 @@ export default function Page() {
     // Set data required (from playerData)
     var infoRequired = [
         ['gameMode'], [],
-        ['currentEnergyCap', 'totalEnergyNGUSpeedFactor%'],
-        ['currentMagicCap', 'totalMagicNGUSpeedFactor%'],
+        ['totalEnergyCap', 'totalEnergyNGUSpeedFactor%'],
+        ['totalMagicCap', 'totalMagicNGUSpeedFactor%'],
         [
             'energyNGUAugmentsLevel',
             'energyNGUWandoosLevel',
@@ -204,9 +204,9 @@ export default function Page() {
         ty = ty[0].toUpperCase() + ty.substring(1)
         return tyNGUs.map((ngu, innerIndex) => {
             return {
-                'normal' : ngu['normal'].calcSecondsToTarget(v("current" + ty + "Cap"), v("total" + ty + "NGUSpeedFactor%"), targets[index][innerIndex]['normal']),
-                'evil' : ngu['evil'].calcSecondsToTarget(v("current" + ty + "Cap"), v("total" + ty + "NGUSpeedFactor%"), targets[index][innerIndex]['evil']),
-                'sadistic' : ngu['sadistic'].calcSecondsToTarget(v("current" + ty + "Cap"), v("total" + ty + "NGUSpeedFactor%"), targets[index][innerIndex]['sadistic']),
+                'normal' : ngu['normal'].calcSecondsToTarget(v("total" + ty + "Cap"), v("total" + ty + "NGUSpeedFactor%"), targets[index][innerIndex]['normal']),
+                'evil' : ngu['evil'].calcSecondsToTarget(v("total" + ty + "Cap"), v("total" + ty + "NGUSpeedFactor%"), targets[index][innerIndex]['evil']),
+                'sadistic' : ngu['sadistic'].calcSecondsToTarget(v("total" + ty + "Cap"), v("total" + ty + "NGUSpeedFactor%"), targets[index][innerIndex]['sadistic']),
             }
         })
     })
