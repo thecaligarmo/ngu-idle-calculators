@@ -25,6 +25,7 @@ export default function Nav({ children } : PropsWithChildren) {
         <ul className="flex border-b dark:border-white border-black">
             <NavElt href="/">Home</NavElt>
             <NavElt href="/ratios">Ratios</NavElt>
+            <NavElt href="/wandoos">Wandoos</NavElt>
             <NavElt href="/ngus" hasChildren={true}>NGUs</NavElt>
             <NavElt href="/zone">Optimal Zone</NavElt>
             <NavElt href="/daily">Daily</NavElt>
