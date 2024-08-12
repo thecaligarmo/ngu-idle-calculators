@@ -54,11 +54,11 @@ export default function Page() {
 
     // Set data required (from playerData)
     var infoRequired = [
-        ['gameMode', 'numRebirthChallenges-2', 'twentyFourHourChallenge-2', 'twentyFourHourEvilChallenge-2', 'twentyFourHourSadisticChallenge-2', 'sadisticNoEquipmentChallenges-2'],
+        ['gameMode', 'itopodFloor-5', 'numRebirthChallenges-2', 'twentyFourHourChallenge-2', 'twentyFourHourEvilChallenge-2', 'twentyFourHourSadisticChallenge-2'],
         ['questMinorQP-2', 'questMajorQP-2', 'questIdleDivider-1', 'activeQuestWishI-2', 'activeQuestWishII-2'],
         
         ['totalRespawnTime', 'totalAPBonus%', 'totalExpBonus%', 'totalPPBonus%', 'totalQuestRewardBonus%', 'totalQuestDropBonus%', 'totalYggdrasilYieldBonus%', 'totalPower'],
-        [ 'blueHeart^', 'redLiquidBonus^','spoopySetBonus^', 'fadLandsSetBonus^', 'fibQuestRNG^', 'fasterQuesting^', 'fruitOfKnowledgeSucks^','fruitOfKnowledgeSTILLSucks^',],
+        [ 'blueHeart^', 'redLiquidBonus^', 'fadLandsSetBonus^', 'fibQuestRNG^', 'fasterQuesting^', 'fruitOfKnowledgeSucks^','fruitOfKnowledgeSTILLSucks^',],
 
         [ 'bonusTitanEXPPerk-2', 'wishTitansHadBetterRewards-2', ],
         []
@@ -66,7 +66,7 @@ export default function Page() {
 
     // Set extra required (not from playerData)
     var extraRequired : (string | [string, number])[][] = [
-        [['hoursPerDay-2', 24], 'hoursOfflinePerDay-2', 'itopodFloor-5',],
+        [['hoursPerDay-2', 24], 'hoursOfflinePerDay-2',],
         [ 'bluePill^','beastButter^', 'includeMajorQuests^', 'idleMajorQuests^'],
         ['dailySpinTier-1', 'includeDailySpinJackpots^', 'includeValueOfConsumables^',  'moneyPitGoldToss?1e', 'moneyPitTossesPerDay-2',],
         
@@ -106,14 +106,7 @@ export default function Page() {
 
     /* ITOPOD */
     var itopodZone = Zones.ITOPOD;
-    var itopodFloor = 0
-    if (v('itopodFloor-5').compareTo(bd(0)) == 0) {
-        var idleAttackModifier = getIdleAttackModifier(c('spoopySetBonus^'), v('sadisticNoEquipmentChallenges-2'));
-        itopodFloor = itopodZone.getOptimalFloor(v('totalPower'), idleAttackModifier)
-    } else {
-        itopodFloor = Number(v('itopodFloor-5').getValue())
-    }
-    itopodZone.setLevel(itopodFloor)
+    itopodZone.setLevel(v('itopodFloor-5'))
 
     var pppPerKill = itopodZone.getPPPPerKill(v('gameMode'), totalPPBonus, c('bluePill^'), c('blueHeart^'));
     var killsPerDay = itopodZone.getKillsPerHour(c('redLiquidBonus^'), v('totalRespawnTime')).multiply(hoursPerDay)
@@ -321,7 +314,7 @@ export default function Page() {
                         <tr key="itopod" className="bg-slate-200 dark:bg-slate-900">
                             <td className="px-2">ITOPOD Tower</td>
                             <td className="px-2"><span className="text-red-500">{pn(APFromTower, fmt)}</span></td>
-                            <td className="px-2">Floor {pn(bd(itopodFloor), fmt)}</td>
+                            <td className="px-2">Floor {pn(v('itopodFloor-5'), fmt)}</td>
                         </tr>
                         <tr key="moneyPit">
                             <td className="px-2">Money Pit</td>
@@ -374,7 +367,7 @@ export default function Page() {
                         <tr key="itopod" className="bg-slate-200 dark:bg-slate-900">
                             <td className="px-2">ITOPOD Tower</td>
                             <td className="px-2"><span className="text-red-500">{pn(EXPFromTower, fmt)}</span></td>
-                            <td className="px-2">Floor {pn(bd(itopodFloor), fmt)}</td>
+                            <td className="px-2">Floor {pn(v('itopodFloor-5'), fmt)}</td>
                         </tr>
                         <tr key="titans">
                             <td className="px-2">Titans</td>
@@ -409,7 +402,7 @@ export default function Page() {
                             <td className="px-2"><span className="text-red-500">{pn(PPFromTower.divide(bd(1000000)), fmt)}</span></td>
                             <td className="px-2">
                                 <ul>
-                                    <li key="floor">Floor {pn(bd(itopodFloor), fmt)}</li>
+                                    <li key="floor">Floor {pn(v('itopodFloor-5'), fmt)}</li>
                                     <li key="pppPerKill">{pn(pppPerKill, fmt)} ppp per kill</li>
                                     <li key="killsPerDay">{pn(killsPerDay, fmt)} kills per  {pn(hoursPerDay, fmt)} hours</li>
                                     <li key="descrip">* We assume 1-hit per kill</li>

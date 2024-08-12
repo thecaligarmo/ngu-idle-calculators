@@ -14,9 +14,11 @@ import { ITEMS, Item } from "../assets/items";
 import { GameMode } from "../assets/mode";
 import { PERKS, Perk } from "../assets/perks";
 import { QUIRKS, Quirk } from "../assets/quirks";
-import { boostRecyclying, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
+import { boostRecyclying, getIdleAttackModifier, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
 import { bd } from "./numbers";
 import { Wandoos, WANDOOSLIST, WANDOOSS } from "@/assets/wandoos";
+import { Zones } from "@/assets/zones";
+import { parseNum } from "./parsers";
 
 export function defaultPlayerData(playerData : any, info : string | [string, number]) : any {
     // If we're given an array, the second object is the default value from the "extraRequired", stuff, so use that.
@@ -844,6 +846,12 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return totalSeedGainBonus(playerData)
             case 'totalYggdrasilYieldBonus%':
                 return totalYggdrasilYieldBonus(playerData)
+            case 'itopodFloor-5':
+                var itopodZone = Zones.ITOPOD;
+                var spoopySetBonus = parseNum(playerData, 'spoopySetBonus^').compareTo(bd(1)) == 0
+                var sadisticNoEquipmentChallenges = parseNum(playerData, 'sadisticNoEquipmentChallenges-2')
+                var idleAttackModifier = getIdleAttackModifier(spoopySetBonus, sadisticNoEquipmentChallenges);
+                return bd(itopodZone.getOptimalFloor(totalPower(playerData), idleAttackModifier))
             
             
             
@@ -1117,5 +1125,6 @@ export function getCalculatedOptions() : string[] {
         'totalRespawnTime',
         'totalSeedGainBonus%',
         'totalYggdrasilYieldBonus%',
+        'itopodFloor-5',
     ]
 }

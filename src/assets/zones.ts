@@ -25,7 +25,10 @@ export default class Zone {
         this.bossChanceVal = bossChanceVal
         this.level = level
     }
-    setLevel(level : number) {
+    setLevel(level : number | bigDecimal) {
+        if(level instanceof bigDecimal) {
+            level = Number(level.getValue())
+        }
         this.level = level
         // For Itopod, update boosts
         if (this.id === 0) {
