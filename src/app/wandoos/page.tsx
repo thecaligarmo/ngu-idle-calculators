@@ -61,7 +61,7 @@ export default function Page() {
     var maxOS = getMaxOSBonus(bonuses)
 
     var prechildren = (
-        <p>See which wandoos is the most efficient for where you are. By <span className="text-red-500">&ldquo;fills per second&rdquo;</span> we mean how fast is your bar filling up. So if you're capped/BBd, then it's 50, etc.</p>
+        <p>See which wandoos is the most efficient for where you are. By <span className="text-red-500">&ldquo;fills per second&rdquo;</span> we mean how fast is your bar filling up. So if you&quot;re capped/BBd, then it&quot;s 50, etc.</p>
     )
     
     return (
