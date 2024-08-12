@@ -4,6 +4,7 @@ import Nav from "@/components/nav";
 import { Inter } from "next/font/google";
 import { PropsWithChildren } from "react";
 import "./ui/globals.css";
+import Footer from "@/components/footer";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,6 +17,7 @@ export default function RootLayout({ children } : PropsWithChildren) {
             <Nav />
             {children}
           </DataWrapper>
+          <Footer />
         </body>
       </html>
   );

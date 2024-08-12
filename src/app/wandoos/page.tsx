@@ -60,11 +60,15 @@ export default function Page() {
 
     var maxOS = getMaxOSBonus(bonuses)
 
+    var prechildren = (
+        <p>See which wandoos is the most efficient for where you are. By <span className="text-red-500">"fills per second"</span> we mean how fast is your bar filling up. So if you're capped/BBd, then it's 50, etc.</p>
+    )
     
     return (
-        <Content title="Wandoos" infoRequired={infoReq} extraRequired={extraReq}>
+        <Content prechildren={prechildren} title="Wandoos" infoRequired={infoReq} extraRequired={extraReq}>
             Assumptions: We assume that the wandoos in your save file is capped and OS is fully booted
             <ContentSubsection title="Which OS should I be using?">
+                The row highlighted in green is the OS you should be using.<br /><br />
                 <table className="inline-block w-full md:w-1/2 align-top mb-2">
                     <thead>
                         <tr className="text-left border-b-1 border border-t-0 border-x-0">

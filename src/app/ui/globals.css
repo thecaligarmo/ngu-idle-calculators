@@ -26,3 +26,9 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer base {
+  a {
+    @apply text-blue-500;
+  }
+}

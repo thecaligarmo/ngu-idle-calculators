@@ -208,7 +208,7 @@ export default function Page() {
 
     // Children that comes before the containers
     var prechildren = (
-        <p>Calculate how much Energy/Magic/Resource 3 you need in order to have the proper ratios.</p>
+        <p>Calculate how much Energy/Magic{res3Active ? "/Resource 3" : null} you need in order to have the proper ratios.</p>
     )
 
     return (
