@@ -195,11 +195,11 @@ export default function Page() {
             }
         })
     }
-    var titanHourlInfo = getTitanHourlyInfo(maxTitan, titanData);
-    var totalTitanAP = titanHourlInfo['ap'].multiply(hoursPerDay)
-    var totalTitanEXP = titanHourlInfo['exp'].multiply(hoursPerDay)
-    var totalTitanPP = titanHourlInfo['ppp'].multiply(hoursPerDay).divide(bd(1000000))
-    var totalTitanQP = titanHourlInfo['qp'].multiply(hoursPerDay)
+    var titanHourInfo = getTitanHourlyInfo(maxTitan, titanData);
+    var totalTitanAP = titanHourInfo['ap'].multiply(hoursPerDay)
+    var totalTitanEXP = titanHourInfo['exp'].multiply(hoursPerDay)
+    var totalTitanPP = titanHourInfo['ppp'].multiply(hoursPerDay).divide(bd(1000000))
+    var totalTitanQP = titanHourInfo['qp'].multiply(hoursPerDay)
     var titanList = getTitanList();
 
 
@@ -260,7 +260,7 @@ export default function Page() {
 
     var totalAPPerDay = apDailySave.add(apDailySpin).add(APFromTower).add(apMoneyPit).add(apRebirth).add(apYggdrasil).add(APFromMajors).add(APFromMinors).add(totalTitanAP)
     var totalEXPPerDay = totalTitanEXP.add(expYggdrasil).add(EXPFromTower)
-    var totalPPPerDay = totalTitanPP.add(ppYggdrasil).add(PPFromTower)
+    var totalPPPerDay = totalTitanPP.add(ppYggdrasil).add(PPFromTower).divide(bd(1000000)).divide(bd(1000000))
     var totalQPPerDay = QPFromMajors.add(QPFromMinors).add(qpYggdrasil).add(totalTitanQP)
 
 
@@ -421,7 +421,7 @@ export default function Page() {
                         </tr>
                         <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
                             <th className="px-2">Total:</th>
-                            <th className="px-2"><span className="text-red-500">{pn(totalPPPerDay.divide(bd(1000000)), fmt)} PP</span></th>
+                            <th className="px-2"><span className="text-red-500">{pn(totalPPPerDay, fmt)} PP</span></th>
                             <th className="px-2"></th>
                         </tr>
                     </tbody>
