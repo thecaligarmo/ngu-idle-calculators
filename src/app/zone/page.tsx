@@ -68,6 +68,15 @@ export default function Page() {
         </li>
         )
     })
+
+    var zoneExpList = zoneInfo.map(function(zone) {
+        var eV = optimalExpZone['boost'].compareTo(bd(0)) == 0 ? bd(1) : optimalExpZone['boost']
+        return (
+        <li key={zone.key} className={optZoneChosen == zone.key ? "" : "hidden"}>
+            {zone.name} is <span className="text-red-500">{pn(zone.exp.divide(eV).multiply(bd(100)), fmt, 2)}%</span> as efficient with a exp value of <span className="text-blue-500">{pn(zone.exp, fmt)}.</span>
+        </li>
+        )
+    })
     
     
     return (
@@ -114,7 +123,7 @@ export default function Page() {
                         </select>
                     </p>
                     <ul>
-                        {zoneBoonList}
+                        {zoneExpList}
                     </ul>
                 </div>
             </ContentSubsection>
