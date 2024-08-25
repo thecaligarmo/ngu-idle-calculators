@@ -111,7 +111,7 @@ export default function Page() {
     var pppPerKill = itopodZone.getPPPPerKill(v('gameMode'), totalPPBonus, c('bluePill^'), c('blueHeart^'));
     var killsPerDay = itopodZone.getKillsPerHour(c('redLiquidBonus^'), v('totalRespawnTime')).multiply(hoursPerDay)
 
-    var PPFromTower = killsPerDay.multiply(pppPerKill)
+    var PPPFromTower = killsPerDay.multiply(pppPerKill)
     var APFromTower = killsPerDay.divide(
             itopodZone.cycleLength()
             )
@@ -242,7 +242,7 @@ export default function Page() {
     
     var apYggdrasil = fruitOfArbitrariness.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
     var expYggdrasil = fruitOfKnowledge.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
-    var ppYggdrasil = fruitOfRage.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
+    var pppYggdrasil = fruitOfRage.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
     var qpYggdrasil = fruitOfQuirks.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
     
 
@@ -260,7 +260,7 @@ export default function Page() {
 
     var totalAPPerDay = apDailySave.add(apDailySpin).add(APFromTower).add(apMoneyPit).add(apRebirth).add(apYggdrasil).add(APFromMajors).add(APFromMinors).add(totalTitanAP)
     var totalEXPPerDay = totalTitanEXP.add(expYggdrasil).add(EXPFromTower)
-    var totalPPPerDay = totalTitanPP.add(ppYggdrasil).add(PPFromTower).divide(bd(1000000)).divide(bd(1000000))
+    var totalPPPerDay = totalTitanPP.add(pppYggdrasil.divide(bd(1000000))).add(PPPFromTower.divide(bd(1000000)))
     var totalQPPerDay = QPFromMajors.add(QPFromMinors).add(qpYggdrasil).add(totalTitanQP)
 
 
@@ -399,7 +399,7 @@ export default function Page() {
                     <tbody>
                         <tr key="itopod" className="bg-slate-200 dark:bg-slate-900">
                             <td className="px-2">ITOPOD Tower</td>
-                            <td className="px-2"><span className="text-red-500">{pn(PPFromTower.divide(bd(1000000)), fmt)}</span></td>
+                            <td className="px-2"><span className="text-red-500">{pn(PPPFromTower.divide(bd(1000000)), fmt)}</span></td>
                             <td className="px-2">
                                 <ul>
                                     <li key="floor">Floor {pn(v('itopodFloor-5'), fmt)}</li>
@@ -416,7 +416,7 @@ export default function Page() {
                         </tr>
                         <tr key="yggdrasil" className="bg-slate-200 dark:bg-slate-900">
                             <td className="px-2">Yggdrasil</td>
-                            <td className="px-2"><span className="text-red-500">{pn(ppYggdrasil.divide(bd(1000000)), fmt)}</span></td>
+                            <td className="px-2"><span className="text-red-500">{pn(pppYggdrasil.divide(bd(1000000)), fmt)}</span></td>
                             <td></td>
                         </tr>
                         <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
