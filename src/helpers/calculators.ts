@@ -1,4 +1,4 @@
-import { Challenge } from "@/assets/challenges";
+import { Challenge, ChallengeKeys } from "@/assets/challenges";
 import { GameMode } from "@/assets/mode";
 import { ItemSets } from "@/assets/sets";
 import bigDecimal from "js-big-decimal";
@@ -6,7 +6,7 @@ import _ from "lodash";
 import { Stat } from "../assets/stat";
 import { bd, bigdec_max } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
-import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
+import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
 
 
 // General Calc - gives a percentage
@@ -148,9 +148,7 @@ export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
     var metaSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.META) ? bd(1.2) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.MAGIC_NGU_SPEED)
 
-    var challenges : Challenge[] = parseObj(data, 'challenges')
-    var trollChallenge = (!_.isUndefined(challenges[GameMode.NORMAL]) && challenges[GameMode.NORMAL][5])
-    var tcNum : bigDecimal = (!_.isUndefined(trollChallenge) && trollChallenge.level > 0) ? bd(3) : bd(1);
+    var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.NORMAL, 1)) ? bd(3) : bd(1);
     
     
     return bd(1)
@@ -211,9 +209,11 @@ export function totalDaycareSpeed(data : any) :bigDecimal {
 export function totalHackSpeed(data : any) :bigDecimal {
     var gen : bigDecimal = calcAll(data, Stat.HACK_SPEED)
     var greyHearthBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.GREY_HEART) ? bd(1.25) : bd(1)
+    var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.EVIL, 5)) ? bd(1.25) : bd(1);
 
     return gen
         .multiply(greyHearthBonus)
+        .multiply(tcNum)
 }
 
 

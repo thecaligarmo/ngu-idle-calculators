@@ -3,9 +3,11 @@ import { Stat } from "@/assets/stat"
 import _ from "lodash"
 import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed } from "../calculators"
 import { bd, bigdec_max, pn } from "../numbers"
-import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo } from "../resourceInfo"
+import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo, isCompletedChallenge } from "../resourceInfo"
 import bigDecimal from "js-big-decimal"
 import { parseNum, parseObj } from "../parsers"
+import { ChallengeKeys } from "@/assets/challenges"
+import { GameMode } from "@/assets/mode"
 
 
 export function describeStat(data : any, fmt : string, isRespawn : boolean = false) {
@@ -319,6 +321,19 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x Equipment',
                 'val' : equipmentInfo(playerStates, Stat.HACK_SPEED),
             },
+            'hack' : {
+                'name': 'x Hack',
+                'val' : hackInfo(playerStates, Stat.HACK_SPEED),
+            },
+            'wish' : {
+                'name': 'x Wish',
+                'val' : wishInfo(playerStates, Stat.HACK_SPEED),
+            },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.HACK_SPEED),
+                'sigFig': 2,
+            },
             'heart' : {
                 'name': 'x Grey Heart Bonus',
                 'val' : isMaxxedItemSet(playerStates, ItemSets.GREY_HEART) ? bd(125) : bd(100),
@@ -327,10 +342,9 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x Evil No NGU Challenge',
                 'val' : challengeInfo(playerStates, Stat.HACK_SPEED),
             },
-            'card' : {
-                'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.HACK_SPEED),
-                'sigFig': 2,
+            'trollChallenge' : {
+                'name' : 'x Evil Troll Challenge',
+                'val' : isCompletedChallenge(playerStates, ChallengeKeys.TROLL, GameMode.EVIL, 5) ? bd(125) : bd(100),
             },
             'total' : {
                 'name': 'Total',

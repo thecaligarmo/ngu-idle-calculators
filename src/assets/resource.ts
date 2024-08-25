@@ -69,5 +69,17 @@ export class ResourceContainer {
             this[r.id] = r;
             // this.modes[r.mode][r.key] = r
         }
-    } 
+    }
+    getByKey(key : string) : Resource | undefined{
+        let chosenId = -1;
+        this.ids.forEach((id) => {
+            if (this[id].key == key) {
+                chosenId = id;
+            }
+        })
+        if (chosenId >= 0) {
+            return this[chosenId]
+        }
+        return undefined;
+    }
 }

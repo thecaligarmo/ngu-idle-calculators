@@ -1,7 +1,7 @@
 import { AdvTraining } from "@/assets/advTraining";
 import { APItem } from "@/assets/apItems";
 import { Beard } from "@/assets/beards";
-import { Challenge } from "@/assets/challenges";
+import { Challenge, CHALLENGELIST, CHALLENGES } from "@/assets/challenges";
 import { Digger } from "@/assets/diggers";
 import { Hack } from "@/assets/hacks";
 import { Item } from "@/assets/items";
@@ -579,6 +579,20 @@ export function isMaxxedItemSet(data : any, itemSet : ItemSet) : boolean {
 export function maxxedItemSetNum(data : any, itemSet : ItemSet) : number {
     var itemSets = parseObj(data, 'itemSets')
     return (itemSet.key in itemSets) ? itemSets[itemSet.key].numMaxxed : 0;
+}
+
+export function isCompletedChallenge(data : any, key : string, mode : number, level : number) : boolean {
+    if (mode == GameMode.NORMAL) {
+        key = 'normal' + key
+    } else if (mode == GameMode.EVIL) {
+        key = 'evil' + key
+    } else if (mode == GameMode.SADISTIC) {
+        key = 'sadistic' + key
+    }
+    var challenges = parseObj(data, 'challenges')
+    var challenge = CHALLENGES.getByKey(key)
+    var chosenChallenge = (!_.isUndefined(challenges[mode]) && !_.isUndefined(challenge) && challenges[mode][challenge.id % 100])
+    return (!_.isUndefined(chosenChallenge) && chosenChallenge.level > level)
 }
 
 
