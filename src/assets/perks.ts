@@ -168,7 +168,7 @@ export const PERKLIST = [
     new Perk(80, 'fasterNGUEnergyIII', 'Faster NGU Energy III', GameMode.EVIL, 0, [[Stat.ENERGY_NGU_SPEED, 0.3]]),
     new Perk(81, 'fasterNGUMagicIII', 'Faster NGU Magic III', GameMode.EVIL, 0, [[Stat.MAGIC_NGU_SPEED, 0.3]]),
     new Perk(82, 'statBoostforRichPerksIII', 'Stat Boost for Rich Perks III', GameMode.EVIL, 0, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
-    new Perk(83, 'adventureBoostForRichPerksII', 'Adventure Boost For Rich Perks II', GameMode.EVIL, 0, [[Stat.ATTACK, 0.1], [Stat.DEFENSE, 0.1]]),
+    new Perk(83, 'adventureBoostForRichPerksII', 'Adventure Boost For Rich Perks II', GameMode.EVIL, 0, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1], [Stat.HEALTH, 0.1], [Stat.REGEN, 0.1]]),
     new Perk(84, 'ironPillAlsoSucks', '"Iron Pill Also Sucks 1/5"', GameMode.EVIL, 0, []),
     new Perk(85, 'ironPillStillSucks', '"Iron Pill Still Sucks 1/5"', GameMode.EVIL, 0, []),
     new Perk(86, 'daycareSlot!c:', 'Daycare Slot! c:', GameMode.EVIL, 0, []),
