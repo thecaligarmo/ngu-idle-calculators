@@ -3,7 +3,7 @@ import { Stat } from "@/assets/stat"
 import _ from "lodash"
 import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed } from "../calculators"
 import { bd, bigdec_max, pn } from "../numbers"
-import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel } from "../resourceInfo"
+import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo } from "../resourceInfo"
 import bigDecimal from "js-big-decimal"
 import { parseNum, parseObj } from "../parsers"
 
@@ -123,6 +123,11 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x Hacks',
                 'val' : hackInfo(playerStates, Stat.AUGMENT_SPEED),
             },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.AUGMENT_SPEED),
+                'sigFig': 2,
+            },
             'total' : {
                 'val' : totalAugmentSpeed(playerStates),
             }
@@ -176,6 +181,11 @@ export function getStatInfo(playerStates : any) {
             'hack' : {
                 'name': 'x Hack',
                 'val' : hackInfo(playerStates, Stat.ENERGY_NGU_SPEED).round(),
+            },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.ENERGY_NGU_SPEED),
+                'sigFig': 2,
             },
             'total' : {
                 'val' : totalEnergyNGUSpeedFactor(playerStates),
@@ -259,6 +269,11 @@ export function getStatInfo(playerStates : any) {
                 'val' : diggerInfo(playerStates, Stat.PP),
                 'sigFig' : 2,
             },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.PP),
+                'sigFig': 2,
+            },
             'total' : {
                 'name': 'Total',
                 'val' : totalPPBonus(playerStates),
@@ -284,6 +299,11 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x Challenges',
                 'val' : challengeInfo(playerStates, Stat.DAYCARE_SPEED),
             },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.DAYCARE_SPEED),
+                'sigFig': 2,
+            },
             'total' : {
                 'name': 'Total',
                 'val' : totalDaycareSpeed(playerStates),
@@ -306,6 +326,11 @@ export function getStatInfo(playerStates : any) {
             'challenges' : {
                 'name': 'x Evil No NGU Challenge',
                 'val' : challengeInfo(playerStates, Stat.HACK_SPEED),
+            },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.HACK_SPEED),
+                'sigFig': 2,
             },
             'total' : {
                 'name': 'Total',
@@ -333,6 +358,11 @@ export function getStatInfo(playerStates : any) {
             'fasterWish' : {
                 'name' : 'x Faster Wish (AP item)',
                 'val' : apItemInfo(playerStates, Stat.WISH_SPEED)
+            },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.WISH_SPEED),
+                'sigFig': 2,
             },
             'total' : {
                 'name': 'Total',
@@ -398,6 +428,11 @@ export function getStatInfo(playerStates : any) {
             'hack' : {
                 'name': 'x Hack',
                 'val' : hackInfo(playerStates, Stat.POWER).round(),
+            },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.POWER),
+                'sigFig': 2,
             },
             'beastMode' : {
                 'name': 'x Beast Mode',
@@ -466,6 +501,11 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x Hack',
                 'val' : hackInfo(playerStates, Stat.TOUGHNESS).round(),
             },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.TOUGHNESS),
+                'sigFig': 2,
+            },
             'total' : {
                 'val' : totalToughness(playerStates),
             },
@@ -529,6 +569,11 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x Hack',
                 'val' : hackInfo(playerStates, Stat.HEALTH).round(),
             },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.HEALTH),
+                'sigFig': 2,
+            },
             'total' : {
                 'val' : totalHealth(playerStates),
             },
@@ -554,6 +599,11 @@ export function getStatInfo(playerStates : any) {
             'quirk' : {
                 'name': 'x Quirk',
                 'val' : quirkInfo(playerStates, Stat.GOLD_DROP),
+            },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.GOLD_DROP),
+                'sigFig': 2,
             },
             'total' : {
                 'val' : totalGoldDrop(playerStates),
@@ -639,6 +689,11 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x Normal Bonus Acc Set Bonus',
                 'val' : isMaxxedItemSet(playerStates, ItemSets.NORMAL_ACC) ? bd(125) : bd(100),
             },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.DROP_CHANCE),
+                'sigFig': 2,
+            },
             'total' : {
                 'val' : totalDropChance(playerStates),
             },
@@ -710,6 +765,11 @@ export function getStatInfo(playerStates : any) {
             'beardPerm' : {
                 'name' : 'x Beard (permanent)',
                 'val' : beardInfoPerm(playerStates, Stat.ENERGY_WANDOOS_SPEED)
+            },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+                'sigFig': 2,
             },
             'total' : {
                 'val' : totalEnergyWandoosSpeed(playerStates),

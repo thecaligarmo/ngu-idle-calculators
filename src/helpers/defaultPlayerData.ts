@@ -16,9 +16,10 @@ import { PERKS, Perk } from "../assets/perks";
 import { QUIRKS, Quirk } from "../assets/quirks";
 import { boostRecyclying, getIdleAttackModifier, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
 import { bd } from "./numbers";
-import { Wandoos, WANDOOSLIST, WANDOOSS } from "@/assets/wandoos";
+import { Wandoos, WANDOOSLIST } from "@/assets/wandoos";
 import { Zones } from "@/assets/zones";
 import { parseNum } from "./parsers";
+import { Card, CARDLIST, CARDS } from "@/assets/cards";
 
 export function defaultPlayerData(playerData : any, info : string | [string, number]) : any {
     // If we're given an array, the second object is the default value from the "extraRequired", stuff, so use that.
@@ -538,6 +539,14 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                     }
                 })
                 return beards
+            case 'cards':
+                let cards : Card[] = []
+                for (let card of CARDLIST) {
+                    let c = _.cloneDeep(CARDS[card.id]);
+                    c.importStats(playerData.cards.bonuses)
+                    cards.push(c)
+                }
+                return cards;
             case 'challenges':
                 let challenges : Challenge[] = []
                 let evilChallenges : Challenge[] = []
@@ -1081,6 +1090,7 @@ export function getPlayerOptions() : string[] {
         'advTrainings',
         'apItems',
         'beards',
+        'cards',
         'challenges',
         'diggers',
         'equipmentHead',

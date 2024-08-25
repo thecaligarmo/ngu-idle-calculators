@@ -2,6 +2,7 @@
 import { AdvTraining } from "@/assets/advTraining";
 import { APItem } from "@/assets/apItems";
 import { Beard } from "@/assets/beards";
+import { Card } from "@/assets/cards";
 import { Challenge } from "@/assets/challenges";
 import { Digger } from "@/assets/diggers";
 import { AttackStat, Enemy } from "@/assets/enemy";
@@ -33,7 +34,7 @@ export function useLocalStorage(key: string, fallbackValue : any) {
             var x = ESSerializer.deserialize(
                 stored,
                 [
-                    AdvTraining, APItem, Beard, Challenge, Digger, Enemy, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Wandoos, Wish,
+                    AdvTraining, APItem, Beard, Card, Challenge, Digger, Enemy, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Wandoos, Wish,
                     Zone, AttackStat, bigDecimal,
                     Yggdrasil, FruitOfGold, FruitOfPowerA, FruitOfAdventure, FruitOfKnowledge, FruitOfPomegranate, FruitOfLuck, FruitOfPowerB, FruitOfArbitrariness, FruitOfNumbers, FruitOfRage, FruitOfMacguffinA, FruitOfPowerD, FruitOfWatermelon, FruitOfMacguffinB, FruitOfQuirks, FruitOfMayo,
                 ]

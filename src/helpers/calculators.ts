@@ -6,7 +6,7 @@ import _ from "lodash";
 import { Stat } from "../assets/stat";
 import { bd, bigdec_max } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
-import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
+import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
 
 
 // General Calc - gives a percentage
@@ -41,6 +41,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
         .multiply(apItemInfo(data, stat).divide(base))    
         .multiply(beardInfoTemp(data, stat).divide(base))
         .multiply(beardInfoPerm(data, stat).divide(base))
+        .multiply(cardInfo(data, stat).divide(base))
         .multiply(challengeInfo(data, stat))
         .multiply(diggerInfo(data, stat).divide(base))
         .multiply(equipmentInfo(data, stat).divide(base))

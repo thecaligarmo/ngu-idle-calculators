@@ -18,6 +18,7 @@ import _ from "lodash";
 import { bd } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
 import { Wandoos } from "@/assets/wandoos";
+import { Card } from "@/assets/cards";
 
 
 export function achievementAPBonus(data : any) : bigDecimal {
@@ -189,6 +190,22 @@ export function beardInfoPerm(data: any, key: string) : bigDecimal{
             })
         }
     }
+    return bd(stat)
+}
+
+export function cardInfo(data : any, key: string) :bigDecimal {
+    var cards : Card[] = parseObj(data, 'cards')
+    var stat : number = 100
+    if (Object.values(Stat).includes(key)) {
+        if(cards.length > 0) {
+            cards.forEach((g) => {
+                if (!_.isUndefined(g[key])) {
+                    stat *= g[key]
+                }
+            })
+        }
+    }
+    
     return bd(stat)
 }
 
