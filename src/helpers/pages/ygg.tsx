@@ -14,6 +14,7 @@ export function fruitInfoRows(fruits : Yggdrasil[], fruitYieldData : fruitYieldT
                 <td className="px-2"><span className="text-green-500">{pn(fruit.seedYield(fruitYieldData.totalSeedGainBonus, fruitYieldData.firstHarvest, fruitYieldData.blueHeart), fmt)}</span></td>
                 <td className="px-2"><span className="text-red-500">{pn(fruit.fruitYield(fruitYieldData), fmt)}</span></td>
                 <td className="px-2"><span className="text-blue-500">{pn(fruit.upgradeCost(), fmt)}</span></td>
+                <td className="px-2"><span>{pn(fruit.totalUpgradeCost(), fmt)}</span></td>
             </tr>
         )
     })

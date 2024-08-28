@@ -153,6 +153,7 @@ export default function Page() {
                             <th className="px-2">Seed Gain</th>
                             <th className="px-2">Yggdrasil Yield</th>
                             <th className="px-2">Upgrade Cost</th>
+                            <th className="px-2">Cost to upgrade to tier 24</th>
                         </tr>
                     </thead>
                     <tbody>

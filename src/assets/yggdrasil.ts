@@ -82,6 +82,15 @@ export class Yggdrasil {
     upgradeToTierCost(tier : number) : number {
         return 0
     }
+    totalUpgradeCost() : number {
+        let t : number = this.tier
+        let cost : number = 0
+        while (t <24) {
+            t += 1
+            cost += this.upgradeToTierCost(t)
+        }
+        return cost
+    }
 }
 
 // TODO - Gold is given "per minute" but we should really multiply this by the "gross gold production" (from the Time Machine)
