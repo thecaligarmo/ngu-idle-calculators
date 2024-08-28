@@ -2,6 +2,7 @@
 
 import { AttackStat, Titan, Titans } from "@/assets/enemy";
 import { Stat } from "@/assets/stat";
+import { Wish } from "@/assets/wish";
 import { FruitOfArbitrariness, FruitOfKnowledge, FruitOfQuirks, FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
 import { Zones } from "@/assets/zones";
 import Content from "@/components/content";
@@ -14,6 +15,7 @@ import { parseNum, parseObj } from "@/helpers/parsers";
 import { nguInfo } from "@/helpers/resourceInfo";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
+import _ from "lodash";
 import { ReactElement, useState } from "react";
 
 
@@ -60,7 +62,7 @@ export default function Page() {
         ['totalRespawnTime', 'totalAPBonus%', 'totalExpBonus%', 'totalPPBonus%', 'totalQuestRewardBonus%', 'totalQuestDropBonus%', 'totalYggdrasilYieldBonus%', 'totalPower'],
         [ 'blueHeart^', 'redLiquidBonus^', 'fadLandsSetBonus^', 'fibQuestRNG^', 'fasterQuesting^', 'fruitOfKnowledgeSucks^','fruitOfKnowledgeSTILLSucks^',],
 
-        [ 'bonusTitanEXPPerk-2', 'wishTitansHadBetterRewards-2', ],
+        [ 'bonusTitanEXPPerk-2', 'wishTitansHadBetterRewards-2', 'wishBeastDropQP^', 'wishNerdDropQP^', 'wishGodmotherDropQP^', 'wishExileDropQP^', 'wishTitan10DropQP^', 'wishTitan11DropQP^', 'wishTitan12DropQP^'],
         []
     ]
 
@@ -97,11 +99,20 @@ export default function Page() {
     var totalExpBonus = v('totalExpBonus%')
     var totalPPBonus = v('totalPPBonus%')
     var totalQPBonus = v('totalQuestRewardBonus%')
+    var wishes : Wish[] = j('wishes')
+
+    // Update wishes with info above.
+    if(!_.isUndefined(wishes[Titans.BEAST.getQPWishNum()])) {
+        wishes[Titans.BEAST.getQPWishNum()].level = c('wishBeastDropQP^') ? 1 : 0
+        wishes[Titans.NERD.getQPWishNum()].level = c('wishNerdDropQP^') ? 1 : 0
+        wishes[Titans.GODMOTHER.getQPWishNum()].level = c('wishGodmotherDropQP^') ? 1 : 0
+        wishes[Titans.EXILE.getQPWishNum()].level = c('wishExileDropQP^') ? 1 : 0
+        wishes[Titans.IT_HUNGERS.getQPWishNum()].level = c('wishTitan10DropQP^') ? 1 : 0
+        wishes[Titans.ROCK_LOBSTER.getQPWishNum()].level = c('wishTitan11DropQP^') ? 1 : 0
+        wishes[Titans.AMALGAMATE.getQPWishNum()].level = c('wishTitan12DropQP^') ? 1 : 0
+    }
+
     
-
-
-
-
 
 
     /* ITOPOD */
@@ -120,10 +131,6 @@ export default function Page() {
         ).multiply(
             bd(itopodZone.exp[0])
         ).multiply(totalExpBonus).divide(bd(100))
-
-
-
-
 
 
     
@@ -163,10 +170,6 @@ export default function Page() {
     var APPerMinor = questInfo['ap']['perMinor']
 
 
-
-
-
-
     /* Titan Info */
     var titanData = {
         bonusTitanEXPPerk : v('bonusTitanEXPPerk-2'),
@@ -201,8 +204,6 @@ export default function Page() {
     var totalTitanPP = titanHourInfo['ppp'].multiply(hoursPerDay).divide(bd(1000000))
     var totalTitanQP = titanHourInfo['qp'].multiply(hoursPerDay)
     var titanList = getTitanList();
-
-
 
 
     /* Ygg Info */
@@ -244,8 +245,6 @@ export default function Page() {
     var expYggdrasil = fruitOfKnowledge.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
     var pppYggdrasil = fruitOfRage.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
     var qpYggdrasil = fruitOfQuirks.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
-    
-
 
 
     // AP Stuff
@@ -253,9 +252,6 @@ export default function Page() {
     var apMoneyPit = getMoneyPitAP(v('moneyPitGoldToss?1e'), v('moneyPitTossesPerDay-2'), totalAPBonus);
     var apDailySave = getDailySaveAP(totalAPBonus, hoursPerDay);
     var apDailySpin = getDailySpinAP(v('dailySpinTier-1'), totalAPBonus, hoursPerDay, c('includeValueOfConsumables^'), c('includeDailySpinJackpots^'));
-
-    
-
 
 
     var totalAPPerDay = apDailySave.add(apDailySpin).add(APFromTower).add(apMoneyPit).add(apRebirth).add(apYggdrasil).add(APFromMajors).add(APFromMinors).add(totalTitanAP)

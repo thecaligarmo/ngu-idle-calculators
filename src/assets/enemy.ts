@@ -147,54 +147,29 @@ export class Titan extends Enemy {
     getPP(ppBonus : bigDecimal = bd(1)) : bigDecimal {
         return ppBonus.multiply(bd(this.pp)).divide(bd(100))
     }
-    getQP(wishes : Wish[], qpBonus : bigDecimal = bd(1)) : bigDecimal {
-        // Beast - 73
-        // Nerd - 74
-        // Godmother - 40
-        // Exile - 41
-        // Titan 10 - 100
-        // Titan 11 - 187
-        // Titan 12 - 204
-        var qpAmount = bd(0)
-        if(_.isUndefined(wishes[73])) {
-            return bd(0)
-        }
+    getQPWishNum(): number{
         switch(this.id) {
             case 6:
-                if(wishes[73].level >0) {
-                    qpAmount = bd(this.qp)
-                }
-                break;
+                return 73
             case 7:
-                if(wishes[74].level >0) {
-                    qpAmount = bd(this.qp)
-                }
-                break;
+                return 74
             case 8:
-                if(wishes[40].level >0) {
-                    qpAmount = bd(this.qp)
-                }
-                break;
+                return 40
             case 9:
-                if(wishes[41].level >0) {
-                    qpAmount = bd(this.qp)
-                }
-                break;
+                return 41
             case 10:
-                if(wishes[100].level >0) {
-                    qpAmount = bd(this.qp)
-                }
-                break;
+                return 100
             case 11:
-                if(wishes[187].level >0) {
-                    qpAmount = bd(this.qp)
-                }
-                break;
+                return 187
             case 12:
-                if(wishes[204].level >0) {
-                    qpAmount = bd(this.qp)
-                }
-                break;
+                return 204
+        }
+        return 0
+    }
+    getQP(wishes : Wish[], qpBonus : bigDecimal = bd(1)) : bigDecimal {
+        var qpAmount = bd(0)
+        if(this.getQPWishNum() > 0 && !_.isUndefined(wishes[73]) && wishes[this.getQPWishNum()].level > 0) {
+            qpAmount = bd(this.qp)
         }
         return qpBonus.multiply(qpAmount).divide(bd(100))
     }

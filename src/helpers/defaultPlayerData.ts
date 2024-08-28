@@ -454,7 +454,21 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'wandoosMagicAllocated' : 
                 return playerData.wandoos98.wandoosMagic;
             case 'wishTitansHadBetterRewards-2':
-                return playerData.wishes.wishes[3].level
+                return playerData.wishes.wishes[3].level;
+            case 'wishBeastDropQP^':
+                return playerData.wishes.wishes[73].level;
+            case 'wishNerdDropQP^':
+                return playerData.wishes.wishes[74].level;
+            case 'wishGodmotherDropQP^':
+                return playerData.wishes.wishes[40].level;
+            case 'wishExileDropQP^':
+                return playerData.wishes.wishes[41].level;
+            case 'wishTitan10DropQP^':
+                return playerData.wishes.wishes[100].level;
+            case 'wishTitan11DropQP^':
+                return playerData.wishes.wishes[187].level;
+            case 'wishTitan12DropQP^':
+                return playerData.wishes.wishes[204].level;
             case 'yggdrasilDropChance':
                 return playerData.yggdrasil.totalLuck / 20 + 100
 
@@ -1079,6 +1093,13 @@ export function getPlayerNumberOptions() : string[]{
         'wandoosEnergyAllocated',
         'wandoosMagicAllocated',
         'wishTitansHadBetterRewards-2',
+        'wishBeastDropQP^',
+        'wishNerdDropQP^',
+        'wishGodmotherDropQP^',
+        'wishExileDropQP^',
+        'wishTitan10DropQP^',
+        'wishTitan11DropQP^',
+        'wishTitan12DropQP^',
         'yggdrasilDropChance',
     ]
 }
