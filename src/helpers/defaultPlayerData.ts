@@ -14,7 +14,7 @@ import { ITEMS, Item } from "../assets/items";
 import { GameMode } from "../assets/mode";
 import { PERKS, Perk } from "../assets/perks";
 import { QUIRKS, Quirk } from "../assets/quirks";
-import { boostRecyclying, getIdleAttackModifier, totalAPBonus, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
+import { boostRecyclying, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
 import { bd } from "./numbers";
 import { Wandoos, WANDOOSLIST } from "@/assets/wandoos";
 import { Zones } from "@/assets/zones";
@@ -28,6 +28,16 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
     }
     const playerExists = (playerData && Object.keys(playerData).length > 0)
     if (playerExists) {
+        let taggedCards : number[]= []
+        if(!_.isUndefined(playerData.cards.taggedBonuses)) {
+            taggedCards = [
+                playerData.cards.taggedBonuses[0][1].value__,
+                playerData.cards.taggedBonuses[1][1].value__,
+                playerData.cards.taggedBonuses[2][1].value__,
+                playerData.cards.taggedBonuses[3][1].value__,
+            ]
+        }
+        
         switch(info) {
             case 'activeQuestWishI-2':
                 return playerData.wishes.wishes[19].level
@@ -62,6 +72,10 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
 
             case 'beastMode':
                 return playerData.adventure.beastModeOn
+            case 'beefyWish-1':
+                return playerData.wishes.wishes[162].level
+                        + playerData.wishes.wishes[220].level
+                        + playerData.wishes.wishes[227].level
             case 'bloodMagicDropChance':
                 if (playerData.bloodMagic.lootSpellBlood == '0') {
                     return 0
@@ -76,6 +90,239 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'boostRecyclyingPurchase':
                 return playerData.purchases.boost
 
+            case 'cardRecyclingCard^':
+                return playerData.adventure.itopod.perkLevel[216]
+            case 'cardRecyclingMayo^':
+                return playerData.beastQuest.quirkLevel[156]
+            case 'cardChonkers^':
+                return playerData.beastQuest.quirkLevel[149]
+            case 'cardTaggedEnergyNGU^':
+                return taggedCards.includes(1) ? 1 : 0
+            case 'cardTaggedMagicNGU^':
+                return taggedCards.includes(2) ? 1 : 0
+            case 'cardTaggedWandoos^':
+                return taggedCards.includes(3) ? 1 : 0
+            case 'cardTaggedAugments^':
+                return taggedCards.includes(4) ? 1 : 0
+            case 'cardTaggedTimeMachine^':
+                return taggedCards.includes(5) ? 1 : 0
+            case 'cardTaggedHack^':
+                return taggedCards.includes(6) ? 1 : 0
+            case 'cardTaggedWish^':
+                return taggedCards.includes(7) ? 1 : 0
+            case 'cardTaggedStat^':
+                return taggedCards.includes(8) ? 1 : 0
+            case 'cardTaggedAdventure^':
+                return taggedCards.includes(9) ? 1 : 0
+            case 'cardTaggedDropChance^':
+                return taggedCards.includes(10) ? 1 : 0
+            case 'cardTaggedGoldDrop^':
+                return taggedCards.includes(11) ? 1 : 0
+            case 'cardTaggedDaycare^':
+                return taggedCards.includes(12) ? 1 : 0
+            case 'cardTaggedPP^':
+                return taggedCards.includes(13) ? 1 : 0
+            case 'cardTaggedQP^':
+                return taggedCards.includes(14) ? 1 : 0
+            case 'cardTierAdventure-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[172]
+                        + playerData.adventure.itopod.perkLevel[185]
+                        + playerData.adventure.itopod.perkLevel[198]
+                        + playerData.beastQuest.quirkLevel[106]
+                        + playerData.beastQuest.quirkLevel[119]
+                        + playerData.beastQuest.quirkLevel[132]
+                        + playerData.beastQuest.quirkLevel[164]
+                        + playerData.wishes.wishes[118].level
+                        + playerData.wishes.wishes[131].level
+                        + playerData.wishes.wishes[144].level
+                        + playerData.wishes.wishes[177].level
+                        + playerData.wishes.wishes[208].level
+            case 'cardTierAugments-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[161]
+                        + playerData.adventure.itopod.perkLevel[174]
+                        + playerData.adventure.itopod.perkLevel[187]
+                        + playerData.beastQuest.quirkLevel[108]
+                        + playerData.beastQuest.quirkLevel[121]
+                        + playerData.beastQuest.quirkLevel[134]
+                        + playerData.beastQuest.quirkLevel[166]
+                        + playerData.wishes.wishes[120].level
+                        + playerData.wishes.wishes[133].level
+                        + playerData.wishes.wishes[146].level
+                        + playerData.wishes.wishes[179].level
+                        + playerData.wishes.wishes[210].level
+            case 'cardTierDaycare-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[168]
+                        + playerData.adventure.itopod.perkLevel[181]
+                        + playerData.adventure.itopod.perkLevel[194]
+                        + playerData.beastQuest.quirkLevel[102]
+                        + playerData.beastQuest.quirkLevel[115]
+                        + playerData.beastQuest.quirkLevel[128]
+                        + playerData.beastQuest.quirkLevel[160]
+                        + playerData.wishes.wishes[127].level
+                        + playerData.wishes.wishes[140].level
+                        + playerData.wishes.wishes[153].level
+                        + playerData.wishes.wishes[186].level
+                        + playerData.wishes.wishes[217].level
+            case 'cardTierDropChance-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[170]
+                        + playerData.adventure.itopod.perkLevel[183]
+                        + playerData.adventure.itopod.perkLevel[196]
+                        + playerData.beastQuest.quirkLevel[104]
+                        + playerData.beastQuest.quirkLevel[117]
+                        + playerData.beastQuest.quirkLevel[130]
+                        + playerData.beastQuest.quirkLevel[162]
+                        + playerData.wishes.wishes[116].level
+                        + playerData.wishes.wishes[129].level
+                        + playerData.wishes.wishes[142].level
+                        + playerData.wishes.wishes[175].level
+                        + playerData.wishes.wishes[206].level
+            case 'cardTierEnergyNGU-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[169]
+                        + playerData.adventure.itopod.perkLevel[182]
+                        + playerData.adventure.itopod.perkLevel[195]
+                        + playerData.beastQuest.quirkLevel[103]
+                        + playerData.beastQuest.quirkLevel[116]
+                        + playerData.beastQuest.quirkLevel[129]
+                        + playerData.beastQuest.quirkLevel[161]
+                        + playerData.wishes.wishes[115].level
+                        + playerData.wishes.wishes[128].level
+                        + playerData.wishes.wishes[141].level
+                        + playerData.wishes.wishes[174].level
+                        + playerData.wishes.wishes[205].level
+            case 'cardTierGoldDrop-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[162]
+                        + playerData.adventure.itopod.perkLevel[175]
+                        + playerData.adventure.itopod.perkLevel[188]
+                        + playerData.beastQuest.quirkLevel[109]
+                        + playerData.beastQuest.quirkLevel[122]
+                        + playerData.beastQuest.quirkLevel[135]
+                        + playerData.beastQuest.quirkLevel[167]
+                        + playerData.wishes.wishes[121].level
+                        + playerData.wishes.wishes[134].level
+                        + playerData.wishes.wishes[147].level
+                        + playerData.wishes.wishes[180].level
+                        + playerData.wishes.wishes[211].level
+            case 'cardTierHack-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[173]
+                        + playerData.adventure.itopod.perkLevel[186]
+                        + playerData.adventure.itopod.perkLevel[199]
+                        + playerData.beastQuest.quirkLevel[107]
+                        + playerData.beastQuest.quirkLevel[120]
+                        + playerData.beastQuest.quirkLevel[133]
+                        + playerData.beastQuest.quirkLevel[165]
+                        + playerData.wishes.wishes[119].level
+                        + playerData.wishes.wishes[132].level
+                        + playerData.wishes.wishes[145].level
+                        + playerData.wishes.wishes[178].level
+                        + playerData.wishes.wishes[209].level
+            case 'cardTierMagicNGU-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[165]
+                        + playerData.adventure.itopod.perkLevel[178]
+                        + playerData.adventure.itopod.perkLevel[191]
+                        + playerData.beastQuest.quirkLevel[99]
+                        + playerData.beastQuest.quirkLevel[112]
+                        + playerData.beastQuest.quirkLevel[125]
+                        + playerData.beastQuest.quirkLevel[157]
+                        + playerData.wishes.wishes[124].level
+                        + playerData.wishes.wishes[137].level
+                        + playerData.wishes.wishes[150].level
+                        + playerData.wishes.wishes[183].level
+                        + playerData.wishes.wishes[214].level
+            case 'cardTierPP-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.beastQuest.quirkLevel[110]
+                        + playerData.beastQuest.quirkLevel[123]
+                        + playerData.beastQuest.quirkLevel[136]
+                        + playerData.beastQuest.quirkLevel[168]
+                        + playerData.wishes.wishes[122].level
+                        + playerData.wishes.wishes[135].level
+                        + playerData.wishes.wishes[148].level
+                        + playerData.wishes.wishes[181].level
+                        + playerData.wishes.wishes[212].level
+            case 'cardTierQP-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[167]
+                        + playerData.adventure.itopod.perkLevel[180]
+                        + playerData.adventure.itopod.perkLevel[193]
+                        + playerData.wishes.wishes[126].level
+                        + playerData.wishes.wishes[139].level
+                        + playerData.wishes.wishes[152].level
+                        + playerData.wishes.wishes[185].level
+                        + playerData.wishes.wishes[216].level
+            case 'cardTierStat-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[164]
+                        + playerData.adventure.itopod.perkLevel[177]
+                        + playerData.adventure.itopod.perkLevel[190]
+                        + playerData.beastQuest.quirkLevel[111]
+                        + playerData.beastQuest.quirkLevel[124]
+                        + playerData.beastQuest.quirkLevel[137]
+                        + playerData.beastQuest.quirkLevel[169]
+                        + playerData.wishes.wishes[123].level
+                        + playerData.wishes.wishes[136].level
+                        + playerData.wishes.wishes[149].level
+                        + playerData.wishes.wishes[182].level
+                        + playerData.wishes.wishes[213].level
+            case 'cardTierTimeMachine-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[166]
+                        + playerData.adventure.itopod.perkLevel[179]
+                        + playerData.adventure.itopod.perkLevel[192]
+                        + playerData.beastQuest.quirkLevel[100]
+                        + playerData.beastQuest.quirkLevel[113]
+                        + playerData.beastQuest.quirkLevel[126]
+                        + playerData.beastQuest.quirkLevel[158]
+                        + playerData.wishes.wishes[125].level
+                        + playerData.wishes.wishes[138].level
+                        + playerData.wishes.wishes[151].level
+                        + playerData.wishes.wishes[184].level
+                        + playerData.wishes.wishes[215].level
+            case 'cardTierWandoos-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[171]
+                        + playerData.adventure.itopod.perkLevel[184]
+                        + playerData.adventure.itopod.perkLevel[197]
+                        + playerData.beastQuest.quirkLevel[105]
+                        + playerData.beastQuest.quirkLevel[118]
+                        + playerData.beastQuest.quirkLevel[131]
+                        + playerData.beastQuest.quirkLevel[163]
+                        + playerData.wishes.wishes[117].level
+                        + playerData.wishes.wishes[130].level
+                        + playerData.wishes.wishes[143].level
+                        + playerData.wishes.wishes[176].level
+                        + playerData.wishes.wishes[207].level
+            case 'cardTierWish-2':
+                return 1 + playerData.inventory.itemList.rockLobsterComplete
+                        + playerData.adventure.itopod.perkLevel[163]
+                        + playerData.adventure.itopod.perkLevel[176]
+                        + playerData.adventure.itopod.perkLevel[189]
+                        + playerData.beastQuest.quirkLevel[101]
+                        + playerData.beastQuest.quirkLevel[114]
+                        + playerData.beastQuest.quirkLevel[127]
+                        + playerData.beastQuest.quirkLevel[159]
+            
+            
+            
+            
+                        
+            
+
+
+
+
+
+            case 'chonkChonkier-1':
+                return playerData.wishes.wishes[229].level
+            case 'chonkLessNotChonkier-1':
+                return playerData.wishes.wishes[230].level
             case 'cubePower':
                 return playerData.inventory.cubePower;
             case 'cubeToughness':
@@ -453,6 +700,10 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.wandoos98.wandoosEnergy;
             case 'wandoosMagicAllocated' : 
                 return playerData.wandoos98.wandoosMagic;
+            case 'wimpyWish-1':
+                return playerData.wishes.wishes[163].level
+                        + playerData.wishes.wishes[221].level
+                        + playerData.wishes.wishes[228].level
             case 'wishTitansHadBetterRewards-2':
                 return playerData.wishes.wishes[3].level;
             case 'wishBeastDropQP^':
@@ -471,6 +722,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.wishes.wishes[204].level;
             case 'yggdrasilDropChance':
                 return playerData.yggdrasil.totalLuck / 20 + 100
+            case '70sSet^':
+                return playerData.inventory.itemList.that70sComplete
 
 
 
@@ -839,6 +1092,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return totalMagicCap(playerData);
             case 'totalAPBonus%':
                 return totalAPBonus(playerData);
+            case 'totalCardSpeed%':
+                return totalCardSpeed(playerData);
             case 'totalDropChance%':
                 return totalDropChance(playerData);
             case 'totalEnergyNGUSpeedFactor%':
@@ -867,6 +1122,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return totalRespawnRate(playerData).divide(bd(25));
             case 'totalSeedGainBonus%':
                 return totalSeedGainBonus(playerData)
+            case 'totalTagEffect%':
+                return totalTagEffect(playerData);
             case 'totalYggdrasilYieldBonus%':
                 return totalYggdrasilYieldBonus(playerData)
             case 'itopodFloor-5':
@@ -906,11 +1163,45 @@ export function getPlayerNumberOptions() : string[]{
         'baseRes3Cap',
         'baseRes3Power',
         'beastMode',
+        'beefyWish-1',
         'bloodMagicDropChance',
         'bloodMagicTimeMachine',
         'blueHeart^',
         'bonusTitanEXPPerk-2',
         'boostRecyclyingPurchase',
+        'cardRecyclingCard^',
+        'cardRecyclingMayo^',
+        'cardChonkers^',
+        'cardTaggedEnergyNGU^',
+        'cardTaggedMagicNGU^',
+        'cardTaggedWandoos^',
+        'cardTaggedAugments^',
+        'cardTaggedTimeMachine^',
+        'cardTaggedHack^',
+        'cardTaggedWish^',
+        'cardTaggedStat^',
+        'cardTaggedAdventure^',
+        'cardTaggedDropChance^',
+        'cardTaggedGoldDrop^',
+        'cardTaggedDaycare^',
+        'cardTaggedPP^',
+        'cardTaggedQP^',
+        'cardTierEnergyNGU-2',
+        'cardTierMagicNGU-2',
+        'cardTierWandoos-2',
+        'cardTierAugments-2',
+        'cardTierTimeMachine-2',
+        'cardTierHack-2',
+        'cardTierWish-2',
+        'cardTierStat-2',
+        'cardTierAdventure-2',
+        'cardTierDropChance-2',
+        'cardTierGoldDrop-2',
+        'cardTierDaycare-2',
+        'cardTierPP-2',
+        'cardTierQP-2',
+        'chonkChonkier-1',
+        'chonkLessNotChonkier-1',
         'cubePower',
         'cubeToughness',
         'energyNGUAugmentsLevel',
@@ -1092,6 +1383,7 @@ export function getPlayerNumberOptions() : string[]{
         'twentyFourHourSadisticChallenge-2',
         'wandoosEnergyAllocated',
         'wandoosMagicAllocated',
+        'wimpyWish-1',
         'wishTitansHadBetterRewards-2',
         'wishBeastDropQP^',
         'wishNerdDropQP^',
@@ -1101,6 +1393,7 @@ export function getPlayerNumberOptions() : string[]{
         'wishTitan11DropQP^',
         'wishTitan12DropQP^',
         'yggdrasilDropChance',
+        '70sSet^',
     ]
 }
 
@@ -1141,6 +1434,7 @@ export function getCalculatedOptions() : string[] {
         'totalEnergyCap',
         'totalMagicCap',
         'totalAPBonus%',
+        'totalCardSpeed%',
         'totalDropChance%',
         'totalEnergyNGUSpeedFactor%',
         'totalExpBonus%',
@@ -1155,6 +1449,7 @@ export function getCalculatedOptions() : string[] {
         'totalQuestDropBonus%',
         'totalRespawnTime',
         'totalSeedGainBonus%',
+        'totalTagEffect%',
         'totalYggdrasilYieldBonus%',
         'itopodFloor-5',
     ]

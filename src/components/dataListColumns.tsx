@@ -3,6 +3,8 @@ import { pn } from "@/helpers/numbers";
 import bigDecimal from "js-big-decimal";
 import { ReactNode } from "react";
 import { ChoiceButton } from "./buttons";
+import {  CardRarityText } from "@/assets/cards";
+import _ from "lodash";
 
 export function disableItem(reqs: any, itemToRemove: string[]) : string[][] {
     
@@ -91,7 +93,30 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                     }}
                     />
             </li>)
-        
+        }
+        if (d.key.startsWith('cardRarity')) {
+            let rarityOptions : ReactNode[] = []
+            for(let k in Object.keys(CardRarityText)) {
+                let v = k.toString()
+                rarityOptions.push(
+                    (<ChoiceButton
+                        text={CardRarityText[k]}
+                        active={val.getValue() == k}
+                        key={'cardRarity-' + CardRarityText[k]}
+                        onClick={(e) => {
+                            setPlayerDataUpdated(false);
+                            d.value[1](k)
+                        }}
+                    />)
+                )
+            }
+            return (<li key={'in-'+d.key} id={'in-'+d.id} className={disabled}>
+                <label className="inline-block text-black dark:text-white mt-2 mb-1 mr-2">
+                    {/* htmlFor={d.id} */}
+                    {d.name}:
+                </label>
+                {rarityOptions}
+            </li>)
         }
 
         var inputClass = "text-black font-normal rounded border border-black dark:border-white"
@@ -125,7 +150,6 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                     inputClass += ' w-28'
                     break
             }
-            
             // inputClass += " w-" + d.inputLength
         }
 
@@ -161,6 +185,9 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                 dVal = 'Sadistic'
             }
         }
+        if (d.key.startsWith('cardRarity')) {
+            dVal = CardRarityText[Number(d.value[0])]
+        }
 
         return (<li key={d.key} className={disabled}>
                 {d.name}: {d.pre}{dVal}
@@ -171,8 +198,15 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
 /*
  Takes our data and returns many <ul> depending on data
 */
-export function dataToCols(dr : any, input : boolean = false) : ReactNode{
+export function dataToCols(dr : any[], input : boolean = false) : ReactNode{
     const cols = []
+    let params : {[k:string] : any} = {}
+
+    dr = _.cloneDeep(dr)
+    if (!_.isArray(dr[0])) {
+        let extraParams = dr.shift()
+        params = {...params, ...extraParams}
+    }
     
     for (var colNum in dr) {
         var col = dr[colNum]
@@ -189,20 +223,24 @@ export function dataToCols(dr : any, input : boolean = false) : ReactNode{
             colKey = colNum.toString()
         }
         var cc = 'inline-block align-top mb-5 '
-        // We can't do dynamic classnames for tailwind =(
-        switch (dr.length) {
-            case 1:
-                cc += ''
-                break;
-            case 2:
-            case 4:
-            case 8:
-            case 10:
-                cc += 'w-1/2 '
-                break;
-            case 3:
-            case 6:
-                cc += 'w-1/3 '
+        if('colWidths' in params) {
+            cc += params['colWidths'][colNum]
+        } else {
+            // We can't do dynamic classnames for tailwind =(
+            switch (dr.length) {
+                case 1:
+                    cc += ''
+                    break;
+                case 2:
+                case 4:
+                case 8:
+                case 10:
+                    cc += 'w-1/2 '
+                    break;
+                case 3:
+                case 6:
+                    cc += 'w-1/3 '
+            }
         }
         
         cols.push (<ul className={cc} key={colKey}>

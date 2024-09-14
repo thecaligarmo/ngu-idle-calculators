@@ -61,6 +61,26 @@ export class Yggdrasil {
         return bd(0)
     }
 
+    // If our level is not the max level, then left over is how many extra times
+    // We can run yggdrasil that day
+    leftovers(data : {}, poopLeftovers: boolean) : bigDecimal {
+        let maxTier = 24
+        maxTier -= this.tier
+        let leftover = bd(0)
+        let tmpTier = this.tier
+        let tmpPoop = this.usePoop
+        while(maxTier > 0) {
+            let nTier = (maxTier > this.tier) ? this.tier : maxTier
+            this.tier = nTier
+            this.usePoop = poopLeftovers
+            leftover = leftover.add(this.fruitYield({...data, 'firstHarvest': 0}))
+            maxTier -= this.tier
+        }
+        this.tier = tmpTier
+        this.usePoop = tmpPoop
+        return leftover
+    }
+
     poopKey() : string {
         return 'poop' + this.key.charAt(0).toUpperCase() + this.key.slice(1) + '^'
     }

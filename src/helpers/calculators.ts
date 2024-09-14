@@ -18,7 +18,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
     }
 
     if(false) {
-        if(Stat.ENERGY_WANDOOS_SPEED == stat) {
+        if(Stat.MAYO_SPEED == stat) {
             console.log('----------------------------------------')
             console.log('advTraining', advTrainingInfo(data, stat).getValue())
             console.log('ap', apItemInfo(data, stat).getValue())    
@@ -418,9 +418,48 @@ export function totalQuestDropBonus(data : any) : bigDecimal {
 
 export function totalMayoSpeed(data : any) :bigDecimal {
     var gen = calcAll(data, Stat.MAYO_SPEED)
+    var generators = ((totalMayoGeneration(data).subtract(bd(1))).multiply(bd(2))).add(bd(100))
+    var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.SADISTIC, 6)) ? bd(1.1) : bd(1);
+    var rainbowHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.RAINBOW_HEART) ? bd(1.1) : bd(1)
+    var duckSet : bigDecimal = isMaxxedItemSet(data, ItemSets.DUCK) ? bd(1.06) : bd(1)
+
     return gen
+        .multiply(generators).divide(bd(100))
+        .multiply(tcNum)
+        .multiply(rainbowHeartBonus)
+        .multiply(duckSet)
 }
 
+export function totalCardSpeed(data : any) :bigDecimal {
+    var gen = calcAll(data, Stat.CARD_SPEED)
+    var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.SADISTIC, 5)) ? bd(1.1) : bd(1);
+    var rainbowHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.RAINBOW_HEART) ? bd(1.1) : bd(1)
+    var duckSet : bigDecimal = isMaxxedItemSet(data, ItemSets.DUCK) ? bd(1.06) : bd(1)
+    return gen
+        .multiply(tcNum)
+        .multiply(rainbowHeartBonus)
+        .multiply(duckSet)
+}
+
+export function totalMayoGeneration(data : any) :bigDecimal {
+
+    return bd(1)
+        .add(apItemInfo(data, Stat.MAYO_GENERATOR))
+        .add(perkInfo(data, Stat.MAYO_GENERATOR))
+        .add(quirkInfo(data, Stat.MAYO_GENERATOR))
+        .add(wishInfo(data, Stat.MAYO_GENERATOR))
+        .subtract(bd(400))
+}
+
+export function totalTagEffect(data : any) :bigDecimal {
+    var beatingHeartbonus : bigDecimal = isMaxxedItemSet(data, ItemSets.BEATING_HEART) ? bd(1) : bd(0)
+    return bd(10)
+        .add(beatingHeartbonus)
+        .add(perkInfo(data, Stat.TAG_EFFECT))
+        .add(quirkInfo(data, Stat.TAG_EFFECT))
+        .add(wishInfo(data, Stat.TAG_EFFECT))
+        .subtract(bd(300))
+}
 
 export function getIdleAttackModifier(spoopySetBonus : boolean, sadNEC : bigDecimal) : bigDecimal {
     return (spoopySetBonus ? bd(1.5) : bd(1.2))

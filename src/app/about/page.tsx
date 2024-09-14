@@ -27,6 +27,9 @@ export default function Page() {
                         <li key="sancPPSheet">
                             <Link href="https://docs.google.com/spreadsheets/d/1v9yA1Cv8W7OS1Vo_3LU3rHVBsPXaFRzP4T7Di2ZT3YY/edit?usp=sharing">Sanc&apos;s Giant PP (and EXP/etc.)</Link> (Daily) - Last Updated 7/04/2021 - Discord: Sancdar#0032
                         </li>
+                        <li key="sancCardSheet">
+                            <Link href="https://docs.google.com/spreadsheets/d/153Yyh763YI55NHUReGdVJhIOqvYTRZYFatzmjYLmxMc/edit">Sancdar&apos;s Card spreadsheet &quot;It&apos;s time to D-D-D-D-D-Droool&quot;</Link> (Cards) - Discord: Sancdar#0032
+                        </li>
                         <li key="blaze">
                             <Link href="https://docs.google.com/spreadsheets/d/1S1JXe3kZeqzxBOVXMo2-Db6iSrfeS42oTeBuVIarjmY/">Blaze&apos;s Junkyard - v1.482</Link> (Wandoos, Ygg)
                         </li>

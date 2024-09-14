@@ -54,7 +54,7 @@ export function getRequiredStates(data : any, states : any, nameMap : any = {} )
             var kName : string = _.isArray(k) ? k[0] : k;
             var dataState = states[kName]
             var ty = 'number'
-            var name = (kName in nameMap) ? nameMap[kName] : camelToTitle(kName)
+            var name = camelToTitle(kName)
             var pre = ''
             var inputLength = 0
             if (kName.slice(-1) == '%') {
@@ -71,6 +71,8 @@ export function getRequiredStates(data : any, states : any, nameMap : any = {} )
                 name = camelToTitle(sp[0])
                 inputLength = Number(sp[1])
             }
+
+            name = (kName in nameMap) ? nameMap[kName] : name
             var id = kName.replace('^', '').replace('%', '')
             colDr.push({
                 key: kName,

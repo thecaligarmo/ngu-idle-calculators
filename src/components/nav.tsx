@@ -24,13 +24,14 @@ export default function Nav({ children } : PropsWithChildren) {
       <nav>
         <ul className="flex border-b dark:border-white border-black">
             <NavElt href="/">Home</NavElt>
-            <NavElt href="/ratios">Ratios</NavElt>
-            <NavElt href="/wandoos">Wandoos</NavElt>
+            <NavElt href="/cards">Cards</NavElt>
+            <NavElt href="/daily">Daily</NavElt>
             <NavElt href="/ngus" hasChildren={true}>NGUs</NavElt>
             <NavElt href="/zone">Optimal Zone</NavElt>
-            <NavElt href="/daily">Daily</NavElt>
-            <NavElt href="/stats">Stats</NavElt>
+            <NavElt href="/ratios">Ratios</NavElt>
+            <NavElt href="/wandoos">Wandoos</NavElt>
             <NavElt href="/ygg">Ygg</NavElt>
+            <NavElt href="/stats">Stats</NavElt>
             <NavElt href="/about">About/Credits</NavElt>
 
             <li key="save" className="flex-grow">
