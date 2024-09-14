@@ -9,33 +9,11 @@ import { disableItem } from "@/components/dataListColumns";
 import { StandardTable, StandardTableRowType } from "@/components/standardTable";
 import { bd, pn } from "@/helpers/numbers";
 import { bigDecimalObj, toObjectMap } from "@/helpers/objects";
+import { cardExtraNameChanges, cardReqChonkers, cardReqFruit, cardReqNameChanges, getCardsPerDay, getChonksPerDay, getMayoFromInfusers, getMayoFromRecycling } from "@/helpers/pages/cards";
 import { parseNum, parseObj } from "@/helpers/parsers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import { camelToTitle } from "@/helpers/strings";
 import bigDecimal from "js-big-decimal";
-import { ReactNode, useState } from "react";
-
-function tableOfElts(elts : bigDecimalObj, fmt : string) {
-    var headerRow : ReactNode[] = []
-    for (let e in elts) {
-        headerRow.push((<th>{camelToTitle(e)}</th>))
-    }
-    var row : ReactNode[] = []
-    for (let f of Object.values(elts)) {
-        row.push((<td>{pn(f, fmt, 6)}</td>))
-    }
-    return (
-        <table>
-            <thead>
-                <tr>{headerRow}</tr>
-            </thead>
-            <tbody>
-                <tr>{row}</tr>
-            </tbody>
-        </table>
-    )
-
-}
 
 
 export default function Page() {
@@ -109,13 +87,6 @@ export default function Page() {
         ]
 
     ]
-    /*
-    
-    Tag effect
-
-    yggdrasil - 6 fruits (tiers) - Poop
-
-    */
 
     // Set extra required (not from playerData)
     var extraRequired : (string | [string, number])[][] = [
@@ -160,77 +131,8 @@ export default function Page() {
             'cardChonkedQP^',
         ],
     ]
-    /*
-    
-    Include Left-overs?
-     - Poop
-    
 
-    Infusers
-    */
     const playerStates = createStatesForData(extraRequired);
-
-    var cardExtraNameChanges = {
-        'cardChonkedEnergyNGU^': 'Chonk Energy NGU',
-        'cardChonkedMagicNGU^': 'Chonk Magic NGU',
-        'cardChonkedWandoos^': 'Chonk Wandoos',
-        'cardChonkedAugments^': 'Chonk Augments',
-        'cardChonkedTimeMachine^': 'Chonk Time Machine',
-        'cardChonkedHack^': 'Chonk Hack',
-        'cardChonkedWish^': 'Chonk Wish',
-        'cardChonkedStat^': 'Chonk Stat',
-        'cardChonkedAdventure^': 'Chonk Adventure',
-        'cardChonkedDropChance^': 'Chonk Drop Chance',
-        'cardChonkedGoldDrop^': 'Chonk Gold Drop',
-        'cardChonkedDaycare^': 'Chonk Daycare',
-        'cardChonkedPP^': 'Chonk PP',
-        'cardChonkedQP^': 'Chonk QP',
-        'cardRarityEnergyNGU': 'Energy NGU Rarity',
-        'cardRarityMagicNGU': 'Magic NGU Rarity',
-        'cardRarityWandoos': 'Wandoos Rarity',
-        'cardRarityAugments': 'Augments Rarity',
-        'cardRarityTimeMachine': 'Time Machine Rarity',
-        'cardRarityHack': 'Hack Rarity',
-        'cardRarityWish': 'Wish Rarity',
-        'cardRarityStat': 'Stat Rarity',
-        'cardRarityAdventure': 'Adventure Rarity',
-        'cardRarityDropChance': 'Drop Chance Rarity',
-        'cardRarityGoldDrop': 'Gold Drop Rarity',
-        'cardRarityDaycare': 'Daycare Rarity',
-        'cardRarityPP': 'PP Rarity',
-        'cardRarityQP': 'QP Rarity',
-    }
-
-    var cardReqNameChanges = {
-            'cardTierEnergyNGU-2': 'Energy NGU Tier',
-            'cardTierMagicNGU-2': 'Magic NGU Tier',
-            'cardTierWandoos-2': 'Wandoos Tier',
-            'cardTierAugments-2': 'Augments Tier',
-            'cardTierTimeMachine-2': 'Time Machine Tier',
-            'cardTierHack-2': 'Hack Tier',
-            'cardTierWish-2': 'Wish Tier',
-            'cardTierStat-2': 'Stat Tier',
-            'cardTierAdventure-2': 'Adventure Tier',
-            'cardTierDropChance-2': 'Drop Chance Tier',
-            'cardTierGoldDrop-2': 'Gold Drop Tier',
-            'cardTierDaycare-2': 'Daycare Tier',
-            'cardTierPP-2': 'PP Tier',
-            'cardTierQP-2': 'QP Tier',
-            'cardTaggedEnergyNGU^': 'Energy NGU Tagged',
-            'cardTaggedMagicNGU^': 'Magic NGU Tagged',
-            'cardTaggedWandoos^': 'Wandoos Tagged',
-            'cardTaggedAugments^': 'Augments Tagged',
-            'cardTaggedTimeMachine^': 'Time Machine Tagged',
-            'cardTaggedHack^': 'Hack Tagged',
-            'cardTaggedWish^': 'Wish Tagged',
-            'cardTaggedStat^': 'Stat Tagged',
-            'cardTaggedAdventure^': 'Adventure Tagged',
-            'cardTaggedDropChance^': 'Drop Chance Tagged',
-            'cardTaggedGoldDrop^': 'Gold Drop Tagged',
-            'cardTaggedDaycare^': 'Daycare Tagged',
-            'cardTaggedPP^': 'PP Tagged',
-            'cardTaggedQP^': 'QP Tagged',
-    }
 
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates, cardReqNameChanges)
@@ -238,49 +140,13 @@ export default function Page() {
     extraReq.unshift({'colWidths':['w-full', 'w-3/4', 'w-1/4']})
 
     if (!c('includeFruit^')) {
-        extraReq = disableItem(extraReq, [
-            'twoFruitPerInfuser^',
-            'includeLeftovers^',
-            'poopAllLeftovers^',
-        ]);
-        infoReq = disableItem(infoReq, [
-            'tierFruitOfAngryMayo-2',
-            'tierFruitOfSadMayo-2',
-            'tierFruitOfMoldyMayo-2',
-            'tierFruitOfAyyMayo-2',
-            'tierFruitOfCincoDeMayo-2',
-            'tierFruitOfPrettyMayo-2',
-            'poopFruitOfAngryMayo^',
-            'poopFruitOfSadMayo^', 
-            'poopFruitOfMoldyMayo^',
-            'poopFruitOfAyyMayo^',
-            'poopFruitOfCincoDeMayo^',
-            'poopFruitOfPrettyMayo^',
-        ]);
+        extraReq = disableItem(extraReq, cardReqFruit);
+        infoReq = disableItem(infoReq, cardReqFruit);
     }
 
     if (!c('cardChonkers^')) {
-        extraReq = disableItem(extraReq, [
-            'cardChonkedEnergyNGU^',
-            'cardChonkedMagicNGU^',
-            'cardChonkedWandoos^',
-            'cardChonkedAugments^',
-            'cardChonkedTimeMachine^',
-            'cardChonkedHack^',
-            'cardChonkedWish^',
-            'cardChonkedStat^',
-            'cardChonkedAdventure^',
-            'cardChonkedDropChance^',
-            'cardChonkedGoldDrop^',
-            'cardChonkedDaycare^',
-            'cardChonkedPP^',
-            'cardChonkedQP^',
-        ]);
-        infoReq = disableItem(infoReq, [
-            'chonkChonkier-1',
-            'chonkLessNotChonkier-1'
-        ]);
-
+        extraReq = disableItem(extraReq, cardReqChonkers);
+        infoReq = disableItem(infoReq, cardReqChonkers);
     }
 
     // Helper function - Needed in every isntance (makes code easier to read too)
@@ -298,13 +164,12 @@ export default function Page() {
 
     
 
-    
-
     let seventiesSet = c('70sSet^')
     let blackPen = c('blackPen^')
     let tagEffect =  v('totalTagEffect%').divide(bd(100))
     let cardSpeed = v('totalCardSpeed%')
     let mayoSpeed = v('totalMayoSpeed%')
+
     var fruitYieldData = {
         blueHeart: c('blueHeart^'),
         mayoSpeed: mayoSpeed, // Mayo
@@ -327,23 +192,18 @@ export default function Page() {
 
 
     // H_i / cardsPeraDay
-    let cardTypeRarityRates : bigDecimalObj = toObjectMap(cards,
-                                                        (card) => card.key,
-                                                        (card) => card.rarityRate(seventiesSet, tagEffect, numTagged)
-                                                    )
+    let cardTypeRarityRates : bigDecimalObj = toObjectMap(
+        cards,
+        (card) => card.key,
+        (card) => card.rarityRate(seventiesSet, tagEffect, numTagged)
+    )
 
     // sum H_i / cardsPerDay
     let recycleCard = Object.values(cardTypeRarityRates).reduce((rateSum : bigDecimal, rate : bigDecimal) => {
         return rateSum.add(rate)
     }, bd(0))
     
-    let cardsPerDay = bd(24).multiply(cardSpeed.divide(bd(100)))
-        .divide(
-            bd(1).add(
-                (recycleCard.subtract(bd(1.01))).divide(bd(10))
-            )
-        )
-
+    let cardsPerDay = getCardsPerDay(cardSpeed, recycleCard)
     let cardsRecycled = (recycleCard.subtract(bd(1.01)).multiply(cardsPerDay)).divide(bd(-10))
     if (!c('cardRecyclingCard^')) {
         cardsPerDay = cardsPerDay.subtract(cardsRecycled)
@@ -356,10 +216,9 @@ export default function Page() {
 
 
     // Chonk info
-    let chonksPerDay = cardSpeed.divide(bd(300))
-
     // J_i / cardSpeed
-    let chonkTags : bigDecimalObj = toObjectMap(cards,
+    let chonkTags : bigDecimalObj = toObjectMap(
+        cards,
         (card) => card.key,
         (card) => c(card.chonkKey()) ? card.tagFormula(tagEffect, numTagged) : bd(0)
     )
@@ -367,15 +226,7 @@ export default function Page() {
         return tagSum.add(tag)
     }, bd(0))
 
-    if (c('cardRecyclingCard^')) {
-        chonksPerDay = chonksPerDay.divide(
-            bd(1).subtract(
-                (
-                    bd(1).subtract(recycleChonk)
-                ).divide(bd(4))
-            ) 
-        )
-    }
+    let chonksPerDay = getChonksPerDay(cardSpeed, recycleChonk, c('cardRecyclingCard^'))
 
 
 
@@ -400,29 +251,11 @@ export default function Page() {
     let mayoFromFruitLeftovers = c('includeLeftovers^') ? leftoverFromFruit : bd(0)
 
     let mayoFromRecycling = c('cardRecyclingMayo^') 
-                ? bd(0.2).multiply(
-                    cardsPerDay.multiply(bd(1.01))
-                        .subtract(recycleCard.multiply(cardsPerDay))
-                        .add(chonksPerDay)
-                        .subtract(recycleChonk.multiply(cardsPerDay))
-                )
+                ? getMayoFromRecycling(cardsPerDay, chonksPerDay, recycleCard, recycleChonk)
                 : bd(0);
     let mayoFromInfusers = v('infusersEveryXDays-2').compareTo(bd(1)) < 0 
                     ? bd(0) 
-                    : (
-                        (bd(24 * 1.2).multiply(mayoSpeed.divide(bd(100))))
-                        .add(
-                            (mayoFromFruit.add(mayoFromFruitLeftovers))
-                                .multiply(bd(1.2))
-                                .multiply(
-                                    bd(1).add(
-                                        v('infusersEveryXDays-2').compareTo(bd(1)) != 0 && c('twoFruitPerInfuser^')
-                                            ? bd(1)
-                                            : bd(0)
-                                    )
-                                )
-                        )
-                    ).divide(v('infusersEveryXDays-2'))
+                    : getMayoFromInfusers(mayoSpeed, v('infusersEveryXDays-2'), c('twoFruitPerInfuser^'), mayoFromFruit, mayoFromFruitLeftovers)
     let mayoPerDay = (bd(24).multiply(mayoSpeed.divide(bd(100))))
                         .add(c('includeFruit^') ? mayoFromFruit : bd(0))
                         .add(c('includeFruit^') ? mayoFromFruitLeftovers : bd(0))
@@ -485,92 +318,86 @@ export default function Page() {
     }, bd(0))
     let mayoLeftover = mayoPerDay.subtract(totalMayoNeeded)
     
-
-    var perTypeHeader = [
-        "",
-        "Cards per day",
-        "Bonus per mayo",
-        "Bonus per card",
-        "Bonus per day",
-        "Mayo needed per day"
+    
+    var perTypeOrder = [
+        "key",
+        "bpd",
+        "cpd",
+        "bpc",
+        "mpd",
+        "bpm"
     ]
     if(c('cardChonkers^')) {
-        perTypeHeader = [
-            "",
-            "Cards per day",
-            "Chonks per day",
-            "Bonus per mayo",
-            "Bonus per card",
-            "Bonus per chonk",
-            "Bonus per day",
-            "Mayo needed per day"
+        perTypeOrder = [
+            "key",
+            "bpd",
+            "cpd",
+            "bpc",
+            "chpd",
+            "bpch",
+            "mpd",
+            "bpm"
         ]
     }
 
-    var perTypeData : StandardTableRowType = {}
+    var perTypeHeader = {
+        "key": "",
+        "bpd": "Bonus per day",
+        "cpd": "Cards per day",
+        "bpc": "Bonus per card",
+        "chpd": "Chonks per day",
+        "bpch": "Bonus per chonk",
+        "mpd": "Mayo needed per day",
+        "bpm": "Bonus per mayo",
+    }
+    
+
+    var perTypeRows : StandardTableRowType = {}
     for(let k of Object.keys(infoByType)) {
-        let tmpDict = {
+        perTypeRows[k] = {
             'key': camelToTitle(k),
             'cpd': <span className="text-red-500">{pn(infoByType[k]['cardsPerDay'], fmt)}</span>,
-            'chpd': pn(infoByType[k]['chonksPerDay'], fmt, 3),
+            'chpd': <span className="text-red-500">{pn(infoByType[k]['chonksPerDay'], fmt, 3)}</span>,
             'bpm': pn(infoByType[k]['bonusPerMayo%'], fmt, 3) + "%",
             'bpc': pn(infoByType[k]['bonusPerCard%'], fmt, 3) + "%",
             'bpch': pn(infoByType[k]['bonusPerChonk%'], fmt, 3) + "%",
             'bpd': <span className="text-green-500">{pn(infoByType[k]['bonusPerDay%'], fmt, 3) + "%"}</span>,
-            'mn': <span className="text-blue-500">{pn(infoByType[k]['mayoNeeded'], fmt, 2)}</span>,
-        }
-        perTypeData[k] = [
-            tmpDict['key'],
-            tmpDict['cpd'],
-            tmpDict['bpm'],
-            tmpDict['bpc'],
-            tmpDict['bpd'],
-            tmpDict['mn'],
-        ]
-        if(c('cardChonkers^')) {
-            perTypeData[k] = [
-                tmpDict['key'],
-                tmpDict['cpd'],
-                tmpDict['chpd'],
-                tmpDict['bpm'],
-                tmpDict['bpc'],
-                tmpDict['bpch'],
-                tmpDict['bpd'],
-                tmpDict['mn'],
-            ]
+            'mpd': <span className="text-blue-500">{pn(infoByType[k]['mayoNeeded'], fmt, 2)}</span>,
         }
     }
 
-    var dailyHeader = [
-        "",
-        "Amount",
-        "Extra Info"
-    ]
+
+    var dailyOrder = ["main", "amt", "extra"]
+    var dailyHeader = {
+        "main": "",
+        "amt": "Amount",
+        "extra": "Extra Info"
+    }
     var dailyData : StandardTableRowType = {
-        "mayo": [
-            "Mayo",
-            <span className="text-red-500">{pn(mayoPerDay, fmt)}</span>,
-            <ul>
-                <li><strong>Fruit:</strong> {pn(mayoFromFruit, fmt)}</li>
-                <li><strong>Fruit Leftovers:</strong> {pn(leftoverFromFruit, fmt)}</li>
-                <li><strong>Card Recycling:</strong> {pn(mayoFromRecycling, fmt)}</li>
-                <li><strong>Infusers:</strong> {pn(mayoFromInfusers, fmt)}</li>
+        "mayo": {
+            "main": "Mayo",
+            "amt": <span className="text-red-500">{pn(mayoPerDay, fmt)}</span>,
+            "extra": <ul key="mayoInfo">
+                <li key="fruit"><strong>Fruit:</strong> {pn(mayoFromFruit, fmt)}</li>
+                <li key="leftover"><strong>Fruit Leftovers:</strong> {pn(leftoverFromFruit, fmt)}</li>
+                <li key="recycle"><strong>Card Recycling:</strong> {pn(mayoFromRecycling, fmt)}</li>
+                <li key="infusers"><strong>Infusers:</strong> {pn(mayoFromInfusers, fmt)}</li>
             </ul>
-        ],
-        "cards": [
-            "Cards",
-            <span className="text-red-500">{pn(cardsPerDay, fmt)}</span>,
-            <ul>
-                <li><strong>Card Recycling:</strong> {pn(cardsRecycled, fmt)}</li>
+        },
+        "cards": {
+            "main": "Cards",
+            "amt": <span className="text-red-500">{pn(cardsPerDay, fmt)}</span>,
+            "extra": <ul key="cardInfo">
+                <li key="recycle"><strong>Card Recycling:</strong> {pn(cardsRecycled, fmt)}</li>
             </ul>
-        ]
+        }
     }
     if (c('cardChonkers^')) {
-        dailyData['chonks'] = [
-            "Chonkers",
-            <span className="text-red-500">{pn(chonksPerDay, fmt)}</span>,
-            ""
-        ]
+        dailyData['chonks'] = {
+            "main": "Chonkers",
+            "amt": <span className="text-red-500">{pn(chonksPerDay, fmt)}</span>,
+            "extra": ""
+        }
     }
 
     
@@ -590,7 +417,7 @@ export default function Page() {
             <ContentSubsection title={"How much mayo, cards, chonks will I get per day?"}>
                 <>
                     <p>The below let's you know how much mayo, cards and chonks you will get per day.</p>
-                    <StandardTable headers={dailyHeader} rows={dailyData} />
+                    <StandardTable order={dailyOrder} header={dailyHeader} rows={dailyData}/>
 
                     <p>With the above stats, you will have <span className={mayoLeftover.compareTo(bd(0)) < 0 ? "text-red-500" : "text-green-500"}>{pn(mayoLeftover, fmt)}</span> Mayo spare at the end of each day.</p>
                     <p>The chance of getting a tagged card is: {pn(chanceOfTagged.multiply(bd(100)), fmt, 2)}%</p>
@@ -599,7 +426,7 @@ export default function Page() {
             </ContentSubsection>
             <ContentSubsection title={"What do I get per card type?"}>
                 <>
-                    <StandardTable rows={perTypeData} headers={perTypeHeader} />
+                    <StandardTable order={perTypeOrder} header={perTypeHeader} rows={perTypeRows} />
                     <p>Due to the nature of cards, the above are averages and are not guaranteed.</p>
                 </>
             </ContentSubsection>

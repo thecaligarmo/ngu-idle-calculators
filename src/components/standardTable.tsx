@@ -1,12 +1,14 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { ReactNode } from "react";
 
-export type StandardTableRowType = {[key:string]: (string|ReactNode[])}
+export type StandardTableRowType = {[key:string]: {[k:string] : string|ReactNode}}
 
-export function StandardTable({headers, rows, fullWidth = true} : {headers: (string|ReactNode)[], rows: StandardTableRowType, fullWidth ?: boolean}) {
+export function StandardTable({order, header, rows, fullWidth = true} : {order: string[], header: {[key:string]:(string|ReactNode)}, rows: StandardTableRowType, fullWidth ?: boolean}) {
     var headRow : ReactNode[] = []
-    for(let head of headers) {
+    for(let it of order) {
         headRow.push((
-            <th className="px-2">{head}</th>
+            <th key={it} className="px-2">
+                {header[it]}
+            </th>
         ))
     }
 
@@ -15,13 +17,14 @@ export function StandardTable({headers, rows, fullWidth = true} : {headers: (str
     for(let key in rows) {
         i += 1
         let contentData : ReactNode[] = []
-        for(let val of rows[key]) {
+        for(let it of order) {
             contentData.push((
-                <td className="px-2">
-                    {val}
+                <td key={it} className="px-2">
+                    {rows[key][it]}
                 </td>
             ))
         }
+
         contentRows.push((
             <tr key={key} className={i % 2 == 1 ? "bg-slate-200 dark:bg-slate-900" : ""}>
                 {contentData}
@@ -35,7 +38,7 @@ export function StandardTable({headers, rows, fullWidth = true} : {headers: (str
     return (
         <table className={tableClass}>
             <thead>
-                <tr className="text-left border-b-1 border border-t-0 border-x-0">
+                <tr key="header" className="text-left border-b-1 border border-t-0 border-x-0">
                     {headRow}
                 </tr>
             </thead>
