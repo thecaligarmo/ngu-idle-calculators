@@ -453,6 +453,9 @@ export function totalMayoGeneration(data : any) :bigDecimal {
 
 export function totalTagEffect(data : any) :bigDecimal {
     var beatingHeartbonus : bigDecimal = isMaxxedItemSet(data, ItemSets.BEATING_HEART) ? bd(1) : bd(0)
+    if (isInitilizing(data)) {
+        return bd(0)
+    }
     return bd(10)
         .add(beatingHeartbonus)
         .add(perkInfo(data, Stat.TAG_EFFECT))
