@@ -1,8 +1,11 @@
+import _ from "lodash";
 import { ReactNode } from "react";
 
 export type StandardTableRowType = {[key:string]: {[k:string] : string|ReactNode}}
 
-export function StandardTable({order, header, rows, fullWidth = true} : {order: string[], header: {[key:string]:(string|ReactNode)}, rows: StandardTableRowType, fullWidth ?: boolean}) {
+export function StandardTable({order, header, rows, fullWidth = true, extraRowClasses = {}}
+    : {order: string[], header: {[key:string]:(string|ReactNode)}, rows: StandardTableRowType, fullWidth ?: boolean, extraRowClasses ?: {[k:string] : string} })
+    {
     var headRow : ReactNode[] = []
     for(let it of order) {
         headRow.push((
@@ -18,22 +21,33 @@ export function StandardTable({order, header, rows, fullWidth = true} : {order: 
         i += 1
         let contentData : ReactNode[] = []
         for(let it of order) {
+            let d = _.isUndefined(rows[key][it])? "" : rows[key][it]
+            let className = "px-2"
+            if(!_.isUndefined(extraRowClasses[it])){
+                className += " " + extraRowClasses[it]
+            }
+
             contentData.push((
-                <td key={it} className="px-2">
-                    {rows[key][it]}
+                <td key={it} className={className}>
+                    {d}
                 </td>
             ))
         }
 
+        let className = i % 2 == 1 ? "bg-slate-200 dark:bg-slate-900" : ""
+        if(!_.isUndefined(rows[key]['isTotal']) && rows[key]['isTotal']) {
+            className = "text-left border-t-1 border border-b-0 border-x-0"
+        }
+
         contentRows.push((
-            <tr key={key} className={i % 2 == 1 ? "bg-slate-200 dark:bg-slate-900" : ""}>
+            <tr key={key} className={className}>
                 {contentData}
             </tr>
         ))
     }
-    let tableClass = "inline-block w-full align-top mb-2"
+    let tableClass = "inline-block w-full align-top mb-2 "
     if (!fullWidth) {
-        tableClass += "md:w-1/2"
+        tableClass += "md:w-1/2 "
     }
     return (
         <table className={tableClass}>

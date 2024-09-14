@@ -4,9 +4,9 @@ import { NGU } from "@/assets/ngus";
 import { pn } from "@/helpers/numbers";
 import bigDecimal from "js-big-decimal";
 import { ReactElement, ReactNode } from "react";
+import { StandardTable, StandardTableRowType } from "../standardTable";
 
 interface NGUProps {
-    children ?: ReactNode;
     type: string;
     NGUs : NGU[];
     targets: bigDecimal[];
@@ -14,34 +14,24 @@ interface NGUProps {
     fmt : string
 }
 
-export default function NGUCapTable({children, type, NGUs, targets, speedFactor, fmt} : NGUProps) : ReactElement{
+export default function NGUCapTable({type, NGUs, targets, speedFactor, fmt} : NGUProps) : ReactElement{
 
-    var capToMaxTargetsRow = NGUs.map(function(ngu, index) {
-        var cap = ngu.capToReachMaxTarget(speedFactor)
-        
-        var targetLvl = targets[index];
-        return (
-            <tr key={ngu.key} className={index %2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
-                <td className="px-2">{ngu.name}</td>
-                <td className="px-2"><span className="text-red-500">{pn(cap, fmt)}</span></td>
-                <td className="px-2"><span className="text-blue-500">{pn(targetLvl, fmt)}</span></td>
-            </tr>
-        )
-    })
+    var order = ["type", "cap", "target"]
+    var header = {
+        "type": <span>{type} NGU</span>,
+        "cap": "Cap",
+        "target": "Target"
+    }
+    var dataRows : StandardTableRowType = {}
+    for (let index in NGUs) {
+        let ngu = NGUs[index]
+        dataRows[ngu.key] = {
+            "type": ngu.name,
+            "cap": <span className="text-red-500">{pn(ngu.capToReachMaxTarget(speedFactor), fmt)}</span>,
+            "target":<span className="text-blue-500">{pn(targets[index], fmt)}</span>
+        }
+    }
 
-    return (
-        <table className="inline-block w-full md:w-1/2 align-top mb-2">
-        <thead>
-            <tr className="text-left border-b-1 border border-t-0 border-x-0">
-                <th className="px-2">{type} NGU</th>
-                <th className="px-2">Cap</th>
-                <th className="px-2">Target</th>
-            </tr>
-        </thead>
-        <tbody>
-            {capToMaxTargetsRow}
-        </tbody>
-    </table>
-    )
+    return <StandardTable order={order} header={header} rows={dataRows} fullWidth={false} />
 }
 

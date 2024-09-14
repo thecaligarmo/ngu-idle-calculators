@@ -4,8 +4,8 @@ import { Yggdrasil } from '@/assets/yggdrasil';
 import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
-import { bd } from '@/helpers/numbers';
-import { fruitInfoRows } from '@/helpers/pages/ygg';
+import { StandardTable, StandardTableRowType } from '@/components/standardTable';
+import { bd, pn } from '@/helpers/numbers';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { nguInfo } from '@/helpers/resourceInfo';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
@@ -137,29 +137,47 @@ export default function Page() {
         qpRewardBonus: v('totalQuestRewardBonus%'), // Quest
         mayoSpeed: v('totalMayoSpeed%'), // Mayo
     }
-    
-    var fruitInfo = fruitInfoRows(fruits, fruitYieldData, fmt)
+
+    let order = [
+        "fruit",
+        "tier",
+        "poop",
+        "eatHarvest",
+        "seedGain",
+        "yield",
+        "cost",
+        "24Cost"
+    ]
+
+    let header = {
+        "fruit": "Fruit",
+        "tier": "Current Tier",
+        "poop": "Poop?",
+        "eatHarvest": "Eat / Harvest?",
+        "seedGain" : "Seed Gain",
+        "yield": "Yggdrasil Yield",
+        "cost": "Upgrade Cost",
+        "24Cost": "Cost to upgrade to tier 24",
+    }
+    var dataRows : StandardTableRowType = {}
+    for(let index in fruits) {
+        let fruit = fruits[index]
+        dataRows[fruit.key] = {
+            "fruit": fruit.name,
+            "tier": fruit.tier,
+            "poop": fruit.usePoop ? 'Yes' : 'No',
+            "eatHarvest": fruit.eatFruit ? 'Eat' : 'Harvest',
+            "seedGain" : <span className="text-green-500">{pn(fruit.seedYield(fruitYieldData.totalSeedGainBonus, fruitYieldData.firstHarvest, fruitYieldData.blueHeart), fmt)}</span>,
+            "yield": <span className="text-red-500">{pn(fruit.fruitYield(fruitYieldData), fmt)}</span>,
+            "cost": <span className="text-blue-500">{pn(fruit.upgradeCost(), fmt)}</span>,
+            "24Cost": <span>{pn(fruit.totalUpgradeCost(), fmt)}</span>,
+        }
+    }
 
     return (
         <Content title="Yggdrasil" infoRequired={infoReq} extraRequired={extraReq}>
             <ContentSubsection title="What will you get if you harvest/eat fruits?">
-                <table className="inline-block w-full align-top mb-2">
-                    <thead>
-                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
-                            <th className="px-2">Fruit</th>
-                            <th className="px-2">Current Tier</th>
-                            <th className="px-2">Poop?</th>
-                            <th className="px-2">Eat / Harvest?</th>
-                            <th className="px-2">Seed Gain</th>
-                            <th className="px-2">Yggdrasil Yield</th>
-                            <th className="px-2">Upgrade Cost</th>
-                            <th className="px-2">Cost to upgrade to tier 24</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {fruitInfo}
-                    </tbody>
-                </table>
+                <StandardTable order={order} header={header} rows={dataRows} />
             </ContentSubsection>
         </Content>
     )

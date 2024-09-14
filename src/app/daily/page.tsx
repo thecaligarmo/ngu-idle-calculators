@@ -8,6 +8,7 @@ import { Zones } from "@/assets/zones";
 import Content from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
+import { StandardTable } from "@/components/standardTable";
 import { getIdleAttackModifier } from "@/helpers/calculators";
 import { bd, pn } from "@/helpers/numbers";
 import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from "@/helpers/pages/daily";
@@ -275,6 +276,147 @@ export default function Page() {
         </>
     )
 
+    let tableOrder = ["key", "amt", "extra"]
+    let apTableHeader = {
+        "key": "AP",
+        "amt": "Amount",
+    }
+    var expTableHeader = {
+        'key': "EXP",
+        "amt": "Amount",
+    }
+    var ppTableHeader = {
+        'key': "PP",
+        "amt": "Amount",
+    }
+    var qpTableHeader = {
+        'key': "QP",
+        "amt": "Amount",
+    }
+    let apTableDataRows = {
+        "dailySave" : {
+            "key" : "Daily Save",
+            "amt" : <span className="text-red-500">{pn(apDailySave, fmt)}</span>,
+        },
+        "dailySpin" : {
+            "key" : "Daily Spin",
+            "amt" : <span className="text-red-500">{pn(apDailySpin, fmt)}</span>,
+        },
+        "itopod" : {
+            "key" : "ITOPOD Tower",
+            "amt" : <span className="text-red-500">{pn(APFromTower, fmt)}</span>,
+            "extra" : <span>Floor {pn(v('itopodFloor-5'), fmt)}</span>,
+        },
+        "moneyPit" : {
+            "key" : "Money Pit",
+            "amt" : <span className="text-red-500">{pn(apMoneyPit, fmt)}</span>,
+        },
+        "questMajor" : {
+            "key" : "Major Quests",
+            "amt" : <span className="text-red-500">{pn(APFromMajors, fmt)}</span>,
+            "extra" : <span>{pn(APPerMajor, fmt)} AP per major</span>,
+        },
+        "questMinor" : {
+            "key" : "Minor Quests",
+            "amt" : <span className="text-red-500">{pn(APFromMinors, fmt)}</span>,
+            "extra" : <span>{pn(APPerMinor, fmt)} AP per minor</span>,
+        },
+        "rebirth" : {
+            "key" : "Rebirth",
+            "amt" : <span className="text-red-500">{pn(apRebirth, fmt)}</span>,
+        },
+        "titans" : {
+            "key" : "Titans",
+            "amt" : <span className="text-red-500">{pn(totalTitanAP, fmt)}</span>,
+            "extra" : <span>Up to {maxTitan[0].getFullName(maxTitan[1])}</span>,
+        },
+        "yggdrasil" : {
+            "key" : "Yggdrasil",
+            "amt" : <span className="text-red-500">{pn(apYggdrasil, fmt)}</span>,
+        },
+        "total" : {
+            "key" : "Total:",
+            "amt": <span className="text-red-500">{pn(totalAPPerDay, fmt)} AP</span>,
+            "isTotal" : true,
+        },
+    }
+    var expTableDataRows = {
+        "itopod" : {
+            "key": "ITOPOD Tower",
+            "amt": <span className="text-red-500">{pn(EXPFromTower, fmt)}</span>,
+            "extra": <span>Floor {pn(v('itopodFloor-5'), fmt)}</span>,
+        },
+        "titans" : {
+            "key": "Titans",
+            "amt": <span className="text-red-500">{pn(totalTitanEXP, fmt)}</span>,
+            "extra": <span>Up to {maxTitan[0].getFullName(maxTitan[1])}</span>,
+        },
+        "yggdrasil" : {
+            "key": "Yggdrasil",
+            "amt": <span className="text-red-500">{pn(expYggdrasil, fmt)}</span>,
+        },
+        "total" : {
+            "key" : "Total:",
+            "amt" : <span className="text-red-500">{pn(totalEXPPerDay, fmt)} EXP</span>,
+            "isTotal": true
+        },
+    }
+    var ppTableDataRows = {
+       "itopod" : {
+            "key": "ITOPOD Tower",
+            "amt": <span className="text-red-500">{pn(PPPFromTower.divide(bd(1000000)), fmt)}</span>,
+            "extra": (<ul>
+                        <li key="floor">Floor {pn(v('itopodFloor-5'), fmt)}</li>
+                        <li key="pppPerKill">{pn(pppPerKill, fmt)} ppp per kill</li>
+                        <li key="killsPerDay">{pn(killsPerDay, fmt)} kills per  {pn(hoursPerDay, fmt)} hours</li>
+                        <li key="descrip">* We assume 1-hit per kill</li>
+                    </ul>),
+        },
+        "titans" : {
+            "key": "Titans",
+            "amt": <span className="text-red-500">{pn(totalTitanPP, fmt)}</span>,
+            "extra": <span>Up to {maxTitan[0].getFullName(maxTitan[1])}</span>,
+        },
+        "yggdrasil" : {
+            "key": "Yggdrasil",
+            "amt": <span className="text-red-500">{pn(pppYggdrasil.divide(bd(1000000)), fmt)}</span>,
+        },
+        "total" : {
+            "key" : "Total:",
+            "amt" : <span className="text-red-500">{pn(totalPPPerDay, fmt)} PP</span>,
+            "isTotal": true
+        },
+    }
+    var qpTableDataRows = {
+        "questMajor" : {
+            "key": "Major Quests",
+            "amt": <span className="text-red-500">{pn(QPFromMajors, fmt)}</span>,
+            "extra": <span>{pn(QPPerMajor, fmt)} QP per major</span>,
+        },
+        "questMinor" : {
+            "key": "Minor Quests",
+            "amt": <span className="text-red-500">{pn(QPFromMinors, fmt)}</span>,
+            "extra": <span>{pn(QPPerMinor, fmt)} QP per minor</span>,
+        },
+        "titans" : {
+            "key": "Titans",
+            "amt": <span className="text-red-500">{pn(totalTitanQP, fmt)}</span>,
+            "extra": <span>Up to {maxTitan[0].getFullName(maxTitan[1])}</span>,
+        },
+        "yggdrasil" : {
+            "key": "Yggdrasil",
+            "amt": <span className="text-red-500">{pn(qpYggdrasil, fmt)}</span>,
+        },
+        "total" : {
+            "key" : "Total:",
+            "amt" : <span className="text-red-500">{pn(totalQPPerDay, fmt)} QP</span>,
+            "isTotal": true
+        },
+    }
+
+
+
+
     // TODO - Allow for non-high tier pulling of Yggdrasil
     // TODO - Allow for asking if they want poop/harvest in Yggdrasil
     return (
@@ -288,178 +430,16 @@ export default function Page() {
                 
             </div>
             <ContentSubsection title={"How many AP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
-                <table className="inline-block w-full md:w-1/2 align-top mb-2">
-                    <thead>
-                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
-                            <th className="px-2">AP</th>
-                            <th className="px-2">Amount</th>
-                            <th className="px-2"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr key="dailySave" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">Daily Save</td>
-                            <td className="px-2"><span className="text-red-500">{pn(apDailySave, fmt)}</span></td>
-                            <td></td>
-                        </tr>
-                        <tr key="dailySpin">
-                            <td className="px-2">Daily Spin</td>
-                            <td className="px-2"><span className="text-red-500">{pn(apDailySpin, fmt)}</span></td>
-                            <td></td>
-                        </tr>
-                        <tr key="itopod" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">ITOPOD Tower</td>
-                            <td className="px-2"><span className="text-red-500">{pn(APFromTower, fmt)}</span></td>
-                            <td className="px-2">Floor {pn(v('itopodFloor-5'), fmt)}</td>
-                        </tr>
-                        <tr key="moneyPit">
-                            <td className="px-2">Money Pit</td>
-                            <td className="px-2"><span className="text-red-500">{pn(apMoneyPit, fmt)}</span></td>
-                            <td></td>
-                        </tr>
-                        <tr key="questMajor" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">Major Quests</td>
-                            <td className="px-2"><span className="text-red-500">{pn(APFromMajors, fmt)}</span></td>
-                            <td className="px-2">{pn(APPerMajor, fmt)} AP per major</td>
-                        </tr>
-                        <tr key="questMinor">
-                            <td className="px-2">Minor Quests</td>
-                            <td className="px-2"><span className="text-red-500">{pn(APFromMinors, fmt)}</span></td>
-                            <td className="px-2">{pn(APPerMinor, fmt)} AP per minor</td>
-                        </tr>
-                        <tr key="rebirth" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">Rebirth</td>
-                            <td className="px-2"><span className="text-red-500">{pn(apRebirth, fmt)}</span></td>
-                            <td></td>
-                        </tr>
-                        <tr key="titans">
-                            <td className="px-2">Titans</td>
-                            <td className="px-2"><span className="text-red-500">{pn(totalTitanAP, fmt)}</span></td>
-                            <td className="px-2">Up to {maxTitan[0].getFullName(maxTitan[1])}</td>
-                        </tr>
-                        <tr key="yggdrasil" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">Yggdrasil</td>
-                            <td className="px-2"><span className="text-red-500">{pn(apYggdrasil, fmt)}</span></td>
-                            <td></td>
-                        </tr>
-                        <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
-                            <th className="px-2">Total:</th>
-                            <th className="px-2"><span className="text-red-500">{pn(totalAPPerDay, fmt)} AP</span></th>
-                            <th className="px-2"></th>
-                        </tr>
-                    </tbody>
-                </table>
+                <StandardTable order={tableOrder} header={apTableHeader} rows={apTableDataRows} />
             </ContentSubsection>
             <ContentSubsection title={"How many EXP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
-                <table className="inline-block w-full md:w-1/2 align-top mb-2">
-                    <thead>
-                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
-                            <th className="px-2">EXP</th>
-                            <th className="px-2">Amount</th>
-                            <th className="px-2"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr key="itopod" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">ITOPOD Tower</td>
-                            <td className="px-2"><span className="text-red-500">{pn(EXPFromTower, fmt)}</span></td>
-                            <td className="px-2">Floor {pn(v('itopodFloor-5'), fmt)}</td>
-                        </tr>
-                        <tr key="titans">
-                            <td className="px-2">Titans</td>
-                            <td className="px-2"><span className="text-red-500">{pn(totalTitanEXP, fmt)}</span></td>
-                            <td className="px-2">Up to {maxTitan[0].getFullName(maxTitan[1])}</td>
-                        </tr>
-                        <tr key="yggdrasil" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">Yggdrasil</td>
-                            <td className="px-2"><span className="text-red-500">{pn(expYggdrasil, fmt)}</span></td>
-                            <td></td>
-                        </tr>
-                        <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
-                            <th className="px-2">Total:</th>
-                            <th className="px-2"><span className="text-red-500">{pn(totalEXPPerDay, fmt)} EXP</span></th>
-                            <th className="px-2"></th>
-                        </tr>
-                    </tbody>
-                </table>
+                <StandardTable order={tableOrder} header={expTableHeader} rows={expTableDataRows} />
             </ContentSubsection>
             <ContentSubsection title={"How many PP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
-                <table className="inline-block w-full md:w-1/2 align-top mb-2">
-                    <thead>
-                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
-                            <th className="px-2">PP</th>
-                            <th className="px-2">Amount</th>
-                            <th className="px-2"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr key="itopod" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">ITOPOD Tower</td>
-                            <td className="px-2"><span className="text-red-500">{pn(PPPFromTower.divide(bd(1000000)), fmt)}</span></td>
-                            <td className="px-2">
-                                <ul>
-                                    <li key="floor">Floor {pn(v('itopodFloor-5'), fmt)}</li>
-                                    <li key="pppPerKill">{pn(pppPerKill, fmt)} ppp per kill</li>
-                                    <li key="killsPerDay">{pn(killsPerDay, fmt)} kills per  {pn(hoursPerDay, fmt)} hours</li>
-                                    <li key="descrip">* We assume 1-hit per kill</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr key="titans">
-                            <td className="px-2">Titans</td>
-                            <td className="px-2"><span className="text-red-500">{pn(totalTitanPP, fmt)}</span></td>
-                            <td className="px-2">Up to {maxTitan[0].getFullName(maxTitan[1])}</td>
-                        </tr>
-                        <tr key="yggdrasil" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">Yggdrasil</td>
-                            <td className="px-2"><span className="text-red-500">{pn(pppYggdrasil.divide(bd(1000000)), fmt)}</span></td>
-                            <td></td>
-                        </tr>
-                        <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
-                            <th className="px-2">Total:</th>
-                            <th className="px-2"><span className="text-red-500">{pn(totalPPPerDay, fmt)} PP</span></th>
-                            <th className="px-2"></th>
-                        </tr>
-                    </tbody>
-                </table>
+                <StandardTable order={tableOrder} header={ppTableHeader} rows={ppTableDataRows} />
             </ContentSubsection>
             <ContentSubsection title={"How many QP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
-            <table className="inline-block w-full md:w-1/2 align-top mb-2">
-                    <thead>
-                        <tr className="text-left border-b-1 border border-t-0 border-x-0">
-                            <th className="px-2">QP</th>
-                            <th className="px-2">Amount</th>
-                            <th className="px-2"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr key="questMajor" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">Major Quests</td>
-                            <td className="px-2"><span className="text-red-500">{pn(QPFromMajors, fmt)}</span></td>
-                            <td className="px-2">{pn(QPPerMajor, fmt)} QP per major</td>
-                        </tr>
-                        <tr key="questMinor">
-                            <td className="px-2">Minor Quests</td>
-                            <td className="px-2"><span className="text-red-500">{pn(QPFromMinors, fmt)}</span></td>
-                            <td className="px-2">{pn(QPPerMinor, fmt)} QP per minor</td>
-                        </tr>
-                        <tr key="titans" className="bg-slate-200 dark:bg-slate-900">
-                            <td className="px-2">Titans</td>
-                            <td className="px-2"><span className="text-red-500">{pn(totalTitanQP, fmt)}</span></td>
-                            <td className="px-2">Up to {maxTitan[0].getFullName(maxTitan[1])}</td>
-                        </tr>
-                        <tr key="yggdrasil">
-                            <td className="px-2">Yggdrasil</td>
-                            <td className="px-2"><span className="text-red-500">{pn(qpYggdrasil, fmt)}</span></td>
-                            <td></td>
-                        </tr>
-                        <tr key="total" className="text-left border-t-1 border border-b-0 border-x-0">
-                            <th className="px-2">Total:</th>
-                            <th className="px-2"><span className="text-red-500">{pn(totalQPPerDay, fmt)} QP</span></th>
-                            <th className="px-2"></th>
-                        </tr>
-                    </tbody>
-                </table>
+            <StandardTable order={tableOrder} header={qpTableHeader} rows={qpTableDataRows} />
             </ContentSubsection>
         </Content>
     )
