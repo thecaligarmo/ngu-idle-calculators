@@ -9,7 +9,7 @@ import { disableItem } from "@/components/dataListColumns";
 import { StandardTable, StandardTableRowType } from "@/components/standardTable";
 import { bd, pn } from "@/helpers/numbers";
 import { bigDecimalObj, toObjectMap } from "@/helpers/objects";
-import { cardExtraNameChanges, cardReqChonkers, cardReqFruit, cardReqNameChanges, getCardsPerDay, getChonksPerDay, getMayoFromInfusers, getMayoFromRecycling } from "@/helpers/pages/cards";
+import { cardExtraNameChanges, cardReqChonkers, cardReqFruit, cardReqNameChanges, getCardsPerDay, getChonksPerDay, getMayoFromFruit, getMayoFromInfusers, getMayoFromRecycling } from "@/helpers/pages/cards";
 import { parseNum, parseObj } from "@/helpers/parsers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import { camelToTitle } from "@/helpers/strings";
@@ -236,20 +236,19 @@ export default function Page() {
     // Mayo
 
     // Grab Mayo generation from fruits
-    let mayoFromFruit = bd(0)
-    let leftoverFromFruit = bd(0)
     let fruits : Yggdrasil[] = Object.values(j('yggdrasil'));
     fruits.forEach((fruit) => {
         if(fruit instanceof FruitOfMayo) {
             fruit.tier = Number(v(fruit.tierKey()).getValue())
             fruit.usePoop = c(fruit.poopKey())
             fruit.eatFruit = true
-            mayoFromFruit = mayoFromFruit.add(fruit.fruitYield(fruitYieldData))
-            leftoverFromFruit = leftoverFromFruit.add(fruit.leftovers(fruitYieldData, c('poopAllLeftovers^')))
         }
-    })    
-    let mayoFromFruitLeftovers = c('includeLeftovers^') ? leftoverFromFruit : bd(0)
+    })
 
+    let [mayoFromFruit, mayoFromFruitLeftovers] = c('includeFruit^')
+        ? getMayoFromFruit(c('includeLeftovers^'), fruits, fruitYieldData, c('poopAllLeftovers^'))
+        : [bd(0), bd(0)]
+    
     let mayoFromRecycling = c('cardRecyclingMayo^') 
                 ? getMayoFromRecycling(cardsPerDay, chonksPerDay, recycleCard, recycleChonk)
                 : bd(0);
@@ -257,8 +256,8 @@ export default function Page() {
                     ? bd(0) 
                     : getMayoFromInfusers(mayoSpeed, v('infusersEveryXDays-2'), c('twoFruitPerInfuser^'), mayoFromFruit, mayoFromFruitLeftovers)
     let mayoPerDay = (bd(24).multiply(mayoSpeed.divide(bd(100))))
-                        .add(c('includeFruit^') ? mayoFromFruit : bd(0))
-                        .add(c('includeFruit^') ? mayoFromFruitLeftovers : bd(0))
+                        .add(mayoFromFruit)
+                        .add(mayoFromFruitLeftovers)
                         .add(mayoFromRecycling)
                         .add(mayoFromInfusers)
 
@@ -379,7 +378,7 @@ export default function Page() {
             "amt": <span className="text-red-500">{pn(mayoPerDay, fmt)}</span>,
             "extra": <ul key="mayoInfo">
                 <li key="fruit"><strong>Fruit:</strong> {pn(mayoFromFruit, fmt)}</li>
-                <li key="leftover"><strong>Fruit Leftovers:</strong> {pn(leftoverFromFruit, fmt)}</li>
+                <li key="leftover"><strong>Fruit Leftovers:</strong> {pn(mayoFromFruitLeftovers, fmt)}</li>
                 <li key="recycle"><strong>Card Recycling:</strong> {pn(mayoFromRecycling, fmt)}</li>
                 <li key="infusers"><strong>Infusers:</strong> {pn(mayoFromInfusers, fmt)}</li>
             </ul>

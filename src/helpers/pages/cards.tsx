@@ -1,5 +1,6 @@
 import bigDecimal from "js-big-decimal"
 import { bd} from "../numbers"
+import { FruitOfMayo, Yggdrasil } from "@/assets/yggdrasil"
 
 
 export var cardReqNameChanges = {
@@ -106,6 +107,7 @@ export var cardReqChonkers = [
 
 
 export function getCardsPerDay(cardSpeed: bigDecimal, recycleCard:bigDecimal) :bigDecimal{
+    console.log(cardSpeed, recycleCard);
     return bd(24).multiply(cardSpeed.divide(bd(100)))
     .divide(
         bd(1).add(
@@ -128,6 +130,19 @@ export function getChonksPerDay(cardSpeed: bigDecimal, recycleChonk:bigDecimal, 
     return chonksPerDay
 }
 
+
+export function getMayoFromFruit(withLeftovers : boolean, fruits : Yggdrasil[], fruitYieldData : any, poopLeftovers : boolean) : [bigDecimal, bigDecimal] {
+    let mayoFromFruit = bd(0)
+    let leftoverFromFruit = bd(0)
+    fruits.forEach((fruit) => {
+        if(fruit instanceof FruitOfMayo) {
+            mayoFromFruit = mayoFromFruit.add(fruit.fruitYield(fruitYieldData))
+            leftoverFromFruit = leftoverFromFruit.add(fruit.leftovers(fruitYieldData, poopLeftovers))
+        }
+    })    
+    let mayoFromFruitLeftovers = withLeftovers ? leftoverFromFruit : bd(0)
+    return [mayoFromFruit, mayoFromFruitLeftovers]
+}
 
 
 export function getMayoFromRecycling(cardsPerDay:bigDecimal, chonksPerDay:bigDecimal, recycleCard: bigDecimal, recycleChonk:bigDecimal) : bigDecimal{

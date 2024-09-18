@@ -17,3 +17,4 @@ resourceInfo
 pages/ygg
 pages/ngu
 pages/daily
+pages/cards
