@@ -24,8 +24,8 @@ export class Beard extends Resource{
             this.active = (active == 1)
         }
     }
-    getTempStatValue(prop: string) : number {
-        if(this.active && !_.isUndefined(this[prop])) {
+    getTempStatValue(prop: string, pretendOn : boolean = false) : number {
+        if((this.active || pretendOn) && !_.isUndefined(this[prop])) {
             return this[prop]['temp']
         }
         return 0

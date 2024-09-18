@@ -81,11 +81,6 @@ export function getQuestInfo(
         .divide(bd(3))
         .round(0)
         .divide(bd(50))
-
-
-
-
-    
     
     var secondsPerIdleQuest = secondsPerIdleQuestItemDrop
         .multiply(

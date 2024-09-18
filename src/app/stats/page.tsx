@@ -5,7 +5,7 @@ import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
-import { totalAPBonus, totalAugmentSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalPPBonus, totalPower, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness, totalWishSpeed } from '@/helpers/calculators';
+import { totalAPBonus, totalAugmentSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness, totalWishSpeed } from '@/helpers/calculators';
 import { bd, pn } from '@/helpers/numbers';
 import { describeStat, getStatInfo } from '@/helpers/pages/stat';
 import { parseNum, parseObj } from '@/helpers/parsers';
@@ -160,6 +160,15 @@ export default function Page() {
                 </ul>
                 <ContentSubsection title="Energy Wandoos Calculation" defaultHide={true}>
                     {describeStat(pageData['eWandoos'], fmt)}
+                </ContentSubsection>
+            </ContentSection>
+            <ContentSection title="Quest Stats">
+                <ul>
+                    <li key="questRewards"><strong>Total QP Reward:</strong> <span className="text-red-500">{pn(totalQuestRewardBonus(playerStates), fmt)}%</span></li>
+                    <li key="questDrop"><strong>Total Quest Item Drop:</strong> <span className="text-red-500">{pn(totalQuestDropBonus(playerStates), fmt)}%</span></li>
+                </ul>
+                <ContentSubsection title="Quest Rewards Calculation" defaultHide={true}>
+                    {describeStat(pageData['questRewards'], fmt)}
                 </ContentSubsection>
             </ContentSection>
         </Container>

@@ -70,7 +70,7 @@ export const WISHLIST = [
     new Wish(43, 'iwishWisheswerentsoslow:cIII', 'I wish Wishes weren\'t so slow :c III', GameMode.EVIL, [[Stat.WISH_SPEED, 2]], bd('2e18')),
     new Wish(44, 'iwishtherewasmorecuteDaycareKittyArt', 'I wish there was more cute Daycare Kitty Art', GameMode.EVIL, [], bd('3e19')),
     new Wish(45, 'iwishIcoulddualwieldweaponsII', 'I wish I could dual wield weapons II', GameMode.EVIL, [], bd('1e19')),
-    new Wish(46, 'iwishenemiesspawnedfaster', 'I wish enemies spawned faster', GameMode.EVIL, [[Stat.RESPAWN, 1]], bd('6e18')),
+    new Wish(46, 'iwishenemiesspawnedfaster', 'I wish enemies spawned faster', GameMode.EVIL, [[Stat.RESPAWN, -1]], bd('6e18')),
     new Wish(47, 'iwishQuestsgavemoreQP', 'I wish Quests gave more QP', GameMode.EVIL, [[Stat.QUEST_REWARD, 2]], bd('3e18')),
     new Wish(48, 'iwishIhadmoreEnergyPowerIII', 'I wish I had more Energy Power III', GameMode.EVIL, [[Stat.ENERGY_POWER, 5]], bd('5e18')),
     new Wish(49, 'iwishIhadmoreEnergyCapIII', 'I wish I had more Energy Cap III', GameMode.EVIL, [[Stat.ENERGY_CAP, 3]], bd('5e18')),

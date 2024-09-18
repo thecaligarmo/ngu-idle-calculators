@@ -1,9 +1,9 @@
 import { ItemSets } from "@/assets/sets"
 import { Stat } from "@/assets/stat"
 import _ from "lodash"
-import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed } from "../calculators"
+import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed, totalQuestRewardBonus } from "../calculators"
 import { bd, bigdec_max, pn } from "../numbers"
-import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo, isCompletedChallenge } from "../resourceInfo"
+import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo, isCompletedChallenge, maxxedItemSetNum } from "../resourceInfo"
 import bigDecimal from "js-big-decimal"
 import { parseNum, parseObj } from "../parsers"
 import { ChallengeKeys } from "@/assets/challenges"
@@ -641,6 +641,11 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x Clock Set Bonus',
                 'val' : isMaxxedItemSet(playerStates, ItemSets.CLOCK) ? bd(95) : bd(100),
             },
+            'perk' : {
+                'name': 'x Perk',
+                'val' : perkInfo(playerStates, Stat.RESPAWN),
+                'sigFig' : 2,
+            },
             'total' : {
                 'name': 'Total',
                 'val' : totalRespawnRate(playerStates),
@@ -788,7 +793,45 @@ export function getStatInfo(playerStates : any) {
             'total' : {
                 'val' : totalEnergyWandoosSpeed(playerStates),
             }
-
+        },
+        'questRewards': {
+            'equipment' : {
+                'name' : 'x Equipment',
+                'val' : equipmentInfo(playerStates, Stat.QUEST_REWARD),
+            },
+            'perk' : {
+                'name': 'x Perk',
+                'val' : perkInfo(playerStates, Stat.QUEST_REWARD),
+            },
+            'hack' : {
+                'name': 'x Hack',
+                'val' : hackInfo(playerStates, Stat.QUEST_REWARD),
+            },
+            'wish' : {
+                'name': 'x Wish ',
+                'val' : wishInfo(playerStates, Stat.QUEST_REWARD),
+            },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.QUEST_REWARD),
+                'sigFig': 2,
+            },
+            'questSet' : {
+                'name': 'x Quest Sets',
+                'val' : bd(1.02 ** maxxedItemSetNum(playerStates, ItemSets.QUESTS) * 100),
+            },
+            'mobster' : {
+                'name': 'x Mobster Set',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.MOBSTER) ? bd(115) : bd(100),
+            },
+            
+            'orangeHeart' : {
+                'name': 'x Orange Heart',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.ORANGE_HEART) ? bd(120) : bd(100)
+            },
+            'total' : {
+                'val' : totalQuestRewardBonus(playerStates),
+            }
         }
     }
 }

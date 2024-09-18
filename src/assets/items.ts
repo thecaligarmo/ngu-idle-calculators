@@ -1903,8 +1903,12 @@ export const ITEMLIST = [
         [Stat.MAGIC_POWER, 400000],
         [Stat.HACK_SPEED, 20],
     ]),
-    new Item(335, 'sealoftheExile', 'Seal of the Exile', Slot.WEAPON, Zones.MISC, 100, [
-    ]),
+    new Item(335, 'sealoftheExile', 'Seal of the Exile', Slot.WEAPON, Zones.MISC, 100, []),
+    new Item(336, 'faceoftheExile', 'Face of the Exile', Slot.OTHER, Zones.MISC, 100, []),
+    new Item(337, 'tentacleoftheExile', 'Tentacle of the Exile', Slot.OTHER, Zones.MISC, 100, []),
+    new Item(338, 'antlersoftheExile', 'Antlers of the Exile', Slot.OTHER, Zones.MISC, 100, []),
+    new Item(339, 'busteroftheExile', 'Buster of the Exile', Slot.OTHER, Zones.MISC, 100, []),
+    new Item(340, 'antannaeoftheExile', 'Antannae of the Exile', Slot.OTHER, Zones.MISC, 100, []),
     new Item(342, 'blueEyesUltimateChestplate', 'Blue Eyes Ultimate Chestplate', Slot.CHEST, Zones.EXILE, 100, [
         [Stat.POWER, 5500000],
         [Stat.TOUGHNESS, 160000000],

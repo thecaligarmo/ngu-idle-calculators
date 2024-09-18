@@ -18,7 +18,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
     }
 
     if(false) {
-        if(Stat.MAYO_SPEED == stat) {
+        if(Stat.POWER == stat && perkInfo(data, stat).compareTo(bd(250)) == 1) {
             console.log('----------------------------------------')
             console.log('advTraining', advTrainingInfo(data, stat).getValue())
             console.log('ap', apItemInfo(data, stat).getValue())    
@@ -305,10 +305,13 @@ export function totalRespawnRate(data : any) : bigDecimal {
         return bd(0)
     }
 
+    // Can't use Gen because of the equipment
     return bd(1)
         .multiply(bd(200).subtract(equipmentInfo(data, Stat.RESPAWN))).divide(bd(100))
         .multiply(nguInfo(data, Stat.RESPAWN).divide(bd(100)))
         .multiply(clockSetModifier)
+        .multiply(perkInfo(data, Stat.RESPAWN).divide(bd(100)))
+        .multiply(wishInfo(data, Stat.RESPAWN).divide(bd(100)))
         .multiply(bd(100))
 }
 

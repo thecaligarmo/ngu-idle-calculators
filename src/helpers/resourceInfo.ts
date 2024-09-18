@@ -167,13 +167,13 @@ export function apItemInfo(data: any, key: string) : bigDecimal {
     return bd(stat > 0 ? stat : 100)
 }
 
-export function beardInfoTemp(data: any, key: string) : bigDecimal{
+export function beardInfoTemp(data: any, key: string, pretendOn : boolean = false) : bigDecimal{
     var beards : Beard[] = parseObj(data, 'beards')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( beards.length > 0) {
             beards.forEach((g) => {
-                stat += g.getTempStatValue(key)
+                stat += g.getTempStatValue(key, pretendOn)
             })
         }
     }
@@ -496,7 +496,7 @@ export function perkInfo(data : any, key : string) : bigDecimal{
     if (Object.values(Stat).includes(key)) {
         if ( perks.length > 0) {
             perks.forEach((g) => {
-                if(g.getStatValue(key) > 0 && g.appliesToGameMode(gameMode)) {
+                if(g.getStatValue(key) != 0 && g.appliesToGameMode(gameMode)) {
                     stat *= (100 + g.getStatValue(key)) / 100.0
                 }
             })
@@ -592,7 +592,7 @@ export function isCompletedChallenge(data : any, key : string, mode : number, le
     var challenges = parseObj(data, 'challenges')
     var challenge = CHALLENGES.getByKey(key)
     var chosenChallenge = (!_.isUndefined(challenges[mode]) && !_.isUndefined(challenge) && challenges[mode][challenge.id % 100])
-    return (!_.isUndefined(chosenChallenge) && chosenChallenge.level > level)
+    return (!_.isUndefined(chosenChallenge) && chosenChallenge.level >= level)
 }
 
 

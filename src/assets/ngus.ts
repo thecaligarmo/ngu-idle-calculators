@@ -386,12 +386,13 @@ export class NGU extends Resource {
         if (level.compareTo(bd(0)) == -1) {
             return bd(0)
         }
+        var roundingDigs = speedFactor.floor().getValue().length + this.baseCost.getValue().length
         try {
-            var baseTimePerLevel = baseCost.divide(speedFactor)
+            var baseTimePerLevel = baseCost.divide(speedFactor, roundingDigs)
         } catch (error) {
             var baseTimePerLevel = bd(0)
         }
-        return level.multiply(baseTimePerLevel).divide(bd(0.0002))
+        return level.multiply(baseTimePerLevel).divide(bd(0.0002), roundingDigs)
     }
 
     capToReachMaxTarget(speedFactor : bigDecimal, target : (bigDecimal | null) = null ) : bigDecimal {

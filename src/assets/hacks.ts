@@ -6,7 +6,7 @@ import Resource, { ResourceContainer, prop } from "./resource"
 import { Stat } from "./stat"
 
 const HackKeys : {[key: string]: string} = {
-    POWER: 'PowerHack',
+    STAT: 'StatHack',
     ADVENTURE : 'AdventureHack',
     TIME_MACHINE : 'TimeMachineHack',
     DROP_CHANCE : 'DropChanceHack',
@@ -28,6 +28,7 @@ export class Hack extends Resource {
     target: number
     baseMilestone: number
     milestoneBonus: number
+    milestoneReduction: number
     baseSpeedDivider: bigDecimal
     hardCap: number
     constructor (
@@ -44,10 +45,59 @@ export class Hack extends Resource {
         this.milestoneBonus = milestoneBonus
         this.baseSpeedDivider = baseSpeedDivider
         this.hardCap = hardCap
+        this.milestoneReduction = 0
     }
-    importStats(data: any) : void {
+    importStats(data: any, playerData : any) : void {
         this.level = data.level
         this.target = data.target
+        // Milestone reduction is dependent on key
+        switch(this.key) {
+            case HackKeys.STAT:
+                this.milestoneReduction = playerData.beastQuest.quirkLevel[57]
+                break;
+            case HackKeys.ADVENTURE :
+                this.milestoneReduction = playerData.adventure.itopod.perkLevel[113]
+                break;
+            case HackKeys.TIME_MACHINE :
+                this.milestoneReduction = playerData.beastQuest.quirkLevel[175]
+                break;
+            case HackKeys.DROP_CHANCE :
+                this.milestoneReduction = playerData.adventure.itopod.perkLevel[217]
+                break;
+            case HackKeys.AUGMENT_SPEED:
+                this.milestoneReduction = playerData.adventure.itopod.perkLevel[218]
+                break;
+            case HackKeys.ENERGY_NGU :
+                this.milestoneReduction = playerData.beastQuest.quirkLevel[174]
+                break;
+            case HackKeys.MAGIC_NGU :
+                this.milestoneReduction = playerData.adventure.itopod.perkLevel[219]
+                break;
+            case HackKeys.BLOOD:
+                this.milestoneReduction = playerData.adventure.itopod.perkLevel[114]
+                break;
+            case HackKeys.QUEST:
+                this.milestoneReduction = playerData.wishes.wishes[76].level
+                break;
+            case HackKeys.DAYCARE:
+                this.milestoneReduction = playerData.adventure.itopod.perkLevel[115]
+                break;
+            case HackKeys.EXP:
+                this.milestoneReduction = playerData.beastQuest.quirkLevel[59]
+                break;
+            case HackKeys.NUMBER:
+                this.milestoneReduction = playerData.wishes.wishes[77].level
+                break;
+            case HackKeys.PP:
+                this.milestoneReduction = playerData.beastQuest.quirkLevel[58]
+                break;
+            case HackKeys.HACK:
+                this.milestoneReduction = playerData.wishes.wishes[78].level
+                break;
+            case HackKeys.WISH:
+                this.milestoneReduction = playerData.beastQuest.quirkLevel[60]
+                break;
+        }
         this.updateStats()
     }
     updateStats() : void {
@@ -56,18 +106,18 @@ export class Hack extends Resource {
         }
     }
 
-    getStatValue(prop: string, level : number = -1, milestoneReduction : number = 0) : number {
+    getStatValue(prop: string, level : number = -1) : number {
         if(level == -1) {
             level = this.level
         }
         if(!_.isUndefined(this[prop])) {
-            return (100 + this[prop]) * this.getMilestoneBonus(milestoneReduction)
+            return (100 + this[prop]) * this.getMilestoneBonus()
         }
         return 100
     }
 
-    getMilestoneBonus(milestoneReduction : number = 0) {
-        var numMilestones = Math.floor(this.level / (this.baseMilestone - milestoneReduction))
+    getMilestoneBonus() {
+        var numMilestones = Math.floor(this.level / (this.baseMilestone - this.milestoneReduction))
         return this.milestoneBonus ** numMilestones
     }
     

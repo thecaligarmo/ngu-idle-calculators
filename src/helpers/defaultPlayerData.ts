@@ -29,7 +29,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
     const playerExists = (playerData && Object.keys(playerData).length > 0)
     if (playerExists) {
         let taggedCards : number[]= []
-        if(!_.isUndefined(playerData.cards.taggedBonuses)) {
+        if(!_.isUndefined(playerData.cards.taggedBonuses) && playerData.cards.taggedBonuses.length > 0) {
             taggedCards = [
                 playerData.cards.taggedBonuses[0][1].value__,
                 playerData.cards.taggedBonuses[1][1].value__,
@@ -958,7 +958,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                     if(index < 15) {
                         let hack : Hack = _.cloneDeep(HACKS[index])
                         if(!_.isUndefined(hack)) {
-                            hack.importStats(hackData)
+                            hack.importStats(hackData, playerData)
                             hacks.push(hack)
                         }
                     }

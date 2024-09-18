@@ -178,7 +178,7 @@ export const PERKLIST = [
     new Perk(90, 'improvedQuestLooting', 'Improved Quest Looting', GameMode.EVIL, 0, [[Stat.QUEST_DROP, 0.5]]),
     new Perk(91, 'advancedGooderIdleQuesting', 'Advanced Gooder Idle Questing', GameMode.EVIL, 0, []),
     new Perk(92, 'evenMoreAdvancedGooderIdleQuesting', 'Even More Advanced Gooder Idle Questing', GameMode.EVIL, 0, []),
-    new Perk(93, 'spawnFasterDammit', 'SPAWN FASTER DAMMIT', GameMode.EVIL, 0, [[Stat.RESPAWN, 0.1]]),
+    new Perk(93, 'spawnFasterDammit', 'SPAWN FASTER DAMMIT', GameMode.EVIL, 0, [[Stat.RESPAWN, -0.1]]),
     new Perk(94, 'fibonacciPerk', 'Fibonacci Perk', GameMode.NORMAL, 0, []),
     new Perk(95, 'genericResource3PowerPerkI', 'Generic Resource 3 Power Perk I', GameMode.EVIL, 0, [[Stat.RES3_POWER, 1]]),
     new Perk(96, 'genericResource3BarPerkI', 'Generic Resource 3 Bar Perk I', GameMode.EVIL, 0, [[Stat.RES3_BARS, 1]]),
