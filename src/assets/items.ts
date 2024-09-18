@@ -11,11 +11,19 @@ type slotType = (string | number)[]
 export class Item extends Resource {
     slot: slotType
     zone: Zone[]
+    ratio: number
     constructor(id: number, key: string, name: string, slot: slotType, zone: Zone | Zone[] , level: number, props: prop) {
         // TODO - Not all items are available in all game modes
         super(id, key, name, GameMode.ALL, level, props)
         this.slot = slot;
         this.zone = (zone instanceof Zone) ? [zone] : zone
+        this.ratio = 1
+    }
+    getStatValue(prop: string, level : number = -1) : number {
+        if(!_.isUndefined(this[prop])) {
+            return this[prop] * this.ratio
+        }
+        return 0
     }
     updateStats() {
         for (var prop of Object.keys(this.base)) {

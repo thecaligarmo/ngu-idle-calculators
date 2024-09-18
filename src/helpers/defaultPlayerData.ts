@@ -884,6 +884,18 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 let weaponItem : Item = _.cloneDeep(ITEMS[weapon.id])
                 weaponItem.importStats(weapon)
                 return weaponItem
+            case 'equipmentWeaponTwo':
+                let weaponTwo : any = playerData.inventory.weapon2;
+                if (weaponTwo.id != 0 ) {
+                    let weaponTwoItem : Item = _.cloneDeep(ITEMS[weaponTwo.id])
+                    // weapon 2 doesn't necessarily have a full ratio
+                    weaponTwoItem.ratio = playerData.wishes.wishes[28].level * 0.05
+                                        + playerData.wishes.wishes[45].level * 0.05
+                    weaponTwoItem.importStats(weaponTwo)
+                    return weaponTwoItem
+                }
+                return null
+                
             case 'equipmentHead':
                 let head : any = playerData.inventory.head;
                 let headItem : Item = _.cloneDeep(ITEMS[head.id])
@@ -1412,6 +1424,7 @@ export function getPlayerOptions() : string[] {
         'equipmentChest',
         'equipmentBoots',
         'equipmentWeapon',
+        'equipmentWeaponTwo',
         'equipmentAccesories',
         'equipmentTest',
         'energyNGUs',

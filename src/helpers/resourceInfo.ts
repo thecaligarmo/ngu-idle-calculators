@@ -342,12 +342,13 @@ export function diggerInfo(data: any, key: string) : bigDecimal{
 }
 
 export function equipmentInfo(data: any, key: string) : bigDecimal {
-    var gear : Item[] = [
+    var gear : (Item | null)[] = [
         parseObj(data, 'equipmentHead'),
         parseObj(data, 'equipmentChest'),
         parseObj(data, 'equipmentLegs'),
         parseObj(data, 'equipmentBoots'),
         parseObj(data, 'equipmentWeapon'),
+        parseObj(data, 'equipmentWeaponTwo'),
     ]
     var accs : Item[] = parseObj(data, 'equipmentAccesories')
     var stat : number = (key == Stat.POWER || key == Stat.TOUGHNESS || key == Stat.HEALTH || key == Stat.REGEN) ? 0 : 100;

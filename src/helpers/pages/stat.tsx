@@ -1,7 +1,7 @@
 import { ItemSets } from "@/assets/sets"
 import { Stat } from "@/assets/stat"
 import _ from "lodash"
-import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed, totalQuestRewardBonus } from "../calculators"
+import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed, totalQuestRewardBonus, totalEnergyCap } from "../calculators"
 import { bd, bigdec_max, pn } from "../numbers"
 import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo, isCompletedChallenge, maxxedItemSetNum } from "../resourceInfo"
 import bigDecimal from "js-big-decimal"
@@ -94,6 +94,45 @@ export function getStatInfo(playerStates : any) {
             'total' : {
                 'name': 'Total',
                 'val' : totalEnergyPower(playerStates),
+                'sigFig': 4,
+                'noPer' : true,
+            }
+        },
+        'energyBar' : {
+            'base' : {
+                'name' : "Base Energy Bars",
+                'val' : v('baseEnergyBar'),
+                'sigFig' : 2,
+                'noPer' : true,
+            },
+            'equip' : {
+                'name' : 'x Equipment',
+                'val' : equipmentInfo(playerStates, Stat.ENERGY_BARS),
+                'sigFig' : 2,
+            },
+            'macguffin' : {
+                'name': 'x Macguffin ',
+                'val' : macguffinInfo(playerStates, Stat.ENERGY_BARS),
+            },
+            'perk' : {
+                'name': 'x Perk ',
+                'val' : perkInfo(playerStates, Stat.ENERGY_BARS),
+            },
+            'quirk' : {
+                'name': 'x Quirk ',
+                'val' : quirkInfo(playerStates, Stat.ENERGY_BARS),
+            },
+            'wish' : {
+                'name': 'x Wish ',
+                'val' : wishInfo(playerStates, Stat.ENERGY_BARS),
+            },
+            'apitems' : {
+                'name': 'x Potions ',
+                'val' : apItemInfo(playerStates, Stat.ENERGY_BARS),
+            },
+            'total' : {
+                'name': 'Total',
+                'val' : totalEnergyBar(playerStates),
                 'sigFig': 4,
                 'noPer' : true,
             }
