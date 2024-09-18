@@ -415,7 +415,7 @@ export default function Page() {
         <Content title="Cards" infoRequired={infoReq} extraRequired={extraReq}>
             <ContentSubsection title={"How much mayo, cards, chonks will I get per day?"}>
                 <>
-                    <p>The below let's you know how much mayo, cards and chonks you will get per day.</p>
+                    <p>The below let&apos;s you know how much mayo, cards and chonks you will get per day.</p>
                     <StandardTable order={dailyOrder} header={dailyHeader} rows={dailyData}/>
 
                     <p>With the above stats, you will have <span className={mayoLeftover.compareTo(bd(0)) < 0 ? "text-red-500" : "text-green-500"}>{pn(mayoLeftover, fmt)}</span> Mayo spare at the end of each day.</p>
