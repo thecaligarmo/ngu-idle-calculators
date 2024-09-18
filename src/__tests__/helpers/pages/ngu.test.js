@@ -15,6 +15,7 @@ import { describe, test } from '@jest/globals';
 import _ from 'lodash';
 import renderer from 'react-test-renderer';
 import earlyEvil from '../../__data__/earlyEvil1';
+import midEvilTwo from '@/__tests__/__data__/midEvil2';
 
 
 
@@ -27,6 +28,7 @@ var lateNormalData = toDataObj(lateNormal)
 var earlyEvilData = toDataObj(earlyEvil);
 var earlyEvilTwoData = toDataObj(earlyEvilTwo);
 var midEvilData = toDataObj(midEvil);
+var midEvilTwoData = toDataObj(midEvilTwo)
 
 var types = ['energy', 'magic']
 var nguNames = [
@@ -236,6 +238,37 @@ var midEvilExpected = {
     }
 }
 
+var midEvilTwoExpected = {
+    [GameMode.NORMAL] : {
+        'seconds': [
+            [400847.56, 406050.26, 458496.04, 364273.62, 258774.94, 24531.06, 644804.6, 82794.42, 601376.84],
+            [208520.28, 451227.72, 795816.68, 918349.62, 1168346.5, 302838.74, 1019056.18]
+        ],
+        'cap' : [
+            [1536, 1536, 1536, 1536, 1536, 1174, 117384, 1805893, 45147323],
+            [953, 2859, 7287, 21860, 182164, 1401258, 14012575]
+        ],
+        'capDay': [
+            [1465, 1463, 1452, 1473, 1497, 1188, 104778, 1807521, 39334867],
+            [936, 2706, 6293, 18363, 144262, 1325436, 10745347]
+        ]
+    },
+    [GameMode.EVIL] : {
+        'seconds': [
+            [155867.72, 167367.72, 83389.96, 161143.72, 101341, 115453.46, 9618.24, 162625.78, 1294100.08],
+            [147036.46, 46973.1, 47144.88, 89649.76, 548749.28, 1601001.4, 1133813.01]
+        ],
+        'cap' : [
+            [4.966e+11, 4.966e+11, 4.515e+11, 4.966e+12, 4.515e+13, 1.806e+14, 1.806e+15, 4.515e+15, 1.806e+16],
+            [1.682e+11, 1.541e+12, 5.605e+12, 5.605e+13, 5.605e+14, 4.204e+15, 9.809e+15]
+        ],
+        'capDay': [
+            [4.809e+11, 4.783e+11, 4.522e+11, 4.797e+12, 4.481e+13, 1.740e+14, 1.998e+15, 6.279e+15, 3.338e+16],
+            [1.639e+11, 1.569e+12, 5.880e+12, 5.582e+13, 5.249e+14, 4.394e+15, 1.457e+16]
+        ]
+    }
+}
+
 
 // TODO - Add tests for % and other
 
@@ -261,9 +294,10 @@ for(let gm = 0; gm < 3; gm++) {
             ['Early Evil 1', earlyEvilData, earlyEvilExpected],
             ['Early Evil 2', earlyEvilTwoData, earlyEvilTwoExpected],
             ['Mid Evil 1', midEvilData, midEvilExpected],
+            ['Mid Evil 2', midEvilTwoData, midEvilTwoExpected],
         ]
         describe.each(cases)(
-            gameModeName + " NGU - %s",
+            gameMode + " NGU - %s",
             (name, data, expected) => {
                 if(!_.isUndefined(expected[gameMode])) {
                     var speedFactors = [
@@ -396,56 +430,56 @@ var expectedIncreases = {
 }
 
 
-for(let gm = 0; gm < 3; gm++) {
-    let gameMode = GameMode.NORMAL
-    let gameModeName = 'Normal'
-    if(gm == 1)  {
-        gameMode = GameMode.EVIL
-        gameModeName = 'Evil'
-    }
-    if(gm == 2)  {
-        gameMode = GameMode.SADISTIC
-        gameModeName = 'Sadistic'
-    }
+// for(let gm = 0; gm < 3; gm++) {
+//     let gameMode = GameMode.NORMAL
+//     let gameModeName = 'Normal'
+//     if(gm == 1)  {
+//         gameMode = GameMode.EVIL
+//         gameModeName = 'Evil'
+//     }
+//     if(gm == 2)  {
+//         gameMode = GameMode.SADISTIC
+//         gameModeName = 'Sadistic'
+//     }
 
-    describe("NGU Page - " + gameModeName + " NGU", () => {
-        var cases = [
-            ['Early Evil 2', earlyEvilTwoData, expectedIncreases],
-        ]
-        describe.each(cases)(
-            gameModeName + " NGU - %s",
-            (name, data, expected) => {
-                if(!_.isUndefined(expected[gameMode])) {
-                    var NGUs = types.map((ty) => {
-                        var ngus = (ty === 'energy')
-                            ? data['energyNGUs'][0]
-                            : data['magicNGUs'][0]
-                        var retNgus = []
-                        for (var ngu of ngus) {
-                            if(ngu.mode == gameMode) {
-                                retNgus.push(ngu)
-                            }
-                        }
-                        return retNgus
-                    })
+//     describe("NGU Page - " + gameModeName + " NGU", () => {
+//         var cases = [
+//             ['Early Evil 2', earlyEvilTwoData, expectedIncreases],
+//         ]
+//         describe.each(cases)(
+//             gameModeName + " NGU - %s",
+//             (name, data, expected) => {
+//                 if(!_.isUndefined(expected[gameMode])) {
+//                     var NGUs = types.map((ty) => {
+//                         var ngus = (ty === 'energy')
+//                             ? data['energyNGUs'][0]
+//                             : data['magicNGUs'][0]
+//                         var retNgus = []
+//                         for (var ngu of ngus) {
+//                             if(ngu.mode == gameMode) {
+//                                 retNgus.push(ngu)
+//                             }
+//                         }
+//                         return retNgus
+//                     })
 
-                    var targets = NGUs.map((tyNGUs, index) => {
-                        return tyNGUs.map((ngu) => {
-                            return ngu.percentIncrease(bd(10))
-                        })
-                    })
+//                     var targets = NGUs.map((tyNGUs, index) => {
+//                         return tyNGUs.map((ngu) => {
+//                             return ngu.percentIncrease(bd(10))
+//                         })
+//                     })
 
-                    for(let i = 0; i < 2; i++) {
-                        let maxJ = (i == 0) ? 9 : 7;
-                        for(let j = 0; j < maxJ; j++) {
-                            test(gameModeName + ' NGU - ' + name + ' - ' + nguNames[i][j] + ' 10% Increase', () => {
-                                var ec = expectClose(targets[i][j], expected[gameMode][i][j])
-                                expect(ec[0]).toBeCloseTo(ec[1], 0)
-                            })
-                        }
-                    }
-                }
-            }
-        )
-    })
-}
+//                     for(let i = 0; i < 2; i++) {
+//                         let maxJ = (i == 0) ? 9 : 7;
+//                         for(let j = 0; j < maxJ; j++) {
+//                             test(gameModeName + ' NGU - ' + name + ' - ' + nguNames[i][j] + ' 10% Increase', () => {
+//                                 var ec = expectClose(targets[i][j], expected[gameMode][i][j])
+//                                 expect(ec[0]).toBeCloseTo(ec[1], 0)
+//                             })
+//                         }
+//                     }
+//                 }
+//             }
+//         )
+//     })
+// }

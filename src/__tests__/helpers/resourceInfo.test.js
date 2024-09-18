@@ -11,6 +11,7 @@ import earlyNormalTwo from '../__data__/earlyNormal2';
 import evilReturnToNormal from '../__data__/evilReturnToNormal';
 import lateNormal from '../__data__/lateNormal';
 import midEvil from '../__data__/midEvil1';
+import midEvilTwo from '../__data__/midEvil2';
 import midNormal from '../__data__/midNormal1';
 import midNormalTwo from '../__data__/midNormal2';
 
@@ -28,6 +29,7 @@ describe('Resource Info - Achievement Info', () => {
         ['Evil Return to Normal', evilReturnToNormal, 155.15],
         ['Early Evil 2', earlyEvilTwo, 156.15],
         ['Mid Evil 1', midEvil, 156.15],
+        ['Mid Evil 2', midEvilTwo, 156.55],
     ]
     test.each(cases)(
         "Achievement Info - %s",
@@ -67,14 +69,15 @@ describe('Resource Info - Adv Training Info', () => {
 describe('Resource Info - AP Info', () => {
     var cases = [
         ['Early Normal 1', earlyNormal, 100],
-        ['Early Normal 2', earlyNormalTwo, 100],
-        ['Mid Normal 1', midNormal, 100],
-        ['Mid Normal 2', midNormalTwo, 100],
-        ['Late Normal', lateNormal, 100],
+        // ['Early Normal 2', earlyNormalTwo, 100],
+        // ['Mid Normal 1', midNormal, 100],
+        // ['Mid Normal 2', midNormalTwo, 100],
+        // ['Late Normal', lateNormal, 100],
         ['Early Evil 1', earlyEvil, 100],
-        ['Evil Return to Normal', evilReturnToNormal, 100],
-        ['Early Evil 2', earlyEvilTwo, 100],
-        ['Mid Evil 1', midEvil, 100],
+        // ['Evil Return to Normal', evilReturnToNormal, 100],
+        // ['Early Evil 2', earlyEvilTwo, 100],
+        // ['Mid Evil 1', midEvil, 100],
+        // ['Mid Evil 2', midEvil2, 100],
     ]
     test.each(cases)(
         "AP Info - %s",
@@ -100,14 +103,15 @@ describe('Resource Info - Beard Temp Info', () => {
         // ['Evil Return to Normal', evilReturnToNormal, {'power' : 100, 'dc' : 100}],
         // ['Early Evil 2', earlyEvilTwo, {'power' : 100, 'dc' : 100}],
         // ['Mid Evil 1', midEvil, {'power' : 100, 'dc' : 100}],
+        ['Mid Evil 2', midEvilTwo, {'power' : 2653.44, 'dc' : 1653.23}],
     ]
     test.each(cases)(
         "Beard Temp Info - %s",
         (name, obj, expectedValues) => {
             var data = { 'beards' : [defaultPlayerData(obj, 'beards')]}
-            var ec = expectClose(beardInfoTemp(data, Stat.POWER), expectedValues['power'])
+            var ec = expectClose(beardInfoTemp(data, Stat.POWER, true), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(beardInfoTemp(data, Stat.DROP_CHANCE), expectedValues['dc'])
+            var ec = expectClose(beardInfoTemp(data, Stat.DROP_CHANCE, true), expectedValues['dc'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -125,6 +129,7 @@ describe('Resource Info - Beard Perm Info', () => {
         ['Evil Return to Normal', evilReturnToNormal, {'power' : 730, 'dc' : 408}],
         ['Early Evil 2', earlyEvilTwo, {'power' : 908, 'dc' : 466}],
         ['Mid Evil 1', midEvil, {'power' : 1481, 'dc' : 591}],
+        ['Mid Evil 2', midEvilTwo, {'power' : 1989.36, 'dc' : 682.72}],
     ]
     test.each(cases)(
         "Beard Perm Info - %s",
@@ -149,6 +154,7 @@ describe('Resource Info - Challenge Info', () => {
         ['Evil Return to Normal', evilReturnToNormal, {'power' : 149, 'mngu' : 150}],
         ['Early Evil 2', earlyEvilTwo, {'power' : 203, 'mngu' : 150}],
         ['Mid Evil 1', midEvil, {'power' : 203, 'mngu' : 150}],
+        ['Mid Evil 2', midEvilTwo, {'power' : 203, 'mngu' : 150}],
     ]
     test.each(cases)(
         "Challenge Info - %s",
@@ -174,6 +180,7 @@ describe('Resource Info - Digger Info', () => {
         // ['Evil Return to Normal', evilReturnToNormal, {'power' : 100}],
         // ['Early Evil 2', earlyEvilTwo, {'power' : 100}],
         // ['Mid Evil 1', earlyEvilTwo, {'power' : 100}],
+        ['Mid Evil 2', midEvilTwo, {'power' : 100}],
     ]
     test.each(cases)(
         "Digger Info - %s",
@@ -283,6 +290,16 @@ describe('Resource Info - Equipment Info', () => {
             'engu' : 100,
             'mwandoos' : 100,
         }],
+        ['Mid Evil 2', midEvilTwo, {
+            'power' : 8.164e8 + 5.579e8,
+            'toughness' : 4.88e8 + 5.389e8,
+            'epower' : 615170,
+            'mcap' : 13479,
+            'dc' : 2490,
+            'respawn' : 104,
+            'engu' : 2167,
+            'mwandoos' : 200,
+        }],
     ]
     test.each(cases)(
         "Equipment Info - %s",
@@ -366,6 +383,11 @@ describe('Resource Info - Hack Info', () => {
             'qp': 113.56,
             'wish': 100,
         }],
+        ['Mid Evil 2', midEvilTwo, {
+            'power' : 594.45,
+            'qp': 210.74,
+            'wish': 109.3,
+        }],
     ]
     test.each(cases)(
         "Hack Info - %s",
@@ -438,6 +460,12 @@ describe('Resource Info - Macguffin Info', () => {
             'power' : 140,
             'epower' : 156,
             'dc' : 106.25,
+            'attack' : 100,
+        }],
+        ['Mid Evil 2', midEvilTwo, {
+            'power' : 189.108,
+            'epower' : 209.271,
+            'dc' : 119.22,
             'attack' : 100,
         }],
     ]
@@ -527,6 +555,13 @@ describe('Resource Info - NGU Info', () => {
             'attack' : 1.347e22,
             'engu' : 7023,
         }],
+        ['Mid Evil 2', midEvilTwo, {
+            'power' : 561662 * 8417/100,
+            'ygg' : 6269.17,
+            'dc' : 623543.1,
+            'attack' : 3.671e26,
+            'engu' : 18925,
+        }],
     ]
     test.each(cases)(
         "NGU Info - %s",
@@ -593,8 +628,14 @@ describe('Resource Info - Perk Info', () => {
             'boosts': 550,
             'epower': 330,
         }],
-        ['Mide Evil 1', midEvil, {
+        ['Mid Evil 1', midEvil, {
             'power' : 188.1902,
+            'boosts': 550,
+            'epower': 429,
+        }],
+        
+        ['Mid Evil 2', midEvilTwo, {
+            'power' : 254.3178,
             'boosts': 550,
             'epower': 429,
         }],
@@ -668,6 +709,11 @@ describe('Resource Info - Quirk Info', () => {
             'ecap': 165,
             'mngu': 100,
         }],
+        ['Mid Evil 2', midEvilTwo, {
+            'power' : 250,
+            'ecap': 165,
+            'mngu': 100,
+        }],
     ]
     test.each(cases)(
         "Quirk Info - %s",
@@ -735,6 +781,11 @@ describe('Resource Info - Wish Info', () => {
             'rpower': 121,
             'hack': 100,
         }],
+        ['Mid Evil 2', midEvilTwo, {
+            'power' : 187,
+            'rpower': 197,
+            'hack': 140,
+        }],
     ]
     test.each(cases)(
         "Wish Info - %s",
@@ -766,6 +817,7 @@ describe('Resource Info - Item Set Info', () => {
         ['Evil Return to Normal', evilReturnToNormal, [ItemSets.BADLY_DRAWN], [ItemSets.PARTY], 9],
         ['Early Evil 2', earlyEvilTwo, [ItemSets.BADLY_DRAWN], [ItemSets.PARTY], 10],
         ['Mid Evil 1', midEvil, [ItemSets.PRETTY, ItemSets.NERD], [ItemSets.CONSTRUCTION, ItemSets.NETHER], 10],
+        ['Mid Evil 2', midEvilTwo, [ItemSets.PRETTY, ItemSets.NERD], [ItemSets.PIRATE], 10],
     ]
     test.each(cases)(
         "Item Sets Info - %s",

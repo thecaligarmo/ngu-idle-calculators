@@ -11,6 +11,7 @@ import { bd } from '@/helpers/numbers';
 import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from '@/helpers/pages/daily';
 import renderer from 'react-test-renderer';
 import earlyEvil from '../../__data__/earlyEvil1';
+import midEvilTwo from '@/__tests__/__data__/midEvil2';
 
 
 
@@ -22,6 +23,7 @@ var lateNormalData = toDataObj(lateNormal)
 var earlyEvilData = toDataObj(earlyEvil);
 var earlyEvilTwoData = toDataObj(earlyEvilTwo);
 var midEvilData = toDataObj(midEvil);
+var midEvilTwoData = toDataObj(midEvilTwo);
 
 
 // getQuestInfo
@@ -58,6 +60,16 @@ describe("Daily page - Quest Info", () => {
             'ap' : {'major' : bd(356), 'minor': bd(108), 'perMajor' : bd(93), 'perMinor' : bd(18)},
             'qp' : {'major' : bd(306), 'minor': bd(96), 'perMajor' : bd(80), 'perMinor' : bd(16)},
         }],
+        [midEvilTwoData, {
+            beastButter : false,
+            hoursOfflinePerDay : bd(0),
+            hoursPerDay : bd(24),
+            idleMajorQuests : false,
+            includeMajorQuests : false,
+        }, {
+            'ap' : {'major' : bd(0), 'minor': bd(239), 'perMajor' : bd(191), 'perMinor' : bd(22)},
+            'qp' : {'major' : bd(0), 'minor': bd(554), 'perMajor' : bd(428), 'perMinor' : bd(51)},
+        }],
     ]
     test.each(cases)(
         "Daily Page - Quest Info - Case %#",
@@ -79,6 +91,7 @@ describe("Daily page - Quest Info", () => {
                 totalQuestDropBonus: bd(data['totalQuestDropBonus%'][0]),
                 totalRespawnTime: bd(data['totalRespawnTime'][0]),
             }
+
 
             var combinedData = {...infoData, ...extraData}
             var questInfo = getQuestInfo(combinedData)
@@ -102,14 +115,15 @@ test('Daily Page - Title List', ()=> {
 
 describe("Daily page - Max Titan AK", () => {
     var cases = [
-        [earlyNormalData, [Titans.NONE, 0]],
+        [earlyNormalData, [Titans.NONE, 0]], // 0
         [earlyNormalTwoData, [Titans.GRAND_TREE, 0]],
-        [midNormalData, [Titans.UUG, 0]],
+        [midNormalData, [Titans.UUG, 0]], // 2
         [midNormalTwoData, [Titans.WALDERP, 4]],
-        [lateNormalData, [Titans.BEAST, 2]],
+        [lateNormalData, [Titans.BEAST, 2]], // 4
         [earlyEvilData, [Titans.BEAST, 3]],
-        [earlyEvilTwoData, [Titans.BEAST, 3]],
+        [earlyEvilTwoData, [Titans.BEAST, 3]], // 6
         [midEvilData, [Titans.NERD, 1]],
+        [midEvilTwoData, [Titans.GODMOTHER, 1]], // 8
     ]
     test.each(cases)(
         "Daily Page - Max Titan AK - Case %#",
@@ -166,6 +180,12 @@ describe("Daily page - Titan Hourly Info", () => {
             'ppp' : bd(6257075),
             'qp' : bd(0),
         }],
+        [[Titans.GODMOTHER, 1], midEvilTwoData, { // Per hour, off by one for version
+            'ap' : bd(9360/24), 
+            'exp' : bd(77909040/24),
+            'ppp' : bd(9152102400/24),
+            'qp' : bd(120/24),
+        }],
     ]
     test.each(cases)(
         "Daily Page - Titan Hourly Info - Case %#",
@@ -185,7 +205,6 @@ describe("Daily page - Titan Hourly Info", () => {
                 wishes : data['wishes'][0],
             }
 
-            
             var titanHourlyInfo = getTitanHourlyInfo(maxTitan, infoData)
             for (var t of ['ap', 'exp', 'ppp', 'qp']){
                 var ec = expectClose(titanHourlyInfo[t], expectedValue[t])

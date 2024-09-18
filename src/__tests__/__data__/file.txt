@@ -3,11 +3,12 @@ What to do for a new file:
 1. Make sure that Advanced training is "active"
 2. Remove energy from everywhere
 3. Turn off Beards (For testing - edit save file to make it look like they're on)
-4. Add targets for NGUs
+4. Add targets for NGUs (normal/evil/sad)
 5. Add targets for Hacks
 6. Add targets for TM
 7. Make gear "random"
 8. Turn *on* some of the gold diggers
+9. Make sure auto merg/boost is off
 
 --
 Update the following files:

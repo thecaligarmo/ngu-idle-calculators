@@ -1,4 +1,4 @@
-import { totalAPBonus, totalAugmentSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness, totalWishSpeed } from '@/helpers/calculators';
+import { totalAPBonus, totalAugmentSpeed, totalCardSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalMayoGeneration, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalTagEffect, totalToughness, totalWishSpeed } from '@/helpers/calculators';
 import earlyEvil from '../__data__/earlyEvil1';
 import earlyEvilTwo from '../__data__/earlyEvil2';
 import earlyNormal from '../__data__/earlyNormal1';
@@ -6,6 +6,7 @@ import earlyNormalTwo from '../__data__/earlyNormal2';
 import evilReturnToNormal from '../__data__/evilReturnToNormal';
 import lateNormal from '../__data__/lateNormal';
 import midEvil from '../__data__/midEvil1';
+import midEvilTwo from '../__data__/midEvil2';
 import midNormal from '../__data__/midNormal1';
 import midNormalTwo from '../__data__/midNormal2';
 import { expectClose, toDataObj } from '../testHelperFunctions';
@@ -20,6 +21,9 @@ var earlyEvilData = toDataObj(earlyEvil);
 var evilReturnToNormalData = toDataObj(evilReturnToNormal);
 var earlyEvilTwoData = toDataObj(earlyEvilTwo);
 var midEvilData = toDataObj(midEvil);
+var midEvilTwoData = toDataObj(midEvilTwo);
+
+
 
 
 
@@ -34,6 +38,7 @@ describe('Calculators - Energy', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'power': 7.554e8, 'bar': 1.46e8, 'cap': 2395637339264}],
         ['Early Evil 2', earlyEvilTwoData, {'power': 9.522e9, 'bar': 1.152e9, 'cap': 26218964477405}],
         ['Mid Evil 1', midEvilData, {'power': 4.299e10, 'bar': 5.743e9, 'cap':111846015531154 }],
+        ['Mid Evil 2', midEvilTwoData, {'power': 5.49e11, 'bar': 1.755e10, 'cap': 230186471106591 }],
     ]
     test.each(cases)(
         "Calculators - Energy - %s",
@@ -60,6 +65,7 @@ describe('Calculators - Magic', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'power': 8.385e7, 'bar': 3.155e7, 'cap': 258609120090}],
         ['Early Evil 2', earlyEvilTwoData, {'power': 3.153e9, 'bar': 1.260e9, 'cap': 6363454536030}],
         ['Mid Evil 1', midEvilData, {'power': 1.439e10, 'bar': 1.914e9, 'cap': 44967554132115}],
+        ['Mid Evil 2', midEvilTwoData, {'power': 3.17e11, 'bar': 9.02e9, 'cap': 150522568302284}],
     ]
     test.each(cases)(
         "Calculators - Magic - %s",
@@ -85,6 +91,7 @@ describe('Calculators - Resource 3', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'power': 3, 'bar': 3, 'cap': 90000}],
         ['Early Evil 2', earlyEvilTwoData, {'power': 3, 'bar': 6, 'cap': 90000}],
         ['Mid Evil 1', midEvilData, {'power': 188, 'bar': 30, 'cap': 5549251}],
+        ['Mid Evil 2', midEvilTwoData, {'power': 8621, 'bar': 563, 'cap': 42743632}],
     ]
     test.each(cases)(
         "Calculators - Resource 3 - %s",
@@ -111,6 +118,7 @@ describe('Calculators - Augments', () => {
         ['Evil Return to Normal', evilReturnToNormalData, 8.309e10],
         ['Early Evil 2', earlyEvilTwoData, 1.719e12],
         ['Mid Evil 1', midEvilData, 1.373e13],
+        ['Mid Evil 2', midEvilTwoData, 6.354e14],
     ]
     test.each(cases)(
         "Calculators - Augments - %s",
@@ -133,6 +141,7 @@ describe('Calculators - NGU', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'energy': 8.575e12, 'magic': 3.442e12}],
         ['Early Evil 2', earlyEvilTwoData, {'energy': 1.588e16, 'magic': 2.452e16}],
         ['Mid Evil 1', midEvilData, {'energy': 1.265e16, 'magic': 1.926e16}],
+        ['Mid Evil 2', midEvilTwoData, {'energy': 2.215e20, 'magic': 7.136e20}],
     ]
     test.each(cases)(
         "Calculators - NGU - %s",
@@ -157,6 +166,7 @@ describe('Calculators - EXP, AP, PP', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'exp': 1665.96, 'ap': 186.18, 'pp' : 1788.99}],
         ['Early Evil 2', earlyEvilTwoData, {'exp': 2402.84, 'ap': 187.38, 'pp' : 2502.83}],
         ['Mid Evil 1', midEvilData, {'exp': 3504.79, 'ap': 191.12, 'pp' : 3884.76}],
+        ['Mid Evil 2', midEvilTwoData, {'exp': 19100.88, 'ap': 191.61, 'pp' : 38912.44}],
     ]
     test.each(cases)(
         "Calculators - EXP, AP, PP - %s",
@@ -183,6 +193,7 @@ describe('Calculators - Misc', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'daycare': 100, 'hack': 100, 'wish' : 100}],
         ['Early Evil 2', earlyEvilTwoData, {'daycare': 126, 'hack': 175, 'wish' : 100}],
         ['Mid Evil 1', midEvilData, {'daycare': 145, 'hack': 202, 'wish' : 250}],
+        ['Mid Evil 2', midEvilTwoData, {'daycare': 282, 'hack': 2767, 'wish' : 361}],
     ]
     test.each(cases)(
         "Calculators - Misc - %s",
@@ -209,6 +220,7 @@ describe('Calculators - Adventure', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'power': 6.749e12, 'toughness': 2.2635e12}],
         ['Early Evil 2', earlyEvilTwoData, {'power': 1.621e14, 'toughness': 1.787e14}],
         ['Mid Evil 1', midEvilData, {'power': 5.401e16, 'toughness': 2.537e16}],
+        ['Mid Evil 2', midEvilTwoData, {'power': 7.205e20, 'toughness': 3.652e20}],
     ]
     test.each(cases)(
         "Calculators - Adventure - %s",
@@ -222,7 +234,7 @@ describe('Calculators - Adventure', () => {
 })
 
 
-describe('Calculators - Misc', () => {
+describe('Calculators - Misc Adventure', () => {
     var cases = [
         ['Early Normal 1', earlyNormalData, {'gold': 100, 'respawn': 100, 'dropChance' : 114}],
         ['Early Normal 2', earlyNormalTwoData, {'gold': 854, 'respawn': 95, 'dropChance' : 155}],
@@ -233,9 +245,10 @@ describe('Calculators - Misc', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'gold': 1.698e11, 'respawn': 43.33, 'dropChance' : 1.564e8}],
         ['Early Evil 2', earlyEvilTwoData, {'gold': 9.265e14, 'respawn': 35.93, 'dropChance' : 1.629e9}],
         ['Mid Evil 1', midEvilData, {'gold': 4.011e17, 'respawn': 41.05, 'dropChance' : 2.975e10}],
+        ['Mid Evil 2', midEvilTwoData, {'gold': 8.264e19, 'respawn': 45.66, 'dropChance' : 9.69e12}],
     ]
     test.each(cases)(
-        "Calculators - Misc - %s",
+        "Calculators - Misc Adventure - %s",
         (name, data, expectedValues) => {
             var ec = expectClose(totalGoldDrop(data), expectedValues['gold'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
@@ -262,6 +275,7 @@ describe('Calculators - Beards', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'energy': 7.061e14, 'magic': 5.085e13}],
         ['Early Evil 2', earlyEvilTwoData, {'energy': 7.169e16, 'magic': 4.514e16}],
         ['Mid Evil 1', midEvilData, {'energy': 1.310e17, 'magic': 2.526e16}],
+        ['Mid Evil 2', midEvilTwoData, {'energy': 2.574e18, 'magic': 1.005e18}],
     ]
     test.each(cases)(
         "Calculators - Beards - %s",
@@ -287,9 +301,10 @@ describe('Calculators - Wandoos', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'energy': 9.078e9, 'magic': 9.078e9}],
         ['Early Evil 2', earlyEvilTwoData, {'energy': 6.854e11, 'magic': 6.854e11}],
         ['Mid Evil 1', midEvilData, {'energy': 6.318e11, 'magic': 6.318e11}],
+        ['Mid Evil 2', midEvilTwoData, {'energy': 9.897e18, 'magic': 9.900e18}], // auto advances
     ]
     test.each(cases)(
-        "Calculators - Beards - %s",
+        "Calculators - Wandoos - %s",
         (name, data, expectedValues) => {
             var ec = expectClose(totalEnergyWandoosSpeed(data), expectedValues['energy'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
@@ -313,6 +328,7 @@ describe('Calculators - Quests', () => {
         ['Evil Return to Normal', evilReturnToNormalData, {'reward': 143, 'drop': 116.66}],
         ['Early Evil 2', earlyEvilTwoData, {'reward': 162, 'drop': 139.15}],
         ['Mid Evil 1', midEvilData, {'reward': 210, 'drop': 139.15}],
+        ['Mid Evil 2', midEvilTwoData, {'reward': 429, 'drop': 144.21}],
     ]
     test.each(cases)(
         "Calculators - Quests - %s",
@@ -320,6 +336,30 @@ describe('Calculators - Quests', () => {
             var ec = expectClose(totalQuestRewardBonus(data), expectedValues['reward'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
             var ec = expectClose(totalQuestDropBonus(data), expectedValues['drop'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            
+        }
+    )
+})
+
+
+// Found on Mayo
+describe('Calculators - Mayo', () => {
+    var cases = [
+        ['Early Normal 1', earlyNormalData, {'mayoSpeed': 100, 'cardSpeed': 100, 'mayoGen' : 1, 'tagEffect' : 10}],
+        ['Early Evil 1', earlyEvilData, {'mayoSpeed': 100, 'cardSpeed': 100, 'mayoGen' : 1, 'tagEffect' : 10}],
+        ['Mid Evil 1', midEvilData, {'mayoSpeed': 100, 'cardSpeed': 100, 'mayoGen' : 1, 'tagEffect' : 10}],
+    ]
+    test.each(cases)(
+        "Calculators - Quests - %s",
+        (name, data, expectedValues) => {
+            var ec = expectClose(totalMayoSpeed(data), expectedValues['mayoSpeed'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalCardSpeed(data), expectedValues['cardSpeed'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalMayoGeneration(data), expectedValues['mayoGen'])
+            expect(ec[0]).toBeCloseTo(ec[1], 0)
+            var ec = expectClose(totalTagEffect(data), expectedValues['tagEffect'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
             
         }
