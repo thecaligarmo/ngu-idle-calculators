@@ -129,7 +129,8 @@ describe("Daily page - Max Titan AK", () => {
         "Daily Page - Max Titan AK - Case %#",
         (data, expectedValue) => {
             var playerAttack = new AttackStat(1, bd(data['totalPower'][0]), bd(data['totalToughness'][0]), bd(data['totalRegen'][0]), bd(data['totalHealth'][0]))
-            var maxTitanByAK = getMaxTitanByAK(playerAttack)
+            var titans = data['titans'][0]
+            var maxTitanByAK = getMaxTitanByAK(titans, playerAttack)
             expect(maxTitanByAK[0].key).toBe(expectedValue[0].key)
             expect(maxTitanByAK[1]).toBe(expectedValue[1])
         }

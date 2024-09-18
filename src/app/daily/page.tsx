@@ -101,6 +101,7 @@ export default function Page() {
     var totalPPBonus = v('totalPPBonus%')
     var totalQPBonus = v('totalQuestRewardBonus%')
     var wishes : Wish[] = j('wishes')
+    var titans : Titan[] = j('titans')
 
     // Update wishes with info above.
     if(!_.isUndefined(wishes[Titans.BEAST.getQPWishNum()])) {
@@ -187,7 +188,7 @@ export default function Page() {
     }
     var playerAttack = new AttackStat(1, v('totalPower'), v('totalToughness'), v('totalRegen'), v('totalHealth'))
     
-    var maxTitanByAK : [Titan, number] = getMaxTitanByAK(playerAttack);
+    var maxTitanByAK : [Titan, number] = getMaxTitanByAK(titans, playerAttack);
     var maxTitan : [Titan, number] = maxTitanByAK
 
     // Update titan if user wants a different one.

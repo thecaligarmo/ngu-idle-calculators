@@ -20,6 +20,7 @@ import { Wandoos, WANDOOSLIST } from "@/assets/wandoos";
 import { Zones } from "@/assets/zones";
 import { parseNum } from "./parsers";
 import { Card, CARDLIST, CARDS } from "@/assets/cards";
+import { Titan, Titans } from "@/assets/enemy";
 
 export function defaultPlayerData(playerData : any, info : string | [string, number]) : any {
     // If we're given an array, the second object is the default value from the "extraRequired", stuff, so use that.
@@ -1050,6 +1051,17 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                     }
                 })
                 return quirks;
+            case 'titans':
+                let titans : Titan[] = [];
+                Object.values(Titans).forEach((titan) => {
+                    if (!_.isUndefined(titan) && titan.id < 13) {
+                        let t = _.cloneDeep(titan)
+                        t.importKills(playerData.bestiary.enemies)
+                        titans.push(t)
+                    }
+                })
+                return titans
+
             case 'wandoos' :
                 let wandoos : Wandoos[] = _.cloneDeep(Object.values(WANDOOSLIST))
                 wandoos.forEach((wandoo) => {
@@ -1433,6 +1445,7 @@ export function getPlayerOptions() : string[] {
         'macguffins',
         'perks',
         'quirks',
+        'titans',
         'wandoos',
         'wishes',
         'yggdrasil',

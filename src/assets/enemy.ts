@@ -93,6 +93,7 @@ export class Titan extends Enemy {
     pp: number
     qp: number
     autokill : AttackStat[]
+    kills: number[]
     constructor(
         id: number, key: string, name: string,
         attackStat: AttackStat | AttackStat[],
@@ -112,6 +113,10 @@ export class Titan extends Enemy {
         this.pp = pp
         this.qp = qp
         this.autokill = (autokill instanceof AttackStat) ? [autokill] : autokill
+        this.kills = []
+        for(let i =0 ; i < this.versions; i++) {
+            this.kills.push(0)
+        }
     }
     getFullName(i : number = 0) : string{
         if (this.versions != 4) {
@@ -128,8 +133,27 @@ export class Titan extends Enemy {
         
     }
     canAutoKill(player : AttackStat, version : number = 0, kills : number = 0) : boolean {
-        // Walderp needs 3 kills
+        
+        // Exile - 24 kilsl allows AK
+        if (this.id == 9) {
+            if (this.kills[version] >=24) {
+                return true
+            }
+        }
+        // Final two bosses you can't autokill
+        else if (this.id > 12) {
+            return false
+        }
         // IT Hungers, Rock Lobster, Amalgamate - 5 kills allows you to AK
+        else if (this.id > 10) {
+            if (this.kills[version] >= 5) {
+                return true
+            }
+        }
+        // Final version of walderp requires 3 kills
+        else if (this.id == 5 && version == 4) {
+            return this.autokill[version].isWeaker(player) && this.kills[version] >= 3
+        }
         return this.autokill[version].isWeaker(player)
     }
     getAP(apBonus : bigDecimal = bd(1)) : bigDecimal {
@@ -178,6 +202,52 @@ export class Titan extends Enemy {
             rbChallenges = bd(rbChallenges)
         }
         return bigdec_max(bd(1), bd(this.respawnTime).subtract(rbChallenges.multiply(bd(1/4))))
+    }
+    importKills(bestiary : any) {
+        switch(this.id){
+            case 1:
+                this.kills = [bestiary[302].kills]
+                break;
+            case 2:
+                this.kills = [bestiary[303].kills]
+                break;
+            case 3:
+                this.kills = [bestiary[304].kills]
+                break;
+            case 4:
+                this.kills = [bestiary[305].kills]
+                break;
+            case 5: // Walderp
+                this.kills = [bestiary[306].kills, bestiary[307].kills, bestiary[308].kills, bestiary[309].kills, bestiary[310].kills]
+                break;
+            case 6: // Beast
+                this.kills = [bestiary[312].kills, bestiary[313].kills, bestiary[314].kills, bestiary[315].kills]
+                break;
+            case 7: // Nerdy
+                this.kills = [bestiary[334].kills, bestiary[335].kills, bestiary[336].kills, bestiary[337].kills]
+                break;
+            case 8: // Godmother
+                this.kills = [bestiary[339].kills, bestiary[340].kills, bestiary[341].kills, bestiary[342].kills]
+                break;
+            case 9: // Exile
+                this.kills = [bestiary[344].kills, bestiary[345].kills, bestiary[346].kills, bestiary[347].kills]
+                break;
+            case 10: // IT Hungers
+                this.kills = [bestiary[365].kills, bestiary[366].kills, bestiary[367].kills, bestiary[368].kills]
+                break;
+            case 11: // Rock Lobster
+                this.kills = [bestiary[369].kills, bestiary[370].kills, bestiary[371].kills, bestiary[372].kills]
+                break;
+            case 12: // Amalgamate
+                this.kills = [bestiary[373].kills, bestiary[374].kills, bestiary[375].kills, bestiary[376].kills]
+                break;
+            case 13: // Tutorial Mouse
+                this.kills = [bestiary[377].kills]
+                break;
+            case 14: // Traitor
+                this.kills = [bestiary[378].kills]
+                break;
+        }
     }
 }
 
