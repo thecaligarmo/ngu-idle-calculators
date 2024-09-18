@@ -16,6 +16,7 @@ import _ from 'lodash';
 import renderer from 'react-test-renderer';
 import earlyEvil from '../../__data__/earlyEvil1';
 import midEvilTwo from '@/__tests__/__data__/midEvil2';
+import lateEvil from '@/__tests__/__data__/lateEvil1';
 
 
 
@@ -28,7 +29,8 @@ var lateNormalData = toDataObj(lateNormal)
 var earlyEvilData = toDataObj(earlyEvil);
 var earlyEvilTwoData = toDataObj(earlyEvilTwo);
 var midEvilData = toDataObj(midEvil);
-var midEvilTwoData = toDataObj(midEvilTwo)
+var midEvilTwoData = toDataObj(midEvilTwo);
+var lateEvilData = toDataObj(lateEvil);
 
 var types = ['energy', 'magic']
 var nguNames = [
@@ -269,6 +271,38 @@ var midEvilTwoExpected = {
     }
 }
 
+var lateEvilExpected = {
+    [GameMode.NORMAL] : {
+        'seconds': [
+            [278147.88, 283011.86, 346589.96, 259619.86, 151928.38, 81515.24, 779356.44, 1158138.8, 2054254.94],
+            [3609.94, 245918.34, 781953.28, 930443.74, 1351977.14, 1738048.06, 2343919.7]
+        ],
+        'cap' : [
+            [146, 146, 146, 146, 146, 121, 12139, 242778, 6069439],
+            [24, 73, 202, 605, 5045, 50444, 504440]
+        ],
+        'capDay': [
+            [142, 142, 141, 143, 145, 121, 10938, 205607, 4363185],
+            [24, 71, 182, 532, 4133, 38542, 341757]
+        ]
+    },
+    [GameMode.EVIL] : {
+        'seconds': [
+            [233168.04, 244329.32, 371483.88, 256489.96, 394494.44, 172437.64, 135754.12, 83574.44, 1148392.56],
+            [142126.12, 41663.72, 33281.48, 101743.88, 320817.96, 494426.6, 6684.24]
+        ],
+        'cap' : [
+            [6.937e+10, 6.937e+10, 6.937e+10, 6.937e+11, 6.937e+12, 4.509e+13, 4.509e+14, 3.815e+15, 3.121e+16],
+            [6.053e+09, 5.765e+10, 3.747e+11, 3.747e+12, 3.747e+13, 3.747e+14, 2.594e+15]
+        ],
+        'capDay': [
+            [6.682e+10, 6.663e+10, 6.442e+10, 6.642e+11, 6.402e+12, 4.360e+13, 4.423e+14, 3.820e+15, 2.939e+16],
+            [5.973e+09, 5.830e+10, 3.824e+11, 3.725e+12, 3.409e+13, 3.159e+14, 2.714e+15]
+        ]
+    }
+}
+
+
 
 // TODO - Add tests for % and other
 
@@ -295,6 +329,7 @@ for(let gm = 0; gm < 3; gm++) {
             ['Early Evil 2', earlyEvilTwoData, earlyEvilTwoExpected],
             ['Mid Evil 1', midEvilData, midEvilExpected],
             ['Mid Evil 2', midEvilTwoData, midEvilTwoExpected],
+            ['Late Evil 1', lateEvilData, lateEvilExpected],
         ]
         describe.each(cases)(
             gameMode + " NGU - %s",

@@ -10,6 +10,7 @@ import earlyNormal from '../__data__/earlyNormal1';
 import earlyNormalTwo from '../__data__/earlyNormal2';
 import evilReturnToNormal from '../__data__/evilReturnToNormal';
 import lateNormal from '../__data__/lateNormal';
+import lateEvil from '../__data__/lateEvil1';
 import midEvil from '../__data__/midEvil1';
 import midEvilTwo from '../__data__/midEvil2';
 import midNormal from '../__data__/midNormal1';
@@ -30,6 +31,7 @@ describe('Resource Info - Achievement Info', () => {
         ['Early Evil 2', earlyEvilTwo, 156.15],
         ['Mid Evil 1', midEvil, 156.15],
         ['Mid Evil 2', midEvilTwo, 156.55],
+        ['Late Evil 1', lateEvil, 156.55],
     ]
     test.each(cases)(
         "Achievement Info - %s",
@@ -104,6 +106,7 @@ describe('Resource Info - Beard Temp Info', () => {
         // ['Early Evil 2', earlyEvilTwo, {'power' : 100, 'dc' : 100}],
         // ['Mid Evil 1', midEvil, {'power' : 100, 'dc' : 100}],
         ['Mid Evil 2', midEvilTwo, {'power' : 2653.44, 'dc' : 1653.23}],
+        ['Late Evil 1', lateEvil, {'power' : 2579.16, 'dc' : 1339.6}],
     ]
     test.each(cases)(
         "Beard Temp Info - %s",
@@ -130,6 +133,7 @@ describe('Resource Info - Beard Perm Info', () => {
         ['Early Evil 2', earlyEvilTwo, {'power' : 908, 'dc' : 466}],
         ['Mid Evil 1', midEvil, {'power' : 1481, 'dc' : 591}],
         ['Mid Evil 2', midEvilTwo, {'power' : 1989.36, 'dc' : 682.72}],
+        ['Late Evil 1', lateEvil, {'power' : 2256.3, 'dc' : 724.98}],
     ]
     test.each(cases)(
         "Beard Perm Info - %s",
@@ -181,6 +185,7 @@ describe('Resource Info - Digger Info', () => {
         // ['Early Evil 2', earlyEvilTwo, {'power' : 100}],
         // ['Mid Evil 1', earlyEvilTwo, {'power' : 100}],
         ['Mid Evil 2', midEvilTwo, {'power' : 100}],
+        ['Late Evil 1', lateEvil, {'power' : 345.22}],
     ]
     test.each(cases)(
         "Digger Info - %s",
@@ -300,6 +305,16 @@ describe('Resource Info - Equipment Info', () => {
             'engu' : 2167,
             'mwandoos' : 200,
         }],
+        ['Late Evil 1', lateEvil, {
+            'power' : 1.464e9 + 7.434e8,
+            'toughness' : 5.858e8 + 6.866e8,
+            'epower' : 942100,
+            'mcap' : 39946,
+            'dc' : 2310,
+            'respawn' : 200 - 76,
+            'engu' : 1900,
+            'mwandoos' : 960,
+        }],
     ]
     test.each(cases)(
         "Equipment Info - %s",
@@ -310,6 +325,7 @@ describe('Resource Info - Equipment Info', () => {
                 'equipmentLegs' : [defaultPlayerData(obj, 'equipmentLegs')],
                 'equipmentBoots' : [defaultPlayerData(obj, 'equipmentBoots')],
                 'equipmentWeapon' : [defaultPlayerData(obj, 'equipmentWeapon')],
+                'equipmentWeaponTwo' : [defaultPlayerData(obj, 'equipmentWeaponTwo')],
                 'equipmentAccesories' : [defaultPlayerData(obj, 'equipmentAccesories')],
                 'cubePower' : [defaultPlayerData(obj, 'cubePower')],
                 'cubeToughness' : [defaultPlayerData(obj, 'cubeToughness')],
@@ -387,6 +403,11 @@ describe('Resource Info - Hack Info', () => {
             'power' : 594.45,
             'qp': 210.74,
             'wish': 109.3,
+        }],
+        ['Late Evil 1', lateEvil, {
+            'power' : 1008.4,
+            'qp': 284.62,
+            'wish': 121.54,
         }],
     ]
     test.each(cases)(
@@ -466,6 +487,12 @@ describe('Resource Info - Macguffin Info', () => {
             'power' : 189.108,
             'epower' : 209.271,
             'dc' : 119.22,
+            'attack' : 100,
+        }],
+        ['Late Evil 1', lateEvil, {
+            'power' : 227.241,
+            'epower' : 250.037,
+            'dc' : 144.621,
             'attack' : 100,
         }],
     ]
@@ -562,6 +589,13 @@ describe('Resource Info - NGU Info', () => {
             'attack' : 3.671e26,
             'engu' : 18925,
         }],
+        ['Late Evil 1', lateEvil, {
+            'power' : 729021 * 15498.15/100,
+            'ygg' : 6945.58,
+            'dc' : 998829.5,
+            'attack' : 8.377e27,
+            'engu' : 26188,
+        }],
     ]
     test.each(cases)(
         "NGU Info - %s",
@@ -633,9 +667,13 @@ describe('Resource Info - Perk Info', () => {
             'boosts': 550,
             'epower': 429,
         }],
-        
         ['Mid Evil 2', midEvilTwo, {
             'power' : 254.3178,
+            'boosts': 550,
+            'epower': 429,
+        }],
+        ['Late Evil 1', lateEvil, {
+            'power' : 256.3066,
             'boosts': 550,
             'epower': 429,
         }],
@@ -714,6 +752,11 @@ describe('Resource Info - Quirk Info', () => {
             'ecap': 165,
             'mngu': 100,
         }],
+        ['Late Evil 1', lateEvil, {
+            'power' : 250,
+            'ecap': 165,
+            'mngu': 100,
+        }],
     ]
     test.each(cases)(
         "Quirk Info - %s",
@@ -785,6 +828,11 @@ describe('Resource Info - Wish Info', () => {
             'power' : 187,
             'rpower': 197,
             'hack': 140,
+        }],
+        ['Late Evil 1', lateEvil, {
+            'power' : 187,
+            'rpower': 260,
+            'hack': 179,
         }],
     ]
     test.each(cases)(

@@ -7,6 +7,7 @@ import { nguInfo } from '@/helpers/resourceInfo';
 import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
 import earlyNormalTwo from '@/__tests__/__data__/earlyNormal2';
 import lateNormal from '@/__tests__/__data__/lateNormal';
+import lateEvil from '@/__tests__/__data__/lateEvil1';
 import midEvil from '@/__tests__/__data__/midEvil1';
 import midNormal from '@/__tests__/__data__/midNormal1';
 import midNormalTwo from '@/__tests__/__data__/midNormal2';
@@ -700,7 +701,6 @@ test('Yggdrasil for Mid Evil 2', () => {
         qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
         mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
     }
-    // Seed calculations - Multiply by 1.3 since had already harvested apparently (Except gold/Pom)
 
     // Gold
     var ec = expectClose(Number(ygg[0].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 72127, 1)
@@ -798,4 +798,152 @@ test('Yggdrasil for Mid Evil 2', () => {
     expect(ygg[14].upgradeCost()).toBe(0)
     expect(Number(ygg[14].fruitYield(fruitYieldData).getValue())).toBe(911)
 
+})
+
+
+
+
+test('Yggdrasil for Late Evil 1', () => {
+    var playerData = toDataObj(lateEvil)
+    var ygg = playerData['yggdrasil'][0]
+    var blueHeart = (playerData['blueHeart^'][0] == 1)
+    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
+    var firstHarvest = playerData['firstHarvestPerk'][0]
+
+    var data = {
+        'energyNGUs' : [defaultPlayerData(lateEvil, 'energyNGUs')],
+        'magicNGUs' : [defaultPlayerData(lateEvil, 'magicNGUs')],
+        'gameMode' : [defaultPlayerData(lateEvil, 'gameMode')],
+    }
+
+    var fruitYieldData = {
+        firstHarvest: firstHarvest,
+        blueHeart: blueHeart,
+        totalSeedGainBonus: seedModifier,
+        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
+        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
+        baseToughness: bd(playerData['baseAdventureToughness'][0]),
+        expBonus: bd(playerData['totalExpBonus%'][0]),
+        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
+        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
+        apBonus: bd(playerData['totalAPBonus%'][0]),
+        ppBonus: bd(playerData['totalPPBonus%'][0]),
+        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
+        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+    }
+
+    // Gold
+    var ec = expectClose(Number(ygg[0].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 98350, 1)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[0].upgradeCost()).toBe(0)
+    // expect(Number(ygg[0].fruitYield(fruitYieldData).getValue())).toBe(0)
+
+    // PowerA
+    var ec = expectClose(Number(ygg[1].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 98350, 1)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[1].upgradeCost()).toBe(0)
+    var ec = expectClose(Number(ygg[1].fruitYield(fruitYieldData).getValue()), 1.681e8 / 100)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+
+    // Adventure
+    var ec = expectClose(Number(ygg[2].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 162277, 1)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[2].upgradeCost()).toBe(0)
+    var ec = expectClose(Number(ygg[2].fruitYield(fruitYieldData).getValue()), 928534, 2)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+
+    // Knowledge
+    var ec = expectClose(Number(ygg[3].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 162277, 1)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[3].upgradeCost()).toBe(0)
+    var ec = expectClose(Number(ygg[3].fruitYield(fruitYieldData).getValue()), 1.201e8)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+
+    // Pomegranate
+    var ec = expectClose(Number(ygg[4].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 983494, 2)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[4].upgradeCost()).toBe(0)
+    expect(Number(ygg[4].fruitYield(fruitYieldData).getValue())).toBe(0)
+
+    // Luck
+    var ec = expectClose(Number(ygg[5].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 162277, 1)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[5].upgradeCost()).toBe(0)
+    expect(Number(ygg[5].fruitYield(fruitYieldData).getValue())).toBeCloseTo(816.5, 0)
+
+    // PowerB
+    var ec = expectClose(Number(ygg[6].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 98350, 1)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[6].upgradeCost()).toBe(0)
+    var ec = expectClose(Number(ygg[6].fruitYield(fruitYieldData).getValue()), 1500842010.8)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+
+    // Arbitrariness
+    var ec = expectClose(Number(ygg[7].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 486830, 2)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[7].upgradeCost()).toBe(0)
+    expect(Number(ygg[7].fruitYield(fruitYieldData).getValue())).toBe(8394)
+
+    // Numbers
+    var ec = expectClose(Number(ygg[8].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 295049, 2)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[8].upgradeCost()).toBe(0)
+    var ec = expectClose(Number(ygg[8].fruitYield(fruitYieldData).getValue()), 247681.26, 2)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+
+    // Rage
+    var ec = expectClose(Number(ygg[9].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 811383, 2)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[9].upgradeCost()).toBe(0)
+    var ec = expectClose(Number(ygg[9].fruitYield(fruitYieldData).getValue()), 18820003840)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+
+    // Macguffin A
+    var ec = expectClose(Number(ygg[10].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 973659, 2)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[10].upgradeCost()).toBe(0)
+    expect(Number(ygg[10].fruitYield(fruitYieldData).getValue())).toBe(168)
+
+    // PowerD
+    var ec = expectClose(Number(ygg[11].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 688446, 2)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[11].upgradeCost()).toBe(0)
+    var ec = expectClose(Number(ygg[11].fruitYield(fruitYieldData).getValue()), 1213.81)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+
+    // Watermelon
+    var ec = expectClose(Number(ygg[12].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 9736590, 3)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[12].upgradeCost()).toBe(0)
+    expect(Number(ygg[12].fruitYield(fruitYieldData).getValue())).toBe(0)
+
+    // Macguffin B
+    var ec = expectClose(Number(ygg[13].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 1.298e6)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[13].upgradeCost()).toBe(0)
+    expect(Number(ygg[13].fruitYield(fruitYieldData).getValue())).toBe(34)
+
+    // Quirks
+    var ec = expectClose(Number(ygg[14].seedYield(seedModifier, firstHarvest, blueHeart).getValue()), 231038, 2)
+    expect(ec[0]).toBeCloseTo(ec[1], 0)
+    expect(ygg[14].upgradeCost()).toBe(0)
+    expect(Number(ygg[14].fruitYield(fruitYieldData).getValue())).toBe(1240)
+
+    // Angry Mayo
+    expect(ygg[15].upgradeCost()).toBe(3.025e7)
+
+    // Sad Mayo
+    expect(ygg[16].upgradeCost()).toBe(2.025e7)
+
+    // Moldy Mayo
+    expect(ygg[17].upgradeCost()).toBe(2.025e7)
+
+    // Ayy Mayo
+    expect(ygg[18].upgradeCost()).toBe(2.5e7)
+
+    // Cinco Mayo
+    expect(ygg[19].upgradeCost()).toBe(2.5e7)
+
+    // Pretty Mayo
+    expect(ygg[20].upgradeCost()).toBe(2.5e7)
 })
