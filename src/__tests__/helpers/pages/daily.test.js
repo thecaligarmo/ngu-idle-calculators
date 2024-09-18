@@ -10,8 +10,9 @@ import { AttackStat, Titans } from "@/assets/enemy";
 import { bd } from '@/helpers/numbers';
 import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from '@/helpers/pages/daily';
 import renderer from 'react-test-renderer';
-import earlyEvil from '../../__data__/earlyEvil1';
+import earlyEvil from '@/__tests__/__data__/earlyEvil1';
 import midEvilTwo from '@/__tests__/__data__/midEvil2';
+import lateEvil from '@/__tests__/__data__/lateEvil1';
 
 
 
@@ -19,7 +20,8 @@ var earlyNormalData = toDataObj(earlyNormal);
 var earlyNormalTwoData = toDataObj(earlyNormalTwo);
 var midNormalData = toDataObj(midNormal);
 var midNormalTwoData = toDataObj(midNormalTwo);
-var lateNormalData = toDataObj(lateNormal)
+var lateNormalData = toDataObj(lateNormal);
+var lateEvilData = toDataObj(lateEvil);
 var earlyEvilData = toDataObj(earlyEvil);
 var earlyEvilTwoData = toDataObj(earlyEvilTwo);
 var midEvilData = toDataObj(midEvil);
@@ -69,6 +71,16 @@ describe("Daily page - Quest Info", () => {
         }, {
             'ap' : {'major' : bd(0), 'minor': bd(239), 'perMajor' : bd(191), 'perMinor' : bd(22)},
             'qp' : {'major' : bd(0), 'minor': bd(554), 'perMajor' : bd(428), 'perMinor' : bd(51)},
+        }],
+        [lateEvilData, {
+            beastButter : false,
+            hoursOfflinePerDay : bd(0),
+            hoursPerDay : bd(24),
+            idleMajorQuests : false,
+            includeMajorQuests : false,
+        }, {
+            'ap' : {'major' : bd(0), 'minor': bd(385), 'perMajor' : bd(229), 'perMinor' : bd(22)},
+            'qp' : {'major' : bd(0), 'minor': bd(1265), 'perMajor' : bd(725), 'perMinor' : bd(72)},
         }],
     ]
     test.each(cases)(
@@ -124,6 +136,7 @@ describe("Daily page - Max Titan AK", () => {
         [earlyEvilTwoData, [Titans.BEAST, 3]], // 6
         [midEvilData, [Titans.NERD, 1]],
         [midEvilTwoData, [Titans.GODMOTHER, 1]], // 8
+        [lateEvilData, [Titans.EXILE, 0]],
     ]
     test.each(cases)(
         "Daily Page - Max Titan AK - Case %#",
@@ -186,6 +199,12 @@ describe("Daily page - Titan Hourly Info", () => {
             'exp' : bd(77909040/24),
             'ppp' : bd(9152102400/24),
             'qp' : bd(120/24),
+        }],
+        [[Titans.EXILE, 0], lateEvilData, { // Per hour, off by one for version
+            'ap' : bd(9360/24), 
+            'exp' : bd(74626956/24),
+            'ppp' : bd(32276551680/24),
+            'qp' : bd(696/24),
         }],
     ]
     test.each(cases)(
