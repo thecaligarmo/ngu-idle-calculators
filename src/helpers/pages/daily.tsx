@@ -196,7 +196,7 @@ export function getTitanList() : ReactElement[]{
 
 export function getMaxTitanByAK(titans: Titan[], playerAttack : AttackStat) : [Titan, number]{
     var maxTitanByAK : [Titan, number] = [Titans.NONE, 0]
-    titans.forEach((titan) => {
+    Object.values(titans).forEach((titan) => {
         if (titan.id < 13) {
             for(var i = 0; i < titan.versions; i++) {
                 if(titan.canAutoKill(playerAttack, i)) {

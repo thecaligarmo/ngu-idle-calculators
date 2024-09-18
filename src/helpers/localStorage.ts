@@ -5,7 +5,7 @@ import { Beard } from "@/assets/beards";
 import { Card } from "@/assets/cards";
 import { Challenge } from "@/assets/challenges";
 import { Digger } from "@/assets/diggers";
-import { AttackStat, Enemy } from "@/assets/enemy";
+import { AttackStat, Enemy, Titan } from "@/assets/enemy";
 import { Hack } from "@/assets/hacks";
 import { Item } from "@/assets/items";
 import { MacGuffin } from "@/assets/macguffins";
@@ -35,7 +35,7 @@ export function useLocalStorage(key: string, fallbackValue : any) {
                 stored,
                 [
                     AdvTraining, APItem, Beard, Card, Challenge, Digger, Enemy, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Wandoos, Wish,
-                    Zone, AttackStat, bigDecimal,
+                    Zone, AttackStat, bigDecimal, Titan,
                     Yggdrasil, FruitOfGold, FruitOfPowerA, FruitOfAdventure, FruitOfKnowledge, FruitOfPomegranate, FruitOfLuck, FruitOfPowerB, FruitOfArbitrariness, FruitOfNumbers, FruitOfRage, FruitOfMacguffinA, FruitOfPowerD, FruitOfWatermelon, FruitOfMacguffinB, FruitOfQuirks, FruitOfMayo,
                 ]
             );
