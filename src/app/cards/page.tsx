@@ -22,12 +22,12 @@ export default function Page() {
     // Set data required (from playerData)
     var infoRequired = [
         [
+            'blueHeart^',
             'cardChonkers^',
+            '70sSet^',
             'totalMayoSpeed%',
             'totalCardSpeed%',
             'totalTagEffect%',
-            '70sSet^',
-            'blueHeart^',
         ],
         [
             'cardTierEnergyNGU-2',
@@ -92,11 +92,15 @@ export default function Page() {
     var extraRequired : (string | [string, number])[][] = [
         [
             ['includeFruit^', 1],
-            'blackPen^',
-            'infusersEveryXDays-2',
-            'twoFruitPerInfuser^',
             'includeLeftovers^',
             'poopAllLeftovers^',
+        ],
+        [
+            'infusersEveryXDays-2',
+            'twoFruitPerInfuser^',
+        ],
+        [
+            'blackPen^',
         ],
         [
             'cardRarityEnergyNGU',
@@ -137,7 +141,7 @@ export default function Page() {
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates, cardReqNameChanges)
     var extraReq = getRequiredStates(extraRequired, playerStates, cardExtraNameChanges)
-    extraReq.unshift({'colWidths':['w-full', 'w-3/4', 'w-1/4']})
+    extraReq.unshift({'colWidths':['w-1/3', 'w-1/3', 'w-1/3', 'w-2/3', 'w-1/3']})
 
     if (!c('includeFruit^')) {
         extraReq = disableItem(extraReq, cardReqFruit);
@@ -354,7 +358,7 @@ export default function Page() {
     var perTypeRows : StandardTableRowType = {}
     for(let k of Object.keys(infoByType)) {
         perTypeRows[k] = {
-            'key': camelToTitle(k),
+            'key': camelToTitle(k.replace('card', '')) + " Card",
             'cpd': <span className="text-red-500">{pn(infoByType[k]['cardsPerDay'], fmt)}</span>,
             'chpd': <span className="text-red-500">{pn(infoByType[k]['chonksPerDay'], fmt, 3)}</span>,
             'bpm': pn(infoByType[k]['bonusPerMayo%'], fmt, 3) + "%",
@@ -412,7 +416,7 @@ export default function Page() {
 
     
     return (
-        <Content title="Cards" infoRequired={infoReq} extraRequired={extraReq}>
+        <Content title="Cards" infoRequired={infoReq} extraRequired={extraReq} prechildren={(<p>This page gives information about cards and mayo. By <span className="text-red-500">leftovers</span> we mean when you use Yggdrasil more than once per day. So eating your second (third, etc.) fruit from Yggdrasil is considered a "leftover".</p>)}>
             <ContentSubsection title={"How much mayo, cards, chonks will I get per day?"}>
                 <>
                     <p>The below let&apos;s you know how much mayo, cards and chonks you will get per day.</p>

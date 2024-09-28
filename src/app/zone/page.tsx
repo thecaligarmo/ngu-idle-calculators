@@ -17,8 +17,8 @@ export default function Page() {
     
     // Set data required (from playerData)
     var infoRequired = [
-        ['totalPower', 'totalDropChance%', 'totalRespawnTime', 'boostRecyclying%', 'sadisticNoEquipmentChallenges-2'],
-        ['redLiquidBonus^', 'spoopySetBonus^']]
+        ['totalPower', 'totalDropChance%', 'totalRespawnTime', 'boostRecyclying%'],
+        ['sadisticNoEquipmentChallenges-2', 'redLiquidBonus^', 'spoopySetBonus^']]
     // Set extra required (not from playerData)
     var extraRequired = [[]]
     const playerStates = createStatesForData(extraRequired);

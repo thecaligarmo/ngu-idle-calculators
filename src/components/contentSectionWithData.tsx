@@ -5,6 +5,7 @@ import { dataToCols } from "./dataListColumns";
 
 interface ContentSectionWithDataProps {
     children ?: ReactNode;
+    preChildren ?: ReactNode;
     idKey : string;
     title : string;
     data : any;
@@ -13,7 +14,7 @@ interface ContentSectionWithDataProps {
     description ?: string;
 }
 
-export default function ContentSectionWithData({children, idKey, title, data, listChildren, inputChildren, description} : ContentSectionWithDataProps) {
+export default function ContentSectionWithData({children, preChildren, idKey, title, data, listChildren, inputChildren, description} : ContentSectionWithDataProps) {
     const [showInputs, setShowInputs] = useState(false)
     
     const inputs = dataToCols(data, true)
@@ -29,6 +30,7 @@ export default function ContentSectionWithData({children, idKey, title, data, li
             >
                 <>
                     {description ? <p className="pb-2"><small>{description}</small></p> : null}
+                    {preChildren}
                     <div id={idKey + "-info-lists"} className={!showInputs ? "block" : "hidden"}>
                         {lists}
                         {listChildren}

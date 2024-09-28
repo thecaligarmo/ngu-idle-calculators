@@ -10,7 +10,12 @@ export function camelToTitle(text: string) : string {
                 .replace(/ I I( |$)/g, ' II ')
                 .replace(/ I I I( |$)/g, ' III ')
                 .replace(/ S T I L L( |$)/g, ' STILL ')
-                .replace(/ 7 0s/g, ' 70s')
+                .replace(/ 7 0s( |$)/g, ' 70s ')
+                .replace(/ 1 0( |$)/g, ' 10 ')
+                .replace(/ 1 1( |$)/g, ' 11 ')
+                .replace(/ 1 2( |$)/g, ' 12 ')
+                .replace(/twenty Four( |$)/g, '24 ')
+                .replace(/ Twenty Four( |$)/g, ' 24 ')
                 .replace('%', ' (%)')
     return result.charAt(0).toUpperCase() + result.slice(1);
 }

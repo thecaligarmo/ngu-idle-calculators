@@ -11,12 +11,13 @@ interface ContentProps {
     infoRequired: any;
     infoChildren?: ReactNode;
     extraRequired: any;
+    extraPreChildren ?: ReactNode;
     extraChildren?: ReactNode;
     extraInputChildren?: ReactNode;
     extraListChildren?: ReactNode;
 }
 
-export default function Content({children, prechildren, title, infoRequired, infoChildren, extraRequired, extraChildren, extraInputChildren, extraListChildren} : ContentProps) {
+export default function Content({children, prechildren, title, infoRequired, infoChildren, extraRequired, extraChildren, extraPreChildren, extraInputChildren, extraListChildren} : ContentProps) {
     // console.log(extraRequired, extraRequired[0].length, _.isEqual(extraRequired, [[]]));
     return (
         <Container title={title}>
@@ -26,6 +27,7 @@ export default function Content({children, prechildren, title, infoRequired, inf
                         idKey="extra"
                         title="Required Info"
                         data={extraRequired}
+                        preChildren={extraPreChildren}
                         inputChildren={extraInputChildren}
                         listChildren={extraListChildren}
                         description="Double check this info to make sure everything is the way you want."
