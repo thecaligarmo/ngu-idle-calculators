@@ -242,11 +242,15 @@ export function totalPower(data : any) : bigDecimal {
     var beast = (parseNum(data, 'beastMode').compareTo(bd(1)) == 0)
                 ? ( (isMaxxedItemSet(data, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(1.5) : bd(1.4))
                 : bd(1)
+
+    // Evil Accessories
+    var adventureSetModifier = isMaxxedItemSet(data, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
     
     return subtotal
         .multiply(gen) //.divide(bd(100))
         .divide((equipPower.compareTo(bd(0)) > 0) ? equipPower : bd(1))
         .multiply(beast)
+        .multiply(adventureSetModifier)
         //.multiply(bd(100)) % not a percentage
 }
 
@@ -257,10 +261,15 @@ export function totalToughness(data : any) : bigDecimal {
 
     // Want to add equipPower instead of multiply
     var subtotal = basePower.add(equipPower)
+
+    // Evil Accessories
+    var adventureSetModifier = isMaxxedItemSet(data, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
+    
     
     return subtotal
         .multiply(gen) //.divide(bd(100))
         .divide((equipPower.compareTo(bd(0)) > 0) ? equipPower : bd(1)) // adding Instead
+        .multiply(adventureSetModifier)
 }
 
 export function totalHealth(data : any) : bigDecimal {
@@ -271,9 +280,14 @@ export function totalHealth(data : any) : bigDecimal {
     // Want to add equipHealth instead of multiply
     var subtotal = baseHealth.add(equipHealth)
 
+    // Evil Accessories
+    var adventureSetModifier = isMaxxedItemSet(data, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
+    
+
     return subtotal
         .multiply(gen) //.divide(bd(100))
         .divide((equipHealth.compareTo(bd(0)) > 0) ? equipHealth : bd(1))
+        .multiply(adventureSetModifier)
 }
 
 export function totalRegen(data : any) : bigDecimal {
@@ -283,10 +297,15 @@ export function totalRegen(data : any) : bigDecimal {
 
     // Want to add equipRegen instead of multiply
     var subtotal = baseRegen.add(equipRegen)
+
+    // Evil Accessories
+    var adventureSetModifier = isMaxxedItemSet(data, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
+    
     
     return subtotal
         .multiply(gen) //.divide(bd(100))
         .divide((equipRegen.compareTo(bd(0)) > 0) ? equipRegen : bd(1)) // adding Instead
+        .multiply(adventureSetModifier)
 }
 
 

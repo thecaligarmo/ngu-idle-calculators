@@ -491,6 +491,10 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x Beast Mode',
                 'val' :  (v('beastMode').compareTo(bd(1)) == 0 ? ( (isMaxxedItemSet(playerStates, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(150) : bd(140)) : bd(100)),
             },
+            'acc' : {
+                'name': 'x Evil Accs Set Bonus',
+                'val' :  (isMaxxedItemSet(playerStates, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
+            },
             'total' : {
                 'val' : totalPower(playerStates),
             },
@@ -559,6 +563,10 @@ export function getStatInfo(playerStates : any) {
                 'val' : cardInfo(playerStates, Stat.TOUGHNESS),
                 'sigFig': 2,
             },
+            'acc' : {
+                'name': 'x Evil Accs Set Bonus',
+                'val' :  (isMaxxedItemSet(playerStates, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
+            },
             'total' : {
                 'val' : totalToughness(playerStates),
             },
@@ -626,6 +634,10 @@ export function getStatInfo(playerStates : any) {
                 'name' : 'x Cards',
                 'val' : cardInfo(playerStates, Stat.HEALTH),
                 'sigFig': 2,
+            },
+            'acc' : {
+                'name': 'x Evil Accs Set Bonus',
+                'val' :  (isMaxxedItemSet(playerStates, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
             },
             'total' : {
                 'val' : totalHealth(playerStates),
