@@ -221,14 +221,13 @@ export default function Page() {
 
             var minTime = bd(0)
             if(v('gameMode').compareTo(bd(GameMode.SADISTIC)) == 0) {
-                minTime = bigdec_min(secs['normal'], secs['evil'])
-            } else {
                 minTime = bigdec_min(secs['normal'], secs['evil'], secs['sadistic'])
+            } else {
+                minTime = bigdec_min(secs['normal'], secs['evil'])
             }
 
             var minbgClass = 'bg-green-200 dark:bg-green-900 '
 
-            
             return (
                 <tr key={ngu['normal'].key} className={innerIndex % 2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
                     <td className="px-2">{ngu['normal'].name}</td>
@@ -240,7 +239,7 @@ export default function Page() {
                         v('gameMode').compareTo(bd(GameMode.SADISTIC)) == 0
                         ? <>
                             <td className={secs['sadistic'].compareTo(minTime) == 0 ? minbgClass + 'px-2 text-right' : 'px-2 text-right'}><span className={secs['sadistic'].compareTo(minTime) == 0 ? '' : "text-red-500"}>{dn(secs['sadistic'])}</span></td>
-                    <td className={secs['sadistic'].compareTo(minTime) == 0 ? minbgClass + 'px-2' : 'px-2'}><span className={secs['sadistic'].compareTo(minTime) == 0 ? '' : "text-blue-500"}>{pn(targetLvls['sadistic'], fmt)}</span></td>
+                            <td className={secs['sadistic'].compareTo(minTime) == 0 ? minbgClass + 'px-2' : 'px-2'}><span className={secs['sadistic'].compareTo(minTime) == 0 ? '' : "text-blue-500"}>{pn(targetLvls['sadistic'], fmt)}</span></td>
                         </>
                         : null
                     }
