@@ -154,17 +154,16 @@ export function advTrainingInfo(data: any, key: string) : bigDecimal {
 export function apItemInfo(data: any, key: string) : bigDecimal {
     var apItems : APItem[] = parseObj(data, 'apItems')
     var stat : number = 100;
+    var blueHeart = isMaxxedItemSet(data, ItemSets.BLUE_HEART)
     if (Object.values(Stat).includes(key)) {
         if(apItems.length > 0) {
             apItems.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
-                    stat *= (100 + g[key]) / 100
+                    let statAmt = (100 + g[key]) / 100
+                    stat *= blueHeart ? statAmt * 1.1 : statAmt
                 }
             })
         }
-    }
-    if (isMaxxedItemSet(data, ItemSets.BLUE_HEART)) {
-        stat = stat * 1.1
     }
 
     return bd(stat > 0 ? stat : 100)
