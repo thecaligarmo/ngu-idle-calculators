@@ -79,10 +79,8 @@ export default function Page() {
         if(optWishChosen == 'current') {
             for (var wish of wishes) {
                 if (!wish.completed() && wish.appliesToGameMode(gameMode)) {
-                    if(wish.id == 75){
-                        setOptWishChosen(wish.key)
-                        break
-                    }
+                    setOptWishChosen(wish.key)
+                    break
                 }
             }
         } else {
