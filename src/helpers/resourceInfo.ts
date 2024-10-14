@@ -1,7 +1,8 @@
 import { AdvTraining } from "@/assets/advTraining";
 import { APItem } from "@/assets/apItems";
 import { Beard } from "@/assets/beards";
-import { Challenge, CHALLENGELIST, CHALLENGES } from "@/assets/challenges";
+import { Card } from "@/assets/cards";
+import { Challenge, CHALLENGES } from "@/assets/challenges";
 import { Digger } from "@/assets/diggers";
 import { Hack } from "@/assets/hacks";
 import { Item } from "@/assets/items";
@@ -12,14 +13,13 @@ import { Perk } from "@/assets/perks";
 import { Quirk } from "@/assets/quirks";
 import { ItemSet, ItemSets } from "@/assets/sets";
 import { Stat } from "@/assets/stat";
+import { Wandoos } from "@/assets/wandoos";
 import { Wish } from "@/assets/wish";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
-import { bd } from "./numbers";
+import { getGameMode } from "./gameMode";
+import { bd, lessThan } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
-import { Wandoos } from "@/assets/wandoos";
-import { Card } from "@/assets/cards";
-
 
 export function achievementAPBonus(data : any) : bigDecimal {
     var achievements = parseObj(data, 'achievements')
@@ -375,7 +375,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             var basePower = parseNum(data, 'baseAdventurePower')
             var maxCubePow = basePower.add(bd(stat))
             var extraPow = 0
-            if(maxCubePow.compareTo(cube) == -1) {
+            if( lessThan(maxCubePow, cube)) {
                 extraPow = Math.sqrt(Number(cube.subtract(maxCubePow).getValue()))
                 cube = maxCubePow
             }
@@ -385,7 +385,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             var baseToughness = parseNum(data, 'baseAdventureToughness')
             var maxCubeTough = baseToughness.add(bd(stat))
             var extraTough = 0
-            if(maxCubeTough.compareTo(cube) == -1) {
+            if(lessThan(maxCubeTough, cube)) {
                 extraTough = Math.sqrt(Number(cube.subtract(maxCubeTough).getValue()))
                 cube = maxCubeTough
             }
@@ -395,7 +395,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             var baseHealth = parseNum(data, 'baseAdventureHealth')
             var maxCubeHealth = baseHealth.add(bd(stat))
             var extraHealth = 0
-            if(maxCubeHealth.compareTo(cube) == -1) {
+            if(lessThan(maxCubeHealth, cube) ) {
                 extraHealth = Math.sqrt(Number(cube.subtract(maxCubeHealth).getValue()))
                 cube = maxCubeHealth
             }
@@ -405,7 +405,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             var baseRegen = parseNum(data, 'baseAdventureRegen')
             var maxCubeRegen = baseRegen.add(bd(stat))
             var extraRegen = 0
-            if(maxCubeRegen.compareTo(cube) == -1) {
+            if(lessThan(maxCubeRegen, cube)) {
                 extraRegen = Math.sqrt(Number(cube.subtract(maxCubeRegen).getValue()))
                 cube = maxCubeRegen
             }
@@ -596,16 +596,4 @@ export function isCompletedChallenge(data : any, key : string, mode : number, le
     var challenge = CHALLENGES.getByKey(key)
     var chosenChallenge = (!_.isUndefined(challenges[mode]) && !_.isUndefined(challenge) && challenges[mode][challenge.id % 100])
     return (!_.isUndefined(chosenChallenge) && chosenChallenge.level >= level)
-}
-
-
-export function getGameMode(data : any) : number{
-    var gameMode = parseNum(data, 'gameMode') 
-    if(gameMode.compareTo(bd(GameMode.EVIL)) == 0) {
-        return GameMode.EVIL
-    }
-    if(gameMode.compareTo(bd(GameMode.SADISTIC)) == 0) {
-        return GameMode.SADISTIC
-    }
-    return GameMode.NORMAL
 }

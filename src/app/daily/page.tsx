@@ -10,7 +10,7 @@ import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { StandardTable } from "@/components/standardTable";
 import { getIdleAttackModifier } from "@/helpers/calculators";
-import { bd, pn } from "@/helpers/numbers";
+import { bd, isOne, pn } from "@/helpers/numbers";
 import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from "@/helpers/pages/daily";
 import { parseNum, parseObj } from "@/helpers/parsers";
 import { nguInfo } from "@/helpers/resourceInfo";
@@ -86,7 +86,7 @@ export default function Page() {
     }
 
     function c(key : string) : boolean {
-        return v(key).compareTo(bd(1)) == 0
+        return isOne(v(key))
     }
 
     function j(key : string) : any{

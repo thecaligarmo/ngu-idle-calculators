@@ -1,4 +1,4 @@
-import { bd, bigdec_max } from "@/helpers/numbers"
+import { bd, bigdec_max, lessThan } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { Wish } from "./wish"
@@ -24,10 +24,10 @@ export class AttackStat {
 
     isWeaker(other : AttackStat) {
         return (this.attackRate < other.attackRate) 
-            && (this.power.compareTo(other.power) < 0) 
-            && (this.toughness.compareTo(other.toughness) < 0) 
-            && (this.regen.compareTo(other.regen) < 0) 
-            && (this.hp.compareTo(other.hp) < 0) 
+            && (lessThan(this.power, other.power)) 
+            && (lessThan(this.toughness, other.toughness))
+            && (lessThan(this.regen, other.regen))
+            && (lessThan(this.hp, other.hp))
     }
 }
 

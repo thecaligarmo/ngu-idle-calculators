@@ -3,7 +3,7 @@ import { Wandoos, WANDOOSLIST } from '@/assets/wandoos';
 import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
-import { bd, pn } from '@/helpers/numbers';
+import { bd, isOne, pn } from '@/helpers/numbers';
 import { getLevelsGainedInWandoos, getMaxOSBonus, getWandoosBonuses } from '@/helpers/pages/wandoos';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
@@ -35,7 +35,7 @@ export default function Page() {
     }
 
     function c(key : string) : boolean {
-        return v(key).compareTo(bd(1)) == 0
+        return isOne(v(key))
     }
 
     var gameMode = v('gameMode')

@@ -1,4 +1,4 @@
-import { bd, bigdec_max, bigdec_min, bigdec_round } from "@/helpers/numbers"
+import { bd, bigdec_equals, bigdec_max, bigdec_min, bigdec_round, greaterThan, lessThan, lessThanOrEqual } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { GameMode } from "./mode"
@@ -328,7 +328,7 @@ export class NGU extends Resource {
 
     calcSecondsToTarget(cap : bigDecimal, speedFactor : bigDecimal, target : bigDecimal = bd(-1)) : bigDecimal {
         var level = bd(this.level)
-        if (target.compareTo(bd(-1)) === 0 ) {
+        if ( bigdec_equals(target, bd(-1)) ) {
             target = bd(this.target)
         }
 
@@ -347,8 +347,8 @@ export class NGU extends Resource {
         var endingSpeed = baseTimePerLevel.multiply(target).round(2, bigDecimal.RoundingModes.CEILING)
 
         // We can never go faster than 50 levels/second
-        startingSpeed = startingSpeed.compareTo(bd(0.02)) <= 0 ? bd(0.02) : bigdec_round(startingSpeed, bd(0.02))
-        endingSpeed = endingSpeed.compareTo(bd(0.02)) <= 0 ? bd(0.02) : bigdec_round(endingSpeed, bd(0.02))
+        startingSpeed = lessThanOrEqual(startingSpeed, bd(0.02)) ? bd(0.02) : bigdec_round(startingSpeed, bd(0.02))
+        endingSpeed = lessThanOrEqual(endingSpeed, bd(0.02)) ? bd(0.02) : bigdec_round(endingSpeed, bd(0.02))
 
         
         // Grab the number of levels that will be calculated with starting, middle (average) and end times
@@ -359,10 +359,10 @@ export class NGU extends Resource {
             )
 
             var x = (endingSpeed.subtract(bd(0.02))).divide(baseTimePerLevel, roundingDigs).floor().subtract(level).subtract(startingSpeedLevels)
-            var middleSpeedLevels = x.compareTo(bd(0)) == 1 ? x : bd(0);
+            var middleSpeedLevels = greaterThan(x, bd(0)) ? x : bd(0);
 
             x = bigdec_min(endingSpeed.divide(baseTimePerLevel, roundingDigs), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
-            var endingSpeedLevels = x.compareTo(bd(0)) == 1 ? x : bd(0);
+            var endingSpeedLevels = greaterThan(x, bd(0)) ? x : bd(0);
 
         } catch(error) {
             var startingSpeedLevels = bd(0);
@@ -383,7 +383,7 @@ export class NGU extends Resource {
     capAtTarget(speedFactor : bigDecimal, level : bigDecimal) : bigDecimal {
         var baseCost = this.baseCost
 
-        if (level.compareTo(bd(0)) == -1) {
+        if ( lessThan(level, bd(0))) {
             return bd(0)
         }
         var roundingDigs = speedFactor.floor().getValue().length + this.baseCost.getValue().length

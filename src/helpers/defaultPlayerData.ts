@@ -15,7 +15,7 @@ import { GameMode } from "../assets/mode";
 import { PERKS, Perk } from "../assets/perks";
 import { QUIRKS, Quirk } from "../assets/quirks";
 import { boostRecyclying, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Cap, totalRes3Power, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalWishSpeed, totalYggdrasilYieldBonus } from "./calculators";
-import { bd } from "./numbers";
+import { bd, isOne } from "./numbers";
 import { Wandoos, WANDOOSLIST } from "@/assets/wandoos";
 import { Zones } from "@/assets/zones";
 import { parseNum } from "./parsers";
@@ -1168,7 +1168,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return totalYggdrasilYieldBonus(playerData)
             case 'itopodFloor-5':
                 var itopodZone = Zones.ITOPOD;
-                var spoopySetBonus = parseNum(playerData, 'spoopySetBonus^').compareTo(bd(1)) == 0
+                var spoopySetBonus = isOne(parseNum(playerData, 'spoopySetBonus^'))
                 var sadisticNoEquipmentChallenges = parseNum(playerData, 'sadisticNoEquipmentChallenges-2')
                 var idleAttackModifier = getIdleAttackModifier(spoopySetBonus, sadisticNoEquipmentChallenges);
                 return bd(itopodZone.getOptimalFloor(totalPower(playerData), idleAttackModifier))

@@ -4,7 +4,7 @@ import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
 import { StandardTable, StandardTableRowType } from '@/components/standardTable';
-import { bd, dn, pn } from '@/helpers/numbers';
+import { bd, dn, isOne, pn } from '@/helpers/numbers';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
@@ -52,7 +52,7 @@ export default function Page() {
     }
 
     function c(key : string) : boolean {
-        return v(key).compareTo(bd(1)) == 0
+        return isOne(v(key))
     }
 
     var gameMode = v('gameMode')

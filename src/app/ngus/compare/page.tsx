@@ -7,7 +7,8 @@ import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
 import TimeText from "@/components/timeText";
-import { bd, bigdec_min, dn, pn } from "@/helpers/numbers";
+import { isSadMode } from "@/helpers/gameMode";
+import { bd, bigdec_equals, bigdec_min, dn, pn } from "@/helpers/numbers";
 import { parseNum } from "@/helpers/parsers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
@@ -220,7 +221,7 @@ export default function Page() {
             var secs = seconds[index][innerIndex]
 
             var minTime = bd(0)
-            if(v('gameMode').compareTo(bd(GameMode.SADISTIC)) == 0) {
+            if(isSadMode(v('gameMode'))) {
                 minTime = bigdec_min(secs['normal'], secs['evil'], secs['sadistic'])
             } else {
                 minTime = bigdec_min(secs['normal'], secs['evil'])
@@ -231,15 +232,15 @@ export default function Page() {
             return (
                 <tr key={ngu['normal'].key} className={innerIndex % 2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
                     <td className="px-2">{ngu['normal'].name}</td>
-                    <td className={secs['normal'].compareTo(minTime) == 0 ? minbgClass + 'px-2 text-right' : 'px-2 text-right'}><span className={secs['normal'].compareTo(minTime) == 0 ? '' : "text-red-500"}>{dn(secs['normal'])}</span></td>
-                    <td className={secs['normal'].compareTo(minTime) == 0 ? minbgClass + 'px-2' : 'px-2'}><span className={secs['normal'].compareTo(minTime) == 0 ? '' : "text-blue-500"}>{pn(targetLvls['normal'], fmt)}</span></td>
-                    <td className={secs['evil'].compareTo(minTime) == 0 ? minbgClass + 'px-2 text-right' : 'px-2 text-right'}><span className={secs['evil'].compareTo(minTime) == 0 ? '' : "text-red-500"}>{dn(secs['evil'])}</span></td>
-                    <td className={secs['evil'].compareTo(minTime) == 0 ? minbgClass + 'px-2' : 'px-2'}><span className={secs['evil'].compareTo(minTime) == 0 ? '' : "text-blue-500"}>{pn(targetLvls['evil'], fmt)}</span></td>
+                    <td className={bigdec_equals(secs['normal'], minTime) ? minbgClass + 'px-2 text-right' : 'px-2 text-right'}><span className={bigdec_equals(secs['normal'], minTime) ? '' : "text-red-500"}>{dn(secs['normal'])}</span></td>
+                    <td className={bigdec_equals(secs['normal'], minTime) ? minbgClass + 'px-2' : 'px-2'}><span className={bigdec_equals(secs['normal'], minTime) ? '' : "text-blue-500"}>{pn(targetLvls['normal'], fmt)}</span></td>
+                    <td className={bigdec_equals(secs['evil'], minTime) ? minbgClass + 'px-2 text-right' : 'px-2 text-right'}><span className={bigdec_equals(secs['evil'], minTime) ? '' : "text-red-500"}>{dn(secs['evil'])}</span></td>
+                    <td className={bigdec_equals(secs['evil'], minTime)  ? minbgClass + 'px-2' : 'px-2'}><span className={bigdec_equals(secs['evil'], minTime) ? '' : "text-blue-500"}>{pn(targetLvls['evil'], fmt)}</span></td>
                     {
-                        v('gameMode').compareTo(bd(GameMode.SADISTIC)) == 0
+                        isSadMode(v('gameMode'))
                         ? <>
-                            <td className={secs['sadistic'].compareTo(minTime) == 0 ? minbgClass + 'px-2 text-right' : 'px-2 text-right'}><span className={secs['sadistic'].compareTo(minTime) == 0 ? '' : "text-red-500"}>{dn(secs['sadistic'])}</span></td>
-                            <td className={secs['sadistic'].compareTo(minTime) == 0 ? minbgClass + 'px-2' : 'px-2'}><span className={secs['sadistic'].compareTo(minTime) == 0 ? '' : "text-blue-500"}>{pn(targetLvls['sadistic'], fmt)}</span></td>
+                            <td className={bigdec_equals(secs['sadistic'], minTime) ? minbgClass + 'px-2 text-right' : 'px-2 text-right'}><span className={bigdec_equals(secs['sadistic'], minTime) ? '' : "text-red-500"}>{dn(secs['sadistic'])}</span></td>
+                            <td className={bigdec_equals(secs['sadistic'], minTime) ? minbgClass + 'px-2' : 'px-2'}><span className={bigdec_equals(secs['sadistic'], minTime) ? '' : "text-blue-500"}>{pn(targetLvls['sadistic'], fmt)}</span></td>
                         </>
                         : null
                     }
@@ -250,7 +251,7 @@ export default function Page() {
     var energyRow = infoRow[0]
     var magicRow = infoRow[1]
 
-    if(v('gameMode').compareTo(bd(GameMode.SADISTIC)) != 0) {
+    if(!isSadMode(v('gameMode'))) {
         infoReq = disableItem(infoReq, [
             'energyNGUAugmentsSadisticLevel',
             'energyNGUWandoosSadisticLevel',
@@ -288,7 +289,7 @@ export default function Page() {
                             <th colSpan={2}>Normal</th>
                             <th colSpan={2}>Evil</th>
                             {
-                                v('gameMode').compareTo(bd(GameMode.SADISTIC)) == 0
+                                isSadMode(v('gameMode'))
                                 ? <th colSpan={2}>Sadistic</th>
                                 : null
                             }
@@ -300,7 +301,7 @@ export default function Page() {
                             <th>Time</th>
                             <th>Target Level</th>
                             {
-                                v('gameMode').compareTo(bd(GameMode.SADISTIC)) == 0
+                                isSadMode(v('gameMode'))
                                 ?   <>
                                     <th>Time</th>
                                     <th>Target Level</th>
@@ -324,7 +325,7 @@ export default function Page() {
                             <th colSpan={2}>Normal</th>
                             <th colSpan={2}>Evil</th>
                             {
-                                v('gameMode').compareTo(bd(GameMode.SADISTIC)) == 0
+                                isSadMode(v('gameMode'))
                                 ? <th colSpan={2}>Sadistic</th>
                                 : null
                             }
@@ -336,7 +337,7 @@ export default function Page() {
                             <th>Time</th>
                             <th>Target Level</th>
                             {
-                                v('gameMode').compareTo(bd(GameMode.SADISTIC)) == 0
+                                isSadMode(v('gameMode'))
                                 ?   <>
                                     <th>Time</th>
                                     <th>Target Level</th>

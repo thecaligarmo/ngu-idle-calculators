@@ -4,7 +4,7 @@ import { ItemSets } from "@/assets/sets";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { Stat } from "../assets/stat";
-import { bd, bigdec_max } from "./numbers";
+import { bd, bigdec_equals, bigdec_max, greaterThan, greaterThanOrEqual, isZero } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
 import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
 
@@ -18,7 +18,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
     }
 
     if(false) {
-        if(Stat.POWER == stat && perkInfo(data, stat).compareTo(bd(250)) == 1) {
+        if(Stat.POWER == stat) {
             console.log('----------------------------------------')
             console.log('advTraining', advTrainingInfo(data, stat).getValue())
             console.log('ap', apItemInfo(data, stat).getValue())    
@@ -57,7 +57,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
 function isInitilizing(data : any ) : boolean {
     // We want to return 0 if we don't have data yet
     var basePower = parseNum(data, 'baseAdventurePower')
-    return (basePower.compareTo(bd(0)) == 0)
+    return isZero(basePower)
 }
 
 export function boostRecyclying(data : any) : bigDecimal {
@@ -237,7 +237,7 @@ export function totalPower(data : any) : bigDecimal {
     var subtotal = basePower.add(equipPower)
 
     // Beast multiplier
-    var beast = (parseNum(data, 'beastMode').compareTo(bd(1)) == 0)
+    var beast = (bigdec_equals(parseNum(data, 'beastMode'), bd(1)))
                 ? ( (isMaxxedItemSet(data, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(1.5) : bd(1.4))
                 : bd(1)
 
@@ -246,7 +246,7 @@ export function totalPower(data : any) : bigDecimal {
     
     return subtotal
         .multiply(gen) //.divide(bd(100))
-        .divide((equipPower.compareTo(bd(0)) > 0) ? equipPower : bd(1))
+        .divide(greaterThan(equipPower, bd(0)) ? equipPower : bd(1))
         .multiply(beast)
         .multiply(adventureSetModifier)
         //.multiply(bd(100)) % not a percentage
@@ -266,7 +266,7 @@ export function totalToughness(data : any) : bigDecimal {
     
     return subtotal
         .multiply(gen) //.divide(bd(100))
-        .divide((equipPower.compareTo(bd(0)) > 0) ? equipPower : bd(1)) // adding Instead
+        .divide(greaterThan(equipPower, bd(0)) ? equipPower : bd(1)) // adding Instead
         .multiply(adventureSetModifier)
 }
 
@@ -284,7 +284,7 @@ export function totalHealth(data : any) : bigDecimal {
 
     return subtotal
         .multiply(gen) //.divide(bd(100))
-        .divide((equipHealth.compareTo(bd(0)) > 0) ? equipHealth : bd(1))
+        .divide(greaterThan(equipHealth, bd(0)) ? equipHealth : bd(1))
         .multiply(adventureSetModifier)
 }
 
@@ -302,7 +302,7 @@ export function totalRegen(data : any) : bigDecimal {
     
     return subtotal
         .multiply(gen) //.divide(bd(100))
-        .divide((equipRegen.compareTo(bd(0)) > 0) ? equipRegen : bd(1)) // adding Instead
+        .divide(greaterThan(equipRegen, bd(0)) ? equipRegen : bd(1)) // adding Instead
         .multiply(adventureSetModifier)
 }
 
@@ -489,6 +489,6 @@ export function getIdleAttackModifier(spoopySetBonus : boolean, sadNEC : bigDeci
         .multiply(
             bd(1)
             .add(sadNEC.multiply(bd(0.02)))
-            .add((sadNEC.compareTo(bd(5)) >= 0) ? bd(0.1) : bd(0))
+            .add(greaterThanOrEqual(sadNEC, bd(5))  ? bd(0.1) : bd(0))
         )
 }

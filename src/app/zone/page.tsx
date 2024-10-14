@@ -2,7 +2,7 @@
 import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
-import { bd, pn } from '@/helpers/numbers';
+import { bd, isOne, isZero, pn } from '@/helpers/numbers';
 import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo } from '@/helpers/pages/zone';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
@@ -38,7 +38,7 @@ export default function Page() {
     }
 
     function c(key : string) : boolean {
-        return v(key).compareTo(bd(1)) == 0
+        return isOne(v(key))
     }
 
     var data = {
@@ -61,7 +61,7 @@ export default function Page() {
     })
 
     var zoneBoonList = zoneInfo.map(function(zone) {
-        var bV = optimalBoostZone['boost'].compareTo(bd(0)) == 0 ? bd(1) : optimalBoostZone['boost']
+        var bV = isZero(optimalBoostZone['boost']) ? bd(1) : optimalBoostZone['boost']
         return (
         <li key={zone.key} className={optZoneChosen == zone.key ? "" : "hidden"}>
             {zone.name} is <span className="text-red-500">{pn(zone.boost.divide(bV).multiply(bd(100)), fmt, 2)}%</span> as efficient with a boost value of <span className="text-blue-500">{pn(zone.boost, fmt)}.</span>
@@ -70,7 +70,7 @@ export default function Page() {
     })
 
     var zoneExpList = zoneInfo.map(function(zone) {
-        var eV = optimalExpZone['boost'].compareTo(bd(0)) == 0 ? bd(1) : optimalExpZone['boost']
+        var eV = isZero(optimalExpZone['boost']) ? bd(1) : optimalExpZone['boost']
         return (
         <li key={zone.key} className={optZoneChosen == zone.key ? "" : "hidden"}>
             {zone.name} is <span className="text-red-500">{pn(zone.exp.divide(eV).multiply(bd(100)), fmt, 2)}%</span> as efficient with a exp value of <span className="text-blue-500">{pn(zone.exp, fmt)}.</span>

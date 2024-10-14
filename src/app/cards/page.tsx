@@ -7,7 +7,7 @@ import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
 import { StandardTable, StandardTableRowType } from "@/components/standardTable";
-import { bd, pn } from "@/helpers/numbers";
+import { bd, bigdec_equals, greaterThan, isOne, isZero, lessThan, pn } from "@/helpers/numbers";
 import { bigDecimalObj, toObjectMap } from "@/helpers/objects";
 import { cardExtraNameChanges, cardReqChonkers, cardReqFruit, cardReqNameChanges, getCardsPerDay, getChonksPerDay, getMayoFromFruit, getMayoFromInfusers, getMayoFromRecycling } from "@/helpers/pages/cards";
 import { parseNum, parseObj } from "@/helpers/parsers";
@@ -159,7 +159,7 @@ export default function Page() {
     }
 
     function c(key : string) : boolean {
-        return v(key).compareTo(bd(1)) == 0
+        return isOne(v(key))
     }
 
     function j(key : string) : any{
@@ -256,7 +256,7 @@ export default function Page() {
     let mayoFromRecycling = c('cardRecyclingMayo^') 
                 ? getMayoFromRecycling(cardsPerDay, chonksPerDay, recycleCard, recycleChonk)
                 : bd(0);
-    let mayoFromInfusers = v('infusersEveryXDays-2').compareTo(bd(1)) < 0 
+    let mayoFromInfusers = lessThan(v('infusersEveryXDays-2'), bd(1))
                     ? bd(0) 
                     : getMayoFromInfusers(mayoSpeed, v('infusersEveryXDays-2'), c('twoFruitPerInfuser^'), mayoFromFruit, mayoFromFruitLeftovers)
     let mayoPerDay = (bd(24).multiply(mayoSpeed.divide(bd(100))))
@@ -289,7 +289,7 @@ export default function Page() {
                                     .multiply(averageChonkCardCost)
 
             let Hi = (cardTypeRarityRates[card.key]).multiply(cardsPerDay)
-            let Ji = cardsPerDay.compareTo(bd(0)) != 0 ? cardsPDay.divide(cardsPerDay).multiply(chonksPerDay) : bd(0)
+            let Ji = !isZero(cardsPerDay) ? cardsPDay.divide(cardsPerDay).multiply(chonksPerDay) : bd(0)
             let bonusPerDay = bonusPerCard.multiply(Hi)
                                     .add(
                                         bonusPerChonk
@@ -410,7 +410,7 @@ export default function Page() {
     let chanceCastable = (Object.keys(infoByType).reduce((cards : bigDecimal, k : any) => {
         return cards.add(infoByType[k]['Hi'])
     }, bd(0)))
-    if (cardsPerDay.compareTo(bd(0)) > 0) {
+    if (greaterThan(cardsPerDay, bd(0))) {
         chanceCastable = chanceCastable.divide(cardsPerDay)
     }
 
@@ -422,7 +422,7 @@ export default function Page() {
                     <p>The below let&apos;s you know how much mayo, cards and chonks you will get per day.</p>
                     <StandardTable order={dailyOrder} header={dailyHeader} rows={dailyData}/>
 
-                    <p>With the above stats, you will have <span className={mayoLeftover.compareTo(bd(0)) < 0 ? "text-red-500" : "text-green-500"}>{pn(mayoLeftover, fmt)}</span> Mayo spare at the end of each day.</p>
+                    <p>With the above stats, you will have <span className={lessThan(mayoLeftover, bd(0)) ? "text-red-500" : "text-green-500"}>{pn(mayoLeftover, fmt)}</span> Mayo spare at the end of each day.</p>
                     <p>The chance of getting a tagged card is: {pn(chanceOfTagged.multiply(bd(100)), fmt, 2)}%</p>
                     <p>The chance of getting a castable card is: {pn(chanceCastable.multiply(bd(100)), fmt, 2)}%</p>
                 </>

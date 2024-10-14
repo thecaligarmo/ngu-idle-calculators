@@ -2,7 +2,7 @@ import { ItemSets } from "@/assets/sets"
 import { Stat } from "@/assets/stat"
 import _ from "lodash"
 import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed, totalQuestRewardBonus, totalEnergyCap } from "../calculators"
-import { bd, bigdec_max, pn } from "../numbers"
+import { bd, bigdec_equals, bigdec_max, isOne, pn } from "../numbers"
 import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo, isCompletedChallenge, maxxedItemSetNum } from "../resourceInfo"
 import bigDecimal from "js-big-decimal"
 import { parseNum, parseObj } from "../parsers"
@@ -12,7 +12,7 @@ import { GameMode } from "@/assets/mode"
 
 export function describeStat(data : any, fmt : string, isRespawn : boolean = false) {
     var rows = Object.keys(data).map((k) => {
-        if(k != 'base' && k != 'total' && data[k].val.compareTo(bd(100)) == 0) {
+        if(k != 'base' && k != 'total' && bigdec_equals(data[k].val, bd(100))) {
             return null
         }
         var sigFigs = (!_.isUndefined(data[k].sigFig)) ? data[k].sigFig : 0
@@ -501,7 +501,7 @@ export function getStatInfo(playerStates : any) {
             },
             'beastMode' : {
                 'name': 'x Beast Mode',
-                'val' :  (v('beastMode').compareTo(bd(1)) == 0 ? ( (isMaxxedItemSet(playerStates, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(150) : bd(140)) : bd(100)),
+                'val' :  (isOne(v('beastMode')) ? ( (isMaxxedItemSet(playerStates, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(150) : bd(140)) : bd(100)),
             },
             'acc' : {
                 'name': 'x Evil Accs Set Bonus',

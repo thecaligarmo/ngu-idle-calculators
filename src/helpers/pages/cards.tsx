@@ -1,5 +1,5 @@
 import bigDecimal from "js-big-decimal"
-import { bd} from "../numbers"
+import { bd, bigdec_equals, isOne} from "../numbers"
 import { FruitOfMayo, Yggdrasil } from "@/assets/yggdrasil"
 
 
@@ -161,7 +161,7 @@ export function getMayoFromInfusers(mayoSpeed : bigDecimal, numInfusers : bigDec
                 .multiply(bd(1.2))
                 .multiply(
                     bd(1).add(
-                        numInfusers.compareTo(bd(1)) != 0 && twoFruitPerInf
+                        !isOne(numInfusers) && twoFruitPerInf
                             ? bd(1)
                             : bd(0)
                     )

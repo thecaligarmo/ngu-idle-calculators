@@ -1,7 +1,8 @@
-import { GameMode } from "@/assets/mode"
 import { Wandoos, WANDOOS_OS, WANDOOSLIST } from "@/assets/wandoos"
 import bigDecimal from "js-big-decimal"
-import { bd, bigdec_max, bigdec_min } from "../numbers"
+import { isNormalMode } from "../gameMode"
+import { bd, bigdec_equals, bigdec_max, bigdec_min, greaterThan } from "../numbers"
+
 
 type wandoosType = {
     'energy' : bigDecimal
@@ -59,7 +60,7 @@ export function getLevelsGainedInWandoos({
         var baseMultiplier = wandoos.os == WANDOOS_OS.MEH ? wandoosBase['meh'] : wandoosBase['xl'];
     }
 
-    if(gameMode.compareTo(bd(GameMode.NORMAL)) != 0) {
+    if(!isNormalMode(gameMode)) {
         wandoosBase = {
             '98' : bd(1),
             'meh' : bd(1000000),
@@ -102,7 +103,7 @@ export function getLevelsGainedInWandoos({
         var ty : keyof typeof timeToFill[typeof os]    
         for(ty in fillRatio) {
             timeToFill[os][ty] = bd(0)
-            if(fillsPerMinute[os][ty].compareTo(bd(0)) > 0) {
+            if( greaterThan(fillsPerMinute[os][ty], bd(0))) {
                 timeToFill[os][ty] = bd(1).divide(fillsPerMinute[os][ty], sigFig).ceil()
             }
         }
@@ -115,7 +116,7 @@ export function getLevelsGainedInWandoos({
         var ty : keyof typeof lvlsGained[typeof os]    
         for(ty in fillRatio) {
             lvlsGained[os][ty] = bd(0)
-            if(timeToFill[os][ty].compareTo(bd(0)) > 0) {
+            if(greaterThan(timeToFill[os][ty], bd(0))) {
                 lvlsGained[os][ty] = bd(60 * 50).multiply(minutes).divide(timeToFill[os][ty], sigFig).floor()
             }
         }
@@ -139,7 +140,7 @@ export function getWandoosBonuses(lvlsGained : wandoosOsType, wandoos : Wandoos 
 export function getMaxOSBonus(bonuses : osType) : string {
     var max = bigdec_max(...Object.values(bonuses))
     for(var ty of Object.keys(bonuses)){
-        if (bonuses[ty as keyof typeof bonuses].compareTo(max) == 0) {
+        if (bigdec_equals(bonuses[ty as keyof typeof bonuses], max)) {
             return ty
         }
     }

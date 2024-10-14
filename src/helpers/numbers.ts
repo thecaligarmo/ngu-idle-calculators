@@ -8,7 +8,7 @@ export function bigdec_max(...args : bigDecimal[]) : bigDecimal {
     }
     var m = args[0];
     args.forEach( a => {
-        if (m.compareTo(a) < 0) {
+        if (lessThan(m, a)) {
             m = a
         }
     });
@@ -21,16 +21,47 @@ export function bigdec_min(...args : bigDecimal[]) : bigDecimal {
     }
     var m = args[0];
     args.forEach( a => {
-        if (m.compareTo(a) > 0) {
+        if (greaterThan(m, a)) {
             m = a
         }
     });
     return m;
 }
 
-export function bigdec_round(num: bigDecimal, precision : bigDecimal) {
+export function bigdec_round(num: bigDecimal, precision : bigDecimal) : bigDecimal{
     return precision.multiply( (num.divide(precision)).round(0, bigDecimal.RoundingModes.HALF_UP) )
 }
+
+
+export function bigdec_equals(left : bigDecimal, right : bigDecimal) : boolean {
+    return left.compareTo(right) == 0
+}
+
+export function isZero(number: bigDecimal) : boolean{
+    return bigdec_equals(number, bd(0))
+}
+
+export function isOne(number: bigDecimal) : boolean{
+    return bigdec_equals(number, bd(1))
+}
+
+
+export function greaterThan(left : bigDecimal, right : bigDecimal) : boolean {
+    return left.compareTo(right) > 0
+}
+
+export function greaterThanOrEqual(left : bigDecimal, right : bigDecimal) : boolean {
+    return left.compareTo(right) >= 0
+}
+
+export function lessThan(left : bigDecimal, right : bigDecimal) : boolean {
+    return left.compareTo(right) < 0
+}
+
+export function lessThanOrEqual(left : bigDecimal, right : bigDecimal) : boolean {
+    return left.compareTo(right) <= 0
+}
+
 
 // print/pretty number
 export function pn(num : bigDecimal | number, numberFormat : string = 'scientific', precision : number = 0) : string {
@@ -78,7 +109,7 @@ export function bd(num : any) : bigDecimal {
 
 // date number
 export function dn(num : bigDecimal) : string{
-    if ( _.isUndefined(num) || num.compareTo(bd(0)) == -1) {
+    if ( _.isUndefined(num) || lessThan(num, bd(0))) {
         return '00:00'
     }
     var day = bd(3600 * 24)
@@ -96,12 +127,12 @@ export function dn(num : bigDecimal) : string{
     var sString = s.getValue().padStart(2, '0')
 
     var str = mString + sString
-    if (h.compareTo(bd(0)) == 1 || d.compareTo(bd(0)) == 1) {
+    if (greaterThan(h, bd(0))  || greaterThan(d, bd(0))) {
         str = hString + str
     }
-    if (d.compareTo(bd(0)) == 1) {
+    if (greaterThan(d, bd(0))) {
         str = dString + str
-        if(d.compareTo(bd(365)) == 1) {
+        if(greaterThan(d, bd(365))) {
             return '∞'
         }
     }

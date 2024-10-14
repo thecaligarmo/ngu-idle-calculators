@@ -1,7 +1,8 @@
-import { bd, bigdec_min } from "@/helpers/numbers"
+import { bd, bigdec_equals, bigdec_min, greaterThan } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import { ENEMY_TYPE, Enemies, Enemy } from "./enemy"
-import { GameMode } from "./mode"
+import { isEvilMode, isSadMode } from "@/helpers/gameMode"
+
 
 var boostTable : number[] = [0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
 
@@ -76,17 +77,17 @@ export default class Zone {
         var power = bd(0)
         var retEnemy = this.enemies[0];
         this.enemies.forEach((enemy) => {
-            if(enemy.hp().compareTo(hp) == 1) {
+            if( greaterThan(enemy.hp(), hp)) {
                 retEnemy = enemy
                 toughness = enemy.toughness()
                 power = enemy.power()
                 hp = enemy.hp()
-            }  else if (enemy.hp().compareTo(hp) == 0 && enemy.toughness().compareTo(toughness) == 1) {
+            }  else if (bigdec_equals(enemy.hp(), hp) && greaterThan(enemy.toughness(), toughness)) {
                 retEnemy = enemy
                 toughness = enemy.toughness()
                 power = enemy.power()
                 hp = enemy.hp()
-            } else if (enemy.hp().compareTo(hp) == 0 && enemy.toughness().compareTo(toughness) == 0 && enemy.power().compareTo(power) == 1) {
+            } else if (bigdec_equals(enemy.hp(), hp) && bigdec_equals(enemy.toughness(), toughness) && greaterThan(enemy.power(), power)) {
                 retEnemy = enemy
                 toughness = enemy.toughness()
                 power = enemy.power()
@@ -208,21 +209,19 @@ export default class Zone {
                                     : bd(1)
     
         var floorAdd = 200
-        if(gameMode.compareTo(bd(GameMode.EVIL)) == 0) {
+        if(isEvilMode(gameMode)) {
             floorAdd = 700
-        } else if(gameMode.compareTo(bd(GameMode.SADISTIC)) == 0) {
+        } else if(isSadMode(gameMode)) {
             floorAdd = 2000
         }
     
         return totalPPBonus
-                            .divide(bd(100))
-                            .multiply(bluePillMultiplier)
-                            .multiply(bd(this.level + floorAdd))
-                            .floor()
+                .divide(bd(100))
+                .multiply(bluePillMultiplier)
+                .multiply(bd(this.level + floorAdd))
+                .floor()
     
     }
-
-
 }
 
 // Need to add "Boss Chance" as this is not as simple as ratio

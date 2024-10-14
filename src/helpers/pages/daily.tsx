@@ -2,7 +2,7 @@ import { AttackStat, Titan, Titans } from "@/assets/enemy";
 import { Wish } from "@/assets/wish";
 import bigDecimal from "js-big-decimal";
 import { ReactElement } from "react";
-import { bd, bigdec_min } from "../numbers";
+import { bd, bigdec_min, greaterThan } from "../numbers";
 
 
 
@@ -66,7 +66,7 @@ export function getQuestInfo(
                 .multiply(idleAttackCooldown.add(respawnTime))
                 .multiply(bd(50))
                 .multiply(questIdleDivider)
-                .divide(totalQuestDropBonus.compareTo(bd(0)) > 0 ? totalQuestDropBonus.divide(bd(100)) : bd(1)) // Quest Drop (Idle)
+                .divide(greaterThan(totalQuestDropBonus, bd(0)) ? totalQuestDropBonus.divide(bd(100)) : bd(1)) // Quest Drop (Idle)
                 .divide(bd(3))
         )
         .round(0)
@@ -77,14 +77,14 @@ export function getQuestInfo(
     var secondsPerManualQuestItemDrop = bd(60)
         .multiply(idleAttackCooldown.add(respawnTime))
         .multiply(bd(50))
-        .divide(totalQuestDropBonus.compareTo(bd(0)) > 0 ? totalQuestDropBonus.divide(bd(100)) : bd(1)) // Quest Drop (Idle)
+        .divide(greaterThan(totalQuestDropBonus, bd(0)) ? totalQuestDropBonus.divide(bd(100)) : bd(1)) // Quest Drop (Idle)
         .divide(bd(3))
         .round(0)
         .divide(bd(50))
     
     var secondsPerIdleQuest = secondsPerIdleQuestItemDrop
         .multiply(
-            hoursOfflinePerDay.compareTo(bd(0)) > 0 
+            greaterThan(hoursOfflinePerDay, bd(0))
             ?   (
                     hoursOfflinePerDay.multiply(bd(60))
                     .add(
@@ -247,7 +247,7 @@ export function getTitanHourlyInfo(maxTitan : [Titan, number], {
 
     var wishLevel = Number(wishTitansHadBetterRewards.getValue());
     var rbChallenges : bigDecimal = numRebirthChallenges
-    var bonusExpPerk = bonusTitanEXPPerk.compareTo(bd(0)) > 0 ? bd(1.5) : bd(1)
+    var bonusExpPerk = greaterThan(bonusTitanEXPPerk, bd(0)) ? bd(1.5) : bd(1)
 
     Object.values(Titans).forEach((titan) => {
         if(titan.id <= maxTitan[0].id) {
@@ -305,7 +305,7 @@ export function getRebirthAP(totalAPBonus : bigDecimal, hoursPerDay : bigDecimal
 
 
 export function getMoneyPitAP(goldToss: bigDecimal, numTosses: bigDecimal, totalAPBonus : bigDecimal) : bigDecimal {
-    if(goldToss.compareTo(bd(0)) > 0) {
+    if(greaterThan(goldToss, bd(0))) {
         return (goldToss
                 .multiply(totalAPBonus)
                 .divide(bd(100))

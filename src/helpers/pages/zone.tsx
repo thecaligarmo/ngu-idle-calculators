@@ -1,7 +1,7 @@
 import { Zones } from "@/assets/zones";
 import bigDecimal from "js-big-decimal";
 import { getIdleAttackModifier } from "../calculators";
-import { bd, bigdec_max } from "../numbers";
+import { bd, bigdec_max, greaterThan, isZero } from "../numbers";
 
 
 type zoneType = {
@@ -67,7 +67,7 @@ export function getZoneInfo(v : any) : zoneType[]{
     zoneBoostInfo.push(nonOptItopod)
 
 
-    if (v['totalPower'].compareTo(bd(0)) != 0) {
+    if (!isZero(v['totalPower'])) {
         for(let zone of Object.values(Zones)) {
             if(zone.hardestEnemy()){
                 var oneHitPower = zone.hardestEnemy().oneHitPower(idleAttackModifier);
@@ -87,7 +87,7 @@ export function getZoneInfo(v : any) : zoneType[]{
                     v['totalRespawnTime'].add(
                             idleAttackCooldown.multiply(powerRat)
                         ).add(
-                            idleAttackCooldown.multiply(powerRat).compareTo(bd(3.5)) == 1 ? bd(2).multiply(paralyzer) : bd(0)
+                            greaterThan(idleAttackCooldown.multiply(powerRat), bd(3.5)) ? bd(2).multiply(paralyzer) : bd(0)
                         )
                     )
                     .multiply(expChance)
@@ -98,7 +98,7 @@ export function getZoneInfo(v : any) : zoneType[]{
                     v['totalRespawnTime'].add(
                             idleAttackCooldown.multiply(powerRat)
                         ).add(
-                            idleAttackCooldown.multiply(powerRat).compareTo(bd(3.5)) == 1 ? bd(2).multiply(paralyzer) : bd(0)
+                            greaterThan(idleAttackCooldown.multiply(powerRat), bd(3.5)) ? bd(2).multiply(paralyzer) : bd(0)
                         )
                     )
                     .multiply(normalEnemyPercent)
@@ -121,7 +121,7 @@ export function getZoneInfo(v : any) : zoneType[]{
 export function getOptimalBoostZone(zoneBoostInfo : zoneType[]) : zoneType{
     var optimalZone = zoneBoostInfo[0]
     for (var zone of zoneBoostInfo){
-        if(zone['boost'].compareTo(optimalZone['boost']) > 0) {
+        if(greaterThan(zone['boost'], optimalZone['boost'])) {
             optimalZone = zone
         }
     }
@@ -131,7 +131,7 @@ export function getOptimalBoostZone(zoneBoostInfo : zoneType[]) : zoneType{
 export function getOptimalExpZone(zoneBoostInfo : zoneType[]) : zoneType{
     var optimalZone = zoneBoostInfo[0]
     for (var zone of zoneBoostInfo){
-        if(zone['exp'].compareTo(optimalZone['exp']) > 0) {
+        if(greaterThan(zone['exp'], optimalZone['exp'])) {
             optimalZone = zone
         }
     }
