@@ -416,7 +416,7 @@ export default function Page() {
 
     
     return (
-        <Content title="Cards" infoRequired={infoReq} extraRequired={extraReq} prechildren={(<p>This page gives information about cards and mayo. By <span className="text-red-500">leftovers</span> we mean when you use Yggdrasil more than once per day. So eating your second (third, etc.) fruit from Yggdrasil is considered a "leftover".</p>)}>
+        <Content title="Cards" infoRequired={infoReq} extraRequired={extraReq} prechildren={(<p>This page gives information about cards and mayo. By <span className="text-red-500">leftovers</span> we mean when you use Yggdrasil more than once per day. So eating your second (third, etc.) fruit from Yggdrasil is considered a &ldquo;leftover&rdquo;.</p>)}>
             <ContentSubsection title={"How much mayo, cards, chonks will I get per day?"}>
                 <>
                     <p>The below let&apos;s you know how much mayo, cards and chonks you will get per day.</p>
