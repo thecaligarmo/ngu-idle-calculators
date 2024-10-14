@@ -163,6 +163,9 @@ export function apItemInfo(data: any, key: string) : bigDecimal {
             })
         }
     }
+    if (isMaxxedItemSet(data, ItemSets.BLUE_HEART)) {
+        stat = stat * 1.1
+    }
 
     return bd(stat > 0 ? stat : 100)
 }
