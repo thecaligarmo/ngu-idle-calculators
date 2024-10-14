@@ -84,7 +84,10 @@ describe('Resource Info - AP Info', () => {
     test.each(cases)(
         "AP Info - %s",
         (name, obj, expectedValues) => {
-            var data = {'apItems' : [defaultPlayerData(obj, 'apItems')]}
+            var data = {
+                'apItems' : [defaultPlayerData(obj, 'apItems')],
+                'itemSets' : [defaultPlayerData(obj, 'itemSets')],
+            }
             var ec = expectClose(apItemInfo(data, Stat.POWER), expectedValues)
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }

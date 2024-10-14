@@ -107,7 +107,6 @@ export var cardReqChonkers = [
 
 
 export function getCardsPerDay(cardSpeed: bigDecimal, recycleCard:bigDecimal) :bigDecimal{
-    console.log(cardSpeed, recycleCard);
     return bd(24).multiply(cardSpeed.divide(bd(100)))
     .divide(
         bd(1).add(
