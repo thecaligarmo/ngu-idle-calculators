@@ -396,26 +396,38 @@ export function getStatInfo(playerStates : any) {
                 'name': 'Base Wish Speed ',
                 'val' : bd(100),
             },
-            'equipment' : {
-                'name': 'x Equipment',
-                'val' : equipmentInfo(playerStates, Stat.WISH_SPEED),
-            },
-            'heart' : {
-                'name': 'x Severed Head Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.SEVERED_HEAD) ? bd(113.37) : bd(100),
-            },
             'wish' : {
                 'name': 'x Wish Modifier',
                 'val' : wishInfo(playerStates, Stat.WISH_SPEED),
             },
-            'fasterWish' : {
-                'name' : 'x Faster Wish (AP item)',
-                'val' : apItemInfo(playerStates, Stat.WISH_SPEED)
+            'equipment' : {
+                'name': 'x Equipment',
+                'val' : equipmentInfo(playerStates, Stat.WISH_SPEED),
+            },
+            'hack' : {
+                'name': 'x Hack',
+                'val' : hackInfo(playerStates, Stat.POWER).round(),
+            },
+            'perk' : {
+                'name': 'x Perk',
+                'val' : perkInfo(playerStates, Stat.POWER).round(),
             },
             'card' : {
                 'name' : 'x Cards',
                 'val' : cardInfo(playerStates, Stat.WISH_SPEED),
                 'sigFig': 2,
+            },
+            'head' : {
+                'name': 'x Severed Head Bonus',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.SEVERED_HEAD) ? bd(113.37) : bd(100),
+            },
+            'fasterWish' : {
+                'name' : 'x Faster Wish (AP item)',
+                'val' : apItemInfo(playerStates, Stat.WISH_SPEED)
+            },
+            'typo' : {
+                'name': 'x Typo Set Bonus',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.SEVERED_HEAD) ? bd(120) : bd(100),
             },
             'total' : {
                 'name': 'Total',

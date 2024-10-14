@@ -220,13 +220,11 @@ export function totalHackSpeed(data : any) :bigDecimal {
 export function totalWishSpeed(data : any) :bigDecimal {
     var gen : bigDecimal = calcAll(data, Stat.WISH_SPEED)
     var severedHeadBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.SEVERED_HEAD) ? bd(1.1337) : bd(1)
-    var typoSetCBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.TYPO) ? bd(1.2) : bd(1)
-
-
+    var typoSetBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.TYPO) ? bd(1.2) : bd(1)
 
     return gen
         .multiply(severedHeadBonus)
-        .multiply(typoSetCBonus)
+        .multiply(typoSetBonus)
 }
 
 /** Adventure Stats */
