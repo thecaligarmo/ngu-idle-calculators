@@ -14,7 +14,7 @@ import { ITEMS, Item } from "../assets/items";
 import { GameMode } from "../assets/mode";
 import { PERKS, Perk } from "../assets/perks";
 import { QUIRKS, Quirk } from "../assets/quirks";
-import { boostRecyclying, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalYggdrasilYieldBonus } from "./calculators";
+import { boostRecyclying, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Cap, totalRes3Power, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalWishSpeed, totalYggdrasilYieldBonus } from "./calculators";
 import { bd } from "./numbers";
 import { Wandoos, WANDOOSLIST } from "@/assets/wandoos";
 import { Zones } from "@/assets/zones";
@@ -705,6 +705,11 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.wishes.wishes[163].level
                         + playerData.wishes.wishes[221].level
                         + playerData.wishes.wishes[228].level
+            case 'wishSlots-1':
+                return 1
+                        + playerData.beastQuest.quirkLevel[56]
+                        + (playerData.challenges.trollChallenge.curEvilCompletions >= 7 ? 1 : 0)
+                        + playerData.inventory.itemList.pinkHeartComplete
             case 'wishTitansHadBetterRewards-2':
                 return playerData.wishes.wishes[3].level;
             case 'wishBeastDropQP^':
@@ -1075,6 +1080,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                         if (!_.isUndefined(WISHES[index])) {
                             let w = _.cloneDeep(WISHES[index])
                             w.setLevel(wish.level)
+                            w.setProgress(wish.progress)
                             wishes.push(w)
                         }
                     }
@@ -1110,10 +1116,18 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             // Calculations
             case 'boostRecyclying%':
                 return boostRecyclying(playerData);
+            case 'totalEnergyPower':
+                return totalEnergyPower(playerData);
             case 'totalEnergyCap':
                 return totalEnergyCap(playerData);
+            case 'totalMagicPower':
+                return totalMagicPower(playerData);
             case 'totalMagicCap':
                 return totalMagicCap(playerData);
+            case 'totalRes3Power':
+                return totalRes3Power(playerData);
+            case 'totalRes3Cap':
+                return totalRes3Cap(playerData);
             case 'totalAPBonus%':
                 return totalAPBonus(playerData);
             case 'totalCardSpeed%':
@@ -1148,6 +1162,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return totalSeedGainBonus(playerData)
             case 'totalTagEffect%':
                 return totalTagEffect(playerData);
+            case 'totalWishSpeed%':
+                return totalWishSpeed(playerData);
             case 'totalYggdrasilYieldBonus%':
                 return totalYggdrasilYieldBonus(playerData)
             case 'itopodFloor-5':
@@ -1408,6 +1424,7 @@ export function getPlayerNumberOptions() : string[]{
         'wandoosEnergyAllocated',
         'wandoosMagicAllocated',
         'wimpyWish-1',
+        'wishSlots-1',
         'wishTitansHadBetterRewards-2',
         'wishBeastDropQP^',
         'wishNerdDropQP^',
@@ -1457,8 +1474,12 @@ export function getPlayerOptions() : string[] {
 export function getCalculatedOptions() : string[] {
     return [        
         'boostRecyclying%',
+        'totalEnergyPower',
         'totalEnergyCap',
+        'totalMagicPower',
         'totalMagicCap',
+        'totalRes3Power',
+        'totalRes3Cap',
         'totalAPBonus%',
         'totalCardSpeed%',
         'totalDropChance%',
@@ -1476,6 +1497,7 @@ export function getCalculatedOptions() : string[] {
         'totalRespawnTime',
         'totalSeedGainBonus%',
         'totalTagEffect%',
+        'totalWishSpeed%',
         'totalYggdrasilYieldBonus%',
         'itopodFloor-5',
     ]

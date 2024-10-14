@@ -1,3 +1,4 @@
+import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 
 
@@ -10,6 +11,7 @@ export default class Resource {
     name: string
     mode: number
     level: number
+    progress: number
     base: {[index: string]: any}
     statnames: string[]
     constructor(id: number, key: string, name: string, mode: number, level: number, props: prop) {
@@ -20,6 +22,7 @@ export default class Resource {
         this.level = level
         this.statnames = []
         this.base = {}
+        this.progress = 0
         for (let i = 0; i < props.length; i++) {
             this.statnames.push(props[i][0]);
             this.base[props[i][0]] = props[i][1]
@@ -41,8 +44,20 @@ export default class Resource {
         }
         return 0
     }
-    appliesToGameMode(gameMode : number) : boolean {
+    appliesToGameMode(gameMode : number | bigDecimal) : boolean {
+        if (gameMode instanceof bigDecimal) {
+            gameMode = Number(gameMode.getValue())
+        }
         return this.mode <= gameMode
+    }
+    setProgress(progress: number) {
+        if (progress > 1 || progress < 0) {
+            console.log("Bad Progress", progress, this.key)
+        }
+        this.progress = progress
+    }
+    progressLeft() : number {
+        return 1 - this.progress
     }
 }
 

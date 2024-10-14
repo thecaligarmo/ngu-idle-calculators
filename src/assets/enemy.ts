@@ -192,7 +192,7 @@ export class Titan extends Enemy {
     }
     getQP(wishes : Wish[], qpBonus : bigDecimal = bd(1)) : bigDecimal {
         var qpAmount = bd(0)
-        if(this.getQPWishNum() > 0 && !_.isUndefined(wishes[73]) && wishes[this.getQPWishNum()].level > 0) {
+        if(this.getQPWishNum() > 0 && !_.isUndefined(wishes[73]) && wishes[this.getQPWishNum()].completed()) {
             qpAmount = bd(this.qp)
         }
         return qpBonus.multiply(qpAmount).divide(bd(100))

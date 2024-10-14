@@ -10,8 +10,9 @@ export default function Nav({ children } : PropsWithChildren) {
     
     const activeTabLi = "-mb-px mr-1"
     const inactiveTabLi = "mr-1"
-    const activeTab = "bg-blue-500 inline-block border-l border-blue-500 border-t border-r rounded-t py-2 px-4 text-white dark:text-black font-semibold"
-    const inactiveTab = "bg-white dark:bg-black inline-block py-2 px-4 text-blue-500 dark:hover:text-blue-800 hover:text-blue-300 font-semibold"
+    const tabClasses = "inline-block py-2 px-2 font-semibold "
+    const activeTab = tabClasses + "bg-blue-500 border-l border-blue-500 border-t border-r rounded-t text-white dark:text-black"
+    const inactiveTab = tabClasses + "bg-white dark:bg-black text-blue-500 dark:hover:text-blue-800 hover:text-blue-300"
 
     function NavElt({children, href, hasChildren=false} : {children: ReactNode, href: string, hasChildren?: boolean}) {
         var actTab = hasChildren ? (pathname.startsWith(href)) : (pathname == href)
@@ -30,6 +31,7 @@ export default function Nav({ children } : PropsWithChildren) {
             <NavElt href="/zone">Optimal Zone</NavElt>
             <NavElt href="/ratios">Ratios</NavElt>
             <NavElt href="/wandoos">Wandoos</NavElt>
+            <NavElt href="/wishes">Wishes</NavElt>
             <NavElt href="/ygg">Ygg</NavElt>
             <NavElt href="/stats">Stats</NavElt>
             <NavElt href="/about">About/Credits</NavElt>
