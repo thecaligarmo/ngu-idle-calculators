@@ -203,11 +203,15 @@ export default class Zone {
             )
         )
     }
-    getPPPPerKill(gameMode:bigDecimal, totalPPBonus : bigDecimal = bd(1), bluePill : boolean = false, blueHeart : boolean = false) : bigDecimal{
+    getPPPPerKill(gameMode:bigDecimal, totalPPBonus : bigDecimal = bd(1), bluePill : boolean = false, blueHeart : boolean = false, bonusPPP : number | bigDecimal = 0) : bigDecimal{
         var bluePillMultiplier = bluePill
                                     ? (blueHeart ? bd(2.2) : bd(2))
                                     : bd(1)
     
+        if(bonusPPP instanceof bigDecimal) {
+            bonusPPP = Number(bonusPPP.getValue())
+        }
+
         var floorAdd = 200
         if(isEvilMode(gameMode)) {
             floorAdd = 700
@@ -218,7 +222,7 @@ export default class Zone {
         return totalPPBonus
                 .divide(bd(100))
                 .multiply(bluePillMultiplier)
-                .multiply(bd(this.level + floorAdd))
+                .multiply(bd(this.level + floorAdd + bonusPPP))
                 .floor()
     
     }

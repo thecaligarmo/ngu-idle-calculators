@@ -86,6 +86,9 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return Math.ceil(Math.log2(playerData.bloodMagic.goldSpellBlood / 1000000) ** 2)
             case 'blueHeart^':
                 return playerData.inventory.itemList.blueHeartComplete
+            case 'bonusPP-4':
+                return playerData.beastQuest.quirkLevel[70] * 10
+                    + playerData.wishes.wishes[79].level * 50
             case 'bonusTitanEXPPerk-2':
                 return playerData.adventure.itopod.perkLevel[34]
             case 'boostRecyclyingPurchase':
@@ -1207,6 +1210,7 @@ export function getPlayerNumberOptions() : string[]{
         'bloodMagicDropChance',
         'bloodMagicTimeMachine',
         'blueHeart^',
+        'bonusPP-4',
         'bonusTitanEXPPerk-2',
         'boostRecyclyingPurchase',
         'cardRecyclingCard^',

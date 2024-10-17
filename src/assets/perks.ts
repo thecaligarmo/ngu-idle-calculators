@@ -229,7 +229,7 @@ export const PERKLIST = [
     new Perk(141, 'genericResource3PowerPerkVI', 'Generic Resource 3 Power Perk VI', GameMode.SADISTIC, 0, [[Stat.RES3_POWER, 1]]),
     new Perk(142, 'genericResource3BarPerkVI', 'Generic Resource 3 Bar Perk VI', GameMode.SADISTIC, 0, [[Stat.RES3_BARS, 0.5]]),
     new Perk(143, 'genericResource3CapPerkVI', 'Generic Resource 3 Cap Perk VI', GameMode.SADISTIC, 0, [[Stat.RES3_CAP, 0.5]]),
-    new Perk(144, 'welcometoSadisticDifficulty', 'Welcome to Sadistic Difficulty', GameMode.SADISTIC, 0, [[Stat.ATTACK, 1000], [Stat.DEFENSE, 1000], [Stat.POWER, 15], [Stat.TOUGHNESS, 15], [Stat.HEALTH, 15], [Stat.REGEN, 15], [Stat.AUGMENT_SPEED, 20], [Stat.ENERGY_NGU_SPEED, 20], [Stat.MAGIC_NGU_SPEED, 20]]),
+    new Perk(144, 'welcometoSadisticDifficulty', 'Welcome to Sadistic Difficulty', GameMode.SADISTIC, 0, [[Stat.ATTACK, 1000], [Stat.DEFENSE, 1000], [Stat.POWER, 15], [Stat.TOUGHNESS, 15], [Stat.HEALTH, 15], [Stat.REGEN, 15], [Stat.ENERGY_NGU_SPEED, 20], [Stat.MAGIC_NGU_SPEED, 20], [Stat.AUGMENT_SPEED, 20],]), //  <- Doesn't show up in stat breakdown for some reason
     new Perk(145, 'bonusQuestHandinProgessI', 'Bonus Quest Handin Progess I', GameMode.EVIL, 0, []),
     new Perk(146, 'bonusQuestHandinProgessII', 'Bonus Quest Handin Progess II', GameMode.EVIL, 0, []),
     new Perk(147, 'improvedMajorQuestQPRewards', 'Improved Major Quest QP Rewards', GameMode.SADISTIC, 0, []),

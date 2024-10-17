@@ -57,7 +57,7 @@ export default function Page() {
 
     // Set data required (from playerData)
     var infoRequired = [
-        ['gameMode', 'itopodFloor-5', 'numRebirthChallenges-2', 'twentyFourHourChallenge-2', 'twentyFourHourEvilChallenge-2', 'twentyFourHourSadisticChallenge-2'],
+        ['gameMode', 'itopodFloor-5', 'bonusPP-4', 'numRebirthChallenges-2', 'twentyFourHourChallenge-2', 'twentyFourHourEvilChallenge-2', 'twentyFourHourSadisticChallenge-2'],
         ['questMinorQP-2', 'questMajorQP-2', 'questIdleDivider-1', 'activeQuestWishI-2', 'activeQuestWishII-2'],
         
         ['totalRespawnTime', 'totalAPBonus%', 'totalExpBonus%', 'totalPPBonus%', 'totalQuestRewardBonus%', 'totalQuestDropBonus%', 'totalYggdrasilYieldBonus%', 'totalPower'],
@@ -121,7 +121,7 @@ export default function Page() {
     var itopodZone = Zones.ITOPOD;
     itopodZone.setLevel(v('itopodFloor-5'))
 
-    var pppPerKill = itopodZone.getPPPPerKill(v('gameMode'), totalPPBonus, c('bluePill^'), c('blueHeart^'));
+    var pppPerKill = itopodZone.getPPPPerKill(v('gameMode'), totalPPBonus, c('bluePill^'), c('blueHeart^'), v('bonusPP-4'));
     var killsPerDay = itopodZone.getKillsPerHour(c('redLiquidBonus^'), v('totalRespawnTime')).multiply(hoursPerDay)
 
     var PPPFromTower = killsPerDay.multiply(pppPerKill)

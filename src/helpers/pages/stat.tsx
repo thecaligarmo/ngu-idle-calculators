@@ -1,7 +1,7 @@
 import { ItemSets } from "@/assets/sets"
 import { Stat } from "@/assets/stat"
 import _ from "lodash"
-import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed, totalQuestRewardBonus, totalEnergyCap } from "../calculators"
+import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed, totalQuestRewardBonus, totalEnergyCap, totalRegen } from "../calculators"
 import { bd, bigdec_equals, bigdec_max, isOne, pn } from "../numbers"
 import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo, isCompletedChallenge, maxxedItemSetNum } from "../resourceInfo"
 import bigDecimal from "js-big-decimal"
@@ -169,6 +169,11 @@ export function getStatInfo(playerStates : any) {
                 'val' : cardInfo(playerStates, Stat.AUGMENT_SPEED),
                 'sigFig': 2,
             },
+            'perk' : {
+                'name' : 'x Perks (is not shown in game, but is applied)',
+                'val' : perkInfo(playerStates, Stat.AUGMENT_SPEED),
+                'sigFig': 2,
+            },
             'total' : {
                 'val' : totalAugmentSpeed(playerStates),
             }
@@ -218,6 +223,10 @@ export function getStatInfo(playerStates : any) {
             'challenge' : {
                 'name': 'x Challenge ',
                 'val' : challengeInfo(playerStates, Stat.ENERGY_NGU_SPEED),
+            },
+            'trollChallenge' : {
+                'name' : 'x Sad Troll Challenge',
+                'val' : isCompletedChallenge(playerStates, ChallengeKeys.TROLL, GameMode.SADISTIC, 1) ? bd(300) : bd(100),
             },
             'hack' : {
                 'name': 'x Hack',
@@ -653,6 +662,78 @@ export function getStatInfo(playerStates : any) {
             },
             'total' : {
                 'val' : totalHealth(playerStates),
+            },
+        },
+        'advRegen' : { // Will need altering
+            'base' : {
+                'name': 'Base Adventure Regen ',
+                'val' : v('baseAdventureRegen'),
+                'noPer' : true,
+            },
+            'equipment' : {
+                'name': '+ Equipment Regen + Infinity Cube',
+                'val' : equipmentInfo(playerStates, Stat.REGEN),
+                'noPer' : true,
+            },
+            'subtotal' : {
+                'val' : v('baseAdventureRegen').add(equipmentInfo(playerStates, Stat.REGEN)),
+            },
+            'at' : {
+                'name': 'x Advanced Training',
+                'val' : advTrainingInfo(playerStates, Stat.REGEN),
+            },
+            'engu' : {
+                'name' : 'x (Energy x Magic) NGU',
+                'val' : nguInfo(playerStates, Stat.REGEN),
+            },
+            'digger' : {
+                'name': 'x Digger',
+                'val' : diggerInfo(playerStates, Stat.REGEN),
+            },
+            'basicChallenge' : {
+                'name': 'x Basic Challenge',
+                'val' : challengeInfo(playerStates, Stat.REGEN),
+            },
+            'beardTemp' : {
+                'name' : 'x Beard (this run)',
+                'val' : beardInfoTemp(playerStates, Stat.REGEN)
+            },
+            'beardPerm' : {
+                'name' : 'x Beard (permanent)',
+                'val' : beardInfoPerm(playerStates, Stat.REGEN)
+            },
+            'perk' : {
+                'name': 'x Perk',
+                'val' : perkInfo(playerStates, Stat.REGEN).round(),
+            },
+            'quirk' : {
+                'name': 'x Quirk',
+                'val' : quirkInfo(playerStates, Stat.REGEN).round(),
+            },
+            'wish' : {
+                'name': 'x Wish',
+                'val' : wishInfo(playerStates, Stat.REGEN).round(),
+            },
+            'macguffin' : {
+                'name': 'x Macguffin',
+                'val' : macguffinInfo(playerStates, Stat.REGEN),
+                'sigFig' : 2,
+            },
+            'hack' : {
+                'name': 'x Hack',
+                'val' : hackInfo(playerStates, Stat.REGEN).round(),
+            },
+            'card' : {
+                'name' : 'x Cards',
+                'val' : cardInfo(playerStates, Stat.REGEN),
+                'sigFig': 2,
+            },
+            'acc' : {
+                'name': 'x Evil Accs Set Bonus',
+                'val' :  (isMaxxedItemSet(playerStates, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
+            },
+            'total' : {
+                'val' : totalRegen(playerStates),
             },
         },
         'gold' : {

@@ -127,6 +127,9 @@ export default function Page() {
                 <ContentSubsection title="Adventure Health Calculation" defaultHide={true}>
                     {describeStat(pageData['advHealth'], fmt)}
                 </ContentSubsection>
+                <ContentSubsection title="Adventure Regen Calculation" defaultHide={true}>
+                    {describeStat(pageData['advRegen'], fmt)}
+                </ContentSubsection>
             </ContentSection>
             <ContentSection title="Misc Stats">
                 <ul>

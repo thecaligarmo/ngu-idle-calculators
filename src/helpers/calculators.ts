@@ -18,7 +18,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
     }
 
     if(false) {
-        if(Stat.POWER == stat) {
+        if(Stat.AUGMENT_SPEED == stat) {
             console.log('----------------------------------------')
             console.log('advTraining', advTrainingInfo(data, stat).getValue())
             console.log('ap', apItemInfo(data, stat).getValue())    
@@ -136,11 +136,13 @@ export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
     var aNumberSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
     var metaSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.META) ? bd(1.2) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.ENERGY_NGU_SPEED)
+    var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.SADISTIC, 1)) ? bd(3) : bd(1);
     
     return gen
         .multiply(totalEnergyPower(data))
         .multiply(aNumberSetModifier)
         .multiply(metaSetModifier)
+        .multiply(tcNum)
 }
 
 export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
