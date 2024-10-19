@@ -1,7 +1,7 @@
 # ngu-idle-calculators
 A next.js website system for calculating things for the idle game: NGU-idle
 
-Current Version: 0.1.2 beta
+Current Version: 0.1.3 beta
 
 ## About
 The calculator was developed by Cali (thecaligarmo on discord) and uses the formulas found in various NGU spreadsheets in order to automatically calculate things instead of having to write everything out by hand.
