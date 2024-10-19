@@ -153,7 +153,12 @@ export default function Page() {
                         <option value=''>Energy to Resource 3 Ratio</option>
                         <option value="100000:1">100,000:1</option>
                         <option value="200000:1">200,000:1</option>
+                        <option value="250000:1">250,000:1</option>
+                        <option value="300000:1">300,000:1</option>
+                        <option value="400000:1">400,000:1</option>
                         <option value="500000:1">500,000:1</option>
+                        <option value="600000:1">600,000:1</option>
+                        <option value="750000:1">750,000:1</option>
                         <option value="1000000:1">1,000,000:1</option>
                     </select>
                     </div>
