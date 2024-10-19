@@ -1,5 +1,5 @@
 import { getNumberFormat, useSavedDataContext } from "@/components/context";
-import { pn } from "@/helpers/numbers";
+import { bd, pn } from "@/helpers/numbers";
 import bigDecimal from "js-big-decimal";
 import { ReactNode } from "react";
 import { ChoiceButton } from "./buttons";
@@ -25,9 +25,8 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
     const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();
     var fmt = getNumberFormat();
     var val = d.value[0]
-    if (!(val instanceof bigDecimal)) {
-        val = new bigDecimal(val)
-    }
+    var valBD = bd(val)
+
     var disabled = ""
     if(d.disabled) {
         disabled += "hidden"
@@ -36,7 +35,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
     if (input) {
         // For some reason a checkbox isn't working... so we'll do this instead.
         if (d.type == 'checkbox') {
-            var checked = val.getValue() == '1'
+            var checked = valBD.getValue() == '1'
             return (<li key={'in-'+d.key} id={'in-'+d.id} className={disabled}>
                 <label className="inline-block text-black dark:text-white mt-2 mb-1 mr-2">
                     {/* htmlFor={d.id} */}
@@ -70,7 +69,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                 </label>
                 <ChoiceButton
                     text="Normal"
-                    active={val.getValue() == '0'}
+                    active={valBD.getValue() == '0'}
                     onClick={(e) => {
                         setPlayerDataUpdated(false);
                         d.value[1]('0')
@@ -78,7 +77,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                     />
                 <ChoiceButton
                     text="Evil"
-                    active={val.getValue() == '1'}
+                    active={valBD.getValue() == '1'}
                     onClick={() => {
                         setPlayerDataUpdated(false);
                         d.value[1]('1')
@@ -86,7 +85,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                     />
                 <ChoiceButton
                     text="Sadistic"
-                    active={val.getValue() == '2'}
+                    active={valBD.getValue() == '2'}
                     onClick={() => {
                         setPlayerDataUpdated(false);
                         d.value[1]('2')
@@ -101,7 +100,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                 rarityOptions.push(
                     (<ChoiceButton
                         text={CardRarityText[k]}
-                        active={val.getValue() == k}
+                        active={valBD.getValue() == k}
                         key={'cardRarity-' + CardRarityText[k]}
                         onClick={(e) => {
                             setPlayerDataUpdated(false);
@@ -162,7 +161,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                 type="number"
                 name={d.id}
                 id={d.id}
-                value={val.getValue() === '0' ? '' : val.getValue()}
+                value={valBD.getValue() === '0' ? '' : val}
                 onChange={e => {
                     setPlayerDataUpdated(false);
                     d.value[1](e.target.value)
@@ -170,7 +169,7 @@ function dataToList(d : any, input : boolean = false) : ReactNode{
                 />
         </li>)
     } else {
-        var dVal = pn(val, fmt)
+        var dVal = pn(valBD, fmt)
         if (d.type == 'checkbox') {
             dVal = (d.value[0] == '1') ? 'Yes' : 'No'
         }
