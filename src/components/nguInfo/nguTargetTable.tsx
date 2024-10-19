@@ -26,15 +26,14 @@ export default function NGUTargetTable({type, NGUs, targets, seconds, totalSecon
         "incAmt": "Increase Amount",
         "tarVal": "Value at Target",
     }
-    var extraClasses = {
-        "time": "text-right"
-    }
     var dataRows : StandardTableRowType = {}
+    
     for (let index in NGUs) {
         let ngu = NGUs[index]
 
         var targetLvl = targets[index]
         var secs = seconds[index]
+        
         var val = bd(ngu.getStatValue(ngu.statnames[0], Number(targetLvl.getValue())))
         var curVal = bd(ngu.getStatValue(ngu.statnames[0]))
 
@@ -52,12 +51,23 @@ export default function NGUTargetTable({type, NGUs, targets, seconds, totalSecon
 
         dataRows[ngu.key] = {
             "type": ngu.name,
-            "time": <span className="text-red-500">{dn(secs)}</span>,
-            "target": <span className="text-blue-500">{pn(targetLvl, fmt)}</span>,
+            "time": dn(secs),
+            "target": pn(targetLvl, fmt),
             "curVal": <span>{pn(curVal, fmt, precision)}%</span>,
-            "incAmt":<span className="text-green-500">{ lessThanOrEqual(targetLvl, bd(0)) ? '-' : " x " + pn(val.divide(curVal), fmt, 2 ) + " = "}</span>,
-            "tarVal": <span>{lessThanOrEqual(targetLvl, bd(0)) ? '-' : pn(val, fmt, precision) + "%"}</span>,
+            "incAmt": lessThanOrEqual(targetLvl, bd(0)) ? '-' : " x " + pn(val.divide(curVal), fmt, 2 ) + " = ",
+            "tarVal": lessThanOrEqual(targetLvl, bd(0)) ? '-' : pn(val, fmt, precision) + "%",
         }
+    }
+    dataRows["total"] = {
+        "type": "Total",
+        "isTotal": true,
+        "time" : dn(totalSeconds),
+    }
+
+    var extraClasses = {
+        "time": "text-right text-red-500",
+        "target": "text-blue-500",
+        "incAmt": "text-green-500"
     }
 
     return <StandardTable order={order} header={header} rows={dataRows} extraRowClasses={extraClasses} />
