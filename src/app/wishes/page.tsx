@@ -163,11 +163,11 @@ export default function Page() {
         "energy": "text-green-500",
         "magic": "text-blue-500",
         "res3": "text-red-500",
-        '100' : (wishSlots == 1) ? "text-green-500" : "",
-        '50' : (wishSlots == 2) ? "text-green-500" : "",
-        '33' : (wishSlots == 3) ? "text-green-500" : "",
-        '25' : (wishSlots == 4) ? "text-green-500" : "",
-        'custom' : "text-blue-500"
+        '100' : (wishSlots == 1) ? "text-green-500 text-right" : "text-right",
+        '50' : (wishSlots == 2) ? "text-green-500 text-right" : "text-right",
+        '33' : (wishSlots == 3) ? "text-green-500 text-right" : "text-right",
+        '25' : (wishSlots == 4) ? "text-green-500 text-right" : "text-right",
+        'custom' : "text-blue-500 text-right"
     }
 
     return (
@@ -183,7 +183,7 @@ export default function Page() {
                 {getWIshList(wishes, gameMode)}
             </select>
             <ContentSubsection title="How long will it take to finish my wish with a % of cap?">
-                The column in green is if you split your resources equally between all your wish slots.
+                The column in green is if you split your resources equally between all your wish slots. The column in blue is the custom % defined above.
                 <StandardTable order={wishCapOrder} header={wishCapHeader} rows={wishRows} extraRowClasses={extraClasses} />
             </ContentSubsection>
             <ContentSubsection title="What cap do I need to max my wish time?">
