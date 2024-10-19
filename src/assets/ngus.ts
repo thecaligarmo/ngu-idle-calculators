@@ -433,15 +433,15 @@ export const ENGULIST = [
     new NGU(17, NGUKeys.MAGIC_NGU, 'NGU Magic NGU', GameMode.EVIL, [[Stat.MAGIC_NGU_SPEED, 0.05]], 'energy', 1000, bd('2e25')),
     new NGU(18, NGUKeys.PP, 'NGU PP', GameMode.EVIL, [[Stat.PP, 0.02]], 'energy', 1000, bd('2e26')),
 
-    new NGU(20, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.SADISTIC, [[Stat.AUGMENT_EFFECT, 0.4]], 'energy', 0, bd('1e40')),
-    new NGU(21, NGUKeys.WANDOOS, 'NGU Wandoos', GameMode.SADISTIC, [[Stat.ENERGY_WANDOOS_SPEED, 0.06], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy', 1000, bd('1e40')),
-    new NGU(22, NGUKeys.RESPAWN, 'NGU Respawn', GameMode.SADISTIC, [[Stat.RESPAWN, 0.0005]], 'energy', 10000, bd('1e40')),
-    new NGU(23, NGUKeys.GOLD, 'NGU Gold', GameMode.SADISTIC, [[Stat.GOLD_DROP, 0.5]], 'energy', 1000, bd('1e40')),
-    new NGU(24, NGUKeys.ADVENTURE_A, 'NGU Adventure α', GameMode.SADISTIC, [[Stat.POWER, 0.04], [Stat.TOUGHNESS, 0.04], [Stat.HEALTH, 0.04], [Stat.REGEN, 0.04]], 'energy', 1000, bd('1e41')),
-    new NGU(25, NGUKeys.POWER_A, 'NGU Power α', GameMode.SADISTIC, [[Stat.ATTACK, 1.6], [Stat.DEFENSE, 1.6]], 'energy', 0, bd('1e42')),
-    new NGU(26, NGUKeys.DROP_CHANCE, 'NGU Drop Chance', GameMode.SADISTIC, [[Stat.DROP_CHANCE, 0.04],], 'energy', 1000, bd('1e43')),
-    new NGU(27, NGUKeys.MAGIC_NGU, 'NGU Magic NGU', GameMode.SADISTIC, [[Stat.MAGIC_NGU_SPEED, 0.04]], 'energy', 1000, bd('1e44')),
-    new NGU(28, NGUKeys.PP, 'NGU PP', GameMode.SADISTIC, [[Stat.PP, 0.016]], 'energy', 1000, bd('1e45')),
+    new NGU(20, NGUKeys.AUGMENTS, 'NGU Augments', GameMode.SADISTIC, [[Stat.AUGMENT_EFFECT, 0.4]], 'energy', 0, bd('2e38')),
+    new NGU(21, NGUKeys.WANDOOS, 'NGU Wandoos', GameMode.SADISTIC, [[Stat.ENERGY_WANDOOS_SPEED, 0.06], [Stat.MAGIC_WANDOOS_SPEED, 0.1]], 'energy', 1000, bd('2e38')),
+    new NGU(22, NGUKeys.RESPAWN, 'NGU Respawn', GameMode.SADISTIC, [[Stat.RESPAWN, 0.0005]], 'energy', 10000, bd('2e38')),
+    new NGU(23, NGUKeys.GOLD, 'NGU Gold', GameMode.SADISTIC, [[Stat.GOLD_DROP, 0.5]], 'energy', 1000, bd('2e38')),
+    new NGU(24, NGUKeys.ADVENTURE_A, 'NGU Adventure α', GameMode.SADISTIC, [[Stat.POWER, 0.04], [Stat.TOUGHNESS, 0.04], [Stat.HEALTH, 0.04], [Stat.REGEN, 0.04]], 'energy', 1000, bd('2e39')),
+    new NGU(25, NGUKeys.POWER_A, 'NGU Power α', GameMode.SADISTIC, [[Stat.ATTACK, 1.6], [Stat.DEFENSE, 1.6]], 'energy', 0, bd('2e40')),
+    new NGU(26, NGUKeys.DROP_CHANCE, 'NGU Drop Chance', GameMode.SADISTIC, [[Stat.DROP_CHANCE, 0.04],], 'energy', 1000, bd('2e41')),
+    new NGU(27, NGUKeys.MAGIC_NGU, 'NGU Magic NGU', GameMode.SADISTIC, [[Stat.MAGIC_NGU_SPEED, 0.04]], 'energy', 1000, bd('2e42')),
+    new NGU(28, NGUKeys.PP, 'NGU PP', GameMode.SADISTIC, [[Stat.PP, 0.016]], 'energy', 1000, bd('2e43')),
 ]
 
 export const MNGULIST = [
@@ -461,13 +461,13 @@ export const MNGULIST = [
     new NGU(15, NGUKeys.ENERGY_NGU, 'NGU Energy NGU', GameMode.EVIL, [[Stat.ENERGY_NGU_SPEED, 0.05]], 'magic', 1000, bd('2e25')),
     new NGU(16, NGUKeys.ADVENTURE_B, 'NGU Adventure β', GameMode.EVIL, [[Stat.POWER, 0.015], [Stat.TOUGHNESS, 0.015], [Stat.HEALTH, 0.015], [Stat.REGEN, 0.015]], 'magic', 1000, bd('2e26')),
 
-    new NGU(20, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.SADISTIC, [[Stat.YGGDRASIL_YIELD, 0.04], [Stat.SEED_GAIN, 0.04]], 'magic', 400, bd('1e40')),
-    new NGU(21, NGUKeys.EXP, 'NGU Exp', GameMode.SADISTIC, [[Stat.EXPERIENCE, 0.005]], 'magic', 2000, bd('1e40')),
-    new NGU(22, NGUKeys.POWER_B, 'NGU Power β', GameMode.SADISTIC, [[Stat.ATTACK, 0.5], [Stat.DEFENSE, 0.5]], 'magic', 0, bd('1e41')),
-    new NGU(23, NGUKeys.NUMBER, 'NGU Number', GameMode.SADISTIC, [[Stat.NUMBER, 0.5]], 'magic', 1000, bd('1e42')),
-    new NGU(24, NGUKeys.TIME_MACHINE, 'NGU Time Machine', GameMode.SADISTIC, [[Stat.TIME_MACHINE, 0.1]], 'magic', 1000, bd('1e43')),
-    new NGU(25, NGUKeys.ENERGY_NGU, 'NGU Energy NGU', GameMode.SADISTIC, [[Stat.ENERGY_NGU_SPEED, 0.05]], 'magic', 1000, bd('1e44')),
-    new NGU(26, NGUKeys.ADVENTURE_B, 'NGU Adventure β', GameMode.SADISTIC, [[Stat.POWER, 0.015], [Stat.TOUGHNESS, 0.015], [Stat.HEALTH, 0.015], [Stat.REGEN, 0.015]], 'magic', 1000, bd('1e45')),
+    new NGU(20, NGUKeys.YGGDRASIL, 'NGU Yggdrasil', GameMode.SADISTIC, [[Stat.YGGDRASIL_YIELD, 0.04], [Stat.SEED_GAIN, 0.04]], 'magic', 400, bd('2e38')),
+    new NGU(21, NGUKeys.EXP, 'NGU Exp', GameMode.SADISTIC, [[Stat.EXPERIENCE, 0.005]], 'magic', 2000, bd('2e38')),
+    new NGU(22, NGUKeys.POWER_B, 'NGU Power β', GameMode.SADISTIC, [[Stat.ATTACK, 0.5], [Stat.DEFENSE, 0.5]], 'magic', 0, bd('2e39')),
+    new NGU(23, NGUKeys.NUMBER, 'NGU Number', GameMode.SADISTIC, [[Stat.NUMBER, 0.5]], 'magic', 1000, bd('2e40')),
+    new NGU(24, NGUKeys.TIME_MACHINE, 'NGU Time Machine', GameMode.SADISTIC, [[Stat.TIME_MACHINE, 0.1]], 'magic', 1000, bd('2e41')),
+    new NGU(25, NGUKeys.ENERGY_NGU, 'NGU Energy NGU', GameMode.SADISTIC, [[Stat.ENERGY_NGU_SPEED, 0.05]], 'magic', 1000, bd('2e42')),
+    new NGU(26, NGUKeys.ADVENTURE_B, 'NGU Adventure β', GameMode.SADISTIC, [[Stat.POWER, 0.015], [Stat.TOUGHNESS, 0.015], [Stat.HEALTH, 0.015], [Stat.REGEN, 0.015]], 'magic', 1000, bd('2e43')),
 ]
 
 export var ENERGY_NGUS = new ResourceContainer(ENGULIST);
