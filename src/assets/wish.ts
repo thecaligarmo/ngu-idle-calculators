@@ -88,9 +88,7 @@ export class Wish  extends Resource {
                 return capsNeeded
             }
         
-            let timeLeft = bd(1 - this.progress).multiply(bd(4*60*60))
-            
-            let speedNeeded = bd(1).divide(timeLeft, 100)
+            let speedNeeded = bd(1).divide(bd(4*60*60), 100)
             let rootNeeded = speedNeeded.multiply(
                 this.baseSpeedDivider.multiply(bd(level + 1))
             )
