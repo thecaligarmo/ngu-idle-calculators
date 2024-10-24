@@ -41,7 +41,8 @@ export class Wish  extends Resource {
                 .multiply(mpower).multiply(mcap)
                 .multiply(rpower).multiply(rcap).getValue()), 0.17)
         )
-        .multiply(wishSpeed)
+        .multiply(wishSpeed).divide(bd(100))
+        .multiply(bd(50)) // 50 per tick
         .divide(
             this.baseSpeedDivider.multiply(bd(level + 1)), 100
         )
@@ -80,7 +81,8 @@ export class Wish  extends Resource {
             let rootNeeded = speedNeeded.multiply(
                 this.baseSpeedDivider.multiply(bd(level + 1))
             )
-            .divide(wishSpeed)
+            .divide(wishSpeed).multiply(bd(100))
+            .divide(bd(50)) // 50 per tick
             let allCapsNeeded = bd(Math.pow(Number(rootNeeded.getValue()), 1/0.17)).divide(epower).divide(mpower).divide(rpower)
             
 
