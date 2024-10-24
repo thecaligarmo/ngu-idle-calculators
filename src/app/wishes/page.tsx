@@ -123,15 +123,15 @@ export default function Page() {
 
     var wishRows : StandardTableRowType = {}
     for (let lev = chosenWish.level; lev < chosenWish.maxLevel; lev++) {
-        let capsNeeded = chosenWish.capToMaxLevel(v('totalEnergyPower'), caps['100']['energy'], v('totalMagicPower'), caps['100']['magic'], v('totalRes3Power'), caps['100']['res3'], v('totalWishSpeed%'), wishSlots, lev)
+        let capsNeeded = chosenWish.capToMaxLevel(v('totalEnergyPower'), caps['100']['energy'], v('totalMagicPower'), caps['100']['magic'], v('totalRes3Power'), caps['100']['res3'], v('totalWishSpeed%'), lev)
         
         wishRows[chosenWish.key + lev.toString()] = {
             'level' : lev + 1,
-            '100' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['100']['energy'], v('totalMagicPower'), caps['100']['magic'], v('totalRes3Power'), caps['100']['res3'], v('totalWishSpeed%'), wishSlots, lev))}</>,
-            '50' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['50']['energy'], v('totalMagicPower'), caps['50']['magic'], v('totalRes3Power'), caps['50']['res3'], v('totalWishSpeed%'), wishSlots, lev))}</>,
-            '33' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['33']['energy'], v('totalMagicPower'), caps['33']['magic'], v('totalRes3Power'), caps['33']['res3'], v('totalWishSpeed%'), wishSlots, lev))}</>,
-            '25' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['25']['energy'], v('totalMagicPower'), caps['25']['magic'], v('totalRes3Power'), caps['25']['res3'], v('totalWishSpeed%'), wishSlots, lev))}</>,
-            'custom' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['custom']['energy'], v('totalMagicPower'), caps['custom']['magic'], v('totalRes3Power'), caps['custom']['res3'], v('totalWishSpeed%'), wishSlots, lev))}</>,
+            '100' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['100']['energy'], v('totalMagicPower'), caps['100']['magic'], v('totalRes3Power'), caps['100']['res3'], v('totalWishSpeed%'), lev))}</>,
+            '50' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['50']['energy'], v('totalMagicPower'), caps['50']['magic'], v('totalRes3Power'), caps['50']['res3'], v('totalWishSpeed%'), lev))}</>,
+            '33' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['33']['energy'], v('totalMagicPower'), caps['33']['magic'], v('totalRes3Power'), caps['33']['res3'], v('totalWishSpeed%'), lev))}</>,
+            '25' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['25']['energy'], v('totalMagicPower'), caps['25']['magic'], v('totalRes3Power'), caps['25']['res3'], v('totalWishSpeed%'), lev))}</>,
+            'custom' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['custom']['energy'], v('totalMagicPower'), caps['custom']['magic'], v('totalRes3Power'), caps['custom']['res3'], v('totalWishSpeed%'), lev))}</>,
             'energy' : <>{pn(capsNeeded['energy'], fmt)}</>,
             'magic' : <>{pn(capsNeeded['magic'], fmt)}</>,
             'res3' : <>{pn(capsNeeded['res3'], fmt)}</>,

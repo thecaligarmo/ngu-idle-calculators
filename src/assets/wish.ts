@@ -28,37 +28,25 @@ export class Wish  extends Resource {
         return this.level == this.maxLevel
     }
 
-    wishFactor(wishSlots : number ) : number {
-        if (wishSlots == 2) {
-            return 0.7
-        } else if (wishSlots == 3) {
-            return 0.57
-        }
-        else if (wishSlots == 4) {
-            return 0.493
-        }
-        return 1
-    }
-
-    speed(epower : bigDecimal, ecap : bigDecimal, mpower : bigDecimal, mcap: bigDecimal, rpower : bigDecimal, rcap : bigDecimal, wishSpeed : bigDecimal, wishSlots : number, level : number | undefined = undefined) : bigDecimal {
+    speed(epower : bigDecimal, ecap : bigDecimal, mpower : bigDecimal, mcap: bigDecimal, rpower : bigDecimal, rcap : bigDecimal, wishSpeed : bigDecimal, level : number | undefined = undefined) : bigDecimal {
         if (_.isUndefined(level)) {
             level = this.level
         }
         if (level == this.maxLevel) {
             return bd(1)
         }
-        let wishFactor = this.wishFactor(wishSlots)
+        
         return bd(
             Math.pow(Number(epower.multiply(ecap)
                 .multiply(mpower).multiply(mcap)
                 .multiply(rpower).multiply(rcap).getValue()), 0.17)
         )
-        .multiply(wishSpeed).multiply(bd(wishFactor))
+        .multiply(wishSpeed)
         .divide(
             this.baseSpeedDivider.multiply(bd(level + 1)), 100
         )
     }
-    timeToFinish(epower : bigDecimal, ecap : bigDecimal, mpower : bigDecimal, mcap: bigDecimal, rpower : bigDecimal, rcap : bigDecimal, wishSpeed : bigDecimal, wishSlots : number, level : number | undefined = undefined) : bigDecimal{
+    timeToFinish(epower : bigDecimal, ecap : bigDecimal, mpower : bigDecimal, mcap: bigDecimal, rpower : bigDecimal, rcap : bigDecimal, wishSpeed : bigDecimal, level : number | undefined = undefined) : bigDecimal{
         if (_.isUndefined(level)) {
             level = this.level
         }
@@ -66,18 +54,18 @@ export class Wish  extends Resource {
             return bd(0)
         }
         
-        var speed = this.speed(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, wishSlots, level)
+        var speed = this.speed(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, level)
         var timeTaken = bd(0)
         if (!isZero(speed)) {
             let prog = (this.level == level) ? this.progress : 0
             timeTaken = bigdec_max(bd(1 - prog).divide(speed, 100), bd(4 * 60 * 60).subtract(bd(4 * 60 * 60 * prog)))
         }
         if (level > this.level) {
-            timeTaken = timeTaken.add(this.timeToFinish(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, wishSlots, level - 1))
+            timeTaken = timeTaken.add(this.timeToFinish(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, level - 1))
         }
         return timeTaken
     }
-    capToMaxLevel(epower : bigDecimal, ecap : bigDecimal, mpower : bigDecimal, mcap: bigDecimal, rpower : bigDecimal, rcap : bigDecimal, wishSpeed : bigDecimal, wishSlots : number, level : number | undefined = undefined)
+    capToMaxLevel(epower : bigDecimal, ecap : bigDecimal, mpower : bigDecimal, mcap: bigDecimal, rpower : bigDecimal, rcap : bigDecimal, wishSpeed : bigDecimal, level : number | undefined = undefined)
         : {[key:string]: bigDecimal}
         {
             let capsNeeded = {'energy' : bd(0), 'magic' : bd(0), 'res3' : bd(0)}
@@ -92,7 +80,7 @@ export class Wish  extends Resource {
             let rootNeeded = speedNeeded.multiply(
                 this.baseSpeedDivider.multiply(bd(level + 1))
             )
-            .divide(wishSpeed).divide(bd(this.wishFactor(wishSlots)))
+            .divide(wishSpeed)
             let allCapsNeeded = bd(Math.pow(Number(rootNeeded.getValue()), 1/0.17)).divide(epower).divide(mpower).divide(rpower)
             
 
