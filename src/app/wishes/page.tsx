@@ -34,7 +34,7 @@ export default function Page() {
     ]
     // Set extra required (not from playerData)
     var extraRequired  : (string | [string, number])[][] = [
-        [['customPercentage%', 1]]
+        [['customPercentage%', 1], ['customEnergyAmount', 1], ['customMagicAmount', 1], ['customResource3Amount', 1]]
     ]
     const playerStates = createStatesForData(extraRequired);
     
@@ -58,6 +58,10 @@ export default function Page() {
     var gameMode = v('gameMode')
     var wishes : Wish[] = j('wishes')
     var wishSlots = Number(v('wishSlots-1').getValue())
+
+    var totalEPower = v('totalEnergyPower')
+    var totalMPower = v('totalMagicPower')
+    var totalRPower = v('totalRes3Power')
 
     var extraChildren = (
         <>
@@ -123,15 +127,16 @@ export default function Page() {
 
     var wishRows : StandardTableRowType = {}
     for (let lev = chosenWish.level; lev < chosenWish.maxLevel; lev++) {
-        let capsNeeded = chosenWish.capToMaxLevel(v('totalEnergyPower'), caps['100']['energy'], v('totalMagicPower'), caps['100']['magic'], v('totalRes3Power'), caps['100']['res3'], v('totalWishSpeed%'), lev)
+        let capsNeeded = chosenWish.capToMaxLevel(totalEPower, caps['100']['energy'], totalMPower, caps['100']['magic'], totalRPower, caps['100']['res3'], v('totalWishSpeed%'), lev)
         
         wishRows[chosenWish.key + lev.toString()] = {
             'level' : lev + 1,
-            '100' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['100']['energy'], v('totalMagicPower'), caps['100']['magic'], v('totalRes3Power'), caps['100']['res3'], v('totalWishSpeed%'), lev))}</>,
-            '50' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['50']['energy'], v('totalMagicPower'), caps['50']['magic'], v('totalRes3Power'), caps['50']['res3'], v('totalWishSpeed%'), lev))}</>,
-            '33' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['33']['energy'], v('totalMagicPower'), caps['33']['magic'], v('totalRes3Power'), caps['33']['res3'], v('totalWishSpeed%'), lev))}</>,
-            '25' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['25']['energy'], v('totalMagicPower'), caps['25']['magic'], v('totalRes3Power'), caps['25']['res3'], v('totalWishSpeed%'), lev))}</>,
-            'custom' : <>{dn(chosenWish.timeToFinish(v('totalEnergyPower'), caps['custom']['energy'], v('totalMagicPower'), caps['custom']['magic'], v('totalRes3Power'), caps['custom']['res3'], v('totalWishSpeed%'), lev))}</>,
+            '100' : <>{dn(chosenWish.timeToFinish(totalEPower, caps['100']['energy'], totalMPower, caps['100']['magic'], totalRPower, caps['100']['res3'], v('totalWishSpeed%'), lev))}</>,
+            '50' : <>{dn(chosenWish.timeToFinish(totalEPower, caps['50']['energy'], totalMPower, caps['50']['magic'], totalRPower, caps['50']['res3'], v('totalWishSpeed%'), lev))}</>,
+            '33' : <>{dn(chosenWish.timeToFinish(totalEPower, caps['33']['energy'], totalMPower, caps['33']['magic'], totalRPower, caps['33']['res3'], v('totalWishSpeed%'), lev))}</>,
+            '25' : <>{dn(chosenWish.timeToFinish(totalEPower, caps['25']['energy'], totalMPower, caps['25']['magic'], totalRPower, caps['25']['res3'], v('totalWishSpeed%'), lev))}</>,
+            'custom' : <>{dn(chosenWish.timeToFinish(totalEPower, caps['custom']['energy'], totalMPower, caps['custom']['magic'], totalRPower, caps['custom']['res3'], v('totalWishSpeed%'), lev))}</>,
+            'customAmt': <>{dn(chosenWish.timeToFinish(totalEPower, v('customEnergyAmount'), totalMPower, v('customMagicAmount'), totalRPower, v('customResource3Amount'), v('totalWishSpeed%'), lev))}</>,
             'energy' : <>{pn(capsNeeded['energy'], fmt)}</>,
             'magic' : <>{pn(capsNeeded['magic'], fmt)}</>,
             'res3' : <>{pn(capsNeeded['res3'], fmt)}</>,
@@ -141,7 +146,7 @@ export default function Page() {
     
      
 
-    var wishCapOrder = ['level', '100', '50', '33', '25', 'custom']
+    var wishCapOrder = ['level', '100', '50', '33', '25', 'custom', 'customAmt']
     var wishCapHeader = {
         'level' : "Level",
         '100' : "100% of Caps",
@@ -149,6 +154,7 @@ export default function Page() {
         '33' : "33%",
         '25' : "25%",
         'custom' : v('customPercentage%').getValue() + "% of Caps",
+        'customAmt': 'Custom Amounts',
     }
     
     var wishMaxOrder = ['level', 'energy', 'magic', 'res3']
@@ -167,7 +173,8 @@ export default function Page() {
         '50' : (wishSlots == 2) ? "text-green-500 text-right" : "text-right",
         '33' : (wishSlots == 3) ? "text-green-500 text-right" : "text-right",
         '25' : (wishSlots == 4) ? "text-green-500 text-right" : "text-right",
-        'custom' : "text-blue-500 text-right"
+        'custom' : "text-blue-500 text-right",
+        'customAmt': 'text-blue-500 text-right',
     }
 
     return (
