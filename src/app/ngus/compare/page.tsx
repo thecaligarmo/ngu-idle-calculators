@@ -1,8 +1,7 @@
 'use client'
 
-import { GameMode } from "@/assets/mode";
 import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
-import Content from "@/components/content";
+import Content, { requiredDataType } from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
@@ -19,7 +18,7 @@ export default function Page() {
     var fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired = [
+    var infoRequired : requiredDataType = [
         ['gameMode'], [],
         ['totalEnergyCap', 'totalEnergyNGUSpeedFactor%'],
         ['totalMagicCap', 'totalMagicNGUSpeedFactor%'],
@@ -83,10 +82,10 @@ export default function Page() {
     ]
 
     // Set extra required (not from playerData)
-    var extraRequired = [
+    var extraRequired : requiredDataType= [
         ['percentageIncrease%'], []
     ]
-    var goRequired = [['goEnergyCap%', 'goEnergyNGU%', 'goMagicCap%', 'goMagicNGU%']]
+    var goRequired :requiredDataType = [['goEnergyCap%', 'goEnergyNGU%', 'goMagicCap%', 'goMagicNGU%']]
     const playerStates = createStatesForData(extraRequired, goRequired);
 
     // Get required data

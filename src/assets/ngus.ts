@@ -154,7 +154,7 @@ export class NGU extends Resource {
                 case NGUKeys.DROP_CHANCE:
                     return level ** 0.2 * 10.048 + 100
                 case NGUKeys.MAGIC_NGU:
-                    return (level)**0.2 * 20.0476 + 100
+                    return (level)**0.1 * 20.0476 + 100
                 case NGUKeys.PP: 
                     return (level)**0.1 * 8.01936 + 100
                 case NGUKeys.YGGDRASIL:
@@ -259,11 +259,11 @@ export class NGU extends Resource {
                 case NGUKeys.ADVENTURE_A:
                     return (value / 10.0476)**5
                 case NGUKeys.DROP_CHANCE:
-                    return value / 10.048 ** 5
+                    return (value / 10.048) ** 5
                 case NGUKeys.MAGIC_NGU:
-                    return (value / 20.0476)**5
+                    return (value / 20.0476) ** 10
                 case NGUKeys.PP: 
-                    return (value / 8.01936)**10
+                    return (value / 8.01936) ** 10
                 case NGUKeys.YGGDRASIL:
                     return (value / 9.9076) ** (25/2)
                 case NGUKeys.EXP:
