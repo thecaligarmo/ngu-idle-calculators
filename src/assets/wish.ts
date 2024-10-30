@@ -1,4 +1,4 @@
-import { bd, bigdec_max, isZero } from "@/helpers/numbers";
+import { bd, bigdec_max, isZero, toNum } from "@/helpers/numbers";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { GameMode } from "./mode";
@@ -37,9 +37,11 @@ export class Wish  extends Resource {
         }
         
         return bd(
-            Math.pow(Number(epower.multiply(ecap)
-                .multiply(mpower).multiply(mcap)
-                .multiply(rpower).multiply(rcap).getValue()), 0.17)
+            Math.pow(
+                toNum(epower.multiply(ecap)
+                    .multiply(mpower).multiply(mcap)
+                    .multiply(rpower).multiply(rcap))
+                , 0.17)
         )
         .multiply(wishSpeed).divide(bd(100))
         .multiply(bd(50)) // 50 per tick
@@ -83,13 +85,13 @@ export class Wish  extends Resource {
             )
             .divide(wishSpeed).multiply(bd(100))
             .divide(bd(50)) // 50 per tick
-            let allCapsNeeded = bd(Math.pow(Number(rootNeeded.getValue()), 1/0.17)).divide(epower).divide(mpower).divide(rpower)
+            let allCapsNeeded = bd(Math.pow(toNum(rootNeeded), 1/0.17)).divide(epower).divide(mpower).divide(rpower)
             
 
             let ecapNeeded = bd(
                 Math.pow(
-                    Number(
-                        allCapsNeeded.multiply(ecap).multiply(ecap).divide(mcap).divide(rcap).getValue()
+                    toNum(
+                        allCapsNeeded.multiply(ecap).multiply(ecap).divide(mcap).divide(rcap)
                     )
                     , 1/3
                 )
@@ -97,8 +99,8 @@ export class Wish  extends Resource {
 
             let mcapNeeded = bd(
                 Math.pow(
-                    Number(
-                        allCapsNeeded.multiply(mcap).multiply(mcap).divide(ecap).divide(rcap).getValue()
+                    toNum(
+                        allCapsNeeded.multiply(mcap).multiply(mcap).divide(ecap).divide(rcap)
                     )
                     , 1/3
                 )
@@ -106,8 +108,8 @@ export class Wish  extends Resource {
 
             let rcapNeeded = bd(
                 Math.pow(
-                    Number(
-                        allCapsNeeded.multiply(rcap).multiply(rcap).divide(mcap).divide(ecap).getValue()
+                    toNum(
+                        allCapsNeeded.multiply(rcap).multiply(rcap).divide(mcap).divide(ecap)
                     )
                     , 1/3
                 )

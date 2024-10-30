@@ -17,11 +17,7 @@ export function parseObj(state: any, key: string) {
 
 // Parse a number to get back a bigDecimal
 export function parseNum(state: any, key: string) : bigDecimal{
-    var x : any = state[key][0]
-    if (x instanceof bigDecimal) {
-        return x
-    }
-    return bd(x)
+    return bd(state[key][0])
 }
 
 

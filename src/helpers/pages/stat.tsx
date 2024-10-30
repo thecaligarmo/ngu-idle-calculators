@@ -2,7 +2,7 @@ import { ItemSets } from "@/assets/sets"
 import { Stat } from "@/assets/stat"
 import _ from "lodash"
 import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed, totalQuestRewardBonus, totalEnergyCap, totalRegen } from "../calculators"
-import { bd, bigdec_equals, bigdec_max, isOne, pn } from "../numbers"
+import { bd, bigdec_equals, bigdec_max, isOne, pn, toNum } from "../numbers"
 import { equipmentInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo, isCompletedChallenge, maxxedItemSetNum } from "../resourceInfo"
 import bigDecimal from "js-big-decimal"
 import { parseNum, parseObj } from "../parsers"
@@ -872,7 +872,7 @@ export function getStatInfo(playerStates : any) {
             },
             'ePower' : {
                 'name' : 'x Energy Power',
-                'val' : bd(Math.sqrt(Number(totalEnergyPower(playerStates).getValue()))).multiply(bd(100)),
+                'val' : bd(Math.sqrt(toNum(totalEnergyPower(playerStates)))).multiply(bd(100)),
             },
             'equipment' : {
                 'name' : 'x Equipment',

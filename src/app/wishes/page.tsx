@@ -4,7 +4,7 @@ import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
 import { StandardTable, StandardTableRowType } from '@/components/standardTable';
-import { bd, dn, isOne, pn } from '@/helpers/numbers';
+import { bd, dn, isOne, pn, toNum } from '@/helpers/numbers';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
@@ -57,7 +57,7 @@ export default function Page() {
 
     var gameMode = v('gameMode')
     var wishes : Wish[] = j('wishes')
-    var wishSlots = Number(v('wishSlots-1').getValue())
+    var wishSlots = toNum(v('wishSlots-1'))
 
     var totalEPower = v('totalEnergyPower')
     var totalMPower = v('totalMagicPower')

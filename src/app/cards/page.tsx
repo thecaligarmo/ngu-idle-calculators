@@ -7,7 +7,7 @@ import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
 import { StandardTable, StandardTableRowType } from "@/components/standardTable";
-import { bd, bigdec_equals, greaterThan, isOne, isZero, lessThan, pn } from "@/helpers/numbers";
+import { bd, bigdec_equals, greaterThan, isOne, isZero, lessThan, pn, toNum } from "@/helpers/numbers";
 import { bigDecimalObj, toObjectMap } from "@/helpers/objects";
 import { cardExtraNameChanges, cardReqChonkers, cardReqFruit, cardReqNameChanges, getCardsPerDay, getChonksPerDay, getMayoFromFruit, getMayoFromInfusers, getMayoFromRecycling } from "@/helpers/pages/cards";
 import { parseNum, parseObj } from "@/helpers/parsers";
@@ -185,10 +185,10 @@ export default function Page() {
     let cards : Card[] = Object.values(j('cards'));
     let numTagged = 0
     cards.forEach((card) => {
-        card.tier = Number(v(card.tierKey()).getValue())
+        card.tier = toNum(v(card.tierKey()))
         card.isTagged = c(card.taggedKey())
         card.isChonked = c(card.chonkKey())
-        card.minCastRarity = Number(v(card.rarityKey()).getValue())
+        card.minCastRarity = toNum(v(card.rarityKey()))
         if (card.isTagged) {
             numTagged += 1
         }
@@ -243,7 +243,7 @@ export default function Page() {
     let fruits : Yggdrasil[] = Object.values(j('yggdrasil'));
     fruits.forEach((fruit) => {
         if(fruit instanceof FruitOfMayo) {
-            fruit.tier = Number(v(fruit.tierKey()).getValue())
+            fruit.tier = toNum(v(fruit.tierKey()))
             fruit.usePoop = c(fruit.poopKey())
             fruit.eatFruit = true
         }

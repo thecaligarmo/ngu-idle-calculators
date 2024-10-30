@@ -1,4 +1,4 @@
-import { bd, bigdec_equals, bigdec_min, greaterThan } from "@/helpers/numbers"
+import { bd, bigdec_equals, bigdec_min, greaterThan, toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import { ENEMY_TYPE, Enemies, Enemy } from "./enemy"
 import { isEvilMode, isSadMode } from "@/helpers/gameMode"
@@ -27,9 +27,7 @@ export default class Zone {
         this.level = level
     }
     setLevel(level : number | bigDecimal) {
-        if(level instanceof bigDecimal) {
-            level = Number(level.getValue())
-        }
+        level = toNum(level)
         this.level = level
         // For Itopod, update boosts
         if (this.id === 0) {
@@ -158,7 +156,7 @@ export default class Zone {
         this.boosts.forEach((boost) => {
             var maxChance = bd(1)
             if (this.id >= 22) {
-                var root = Math.pow(Number(dropChance.divide(bd(100)).getValue()), 1/3)
+                var root = Math.pow(toNum(dropChance.divide(bd(100))), 1/3)
                 maxChance = bd(boost[1]).divide(bd(100)).multiply(bd(root))
 
             } else {
@@ -173,7 +171,7 @@ export default class Zone {
     expChance(dropChance : bigDecimal) : bigDecimal {
         var maxChance = bd(1)
         if (this.id >= 22) {
-            var root = Math.pow(Number(dropChance.divide(bd(100)).getValue()), 1/3)
+            var root = Math.pow(toNum(dropChance.divide(bd(100))), 1/3)
             maxChance = bd(this.exp[1]).divide(bd(100)).multiply(bd(root))
 
         } else {
@@ -199,7 +197,7 @@ export default class Zone {
         return Math.max(
             0,
             Math.floor(
-                Math.log(Number(power.multiply(idleAttackModifier).divide(bd(765)).getValue())) / Math.log(1.05)
+                Math.log(toNum(power.multiply(idleAttackModifier).divide(bd(765)))) / Math.log(1.05)
             )
         )
     }
@@ -208,10 +206,8 @@ export default class Zone {
                                     ? (blueHeart ? bd(2.2) : bd(2))
                                     : bd(1)
     
-        if(bonusPPP instanceof bigDecimal) {
-            bonusPPP = Number(bonusPPP.getValue())
-        }
-
+        bonusPPP = toNum(bonusPPP)
+        
         var floorAdd = 200
         if(isEvilMode(gameMode)) {
             floorAdd = 700

@@ -2,7 +2,7 @@ import bigDecimal from "js-big-decimal";
 import { GameMode } from "./mode"
 import Resource, { prop, ResourceContainer } from "./resource"
 import { Stat } from "./stat"
-import { bd } from "@/helpers/numbers";
+import { bd, toNum } from "@/helpers/numbers";
 import _ from "lodash";
 
 export const WANDOOS_OS : {[key: string]: number } = {
@@ -55,18 +55,13 @@ export class Wandoos extends Resource{
         if(_.isUndefined(magicLevel)) {
             magicLevel = this.magicLevel
         }
-        if(_.isUndefined(magicLevel)) {
+        if(_.isUndefined(os)) {
             os = this.os
         }
-        if (energyLevel instanceof bigDecimal) {
-            energyLevel = Number(energyLevel.getValue())
-        }
-        if (magicLevel instanceof bigDecimal) {
-            magicLevel = Number(magicLevel.getValue())
-        }
-        if (os instanceof bigDecimal) {
-            os = Number(os.getValue())
-        }
+        energyLevel = toNum(energyLevel)
+        magicLevel = toNum(magicLevel)
+        os = toNum(os)
+
         var energyMult = 0.01
         var magicMult = 0.04
         var exponent = 0.8

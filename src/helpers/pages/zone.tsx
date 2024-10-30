@@ -1,7 +1,7 @@
 import { Zones } from "@/assets/zones";
 import bigDecimal from "js-big-decimal";
 import { getIdleAttackModifier } from "../calculators";
-import { bd, bigdec_max, greaterThan, isZero } from "../numbers";
+import { bd, bigdec_max, greaterThan, isZero, toNum } from "../numbers";
 
 
 type zoneType = {
@@ -51,7 +51,7 @@ export function getZoneInfo(v : any) : zoneType[]{
         1.05 ** (
                     nonOptFloor - Math.max(
                                     0,
-                                    Math.log(Number(v['totalPower'].multiply(idleAttackModifier).divide(bd(765)).getValue())) / Math.log(1.05)
+                                    Math.log(toNum(v['totalPower'].multiply(idleAttackModifier).divide(bd(765)))) / Math.log(1.05)
                                 )
                 ),
         1

@@ -18,7 +18,7 @@ import { Wish } from "@/assets/wish";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { getGameMode } from "./gameMode";
-import { bd, lessThan } from "./numbers";
+import { bd, lessThan, toNum } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
 
 export function achievementAPBonus(data : any) : bigDecimal {
@@ -376,7 +376,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             var maxCubePow = basePower.add(bd(stat))
             var extraPow = 0
             if( lessThan(maxCubePow, cube)) {
-                extraPow = Math.sqrt(Number(cube.subtract(maxCubePow).getValue()))
+                extraPow = Math.sqrt(toNum(cube.subtract(maxCubePow)))
                 cube = maxCubePow
             }
             
@@ -386,7 +386,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             var maxCubeTough = baseToughness.add(bd(stat))
             var extraTough = 0
             if(lessThan(maxCubeTough, cube)) {
-                extraTough = Math.sqrt(Number(cube.subtract(maxCubeTough).getValue()))
+                extraTough = Math.sqrt(toNum(cube.subtract(maxCubeTough)))
                 cube = maxCubeTough
             }
             
@@ -396,7 +396,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             // var maxCubeHealth = baseHealth.add(bd(stat))
             // var extraHealth = 0
             // if(lessThan(maxCubeHealth, cube) ) {
-            //     extraHealth = Math.sqrt(Number(cube.subtract(maxCubeHealth).getValue()))
+            //     extraHealth = Math.sqrt(toNum(cube.subtract(maxCubeHealth)))
             //     cube = maxCubeHealth
             // }
             
@@ -407,7 +407,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             // console.log(maxCubeRegen, cube, stat, baseRegen);
             // var extraRegen = 0
             // if(lessThan(maxCubeRegen, cube)) {
-            //     extraRegen = Math.sqrt(Number(cube.subtract(maxCubeRegen).getValue()))
+            //     extraRegen = Math.sqrt(toNum(cube.subtract(maxCubeRegen)))
             //     cube = maxCubeRegen
             // }
 

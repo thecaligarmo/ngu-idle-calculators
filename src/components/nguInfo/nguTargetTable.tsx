@@ -1,7 +1,7 @@
 'use client'
 
 import { NGU } from "@/assets/ngus";
-import { bd, dn, lessThanOrEqual, pn } from "@/helpers/numbers";
+import { bd, dn, lessThanOrEqual, pn, toNum } from "@/helpers/numbers";
 import bigDecimal from "js-big-decimal";
 import { ReactNode } from "react";
 import { StandardTable, StandardTableRowType } from "../standardTable";
@@ -34,7 +34,7 @@ export default function NGUTargetTable({type, NGUs, targets, seconds, totalSecon
         var targetLvl = targets[index]
         var secs = seconds[index]
         
-        var val = bd(ngu.getStatValue(ngu.statnames[0], Number(targetLvl.getValue())))
+        var val = bd(ngu.getStatValue(ngu.statnames[0], toNum(targetLvl)))
         var curVal = bd(ngu.getStatValue(ngu.statnames[0]))
 
         var precision = 0;

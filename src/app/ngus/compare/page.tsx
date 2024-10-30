@@ -8,7 +8,7 @@ import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
 import TimeText from "@/components/timeText";
 import { isSadMode } from "@/helpers/gameMode";
-import { bd, bigdec_equals, bigdec_min, dn, pn } from "@/helpers/numbers";
+import { bd, bigdec_equals, bigdec_min, dn, pn, toNum } from "@/helpers/numbers";
 import { parseNum } from "@/helpers/parsers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
@@ -172,13 +172,13 @@ export default function Page() {
         for(var nguId of nguIds) {
             if (nguId < 10) {
                 var ngu : NGU = ngus[nguId]
-                ngu.setLevel(Number(v(ty + ngu.key + "Level").getValue()))
+                ngu.setLevel(toNum(v(ty + ngu.key + "Level")))
 
                 var evilngu : NGU = ngus[nguId + 10]
-                evilngu.setLevel(Number(v(ty + evilngu.key + "EvilLevel").getValue()))
+                evilngu.setLevel(toNum(v(ty + evilngu.key + "EvilLevel")))
 
                 var sadngu : NGU = ngus[nguId + 20]
-                sadngu.setLevel(Number(v(ty + sadngu.key + "SadisticLevel").getValue()))
+                sadngu.setLevel(toNum(v(ty + sadngu.key + "SadisticLevel")))
 
                 retNgus.push({
                     'normal' : ngu,

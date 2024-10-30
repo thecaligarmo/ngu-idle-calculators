@@ -1,4 +1,4 @@
-import { bd } from "@/helpers/numbers"
+import { bd, toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 
 
@@ -149,7 +149,7 @@ export class FruitOfPowerA extends Yggdrasil {
                 Math.ceil(this.tier ** 1.5)
                 * (1 + firstHarvest / 10)
                 * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                * Number(yieldModifier.divide(bd(100)).getValue())
+                * toNum(yieldModifier.divide(bd(100)))
             ) ** 1.5
         )
     }
@@ -172,8 +172,8 @@ export class FruitOfAdventure extends Yggdrasil {
                 Math.ceil(this.tier ** 1.5)
                 * (1 + firstHarvest / 10)
                 * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                * Number(yieldModifier.divide(bd(100)).getValue())
-                * (Number(baseToughness.getValue()) ** 0.2)
+                * toNum(yieldModifier.divide(bd(100)))
+                * (toNum(baseToughness) ** 0.2)
             )
         )
     }
@@ -196,12 +196,12 @@ export class FruitOfKnowledge extends Yggdrasil {
                 Math.ceil(this.tier ** 1.5)
                 * (1 + firstHarvest / 10)
                 * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                * Number(yieldModifier.divide(bd(100)).getValue())
+                * toNum(yieldModifier.divide(bd(100)))
                 * 5
             )
             * (fokSucksPerk ? 3 : 1)
             * (fokStillSucksPerk ? 3 : 1)
-            * Number(expBonus.divide(bd(100)).getValue())
+            * toNum(expBonus.divide(bd(100)))
             )
         )
     }
@@ -234,7 +234,7 @@ export class FruitOfLuck extends Yggdrasil {
                 Math.ceil(this.tier ** 1.5)
                 * (1 + firstHarvest / 10)
                 * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                * Number(yieldModifier.divide(bd(100)).getValue())
+                * toNum(yieldModifier.divide(bd(100)))
                 * 0.7
             ) * 0.05
         )
@@ -268,7 +268,7 @@ export class FruitOfPowerB extends Yggdrasil {
                 Math.ceil(this.tier ** 1.5)
                 * (1 + firstHarvest / 10)
                 * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                * Number(yieldModifier.divide(bd(100)).getValue())
+                * toNum(yieldModifier.divide(bd(100)))
             )
         return this.levelToNum(this.level + levelInc).subtract(this.levelToNum(this.level))
     }
@@ -327,7 +327,7 @@ export class FruitOfNumbers extends Yggdrasil {
             Math.ceil(this.tier ** 1.5)
             * (1 + firstHarvest / 10)
             * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-            * Number(yieldModifier.divide(bd(100)).getValue())
+            * toNum(yieldModifier.divide(bd(100)))
             * this.baseSeedFactor
         )
         return this.levelToNum(this.level + levelInc).subtract(this.levelToNum(this.level))
@@ -352,9 +352,9 @@ export class FruitOfRage extends Yggdrasil {
                     Math.ceil(this.tier ** 1.5)
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                    * Number(noNGUYieldModifier.getValue())
+                    * toNum(noNGUYieldModifier)
                     * 60000
-                    * Number(ppBonus.divide(bd(100)).getValue())
+                    * toNum(ppBonus.divide(bd(100)))
                 )
             )
     }
@@ -378,7 +378,7 @@ export class FruitOfMacguffinA extends Yggdrasil {
                     Math.ceil(this.tier ** 1.5)
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                    * Number(noNGUYieldModifier.getValue())
+                    * toNum(noNGUYieldModifier)
                     * 0.5
                 )
             )
@@ -412,7 +412,7 @@ export class FruitOfPowerD extends Yggdrasil {
                     Math.ceil(this.tier ** 1.5)
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                    * Number(yieldModifier.divide(bd(100)).getValue()) 
+                    * toNum(yieldModifier.divide(bd(100))) 
                     * this.baseSeedFactor
                 )
         return this.levelToNum(this.level + levelInc).subtract(this.levelToNum(this.level))
@@ -448,7 +448,7 @@ export class FruitOfMacguffinB extends Yggdrasil {
                     Math.ceil(this.tier ** 1.5)
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                    * Number(noNGUYieldModifier.getValue())
+                    * toNum(noNGUYieldModifier)
                     * 0.1
                 )
             )
@@ -473,8 +473,8 @@ export class FruitOfQuirks extends Yggdrasil {
                     this.tier
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                    * Number(noNGUYieldModifier.getValue())
-                    * Number(qpRewardBonus.divide(bd(100)).getValue()) 
+                    * toNum(noNGUYieldModifier)
+                    * toNum(qpRewardBonus.divide(bd(100))) 
                     * 3
                 )
             )
@@ -502,7 +502,7 @@ export class FruitOfMayo extends Yggdrasil {
         return bd(
                     this.tier ** 1.1
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
-                    * Number(mayoSpeed.divide(bd(100)).getValue())
+                    * toNum(mayoSpeed.divide(bd(100)))
                     * 0.025
             )
     }

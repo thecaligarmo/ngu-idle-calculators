@@ -5,7 +5,7 @@ import Content from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
 import { StandardTable, StandardTableRowType } from '@/components/standardTable';
-import { bd, isOne, pn } from '@/helpers/numbers';
+import { bd, isOne, pn, toNum } from '@/helpers/numbers';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { nguInfo } from '@/helpers/resourceInfo';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
@@ -112,14 +112,14 @@ export default function Page() {
 
     var fruits : Yggdrasil[] = Object.values(j('yggdrasil'));
     fruits.forEach((fruit) => {
-        fruit.tier = Number(v(fruit.tierKey()).getValue())
+        fruit.tier = toNum(v(fruit.tierKey()))
         fruit.usePoop = c(fruit.poopKey())
         fruit.eatFruit = c(fruit.eatKey())
     })
 
     
     var nguYgg = nguInfo(playerStates, Stat.YGGDRASIL_YIELD)
-    var firstHarvest = Number(v('firstHarvestPerk').getValue())
+    var firstHarvest = toNum(v('firstHarvestPerk'))
     var blueHeart = c('blueHeart^')
 
     var fruitYieldData = {

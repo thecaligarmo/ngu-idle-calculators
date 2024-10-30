@@ -10,7 +10,7 @@ import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { StandardTable } from "@/components/standardTable";
 import { getIdleAttackModifier } from "@/helpers/calculators";
-import { bd, isOne, pn } from "@/helpers/numbers";
+import { bd, isOne, pn, toNum } from "@/helpers/numbers";
 import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from "@/helpers/pages/daily";
 import { parseNum, parseObj } from "@/helpers/parsers";
 import { nguInfo } from "@/helpers/resourceInfo";
@@ -209,7 +209,7 @@ export default function Page() {
 
 
     /* Ygg Info */
-    var firstHarvest = Number(v('firstHarvestPerk').getValue())
+    var firstHarvest = toNum(v('firstHarvestPerk'))
     var blueHeart = c('blueHeart^')
     var fruitYieldData = {
         firstHarvest: firstHarvest,
@@ -220,8 +220,8 @@ export default function Page() {
         ppBonus: totalPPBonus,
         qpRewardBonus: totalQPBonus,
         expBonus: totalExpBonus,
-        fokSucksPerk: Number(v('fruitOfKnowledgeSucks^').getValue()),
-        fokStillSucksPerk: Number(v('fruitOfKnowledgeSTILLSucks^').getValue()),
+        fokSucksPerk: toNum(v('fruitOfKnowledgeSucks^')),
+        fokStillSucksPerk: toNum(v('fruitOfKnowledgeSTILLSucks^')),
     }
     
     var fruitOfKnowledge : FruitOfKnowledge = new FruitOfKnowledge();

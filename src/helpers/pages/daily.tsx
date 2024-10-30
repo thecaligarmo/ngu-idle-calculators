@@ -2,7 +2,7 @@ import { AttackStat, Titan, Titans } from "@/assets/enemy";
 import { Wish } from "@/assets/wish";
 import bigDecimal from "js-big-decimal";
 import { ReactElement } from "react";
-import { bd, bigdec_min, greaterThan } from "../numbers";
+import { bd, bigdec_min, greaterThan, toNum } from "../numbers";
 
 
 
@@ -245,7 +245,7 @@ export function getTitanHourlyInfo(maxTitan : [Titan, number], {
     var hourlyTitanPP : bigDecimal = bd(0);
     var hourlyTitanQP : bigDecimal = bd(0);
 
-    var wishLevel = Number(wishTitansHadBetterRewards.getValue());
+    var wishLevel = toNum(wishTitansHadBetterRewards);
     var rbChallenges : bigDecimal = numRebirthChallenges
     var bonusExpPerk = greaterThan(bonusTitanEXPPerk, bd(0)) ? bd(1.5) : bd(1)
 
@@ -324,9 +324,7 @@ export function getDailySaveAP(totalAPBonus : bigDecimal, hoursPerDay : bigDecim
 
 
 export function getDailySpinAP(dailySpinTier : number | bigDecimal, totalAPBonus : bigDecimal, hoursPerDay : bigDecimal, incConsumables : boolean = false, incJackpot : boolean = false) : bigDecimal{
-    if (dailySpinTier instanceof bigDecimal) {
-        dailySpinTier = Number(dailySpinTier.getValue())
-    }
+    dailySpinTier = toNum(dailySpinTier)
     var avgAPFromDailySpin = bd(0)
     switch(dailySpinTier) {
         case 0:

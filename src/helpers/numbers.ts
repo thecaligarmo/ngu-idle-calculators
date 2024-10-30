@@ -77,7 +77,7 @@ export function pn(num : bigDecimal | number, numberFormat : string = 'scientifi
         if (nl < 3 && precision == 0) {
             precision = 2
         }
-        return Number(num.round(precision).getValue()).toLocaleString(undefined, { maximumFractionDigits: precision }) //.toFixed(precision).toLocaleString()
+        return toNum(num.round(precision)).toLocaleString(undefined, { maximumFractionDigits: precision }) //.toFixed(precision).toLocaleString()
     }
     
     // If we're in scientific format, we only want the first 4 digits

@@ -4,7 +4,7 @@ import { ItemSets } from "@/assets/sets";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { Stat } from "../assets/stat";
-import { bd, bigdec_equals, bigdec_max, greaterThan, greaterThanOrEqual, isZero } from "./numbers";
+import { bd, bigdec_equals, bigdec_max, greaterThan, greaterThanOrEqual, isZero, toNum } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
 import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
 
@@ -354,7 +354,7 @@ export function totalDropChance(data : any) : bigDecimal {
 export function totalEnergyBeardSpeed(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.ENERGY_BEARD_SPEED)
     var eBar = totalEnergyBar(data).floor();
-    var ePower = bd(Math.sqrt(Number(totalEnergyPower(data).getValue())))
+    var ePower = bd(Math.sqrt(toNum(totalEnergyPower(data))))
     var armpitSet = isMaxxedItemSet(data, ItemSets.UUG) ? bd(1.1) : bd(1);
     var beardSet = isMaxxedItemSet(data, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)
     var abeards = bigdec_max(activeBeards(data, 'energy').multiply(beardSet), bd(1))
@@ -368,7 +368,7 @@ export function totalEnergyBeardSpeed(data : any) : bigDecimal {
 export function totalMagicBeardSpeed(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.MAGIC_BEARD_SPEED)
     var mBar = totalMagicBar(data).floor();
-    var mPower = bd(Math.sqrt(Number(totalMagicPower(data).getValue())))
+    var mPower = bd(Math.sqrt(toNum(totalMagicPower(data))))
     var armpitSet = isMaxxedItemSet(data, ItemSets.UUG) ? bd(1.1) : bd(1);
     var beardSet = isMaxxedItemSet(data, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)
     var abeards = bigdec_max(activeBeards(data, 'magic').multiply(beardSet), bd(1))

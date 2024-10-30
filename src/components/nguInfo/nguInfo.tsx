@@ -7,7 +7,7 @@ import Content from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
-import { bd } from "@/helpers/numbers";
+import { bd, toNum } from "@/helpers/numbers";
 import { nguExtraNameChanges, nguInfoNameChanges, nguTargetElts, nguValueElts } from "@/helpers/pages/ngus";
 import { parseNum } from "@/helpers/parsers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
@@ -130,8 +130,8 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
         for(var nguId of nguIds) {
             var ngu : NGU = ngus[nguId]
             if(ngu.mode == gameMode) {
-                ngu.setLevel(Number(v(ty + ngu.key + modeText + "Level").getValue()))
-                ngu.target = Number(v(ty + ngu.key + modeText + "Target").getValue())
+                ngu.setLevel(toNum(v(ty + ngu.key + modeText + "Level")))
+                ngu.target = toNum(v(ty + ngu.key + modeText + "Target"))
                 retNgus.push(ngu)
             }
         }

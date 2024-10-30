@@ -1,3 +1,4 @@
+import { toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 
@@ -45,9 +46,7 @@ export default class Resource {
         return 0
     }
     appliesToGameMode(gameMode : number | bigDecimal) : boolean {
-        if (gameMode instanceof bigDecimal) {
-            gameMode = Number(gameMode.getValue())
-        }
+        gameMode = toNum(gameMode)
         return this.mode <= gameMode
     }
     setProgress(progress: number) {
