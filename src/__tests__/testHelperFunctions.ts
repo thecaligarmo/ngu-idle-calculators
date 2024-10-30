@@ -17,7 +17,7 @@ export function expectClose(value : number | bigDecimal , expect : number | bigD
 }
 
 
-export function toDataObj(playerData : any, extraRequired=[]) : {[key:string] : any}{
+export function toDataObj(playerData : any, extraRequired : any[] = []) : {[key:string] : any}{
     var playerNumberOptions = getPlayerNumberOptions();
     var playerOptions = getPlayerOptions();
     var calculatedOptions  = getCalculatedOptions();
