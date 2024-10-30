@@ -51,6 +51,7 @@ export default function Page() {
         totalRespawnTime: v('totalRespawnTime'),
     }
     var zoneInfo = getZoneInfo(data)
+    console.log(zoneInfo)
     var optimalBoostZone = getOptimalBoostZone(zoneInfo);
     var optimalExpZone = getOptimalExpZone(zoneInfo);
 
@@ -70,7 +71,7 @@ export default function Page() {
     })
 
     var zoneExpList = zoneInfo.map(function(zone) {
-        var eV = isZero(optimalExpZone['boost']) ? bd(1) : optimalExpZone['boost']
+        var eV = isZero(optimalExpZone['exp']) ? bd(1) : optimalExpZone['exp']
         return (
         <li key={zone.key} className={optZoneChosen == zone.key ? "" : "hidden"}>
             {zone.name} is <span className="text-red-500">{pn(zone.exp.divide(eV).multiply(bd(100)), fmt, 2)}%</span> as efficient with a exp value of <span className="text-blue-500">{pn(zone.exp, fmt)}.</span>
