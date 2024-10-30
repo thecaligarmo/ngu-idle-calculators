@@ -1,4 +1,4 @@
-import { bd } from "@/helpers/numbers"
+import { bd, isOne, lessThan } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { GameMode } from "./mode"
@@ -106,191 +106,174 @@ export class Hack extends Resource {
         }
     }
 
-    getStatValue(prop: string, level : number = -1) : number {
+    getStatValue(prop: string = '', level : number = -1) : number {
         if(level == -1) {
             level = this.level
         }
+        if (prop == '') {
+            prop = Object.keys(this.base)[0]
+        }
         if(!_.isUndefined(this[prop])) {
-            return (100 + this[prop]) * this.getMilestoneBonus()
+            return (100 + this[prop]) * this.getMilestoneBonus(level)
         }
         return 100
     }
 
-    getMilestoneBonus() {
-        var numMilestones = Math.floor(this.level / (this.baseMilestone - this.milestoneReduction))
+    levelsPerMilestone() : number {
+        return this.baseMilestone - this.milestoneReduction
+    }
+
+    getMilestoneBonus(level : number = -1) : number {
+        if(level == -1) {
+            level = this.level
+        }
+        var numMilestones = Math.floor(level / (this.levelsPerMilestone()))
         return this.milestoneBonus ** numMilestones
     }
-    
 
+    getMilestoneName() : string {
+        // Milestone reduction is dependent on key
+        switch(this.key) {
+            case HackKeys.STAT:
+                return 'hackMilestoneStat'
+            case HackKeys.ADVENTURE :
+                return 'hackMilestoneAdventure'
+            case HackKeys.TIME_MACHINE :
+                return 'hackMilestoneTimeMachine'
+            case HackKeys.DROP_CHANCE :
+                return 'hackMilestoneDropChance'
+            case HackKeys.AUGMENT_SPEED:
+                return 'hackMilestoneAugment'
+            case HackKeys.ENERGY_NGU :
+                return 'hackMilestoneENGU'
+            case HackKeys.MAGIC_NGU :
+                return 'hackMilestoneMNGU'
+            case HackKeys.BLOOD:
+                return 'hackMilestoneBlood'
+            case HackKeys.QUEST:
+                return 'hackMilestoneQP'
+            case HackKeys.DAYCARE:
+                return 'hackMilestoneDaycare'
+            case HackKeys.EXP:
+                return 'hackMilestoneExp'
+            case HackKeys.NUMBER:
+                return 'hackMilestoneNumber'
+            case HackKeys.PP:
+                return 'hackMilestonePP'
+            case HackKeys.HACK:
+                return 'hackMilestoneHack'
+            case HackKeys.WISH:
+                return 'hackMilestoneWish'
+        }
+        return '' 
+    }
 
-    // // The above formula's inverses
-    // getLevelFromVal(value: number, prop: string, forceDiminished : boolean = false, forceNotDiminished : boolean = false) : number{
-    //     var base = this.base[prop]
+    getLevelFromVal(value : number) : number {
+        var prop = Object.keys(this.base)[0]
+        var level = Math.log(value / (100 + this[prop])) / Math.log(this.milestoneBonus)  * (this.levelsPerMilestone())
+        return Math.round(level)
+    }
 
-    //     value = value - 100
-    //     var diminishing = (forceDiminished || this.level > this.diminishingReturnLevel)
-    //     if (this.diminishingReturnLevel === 0 || !diminishing || forceNotDiminished) {
-    //         return  value / base
-            
-    //     }
-    //     // Handle non-diminishing return ones
-    //     switch (this.key) {
-    //         case NGUKeys.RESPAWN:
-    //             value = value + 100
-    //             if(value == 40){
-    //                 return 1000000000
-    //             }
-    //             return -40000 * (value - 20) / (value - 40)
-    //         case NGUKeys.ADVENTURE_A:
-    //         case NGUKeys.DROP_CHANCE:
-    //             return (value / 3.17) ** 2 
-    //         case NGUKeys.MAGIC_NGU:
-    //             return (value / 12.59) ** (10/3) 
-    //         case NGUKeys.PP: 
-    //             return (value / 6.295) ** (10/3)
-    //         case NGUKeys.YGGDRASIL:
-    //             return (value / 5.54) ** 3
-    //         case NGUKeys.EXP:
-    //             return (value / 0.9566) ** (2.5)
-    //         case NGUKeys.NUMBER:
-    //             return (value / 31.7) ** 2
-    //         case NGUKeys.TIME_MACHINE:
-    //             return (value / 0.7962) ** (10/8)
-    //         case NGUKeys.ENERGY_NGU:
-    //             return (value / 12.59) ** (10/3)
-    //         case NGUKeys.ADVENTURE_B:
-    //             return (value / 1.894) ** (2.5)
-    //     }
+    getSpeed(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal, level : number = -1) : bigDecimal {
+        if(level == -1) {
+            level = this.level
+        }
+        try {
+            return bd(this.baseSpeedDivider)
+                    .multiply(bd(1.0078**level))
+                    .multiply(bd(level + 1))
+                    .divide(res3cap)
+                    .divide(res3pow)
+                    .divide(hackSpeed).multiply(bd(100))
+                    .divide(bd(50)) // 50 ticks per seconds
+        } catch {
+            return bd(1)
+        }
+    }
+
+    getTimeBetweenLevels(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal, targetLevel :number, level : number = -1) : bigDecimal {
+        if(level == -1) {
+            level = this.level
+        }
+
+        try {
+            return bd(this.getFullSum(targetLevel) - this.getFullSum(level))
+                .multiply(bd(this.baseSpeedDivider))
+                .divide(res3cap, 50)
+                .divide(res3pow, 50)
+                .divide(hackSpeed, 50).multiply(bd(100))
+                .divide(bd(50), 50) // 50 ticks per seconds
+        } catch {
+            return bd(1)
+        }
+    }
+
+    getFullSum(level: number = -1) : number{
+        if(level == -1) {
+            level = this.level
+        }
+        return (1 - ( (level + 1) * 1.0078**(level))) / (1 - 1.0078) + (1.0078 - 1.0078**(level + 1))/((1 - 1.0078)**2)
+    }
+
+    getMaxLevelHackDay(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal) : number {
+        var levelsPerMilestone = this.levelsPerMilestone()
+        var level = this.level + levelsPerMilestone
+        var maxTime = bd(this.getMaxTimeHackDay())
+        var t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, level)
+        if(isOne(t)) {
+            return level - levelsPerMilestone
+        }
+        while (lessThan(t, maxTime)) { 
+            level = level + levelsPerMilestone
+            t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, level)
+        }
         
-    //     return 0
-    // }
+        return level - levelsPerMilestone
+    }
 
-    // // Gets target for a percentage increase of value
-    // percentIncrease(percent: bigDecimal | number) : bigDecimal{
-    //     if (percent instanceof bigDecimal) {
-    //         percent = Number(percent.getValue())
-    //     }
-    //     var prop = this.statnames[0]
-        
-    //     if (this.isRespawn()) { // Respawn has weird scaling so we need to fix it.
-    //         var curVal = this.getStatValueInternal(this.level, prop) - 100 // Make it < 0
-    //         percent = ((curVal * (100 + percent) / 100)) > 39.999 ? ((40 - curVal) / curVal) : (percent / 100)
-    //         var desiredVal = (curVal) * (percent + 1)
-    //     } else {
-    //         var curVal = this.getStatValueInternal(this.level, prop)
-    //         var desiredVal = curVal * (percent/100 + 1)
-    //     }
-
-    //     return (this.valueIncrease(desiredVal))
-    // }
-
-    // // Gets target for a set increase of value
-    // valueIncrease(desiredVal: bigDecimal | number) : bigDecimal {
-    //     if (desiredVal instanceof bigDecimal) {
-    //         desiredVal = Number(desiredVal.getValue())
-    //     }
-    //     var prop = this.statnames[0]
-        
-    //     var desiredLevel = this.getLevelFromVal(desiredVal, prop)
-
-    //     if (desiredLevel > this.diminishingReturnLevel && this.level <= this.diminishingReturnLevel && this.diminishingReturnLevel > 0) {
-    //         desiredLevel = this.getLevelFromVal(desiredVal, prop, true)
-    //     } else if (this.level >= this.diminishingReturnLevel && (desiredLevel < this.diminishingReturnLevel || this.diminishingReturnLevel == 0)) {
-    //         desiredLevel = this.getLevelFromVal(desiredVal, prop, false, true)
-    //     }
-    //     var maxLvl = Math.min(Math.max(0, desiredLevel), 1000000000)
-    //     return bd(maxLvl).ceil()
-    // }
-
-    // calcSecondsToTarget(cap : bigDecimal, speedFactor : bigDecimal, target : bigDecimal = bd(-1)) : bigDecimal {
-    //     var level = bd(this.level)
-    //     if (target.compareTo(bd(-1)) === 0 ) {
-    //         target = bd(this.target)
-    //     }
-
-    //     // Grab base amount of time things will take
-    //     var baseCost = this.baseCost
-    //     var baseFactor = bd(1)
-    //     var i = 0
-    //     try {            
-    //         var baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap).divide(speedFactor)
-    //         while(level.compareTo(target) != 0 && baseTimePerLevel.floor().compareTo(bd(0)) == 0) {
-    //             i += 1
-    //             baseFactor = baseFactor.multiply(bd(1000000000))
-    //             baseTimePerLevel = baseCost.multiply(bd(100)).multiply(baseFactor).divide(cap).divide(speedFactor)
-    //         }
-    //     } catch (error) {
-    //         var baseTimePerLevel = bd(0)
-    //     }
-        
-    //     // Grab the starting time and the ending time
-    //     var startingSpeed = baseTimePerLevel.multiply(level.add(bd(1))).divide(baseFactor).round(2, bigDecimal.RoundingModes.CEILING)
-    //     var endingSpeed = baseTimePerLevel.multiply(target).divide(baseFactor).round(2, bigDecimal.RoundingModes.CEILING)
-
-    //     // We can never go faster than 50 levels/second
-    //     startingSpeed = startingSpeed.compareTo(bd(0.02)) <= 0 ? bd(0.02) : startingSpeed
-    //     endingSpeed = endingSpeed.compareTo(bd(0.02)) <= 0 ? bd(0.02) : endingSpeed
-
-        
-    //     // Grab the number of levels that will be calculated with starting, middle (average) and end times
-    //     try {
-    //         var startingSpeedLevels = bigdec_max(
-    //             bigdec_min(startingSpeed.multiply(baseFactor).divide(baseTimePerLevel), target).subtract(level).floor(),
-    //             bd(0)
-    //         )
-
-    //         var x = endingSpeed.subtract(bd(0.02)).multiply(baseFactor).divide(baseTimePerLevel).subtract(level).subtract(startingSpeedLevels).floor()
-    //         var middleSpeedLevels = x.compareTo(bd(0)) == 1 ? x : bd(0);
-
-    //         x = bigdec_min(endingSpeed.multiply(baseFactor).divide(baseTimePerLevel), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
-    //         var endingSpeedLevels = x.compareTo(bd(0)) == 1 ? x : bd(0);
-    //     } catch(error) {
-    //         var startingSpeedLevels = bd(0);
-    //         var middleSpeedLevels = bd(0);
-    //         var endingSpeedLevels = bd(0);
-    //     }
-
-    //     var seconds = startingSpeedLevels.multiply(startingSpeed)
-    //             .add(endingSpeed.multiply(endingSpeedLevels))
-    //             .add((endingSpeed.add(startingSpeed)).divide(bd(2)).multiply(middleSpeedLevels))
-
-    //     return seconds
-    
-    // }
-
-    // capAtTarget(speedFactor : bigDecimal, level : bigDecimal) : bigDecimal {
-    //     var baseCost = this.baseCost
-
-    //     if (level.compareTo(bd(0)) == -1) {
-    //         return bd(0)
-    //     }
-    //     try {
-    //         var baseTimePerLevel = baseCost.divide(speedFactor)
-    //     } catch (error) {
-    //         var baseTimePerLevel = bd(0)
-    //     }
-    //     return level.multiply(baseTimePerLevel).divide(bd(0.0002))
-    // }
-
-    // capToReachMaxTarget(speedFactor : bigDecimal, target : (bigDecimal | null) = null ) : bigDecimal {
-    //     if (_.isNull(target)) {
-    //         target = bd(this.target)
-    //     }
-    //     return this.capAtTarget(speedFactor, target)
-    // }
-
-    // capToReachMaxInDay(speedFactor : bigDecimal) : bigDecimal {
-    //     var level = bd(this.level)
-    //     var targetLvl = level.add(bd(60 * 60 * 24 * 50)) // 50 ticks per second * seconds
-    //     return this.capToReachMaxTarget(speedFactor, targetLvl)
-    // }
+    getMaxTimeHackDay() : number {
+        // Milestone reduction is dependent on key
+        switch(this.key) {
+            case HackKeys.STAT:
+                return 15 * 60
+            case HackKeys.ADVENTURE :
+                return 12 * 60 * 60
+            case HackKeys.TIME_MACHINE :
+                return 30 * 60
+            case HackKeys.DROP_CHANCE :
+                return 30 * 60
+            case HackKeys.AUGMENT_SPEED:
+                return 15 * 60
+            case HackKeys.ENERGY_NGU :
+                return 60 * 60
+            case HackKeys.MAGIC_NGU :
+                return 60 * 60
+            case HackKeys.BLOOD:
+                return 30 * 60
+            case HackKeys.QUEST:
+                return 6 * 60 * 60
+            case HackKeys.DAYCARE:
+                return 30 * 60
+            case HackKeys.EXP:
+                return 6 * 60 * 60
+            case HackKeys.NUMBER:
+                return 15 * 60
+            case HackKeys.PP:
+                return 6 * 60 * 60
+            case HackKeys.HACK:
+                return 0
+            case HackKeys.WISH:
+                return 60 * 60
+        }
+        return 0
+    }
 }
 
 
 
 
 export const HACKLIST = [
-    new Hack(0, HackKeys.POWER, 'Attack/Defense Hack', GameMode.EVIL, [[Stat.ATTACK, 2.5], [Stat.DEFENSE, 2.5]], 10, 1.025, bd('1e8'), 7720),
+    new Hack(0, HackKeys.STAT, 'Attack/Defense Hack', GameMode.EVIL, [[Stat.ATTACK, 2.5], [Stat.DEFENSE, 2.5]], 10, 1.025, bd('1e8'), 7720),
     new Hack(1, HackKeys.ADVENTURE, 'Adventure Stats Hack', GameMode.EVIL, [[Stat.POWER, 0.1], [Stat.TOUGHNESS, 0.1], [Stat.HEALTH, 0.1], [Stat.REGEN, 0.1]], 50, 1.02, bd('2e8'), 7632),
     new Hack(2, HackKeys.TIME_MACHINE, 'Time Machine Speed Hack', GameMode.EVIL, [[Stat.TIME_MACHINE_SPEED, 0.2]], 50, 1.02, bd('4e8'), 7544),
     new Hack(3, HackKeys.DROP_CHANCE, 'Drop Chance Hack', GameMode.EVIL, [[Stat.DROP_CHANCE, 0.25]], 40, 1.03, bd('4e8'), 7544),

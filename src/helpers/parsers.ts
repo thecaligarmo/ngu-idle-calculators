@@ -8,6 +8,7 @@ const calcToGo : {[k:string] : string} = {
     'totalEnergyNGUSpeedFactor%' : 'goEnergyNGU%',
     'totalEnergyPower' : 'goEnergyPower%',
     'totalExpBonus%' : 'goExperience%',
+    'totalHackSpeed%' : 'goHacks%',
     'totalMagicCap' : 'goMagicCap%',
     'totalMagicNGUSpeedFactor%' : 'goMagicNGU%',
     'totalMagicPower' : 'goMagicPower%',

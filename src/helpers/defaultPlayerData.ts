@@ -14,7 +14,7 @@ import { ITEMS, Item } from "../assets/items";
 import { GameMode } from "../assets/mode";
 import { PERKS, Perk } from "../assets/perks";
 import { QUIRKS, Quirk } from "../assets/quirks";
-import { boostRecyclying, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Cap, totalRes3Power, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalWishSpeed, totalYggdrasilYieldBonus } from "./calculators";
+import { boostRecyclying, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalHackSpeed, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Cap, totalRes3Power, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalWishSpeed, totalYggdrasilYieldBonus } from "./calculators";
 import { bd, isOne } from "./numbers";
 import { Wandoos, WANDOOSLIST } from "@/assets/wandoos";
 import { Zones } from "@/assets/zones";
@@ -666,7 +666,40 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'fruitOfKnowledgeSTILLSucks^':
                 return playerData.adventure.itopod.perkLevel[20]
             case 'gameMode':
-                return playerData.settings.rebirthDifficulty.value__; 
+                return playerData.settings.rebirthDifficulty.value__;
+
+            case 'hackMilestoneStat':
+                return playerData.beastQuest.quirkLevel[57]
+            case 'hackMilestoneAdventure':
+                return playerData.adventure.itopod.perkLevel[113]
+            case 'hackMilestoneTimeMachine':
+                return playerData.beastQuest.quirkLevel[175]
+            case 'hackMilestoneDropChance':
+                return playerData.adventure.itopod.perkLevel[217]
+            case 'hackMilestoneAugment':
+                return playerData.adventure.itopod.perkLevel[218]
+            case 'hackMilestoneENGU':
+                return playerData.beastQuest.quirkLevel[174]
+            case 'hackMilestoneMNGU':
+                return playerData.adventure.itopod.perkLevel[219]
+            case 'hackMilestoneBlood':
+                return playerData.adventure.itopod.perkLevel[114]
+            case 'hackMilestoneQP':
+                return playerData.wishes.wishes[76].level
+            case 'hackMilestoneDaycare':
+                return playerData.adventure.itopod.perkLevel[115]
+            case 'hackMilestoneExp':
+                return playerData.beastQuest.quirkLevel[59]
+            case 'hackMilestoneNumber':
+                return playerData.wishes.wishes[77].level
+            case 'hackMilestonePP':
+                return playerData.beastQuest.quirkLevel[58]
+            case 'hackMilestoneHack':
+                return playerData.wishes.wishes[78].level
+            case 'hackMilestoneWish':
+                return playerData.beastQuest.quirkLevel[60]
+
+
             case 'numRebirthChallenges-2':
                 return playerData.challenges.noRebirthChallenge.curCompletions
                     + playerData.challenges.noRebirthChallenge.curEvilCompletions
@@ -1141,6 +1174,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return totalEnergyNGUSpeedFactor(playerData);
             case 'totalExpBonus%':
                 return totalExpBonus(playerData);
+            case 'totalHackSpeed%':
+                return totalHackSpeed(playerData)
             case 'totalHealth':
                 return totalHealth(playerData);
             case 'totalMagicNGUSpeedFactor%':
@@ -1417,6 +1452,21 @@ export function getPlayerNumberOptions() : string[]{
         'fruitOfKnowledgeSucks^',
         'fruitOfKnowledgeSTILLSucks^',
         'gameMode',
+        'hackMilestoneStat',
+        'hackMilestoneAdventure',
+        'hackMilestoneTimeMachine',
+        'hackMilestoneDropChance',
+        'hackMilestoneAugment',
+        'hackMilestoneENGU',
+        'hackMilestoneMNGU',
+        'hackMilestoneBlood',
+        'hackMilestoneQP',
+        'hackMilestoneDaycare',
+        'hackMilestoneExp',
+        'hackMilestoneNumber',
+        'hackMilestonePP',
+        'hackMilestoneHack',
+        'hackMilestoneWish',
         'redLiquidBonus^',
         'numRebirthChallenges-2',
         'questIdleDivider-1',
@@ -1492,6 +1542,7 @@ export function getCalculatedOptions() : string[] {
         'totalDropChance%',
         'totalEnergyNGUSpeedFactor%',
         'totalExpBonus%',
+        'totalHackSpeed%',
         'totalHealth',
         'totalMagicNGUSpeedFactor%',
         'totalMayoSpeed%',
