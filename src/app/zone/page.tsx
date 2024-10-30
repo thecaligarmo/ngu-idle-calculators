@@ -51,7 +51,6 @@ export default function Page() {
         totalRespawnTime: v('totalRespawnTime'),
     }
     var zoneInfo = getZoneInfo(data)
-    console.log(zoneInfo)
     var optimalBoostZone = getOptimalBoostZone(zoneInfo);
     var optimalExpZone = getOptimalExpZone(zoneInfo);
 
