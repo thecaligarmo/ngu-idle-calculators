@@ -1,6 +1,7 @@
 export function camelToTitle(text: string) : string {
     var result: string = text.replace(/([A-Z0-9])/g, " $1");
     result = result
+                .replace('%', ' (%)')
                 .replace(/ N G U( |$)/g, ' NGU ')
                 .replace(/ R N G( |$)/g, ' RNG ')
                 .replace(/ P P( |$)/g, ' PP ')
@@ -16,6 +17,6 @@ export function camelToTitle(text: string) : string {
                 .replace(/ 1 2( |$)/g, ' 12 ')
                 .replace(/twenty Four( |$)/g, '24 ')
                 .replace(/ Twenty Four( |$)/g, ' 24 ')
-                .replace('%', ' (%)')
+                .replace(/^go /g, '')
     return result.charAt(0).toUpperCase() + result.slice(1);
 }

@@ -2,7 +2,7 @@
 
 import { Card, CardRarity, cardRarityRange } from "@/assets/cards";
 import { FruitOfMayo, Yggdrasil } from "@/assets/yggdrasil";
-import Content from "@/components/content";
+import Content, { requiredDataType } from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
@@ -20,7 +20,7 @@ export default function Page() {
     var fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired = [
+    var infoRequired : requiredDataType = [
         [
             'blueHeart^',
             'cardChonkers^',
@@ -89,7 +89,7 @@ export default function Page() {
     ]
 
     // Set extra required (not from playerData)
-    var extraRequired : (string | [string, number])[][] = [
+    var extraRequired : requiredDataType = [
         [
             ['includeFruit^', 1],
             'includeLeftovers^',
@@ -136,11 +136,14 @@ export default function Page() {
         ],
     ]
 
-    const playerStates = createStatesForData(extraRequired);
+    var goRequired : requiredDataType = [[]];
+
+    const playerStates = createStatesForData(extraRequired, goRequired);
 
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates, cardReqNameChanges)
     var extraReq = getRequiredStates(extraRequired, playerStates, cardExtraNameChanges)
+    var goReq = getRequiredStates(goRequired, playerStates)
     extraReq.unshift({'colWidths':['w-1/3', 'w-1/3', 'w-1/3', 'w-2/3', 'w-1/3']})
 
     if (!c('includeFruit^')) {
@@ -416,7 +419,7 @@ export default function Page() {
 
     
     return (
-        <Content title="Cards" infoRequired={infoReq} extraRequired={extraReq} prechildren={(<p>This page gives information about cards and mayo. By <span className="text-red-500">leftovers</span> we mean when you use Yggdrasil more than once per day. So eating your second (third, etc.) fruit from Yggdrasil is considered a &ldquo;leftover&rdquo;.</p>)}>
+        <Content title="Cards" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq} prechildren={(<p>This page gives information about cards and mayo. By <span className="text-red-500">leftovers</span> we mean when you use Yggdrasil more than once per day. So eating your second (third, etc.) fruit from Yggdrasil is considered a &ldquo;leftover&rdquo;.</p>)}>
             <ContentSubsection title={"How much mayo, cards, chonks will I get per day?"}>
                 <>
                     <p>The below let&apos;s you know how much mayo, cards and chonks you will get per day.</p>

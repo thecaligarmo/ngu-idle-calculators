@@ -1,4 +1,4 @@
-import { Challenge, ChallengeKeys } from "@/assets/challenges";
+import { ChallengeKeys } from "@/assets/challenges";
 import { GameMode } from "@/assets/mode";
 import { ItemSets } from "@/assets/sets";
 import bigDecimal from "js-big-decimal";

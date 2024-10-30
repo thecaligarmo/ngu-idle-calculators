@@ -1,5 +1,5 @@
 "use client"
-import Content from '@/components/content';
+import Content, { requiredDataType } from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
 import { bd, isOne, isZero, pn } from '@/helpers/numbers';
@@ -16,16 +16,18 @@ export default function Page() {
     var fmt = getNumberFormat();
     
     // Set data required (from playerData)
-    var infoRequired = [
-        ['totalPower', 'totalDropChance%', 'totalRespawnTime', 'boostRecyclying%'],
+    var infoRequired : requiredDataType = [
+        ['totalDropChance%', 'totalPower', 'totalRespawnTime', 'boostRecyclying%'],
         ['sadisticNoEquipmentChallenges-2', 'redLiquidBonus^', 'spoopySetBonus^']]
     // Set extra required (not from playerData)
-    var extraRequired = [[]]
-    const playerStates = createStatesForData(extraRequired);
+    var extraRequired : requiredDataType = [[]]
+    var goRequired : requiredDataType = [['goDropChance%', 'goPower%', 'goRespawn%']]
+    const playerStates = createStatesForData(extraRequired, goRequired);
     
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates)
     var extraReq = getRequiredStates(extraRequired, playerStates)
+    var goReq = getRequiredStates(goRequired, playerStates)
 
 
     // Helper function - Needed in every isntance (makes code easier to read too)
@@ -80,7 +82,7 @@ export default function Page() {
     
     
     return (
-        <Content title="Optimal Zones" infoRequired={infoReq} extraRequired={extraReq}>
+        <Content title="Optimal Zones" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
             <ContentSubsection title="What is the optimal zone for getting boosts?">
                 <p>
                     The optimal zone for getting boosts is <span className="text-red-500">{optimalBoostZone.name}</span> which will give you an average boost value of <span className="text-blue-500">{pn(optimalBoostZone['boost'], fmt, 2)}</span>.

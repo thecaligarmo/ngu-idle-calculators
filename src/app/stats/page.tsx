@@ -1,6 +1,4 @@
 'use client'
-import { ItemSets } from '@/assets/sets';
-import { Stat } from '@/assets/stat';
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
 import ContentSubsection from '@/components/contentSubsection';
@@ -9,10 +7,8 @@ import { totalAPBonus, totalAugmentSpeed, totalDaycareSpeed, totalDropChance, to
 import { bd, pn } from '@/helpers/numbers';
 import { describeStat, getStatInfo } from '@/helpers/pages/stat';
 import { parseNum, parseObj } from '@/helpers/parsers';
-import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, nguInfo, perkInfo, quirkInfo, wishInfo } from '@/helpers/resourceInfo';
 import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from "js-big-decimal";
-import _ from 'lodash';
 
 
 

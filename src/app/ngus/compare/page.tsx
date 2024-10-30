@@ -86,7 +86,8 @@ export default function Page() {
     var extraRequired = [
         ['percentageIncrease%'], []
     ]
-    const playerStates = createStatesForData(extraRequired);
+    var goRequired = [['goEnergyCap%', 'goEnergyNGU%', 'goMagicCap%', 'goMagicNGU%']]
+    const playerStates = createStatesForData(extraRequired, goRequired);
 
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates, {
@@ -142,6 +143,7 @@ export default function Page() {
         'magicNGUAdventureBSadisticLevel': 'Adventure β Sadistic Level',
     })
     var extraReq = getRequiredStates(extraRequired, playerStates)
+    var goReq = getRequiredStates(goRequired, playerStates)
 
 
     // Helper function - Needed in every isntance (makes code easier to read too)
@@ -275,7 +277,7 @@ export default function Page() {
         
 
     return (
-        <Content title="NGUs - Compare which mode is faster" infoRequired={infoReq} extraRequired={extraReq} prechildren={<p>This page only makes sense if you are in Evil mode or higher.</p>}>
+        <Content title="NGUs - Compare which mode is faster" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq} prechildren={<p>This page only makes sense if you are in Evil mode or higher.</p>}>
             <p>
                 This will tell you what mode is faster for increasing your NGUs. If you state the percentage you want above (in Extra Info) it will compare how fast the differents take to achieve that percentage increase. 
                 The <span className="text-green-900 dark:text-green-200">faster mode</span> is highlighted in green.

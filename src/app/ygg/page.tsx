@@ -1,7 +1,7 @@
 'use client'
 import { Stat } from '@/assets/stat';
 import { Yggdrasil } from '@/assets/yggdrasil';
-import Content from '@/components/content';
+import Content, { requiredDataType } from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
 import { StandardTable, StandardTableRowType } from '@/components/standardTable';
@@ -16,10 +16,10 @@ export default function Page() {
     var fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired = [
-        ['totalSeedGainBonus%', 'totalYggdrasilYieldBonus%', 'totalAPBonus%', 'totalExpBonus%', 'totalPPBonus%', 'totalQuestRewardBonus%', 'totalMayoSpeed%'],
+    var infoRequired : requiredDataType = [
+        ['totalSeedGainBonus%', 'totalYggdrasilYieldBonus%'],
+        ['totalAPBonus%', 'totalExpBonus%', 'totalPPBonus%', 'totalQuestRewardBonus%', 'totalMayoSpeed%'],
         ['blueHeart^', 'firstHarvestPerk', 'fruitOfKnowledgeSucks^', 'fruitOfKnowledgeSTILLSucks^'],
-        [],
         [
             'tierFruitOfGold-2',
             'tierFruitOfPowerA-2',
@@ -90,12 +90,14 @@ export default function Page() {
         ],
     ]
     // Set extra required (not from playerData)
-    var extraRequired = [[]]
-    const playerStates = createStatesForData(extraRequired);
+    var extraRequired : requiredDataType = [[]]
+    var goRequired : requiredDataType = [['goSeedGain%', 'goYggdrasilYield%'], ['goAP%', 'goExperience%'], []]
+    const playerStates = createStatesForData(extraRequired, goRequired);
     
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates)
     var extraReq = getRequiredStates(extraRequired, playerStates)
+    var goReq = getRequiredStates(goRequired, playerStates)
 
     // Helper function - Needed in every isntance (makes code easier to read too)
     function v(key : string) : bigDecimal{
@@ -175,7 +177,7 @@ export default function Page() {
     }
 
     return (
-        <Content title="Yggdrasil" infoRequired={infoReq} extraRequired={extraReq}>
+        <Content title="Yggdrasil" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
             <ContentSubsection title="What will you get if you harvest/eat fruits?">
                 <StandardTable order={order} header={header} rows={dataRows} />
             </ContentSubsection>

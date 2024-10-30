@@ -5,7 +5,7 @@ import { Stat } from "@/assets/stat";
 import { Wish } from "@/assets/wish";
 import { FruitOfArbitrariness, FruitOfKnowledge, FruitOfQuirks, FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
 import { Zones } from "@/assets/zones";
-import Content from "@/components/content";
+import Content, { requiredDataType } from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { StandardTable } from "@/components/standardTable";
@@ -56,7 +56,7 @@ export default function Page() {
     var fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired = [
+    var infoRequired : requiredDataType = [
         ['gameMode', 'itopodFloor-5', 'bonusPP-4', 'numRebirthChallenges-2', 'twentyFourHourChallenge-2', 'twentyFourHourEvilChallenge-2', 'twentyFourHourSadisticChallenge-2'],
         ['questMinorQP-2', 'questMajorQP-2', 'questIdleDivider-1', 'activeQuestWishI-2', 'activeQuestWishII-2'],
         
@@ -68,17 +68,20 @@ export default function Page() {
     ]
 
     // Set extra required (not from playerData)
-    var extraRequired : (string | [string, number])[][] = [
+    var extraRequired : requiredDataType = [
         [['hoursPerDay-2', 24], 'hoursOfflinePerDay-2',],
         [ 'bluePill^','beastButter^', 'includeMajorQuests^', 'idleMajorQuests^'],
         ['dailySpinTier-1', 'includeDailySpinJackpots^', 'includeValueOfConsumables^',  'moneyPitGoldToss?1e', 'moneyPitTossesPerDay-2',],
         
     ]
-    const playerStates = createStatesForData(extraRequired);
+
+    var goRequired : requiredDataType = [['goAP%', 'goExperience%', 'goPower%', 'goQuestDrop%', 'goRespawn%', 'goYggdrasilYield%']];
+    const playerStates = createStatesForData(extraRequired, goRequired);
 
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates)
     var extraReq = getRequiredStates(extraRequired, playerStates)
+    var goReq = getRequiredStates(goRequired, playerStates)
 
     // Helper function - Needed in every isntance (makes code easier to read too)
     function v(key : string) : bigDecimal{
@@ -421,7 +424,7 @@ export default function Page() {
     // TODO - Allow for non-high tier pulling of Yggdrasil
     // TODO - Allow for asking if they want poop/harvest in Yggdrasil
     return (
-        <Content title="Daily Gains" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren}>
+        <Content title="Daily Gains" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren} goRequired={goReq}>
             <div>
                 <strong>Assumptions:</strong>
                 <ul>

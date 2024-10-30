@@ -1,6 +1,6 @@
 "use client"
 import { ChoiceButton } from '@/components/buttons';
-import Content from '@/components/content';
+import Content, { requiredDataType } from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat, getPlayerData } from '@/components/context';
 import { disableItem } from '@/components/dataListColumns';
@@ -26,22 +26,24 @@ export default function Page() {
         setRes3Active(true);
     }
     // Set data required (from playerData)
-    var infoRequired = [
+    var infoRequired : requiredDataType = [
         ["baseEnergyPower", "baseEnergyCap", "baseEnergyBar"],
         ["baseMagicPower", "baseMagicCap", "baseMagicBar"],
         ["baseRes3Power", "baseRes3Cap", "baseRes3Bar"]
     ]
     // Set extra required (not from playerData)
-    var extraRequired = [
+    var extraRequired : requiredDataType = [
         ["energyRatio", "energyPowerRatio", "energyCapRatio", "energyBarRatio"],
         ["magicRatio", "magicPowerRatio", "magicCapRatio", "magicBarRatio"],
         ["res3Ratio", "res3PowerRatio", "res3CapRatio", "res3BarRatio"]
     ]
-    const playerStates = createStatesForData(extraRequired);
+    var goRequired : requiredDataType = [[]]
+    const playerStates = createStatesForData(extraRequired, goRequired);
 
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates)
     var extraReq = getRequiredStates(extraRequired, playerStates)
+    var goReq = getRequiredStates(goRequired, playerStates)
 
     // Helper function - Needed in every isntance (makes code easier to read too)
     function v(key : string) : bigDecimal{
@@ -217,7 +219,7 @@ export default function Page() {
     )
 
     return (
-        <Content prechildren={prechildren} title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren} extraInputChildren={extraInputChildren}>
+        <Content prechildren={prechildren} title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren} extraInputChildren={extraInputChildren} goRequired={goReq}>
         <div className="flex">
             <div className="mr-10">
             <h4 className="text-xl">What base amounts should be</h4>

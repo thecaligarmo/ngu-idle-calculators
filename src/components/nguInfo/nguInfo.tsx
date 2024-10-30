@@ -3,7 +3,7 @@
 import { GameMode } from "@/assets/mode";
 import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { ChoiceButton } from "@/components/buttons";
-import Content from "@/components/content";
+import Content, { requiredDataType } from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
@@ -41,7 +41,7 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
     }
 
     // Set data required (from playerData)
-    var infoRequired = [
+    var infoRequired : requiredDataType = [
         ['totalEnergyCap', 'totalEnergyNGUSpeedFactor%'],
         ['totalMagicCap', 'totalMagicNGUSpeedFactor%'],
         [
@@ -86,7 +86,7 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
     ]
 
     // Set extra required (not from playerData)
-    var extraRequired = [
+    var extraRequired : requiredDataType = [
         ['percentageIncrease%', 'timeInMinutes'], [],
         [
             'energyNGUAugments' + modeText + 'Value',
@@ -108,11 +108,13 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
             'magicNGUAdventureB' + modeText + 'Value'
         ]
     ]
-    const playerStates = createStatesForData(extraRequired);
+    var goRequired : requiredDataType = [['goEnergyCap%', 'goEnergyNGU%', 'goMagicCap%', 'goMagicNGU%']]
+    const playerStates = createStatesForData(extraRequired, goRequired);
 
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates, nguInfoNameChanges)
     var extraReq = getRequiredStates(extraRequired, playerStates, nguExtraNameChanges)
+    var goReq = getRequiredStates(goRequired, playerStates)
 
     // Helper function - Needed in every isntance (makes code easier to read too)
     function v(key : string) : bigDecimal{
@@ -210,7 +212,7 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
         
 
     return (
-        <Content prechildren={topButtons} title={"NGUs - " + (modeText == '' ? 'Normal' : modeText)} infoRequired={infoReq} extraRequired={extraReq}>
+        <Content prechildren={topButtons} title={"NGUs - " + (modeText == '' ? 'Normal' : modeText)} infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
             <ContentSubsection title="How long until I reach targets?">
                 <p>
                     The following tables let you know how much <span className="text-red-500">Time</span> is needed until you get to the <span className="text-blue-500">Target</span>.

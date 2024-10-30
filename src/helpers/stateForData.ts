@@ -1,14 +1,16 @@
 import _ from "lodash";
 import { getPlayerData, isPlayerDataUpdated } from "../components/context";
-import { defaultPlayerData, getCalculatedOptions, getPlayerNumberOptions, getPlayerOptions } from "./defaultPlayerData";
+import { defaultPlayerData, getCalculatedOptions, getGOOptions, getPlayerNumberOptions, getPlayerOptions } from "./defaultPlayerData";
 import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
 import { camelToTitle } from "./strings";
+import { requiredDataType } from "@/components/content";
 
-export function createStatesForData(extraRequired: (string | [string, number])[][] = []) : any{
+export function createStatesForData(extraRequired: requiredDataType = [], goRequired: requiredDataType = []) : any{
     const playerData = getPlayerData();
     var playerNumberOptions : (string | [string, number])[] = getPlayerNumberOptions();
     var playerOptions : string[] = getPlayerOptions();
     var calculatedOptions : string[] = getCalculatedOptions();
+    var goOptions : string[] = getGOOptions();
     for (var col of extraRequired) {
         for (var key of col) {
             playerNumberOptions.push(key)
@@ -33,6 +35,15 @@ export function createStatesForData(extraRequired: (string | [string, number])[]
         }
         dataObj[poKey] = dataState
     }
+    
+    for (var goKey of goOptions) {
+        var defaultVal = defaultPlayerData(playerData, goKey)
+        var dataState = useLocalStorage(goKey, defaultVal);
+        if (isPlayerDataUpdated() && ! _.isEqual(dataState[0], defaultVal)) {
+            dataState[1](defaultVal)
+        }
+        dataObj[goKey] = dataState
+    }
 
     for (var coKey of calculatedOptions) {
         var defaultVal = defaultPlayerData(dataObj, coKey).getValue()
@@ -46,7 +57,7 @@ export function createStatesForData(extraRequired: (string | [string, number])[]
     return dataObj;
 }
 
-export function getRequiredStates(data : any, states : any, nameMap : any = {} ) : any{
+export function getRequiredStates(data : requiredDataType, states : any, nameMap : any = {} ) : any{
     var ir = []
     for (var col of data) {
         let colDr = []

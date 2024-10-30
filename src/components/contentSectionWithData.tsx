@@ -12,9 +12,10 @@ interface ContentSectionWithDataProps {
     listChildren ?: ReactNode;
     inputChildren ?: ReactNode;
     description ?: string;
+    hideInfoDefault ?: boolean;
 }
 
-export default function ContentSectionWithData({children, preChildren, idKey, title, data, listChildren, inputChildren, description} : ContentSectionWithDataProps) {
+export default function ContentSectionWithData({children, preChildren, idKey, title, data, listChildren, inputChildren, description, hideInfoDefault} : ContentSectionWithDataProps) {
     const [showInputs, setShowInputs] = useState(false)
     
     const inputs = dataToCols(data, true)
@@ -27,6 +28,7 @@ export default function ContentSectionWithData({children, preChildren, idKey, ti
                 text={showInputs ? "Hide Inputs" : "Change Data"}
                 onClick={() => setShowInputs(!showInputs)}
             />}
+            hideInfoDefault={hideInfoDefault}
             >
                 <>
                     {description ? <p className="pb-2"><small>{description}</small></p> : null}

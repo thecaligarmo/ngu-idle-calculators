@@ -1183,7 +1183,10 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
         }
     }
     if (info in getPlayerOptions()) {
-        return {};   
+        return {};
+    }
+    if (info in getGOOptions()) {
+        return bd(0);
     }
     return 0;
 }
@@ -1504,5 +1507,64 @@ export function getCalculatedOptions() : string[] {
         'totalWishSpeed%',
         'totalYggdrasilYieldBonus%',
         'itopodFloor-5',
+    ]
+}
+export function getGOOptions() : string[] {
+    return [
+        'goAdvancedTraining%',
+        'goAP%',
+        'goAugmentation%',
+        'goBeards%',
+        'goBloodRituals%',
+        'goCooking%',
+        'goDaycare%',
+        'goDropChance%',
+        'goEMPC%',
+        'goEnergyBars%',
+        'goEnergyBeards%',
+        'goEnergyCap%',
+        'goEnergyCapSpeed%',
+        'goEnergyNGU%',
+        'goEnergyPower%',
+        'goEnergySpeed%',
+        'goEnergyTimeMachine%',
+        'goEnergyWandoos%',
+        'goExperience%',
+        'goGoldDrops%',
+        'goHacks%',
+        'goMagicBars%',
+        'goMagicBeards%',
+        'goMagicCap%',
+        'goMagicCapSpeed%',
+        'goMagicNGU%',
+        'goMagicPower%',
+        'goMagicSpeed%',
+        'goMagicTimeMachine%',
+        'goMagicWandoos%',
+        'goMoveCooldown%',
+        'goNGUs%',
+        'goNGUsAndHacks%',
+        'goNGUsAndWishes%',
+        'goPower%',
+        'goQuestDrop%',
+        'goRawATSpeed%',
+        'goRawAugmentSpeed%',
+        'goRawBeardSpeed%',
+        'goRawHackSpeed%',
+        'goRawNGUSpeed%',
+        'goRawWandoosSpeed%',
+        'goRawWishSpeed%',
+        'goResource3Bars%',
+        'goResource3Cap%',
+        'goResource3CapSpeed%',
+        'goResource3Power%',
+        'goRespawn%',
+        'goSeedGain%',
+        'goTimeMachine%',
+        'goToughness%',
+        'goWandoos%',
+        'goWishes%',
+        'goWishesAndHacks%',
+        'goYggdrasilYield%',
     ]
 }

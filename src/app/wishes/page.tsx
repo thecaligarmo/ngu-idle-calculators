@@ -1,6 +1,6 @@
 'use client'
 import { Wish, WISHES } from '@/assets/wish';
-import Content from '@/components/content';
+import Content, { requiredDataType } from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
 import { StandardTable, StandardTableRowType } from '@/components/standardTable';
@@ -29,18 +29,20 @@ export default function Page() {
     var fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired = [
+    var infoRequired : requiredDataType = [
         [['wishSlots-1', 1], 'totalEnergyPower', 'totalEnergyCap', 'totalMagicPower', 'totalMagicCap', 'totalRes3Power', 'totalRes3Cap', 'totalWishSpeed%']
     ]
     // Set extra required (not from playerData)
-    var extraRequired  : (string | [string, number])[][] = [
+    var extraRequired  : requiredDataType = [
         [['customPercentage%', 1], ['customEnergyAmount', 1], ['customMagicAmount', 1], ['customResource3Amount', 1]]
     ]
-    const playerStates = createStatesForData(extraRequired);
+    var goRequired : requiredDataType = [['goEnergyPower%', 'goEnergyCap%', 'goMagicPower%', 'goMagicCap%', 'goResource3Power%', 'goResource3Cap%', 'goWishes%']]
+    const playerStates = createStatesForData(extraRequired, goRequired);
     
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates)
     var extraReq = getRequiredStates(extraRequired, playerStates)
+    var goReq = getRequiredStates(goRequired, playerStates)
 
     // Helper function - Needed in every isntance (makes code easier to read too)
     function v(key : string) : bigDecimal{
@@ -178,7 +180,7 @@ export default function Page() {
     }
 
     return (
-        <Content title="Wishes" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren}>
+        <Content title="Wishes" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren} goRequired={goReq}>
             Chosen Wish: <select
                 className="ml-2 text-black"
                 onChange={(e) =>{

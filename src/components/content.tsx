@@ -4,21 +4,31 @@ import ContentSection from "./contentSection";
 import ContentSectionWithData from "./contentSectionWithData";
 import _ from "lodash";
 
+export type requiredDataType =  (string | [string, number])[][];
+
 interface ContentProps {
     children : ReactNode;
     prechildren?: ReactNode;
     title: string;
-    infoRequired: any;
+    infoRequired: requiredDataType;
     infoChildren?: ReactNode;
-    extraRequired: any;
+    extraRequired: requiredDataType;
     extraPreChildren ?: ReactNode;
     extraChildren?: ReactNode;
     extraInputChildren?: ReactNode;
     extraListChildren?: ReactNode;
+    goRequired : requiredDataType;
+    goChildren ?: ReactNode;
 }
 
-export default function Content({children, prechildren, title, infoRequired, infoChildren, extraRequired, extraChildren, extraPreChildren, extraInputChildren, extraListChildren} : ContentProps) {
-    // console.log(extraRequired, extraRequired[0].length, _.isEqual(extraRequired, [[]]));
+export default function Content(
+    {
+        children, prechildren, title,
+        infoRequired, infoChildren,
+        extraRequired, extraChildren, extraPreChildren, extraInputChildren, extraListChildren,
+        goRequired, goChildren
+    } : ContentProps) : ReactNode{
+    
     return (
         <Container title={title}>
             {prechildren}
@@ -44,6 +54,19 @@ export default function Content({children, prechildren, title, infoRequired, inf
                 >
                 {infoChildren}
             </ContentSectionWithData>
+
+            {!_.isEqual(goRequired, [[]])
+                ? <ContentSectionWithData
+                    idKey="gear-optimizer"
+                    title="Gear Optimizer Changes"
+                    data={goRequired}
+                    hideInfoDefault={true}
+                    description="If the gear you want to use is different than the one you currently have on, use gear optimizer to get the change percents and input those percents here. If you edit the information in 'Player Info' make sure these are set to 0."
+                    >
+                    {goChildren}
+                </ContentSectionWithData>
+                : null
+            }
             
             <ContentSection title="Information">
                 <div id="content" className="clear-both">

@@ -1,6 +1,6 @@
 'use client'
 import { Wandoos, WANDOOSLIST } from '@/assets/wandoos';
-import Content from '@/components/content';
+import Content, { requiredDataType } from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
 import { bd, isOne, pn } from '@/helpers/numbers';
@@ -14,16 +14,20 @@ export default function Page() {
     var fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired = [
+    var infoRequired : requiredDataType = [
         ['gameMode','totalEnergyCap', 'totalMagicCap','wandoosEnergyAllocated', 'wandoosMagicAllocated']
     ]
     // Set extra required (not from playerData)
-    var extraRequired  : (string | [string, number])[][] = [[['minutesSpentInWandoos', 60], ['energyFillsPerSecond', 50], ['magicFillsPerSecond', 50]]]
-    const playerStates = createStatesForData(extraRequired);
+    var extraRequired : requiredDataType = [
+        [['minutesSpentInWandoos', 60], ['energyFillsPerSecond', 50], ['magicFillsPerSecond', 50]]
+    ]
+    var goRequired : requiredDataType = [['goEnergyCap%', 'goMagicCap%']]
+    const playerStates = createStatesForData(extraRequired, goRequired);
     
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates)
     var extraReq = getRequiredStates(extraRequired, playerStates)
+    var goReq = getRequiredStates(goRequired, playerStates)
 
     // Helper function - Needed in every isntance (makes code easier to read too)
     function v(key : string) : bigDecimal{
@@ -65,7 +69,7 @@ export default function Page() {
     )
     
     return (
-        <Content prechildren={prechildren} title="Wandoos" infoRequired={infoReq} extraRequired={extraReq}>
+        <Content prechildren={prechildren} title="Wandoos" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
             Assumptions: We assume that the wandoos in your save file is capped and OS is fully booted
             <ContentSubsection title="Which OS should I be using?">
                 The row highlighted in green is the OS you should be using.<br /><br />
