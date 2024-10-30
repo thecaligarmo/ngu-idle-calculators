@@ -1,4 +1,4 @@
-import { bd, bigdec_equals, bigdec_max, bigdec_min, bigdec_round, greaterThan, lessThan, lessThanOrEqual, toNum } from "@/helpers/numbers"
+import { bd, bigdec_equals, bigdec_max, bigdec_min, bigdec_round, greaterThan, isZero, lessThan, lessThanOrEqual, toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { GameMode } from "./mode"
@@ -327,15 +327,30 @@ export class NGU extends Resource {
     timeIncrease(numMinutes: bigDecimal | number, cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal{
         var numSeconds = bd(numMinutes).multiply(bd(60)).add(bd(1))
 
+        var roundingDigs = this.roundingDigs(cap, speedFactor)
         var baseTimePerLevel = this.baseTimePerLevel(cap, speedFactor)
-        var secondsDone = bd(0)
+        baseTimePerLevel = isZero(baseTimePerLevel) ? bd(1) : baseTimePerLevel
         var curLevel = bd(this.level)
-        while (lessThan(secondsDone, numSeconds)) {
-            curLevel = curLevel.add(bd(1))
-            secondsDone = secondsDone.add(this.speedAtLevel(curLevel, baseTimePerLevel))
-        }
 
-        return curLevel.subtract(bd(1))
+        /*
+        Want to solve for n:
+            SUM_i=level+1^n level <= numSeconds / baseTimePerLevel
+
+            n(n+1)/2 - (level+1)(level+2)/2 <= numSeconds / baseTimePerLevel
+
+            n^2 + n + (numSeconds / baseTimePerLevel + (level+1)(level+2)/2) * -2
+                = n^2 + n + c
+        */
+        var lvlDiff = numSeconds.divide(baseTimePerLevel, roundingDigs)
+        
+        var targDiff = lvlDiff.add(
+            (curLevel.add(bd(1))).multiply(curLevel.add(bd(2))).divide(bd(2))
+        )
+
+        var c = targDiff.multiply(bd(-2))
+
+        var target = (bd(Math.sqrt(toNum(bd(1).subtract(bd(4).multiply(c))))).subtract(bd(1))).divide(bd(2))        
+        return target.floor().subtract(bd(1))
     }
 
     roundingDigs(cap : bigDecimal, speedFactor : bigDecimal) : number {
