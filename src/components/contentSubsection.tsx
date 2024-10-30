@@ -10,7 +10,11 @@ export default function ContentSubsection({children, title, titleExtra, defaultH
             <CollapseButton hidden={hideInfo} onClick={() => {
                     setHideInfo(!hideInfo)
                 }} />
-                <span className="align-bottom">{title}</span>
+                <span className="hover:underline align-bottom text-blue-500 cursor-pointer" onClick={() => {
+                    setHideInfo(!hideInfo)
+                }} >
+                    {title}
+                </span>
             </h4>
             { hideInfo ? null : children}
         </div>
