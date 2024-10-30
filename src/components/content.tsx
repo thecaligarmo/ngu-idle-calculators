@@ -60,7 +60,7 @@ export default function Content(
                     idKey="gear-optimizer"
                     title="Gear Optimizer Changes"
                     data={goRequired}
-                    hideInfoDefault={true}
+                    defaultHide={true}
                     description="If the gear you want to use is different than the one you currently have on, use gear optimizer to get the change percents and input those percents here. If you edit the information in 'Player Info' make sure these are set to 0."
                     >
                     {goChildren}

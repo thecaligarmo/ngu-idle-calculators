@@ -2,9 +2,9 @@ import { ReactNode, useState } from "react";
 import { CollapseButton } from "./buttons";
 import _ from "lodash";
 
-export default function ContentSection({children, title, titleExtra, hideInfoDefault} : {children ?: ReactNode, title: string, titleExtra?: ReactNode, hideInfoDefault?:boolean}) {
-    hideInfoDefault = _.isUndefined(hideInfoDefault) ? false : hideInfoDefault
-    const [hideInfo, setHideInfo] = useState(hideInfoDefault)
+export default function ContentSection({children, title, titleExtra, defaultHide} : {children ?: ReactNode, title: string, titleExtra?: ReactNode, defaultHide?:boolean}) {
+    defaultHide = _.isUndefined(defaultHide) ? false : defaultHide
+    const [hideInfo, setHideInfo] = useState(defaultHide)
 
     return (
         <section className="clear-both pt-5">
