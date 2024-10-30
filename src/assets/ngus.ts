@@ -1,4 +1,4 @@
-import { bd, bigdec_equals, bigdec_max, bigdec_min, bigdec_round, greaterThan, lessThan, lessThanOrEqual } from "@/helpers/numbers"
+import { bd, bigdec_equals, bigdec_max, bigdec_min, bigdec_round, greaterThan, lessThan, lessThanOrEqual, toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { GameMode } from "./mode"
@@ -284,9 +284,7 @@ export class NGU extends Resource {
 
     // Gets target for a percentage increase of value
     percentIncrease(percent: bigDecimal | number) : bigDecimal{
-        if (percent instanceof bigDecimal) {
-            percent = Number(percent.getValue())
-        }
+        percent = toNum(percent)
         
         var prop = this.statnames[0]
         var curVal = this.getStatValueInternal(this.level, prop)
@@ -309,9 +307,8 @@ export class NGU extends Resource {
 
     // Gets target for a set increase of value
     valueIncrease(desiredVal: bigDecimal | number) : bigDecimal {
-        if (desiredVal instanceof bigDecimal) {
-            desiredVal = Number(desiredVal.getValue())
-        }
+        desiredVal = toNum(desiredVal)
+        
         var prop = this.statnames[0]
         
         var desiredLevel = this.getLevelFromVal(desiredVal, prop)
@@ -326,29 +323,61 @@ export class NGU extends Resource {
         return bd(maxLvl).ceil()
     }
 
+    // Gets target for a set duration of minutes
+    timeIncrease(numMinutes: bigDecimal | number, cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal{
+        var numSeconds = bd(numMinutes).multiply(bd(60)).add(bd(1))
+
+        var baseTimePerLevel = this.baseTimePerLevel(cap, speedFactor)
+        var secondsDone = bd(0)
+        var curLevel = bd(this.level)
+        while (lessThan(secondsDone, numSeconds)) {
+            curLevel = curLevel.add(bd(1))
+            secondsDone = secondsDone.add(this.speedAtLevel(curLevel, baseTimePerLevel))
+        }
+
+        return curLevel.subtract(bd(1))
+    }
+
+    roundingDigs(cap : bigDecimal, speedFactor : bigDecimal) : number {
+        return cap.floor().getValue().length + speedFactor.floor().getValue().length + this.baseCost.getValue().length
+    }
+
+    baseTimePerLevel(cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal {
+        // Grab base amount of time things will take
+        var baseCost = this.baseCost
+        var roundingDigs = this.roundingDigs(cap, speedFactor)
+        try {            
+            var baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap, roundingDigs).divide(speedFactor, roundingDigs)
+        } catch (error) {
+            var baseTimePerLevel = bd(0)
+        }
+
+        return baseTimePerLevel
+    }
+
+    speedAtLevel(level : bigDecimal | number, baseTimePerLevel : bigDecimal) : bigDecimal{
+        level = bd(level)
+        var speed = baseTimePerLevel.multiply(level).round(2, bigDecimal.RoundingModes.CEILING)
+
+        // We can never go faster than 50 levels/second
+        return lessThanOrEqual(speed, bd(0.02)) ? bd(0.02) : bigdec_round(speed, bd(0.02))
+    }
+
     calcSecondsToTarget(cap : bigDecimal, speedFactor : bigDecimal, target : bigDecimal = bd(-1)) : bigDecimal {
         var level = bd(this.level)
         if ( bigdec_equals(target, bd(-1)) ) {
             target = bd(this.target)
         }
 
+
         // Grab base amount of time things will take
-        var baseCost = this.baseCost
-        var roundingDigs = cap.floor().getValue().length + speedFactor.floor().getValue().length + this.baseCost.getValue().length
-        try {            
-            var baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap, roundingDigs).divide(speedFactor, roundingDigs)
-        } catch (error) {
-            var baseTimePerLevel = bd(0)
-        }
-        
+        var roundingDigs = this.roundingDigs(cap, speedFactor)
+        var baseTimePerLevel = this.baseTimePerLevel(cap, speedFactor)
+
         
         // Grab the starting time and the ending time
-        var startingSpeed = baseTimePerLevel.multiply(level.add(bd(1))).round(2, bigDecimal.RoundingModes.CEILING)
-        var endingSpeed = baseTimePerLevel.multiply(target).round(2, bigDecimal.RoundingModes.CEILING)
-
-        // We can never go faster than 50 levels/second
-        startingSpeed = lessThanOrEqual(startingSpeed, bd(0.02)) ? bd(0.02) : bigdec_round(startingSpeed, bd(0.02))
-        endingSpeed = lessThanOrEqual(endingSpeed, bd(0.02)) ? bd(0.02) : bigdec_round(endingSpeed, bd(0.02))
+        var startingSpeed = this.speedAtLevel(level.add(bd(1)), baseTimePerLevel)
+        var endingSpeed = this.speedAtLevel(target, baseTimePerLevel)
 
         
         // Grab the number of levels that will be calculated with starting, middle (average) and end times
@@ -369,8 +398,6 @@ export class NGU extends Resource {
             var middleSpeedLevels = bd(0);
             var endingSpeedLevels = bd(0);
         }
-
-
 
         var seconds = startingSpeedLevels.multiply(startingSpeed)
                 .add(endingSpeed.multiply(endingSpeedLevels))

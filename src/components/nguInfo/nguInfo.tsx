@@ -87,7 +87,7 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
 
     // Set extra required (not from playerData)
     var extraRequired = [
-        ['percentageIncrease%', 'timeInSeconds'], [],
+        ['percentageIncrease%', 'timeInMinutes'], [],
         [
             'energyNGUAugments' + modeText + 'Value',
             'energyNGUWandoos' + modeText + 'Value',
@@ -148,6 +148,9 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
                     return ngu.percentIncrease(v("percentageIncrease%"))
                 case NGU_VALUE:
                     return ngu.valueIncrease(v(ty + ngu.key + modeText + "Value"))
+                case NGU_TIME:
+                    ty = ty[0].toUpperCase() + ty.substring(1)
+                    return ngu.timeIncrease(v('timeInMinutes'), v("total" + ty + "Cap"), v("total" + ty + "NGUSpeedFactor%"))
                 default: 
                     return bd(ngu.target);
             }
@@ -176,15 +179,15 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
 
     switch (calcType) {
         case NGU_TARGET:
-            extraReq = disableItem(extraReq, ['percentageIncrease%', 'timeInSeconds']);
+            extraReq = disableItem(extraReq, ['percentageIncrease%', 'timeInMinutes']);
             extraReq = disableItem(extraReq, nguValueElts)
             break;
         case NGU_VALUE:
-            extraReq = disableItem(extraReq, ['percentageIncrease%', 'timeInSeconds']);
+            extraReq = disableItem(extraReq, ['percentageIncrease%', 'timeInMinutes']);
             infoReq = disableItem(infoReq, nguTargetElts)
             break;
         case NGU_PERCENTAGE:
-            extraReq = disableItem(extraReq, ['timeInSeconds']);
+            extraReq = disableItem(extraReq, ['timeInMinutes']);
             extraReq = disableItem(extraReq, nguValueElts)
             infoReq = disableItem(infoReq, nguTargetElts)
             break;
@@ -201,7 +204,7 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
             <ChoiceButton text="Using Targets" onClick={() => setCalcType(NGU_TARGET)} active={calcType==NGU_TARGET} />
             <ChoiceButton text="Using Percentage of Current Value" onClick={() => setCalcType(NGU_PERCENTAGE)}  active={calcType==NGU_PERCENTAGE} />
             <ChoiceButton text="Using Certain Value" onClick={() => setCalcType(NGU_VALUE)}  active={calcType==NGU_VALUE} />
-            {/* <ChoiceButton text="Using Time" onClick={() => setCalcType(NGU_TIME)} /> */}
+            <ChoiceButton text="Using Time" onClick={() => setCalcType(NGU_TIME)} />
         </>
     )
         

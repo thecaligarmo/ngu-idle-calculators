@@ -107,6 +107,13 @@ export function bd(num : any) : bigDecimal {
     return new bigDecimal(num)
 }
 
+export function toNum(bigDec: bigDecimal | number) : number {
+    if(bigDec instanceof bigDecimal){
+        return Number(bigDec.getValue())
+    }
+    return bigDec
+}
+
 // date number
 export function dn(num : bigDecimal) : string{
     if ( _.isUndefined(num) || lessThan(num, bd(0))) {
