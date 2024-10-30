@@ -30,7 +30,8 @@ export default function Page() {
 
     // Set data required (from playerData)
     var infoRequired : requiredDataType = [
-        [['wishSlots-1', 1], 'totalEnergyPower', 'totalEnergyCap', 'totalMagicPower', 'totalMagicCap', 'totalRes3Power', 'totalRes3Cap', 'totalWishSpeed%']
+        [['wishSlots-1', 1]], ['totalWishSpeed%'], [], 
+        ['totalEnergyPower', 'totalEnergyCap'], ['totalMagicPower', 'totalMagicCap'], ['totalRes3Power', 'totalRes3Cap']
     ]
     // Set extra required (not from playerData)
     var extraRequired  : requiredDataType = [
