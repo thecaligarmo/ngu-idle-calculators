@@ -56,12 +56,13 @@ export default function Page() {
     var pairList : ReactElement[] = []
     pairs.forEach((p : Ingredient[]) => {
         if(p[0].isUnlocked){
-            pairList.push(<li key={p[0].key}><strong>{p[0].name}</strong> - {p[0].level} {p[0].suffix}</li>)
+            pairList.push(<li key={p[0].key}><strong>{p[0].name}</strong> - {p[0].amount()}</li>)
         }
         if(p[1].isUnlocked){
-            pairList.push(<li key={p[1].key}><strong>{p[1].name}</strong> - {p[1].level} {p[1].suffix}</li>)
+            pairList.push(<li key={p[1].key}><strong>{p[1].name}</strong> - {p[1].amount()}</li>)
         }
     })
+    console.log(pairs)
 
 
     
@@ -69,6 +70,10 @@ export default function Page() {
     return (
         <Content title="Cooking" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
             This page is a work in progress. There might be some errors in calculations.
+
+            <p>
+                Trying to cook {dish.name}
+            </p>
             <ul>
                 {pairList}
             </ul>

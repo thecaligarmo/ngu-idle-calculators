@@ -142,53 +142,58 @@ export class Ingredient extends Resource {
         this.pairedWeight = data.pairedWeight
         this.isUnlocked = (data.unlocked == 1)
     }
+
+    amount() {
+        return (this.level * this.increment).toString() + " " + this.suffix
+    }
 }
 
 
 export const DISHLIST = [
-    new Dish(1, 'unknown', 'Unknown'),
+    new Dish(0, 'aRock', 'A Rock'),
+    new Dish(1, 'unknown1', 'Unknown 1'),
     new Dish(2, 'beansOnToast', 'Beans On Toast'),
-    new Dish(3, 'unknown', 'Unknown'),
-    new Dish(4, 'unknown', 'Unknown'),
-    new Dish(5, 'unknown', 'Unknown'),
-    new Dish(6, 'unknown', 'Unknown'),
-    new Dish(7, 'unknown', 'Unknown'),
+    new Dish(3, 'unknown3', 'Unknown 3'),
+    new Dish(4, 'unknown4', 'Unknown 4'),
+    new Dish(5, 'filetMignon', 'Filet Mignon'),
+    new Dish(6, 'unknown6', 'Unknown 6'),
+    new Dish(7, 'fruitBowl', 'Fruit Bowl'),
     new Dish(8, 'gogt', 'Gogt'),
-    new Dish(9, 'unknown', 'Unknown'),
-    new Dish(10, 'unknown', 'Unknown'),
-    new Dish(11, 'unknown', 'Unknown'),
-    new Dish(12, 'unknown', 'Unknown'),
+    new Dish(9, 'unknown9', 'Unknown 9'),
+    new Dish(10, 'unknown10', 'Unknown 10'),
+    new Dish(11, 'unknown11', 'Unknown 11'),
+    new Dish(12, 'macguffinStew', 'MacGuffin Stew'),
     new Dish(13, 'anEntireMerryGoRound', 'An Entire Merry-Go-Round'),
-    new Dish(14, 'unknown', 'Unknown'),
-    new Dish(15, 'unknown', 'Unknown'),
-    new Dish(16, 'unknown', 'Unknown'),
-    new Dish(17, 'unknown', 'Unknown'),
-    new Dish(18, 'unknown', 'Unknown'),
-    new Dish(19, 'unknown', 'Unknown'),
-    new Dish(20, 'unknown', 'Unknown'),
+    new Dish(14, 'unknown13', 'Unknown 14'),
+    new Dish(15, 'unknown14', 'Unknown 15'),
+    new Dish(16, 'unknown15', 'Unknown 16'),
+    new Dish(17, 'unknown16', 'Unknown 17'),
+    new Dish(18, 'unknown17', 'Unknown 18'),
+    new Dish(19, 'unknown18', 'Unknown 19'),
+    new Dish(20, 'unknown19', 'Unknown 20'),
 ]
 
 
 export const INGREDIENTLIST = [
-    new Ingredient(0, 'unknown0', 'Unknown'),
+    new Ingredient(0, 'hotSauce', 'Hot Sauce', 'ml', 50),
     new Ingredient(1, 'lobster', 'Lobster', 'Kg'),
-    new Ingredient(2, 'toothpaste', 'Toothpaste'),
-    new Ingredient(3, 'unknown3', 'Unknown'),
-    new Ingredient(4, 'unknown4', 'Unknown'),
+    new Ingredient(2, 'toothpaste', 'Toothpaste', 'Tubes'),
+    new Ingredient(3, 'rice', 'Rice', 'Cups', 2),
+    new Ingredient(4, 'malk', 'MALK', 'Cartons'),
     new Ingredient(5, 'snakeOil', 'Snake Oil', 'Bottle'),
-    new Ingredient(6, 'unknown6', 'Unknown'),
-    new Ingredient(7, 'unknown7', 'Unknown'),
-    new Ingredient(8, 'tomato', 'Tomato'),
+    new Ingredient(6, 'mysteryMeat', 'Mystery Meat', 'Handfuls'),
+    new Ingredient(7, 'aPretzel', 'A Pretzel', 'Pretzel'),
+    new Ingredient(8, 'candyCanes', 'Candy Canes', 'Canes'),
     new Ingredient(9, 'carrot', 'Carrot', 'Carats'),
     new Ingredient(10, 'unknown10', 'Unknown'),
-    new Ingredient(11, 'unknown11', 'Unknown'),
-    new Ingredient(12, 'unknown12', 'Unknown'),
-    new Ingredient(13, 'unknown13', 'Unknown'),
+    new Ingredient(11, 'drySpaghetti', 'Dry Spaghetti', 'Handfuls'),
+    new Ingredient(12, 'eggs', 'Eggs', 'Egg'),
+    new Ingredient(13, 'flour', 'Flour', 'Cups'),
     new Ingredient(14, 'unknown14', 'Unknown'),
-    new Ingredient(15, 'unknown15', 'Unknown'),
+    new Ingredient(15, 'lemonJuice', 'Lemon Juice', 'ml', 50),
     new Ingredient(16, 'unknown16', 'Unknown'),
-    new Ingredient(17, 'candyCanes', 'Candy Canes'),
-    new Ingredient(18, 'unknown18', 'Unknown'),
+    new Ingredient(17, 'yy', 'yy', '?'),
+    new Ingredient(18, 'bread', 'Bread', 'Loaves'),
     new Ingredient(19, 'coffeeGrounds', 'Coffee Grounds', 'Tbsp'),
 ]
 
