@@ -2113,6 +2113,12 @@ export const ITEMLIST = [
         [Stat.MAGIC_NGU_SPEED, 700],
         [Stat.AUGMENT_SPEED, 750],
     ]),
+    new Item(367, 'aWellDoneSteakWithKetchup', 'A Well Done Steak With Ketchup', Slot.OTHER, Zones.BEARDVERSE, 100, []),
+    new Item(368, 'pickleIceCream', 'Pickle Ice Cream', Slot.OTHER, Zones.CLOCK, 100, []),
+    new Item(369, 'aCanOfSurstromming', 'A Can Of Surstromming', Slot.OTHER, Zones.CHOCO, 100, []),
+    new Item(370, 'aJarOfMarmite', 'A Jar Of Marmite', Slot.OTHER, Zones.PPPL, 100, []),
+    new Item(371, 'pizzaWithPineapple', 'Pizza With Pineapple', Slot.OTHER, Zones.JRPG, 100, []),
+    new Item(372, 'glop', 'A Glop', Slot.OTHER, Zones.MISC, 100, []),
     new Item(373, 'spaceHelmet', 'Space Helmet', Slot.HEAD, Zones.ITHUNGERS, 100, [
         [Stat.POWER, 7800000],
         [Stat.TOUGHNESS, 205000000],
