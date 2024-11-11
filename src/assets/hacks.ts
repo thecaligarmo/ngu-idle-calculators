@@ -1,6 +1,6 @@
-import { bd, isOne, lessThan } from "@/helpers/numbers"
+import { bd, bigdec_equals, isOne, lessThan } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
-import _ from "lodash"
+import _, { isEqual } from "lodash"
 import { GameMode } from "./mode"
 import Resource, { ResourceContainer, prop } from "./resource"
 import { Stat } from "./stat"
@@ -196,23 +196,38 @@ export class Hack extends Resource {
             level = this.level
         }
 
+        var tl = this.getFullSum(targetLevel)
+        var tl1 = this.getFullSum(targetLevel - 1)
+        var ll = this.getFullSum(level)
+        if(this.id == 0) {
+            console.log(this.id, tl.subtract(tl1), tl1.subtract(ll))
+            console.log(tl.subtract(tl1).add(tl1.subtract(ll)), tl.subtract(ll))
+            console.log(bigdec_equals(tl.subtract(tl1).add(tl1.subtract(ll)), tl.subtract(ll)))
+            console.log(this.getSpeed(res3cap, res3pow, hackSpeed, targetLevel - 1), this.getSpeed(res3cap, res3pow, hackSpeed, level))
+
+        }
+
         try {
-            return bd(this.getFullSum(targetLevel) - this.getFullSum(level))
+            return (this.getFullSum(targetLevel).subtract(this.getFullSum(level)))
                 .multiply(bd(this.baseSpeedDivider))
-                .divide(res3cap, 50)
-                .divide(res3pow, 50)
-                .divide(hackSpeed, 50).multiply(bd(100))
-                .divide(bd(50), 50) // 50 ticks per seconds
+                .divide(res3cap, 500)
+                .divide(res3pow, 500)
+                .divide(hackSpeed, 500).multiply(bd(100))
+                .divide(bd(50), 500) // 50 ticks per seconds
         } catch {
             return bd(1)
         }
     }
 
-    getFullSum(level: number = -1) : number{
+    getFullSum(level: number = -1) : bigDecimal{
         if(level == -1) {
             level = this.level
         }
-        return (1 - ( (level + 1) * 1.0078**(level))) / (1 - 1.0078) + (1.0078 - 1.0078**(level + 1))/((1 - 1.0078)**2)
+        return bd(1 - ( (level + 1) * 1.0078**(level)))
+                .divide(bd(1-1.0078), 50)
+                .add(
+                    bd(1.0078 - 1.0078**(level + 1)).divide(bd((1 - 1.0078)**2), 50)
+                )
     }
 
     getMaxLevelHackDay(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal) : number {
