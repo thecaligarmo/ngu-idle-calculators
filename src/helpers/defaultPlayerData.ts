@@ -21,6 +21,7 @@ import { Zones } from "@/assets/zones";
 import { parseNum } from "./parsers";
 import { Card, CARDLIST, CARDS } from "@/assets/cards";
 import { Titan, Titans } from "@/assets/enemy";
+import { Dish, DISHES } from "@/assets/cooking";
 
 export function defaultPlayerData(playerData : any, info : string | [string, number]) : any {
     // If we're given an array, the second object is the default value from the "extraRequired", stuff, so use that.
@@ -920,6 +921,10 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                     }
                 })
                 return diggers;
+            case 'dish':
+                var dish : Dish = DISHES[playerData.cooking.curDishIndex]
+                dish.importStats(playerData.cooking)
+                return dish;
 
             case 'equipmentWeapon':
                 let weapon : any = playerData.inventory.weapon;
@@ -1505,6 +1510,7 @@ export function getPlayerOptions() : string[] {
         'cards',
         'challenges',
         'diggers',
+        'dish',
         'equipmentHead',
         'equipmentLegs',
         'equipmentChest',
