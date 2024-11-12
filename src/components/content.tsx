@@ -46,14 +46,18 @@ export default function Content(
                         </ContentSectionWithData>
                 : null
             }
-            <ContentSectionWithData
-                idKey="player"
-                title="Player Info"
-                data={infoRequired}
-                description="This info is auto-generated from your save file. To see calculations, check out the 'Stats' page."
-                >
-                {infoChildren}
-            </ContentSectionWithData>
+
+            {!_.isEqual(infoRequired, [[]])
+                ? <ContentSectionWithData
+                        idKey="player"
+                        title="Player Info"
+                        data={infoRequired}
+                        description="This info is auto-generated from your save file. To see calculations, check out the 'Stats' page."
+                        >
+                        {infoChildren}
+                    </ContentSectionWithData>
+                : null
+            }
 
             {!_.isEqual(goRequired, [[]])
                 ? <ContentSectionWithData

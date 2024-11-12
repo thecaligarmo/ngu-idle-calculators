@@ -47,36 +47,39 @@ export default function Page() {
     }
 
     var dish : Dish= j('dish')
-    var pairs : Ingredient[][] = []
+    var ings : Ingredient[] = []
+    var ingList : ReactElement[] = []
     if(!_.isEmpty(dish)) {
-        dish.makeOptimal()
-        pairs = dish.pairs
+        ings = dish.orderedIngredients()
+        ings.forEach((p : Ingredient) => {
+            if(p.isUnlocked){
+                ingList.push(<li key={p.key} className="inline-block w-1/2"><strong>{p.name}</strong>: <span className="text-green-500">{p.amount()}</span></li>)
+            }
+        })
+        console.log(dish.pairs)
     }
-
-    var pairList : ReactElement[] = []
-    pairs.forEach((p : Ingredient[]) => {
-        if(p[0].isUnlocked){
-            pairList.push(<li key={p[0].key}><strong>{p[0].name}</strong> - {p[0].amount()}</li>)
-        }
-        if(p[1].isUnlocked){
-            pairList.push(<li key={p[1].key}><strong>{p[1].name}</strong> - {p[1].amount()}</li>)
-        }
-    })
-    console.log(pairs)
-
-
-    
 
     return (
         <Content title="Cooking" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
             This page is a work in progress. There might be some errors in calculations.
 
-            <p>
-                Trying to cook {dish.name}
-            </p>
-            <ul>
-                {pairList}
-            </ul>
+            <ContentSubsection title="What do I need for 100% meal efficiency?">
+                {(_.isEmpty(ings)) 
+                    ? <p>
+                        Upload your save file for things to show up
+                    </p>
+                    :
+                    <>
+                        <p>
+                            Trying to cook: <strong className="text-blue-500">{dish.name}</strong>
+                        </p>
+                        <br />
+                        <ul>
+                            {ingList}
+                        </ul>
+                    </>
+                }
+            </ContentSubsection>
         </Content>
     )
 }
