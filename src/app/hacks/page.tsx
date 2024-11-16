@@ -1,5 +1,5 @@
 'use client'
-import { Hack } from '@/assets/hacks';
+import { Hack, HackKeys } from '@/assets/hacks';
 import { Stat } from '@/assets/stat';
 import { Wish, WISHES } from '@/assets/wish';
 import Content, { requiredDataType } from '@/components/content';
@@ -88,7 +88,8 @@ export default function Page() {
     function c(key : string) : boolean {
         return isOne(v(key))
     }
-
+    
+    
     var res3pow = v('totalRes3Power')
     var res3cap = v('totalRes3Cap')
     var hackSpeed = v('totalHackSpeed%')
@@ -101,7 +102,6 @@ export default function Page() {
         var curVal = hack.getStatValue()
         var targetVal = curVal * (toNum(v('percentIncrease%')) / 100 + 1)
         var target = hack.getLevelFromVal(targetVal)
-        target = hack.level + 2
         var newTargetVal = hack.getStatValue('', target) // Not necessarily the same as tVal since levels are discrete
         var time = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, target)
 
@@ -111,97 +111,137 @@ export default function Page() {
             'bonus' : <>{pn(curVal, fmt, 2)}%</>,
             'target' : <>{pn(target, fmt)}</>,
             'tBonus' : <>{pn(newTargetVal, fmt, 2)}%</>,
-            'change' : <>x {pn(newTargetVal/curVal, fmt)} = </>,
+            'change' : <>x {pn(newTargetVal/curVal, fmt, 3)} = </>,
             'time' : <>{dn(time)}</>,
         }
     })
 
-    // // Figure out hackday timers
-    // var hackDayRows : StandardTableRowType = {}
-    // var hackDayTime = bd(0)
-    // var done = false
+    const t0 = performance.now()
+    var v01 = 0
+    var v03 = 0
+    
+    // Figure out hackday timers
+    var hackDayRows : StandardTableRowType = {}
+    var hackDayTime = bd(0)
+    var doneFindingOptimal = false
 
-    // hacks.forEach((hack) => {
-    //     var curVal = hack.getStatValue()  
-    //     var hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, hackSpeed)
-    //     var newHackVal = hack.getStatValue('', hackTarget)
-    //     var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget)
-    //     hackDayTime = hackDayTime.add(hackTime)
+    hacks.forEach((hack) => {
+        var curVal = hack.getStatValue()
 
-    //     hackDayRows[hack.key] = {
-    //         'name' : hack.name,
-    //         'level' : <>{pn(hack.level, fmt, 0)}</>,
-    //         'bonus' : <>{pn(curVal, fmt, 2)}%</>,
-    //         'target' : <>{pn(hackTarget, fmt)}</>,
-    //         'tBonus' : <>{pn(newHackVal, fmt, 2)}</>,
-    //         'time' : <>{dn(hackTime)}</>,
-    //         'change' : <>x {pn(newHackVal / curVal, fmt)} = </>
-    //     }
-    // })
+        const t01 = performance.now()
+        var hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, hackSpeed)
+        const t02 = performance.now()
 
-    // try{
-    //     var hackHack = hacks[13]
-    //     var hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED)
-    //     var hackHackLvl = hackHack.level
-    //     var i = 0
-    //     while (i < 2) {
-    //         i = i + 1
-    //         var newHackHackLvl = hackHackLvl + i * hackHack.levelsPerMilestone()
-    //         var newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, newHackHackLvl)
-    //         var newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal))
-    //         var newHackDayTime = hackHack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, newHackHackLvl)
+        var newHackVal = hack.getStatValue('', hackTarget)
 
-    //         var newHackDayRows : StandardTableRowType = {}
-    //         hacks.forEach((hack) => {
-    //             var curVal = hack.getStatValue()  
-    //             var hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, newHackSpeed)
-    //             var newHackVal = hack.getStatValue('', hackTarget)
-    //             var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget)
-    //             newHackDayTime = newHackDayTime.add(hackTime)
+        const t03 = performance.now()
+        var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget)
+        const t04 = performance.now()
         
-    //             newHackDayRows[hack.key] = {
-    //                 'name' : hack.name,
-    //                 'level' : <>{pn(hack.level, fmt, 0)}</>,
-    //                 'bonus' : <>{pn(curVal, fmt, 2)}%</>,
-    //                 'target' : <>{pn(hackTarget, fmt)}</>,
-    //                 'tBonus' : <>{pn(newHackVal, fmt, 2)}</>,
-    //                 'time' : <>{dn(hackTime)}</>,
-    //                 'change' : <>x {pn(newHackVal / curVal, fmt)} = </>
-    //             }
-    //         })
-    //         if(lessThan(newHackDayTime, hackDayTime)) {
-    //             hackDayRows = newHackDayRows
-    //         } else {
-    //             done = true
-    //         }
-    //     }
-    // } catch {
-
-    // }
+        hackDayTime = hackDayTime.add(hackTime)
+        var milestoneChange = (hackTarget - hack.level) / hack.levelsPerMilestone()
+        
+        v01  += t02 - t01
+        v03  += t04 - t03
+        
 
 
+        hackDayRows[hack.key] = {
+            'name' : hack.name,
+            'level' : <>{pn(hack.level, fmt, 0)}</>,
+            'bonus' : <>{pn(curVal, fmt, 2)}%</>,
+            'target' : <>{pn(hackTarget, fmt)}</>,
+            'tBonus' : <>{pn(newHackVal, fmt, 2)}%</>,
+            'milestoneChange' : <>+{pn(milestoneChange, fmt)}</>,
+            'time' : <>{dn(hackTime)}</>,
+            'minTime' : <>{dn(hackTime)}</>,
+            'change' : <>x {pn(newHackVal / curVal, fmt, 3)} = </>
+        }
+    })
 
-    // hackDayRows['total'] = {
-    //     'name' : "Total",
-    //     'isTotal' : true,
-    //     'time' : <>{dn(hackDayTime)}</>,
-    // }
+    const t1 = performance.now()
+    
+
+
+    var minHackDayTime = hackDayTime
+    try{
+        var hackHack = hacks[13]
+        var hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED)
+        var hackHackLvl = hackHack.level
+        var i = 0
+        while (!doneFindingOptimal && i < 10) {
+            i = i + 1
+            var newHackHackLvl = hackHackLvl + i * hackHack.levelsPerMilestone()
+            var newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, newHackHackLvl)
+            var newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal))
+            var newHackDayTime = bd(0)//hackHack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, newHackHackLvl)
+
+            var newHackDayRows : StandardTableRowType = {}
+            hacks.forEach((hack) => {
+                var curVal = hack.getStatValue()
+                if (hack.key == HackKeys.HACK) {
+                    var hackTarget = newHackHackLvl
+                } else {
+                    var hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, hackSpeed)
+                }
+                var newHackVal = hack.getStatValue('', hackTarget)
+                var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget)
+                var minHackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget)
+                newHackDayTime = newHackDayTime.add(minHackTime)
+                var milestoneChange = (hackTarget - hack.level) / hack.levelsPerMilestone()
+        
+                newHackDayRows[hack.key] = {
+                    'name' : hack.name,
+                    'level' : <>{pn(hack.level, fmt, 0)}</>,
+                    'bonus' : <>{pn(curVal, fmt, 2)}%</>,
+                    'target' : <>{pn(hackTarget, fmt)}</>,
+                    'tBonus' : <>{pn(newHackVal, fmt, 2)}%</>,
+                    'milestoneChange' : <>+{pn(milestoneChange, fmt)}</>,
+                    'time' : <>{dn(hackTime)}</>,
+                    'minTime' : <>{dn(minHackTime)}</>,
+                    'change' : <>x {pn(newHackVal / curVal, fmt)} = </>
+                }
+            })
+            console.log(i, newHackDayTime.getValue(), minHackDayTime.getValue(), newHackDayRows)
+            if(lessThan(newHackDayTime, minHackDayTime) || lessThan(newHackDayTime, bd(24 * 60 * 60))) {
+                hackDayRows = newHackDayRows
+                minHackDayTime = newHackDayTime
+            } else {
+                doneFindingOptimal = true
+            }
+        }
+    } catch {
+
+    }
+    const t2 = performance.now()
+    console.log(t1 - t0, t2 - t1, v01, v03)
+
+
+    hackDayRows['total'] = {
+        'name' : "Total",
+        'isTotal' : true,
+        'time' : <>{dn(hackDayTime)}</>,
+        'minTime': <>{dn(minHackDayTime)}</>
+    }
      
 
     var hackOrder = ['name', 'level', 'target', 'bonus', 'change', 'tBonus', 'time']
-    var hackDayOrder = ['name', 'level', 'target', 'bonus', 'change', 'tBonus', 'time']
+    var hackDayOrder = ['name', 'level', 'target', 'milestoneChange', 'bonus', 'change', 'tBonus', 'time', 'minTime']
     var hackHeader = {
         'name' : "Name",
         'level' : "Current Level",
-        'bonus' : "Bonus",
+        'bonus' : "Current Bonus",
+        'milestoneChange': "Milestone Increase",
         'target' : "Target Level",
-        'change' : "Increase Amount",
-        'tBonus' : "Bonus Amount",
+        'change' : "Bonus Increase Amount",
+        'tBonus' : "Target Bonus Amount",
         'time' : "Time Taken",
+        'minTime' : "Min Time Taken",
     }
 
     var extraClasses = {
         "time": "text-right text-red-500",
+        "minTime": "text-right text-red-500",
         "target": "text-blue-500",
         'tBonus': "text-blue-500",
         "change": "text-green-500",
@@ -213,9 +253,9 @@ export default function Page() {
     return (
         <Content title="Hacks" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
             This page is a work in progress. There might be some errors in calculations.
-            {/* <ContentSubsection title="How do I setup my hackday?">
+            <ContentSubsection title="How do I setup my hackday?">
                 <StandardTable order={hackDayOrder} header={hackHeader} rows={hackDayRows} extraRowClasses={extraClasses}/>
-            </ContentSubsection> */}
+            </ContentSubsection>
             <ContentSubsection title="How long to go up by a percent?">
                 <StandardTable order={hackOrder} header={hackHeader} rows={hackRows} extraRowClasses={extraClasses}/>
             </ContentSubsection>

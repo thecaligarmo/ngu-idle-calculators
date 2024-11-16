@@ -5,7 +5,7 @@ import { GameMode } from "./mode"
 import Resource, { ResourceContainer, prop } from "./resource"
 import { Stat } from "./stat"
 
-const HackKeys : {[key: string]: string} = {
+export const HackKeys : {[key: string]: string} = {
     STAT: 'StatHack',
     ADVENTURE : 'AdventureHack',
     TIME_MACHINE : 'TimeMachineHack',
@@ -114,7 +114,7 @@ export class Hack extends Resource {
             prop = Object.keys(this.base)[0]
         }
         if(!_.isUndefined(this[prop])) {
-            return (100 + this[prop]) * this.getMilestoneBonus(level)
+            return (100 + (this.base[prop] * level)) * this.getMilestoneBonus(level)
         }
         return 100
     }
@@ -196,24 +196,13 @@ export class Hack extends Resource {
             level = this.level
         }
 
-        var tl = this.getFullSum(targetLevel)
-        var tl1 = this.getFullSum(targetLevel - 1)
-        var ll = this.getFullSum(level)
-        if(this.id == 0) {
-            console.log(this.id, tl.subtract(tl1), tl1.subtract(ll))
-            console.log(tl.subtract(tl1).add(tl1.subtract(ll)), tl.subtract(ll))
-            console.log(bigdec_equals(tl.subtract(tl1).add(tl1.subtract(ll)), tl.subtract(ll)))
-            console.log(this.getSpeed(res3cap, res3pow, hackSpeed, targetLevel - 1), this.getSpeed(res3cap, res3pow, hackSpeed, level))
-
-        }
+        let sigfig = 20
+        let denominator = res3cap.multiply(res3pow).multiply(hackSpeed)
 
         try {
             return (this.getFullSum(targetLevel).subtract(this.getFullSum(level)))
                 .multiply(bd(this.baseSpeedDivider))
-                .divide(res3cap, 500)
-                .divide(res3pow, 500)
-                .divide(hackSpeed, 500).multiply(bd(100))
-                .divide(bd(50), 500) // 50 ticks per seconds
+                .divide(denominator, sigfig).multiply(bd(100 / 50)) // 50 ticks per seconds
         } catch {
             return bd(1)
         }
