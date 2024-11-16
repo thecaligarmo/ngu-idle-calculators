@@ -49,6 +49,8 @@ export default function Page() {
     var dish : Dish= j('dish')
     var ings : Ingredient[] = []
     var ingList : ReactElement[] = []
+    var pairs : Ingredient[][] = []
+    var pairList : ReactElement[] = []
     if(!_.isEmpty(dish)) {
         ings = dish.orderedIngredients()
         ings.forEach((p : Ingredient) => {
@@ -56,13 +58,19 @@ export default function Page() {
                 ingList.push(<li key={p.key} className="inline-block w-1/2"><strong>{p.name}</strong>: <span className="text-green-500">{p.amount()}</span></li>)
             }
         })
-        console.log(dish.pairs)
+        pairs = dish.pairs
+        pairs.forEach((p : Ingredient[], ind : number) => {
+            let p1 = p[0].isUnlocked ? <>{p[0].name}</> : <strong className='text-red-500'>Locked</strong>
+            let p2 = p[1].isUnlocked ? <>{p[1].name}</> : <strong className='text-red-500'>Locked</strong>
+            let pkey = p[0].key + p[1].key
+            pairList.push(
+                <li key={pkey}>Pair {ind+1}: {p1} - {p2}</li>
+            )
+        })
     }
 
     return (
         <Content title="Cooking" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
-            This page is a work in progress. There might be some errors in calculations.
-
             <ContentSubsection title="What do I need for 100% meal efficiency?">
                 {(_.isEmpty(ings)) 
                     ? <p>
@@ -76,6 +84,23 @@ export default function Page() {
                         <br />
                         <ul>
                             {ingList}
+                        </ul>
+                    </>
+                }
+            </ContentSubsection>
+            <ContentSubsection title="Which ingredients are paired?">
+            {(_.isEmpty(pairs)) 
+                    ? <p>
+                        Upload your save file for things to show up
+                    </p>
+                    :
+                    <>
+                        <p>
+                            Each ingredient comes in a pair which means you can swap the levels and still get max efficiency.
+                        </p>
+                        <br />
+                        <ul>
+                            {pairList}
                         </ul>
                     </>
                 }
