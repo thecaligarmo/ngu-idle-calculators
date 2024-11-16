@@ -6,7 +6,7 @@ import _ from "lodash";
 import { Stat } from "../assets/stat";
 import { bd, bigdec_equals, bigdec_max, greaterThan, greaterThanOrEqual, isZero, toNum } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
-import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
+import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
 
 
 // General Calc - gives a percentage
@@ -26,7 +26,7 @@ function calcAll(data : any, stat : string) : bigDecimal{
             console.log('beard', beardInfoPerm(data, stat).getValue())
             console.log('challenge', challengeInfo(data, stat).getValue())
             console.log('digger', diggerInfo(data, stat).getValue())
-            console.log('equipment', equipmentInfo(data, stat).getValue())
+            console.log('equipment', equipmentWithCubeInfo(data, stat).getValue())
             console.log('hack', hackInfo(data, stat).getValue())
             console.log('ngu', nguInfo(data, stat).getValue())
             console.log('macguffin', macguffinInfo(data, stat).getValue())
@@ -44,13 +44,14 @@ function calcAll(data : any, stat : string) : bigDecimal{
         .multiply(cardInfo(data, stat).divide(base))
         .multiply(challengeInfo(data, stat))
         .multiply(diggerInfo(data, stat).divide(base))
-        .multiply(equipmentInfo(data, stat).divide(base))
+        .multiply(equipmentWithCubeInfo(data, stat).divide(base))
         .multiply(hackInfo(data, stat).divide(base))
         .multiply(nguInfo(data, stat).divide(base))
         .multiply(macguffinInfo(data, stat).divide(base))
         .multiply(perkInfo(data, stat).divide(base))
         .multiply(quirkInfo(data, stat).divide(base))
         .multiply(wishInfo(data, stat).divide(base))
+        .multiply(cookingInfo(data, stat)) // Already divided
         
 }
 
@@ -135,6 +136,7 @@ export function totalAugmentSpeed(data : any) : bigDecimal {
 export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
     var aNumberSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
     var metaSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.META) ? bd(1.2) : bd(1);
+    var schoolSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.BACKTOSCHOOL) ? bd(1.15) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.ENERGY_NGU_SPEED)
     var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.SADISTIC, 1)) ? bd(3) : bd(1);
     
@@ -142,12 +144,14 @@ export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
         .multiply(totalEnergyPower(data))
         .multiply(aNumberSetModifier)
         .multiply(metaSetModifier)
+        .multiply(schoolSetModifier)
         .multiply(tcNum)
 }
 
 export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
     var aNumberSetModifier : bigDecimal = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
     var metaSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.META) ? bd(1.2) : bd(1);
+    var schoolSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.BACKTOSCHOOL) ? bd(1.15) : bd(1);
     var gen : bigDecimal = calcAll(data, Stat.MAGIC_NGU_SPEED)
 
     var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.NORMAL, 1)) ? bd(3) : bd(1);
@@ -158,6 +162,7 @@ export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
         .multiply(totalMagicPower(data))
         .multiply(aNumberSetModifier)
         .multiply(metaSetModifier)
+        .multiply(schoolSetModifier)
         .multiply(tcNum)
 }
 
@@ -232,7 +237,7 @@ export function totalWishSpeed(data : any) :bigDecimal {
 /** Adventure Stats */
 export function totalPower(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.POWER)
-    var equipPower = equipmentInfo(data, Stat.POWER)
+    var equipPower = equipmentWithCubeInfo(data, Stat.POWER)
     var basePower = parseNum(data, 'baseAdventurePower')
 
     // Want to add equipPower instead of multiply
@@ -256,7 +261,7 @@ export function totalPower(data : any) : bigDecimal {
 
 export function totalToughness(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.TOUGHNESS)
-    var equipPower = equipmentInfo(data, Stat.TOUGHNESS)
+    var equipPower = equipmentWithCubeInfo(data, Stat.TOUGHNESS)
     var basePower = parseNum(data, 'baseAdventureToughness')
 
     // Want to add equipPower instead of multiply
@@ -274,7 +279,7 @@ export function totalToughness(data : any) : bigDecimal {
 
 export function totalHealth(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.HEALTH)
-    var equipHealth = equipmentInfo(data, Stat.HEALTH)
+    var equipHealth = equipmentWithCubeInfo(data, Stat.HEALTH)
     var baseHealth = parseNum(data, 'baseAdventureHealth')
 
     // Want to add equipHealth instead of multiply
@@ -292,7 +297,7 @@ export function totalHealth(data : any) : bigDecimal {
 
 export function totalRegen(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.REGEN)
-    var equipRegen = equipmentInfo(data, Stat.REGEN)
+    var equipRegen = equipmentWithCubeInfo(data, Stat.REGEN)
     var baseRegen = parseNum(data, 'baseAdventureRegen')
 
     // Want to add equipRegen instead of multiply
@@ -326,7 +331,7 @@ export function totalRespawnRate(data : any) : bigDecimal {
 
     // Can't use Gen because of the equipment
     return bd(1)
-        .multiply(bd(200).subtract(equipmentInfo(data, Stat.RESPAWN))).divide(bd(100))
+        .multiply(bd(200).subtract(equipmentWithCubeInfo(data, Stat.RESPAWN))).divide(bd(100))
         .multiply(nguInfo(data, Stat.RESPAWN).divide(bd(100)))
         .multiply(clockSetModifier)
         .multiply(perkInfo(data, Stat.RESPAWN).divide(bd(100)))

@@ -251,19 +251,46 @@ export function challengeInfo(data : any, key : string, gameMode : number = Game
     return bd(stat * 100)
 }
 
-function cubeInfo(data : any, key : string) : bigDecimal {
+export function cookingInfo(data : any, key : string) : bigDecimal {
+    if (key == Stat.EXPERIENCE) {
+        return parseNum(data, 'cookingExp')
+    }
+    return bd(1)
+}
+
+function cubeInfo(data : any, key : string, capAmount : bigDecimal = bd(-1)) : bigDecimal {
     var power = parseNum(data, 'cubePower')
     var toughness = parseNum(data, 'cubeToughness')
     var total = power.add(toughness)
     var digits = total.floor().getValue().length
     switch(key) {
         case Stat.POWER:
-            return power
+            var extraPow = 0
+            if( lessThan(capAmount, power)) {
+                extraPow = Math.sqrt(toNum(power.subtract(capAmount)))
+                power = capAmount
+            }
+            return power.add(bd(extraPow))
         case Stat.TOUGHNESS:
-            return toughness
+            var extraTough = 0
+            if( lessThan(capAmount, toughness)) {
+                extraTough = Math.sqrt(toNum(toughness.subtract(capAmount)))
+                toughness = capAmount
+            }
+            return toughness.add(bd(extraTough))
         case Stat.HEALTH:
+            var extraPow = 0
+            if( lessThan(capAmount, power)) {
+                extraPow = Math.sqrt(toNum(power.subtract(capAmount)))
+                power = capAmount
+            }
             return power.multiply(bd(3))
         case Stat.REGEN:
+            var extraTough = 0
+            if( lessThan(capAmount, toughness)) {
+                extraTough = Math.sqrt(toNum(toughness.subtract(capAmount)))
+                toughness = capAmount
+            }
             return toughness.multiply(bd(3/100))
         case Stat.DROP_CHANCE:
             if (digits < 3) {
@@ -367,68 +394,51 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
             }
 
     }
+    if (key == Stat.EXPERIENCE) {
+        if (isMaxxedItemSet(data, ItemSets.RED_HEART)) {
+            if ( accs.length > 0) {
+                accs.forEach((g) => {
+                    if(g.id == 119) {
+                        stat -= g.getStatValue(key)
+                    }
+                })
+            }
+        }
+    }
+    return bd(stat)
+}
 
-    var cube = cubeInfo(data, key)
+
+export function equipmentWithCubeInfo(data: any, key: string) : bigDecimal {
+    var stat = equipmentInfo(data, key)
+    
+    let capAmount = bd(-1)
+    if(key == Stat.POWER) {
+        capAmount = parseNum(data, 'baseAdventurePower').add(bd(stat))
+    }
+    if(key == Stat.TOUGHNESS) {
+        capAmount = parseNum(data, 'baseAdventureToughness').add(bd(stat))
+    }
+    if(key == Stat.HEALTH) {
+        capAmount = parseNum(data, 'baseAdventurePower').add(equipmentInfo(data, Stat.POWER))
+    }
+    if(key == Stat.REGEN) {
+        capAmount = parseNum(data, 'baseAdventureToughness').add(equipmentInfo(data, Stat.TOUGHNESS))
+    }
+
+    var cube = cubeInfo(data, key, capAmount)
 
     switch(key) {
         case Stat.POWER:
-            var basePower = parseNum(data, 'baseAdventurePower')
-            var maxCubePow = basePower.add(bd(stat))
-            var extraPow = 0
-            if( lessThan(maxCubePow, cube)) {
-                extraPow = Math.sqrt(toNum(cube.subtract(maxCubePow)))
-                cube = maxCubePow
-            }
-            
-            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube.add(bd(extraPow)))
         case Stat.TOUGHNESS:
-            var baseToughness = parseNum(data, 'baseAdventureToughness')
-            var maxCubeTough = baseToughness.add(bd(stat))
-            var extraTough = 0
-            if(lessThan(maxCubeTough, cube)) {
-                extraTough = Math.sqrt(toNum(cube.subtract(maxCubeTough)))
-                cube = maxCubeTough
-            }
-            
-            return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube.add(bd(extraTough)))
         case Stat.HEALTH:
-            // var baseHealth = parseNum(data, 'baseAdventureHealth')
-            // var maxCubeHealth = baseHealth.add(bd(stat))
-            // var extraHealth = 0
-            // if(lessThan(maxCubeHealth, cube) ) {
-            //     extraHealth = Math.sqrt(toNum(cube.subtract(maxCubeHealth)))
-            //     cube = maxCubeHealth
-            // }
-            
-            // return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube.add(bd(extraHealth)))
         case Stat.REGEN:
-            // var baseRegen = parseNum(data, 'baseAdventureRegen')
-            // var maxCubeRegen = baseRegen.add(bd(stat))
-            // console.log(maxCubeRegen, cube, stat, baseRegen);
-            // var extraRegen = 0
-            // if(lessThan(maxCubeRegen, cube)) {
-            //     extraRegen = Math.sqrt(toNum(cube.subtract(maxCubeRegen)))
-            //     cube = maxCubeRegen
-            // }
-
-            // console.log(cube, cube.add(bd(extraRegen)))
-            
             return bd(stat).round(0, bigDecimal.RoundingModes.FLOOR).add(cube)
         case Stat.ENERGY_POWER:
         case Stat.MAGIC_POWER:
         case Stat.ENERGY_BARS:
         case Stat.MAGIC_BARS:
             return bd(stat).add(cube).round(1, bigDecimal.RoundingModes.FLOOR)
-        case Stat.EXPERIENCE:
-            if (isMaxxedItemSet(data, ItemSets.RED_HEART)) {
-                if ( accs.length > 0) {
-                    accs.forEach((g) => {
-                        if(g.id == 119) {
-                            stat -= g.getStatValue(key)
-                        }
-                    })
-                }
-            }
     }
     
     return bd(stat).add(cube)//.round(0, bigDecimal.RoundingModes.DOWN)

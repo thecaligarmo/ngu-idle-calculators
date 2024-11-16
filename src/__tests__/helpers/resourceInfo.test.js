@@ -1,7 +1,7 @@
 import { ItemSets } from '@/assets/sets';
 import { Stat } from '@/assets/stat';
 import { defaultPlayerData } from '@/helpers/defaultPlayerData';
-import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wishInfo } from '@/helpers/resourceInfo';
+import { achievementAPBonus, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, challengeInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wishInfo } from '@/helpers/resourceInfo';
 import { expectClose } from '../testHelperFunctions';
 
 import earlyEvil from '../__data__/earlyEvil1';
@@ -335,21 +335,21 @@ describe('Resource Info - Equipment Info', () => {
                 'baseAdventurePower' : [defaultPlayerData(obj, 'baseAdventurePower')],
                 'baseAdventureToughness' : [defaultPlayerData(obj, 'baseAdventureToughness')],
             }
-            var ec = expectClose(equipmentInfo(data, Stat.POWER), expectedValues['power'])
+            var ec = expectClose(equipmentWithCubeInfo(data, Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentInfo(data, Stat.TOUGHNESS), expectedValues['toughness'])
+            var ec = expectClose(equipmentWithCubeInfo(data, Stat.TOUGHNESS), expectedValues['toughness'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentInfo(data, Stat.ENERGY_POWER), expectedValues['epower'])
+            var ec = expectClose(equipmentWithCubeInfo(data, Stat.ENERGY_POWER), expectedValues['epower'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentInfo(data, Stat.MAGIC_CAP), expectedValues['mcap'])
+            var ec = expectClose(equipmentWithCubeInfo(data, Stat.MAGIC_CAP), expectedValues['mcap'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentInfo(data, Stat.DROP_CHANCE), expectedValues['dc'])
+            var ec = expectClose(equipmentWithCubeInfo(data, Stat.DROP_CHANCE), expectedValues['dc'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentInfo(data, Stat.RESPAWN), expectedValues['respawn'])
+            var ec = expectClose(equipmentWithCubeInfo(data, Stat.RESPAWN), expectedValues['respawn'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentInfo(data, Stat.ENERGY_NGU_SPEED), expectedValues['engu'])
+            var ec = expectClose(equipmentWithCubeInfo(data, Stat.ENERGY_NGU_SPEED), expectedValues['engu'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentInfo(data, Stat.MAGIC_WANDOOS_SPEED), expectedValues['mwandoos'])
+            var ec = expectClose(equipmentWithCubeInfo(data, Stat.MAGIC_WANDOOS_SPEED), expectedValues['mwandoos'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )

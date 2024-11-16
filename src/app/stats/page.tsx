@@ -164,7 +164,7 @@ export default function Page() {
             <ContentSection title="Quest Stats">
                 <ul>
                     <li key="questRewards"><strong>Total QP Reward:</strong> <span className="text-red-500">{pn(totalQuestRewardBonus(playerStates), fmt)}%</span></li>
-                    <li key="questDrop"><strong>Total Quest Item Drop:</strong> <span className="text-red-500">{pn(totalQuestDropBonus(playerStates), fmt)}%</span></li>
+                    <li key="questDrop"><strong>Total Quest Item Drop:</strong> <span className="text-red-500">{pn(totalQuestDropBonus(playerStates), fmt, 2)}%</span></li>
                 </ul>
                 <ContentSubsection title="Quest Rewards Calculation" defaultHide={true}>
                     {describeStat(pageData['questRewards'], fmt)}

@@ -328,6 +328,8 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.wishes.wishes[229].level
             case 'chonkLessNotChonkier-1':
                 return playerData.wishes.wishes[230].level
+            case 'cookingExp':
+                return playerData.cooking.expBonus
             case 'cubePower':
                 return playerData.inventory.cubePower;
             case 'cubeToughness':
@@ -1289,6 +1291,7 @@ export function getPlayerNumberOptions() : string[]{
         'cardTierQP-2',
         'chonkChonkier-1',
         'chonkLessNotChonkier-1',
+        'cookingExp',
         'cubePower',
         'cubeToughness',
         'energyNGUAugmentsLevel',
