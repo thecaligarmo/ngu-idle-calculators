@@ -702,6 +702,37 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'hackMilestoneWish':
                 return playerData.beastQuest.quirkLevel[60]
 
+            case 'hackStatTarget':
+                return playerData.hacks.hacks[0].target
+            case 'hackAdventureTarget':
+                return playerData.hacks.hacks[1].target
+            case 'hackTimeMachineTarget':
+                return playerData.hacks.hacks[2].target
+            case 'hackDropChanceTarget':
+                return playerData.hacks.hacks[3].target
+            case 'hackAugmentTarget':
+                return playerData.hacks.hacks[4].target
+            case 'hackENGUTarget':
+                return playerData.hacks.hacks[5].target
+            case 'hackMNGUTarget':
+                return playerData.hacks.hacks[6].target
+            case 'hackBloodTarget':
+                return playerData.hacks.hacks[7].target
+            case 'hackQPTarget':
+                return playerData.hacks.hacks[8].target
+            case 'hackDaycareTarget':
+                return playerData.hacks.hacks[9].target
+            case 'hackExpTarget':
+                return playerData.hacks.hacks[10].target
+            case 'hackNumberTarget':
+                return playerData.hacks.hacks[11].target
+            case 'hackPPTarget':
+                return playerData.hacks.hacks[12].target
+            case 'hackHackTarget':
+                return playerData.hacks.hacks[13].target
+            case 'hackWishTarget':
+                return playerData.hacks.hacks[14].target
+
 
             case 'numRebirthChallenges-2':
                 return playerData.challenges.noRebirthChallenge.curCompletions
@@ -1475,6 +1506,21 @@ export function getPlayerNumberOptions() : string[]{
         'hackMilestonePP',
         'hackMilestoneHack',
         'hackMilestoneWish',
+        'hackStatTarget',
+        'hackAdventureTarget',
+        'hackTimeMachineTarget',
+        'hackDropChanceTarget',
+        'hackAugmentTarget',
+        'hackENGUTarget',
+        'hackMNGUTarget',
+        'hackBloodTarget',
+        'hackQPTarget',
+        'hackDaycareTarget',
+        'hackExpTarget',
+        'hackNumberTarget',
+        'hackPPTarget',
+        'hackHackTarget',
+        'hackWishTarget',
         'redLiquidBonus^',
         'numRebirthChallenges-2',
         'questIdleDivider-1',

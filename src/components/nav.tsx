@@ -66,6 +66,13 @@ export default function Nav({ children } : PropsWithChildren) {
             </ul>
             : null
         }
+        { pathname.startsWith('/hacks') ?
+            <ul className="flex border-b dark:border-white border-black">
+                <NavElt href="/hacks">Normal</NavElt>
+                <NavElt href="/hacks/hackday">Hack Day</NavElt>
+            </ul>
+            : null
+        }
       </nav>
     );
   }

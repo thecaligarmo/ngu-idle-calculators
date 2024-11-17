@@ -119,18 +119,36 @@ export class Hack extends Resource {
         return 100
     }
 
+    getStatAtMilestone(milestone : number, prop: string = '') : number {
+        var level = this.levelsPerMilestone() * milestone
+        return this.getStatValue('', level)
+    }
+
     levelsPerMilestone() : number {
         return this.baseMilestone - this.milestoneReduction
+    }
+
+    getMilestone(level : number = -1) : number {
+        if(level == -1) {
+            level = this.level
+        }
+        return Math.floor(level / (this.levelsPerMilestone()))
     }
 
     getMilestoneBonus(level : number = -1) : number {
         if(level == -1) {
             level = this.level
         }
-        var numMilestones = Math.floor(level / (this.levelsPerMilestone()))
+        var numMilestones = this.getMilestone(level)
         return this.milestoneBonus ** numMilestones
     }
-
+    
+    getMilestoneLevel(milestone : number = -1) {
+        if (milestone == -1) {
+            milestone = this.getMilestone()
+        }
+        return milestone * this.levelsPerMilestone()
+    }
     getMilestoneName() : string {
         // Milestone reduction is dependent on key
         switch(this.key) {
@@ -167,11 +185,60 @@ export class Hack extends Resource {
         }
         return '' 
     }
+    getTargetName() : string {
+        // Milestone reduction is dependent on key
+        switch(this.key) {
+            case HackKeys.STAT:
+                return 'hackStatTarget'
+            case HackKeys.ADVENTURE :
+                return 'hackAdventureTarget'
+            case HackKeys.TIME_MACHINE :
+                return 'hackTimeMachineTarget'
+            case HackKeys.DROP_CHANCE :
+                return 'hackDropChanceTarget'
+            case HackKeys.AUGMENT_SPEED:
+                return 'hackAugmentTarget'
+            case HackKeys.ENERGY_NGU :
+                return 'hackENGUTarget'
+            case HackKeys.MAGIC_NGU :
+                return 'hackMNGUTarget'
+            case HackKeys.BLOOD:
+                return 'hackBloodTarget'
+            case HackKeys.QUEST:
+                return 'hackQPTarget'
+            case HackKeys.DAYCARE:
+                return 'hackDaycareTarget'
+            case HackKeys.EXP:
+                return 'hackExpTarget'
+            case HackKeys.NUMBER:
+                return 'hackNumberTarget'
+            case HackKeys.PP:
+                return 'hackPPTarget'
+            case HackKeys.HACK:
+                return 'hackHackTarget'
+            case HackKeys.WISH:
+                return 'hackWishTarget'
+        }
+        return '' 
+    }
 
     getLevelFromVal(value : number) : number {
+        // Due to the milestones, there's no "nice" way to do this other than looping.
         var prop = Object.keys(this.base)[0]
-        var level = Math.log(value / (100 + this[prop])) / Math.log(this.milestoneBonus)  * (this.levelsPerMilestone())
-        return Math.round(level)
+        var level = this.level
+        var val = this.getStatValue(prop)
+        // First go down
+        while(val > value) {
+            level = level - 1
+            val = this.getStatValue(prop, level)
+        }
+        // Then go up
+        while(val < value){
+            level = level + 1
+            val = this.getStatValue(prop, level)
+        }
+
+        return level
     }
 
     getSpeed(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal, level : number = -1) : bigDecimal {
@@ -241,7 +308,7 @@ export class Hack extends Resource {
         }
 
         var levelsPerMilestone = this.levelsPerMilestone()
-        var milestones = Math.floor(level / levelsPerMilestone)
+        var milestones = this.getMilestone(level)
         return (milestones + 1) * levelsPerMilestone
     }
 
@@ -251,7 +318,7 @@ export class Hack extends Resource {
         }
 
         var levelsPerMilestone = this.levelsPerMilestone()
-        var milestones = Math.floor(level / levelsPerMilestone)
+        var milestones = this.getMilestone(level)
         var lvl = milestones * levelsPerMilestone
         if (lvl == level) {
             return (milestones - 1) * levelsPerMilestone
