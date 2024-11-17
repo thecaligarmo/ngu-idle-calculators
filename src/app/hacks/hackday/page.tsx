@@ -91,6 +91,7 @@ export default function Page() {
     var hackDayRows : StandardTableRowType = {}
     var hackDayTime = bd(0)
     var doneFindingOptimal = false
+    var hackHackTime = bd(0)
 
     hacks.forEach((hack) => {
         var curVal = hack.getStatValue()
@@ -137,6 +138,9 @@ export default function Page() {
                 }
                 var newHackVal = hack.getStatValue('', hackTarget)
                 var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget, -1, true)
+                if (hack.key == HackKeys.HACK) {
+                    hackHackTime = hackTime
+                }
                 var minHackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget)
                 newHackDayTime = newHackDayTime.add(minHackTime)
                 var milestoneChange = Math.ceil((hackTarget - hack.level) / hack.levelsPerMilestone())
@@ -170,7 +174,7 @@ export default function Page() {
     hackDayRows['total'] = {
         'name' : "Total",
         'isTotal' : true,
-        'time' : <>{dn(hackDayTime)}</>,
+        'time' : <>{dn(hackDayTime.add(hackHackTime))}</>,
         'minTime': <>{dn(minHackDayTime)}</>
     }
      
@@ -184,7 +188,7 @@ export default function Page() {
         'target' : "Target Level",
         'change' : "Bonus Increase Amount",
         'tBonus' : "Target Bonus Amount",
-        'time' : "Time Taken",
+        'time' : "Max Time Taken",
         'minTime' : "Min Time Taken",
     }
 
@@ -203,6 +207,7 @@ export default function Page() {
         <Content title="Hacks" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
             This page is a work in progress. There might be some errors in calculations.
             <ContentSubsection title="How do I setup my hackday?">
+                The max time taken is if you do the Hack hack last and the min time take is if you do it first.
                 <StandardTable order={hackDayOrder} header={hackHeader} rows={hackDayRows} extraRowClasses={extraClasses}/>
             </ContentSubsection>
         </Content>
