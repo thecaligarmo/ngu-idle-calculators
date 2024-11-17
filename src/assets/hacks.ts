@@ -218,9 +218,33 @@ export class Hack extends Resource {
         
     }
 
-    getMaxLevelHackDay(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal) : number {
+    getNextMilestone(level : number = -1) : number {
+        if(level == -1) {
+            level = this.level
+        }
+
         var levelsPerMilestone = this.levelsPerMilestone()
-        var level = this.level + levelsPerMilestone
+        var milestones = Math.floor(level / levelsPerMilestone)
+        return (milestones + 1) * levelsPerMilestone
+    }
+
+    getPreviousMilestone(level : number = -1) : number {
+        if(level == -1) {
+            level = this.level
+        }
+
+        var levelsPerMilestone = this.levelsPerMilestone()
+        var milestones = Math.floor(level / levelsPerMilestone)
+        var lvl = milestones * levelsPerMilestone
+        if (lvl == level) {
+            return (milestones - 1) * levelsPerMilestone
+        }
+        return lvl
+    }
+
+    getMaxLevelHackDay(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal) : number {
+        var level = this.getNextMilestone()
+
         var maxTime = bd(this.getMaxTimeHackDay())
 
         // var t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, level)
@@ -251,10 +275,11 @@ export class Hack extends Resource {
         // var level = this.level + levelsPerMilestone
         var t = bd((a * level - 1 - level) * a**(level))
         while (lessThan(t, gt)) { 
-            level = level + levelsPerMilestone
+            level = this.getNextMilestone(level)
             t = bd((a * level - 1 - level) * a**(level))
         }
-        return level - levelsPerMilestone
+
+        return this.getPreviousMilestone(level)
         
     }
 

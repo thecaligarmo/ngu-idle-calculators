@@ -144,7 +144,7 @@ export default function Page() {
         const t04 = performance.now()
         
         hackDayTime = hackDayTime.add(hackTime)
-        var milestoneChange = (hackTarget - hack.level) / hack.levelsPerMilestone()
+        var milestoneChange = Math.ceil((hackTarget - hack.level) / hack.levelsPerMilestone())
         
         v01  += t02 - t01
         v03  += t04 - t03
@@ -172,11 +172,11 @@ export default function Page() {
     try{
         var hackHack = hacks[13]
         var hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED)
-        var hackHackLvl = hackHack.level
+        var newHackHackLvl = hackHack.level
         var i = 0
         while (!doneFindingOptimal && i < 10) {
             i = i + 1
-            var newHackHackLvl = hackHackLvl + i * hackHack.levelsPerMilestone()
+            var newHackHackLvl = hackHack.getNextMilestone(newHackHackLvl)
             var newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, newHackHackLvl)
             var newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal))
             var newHackDayTime = bd(0)//hackHack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, newHackHackLvl)
@@ -197,7 +197,7 @@ export default function Page() {
                 var minHackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget)
                 const t04 = performance.now()
                 newHackDayTime = newHackDayTime.add(minHackTime)
-                var milestoneChange = (hackTarget - hack.level) / hack.levelsPerMilestone()
+                var milestoneChange = Math.ceil((hackTarget - hack.level) / hack.levelsPerMilestone())
 
                 v01  += t02 - t01
                 v03  += t04 - t03
