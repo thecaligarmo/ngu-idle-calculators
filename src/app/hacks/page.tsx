@@ -121,10 +121,6 @@ export default function Page() {
         }
     })
 
-    const t0 = performance.now()
-    var v01 = 0
-    var v03 = 0
-    
     // Figure out hackday timers
     var hackDayRows : StandardTableRowType = {}
     var hackDayTime = bd(0)
@@ -132,24 +128,11 @@ export default function Page() {
 
     hacks.forEach((hack) => {
         var curVal = hack.getStatValue()
-
-        const t01 = performance.now()
         var hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, hackSpeed)
-        const t02 = performance.now()
-
         var newHackVal = hack.getStatValue('', hackTarget)
-
-        const t03 = performance.now()
         var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget)
-        const t04 = performance.now()
-        
         hackDayTime = hackDayTime.add(hackTime)
         var milestoneChange = Math.ceil((hackTarget - hack.level) / hack.levelsPerMilestone())
-        
-        v01  += t02 - t01
-        v03  += t04 - t03
-        
-
 
         hackDayRows[hack.key] = {
             'name' : hack.name,
@@ -163,9 +146,6 @@ export default function Page() {
             'change' : <>x {pn(newHackVal / curVal, fmt, 3)} = </>
         }
     })
-
-    const t1 = performance.now()
-    
 
 
     var minHackDayTime = hackDayTime
@@ -184,23 +164,17 @@ export default function Page() {
             var newHackDayRows : StandardTableRowType = {}
             hacks.forEach((hack) => {
                 var curVal = hack.getStatValue()
-                const t01 = performance.now()
                 if (hack.key == HackKeys.HACK) {
                     var hackTarget = newHackHackLvl
                 } else {
                     var hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, hackSpeed)
                 }
-                const t02 = performance.now()
                 var newHackVal = hack.getStatValue('', hackTarget)
-                const t03 = performance.now()
                 var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget)
                 var minHackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget)
-                const t04 = performance.now()
                 newHackDayTime = newHackDayTime.add(minHackTime)
                 var milestoneChange = Math.ceil((hackTarget - hack.level) / hack.levelsPerMilestone())
 
-                v01  += t02 - t01
-                v03  += t04 - t03
         
                 newHackDayRows[hack.key] = {
                     'name' : hack.name,
@@ -225,8 +199,6 @@ export default function Page() {
     } catch {
 
     }
-    const t2 = performance.now()
-    // console.log(t1 - t0, t2 - t1, v01, v03)
 
 
     hackDayRows['total'] = {

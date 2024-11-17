@@ -191,13 +191,30 @@ export class Hack extends Resource {
         }
     }
 
-    getTimeBetweenLevels(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal, targetLevel :number, level : number = -1) : bigDecimal {
+    getTimeBetweenLevels(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal, targetLevel :number, level : number = -1, withSpeedChange : boolean = false) : bigDecimal {
         if(level == -1) {
             level = this.level
         }
 
-        let denominator = res3cap.multiply(res3pow).multiply(hackSpeed)
         try {
+            // If we're doing with a speed change, we go one at a time
+            if (this.key == HackKeys.HACK && withSpeedChange) {
+                let X = bd(this.baseSpeedDivider)
+                        .multiply(bd(100/50))
+                        .divide(
+                            res3cap.multiply(res3pow)
+                        )
+                let time = bd(0)
+                let a = 1.0078
+                let bonusHackSpeed = hackSpeed.divide(bd(this.getStatValue(Stat.HACK_SPEED)))
+                for(let i = level; i < targetLevel; i++) {
+                    time = time.add(bd(a**i * (i+1)).divide(bonusHackSpeed.multiply(bd(this.getStatValue('', i)))))
+                }
+                return X.multiply(time)
+            }
+
+            let denominator = res3cap.multiply(res3pow).multiply(hackSpeed)
+        
             return (this.getFullSum(targetLevel).subtract(this.getFullSum(level)))
                 .multiply(bd(this.baseSpeedDivider))
                 .multiply(bd(100 / 50)) // 50 ticks per seconds
@@ -214,7 +231,7 @@ export class Hack extends Resource {
 
         var a = 1.0078
         return bd( 1 + (a * level - level - 1) * a**level)
-                .divide(bd((1 - 1.0078)**2))
+                .divide(bd((1 - a)**2))
         
     }
 
