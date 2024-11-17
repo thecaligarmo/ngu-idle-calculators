@@ -30,7 +30,7 @@ export default function Page() {
     var fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [['totalRes3Power', 'totalRes3Cap', 'totalHackSpeed%'],
+    var infoRequired : requiredDataType = [['totalRes3Power', 'totalRes3Cap', 'totalHackSpeed%', 'blueHeart^'],
         [   
             'hackMilestoneStat',
             'hackMilestoneAdventure',
@@ -50,9 +50,9 @@ export default function Page() {
         ]
     ]
     // Set extra required (not from playerData)
-    var extraRequired  : requiredDataType = [['percentIncrease%']
+    var extraRequired  : requiredDataType = [['percentIncrease%','addRes3BetaPotion^', 'addRes3DeltaPotion^']
     ]
-    var goRequired : requiredDataType = [['goResource3Power%', 'goResource3Cap%', 'goHacks%']]
+    var goRequired : requiredDataType = [['goResource3Power%', 'goResource3Cap%', 'goRawHackSpeed%']]
     const playerStates = createStatesForData(extraRequired, goRequired);
     
     // Get required data
@@ -91,9 +91,14 @@ export default function Page() {
     
     
     var res3pow = v('totalRes3Power')
+    if (c('addRes3BetaPotion^')) {
+        res3pow = c('blueHeart^') ? res3pow.multiply(bd(2.2)) : res3pow.multiply(bd(2))
+    }
+    if (c('addRes3DeltaPotion^')) {
+        res3pow = c('blueHeart^') ? res3pow.multiply(bd(3.3)) : res3pow.multiply(bd(3))
+    }
     var res3cap = v('totalRes3Cap')
     var hackSpeed = v('totalHackSpeed%')
-
 
     var hacks : Hack[] = Object.values(j('hacks'))
     var hackRows : StandardTableRowType = {}
@@ -179,16 +184,23 @@ export default function Page() {
             var newHackDayRows : StandardTableRowType = {}
             hacks.forEach((hack) => {
                 var curVal = hack.getStatValue()
+                const t01 = performance.now()
                 if (hack.key == HackKeys.HACK) {
                     var hackTarget = newHackHackLvl
                 } else {
                     var hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, hackSpeed)
                 }
+                const t02 = performance.now()
                 var newHackVal = hack.getStatValue('', hackTarget)
+                const t03 = performance.now()
                 var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget)
                 var minHackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget)
+                const t04 = performance.now()
                 newHackDayTime = newHackDayTime.add(minHackTime)
                 var milestoneChange = (hackTarget - hack.level) / hack.levelsPerMilestone()
+
+                v01  += t02 - t01
+                v03  += t04 - t03
         
                 newHackDayRows[hack.key] = {
                     'name' : hack.name,
@@ -202,7 +214,7 @@ export default function Page() {
                     'change' : <>x {pn(newHackVal / curVal, fmt)} = </>
                 }
             })
-            console.log(i, newHackDayTime.getValue(), minHackDayTime.getValue(), newHackDayRows)
+            // console.log(i, newHackDayTime.getValue(), minHackDayTime.getValue(), newHackDayRows)
             if(lessThan(newHackDayTime, minHackDayTime) || lessThan(newHackDayTime, bd(24 * 60 * 60))) {
                 hackDayRows = newHackDayRows
                 minHackDayTime = newHackDayTime

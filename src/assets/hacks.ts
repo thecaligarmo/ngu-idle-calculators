@@ -179,13 +179,13 @@ export class Hack extends Resource {
             level = this.level
         }
         try {
+            let denominator = res3cap.multiply(res3pow).multiply(hackSpeed)
             return bd(this.baseSpeedDivider)
                     .multiply(bd(1.0078**level))
                     .multiply(bd(level + 1))
-                    .divide(res3cap)
-                    .divide(res3pow)
-                    .divide(hackSpeed).multiply(bd(100))
-                    .divide(bd(50)) // 50 ticks per seconds
+                    .multiply(bd(100/50)) // 50 ticks per seconds
+                    .divide(denominator)
+                    
         } catch {
             return bd(1)
         }
@@ -196,13 +196,12 @@ export class Hack extends Resource {
             level = this.level
         }
 
-        let sigfig = 20
         let denominator = res3cap.multiply(res3pow).multiply(hackSpeed)
-
         try {
             return (this.getFullSum(targetLevel).subtract(this.getFullSum(level)))
                 .multiply(bd(this.baseSpeedDivider))
-                .divide(denominator, sigfig).multiply(bd(100 / 50)) // 50 ticks per seconds
+                .multiply(bd(100 / 50)) // 50 ticks per seconds
+                .divide(denominator)
         } catch {
             return bd(1)
         }
@@ -212,27 +211,51 @@ export class Hack extends Resource {
         if(level == -1) {
             level = this.level
         }
-        return bd(1 - ( (level + 1) * 1.0078**(level)))
-                .divide(bd(1-1.0078), 50)
-                .add(
-                    bd(1.0078 - 1.0078**(level + 1)).divide(bd((1 - 1.0078)**2), 50)
-                )
+
+        var a = 1.0078
+        return bd( 1 + (a * level - level - 1) * a**level)
+                .divide(bd((1 - 1.0078)**2))
+        
     }
 
     getMaxLevelHackDay(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal) : number {
         var levelsPerMilestone = this.levelsPerMilestone()
         var level = this.level + levelsPerMilestone
         var maxTime = bd(this.getMaxTimeHackDay())
-        var t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, level)
-        if(isOne(t)) {
-            return level - levelsPerMilestone
-        }
-        while (lessThan(t, maxTime)) { 
-            level = level + levelsPerMilestone
-            t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, level)
-        }
+
+        // var t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, level)
+        // if(isOne(t)) {
+        //     return level - levelsPerMilestone
+        // }
+        // while (lessThan(t, maxTime)) { 
+        //     level = level + levelsPerMilestone
+        //     t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, level)
+        // }
         
+        // return level - levelsPerMilestone
+
+        // We use math to find a smaller equation.
+        var a = 1.0078
+        var sigfig = 12
+        var gt = maxTime
+                    .multiply(res3cap)
+                    .multiply(res3pow)
+                    .multiply(hackSpeed)
+                    .multiply(bd(50/100))
+                    .multiply(bd((1 - a)**2))
+                    .divide(bd(this.baseSpeedDivider), sigfig)
+                .add(
+                    bd((a * this.level - this.level - 1) * a**(this.level))
+                )
+
+        // var level = this.level + levelsPerMilestone
+        var t = bd((a * level - 1 - level) * a**(level))
+        while (lessThan(t, gt)) { 
+            level = level + levelsPerMilestone
+            t = bd((a * level - 1 - level) * a**(level))
+        }
         return level - levelsPerMilestone
+        
     }
 
     getMaxTimeHackDay() : number {

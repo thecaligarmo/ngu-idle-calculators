@@ -37,7 +37,7 @@ export default function Page() {
     var extraRequired  : requiredDataType = [
         [['customPercentage%', 1], ['customEnergyAmount', 1], ['customMagicAmount', 1], ['customResource3Amount', 1]]
     ]
-    var goRequired : requiredDataType = [['goEnergyPower%', 'goEnergyCap%', 'goMagicPower%', 'goMagicCap%', 'goResource3Power%', 'goResource3Cap%', 'goWishes%']]
+    var goRequired : requiredDataType = [['goEnergyPower%', 'goEnergyCap%', 'goMagicPower%', 'goMagicCap%', 'goResource3Power%', 'goResource3Cap%', 'goRawWishSpeed%']]
     const playerStates = createStatesForData(extraRequired, goRequired);
     
     // Get required data

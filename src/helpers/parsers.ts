@@ -8,7 +8,7 @@ const calcToGo : {[k:string] : string} = {
     'totalEnergyNGUSpeedFactor%' : 'goEnergyNGU%',
     'totalEnergyPower' : 'goEnergyPower%',
     'totalExpBonus%' : 'goExperience%',
-    'totalHackSpeed%' : 'goHacks%',
+    'totalHackSpeed%' : 'goRawHackSpeed%',
     'totalMagicCap' : 'goMagicCap%',
     'totalMagicNGUSpeedFactor%' : 'goMagicNGU%',
     'totalMagicPower' : 'goMagicPower%',
@@ -18,7 +18,7 @@ const calcToGo : {[k:string] : string} = {
     'totalRes3Power' : 'goResource3Power%',
     'totalRespawnTime' : 'goRespawn%',
     'totalSeedGainBonus%' : 'goSeedGain%',
-    'totalWishSpeed%' : 'goWishes%',
+    'totalWishSpeed%' : 'goRawWishSpeed%',
     'totalYggdrasilYieldBonus%' : 'goYggdrasilYield%',
 }
 
