@@ -78,6 +78,11 @@ export class Wish  extends Resource {
             if (level == this.maxLevel || isZero(wishSpeed)) {
                 return capsNeeded
             }
+
+            // Make sure we have something:
+            if(isZero(epower) || isZero(ecap) || isZero(mpower) || isZero(mcap) || isZero(rpower) || isZero(rcap) ) {
+                return capsNeeded
+            }
         
             let speedNeeded = bd(1).divide(bd(4*60*60), 100)
             let rootNeeded = speedNeeded.multiply(
