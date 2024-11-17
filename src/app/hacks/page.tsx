@@ -19,7 +19,7 @@ const HACKS_PERCENTAGE = 'percentage'
 const HACKS_MILESTONE = 'milestone'
 
 export default function Page() {
-    const [calcType, setCalcType] = useState(HACKS_PERCENTAGE)
+    const [calcType, setCalcType] = useState(HACKS_TARGET)
     var fmt = getNumberFormat();
 
     // Set data required (from playerData)

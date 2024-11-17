@@ -2233,6 +2233,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_NGU_SPEED, 1600],
         [Stat.MAGIC_NGU_SPEED, 1600],
     ]),
+    new Item(387, 'glopRecipe', 'GLOP Recipe', Slot.OTHER, Zones.ITHUNGERS, 100, []),
     new Item(388, 'ascendedx7Pendant', 'Ascended x7 Pendant', Slot.ACCESSORY, Zones.FOREST_PENDANT, 100, [
         [Stat.POWER, 400000000],
         [Stat.TOUGHNESS, 400000000],
