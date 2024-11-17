@@ -136,7 +136,7 @@ export default function Page() {
                     var hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, hackSpeed)
                 }
                 var newHackVal = hack.getStatValue('', hackTarget)
-                var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget)
+                var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget, -1, true)
                 var minHackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget)
                 newHackDayTime = newHackDayTime.add(minHackTime)
                 var milestoneChange = Math.ceil((hackTarget - hack.level) / hack.levelsPerMilestone())
