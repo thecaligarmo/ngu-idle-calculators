@@ -260,37 +260,38 @@ export class Hack extends Resource {
 
     getMaxTimeHackDay() : number {
         // Milestone reduction is dependent on key
+        // We go a little bit over as it's easier to go down than to go up
         switch(this.key) {
             case HackKeys.STAT:
-                return 15 * 60
+                return 15 * 60 * 1.1
             case HackKeys.ADVENTURE :
                 return 12 * 60 * 60
             case HackKeys.TIME_MACHINE :
-                return 30 * 60
+                return 30 * 60 * 1.3
             case HackKeys.DROP_CHANCE :
-                return 30 * 60
+                return 30 * 60 * 1.3
             case HackKeys.AUGMENT_SPEED:
-                return 15 * 60
+                return 15 * 60 * 1.1
             case HackKeys.ENERGY_NGU :
-                return 60 * 60
+                return 60 * 60 * 1.2
             case HackKeys.MAGIC_NGU :
-                return 60 * 60
+                return 60 * 60 * 1.2
             case HackKeys.BLOOD:
-                return 30 * 60
+                return 30 * 60 * 1.3
             case HackKeys.QUEST:
-                return 6 * 60 * 60
+                return 6 * 60 * 60 * 1.05
             case HackKeys.DAYCARE:
-                return 30 * 60
+                return 30 * 60 * 1.3
             case HackKeys.EXP:
-                return 6 * 60 * 60
+                return 6 * 60 * 60 * 1.05
             case HackKeys.NUMBER:
-                return 15 * 60
+                return 15 * 60 * 1.1
             case HackKeys.PP:
-                return 6 * 60 * 60
+                return 6 * 60 * 60 * 1.05
             case HackKeys.HACK:
                 return 0
             case HackKeys.WISH:
-                return 60 * 60
+                return 60 * 60 * 1.1
         }
         return 0
     }

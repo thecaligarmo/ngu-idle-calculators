@@ -215,7 +215,7 @@ export default function Page() {
                 }
             })
             // console.log(i, newHackDayTime.getValue(), minHackDayTime.getValue(), newHackDayRows)
-            if(lessThan(newHackDayTime, minHackDayTime) || lessThan(newHackDayTime, bd(24 * 60 * 60))) {
+            if(lessThan(newHackDayTime, minHackDayTime) || lessThan(newHackDayTime, bd(28 * 60 * 60))) {
                 hackDayRows = newHackDayRows
                 minHackDayTime = newHackDayTime
             } else {
@@ -226,7 +226,7 @@ export default function Page() {
 
     }
     const t2 = performance.now()
-    console.log(t1 - t0, t2 - t1, v01, v03)
+    // console.log(t1 - t0, t2 - t1, v01, v03)
 
 
     hackDayRows['total'] = {
