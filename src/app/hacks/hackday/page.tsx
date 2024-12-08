@@ -201,10 +201,10 @@ export default function Page() {
     }
 
     
-    
+    var preChildren = (<p>This page will calculate the milestones needed to perform a 24 hour hackday.</p>)
 
     return (
-        <Content title="Hacks" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
+        <Content title="Hacks" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq} prechildren={preChildren}>
             This page is a work in progress. There might be some errors in calculations.
             <ContentSubsection title="How do I setup my hackday?">
                 The max time taken is if you do the Hack hack last and the min time take is if you do it first.

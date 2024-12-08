@@ -174,12 +174,14 @@ export default function Page() {
     }
 
 
-    
+    var titleText = "How long does it take to increase hacks "
     switch (calcType) {
         case HACKS_TARGET:
+            titleText += "using targets?"
             extraReq = disableItem(extraReq, ['percentIncrease%','milestoneIncrease-2']);
             break;
         case HACKS_PERCENTAGE:
+            titleText += "by a percent of the stat value?"
             extraReq = disableItem(extraReq, ['milestoneIncrease-2']);
             infoReq = disableItem(infoReq, [
                 'hackStatTarget',
@@ -200,6 +202,7 @@ export default function Page() {
             ])
             break;
         case HACKS_MILESTONE:
+            titleText += "using milestones?"
             extraReq = disableItem(extraReq, ['percentIncrease%']);
             infoReq = disableItem(infoReq, [
                 'hackStatTarget',
@@ -235,7 +238,7 @@ export default function Page() {
     return (
         <Content prechildren={topButtons} title="Hacks" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
             This page is a work in progress. There might be some errors in calculations.
-            <ContentSubsection title="How long to go up by a percent?">
+            <ContentSubsection title={titleText}>
                 <StandardTable order={hackOrder} header={hackHeader} rows={hackRows} extraRowClasses={extraClasses}/>
             </ContentSubsection>
         </Content>
