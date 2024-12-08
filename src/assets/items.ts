@@ -154,6 +154,7 @@ export const StatType : {[index: number]: [string | string[], number]} = {
 
 
 export const ITEMLIST = [
+    new Item(0, 'none', 'None', Slot.WEAPON, [], 100, []),
     new Item(1, 'powerBoost1', 'Power Boost 1', Slot.BOOST, [Zones.ITOPOD, Zones.TUTORIAL, Zones.SEWERS, Zones.FOREST, Zones.CAVE], 100, []),
     new Item(2, 'powerBoost2', 'Power Boost 2', Slot.BOOST, [Zones.ITOPOD, Zones.FOREST, Zones.CAVE, Zones.SKY, Zones.HSB], 100, []),
     new Item(3, 'powerBoost5', 'Power Boost 5', Slot.BOOST, [Zones.SKY, Zones.HSB, Zones.CLOCK, Zones.ITOPOD], 100, []),
@@ -482,6 +483,7 @@ export const ITEMLIST = [
         [Stat.MAGIC_WANDOOS_SPEED, 30],
         [Stat.AT_SPEED, 40],
     ]),
+    new Item(102, 'aNumber', 'A Number', Slot.OTHER, Zones.GRB, 100, []),
     new Item(103, 'spoopyHelmet', 'Spoopy Helmet', Slot.HEAD, Zones.ANCIENT_BATTLEFIELD, 100, [
         [Stat.POWER, 50],
         [Stat.TOUGHNESS, 1000],
@@ -1060,6 +1062,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_NGU_SPEED, 40],
         [Stat.MAGIC_NGU_SPEED, 40],
     ]),
+    new Item(197, 'aScrapOfPaper', 'A Scrap Of Paper', Slot.OTHER, Zones.JAKE, 100, []),
     new Item(198, 'energyPowerMacGuffinFragment', 'Energy Power MacGuffin Fragment', Slot.OTHER, Zones.SEWERS, 100, []),
     new Item(200, 'magicPowerMacGuffinFragment', 'Magic Power MacGuffin Fragment', Slot.OTHER, Zones.FOREST, 100, []),
     new Item(199, 'energyCapMacGuffinFragment', 'Energy Cap MacGuffin Fragment', Slot.OTHER, Zones.CAVE, 100, []),

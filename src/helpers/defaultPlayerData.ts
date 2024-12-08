@@ -974,7 +974,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                     weaponTwoItem.importStats(weaponTwo)
                     return weaponTwoItem
                 }
-                return null
+                return _.cloneDeep(ITEMS[0])
                 
             case 'equipmentHead':
                 let head : any = playerData.inventory.head;
