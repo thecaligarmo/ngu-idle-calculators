@@ -30,13 +30,14 @@ export default function Nav({ children } : PropsWithChildren) {
             <NavElt href="/daily">Daily</NavElt>
             <NavElt href="/hacks">Hacks</NavElt>
             <NavElt href="/ngus" hasChildren={true}>NGUs</NavElt>
-            <NavElt href="/zone">Optimal Zone</NavElt>
+            
             <NavElt href="/ratios">Ratios</NavElt>
             <NavElt href="/wandoos">Wandoos</NavElt>
             <NavElt href="/wishes">Wishes</NavElt>
             <NavElt href="/ygg">Ygg</NavElt>
             <NavElt href="/stats">Stats</NavElt>
-            <NavElt href="/about">About/Credits</NavElt>
+            <NavElt href="/zone">Zones</NavElt>
+            <NavElt href="/about">About</NavElt>
 
             <li key="save" className="flex-grow">
                 <ImportSaveForm />
