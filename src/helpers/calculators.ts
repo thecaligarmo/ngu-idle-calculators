@@ -4,7 +4,7 @@ import { ItemSets } from "@/assets/sets";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { Stat } from "../assets/stat";
-import { bd, bigdec_equals, bigdec_max, greaterThan, greaterThanOrEqual, isZero, toNum } from "./numbers";
+import { bd, bigdec_equals, bigdec_max, bigdec_min, greaterThan, greaterThanOrEqual, isZero, toNum } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
 import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
 
@@ -73,35 +73,51 @@ export function boostRecyclying(data : any) : bigDecimal {
 
 /** Energy */
 export function totalEnergyPower(data : any) : bigDecimal {
-    return parseNum(data, 'baseEnergyPower')
-        .multiply(calcAll(data, Stat.ENERGY_POWER)).divide(bd(100))
+    return bigdec_min(
+        bd(1e18).multiply(apItemInfo(data, Stat.ENERGY_POWER)),
+        parseNum(data, 'baseEnergyPower')
+            .multiply(calcAll(data, Stat.ENERGY_POWER)).divide(bd(100))
+)
 }
 
 export function totalEnergyBar(data : any) : bigDecimal {
-    return parseNum(data, 'baseEnergyBar')
-        .multiply(calcAll(data, Stat.ENERGY_BARS)).divide(bd(100));
-}
+    return bigdec_min(
+            bd(1e18).multiply(apItemInfo(data, Stat.ENERGY_BARS)),
+            parseNum(data, 'baseEnergyBar')
+                .multiply(calcAll(data, Stat.ENERGY_BARS)).divide(bd(100))
+        )
+    }
 
 export function totalEnergyCap(data : any) : bigDecimal {
-    return parseNum(data, 'baseEnergyCap')
-        .multiply(calcAll(data, Stat.ENERGY_CAP)).divide(bd(100));
+    return bigdec_min(bd(9e18),
+        parseNum(data, 'baseEnergyCap')
+        .multiply(calcAll(data, Stat.ENERGY_CAP)).divide(bd(100))
+    )
 }
 
 /** Magic */
 
 export function totalMagicPower(data : any) : bigDecimal {
-    return parseNum(data, 'baseMagicPower')
-        .multiply(calcAll(data, Stat.MAGIC_POWER)).divide(bd(100));
+    return bigdec_min(
+        bd(1e18).multiply(apItemInfo(data, Stat.MAGIC_POWER)),
+        parseNum(data, 'baseMagicPower')
+            .multiply(calcAll(data, Stat.MAGIC_POWER)).divide(bd(100))
+    )
 }
 
 export function totalMagicBar(data : any) : bigDecimal {
-    return parseNum(data, 'baseMagicBar')
-        .multiply(calcAll(data, Stat.MAGIC_BARS)).divide(bd(100));
+    return bigdec_min(
+        bd(1e18).multiply(apItemInfo(data, Stat.MAGIC_BARS)),
+        parseNum(data, 'baseMagicBar')
+            .multiply(calcAll(data, Stat.MAGIC_BARS)).divide(bd(100))
+    )
 }
 
 export function totalMagicCap(data : any) : bigDecimal {
-    return parseNum(data, 'baseMagicCap')
-        .multiply(calcAll(data, Stat.MAGIC_CAP)).divide(bd(100));
+    return bigdec_min(bd(9e18),
+        parseNum(data, 'baseMagicCap')
+        .multiply(calcAll(data, Stat.MAGIC_CAP)).divide(bd(100))
+    );
 }
 
 
@@ -251,12 +267,15 @@ export function totalPower(data : any) : bigDecimal {
     // Evil Accessories
     var adventureSetModifier = isMaxxedItemSet(data, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
     
-    return subtotal
-        .multiply(gen) //.divide(bd(100))
-        .divide(greaterThan(equipPower, bd(0)) ? equipPower : bd(1))
-        .multiply(beast)
-        .multiply(adventureSetModifier)
-        //.multiply(bd(100)) % not a percentage
+    return bigdec_min(
+        bd(1000e33),
+        subtotal
+            .multiply(gen) //.divide(bd(100))
+            .divide(greaterThan(equipPower, bd(0)) ? equipPower : bd(1))
+            .multiply(beast)
+            .multiply(adventureSetModifier)
+            //.multiply(bd(100)) % not a percentage
+    )
 }
 
 export function totalToughness(data : any) : bigDecimal {
@@ -271,10 +290,13 @@ export function totalToughness(data : any) : bigDecimal {
     var adventureSetModifier = isMaxxedItemSet(data, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
     
     
-    return subtotal
-        .multiply(gen) //.divide(bd(100))
-        .divide(greaterThan(equipPower, bd(0)) ? equipPower : bd(1)) // adding Instead
-        .multiply(adventureSetModifier)
+    return bigdec_min(
+        bd(1000e33),
+        subtotal
+            .multiply(gen) //.divide(bd(100))
+            .divide(greaterThan(equipPower, bd(0)) ? equipPower : bd(1)) // adding Instead
+            .multiply(adventureSetModifier)
+    )
 }
 
 export function totalHealth(data : any) : bigDecimal {
