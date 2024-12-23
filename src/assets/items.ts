@@ -3018,6 +3018,7 @@ export const ITEMLIST = [
         [Stat.ENERGY_POWER, 10000000],
         [Stat.MAGIC_POWER, 10000000],
     ]),
+    new Item(506, 'mysteriousGreyLiquid', 'Mysterious Grey Liquid', Slot.OTHER, Zones.MISC, 100, []),
     new Item(507, 'pirateHat', 'Pirate Hat', Slot.HEAD, Zones.PIRATE, 100, [
         [Stat.POWER, 240000000],
         [Stat.TOUGHNESS, 5600000000],
