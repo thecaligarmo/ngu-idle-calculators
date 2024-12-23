@@ -145,7 +145,7 @@ export class Titan extends Enemy {
             return false
         }
         // IT Hungers, Rock Lobster, Amalgamate - 5 kills allows you to AK
-        else if (this.id > 10) {
+        else if (this.id >= 10) {
             if (this.kills[version] >= 5) {
                 return true
             }
