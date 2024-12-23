@@ -36,14 +36,17 @@ export const MACGUFFINLIST = [
 
     new MacGuffin(11, 'goldenMacGuffin', 'Golden MacGuffin', [[Stat.GOLD_DROP, 1]]),//id
     new MacGuffin(12, 'augmentMacGuffin', 'Augment MacGuffin', [[Stat.AUGMENT_SPEED, 1]]),//id
-    new MacGuffin(13, 'energyWandoosMacGuffin', 'Energy Wandoos MacGuffin', [[Stat.ENERGY_WANDOOS_SPEED, 1]]),//id
-    new MacGuffin(14, 'statMacGuffin', 'Stat MacGuffin', [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),//id
-    new MacGuffin(15, 'magicWandoosMacGuffin', 'Magic Wandoos MacGuffin', [[Stat.MAGIC_WANDOOS_SPEED, 1]]),//id
-    new MacGuffin(16, 'numberMacGuffin', 'Number MacGuffin', [[Stat.NUMBER, 1]]),//id
-    new MacGuffin(17, 'bloodMacGuffin', 'Blood MacGuffin', [[Stat.BLOOD, 1]]),//id
+    new MacGuffin(13, 'statMacGuffin', 'Stat MacGuffin', [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),//id -> 13
 
     // In the code there is an 18th (19th) macguffin, but not in the game? Am I missing a macguffin?
-    new MacGuffin(18, 'nomacguffin', 'Bibe MacGuffin', []),//id
+    new MacGuffin(14, 'nomacguffin', 'Bibe MacGuffin', []),//id
+
+    new MacGuffin(15, 'energyWandoosMacGuffin', 'Energy Wandoos MacGuffin', [[Stat.ENERGY_WANDOOS_SPEED, 1]]),//id -> 15
+    new MacGuffin(16, 'magicWandoosMacGuffin', 'Magic Wandoos MacGuffin', [[Stat.MAGIC_WANDOOS_SPEED, 1]]),//id -> 16
+    new MacGuffin(17, 'numberMacGuffin', 'Number MacGuffin', [[Stat.NUMBER, 1]]),//id -> 17
+    new MacGuffin(18, 'bloodMacGuffin', 'Blood MacGuffin', [[Stat.BLOOD, 1]]),//id -> 18
+
+    
 
     new MacGuffin(19, 'adventureMacGuffin', 'Adventure MacGuffin', [[Stat.POWER, 1], [Stat.TOUGHNESS, 1], [Stat.HEALTH, 1], [Stat.REGEN, 1]]),
     new MacGuffin(20, 'resource3PowerMacGuffin', 'Resource 3 Power MacGuffin', [[Stat.RES3_POWER, 1]]),

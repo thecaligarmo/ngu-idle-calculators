@@ -950,6 +950,11 @@ export function getStatInfo(playerStates : any) {
                 'name' : 'Base Wandoos Energy Speed',
                 'val' : bd(100),
             },
+            'macguffin' : {
+                'name': 'x MacGuffin',
+                'val' : macguffinInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+                'sigFig' : 2,
+            },
             'equipment' : {
                 'name' : 'x Equipment',
                 'val' : equipmentWithCubeInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),

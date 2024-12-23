@@ -1070,16 +1070,19 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                         let macID = 0;
                         switch(macguffin.id) {
                             case 228:
-                                macID = 14
+                                macID = 13
                                 break;
-                            case 250:
+                            case 211:
                                 macID = 15
                                 break;
-                            case 289:
+                            case 250:
                                 macID = 16
                                 break;
-                            case 290:
+                            case 289:
                                 macID = 17
+                                break;
+                            case 290:
+                                macID = 18
                                 break;
                             case 291:
                                 macID = 19
