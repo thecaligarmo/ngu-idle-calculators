@@ -8,6 +8,7 @@ import { bd, bigdec_equals, bigdec_max, bigdec_min, greaterThan, greaterThanOrEq
 import { parseNum, parseObj } from "./parsers";
 import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
 import { getGameMode } from "./gameMode";
+import { Titan } from "@/assets/enemy";
 
 
 // General Calc - gives a percentage
@@ -527,4 +528,15 @@ export function getIdleAttackModifier(spoopySetBonus : boolean, sadNEC : bigDeci
             .add(sadNEC.multiply(bd(0.02)))
             .add(greaterThanOrEqual(sadNEC, bd(5))  ? bd(0.1) : bd(0))
         )
+}
+
+export function getHighestKilledTitanId(titans: Titan[]) : number{
+    var highestTitan : number = 0
+    Object.values(titans).forEach((titan) => {
+        if(titan.hasKilled(0)) {
+            highestTitan = titan.id
+        }
+        
+    })
+    return highestTitan;
 }

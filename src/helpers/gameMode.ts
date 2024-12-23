@@ -14,14 +14,14 @@ export function getGameMode(data : any) : number{
     return GameMode.NORMAL
 }
 
-export function isNormalMode(gameMode : bigDecimal) {
-    return bigdec_equals(gameMode, bd(GameMode.NORMAL))
+export function isNormalMode(gameMode : bigDecimal | number) {
+    return bigdec_equals(bd(gameMode), bd(GameMode.NORMAL))
 }
 
-export function isEvilMode(gameMode : bigDecimal) {
-    return bigdec_equals(gameMode, bd(GameMode.EVIL))
+export function isEvilMode(gameMode : bigDecimal | number) {
+    return bigdec_equals(bd(gameMode), bd(GameMode.EVIL))
 }
 
-export function isSadMode(gameMode : bigDecimal) {
-    return bigdec_equals(gameMode, bd(GameMode.SADISTIC))
+export function isSadMode(gameMode : bigDecimal | number) {
+    return bigdec_equals(bd(gameMode), bd(GameMode.SADISTIC))
 }

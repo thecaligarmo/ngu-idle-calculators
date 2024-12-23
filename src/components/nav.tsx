@@ -1,5 +1,10 @@
 import ImportSaveForm from '@/components/ImportSaveForm/importSaveForm';
 import { useNumberFormatContext } from "@/components/context";
+import { getGameMode, isEvilMode, isSadMode } from '@/helpers/gameMode';
+import { toNum } from '@/helpers/numbers';
+import { parseNum } from '@/helpers/parsers';
+import { createStatesForData } from '@/helpers/stateForData';
+import bigDecimal from 'js-big-decimal';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PropsWithChildren, ReactNode } from "react";
@@ -21,20 +26,30 @@ export default function Nav({ children } : PropsWithChildren) {
         </li>)
     }
 
+
+    const playerStates = createStatesForData([[]], [[]]);
+    
+    function v(key : string) : bigDecimal {
+        return parseNum(playerStates, key)
+    }
+    
+
+    var curTitan = toNum(v('highestTitanKilledId-2'))
+    var gameMode = getGameMode(playerStates)
+    
     return (
       <nav>
         <ul className="flex border-b dark:border-white border-black">
             <NavElt href="/">Home</NavElt>
-            <NavElt href="/cards">Cards</NavElt>
-            <NavElt href="/cooking">Cooking</NavElt>
+            {curTitan >=9 ? <NavElt href="/cards">Cards</NavElt> : null}
+            {curTitan >=10 ? <NavElt href="/cooking">Cooking</NavElt> : null}
             <NavElt href="/daily">Daily</NavElt>
-            <NavElt href="/hacks">Hacks</NavElt>
+            {curTitan >=7 ? <NavElt href="/hacks">Hacks</NavElt> : null}
             <NavElt href="/ngus" hasChildren={true}>NGUs</NavElt>
-            
             <NavElt href="/ratios">Ratios</NavElt>
-            <NavElt href="/wandoos">Wandoos</NavElt>
-            <NavElt href="/wishes">Wishes</NavElt>
-            <NavElt href="/ygg">Ygg</NavElt>
+            {curTitan >= 1 ? <NavElt href="/wandoos">Wandoos</NavElt> : null}
+            {curTitan >= 8 ? <NavElt href="/wishes">Wishes</NavElt> : null}
+            {curTitan >= 2 ? <NavElt href="/ygg">Ygg</NavElt> : null}
             <NavElt href="/stats">Stats</NavElt>
             <NavElt href="/zone">Zones</NavElt>
             <NavElt href="/about">About</NavElt>
@@ -62,9 +77,9 @@ export default function Nav({ children } : PropsWithChildren) {
         { pathname.startsWith('/ngus') ?
             <ul className="flex border-b dark:border-white border-black">
                 <NavElt href="/ngus">Normal</NavElt>
-                <NavElt href="/ngus/evil">Evil</NavElt>
-                <NavElt href="/ngus/sadistic">Sadistic</NavElt>
-                <NavElt href="/ngus/compare">Compare Modes</NavElt>
+                {isEvilMode(gameMode) ? <NavElt href="/ngus/evil">Evil</NavElt> : null}
+                {isSadMode(gameMode) ? <NavElt href="/ngus/sadistic">Sadistic</NavElt> : null}
+                {isEvilMode(gameMode) ? <NavElt href="/ngus/compare">Compare Modes</NavElt> : null}
             </ul>
             : null
         }

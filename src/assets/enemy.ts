@@ -156,6 +156,11 @@ export class Titan extends Enemy {
         }
         return this.autokill[version].isWeaker(player)
     }
+
+    hasKilled(version : number = 0) : boolean {
+        return this.kills[version] > 0
+    }
+
     getAP(apBonus : bigDecimal = bd(1)) : bigDecimal {
         return apBonus.multiply(bd(this.ap)).divide(bd(100))
     }

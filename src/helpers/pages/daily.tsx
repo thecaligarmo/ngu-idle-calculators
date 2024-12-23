@@ -208,7 +208,6 @@ export function getMaxTitanByAK(titans: Titan[], playerAttack : AttackStat) : [T
     return maxTitanByAK;
 }
 
-
 export function getTitanHourlyInfo(maxTitan : [Titan, number], {
     bonusTitanEXPPerk = bd(0),
     numRebirthChallenges = bd(0),

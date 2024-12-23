@@ -9,7 +9,6 @@ import Content, { requiredDataType } from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { StandardTable } from "@/components/standardTable";
-import { getIdleAttackModifier } from "@/helpers/calculators";
 import { bd, isOne, pn, toNum } from "@/helpers/numbers";
 import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from "@/helpers/pages/daily";
 import { parseNum, parseObj } from "@/helpers/parsers";
@@ -17,39 +16,7 @@ import { nguInfo } from "@/helpers/resourceInfo";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
-import { ReactElement, useState } from "react";
-
-
-function itemText(elt : bigDecimal, fmt : string, type : string, extra : ReactElement | null = null) : ReactElement {
-
-    return (<><span className="text-red-500">{pn(elt, fmt)}</span> {type} {extra}</>)
-    
-}
-
-function itemLine(name : string, elt : bigDecimal, fmt : string, type : string, extra : ReactElement | null = null) : ReactElement {
-    return (
-        <>
-            <strong className="text-green-500">{name}:</strong> {itemText(elt, fmt, type, extra)}{extra ? null : <br />}
-        </>
-    )
-}
-
-
-
-function itemUL(name : string, elt : {[key: string] : {'elt' : bigDecimal, 'name': string, 'extra' ?: ReactElement}}, fmt : string, type : string, extra : {[key : string] : ReactElement} | null = null) : ReactElement {
-    return (
-        <>
-            <strong className="text-green-500">{name}:</strong>  <ul className="ml-10">
-                {Object.keys(elt).map((e, index) => {
-                    return (
-                        <li key={e}><strong>{elt[e]['name']}:</strong> {itemText(elt[e]['elt'], fmt, type, elt[e]['extra'])}</li>
-                    )
-                })}
-            </ul> {extra}
-        </>
-    )
-}
-
+import { useState } from "react";
 
 export default function Page() {
     var [optMaxTitan, setOptMaxTitan] = useState("current")
@@ -193,6 +160,7 @@ export default function Page() {
     
     var maxTitanByAK : [Titan, number] = getMaxTitanByAK(titans, playerAttack);
     var maxTitan : [Titan, number] = maxTitanByAK
+    var highestTitan = toNum(v('highestTitanKilledId-2'))
 
     // Update titan if user wants a different one.
     if(optMaxTitan != 'current') {
@@ -442,9 +410,12 @@ export default function Page() {
             <ContentSubsection title={"How many PP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
                 <StandardTable order={tableOrder} header={ppTableHeader} rows={ppTableDataRows} />
             </ContentSubsection>
-            <ContentSubsection title={"How many QP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
-            <StandardTable order={tableOrder} header={qpTableHeader} rows={qpTableDataRows} />
-            </ContentSubsection>
+            { highestTitan >= 6  // Must have beaten the Beast
+                ? <ContentSubsection title={"How many QP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
+                        <StandardTable order={tableOrder} header={qpTableHeader} rows={qpTableDataRows} />
+                    </ContentSubsection>
+                : null
+            }
         </Content>
     )
 }

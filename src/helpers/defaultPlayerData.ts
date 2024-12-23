@@ -14,7 +14,7 @@ import { ITEMS, Item } from "../assets/items";
 import { GameMode } from "../assets/mode";
 import { PERKS, Perk } from "../assets/perks";
 import { QUIRKS, Quirk } from "../assets/quirks";
-import { boostRecyclying, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalHackSpeed, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Cap, totalRes3Power, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalWishSpeed, totalYggdrasilYieldBonus } from "./calculators";
+import { boostRecyclying, getHighestKilledTitanId, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalHackSpeed, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Cap, totalRes3Power, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalWishSpeed, totalYggdrasilYieldBonus } from "./calculators";
 import { bd, isOne } from "./numbers";
 import { Wandoos, WANDOOSLIST } from "@/assets/wandoos";
 import { Zones } from "@/assets/zones";
@@ -733,6 +733,17 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'hackWishTarget':
                 return playerData.hacks.hacks[14].target
 
+            case 'highestTitanKilledId-2' : 
+                let titansList : Titan[] = [];
+                Object.values(Titans).forEach((titan) => {
+                    if (!_.isUndefined(titan)) {
+                        let t = _.cloneDeep(titan)
+                        t.importKills(playerData.bestiary.enemies)
+                        titansList.push(t)
+                    }
+                })
+                return getHighestKilledTitanId(titansList)
+
 
             case 'numRebirthChallenges-2':
                 return playerData.challenges.noRebirthChallenge.curCompletions
@@ -1252,8 +1263,6 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 var idleAttackModifier = getIdleAttackModifier(spoopySetBonus, sadisticNoEquipmentChallenges);
                 return bd(itopodZone.getOptimalFloor(totalPower(playerData), idleAttackModifier))
             
-            
-            
             default:
                 return 0;
         }
@@ -1524,6 +1533,7 @@ export function getPlayerNumberOptions() : string[]{
         'hackPPTarget',
         'hackHackTarget',
         'hackWishTarget',
+        'highestTitanKilledId-2',
         'redLiquidBonus^',
         'numRebirthChallenges-2',
         'questIdleDivider-1',
