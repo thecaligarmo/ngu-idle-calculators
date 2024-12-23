@@ -11,6 +11,7 @@ import midNormal from '../__data__/midNormal1';
 import midNormalTwo from '../__data__/midNormal2';
 import { expectClose, toDataObj } from '../testHelperFunctions';
 import lateEvil from '../__data__/lateEvil1';
+import earlySad from '../__data__/earlySad1';
 
 
 var earlyNormalData = toDataObj(earlyNormal);
@@ -24,6 +25,7 @@ var earlyEvilTwoData = toDataObj(earlyEvilTwo);
 var midEvilData = toDataObj(midEvil);
 var midEvilTwoData = toDataObj(midEvilTwo);
 var lateEvilData = toDataObj(lateEvil);
+var earlySadData = toDataObj(earlySad);
 
 
 
@@ -42,6 +44,7 @@ describe('Calculators - Energy', () => {
         ['Mid Evil 1', midEvilData, {'power': 4.299e10, 'bar': 5.743e9, 'cap':111846015531154 }],
         ['Mid Evil 2', midEvilTwoData, {'power': 5.49e11, 'bar': 1.755e10, 'cap': 230186471106591 }],
         ['Late Evil 1', lateEvilData, {'power': 9.572e12, 'bar': 7.141e10, 'cap': 5268374280342490 }],
+        ['Early Sad 1', earlySadData, {'power': 2.221e14, 'bar': 1.774e12, 'cap': 242137082178342176 }],
     ]
     test.each(cases)(
         "Calculators - Energy - %s",
@@ -70,6 +73,7 @@ describe('Calculators - Magic', () => {
         ['Mid Evil 1', midEvilData, {'power': 1.439e10, 'bar': 1.914e9, 'cap': 44967554132115}],
         ['Mid Evil 2', midEvilTwoData, {'power': 3.17e11, 'bar': 9.02e9, 'cap': 150522568302284}],
         ['Late Evil 1', lateEvilData, {'power': 3.105e12, 'bar': 2.219e10, 'cap': 1927981300048642}],
+        ['Early Sad 1', earlySadData, {'power': 7.216e13, 'bar': 5.622e11, 'cap': 83469167085821456}],
     ]
     test.each(cases)(
         "Calculators - Magic - %s",
@@ -97,6 +101,7 @@ describe('Calculators - Resource 3', () => {
         ['Mid Evil 1', midEvilData, {'power': 188, 'bar': 30, 'cap': 5549251}],
         ['Mid Evil 2', midEvilTwoData, {'power': 8621, 'bar': 563, 'cap': 42743632}],
         ['Late Evil 1', lateEvilData, {'power': 63553, 'bar': 1418, 'cap': 424242703}],
+        ['Early Sad 1', earlySadData, {'power': 1.295e6, 'bar': 19603, 'cap': 10685329741}],
     ]
     test.each(cases)(
         "Calculators - Resource 3 - %s",
@@ -125,6 +130,7 @@ describe('Calculators - Augments', () => {
         ['Mid Evil 1', midEvilData, 1.373e13],
         ['Mid Evil 2', midEvilTwoData, 6.354e14],
         ['Late Evil 1', lateEvilData, 2.191e16],
+        ['Early Sad 1', earlySadData, 2.953e19 * 1.2],
     ]
     test.each(cases)(
         "Calculators - Augments - %s",
@@ -149,6 +155,7 @@ describe('Calculators - NGU', () => {
         ['Mid Evil 1', midEvilData, {'energy': 1.265e16, 'magic': 1.926e16}],
         ['Mid Evil 2', midEvilTwoData, {'energy': 2.215e20, 'magic': 7.136e20}],
         ['Late Evil 1', lateEvilData, {'energy': 2.883e21, 'magic': 3.469e22}],
+        ['Early Sad 1', earlySadData, {'energy': 8.330e24, 'magic': 9.193e24}],
     ]
     test.each(cases)(
         "Calculators - NGU - %s",
@@ -175,6 +182,7 @@ describe('Calculators - EXP, AP, PP', () => {
         ['Mid Evil 1', midEvilData, {'exp': 3504.79, 'ap': 191.12, 'pp' : 3884.76}],
         ['Mid Evil 2', midEvilTwoData, {'exp': 19100.88, 'ap': 191.61, 'pp' : 38912.44}],
         ['Late Evil 1', lateEvilData, {'exp': 11436.48, 'ap': 191.61, 'pp' : 93392.8}],
+        ['Early Sad 1', earlySadData, {'exp': 69705.4, 'ap': 192.35, 'pp' : 274239.8}],
     ]
     test.each(cases)(
         "Calculators - EXP, AP, PP - %s",
@@ -203,6 +211,7 @@ describe('Calculators - Misc', () => {
         ['Mid Evil 1', midEvilData, {'daycare': 145, 'hack': 202, 'wish' : 250}],
         ['Mid Evil 2', midEvilTwoData, {'daycare': 282, 'hack': 2767, 'wish' : 361}],
         ['Late Evil 1', lateEvilData, {'daycare': 267, 'hack': 12853, 'wish' : 926}],
+        ['Early Sad 1', earlySadData, {'daycare': 860, 'hack': 151588, 'wish' : 2430}],
     ]
     test.each(cases)(
         "Calculators - Misc - %s",
@@ -231,6 +240,7 @@ describe('Calculators - Adventure', () => {
         ['Mid Evil 1', midEvilData, {'power': 5.401e16, 'toughness': 2.537e16}],
         ['Mid Evil 2', midEvilTwoData, {'power': 7.205e20, 'toughness': 3.652e20}],
         ['Late Evil 1', lateEvilData, {'power': 2.75e22, 'toughness': 1.090e22}],
+        ['Early Sad 1', earlySadData, {'power': 3.969e27, 'toughness': 7.858e26}],
     ]
     test.each(cases)(
         "Calculators - Adventure - %s",
@@ -257,6 +267,7 @@ describe('Calculators - Misc Adventure', () => {
         ['Mid Evil 1', midEvilData, {'gold': 4.011e17, 'respawn': 41.05, 'dropChance' : 2.975e10}],
         ['Mid Evil 2', midEvilTwoData, {'gold': 8.264e19, 'respawn': 45.66, 'dropChance' : 9.69e12}],
         ['Late Evil 1', lateEvilData, {'gold': 1.348e19, 'respawn': 35.09, 'dropChance' : 5.96e13}],
+        ['Early Sad 1', earlySadData, {'gold': 8.667e23, 'respawn': 30.64, 'dropChance' : 2.048e16}],
     ]
     test.each(cases)(
         "Calculators - Misc Adventure - %s",
@@ -288,6 +299,7 @@ describe('Calculators - Beards', () => {
         ['Mid Evil 1', midEvilData, {'energy': 1.310e17, 'magic': 2.526e16}],
         ['Mid Evil 2', midEvilTwoData, {'energy': 2.574e18, 'magic': 1.005e18}],
         ['Late Evil 1', lateEvilData, {'energy': 2.34e20, 'magic': 1.032e19}],
+        ['Early Sad 1', earlySadData, {'energy': 1.939e21, 'magic': 2.627e20}],
     ]
     test.each(cases)(
         "Calculators - Beards - %s",
@@ -315,6 +327,7 @@ describe('Calculators - Wandoos', () => {
         ['Mid Evil 1', midEvilData, {'energy': 6.318e11, 'magic': 6.318e11}],
         ['Mid Evil 2', midEvilTwoData, {'energy': 9.897e18, 'magic': 9.900e18}], // auto advances
         ['Late Evil 1', lateEvilData, {'energy': 1.386e19, 'magic': 1.386e19}], // auto advances
+        ['Early Sad 1', earlySadData, {'energy': 5.784e11, 'magic': 5.813e11}], // auto advances
     ]
     test.each(cases)(
         "Calculators - Wandoos - %s",
@@ -343,6 +356,7 @@ describe('Calculators - Quests', () => {
         ['Mid Evil 1', midEvilData, {'reward': 210, 'drop': 139.15}],
         ['Mid Evil 2', midEvilTwoData, {'reward': 429, 'drop': 144.21}],
         ['Late Evil 1', lateEvilData, {'reward': 605, 'drop': 146.74}],
+        ['Early Sad 1', earlySadData, {'reward': 1140, 'drop': 126.5}],
     ]
     test.each(cases)(
         "Calculators - Quests - %s",
@@ -363,6 +377,7 @@ describe('Calculators - Mayo', () => {
         ['Early Normal 1', earlyNormalData, {'mayoSpeed': 100, 'cardSpeed': 100, 'mayoGen' : 1, 'tagEffect' : 10}],
         ['Early Evil 1', earlyEvilData, {'mayoSpeed': 100, 'cardSpeed': 100, 'mayoGen' : 1, 'tagEffect' : 10}],
         ['Mid Evil 1', midEvilData, {'mayoSpeed': 100, 'cardSpeed': 100, 'mayoGen' : 1, 'tagEffect' : 10}],
+        ['Early Sad 1', earlySadData, {'mayoSpeed': 114.97, 'cardSpeed': 110, 'mayoGen' : 3, 'tagEffect' : 11.15}],
     ]
     test.each(cases)(
         "Calculators - Quests - %s",

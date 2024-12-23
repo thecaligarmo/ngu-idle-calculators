@@ -13,6 +13,7 @@ import renderer from 'react-test-renderer';
 import earlyEvil from '@/__tests__/__data__/earlyEvil1';
 import midEvilTwo from '@/__tests__/__data__/midEvil2';
 import lateEvil from '@/__tests__/__data__/lateEvil1';
+import earlySad from '@/__tests__/__data__/earlySad1';
 
 
 
@@ -26,7 +27,7 @@ var earlyEvilData = toDataObj(earlyEvil);
 var earlyEvilTwoData = toDataObj(earlyEvilTwo);
 var midEvilData = toDataObj(midEvil);
 var midEvilTwoData = toDataObj(midEvilTwo);
-
+var earlySadData = toDataObj(earlySad);
 
 // getQuestInfo
 
@@ -81,6 +82,16 @@ describe("Daily page - Quest Info", () => {
         }, {
             'ap' : {'major' : bd(0), 'minor': bd(385), 'perMajor' : bd(229), 'perMinor' : bd(22)},
             'qp' : {'major' : bd(0), 'minor': bd(1265), 'perMajor' : bd(725), 'perMinor' : bd(72)},
+        }],
+        [earlySadData, {
+            beastButter : false,
+            hoursOfflinePerDay : bd(0),
+            hoursPerDay : bd(24),
+            idleMajorQuests : false,
+            includeMajorQuests : false,
+        }, {
+            'ap' : {'major' : bd(0), 'minor': bd(412), 'perMajor' : bd(230), 'perMinor' : bd(23)},
+            'qp' : {'major' : bd(0), 'minor': bd(2440), 'perMajor' : bd(1368), 'perMinor' : bd(136)},
         }],
     ]
     test.each(cases)(
@@ -137,6 +148,7 @@ describe("Daily page - Max Titan AK", () => {
         [midEvilData, [Titans.NERD, 1]],
         [midEvilTwoData, [Titans.GODMOTHER, 1]], // 8
         [lateEvilData, [Titans.EXILE, 0]],
+        [earlySadData, [Titans.EXILE, 3]],
     ]
     test.each(cases)(
         "Daily Page - Max Titan AK - Case %#",
@@ -205,6 +217,13 @@ describe("Daily page - Titan Hourly Info", () => {
             'exp' : bd(74626956/24),
             'ppp' : bd(32276551680/24),
             'qp' : bd(696/24),
+        }],
+        
+        [[Titans.EXILE, 3], earlySadData, { // Per hour, off by one for version
+            'ap' : bd(9408/24), 
+            'exp' : bd(528321348/24),
+            'ppp' : bd(102675384240/24),
+            'qp' : bd(2400/24),
         }],
     ]
     test.each(cases)(

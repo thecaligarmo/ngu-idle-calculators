@@ -302,6 +302,14 @@ var lateEvilExpected = {
     }
 }
 
+var earlySadExpected = {
+    [GameMode.SADISTIC] : {
+        'seconds' : [
+            []
+        ]
+    }
+}
+
 
 
 // TODO - Add tests for % and other

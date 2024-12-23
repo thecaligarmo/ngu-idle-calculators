@@ -15,6 +15,7 @@ import midEvil from '../__data__/midEvil1';
 import midEvilTwo from '../__data__/midEvil2';
 import midNormal from '../__data__/midNormal1';
 import midNormalTwo from '../__data__/midNormal2';
+import earlySad from '../__data__/earlySad1';
 
 
 
@@ -32,6 +33,7 @@ describe('Resource Info - Achievement Info', () => {
         ['Mid Evil 1', midEvil, 156.15],
         ['Mid Evil 2', midEvilTwo, 156.55],
         ['Late Evil 1', lateEvil, 156.55],
+        ['Early Sad 1', earlySad, 157.15],
     ]
     test.each(cases)(
         "Achievement Info - %s",
@@ -80,6 +82,7 @@ describe('Resource Info - AP Info', () => {
         // ['Early Evil 2', earlyEvilTwo, 100],
         // ['Mid Evil 1', midEvil, 100],
         // ['Mid Evil 2', midEvil2, 100],
+        ['Early Sad 1', earlySad, 100],
     ]
     test.each(cases)(
         "AP Info - %s",
@@ -110,6 +113,7 @@ describe('Resource Info - Beard Temp Info', () => {
         // ['Mid Evil 1', midEvil, {'power' : 100, 'dc' : 100}],
         ['Mid Evil 2', midEvilTwo, {'power' : 2653.44, 'dc' : 1653.23}],
         ['Late Evil 1', lateEvil, {'power' : 2579.16, 'dc' : 1339.6}],
+        ['Early Sad 1', earlySad, {'power' : 4390.12, 'dc' : 2245.06}],
     ]
     test.each(cases)(
         "Beard Temp Info - %s",
@@ -137,6 +141,7 @@ describe('Resource Info - Beard Perm Info', () => {
         ['Mid Evil 1', midEvil, {'power' : 1481, 'dc' : 591}],
         ['Mid Evil 2', midEvilTwo, {'power' : 1989.36, 'dc' : 682.72}],
         ['Late Evil 1', lateEvil, {'power' : 2256.3, 'dc' : 724.98}],
+        ['Early Sad 1', earlySad, {'power' : 2825.61, 'dc' : 818.5}],
     ]
     test.each(cases)(
         "Beard Perm Info - %s",
@@ -189,6 +194,7 @@ describe('Resource Info - Digger Info', () => {
         // ['Mid Evil 1', earlyEvilTwo, {'power' : 100}],
         ['Mid Evil 2', midEvilTwo, {'power' : 100}],
         ['Late Evil 1', lateEvil, {'power' : 345.22}],
+        ['Early Sad 1', earlySad, {'power' : 343.25}],
     ]
     test.each(cases)(
         "Digger Info - %s",
@@ -318,6 +324,16 @@ describe('Resource Info - Equipment Info', () => {
             'engu' : 1900,
             'mwandoos' : 960,
         }],
+        ['Early Sad 1', earlySad, {
+            'power' : 3.257e9 + 9.224e9,
+            'toughness' : 1.676e9 + 2.756e9,
+            'epower' : 1.793e6,
+            'mcap' : 126420,
+            'dc' : 6340,
+            'respawn' : 200 - 74,
+            'engu' : 400,
+            'mwandoos' : 100,
+        }],
     ]
     test.each(cases)(
         "Equipment Info - %s",
@@ -412,6 +428,11 @@ describe('Resource Info - Hack Info', () => {
             'qp': 284.62,
             'wish': 121.54,
         }],
+        ['Early Sad 1', earlySad, {
+            'power' : 2097.52,
+            'qp': 465.01,
+            'wish': 150.56,
+        }],
     ]
     test.each(cases)(
         "Hack Info - %s",
@@ -498,6 +519,13 @@ describe('Resource Info - Macguffin Info', () => {
             'dc' : 144.621,
             'attack' : 100,
         }],
+        ['Early Sad 1', earlySad, {
+            'power' : 423.782,
+            'epower' : 469.524,
+            'dc' : 281.023,
+            'attack' : 12253.84,
+            'blood' : 498.434,
+        }],
     ]
     test.each(cases)(
         "Macguffin Info - %s",
@@ -513,6 +541,10 @@ describe('Resource Info - Macguffin Info', () => {
             expect(ec[0]).toBeCloseTo(ec[1], 0)
             var ec = expectClose(macguffinInfo(data, Stat.ATTACK), expectedValues['attack'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
+            if ('blood' in expectedValues) {
+                var ec = expectClose(macguffinInfo(data, Stat.BLOOD), expectedValues['blood'])
+                expect(ec[0]).toBeCloseTo(ec[1], 0)
+            }
         }
     )
 })
@@ -599,6 +631,13 @@ describe('Resource Info - NGU Info', () => {
             'attack' : 8.377e27,
             'engu' : 26188,
         }],
+        ['Early Sad 1', earlySad, {
+            'power' : 1665693 * 30613/100,
+            'ygg' : 10507.74,
+            'dc' : 2195321,
+            'attack' : 1.556e30,
+            'engu' : 43770,
+        }],
     ]
     test.each(cases)(
         "NGU Info - %s",
@@ -678,6 +717,11 @@ describe('Resource Info - Perk Info', () => {
         ['Late Evil 1', lateEvil, {
             'power' : 256.3066,
             'boosts': 550,
+            'epower': 429,
+        }],
+        ['Early Sad 1', earlySad, {
+            'power' : 606.0869,
+            'boosts': 1210,
             'epower': 429,
         }],
     ]
@@ -760,6 +804,11 @@ describe('Resource Info - Quirk Info', () => {
             'ecap': 165,
             'mngu': 100,
         }],
+        ['Early Sad 1', earlySad, {
+            'power' : 370,
+            'ecap': 248,
+            'mngu': 100,
+        }],
     ]
     test.each(cases)(
         "Quirk Info - %s",
@@ -836,6 +885,11 @@ describe('Resource Info - Wish Info', () => {
             'power' : 187,
             'rpower': 260,
             'hack': 179,
+        }],
+        ['Early Sad 1', earlySad, {
+            'power' : 225,
+            'rpower': 532,
+            'hack': 204,
         }],
     ]
     test.each(cases)(

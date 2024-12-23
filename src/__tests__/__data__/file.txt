@@ -1,5 +1,6 @@
 What to do for a new file:
 
+0. Do a new rebirth so that Ygg is set properly
 1. Make sure that Advanced training is "active"
 2. Remove energy from everywhere
 3. Turn off Beards (For testing - edit save file to make it look like they're on)
@@ -9,6 +10,7 @@ What to do for a new file:
 7. Make gear "random"
 8. Turn *on* some of the gold diggers
 9. Make sure auto merg/boost is off
+10. Make sure you're not in ITOPOD
 
 --
 Update the following files:
