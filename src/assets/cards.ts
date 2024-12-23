@@ -109,6 +109,7 @@ export class Card extends Resource {
     }
 
     tagFormula(tagEffect: bigDecimal, numberOfTags: number) : bigDecimal{
+        // (1 - SUM(n_i) * tagEffect)/14 + tagEffect * n_i
         let baseEffect = (bd(1).subtract(bd(numberOfTags).multiply(tagEffect))).divide(bd(14))
         if(this.isTagged) {
             baseEffect = baseEffect.add(tagEffect)

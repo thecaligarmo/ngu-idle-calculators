@@ -9,7 +9,7 @@ import { disableItem } from "@/components/dataListColumns";
 import { StandardTable, StandardTableRowType } from "@/components/standardTable";
 import { bd, bigdec_equals, greaterThan, isOne, isZero, lessThan, pn, toNum } from "@/helpers/numbers";
 import { bigDecimalObj, toObjectMap } from "@/helpers/objects";
-import { cardExtraNameChanges, cardReqChonkers, cardReqFruit, cardReqNameChanges, getCardsPerDay, getChonksPerDay, getMayoFromFruit, getMayoFromInfusers, getMayoFromRecycling } from "@/helpers/pages/cards";
+import { cardExtraNameChanges, cardReqChonkers, cardReqFruit, cardReqNameChanges, getCardsPerDay, getCardsRecycled, getChonksPerDay, getChonksRecycled, getMayoFromFruit, getMayoFromInfusers, getMayoFromRecycling } from "@/helpers/pages/cards";
 import { parseNum, parseObj } from "@/helpers/parsers";
 import { createStatesForData, getRequiredStates } from "@/helpers/stateForData";
 import { camelToTitle } from "@/helpers/strings";
@@ -211,7 +211,7 @@ export default function Page() {
     }, bd(0))
     
     let cardsPerDay = getCardsPerDay(cardSpeed, recycleCard)
-    let cardsRecycled = (recycleCard.subtract(bd(1.01)).multiply(cardsPerDay)).divide(bd(-10))
+    let cardsRecycled = getCardsRecycled(recycleCard, cardsPerDay)
     if (!c('cardRecyclingCard^')) {
         cardsPerDay = cardsPerDay.subtract(cardsRecycled)
         cardsRecycled = bd(0)
@@ -223,18 +223,19 @@ export default function Page() {
 
 
     // Chonk info
-    // J_i / cardSpeed
+    // J_i * O_i / cardSpeed
     let chonkTags : bigDecimalObj = toObjectMap(
         cards,
-        (card) => card.key,
-        (card) => c(card.chonkKey()) ? card.tagFormula(tagEffect, numTagged) : bd(0)
+        (card : Card) => card.key,
+        (card : Card) => c(card.chonkKey()) ? card.tagFormula(tagEffect, numTagged) : bd(0)
     )
     let recycleChonk = Object.values(chonkTags).reduce((tagSum : bigDecimal, tag: bigDecimal) => {
         return tagSum.add(tag)
     }, bd(0))
 
     let chonksPerDay = getChonksPerDay(cardSpeed, recycleChonk, c('cardRecyclingCard^'))
-
+    let chonksRecycled = c('cardRecyclingCard^') ? getChonksRecycled(recycleChonk, chonksPerDay) : bd(0)
+    
 
 
 
@@ -257,7 +258,7 @@ export default function Page() {
         : [bd(0), bd(0)]
     
     let mayoFromRecycling = c('cardRecyclingMayo^') 
-                ? getMayoFromRecycling(cardsPerDay, chonksPerDay, recycleCard, recycleChonk)
+                ? getMayoFromRecycling(cardsRecycled, chonksRecycled)
                 : bd(0);
     let mayoFromInfusers = lessThan(v('infusersEveryXDays-2'), bd(1))
                     ? bd(0) 
@@ -402,7 +403,9 @@ export default function Page() {
         dailyData['chonks'] = {
             "main": "Chonkers",
             "amt": <span className="text-red-500">{pn(chonksPerDay, fmt)}</span>,
-            "extra": ""
+            "extra": <ul key="cardInfo">
+            <li key="recycle"><strong>Card Recycling:</strong> {pn(chonksRecycled, fmt)}</li>
+        </ul>
         }
     }
 

@@ -129,6 +129,14 @@ export function getChonksPerDay(cardSpeed: bigDecimal, recycleChonk:bigDecimal, 
     return chonksPerDay
 }
 
+export function getCardsRecycled(recycleCard : bigDecimal, cardsPerDay : bigDecimal) : bigDecimal {
+    return (recycleCard.subtract(bd(1.01)).multiply(cardsPerDay)).divide(bd(-10))
+}
+
+export function getChonksRecycled(recycleChonk : bigDecimal, chonksPerDay : bigDecimal) : bigDecimal{
+    return (recycleChonk.subtract(bd(1)).multiply(chonksPerDay)).divide(bd(-4))
+}
+
 
 export function getMayoFromFruit(withLeftovers : boolean, fruits : Yggdrasil[], fruitYieldData : any, poopLeftovers : boolean) : [bigDecimal, bigDecimal] {
     let mayoFromFruit = bd(0)
@@ -144,13 +152,16 @@ export function getMayoFromFruit(withLeftovers : boolean, fruits : Yggdrasil[], 
 }
 
 
-export function getMayoFromRecycling(cardsPerDay:bigDecimal, chonksPerDay:bigDecimal, recycleCard: bigDecimal, recycleChonk:bigDecimal) : bigDecimal{
+export function getMayoFromRecycling(cardsRecycled:bigDecimal, chonksRecycled:bigDecimal) : bigDecimal{
     return bd(0.2).multiply(
-            cardsPerDay.multiply(bd(1.01))
-                .subtract(recycleCard.multiply(cardsPerDay))
-                .add(chonksPerDay)
-                .subtract(recycleChonk.multiply(cardsPerDay))
+            (cardsRecycled.multiply(bd(10)))
+            .add(chonksRecycled.multiply(bd(4)))
+            // cardsPerDay.multiply(bd(1.01))
+            //     .subtract(recycleCard.multiply(cardsPerDay))
+            //     .add(chonksPerDay)
+            //     .subtract(recycleChonk.multiply(cardsPerDay))
         )
+    // =(Q32*0.2*(cardsRecyled * 10 + chonksRecyled * 4))
 }
 
 export function getMayoFromInfusers(mayoSpeed : bigDecimal, numInfusers : bigDecimal, twoFruitPerInf : boolean, mayoFromFruit : bigDecimal, mayoFromFruitLeftovers : bigDecimal) : bigDecimal {
