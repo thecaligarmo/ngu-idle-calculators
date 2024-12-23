@@ -277,7 +277,7 @@ export function getTitanHourlyInfo(maxTitan : [Titan, number], {
             var titanAP = titan.getAP(totalAPBonus).floor().divide(titanRespawn)
             var titanEXP = titan.getEXP(totalExpBonus, twentyFourHourChallenge, twentyFourHourEvilChallenge, twentyFourHourSadisticChallenge).multiply(titanMultiplier).floor().divide(titanRespawn)
             var titanPP = (titan.getPP(totalPPBonus).multiply(titanMultiplier).floor()).divide(titanRespawn)
-            var titanQP = titan.getQP(wishes, totalQPBonus).multiply(titanMultiplier).floor().divide(titanRespawn)
+            var titanQP = titan.getQP(wishes, totalQPBonus).floor().multiply(titanMultiplier).floor().divide(titanRespawn)
 
             hourlyTitanAP = hourlyTitanAP.add(titanAP)
             hourlyTitanEXP = hourlyTitanEXP.add(titanEXP)
