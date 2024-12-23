@@ -296,7 +296,7 @@ export const PERKLIST = [
     new Perk(208, 'biggerDeckSizeI', 'Bigger Deck Size I', GameMode.EVIL, 0, []),
     new Perk(209, 'biggerDeckSizeII', 'Bigger Deck Size II', GameMode.SADISTIC, 0, []),
     new Perk(210, 'biggerDeckSizeIII', 'Bigger Deck Size III', GameMode.SADISTIC, 0, []),
-    new Perk(211, 'extraMayoGenerator!', 'Extra Mayo Generator!', GameMode.EVIL, 0, [[Stat.MAYO_GENERATOR, 2]]),
+    new Perk(211, 'extraMayoGenerator!', 'Extra Mayo Generator!', GameMode.EVIL, 0, [[Stat.MAYO_GENERATOR, 1]]),
     new Perk(212, 'betterTagsI', 'Better Tags I', GameMode.EVIL, 0, [[Stat.TAG_EFFECT, 0.05]]),
     new Perk(213, 'betterTagsII', 'Better Tags II', GameMode.SADISTIC, 0, [[Stat.TAG_EFFECT, 0.45]]),
     new Perk(214, 'betterTagsIII', 'Better Tags III', GameMode.SADISTIC, 0, [[Stat.TAG_EFFECT, 0.04]]),

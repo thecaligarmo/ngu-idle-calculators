@@ -61,7 +61,7 @@ export const APITEMLIST = [
     new APItem(53, 'goToQuestZoneButton', 'Go To Quest Zone Button', GameMode.ALL, 0, []),
     new APItem(54, 'anEvilAccessorySlot', ' An Evil Accessory Slot', GameMode.ALL, 0, []),
     new APItem(55, 'extraDeckSize', 'Extra Deck Size!', GameMode.ALL, 0, []),
-    new APItem(56, 'mayoGenerator', 'Mayo Generator', GameMode.ALL, 0, [[Stat.MAYO_GENERATOR, 2]]),
+    new APItem(56, 'mayoGenerator', 'Mayo Generator', GameMode.ALL, 0, [[Stat.MAYO_GENERATOR, 1]]),
     new APItem(57, 'extraTagSlot', 'Extra Tag Slot!', GameMode.ALL, 0, []),
     new APItem(58, 'extraAccessorySlot2', 'Extra Accessory Slot', GameMode.ALL, 0, []),
     new APItem(59, 'redHeart', 'My Red Heart &lt;3', GameMode.ALL, 0, []),

@@ -163,7 +163,7 @@ export const QUIRKLIST = [
     new Quirk(147, 'biggerDeckII', 'Bigger Deck II', GameMode.SADISTIC, 1, []),
     new Quirk(148, 'biggerDeckII<s>I</s>', 'Bigger Deck II<s>I</s>', GameMode.SADISTIC, 1, []),
     new Quirk(149, 'bIGCHONKERCARDS', 'BIG CHONKER CARDS', GameMode.SADISTIC, 1, []),
-    new Quirk(150, 'extraMayoGenerator!', 'Extra Mayo Generator!', GameMode.SADISTIC, 1, [[Stat.MAYO_GENERATOR, 2]]),
+    new Quirk(150, 'extraMayoGenerator!', 'Extra Mayo Generator!', GameMode.SADISTIC, 1, [[Stat.MAYO_GENERATOR, 1]]),
     new Quirk(151, 'extraTagSlot!', 'Extra Tag Slot!', GameMode.EVIL, 1, []),
     new Quirk(152, 'betterTagsI', 'Better Tags I', GameMode.EVIL, 1, [[Stat.TAG_EFFECT, 0.05]]),
     new Quirk(153, 'betterTagsII', 'Better Tags II', GameMode.SADISTIC, 1, [[Stat.TAG_EFFECT, 0.04]]),

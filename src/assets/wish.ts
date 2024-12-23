@@ -292,7 +292,7 @@ export const WISHLIST = [
     new Wish(164, 'iwishIhadabiggerDeckI', 'I wish I had a bigger Deck I', GameMode.EVIL, 5, [], bd('1e20')),
     new Wish(165, 'iwishIhadabiggerDeckII', 'I wish I had a bigger Deck II', GameMode.SADISTIC, 5, [], bd('5e21')),
     new Wish(166, 'iwishIhadabiggerDeckIII', 'I wish I had a bigger Deck III', GameMode.SADISTIC, 5, [], bd('2.5e23')),
-    new Wish(167, 'iwishIhadanotherMayoGenerator', 'I wish I had another Mayo Generator', GameMode.SADISTIC, 1, [[Stat.MAYO_GENERATOR, 2]], bd('5e21')),
+    new Wish(167, 'iwishIhadanotherMayoGenerator', 'I wish I had another Mayo Generator', GameMode.SADISTIC, 1, [[Stat.MAYO_GENERATOR, 1]], bd('5e21')),
     new Wish(168, 'iwishIhadanotherBonusTag', 'I wish I had another Bonus Tag', GameMode.SADISTIC, 1, [], bd('3e22')),
     new Wish(169, 'iwishTagsworkedbetterI', 'I wish Tags worked better I', GameMode.EVIL, 10, [[Stat.TAG_EFFECT, 0.05]], bd('2e19')),
     new Wish(170, 'iwishTagsworkedbetterII', 'I wish Tags worked better II', GameMode.EVIL, 10, [[Stat.TAG_EFFECT, 0.04]], bd('6e20')),

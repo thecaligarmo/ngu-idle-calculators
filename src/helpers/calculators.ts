@@ -7,6 +7,7 @@ import { Stat } from "../assets/stat";
 import { bd, bigdec_equals, bigdec_max, bigdec_min, greaterThan, greaterThanOrEqual, isZero, toNum } from "./numbers";
 import { parseNum, parseObj } from "./parsers";
 import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
+import { getGameMode } from "./gameMode";
 
 
 // General Calc - gives a percentage
@@ -412,24 +413,30 @@ export function totalEnergyWandoosSpeed(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.ENERGY_WANDOOS_SPEED)
     var osLevel = (wandoosOSLevel(data).add(bd(1))).multiply(bd(0.04))
     var bootup = isMaxxedItemSet(data, ItemSets.WANDOOS) ? bd(1.1) : bd(1)
+    var gm = getGameMode(data)
+    var div = gm == GameMode.SADISTIC ? bd(1e12) : bd(1)
     
     // OS Level
     // Bootup
     return gen
         .multiply(osLevel)
         .multiply(bootup)
+        .divide(div)
 }
 
 export function totalMagicWandoosSpeed(data : any) : bigDecimal {
     var gen = calcAll(data, Stat.MAGIC_WANDOOS_SPEED)
     var osLevel = (wandoosOSLevel(data).add(bd(1))).multiply(bd(0.04))
     var bootup = isMaxxedItemSet(data, ItemSets.WANDOOS) ? bd(1.1) : bd(1)
+    var gm = getGameMode(data)
+    var div = gm == GameMode.SADISTIC ? bd(1e12) : bd(1)
     
     // OS Level
     // Bootup
     return gen
         .multiply(osLevel)
         .multiply(bootup)
+        .divide(div)
 }
 
 
@@ -491,6 +498,7 @@ export function totalCardSpeed(data : any) :bigDecimal {
 }
 
 export function totalMayoGeneration(data : any) :bigDecimal {
+    console.log(apItemInfo(data, Stat.MAYO_GENERATOR), perkInfo(data, Stat.MAYO_GENERATOR), quirkInfo(data, Stat.MAYO_GENERATOR), wishInfo(data, Stat.MAYO_GENERATOR))
 
     return bd(1)
         .add(apItemInfo(data, Stat.MAYO_GENERATOR))
