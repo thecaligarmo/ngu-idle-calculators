@@ -347,11 +347,10 @@ export function totalGoldDrop(data : any) : bigDecimal {
 }
 
 export function totalRespawnRate(data : any) : bigDecimal {
-    var clockSetModifier = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(0.95) : bd(1);
-
     if (isInitilizing(data)) {
         return bd(0)
     }
+    var clockSetModifier = isMaxxedItemSet(data, ItemSets.CLOCK) ? bd(0.95) : bd(1);
 
     // Can't use Gen because of the equipment
     return bd(1)
