@@ -495,6 +495,10 @@ export class FruitOfQuirks extends Yggdrasil {
 }
 
 export class FruitOfMayo extends Yggdrasil {
+    constructor(id: number, key: string, name: string) {
+        super(id, key, name)
+        this.baseSeedFactor = 10
+    }
     fruitYield({mayoSpeed = bd(1), blueHeart = false} : {mayoSpeed ?: bigDecimal, blueHeart ?: boolean}) : bigDecimal {
         if(!this.eatFruit) {
             return bd(0)
@@ -505,6 +509,35 @@ export class FruitOfMayo extends Yggdrasil {
                     * toNum(mayoSpeed.divide(bd(100)))
                     * 0.025
             )
+    }
+    // I'm not sure about the formula for seed, but seems like:
+    //      tier + floor( (tier - 1) / 3 )
+    // 3 -> 3 ?
+    // 4 -> 5 ?
+    // 5 -> 6 ?
+    // 6 -> 7 ?
+    // 7 -> 9 ?
+    // 8 -> 10 ?
+    // 9 -> 11 ?
+    // 10 -> 13 ?
+    // 11 -> 14 ?
+    // 12 -> 15 ?
+    // 13 -> 17 ?
+    // 14 -> 18 ?
+    // 15 -> 19
+    // 16 -> 21
+    // 17 -> 22 ? 
+    // 18 -> 23 ?
+    // 19 -> 25
+    // 20 -> 26
+    seedYield(seedModifier: bigDecimal, firstHarvest : number = 0, blueHeart : boolean = false) : bigDecimal {
+        return seedModifier.multiply(bd(
+                (this.eatFruit ? this.baseSeedFactor * (this.tier + Math.floor((this.tier - 1) / 3)): Math.ceil(this.tier ** 1.5) * 2 * this.baseSeedFactor)
+                * (1 + firstHarvest / 10.0)
+                * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
+                * (!this.eatFruit || this.alwaysHarvest ? 2 : 1)
+                )
+            ).divide(bd(100)).ceil()
     }
     upgradeToTierCost(tier : number) : number {
         return tier ** 2 * 250000

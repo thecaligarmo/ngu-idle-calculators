@@ -498,8 +498,7 @@ export function totalCardSpeed(data : any) :bigDecimal {
 }
 
 export function totalMayoGeneration(data : any) :bigDecimal {
-    console.log(apItemInfo(data, Stat.MAYO_GENERATOR), perkInfo(data, Stat.MAYO_GENERATOR), quirkInfo(data, Stat.MAYO_GENERATOR), wishInfo(data, Stat.MAYO_GENERATOR))
-
+    
     return bd(1)
         .add(apItemInfo(data, Stat.MAYO_GENERATOR))
         .add(perkInfo(data, Stat.MAYO_GENERATOR))
