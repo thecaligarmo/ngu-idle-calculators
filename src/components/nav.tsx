@@ -1,6 +1,7 @@
+import { Titans } from '@/assets/enemy';
 import ImportSaveForm from '@/components/ImportSaveForm/importSaveForm';
 import { useNumberFormatContext } from "@/components/context";
-import { getGameMode, isEvilMode, isSadMode } from '@/helpers/gameMode';
+import { cardsUnlocked, cookingUnlocked, getGameMode, hacksUnlocked, isAtLeastEvilMode, isEvilMode, isSadMode, titanKilled, wandoosUnlocked, wishesUnlocked, yggUnlocked } from '@/helpers/gameMode';
 import { toNum } from '@/helpers/numbers';
 import { parseNum } from '@/helpers/parsers';
 import { createStatesForData } from '@/helpers/stateForData';
@@ -34,22 +35,22 @@ export default function Nav({ children } : PropsWithChildren) {
     }
     
 
-    var curTitan = toNum(v('highestTitanKilledId-2'))
+    var curTitan = v('highestTitanKilledId-2')
     var gameMode = getGameMode(playerStates)
     
     return (
       <nav>
         <ul className="flex border-b dark:border-white border-black">
             <NavElt href="/">Home</NavElt>
-            {curTitan >=9 ? <NavElt href="/cards">Cards</NavElt> : null}
-            {curTitan >=10 ? <NavElt href="/cooking">Cooking</NavElt> : null}
+            {cardsUnlocked(curTitan) ? <NavElt href="/cards">Cards</NavElt> : null}
+            {cookingUnlocked(curTitan) ? <NavElt href="/cooking">Cooking</NavElt> : null}
             <NavElt href="/daily">Daily</NavElt>
-            {curTitan >=7 ? <NavElt href="/hacks">Hacks</NavElt> : null}
+            {hacksUnlocked(curTitan) ? <NavElt href="/hacks">Hacks</NavElt> : null}
             <NavElt href="/ngus" hasChildren={true}>NGUs</NavElt>
             <NavElt href="/ratios">Ratios</NavElt>
-            {curTitan >= 1 ? <NavElt href="/wandoos">Wandoos</NavElt> : null}
-            {curTitan >= 8 ? <NavElt href="/wishes">Wishes</NavElt> : null}
-            {curTitan >= 2 ? <NavElt href="/ygg">Ygg</NavElt> : null}
+            {wandoosUnlocked(curTitan) ? <NavElt href="/wandoos">Wandoos</NavElt> : null}
+            {wishesUnlocked(curTitan) ? <NavElt href="/wishes">Wishes</NavElt> : null}
+            {yggUnlocked(curTitan) ? <NavElt href="/ygg">Ygg</NavElt> : null}
             <NavElt href="/stats">Stats</NavElt>
             <NavElt href="/zone">Zones</NavElt>
             <NavElt href="/about">About</NavElt>
@@ -77,9 +78,9 @@ export default function Nav({ children } : PropsWithChildren) {
         { pathname.startsWith('/ngus') ?
             <ul className="flex border-b dark:border-white border-black">
                 <NavElt href="/ngus">Normal</NavElt>
-                {isEvilMode(gameMode) ? <NavElt href="/ngus/evil">Evil</NavElt> : null}
+                {isAtLeastEvilMode(gameMode) ? <NavElt href="/ngus/evil">Evil</NavElt> : null}
                 {isSadMode(gameMode) ? <NavElt href="/ngus/sadistic">Sadistic</NavElt> : null}
-                {isEvilMode(gameMode) ? <NavElt href="/ngus/compare">Compare Modes</NavElt> : null}
+                {isAtLeastEvilMode(gameMode) ? <NavElt href="/ngus/compare">Compare Modes</NavElt> : null}
             </ul>
             : null
         }

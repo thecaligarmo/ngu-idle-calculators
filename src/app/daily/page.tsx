@@ -8,7 +8,9 @@ import { Zones } from "@/assets/zones";
 import Content, { requiredDataType } from "@/components/content";
 import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
+import { disableItem } from "@/components/dataListColumns";
 import { StandardTable } from "@/components/standardTable";
+import { getGameMode, isEvilMode, isNormalMode, questsUnlocked, titanKilled, wishesUnlocked, yggUnlocked } from "@/helpers/gameMode";
 import { bd, isOne, pn, toNum } from "@/helpers/numbers";
 import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from "@/helpers/pages/daily";
 import { parseNum, parseObj } from "@/helpers/parsers";
@@ -44,6 +46,8 @@ export default function Page() {
 
     var goRequired : requiredDataType = [['goAP%', 'goExperience%', 'goPower%', 'goQuestDrop%', 'goRespawn%', 'goYggdrasilYield%']];
     const playerStates = createStatesForData(extraRequired, goRequired);
+    var gameMode = getGameMode(playerStates)
+    var curTitan = v('highestTitanKilledId-2')
 
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates)
@@ -61,6 +65,45 @@ export default function Page() {
 
     function j(key : string) : any{
         return parseObj(playerStates, key)
+    }
+
+    // Hide unecessary stuff
+    if(!questsUnlocked(curTitan)) {
+        infoReq = disableItem(infoReq, ['questMinorQP-2', 'questMajorQP-2', 'questIdleDivider-1', 'activeQuestWishI-2', 'activeQuestWishII-2', 'totalQuestRewardBonus%', 'totalQuestDropBonus%','fibQuestRNG^', 'fasterQuesting^',])
+        extraReq = disableItem(extraReq, [ 'includeMajorQuests^', 'idleMajorQuests^'])
+    }
+    if(!yggUnlocked(curTitan)) {
+        infoReq = disableItem(infoReq, ['fruitOfKnowledgeSucks^','fruitOfKnowledgeSTILLSucks^','totalYggdrasilYieldBonus%',])
+    }
+    if(!wishesUnlocked(curTitan)) {
+        infoReq = disableItem(infoReq, [ 'wishTitansHadBetterRewards-2', 'wishBeastDropQP^', 'wishNerdDropQP^', 'wishGodmotherDropQP^', 'wishExileDropQP^', 'wishTitan10DropQP^', 'wishTitan11DropQP^', 'wishTitan12DropQP^'])
+    }
+    if (!titanKilled(curTitan, Titans.BEAST)) {
+        infoReq = disableItem(infoReq, ['wishBeastDropQP^'])
+    }
+    if (!titanKilled(curTitan, Titans.NERD)) {
+        infoReq = disableItem(infoReq, ['wishNerdDropQP^'])
+    }
+    if (!titanKilled(curTitan, Titans.GODMOTHER)) {
+        infoReq = disableItem(infoReq, ['wishGodmotherDropQP^'])
+    }
+    if (!titanKilled(curTitan, Titans.EXILE)) {
+        infoReq = disableItem(infoReq, ['wishExileDropQP^'])
+    }
+    if (!titanKilled(curTitan, Titans.IT_HUNGERS)) {
+        infoReq = disableItem(infoReq, ['wishTitan10DropQP^'])
+    }
+    if (!titanKilled(curTitan, Titans.ROCK_LOBSTER)) {
+        infoReq = disableItem(infoReq, ['wishTitan11DropQP^'])
+    }
+    if (!titanKilled(curTitan, Titans.AMALGAMATE)) {
+        infoReq = disableItem(infoReq, ['wishTitan12DropQP^'])
+    }
+    if(isNormalMode(gameMode)) {
+        infoReq = disableItem(infoReq, ['twentyFourHourEvilChallenge-2', 'twentyFourHourSadisticChallenge-2'])
+    }
+    if(isEvilMode(gameMode)) {
+        infoReq = disableItem(infoReq, ['twentyFourHourSadisticChallenge-2'])
     }
     
 
@@ -140,6 +183,7 @@ export default function Page() {
     var APFromMinors = questInfo['ap']['minor']
     var APPerMajor = questInfo['ap']['perMajor']
     var APPerMinor = questInfo['ap']['perMinor']
+    
 
 
     /* Titan Info */
@@ -160,7 +204,6 @@ export default function Page() {
     
     var maxTitanByAK : [Titan, number] = getMaxTitanByAK(titans, playerAttack);
     var maxTitan : [Titan, number] = maxTitanByAK
-    var highestTitan = toNum(v('highestTitanKilledId-2'))
 
     // Update titan if user wants a different one.
     if(optMaxTitan != 'current') {
@@ -410,7 +453,7 @@ export default function Page() {
             <ContentSubsection title={"How many PP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
                 <StandardTable order={tableOrder} header={ppTableHeader} rows={ppTableDataRows} />
             </ContentSubsection>
-            { highestTitan >= 6  // Must have beaten the Beast
+            { questsUnlocked(curTitan)  // Must have beaten the Beast
                 ? <ContentSubsection title={"How many QP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
                         <StandardTable order={tableOrder} header={qpTableHeader} rows={qpTableDataRows} />
                     </ContentSubsection>
