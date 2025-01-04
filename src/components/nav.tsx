@@ -26,14 +26,14 @@ export default function Nav({ children } : PropsWithChildren) {
     }
 
 
-    const playerStates = createStatesForData([[]], [[]], ['highestTitanKilledId-2', 'gameMode']);
+    const playerStates = createStatesForData([[]], [[]], ['highestTitanKilledId-2', 'gameMode'], 'nav');
     
     function v(key : string) : bigDecimal {
         return parseNum(playerStates, key)
     }
     
-    var curTitan = v('highestTitanKilledId-2')
-    var gameMode = getGameMode(playerStates)
+    var curTitan = v('navhighestTitanKilledId-2')
+    var gameMode = getGameMode(v('navgameMode'))
     
     return (
       <nav>

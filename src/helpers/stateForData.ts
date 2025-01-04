@@ -5,7 +5,7 @@ import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
 import { camelToTitle } from "./strings";
 import { requiredDataType } from "@/components/content";
 
-export function createStatesForData(extraRequired: requiredDataType = [], goRequired: requiredDataType = [], filter : (string | [string, number])[] | boolean = false) : any{
+export function createStatesForData(extraRequired: requiredDataType = [], goRequired: requiredDataType = [], filter : (string | [string, number])[] | boolean = false, filterKey : string = '') : any{
     const playerData = getPlayerData();
     var playerNumberOptions : (string | [string, number])[] = getPlayerNumberOptions();
     var playerOptions : string[] = getPlayerOptions();
@@ -16,7 +16,7 @@ export function createStatesForData(extraRequired: requiredDataType = [], goRequ
     for (var col of extraRequired) {
         for (var erKey of col) {
             // playerNumberOptions.push(key)
-            var erKeyString : string = _.isArray(erKey) ? erKey[0] : erKey
+            var erKeyString : string = filterKey + (_.isArray(erKey) ? erKey[0] : erKey)
             var defaultVal = defaultPlayerData(playerData, erKey)
             var dataStateNum = useLocalStorageNumber(erKeyString, defaultVal)
             dataObj[erKeyString] = dataStateNum
@@ -31,7 +31,7 @@ export function createStatesForData(extraRequired: requiredDataType = [], goRequ
     }
     
     for (var pnKey of playerNumberOptions) {
-        var pnKeyString : string = _.isArray(pnKey) ? pnKey[0] : pnKey
+        var pnKeyString : string = filterKey + (_.isArray(pnKey) ? pnKey[0] : pnKey)
         var defaultVal = defaultPlayerData(playerData, pnKey)
         var dataStateNum = useLocalStorageNumber(pnKeyString, defaultVal)
         if (isUpdated && dataStateNum[0] != defaultVal) {
@@ -41,30 +41,33 @@ export function createStatesForData(extraRequired: requiredDataType = [], goRequ
     }
 
     for (var poKey of playerOptions) {
+        var poKeyString : string = filterKey + poKey
         var defaultVal = defaultPlayerData(playerData, poKey)
-        var dataState = useLocalStorage(poKey, defaultVal);
+        var dataState = useLocalStorage(poKeyString, defaultVal);
         if (isUpdated && ! _.isEqual(dataState[0], defaultVal)) {
             dataState[1](defaultVal)
         }
-        dataObj[poKey] = dataState
+        dataObj[poKeyString] = dataState
     }
     
     for (var goKey of goOptions) {
+        var goKeyString : string = filterKey + goKey
         var defaultVal = defaultPlayerData(playerData, goKey)
-        var dataState = useLocalStorage(goKey, defaultVal);
+        var dataState = useLocalStorage(goKeyString, defaultVal);
         if (isUpdated && ! _.isEqual(dataState[0], defaultVal)) {
             dataState[1](defaultVal)
         }
-        dataObj[goKey] = dataState
+        dataObj[goKeyString] = dataState
     }
 
     for (var coKey of calculatedOptions) {
+        var coKeyString : string = filterKey + coKey
         var defaultVal = defaultPlayerData(dataObj, coKey).getValue()
-        var dataStateNum = useLocalStorageNumber(coKey, defaultVal, true);
+        var dataStateNum = useLocalStorageNumber(coKeyString, defaultVal, true);
         if (isUpdated && dataStateNum[0] != defaultVal) {
             dataStateNum[1](defaultVal)
         }
-        dataObj[coKey] = dataStateNum
+        dataObj[coKeyString] = dataStateNum
     }
 
     return dataObj;

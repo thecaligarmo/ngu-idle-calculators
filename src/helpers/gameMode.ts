@@ -4,8 +4,8 @@ import bigDecimal from "js-big-decimal"
 import { bd, bigdec_equals, toNum } from "./numbers"
 import { Titan, Titans } from "@/assets/enemy"
 
-export function getGameMode(data : any) : number{
-    var gameMode = parseNum(data, 'gameMode') 
+export function getGameMode(data : any | bigDecimal) : number{
+    var gameMode = (data instanceof bigDecimal) ? data : parseNum(data, 'gameMode') 
     if(isEvilMode(gameMode)) {
         return GameMode.EVIL
     }
