@@ -332,6 +332,10 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x PPP Bonus',
                 'val' : isMaxxedItemSet(playerStates, ItemSets.PRETTY) ? bd(110) : bd(100),
             },
+            'halloweenKey' : {
+                'name': 'x Halloweenies Set Bonus',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.HALLOWEEN) ? bd(145) : bd(100),
+            },
             'ngu' : {
                 'name': 'x NGU',
                 'val' : nguInfo(playerStates, Stat.PP),

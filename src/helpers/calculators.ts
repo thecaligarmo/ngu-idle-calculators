@@ -212,6 +212,7 @@ export function totalAPBonus(data: any) : bigDecimal {
 export function totalPPBonus(data: any) : bigDecimal {
     var greenHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.GREEN_HEART) ? bd(1.2) : bd(1)
     var pissedOffKeyBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.PISSED_OFF_KEY) ? bd(1.1) : bd(1)
+    var halloweenBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.HALLOWEEN) ? bd(1.45) : bd(1)
     var PPPSetBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.PRETTY) ? bd(1.1) : bd(1)
     var gen : bigDecimal = calcAll(data, Stat.PP)
     
@@ -221,6 +222,7 @@ export function totalPPBonus(data: any) : bigDecimal {
         .multiply(greenHeartBonus)
         .multiply(pissedOffKeyBonus)
         .multiply(PPPSetBonus)
+        .multiply(halloweenBonus)
 }
 
 
