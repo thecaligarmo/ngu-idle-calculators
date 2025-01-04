@@ -1,8 +1,6 @@
-import { Titans } from '@/assets/enemy';
 import ImportSaveForm from '@/components/ImportSaveForm/importSaveForm';
 import { useNumberFormatContext } from "@/components/context";
-import { cardsUnlocked, cookingUnlocked, getGameMode, hacksUnlocked, isAtLeastEvilMode, isEvilMode, isSadMode, titanKilled, wandoosUnlocked, wishesUnlocked, yggUnlocked } from '@/helpers/gameMode';
-import { toNum } from '@/helpers/numbers';
+import { cardsUnlocked, cookingUnlocked, getGameMode, hacksUnlocked, isAtLeastEvilMode, isSadMode, wandoosUnlocked, wishesUnlocked, yggUnlocked } from '@/helpers/gameMode';
 import { parseNum } from '@/helpers/parsers';
 import { createStatesForData } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
@@ -28,13 +26,12 @@ export default function Nav({ children } : PropsWithChildren) {
     }
 
 
-    const playerStates = createStatesForData([[]], [[]]);
+    const playerStates = createStatesForData([[]], [[]], ['highestTitanKilledId-2', 'gameMode']);
     
     function v(key : string) : bigDecimal {
         return parseNum(playerStates, key)
     }
     
-
     var curTitan = v('highestTitanKilledId-2')
     var gameMode = getGameMode(playerStates)
     
