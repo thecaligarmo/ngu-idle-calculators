@@ -54,9 +54,6 @@ export function createStatesForData(extraRequired: requiredDataType = [], goRequ
         var goKeyString : string = filterKey + goKey
         var defaultVal = defaultPlayerData(playerData, goKey)
         var dataState = useLocalStorage(goKeyString, defaultVal);
-        if (isUpdated && ! _.isEqual(dataState[0], defaultVal)) {
-            dataState[1](defaultVal)
-        }
         dataObj[goKeyString] = dataState
     }
 
