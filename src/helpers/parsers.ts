@@ -37,7 +37,6 @@ export function parseObj(state: any, key: string) {
 
 // Parse a number from player states to get back a bigDecimal
 export function parseNum(state: any, key: string) : bigDecimal{
-    console.log(key)
     var val = bd(state[key][0])
     // Handle gear optimizer stuff
     if(key in calcToGo) {

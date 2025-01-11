@@ -1,18 +1,16 @@
 'use client'
-import { Hack, HackKeys } from '@/assets/hacks';
-import { Stat } from '@/assets/stat';
-import { Wish, WISHES } from '@/assets/wish';
+import { Hack } from '@/assets/hacks';
 import { ChoiceButton } from '@/components/buttons';
 import Content, { requiredDataType } from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
 import { disableItem } from '@/components/dataListColumns';
 import { StandardTable, StandardTableRowType } from '@/components/standardTable';
-import { bd, dn, isOne, lessThan, pn, toNum } from '@/helpers/numbers';
+import { bd, dn, isOne, pn, toNum } from '@/helpers/numbers';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
-import { ReactElement, useState } from 'react';
+import { useState } from 'react';
 
 const HACKS_TARGET = 'target'
 const HACKS_PERCENTAGE = 'percentage'
