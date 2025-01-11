@@ -54,11 +54,7 @@ export function getLevelsGainedInWandoos({
         'meh' : bd(1000),
         'xl' : bd(1000000),
     }
-    // need baseMultiplier before we change the bases
-    var baseMultiplier = wandoosBase['98']
-    if(wandoos.os != WANDOOS_OS.NINETY_EIGHT) {
-        var baseMultiplier = wandoos.os == WANDOOS_OS.MEH ? wandoosBase['meh'] : wandoosBase['xl'];
-    }
+
 
     if(!isNormalMode(gameMode)) {
         wandoosBase = {
@@ -66,6 +62,12 @@ export function getLevelsGainedInWandoos({
             'meh' : bd(1000000),
             'xl' : bd(1000000000000),
         }
+    }
+
+    // need baseMultiplier before we change the bases
+    var baseMultiplier = wandoosBase['98']
+    if(wandoos.os != WANDOOS_OS.NINETY_EIGHT) {
+        var baseMultiplier = wandoos.os == WANDOOS_OS.MEH ? wandoosBase['meh'] : wandoosBase['xl'];
     }
 
     var wandoosRatios = {
