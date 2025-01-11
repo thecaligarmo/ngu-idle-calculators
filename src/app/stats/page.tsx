@@ -3,7 +3,8 @@ import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
-import { totalAPBonus, totalAugmentSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalToughness, totalWishSpeed } from '@/helpers/calculators';
+import { totalAPBonus, totalAugmentSpeed, totalCardSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalMayoSpeed, totalPPBonus, totalPower, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalTagEffect, totalToughness, totalWishSpeed } from '@/helpers/calculators';
+import { cardsUnlocked, questsUnlocked } from '@/helpers/gameMode';
 import { bd, pn } from '@/helpers/numbers';
 import { describeStat, getStatInfo } from '@/helpers/pages/stat';
 import { parseNum, parseObj } from '@/helpers/parsers';
@@ -24,6 +25,7 @@ export default function Page() {
     }
 
     var [res3Active, setRes3Active] = playerStates["res3Active"]
+    var curTitan = v('highestTitanKilledId-2')
 
 
     var pageData = getStatInfo(playerStates);
@@ -161,15 +163,39 @@ export default function Page() {
                     {describeStat(pageData['eWandoos'], fmt)}
                 </ContentSubsection>
             </ContentSection>
-            <ContentSection title="Quest Stats">
-                <ul>
-                    <li key="questRewards"><strong>Total QP Reward:</strong> <span className="text-red-500">{pn(totalQuestRewardBonus(playerStates), fmt)}%</span></li>
-                    <li key="questDrop"><strong>Total Quest Item Drop:</strong> <span className="text-red-500">{pn(totalQuestDropBonus(playerStates), fmt, 2)}%</span></li>
-                </ul>
-                <ContentSubsection title="Quest Rewards Calculation" defaultHide={true}>
-                    {describeStat(pageData['questRewards'], fmt)}
-                </ContentSubsection>
-            </ContentSection>
+            {
+                questsUnlocked(curTitan) 
+                ? <ContentSection title="Quest Stats">
+                    <ul>
+                        <li key="questRewards"><strong>Total QP Reward:</strong> <span className="text-red-500">{pn(totalQuestRewardBonus(playerStates), fmt)}%</span></li>
+                        <li key="questDrop"><strong>Total Quest Item Drop:</strong> <span className="text-red-500">{pn(totalQuestDropBonus(playerStates), fmt, 2)}%</span></li>
+                    </ul>
+                    <ContentSubsection title="Quest Rewards Calculation" defaultHide={true}>
+                        {describeStat(pageData['questRewards'], fmt)}
+                    </ContentSubsection>
+                </ContentSection>
+                : null
+            }
+            {
+                cardsUnlocked(curTitan)
+                ? <ContentSection title="Card Stats">
+                    <ul>
+                        <li key="mayoSpeed"><strong>Total Mayo Speed:</strong> <span className="text-red-500">{pn(totalMayoSpeed(playerStates), fmt, 2)}%</span></li>
+                        <li key="cardSpeed"><strong>Total Card Speed:</strong> <span className="text-red-500">{pn(totalCardSpeed(playerStates), fmt, 2)}%</span></li>
+                        <li key="tagEffect"><strong>Total Tag Effect:</strong> <span className="text-red-500">{pn(totalTagEffect(playerStates), fmt, 2)}%</span></li>
+                    </ul>
+                    <ContentSubsection title="Mayo Speed Calculation" defaultHide={true}>
+                        {describeStat(pageData['mayoSpeed'], fmt)}
+                    </ContentSubsection>
+                    <ContentSubsection title="Card Speed Calculation" defaultHide={true}>
+                        {describeStat(pageData['cardSpeed'], fmt)}
+                    </ContentSubsection>
+                    <ContentSubsection title="Tag Effect Calculation" defaultHide={true}>
+                        {describeStat(pageData['tagEffect'], fmt)}
+                    </ContentSubsection>
+                </ContentSection>
+                : null
+            }
         </Container>
     )
 }

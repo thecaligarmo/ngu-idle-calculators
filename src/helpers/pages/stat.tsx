@@ -1,7 +1,7 @@
 import { ItemSets } from "@/assets/sets"
 import { Stat } from "@/assets/stat"
 import _ from "lodash"
-import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed, totalQuestRewardBonus, totalEnergyCap, totalRegen } from "../calculators"
+import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed, totalQuestRewardBonus, totalEnergyCap, totalRegen, totalMayoGeneration, totalMayoSpeed, totalCardSpeed, totalTagEffect } from "../calculators"
 import { bd, bigdec_equals, bigdec_max, isOne, pn, toNum } from "../numbers"
 import { equipmentWithCubeInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo, isCompletedChallenge, maxxedItemSetNum, cookingInfo } from "../resourceInfo"
 import bigDecimal from "js-big-decimal"
@@ -1001,6 +1001,10 @@ export function getStatInfo(playerStates : any) {
             }
         },
         'questRewards': {
+            'base' : {
+                'name' : "Base Quest Rewards",
+                'val' : bd(100),
+            },
             'equipment' : {
                 'name' : 'x Equipment',
                 'val' : equipmentWithCubeInfo(playerStates, Stat.QUEST_REWARD),
@@ -1030,7 +1034,6 @@ export function getStatInfo(playerStates : any) {
                 'name': 'x Mobster Set',
                 'val' : isMaxxedItemSet(playerStates, ItemSets.MOBSTER) ? bd(115) : bd(100),
             },
-            
             'orangeHeart' : {
                 'name': 'x Orange Heart',
                 'val' : isMaxxedItemSet(playerStates, ItemSets.ORANGE_HEART) ? bd(120) : bd(100)
@@ -1038,6 +1041,113 @@ export function getStatInfo(playerStates : any) {
             'total' : {
                 'val' : totalQuestRewardBonus(playerStates),
             }
-        }
+        },
+        'mayoSpeed' : {
+            'base' : {
+                'name' : "Base Mayo Speed",
+                'val' : bd(100),
+            },
+            'generators': {
+                'name' : 'x Generators',
+                'val' : ((totalMayoGeneration(playerStates).subtract(bd(1))).multiply(bd(2))).add(bd(100)),
+            },
+            'perk' : {
+                'name': 'x Perk ',
+                'val' : perkInfo(playerStates, Stat.MAYO_SPEED),
+                'sigFig': 2,
+            },
+            'quirk' : {
+                'name': 'x Quirk ',
+                'val' : quirkInfo(playerStates, Stat.MAYO_SPEED),
+                'sigFig': 2,
+            },
+            'wish' : {
+                'name': 'x Wish ',
+                'val' : wishInfo(playerStates, Stat.MAYO_SPEED),
+                'sigFig': 2,
+            },
+            'trollChallenge' : {
+                'name' : 'x Sad Troll Challenge',
+                'val' : isCompletedChallenge(playerStates, ChallengeKeys.TROLL, GameMode.SADISTIC, 6) ? bd(110) : bd(100),
+            },
+            'rainbowHeart' : {
+                'name': 'x Rainbow Heart',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.RAINBOW_HEART) ? bd(110) : bd(100)
+            },
+            'duck' : {
+                'name': 'x Duck Set',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.DUCK) ? bd(106) : bd(100),
+            },
+            'total' : {
+                'val' : totalMayoSpeed(playerStates),
+                'sigFig': 2,
+            }
+        },
+        'cardSpeed' : {
+            'base' : {
+                'name' : "Base Card Speed",
+                'val' : bd(100),
+            },
+            'perk' : {
+                'name': 'x Perk ',
+                'val' : perkInfo(playerStates, Stat.CARD_SPEED),
+                'sigFig': 2,
+            },
+            'quirk' : {
+                'name': 'x Quirk ',
+                'val' : quirkInfo(playerStates, Stat.CARD_SPEED),
+                'sigFig': 2,
+            },
+            'wish' : {
+                'name': 'x Wish ',
+                'val' : wishInfo(playerStates, Stat.CARD_SPEED),
+                'sigFig': 2,
+            },
+            'trollChallenge' : {
+                'name' : 'x Sad Troll Challenge',
+                'val' : isCompletedChallenge(playerStates, ChallengeKeys.TROLL, GameMode.SADISTIC, 5) ? bd(110) : bd(100),
+            },
+            'rainbowHeart' : {
+                'name': 'x Rainbow Heart',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.RAINBOW_HEART) ? bd(110) : bd(100)
+            },
+            'duck' : {
+                'name': 'x Duck Set',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.DUCK) ? bd(106) : bd(100),
+            },
+            'total' : {
+                'val' : totalCardSpeed(playerStates),
+                'sigFig': 2,
+            }
+        },
+        'tagEffect' : {
+            'base' : {
+                'name' : "Base Tag Effect",
+                'val' : bd(10),
+            },
+            'perk' : {
+                'name': '+ Perk ',
+                'val' : perkInfo(playerStates, Stat.TAG_EFFECT).subtract(bd(100)),
+                'sigFig': 3,
+            },
+            'quirk' : {
+                'name': '+ Quirk ',
+                'val' : quirkInfo(playerStates, Stat.TAG_EFFECT).subtract(bd(100)),
+                'sigFig': 3,
+            },
+            'wish' : {
+                'name': '+ Wish ',
+                'val' : wishInfo(playerStates, Stat.TAG_EFFECT).subtract(bd(100)),
+                'sigFig': 3,
+            },
+            'beatingHeart' : {
+                'name': '+ Beating Heart Set',
+                'val' : isMaxxedItemSet(playerStates, ItemSets.BEATING_HEART) ? bd(1) : bd(0),
+            },
+            'total' : {
+                'val' : totalTagEffect(playerStates),
+                'sigFig': 3,
+            }
+        },
     }
 }
