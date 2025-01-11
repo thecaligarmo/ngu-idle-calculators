@@ -51,7 +51,7 @@ export default function Page() {
         ings = dish.orderedIngredients()
         ings.forEach((p : Ingredient) => {
             if(p.isUnlocked){
-                ingList.push(<li key={p.key} className="inline-block w-1/2"><strong>{p.name}</strong>: <span className="text-green-500">{p.amount()}</span> {p.altAmount() ? <span className="text-blue-500">({p.altAmount()})</span> : null}</li>)
+                ingList.push(<li key={p.key} className="inline-block w-1/2"><strong>{p.name}</strong>: <span className="text-green-500">{p.amount()}</span> {p.altAmount() ? <span className="text-violet-500">(alt: {p.altAmount()})</span> : null}</li>)
             }
         })
         pairs = dish.pairs
@@ -83,7 +83,7 @@ export default function Page() {
                         </ul>
                     </>
                 }
-                The amounts in <span className='text-blue-500'>blue</span> are for swapping for pairing (see below).
+                The amounts in <span className='text-violet-500'>purple</span> are for swapping for pairing (see below). If you use the alt number for one item, you *must* also use the alt number for its pair.
             </ContentSubsection>
             <ContentSubsection title="Which ingredients are paired?">
             {(_.isEmpty(pairs)) 
