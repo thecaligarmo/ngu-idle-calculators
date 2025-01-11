@@ -160,6 +160,10 @@ export function apItemInfo(data: any, key: string) : bigDecimal {
             apItems.forEach((g) => {
                 if (!_.isUndefined(g[key])) {
                     let statAmt = (100 + g[key]) / 100
+                    // Mayo
+                    if(g.id == 56) {
+                        statAmt = (100 + g[key] * g.level) / 100
+                    } 
                     stat *= blueHeart && g.id < 19 ? statAmt * 1.1 : statAmt
                 }
             })

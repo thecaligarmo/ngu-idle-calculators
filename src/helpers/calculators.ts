@@ -500,7 +500,6 @@ export function totalCardSpeed(data : any) :bigDecimal {
 }
 
 export function totalMayoGeneration(data : any) :bigDecimal {
-    
     return bd(1)
         .add(apItemInfo(data, Stat.MAYO_GENERATOR))
         .add(perkInfo(data, Stat.MAYO_GENERATOR))
