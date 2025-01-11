@@ -1,11 +1,13 @@
 'use client'
 import { Hack, HackKeys } from '@/assets/hacks';
 import { Stat } from '@/assets/stat';
+import { PlusMinusButtons } from '@/components/buttons';
 import Content, { requiredDataType } from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
+import { disableItem } from '@/components/dataListColumns';
 import { StandardTable, StandardTableRowType } from '@/components/standardTable';
-import { bd, dn, isOne, lessThan, pn, toNum } from '@/helpers/numbers';
+import { bd, dn, isOne, isZero, lessThan, pn, toNum } from '@/helpers/numbers';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
@@ -17,46 +19,63 @@ export default function Page() {
     // Set data required (from playerData)
     var infoRequired : requiredDataType = [['totalRes3Power', 'totalRes3Cap', 'totalHackSpeed%', 'blueHeart^'],
         [   
-            'hackMilestoneStat',
-            'hackMilestoneAdventure',
-            'hackMilestoneTimeMachine',
-            'hackMilestoneDropChance',
-            'hackMilestoneAugment',
-            'hackMilestoneENGU',
-            'hackMilestoneMNGU',
-            'hackMilestoneBlood',
-            'hackMilestoneQP',
-            'hackMilestoneDaycare',
-            'hackMilestoneExp',
-            'hackMilestoneNumber',
-            'hackMilestonePP',
-            'hackMilestoneHack',
-            'hackMilestoneWish',
+            'hackMilestoneReductionStat',
+            'hackMilestoneReductionAdventure',
+            'hackMilestoneReductionTimeMachine',
+            'hackMilestoneReductionDropChance',
+            'hackMilestoneReductionAugment',
+            'hackMilestoneReductionENGU',
+            'hackMilestoneReductionMNGU',
+            'hackMilestoneReductionBlood',
+            'hackMilestoneReductionQP',
+            'hackMilestoneReductionDaycare',
+            'hackMilestoneReductionExp',
+            'hackMilestoneReductionNumber',
+            'hackMilestoneReductionPP',
+            'hackMilestoneReductionHack',
+            'hackMilestoneReductionWish',
         ]
     ]
     // Set extra required (not from playerData)
-    var extraRequired  : requiredDataType = [['addRes3BetaPotion^', 'addRes3DeltaPotion^']
+    var extraRequired  : requiredDataType = [['addRes3BetaPotion^', 'addRes3DeltaPotion^'],
+        [
+            'hackMilestoneExtraStat',
+            'hackMilestoneExtraAdventure',
+            'hackMilestoneExtraTimeMachine',
+            'hackMilestoneExtraDropChance',
+            'hackMilestoneExtraAugment',
+            'hackMilestoneExtraENGU',
+            'hackMilestoneExtraMNGU',
+            'hackMilestoneExtraBlood',
+            'hackMilestoneExtraQP',
+            'hackMilestoneExtraDaycare',
+            'hackMilestoneExtraExp',
+            'hackMilestoneExtraNumber',
+            'hackMilestoneExtraPP',
+            'hackMilestoneExtraHack',
+            'hackMilestoneExtraWish',
+        ]
     ]
     var goRequired : requiredDataType = [['goResource3Power%', 'goResource3Cap%', 'goRawHackSpeed%']]
     const playerStates = createStatesForData(extraRequired, goRequired);
     
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates, {
-        'hackMilestoneStat' : 'Attack/Defense Milestones',
-        'hackMilestoneAdventure' : 'Adventure Milestones',
-        'hackMilestoneTimeMachine' : 'Time Machine Milestones',
-        'hackMilestoneDropChance' : 'Drop Chance Milestones',
-        'hackMilestoneAugment' : 'Augment Milestones',
-        'hackMilestoneENGU' : 'Energy NGU Milestones',
-        'hackMilestoneMNGU' : 'Magic NGU Milestones',
-        'hackMilestoneBlood' : 'Blood Milestones',
-        'hackMilestoneQP' : 'QP Milestones',
-        'hackMilestoneDaycare' : 'Daycare Milestones',
-        'hackMilestoneExp' : 'Experience Milestones',
-        'hackMilestoneNumber' : 'Number Milestones',
-        'hackMilestonePP' : 'PP Milestones',
-        'hackMilestoneHack' : 'Hack Milestones',
-        'hackMilestoneWish' : 'Wish Milestones',
+        'hackMilestoneReductionStat' : 'Attack/Defense Milestones',
+        'hackMilestoneReductionAdventure' : 'Adventure Milestones',
+        'hackMilestoneReductionTimeMachine' : 'Time Machine Milestones',
+        'hackMilestoneReductionDropChance' : 'Drop Chance Milestones',
+        'hackMilestoneReductionAugment' : 'Augment Milestones',
+        'hackMilestoneReductionENGU' : 'Energy NGU Milestones',
+        'hackMilestoneReductionMNGU' : 'Magic NGU Milestones',
+        'hackMilestoneReductionBlood' : 'Blood Milestones',
+        'hackMilestoneReductionQP' : 'QP Milestones',
+        'hackMilestoneReductionDaycare' : 'Daycare Milestones',
+        'hackMilestoneReductionExp' : 'Experience Milestones',
+        'hackMilestoneReductionNumber' : 'Number Milestones',
+        'hackMilestoneReductionPP' : 'PP Milestones',
+        'hackMilestoneReductionHack' : 'Hack Milestones',
+        'hackMilestoneReductionWish' : 'Wish Milestones',
     })
     var extraReq = getRequiredStates(extraRequired, playerStates)
     var goReq = getRequiredStates(goRequired, playerStates)
@@ -73,6 +92,27 @@ export default function Page() {
     function c(key : string) : boolean {
         return isOne(v(key))
     }
+
+    // We never want to show milestone increases:
+    extraReq = disableItem(extraReq, 
+        [
+            'hackMilestoneExtraStat',
+            'hackMilestoneExtraAdventure',
+            'hackMilestoneExtraTimeMachine',
+            'hackMilestoneExtraDropChance',
+            'hackMilestoneExtraAugment',
+            'hackMilestoneExtraENGU',
+            'hackMilestoneExtraMNGU',
+            'hackMilestoneExtraBlood',
+            'hackMilestoneExtraQP',
+            'hackMilestoneExtraDaycare',
+            'hackMilestoneExtraExp',
+            'hackMilestoneExtraNumber',
+            'hackMilestoneExtraPP',
+            'hackMilestoneExtraHack',
+            'hackMilestoneExtraWish',
+        ]
+    )
     
     
     var res3pow = v('totalRes3Power')
@@ -89,79 +129,46 @@ export default function Page() {
     // Figure out hackday timers
     var hacks : Hack[] = Object.values(j('hacks'))
     var hackDayRows : StandardTableRowType = {}
-    var hackDayTime = bd(0)
     var doneFindingOptimal = false
-    var hackHackTime = bd(0)
+    var hackDayTargets : {[k:string] : number} = {}
+    var baseHackDayTime = bd(0)
 
     hacks.forEach((hack) => {
-        var curVal = hack.getStatValue()
-        var hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, hackSpeed)
-        var newHackVal = hack.getStatValue('', hackTarget)
-        var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget)
-        hackDayTime = hackDayTime.add(hackTime)
-        var milestoneChange = Math.ceil((hackTarget - hack.level) / hack.levelsPerMilestone())
-
-        hackDayRows[hack.key] = {
-            'name' : hack.name,
-            'level' : <>{pn(hack.level, fmt, 0)}</>,
-            'bonus' : <>{pn(curVal, fmt, 2)}%</>,
-            'target' : <>{pn(hackTarget, fmt)}</>,
-            'tBonus' : <>{pn(newHackVal, fmt, 2)}%</>,
-            'milestoneChange' : <>+{pn(milestoneChange, fmt)}</>,
-            'time' : <>{dn(hackTime)}</>,
-            'minTime' : <>{dn(hackTime)}</>,
-            'change' : <>x {pn(newHackVal / curVal, fmt, 3)} = </>
-        }
+        let hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, hackSpeed)
+        baseHackDayTime = baseHackDayTime.add(hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget, -1, true))
+        hackDayTargets[hack.key] = hackTarget
     })
 
 
-    var minHackDayTime = hackDayTime
+    // Figure out with hack info
+
     try{
         var hackHack = hacks[13]
         var hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED)
         var newHackHackLvl = hackHack.level
         var i = 0
-        while (!doneFindingOptimal && i < 10) {
+        while (!doneFindingOptimal && i < 20) {
             i = i + 1
             var newHackHackLvl = hackHack.getNextMilestone(newHackHackLvl)
             var newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, newHackHackLvl)
             var newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal))
             var newHackDayTime = bd(0)//hackHack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, newHackHackLvl)
+            var newHackDayTargets : any = {}
 
-            var newHackDayRows : StandardTableRowType = {}
             hacks.forEach((hack) => {
-                var curVal = hack.getStatValue()
                 if (hack.key == HackKeys.HACK) {
                     var hackTarget = newHackHackLvl
                 } else {
-                    var hackTarget = hack.getMaxLevelHackDay(res3pow, res3cap, hackSpeed)
-                }
-                var newHackVal = hack.getStatValue('', hackTarget)
-                var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget, -1, true)
-                if (hack.key == HackKeys.HACK) {
-                    hackHackTime = hackTime
+                    var hackTarget = hackDayTargets[hack.key]
                 }
                 var minHackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget)
                 newHackDayTime = newHackDayTime.add(minHackTime)
-                var milestoneChange = Math.ceil((hackTarget - hack.level) / hack.levelsPerMilestone())
-
-        
-                newHackDayRows[hack.key] = {
-                    'name' : hack.name,
-                    'level' : <>{pn(hack.level, fmt, 0)}</>,
-                    'bonus' : <>{pn(curVal, fmt, 2)}%</>,
-                    'target' : <>{pn(hackTarget, fmt)}</>,
-                    'tBonus' : <>{pn(newHackVal, fmt, 2)}%</>,
-                    'milestoneChange' : <>+{pn(milestoneChange, fmt)}</>,
-                    'time' : <>{dn(hackTime)}</>,
-                    'minTime' : <>{dn(minHackTime)}</>,
-                    'change' : <>x {pn(newHackVal / curVal, fmt)} = </>
-                }
+                newHackDayTargets[hack.key] = hackTarget
             })
-            // console.log(i, newHackDayTime.getValue(), minHackDayTime.getValue(), newHackDayRows)
-            if(lessThan(newHackDayTime, minHackDayTime) || lessThan(newHackDayTime, bd(28 * 60 * 60))) {
-                hackDayRows = newHackDayRows
-                minHackDayTime = newHackDayTime
+            
+            if(lessThan(newHackDayTime, baseHackDayTime) || lessThan(newHackDayTime, bd(28 * 60 * 60))) {
+                hackDayTargets = newHackDayTargets
+                baseHackDayTime = newHackDayTime
             } else {
                 doneFindingOptimal = true
             }
@@ -170,13 +177,55 @@ export default function Page() {
 
     }
 
+    // Fix extra targets
+    var totalHackDayTimeMin = bd(0)
+    var totalHackDayTimeMax = bd(0)
+    try {
+        var hackHack = hacks[13]
+        var hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED)
+        var newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, hackDayTargets[hackHack.key])
+        var newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal))
+        hacks.forEach((hack) => {
+            var curVal = hack.getStatValue()
+            var hackTarget = hackDayTargets[hack.key]
+            if (!isZero(v(hack.getMilestoneExtraName()))) {
+                let targetMilestone = hack.getMilestone(hackTarget) + toNum(v(hack.getMilestoneExtraName()))
+                hackTarget = hack.getMilestoneLevel(targetMilestone)
+            }
+            var newHackVal = hack.getStatValue('', hackTarget)
+            var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget, -1, true)
+            
+            var minHackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget)
+            totalHackDayTimeMin = totalHackDayTimeMin.add(minHackTime)
+            totalHackDayTimeMax = totalHackDayTimeMax.add(hackTime)
+            var milestoneChange = Math.ceil((hackTarget - hack.level) / hack.levelsPerMilestone())
+
+            hackDayRows[hack.key] = {
+                'name' : hack.name,
+                'level' : <>{pn(hack.level, fmt, 0)}</>,
+                'bonus' : <>{pn(curVal, fmt, 2)}%</>,
+                'target' : <>{pn(hackTarget, fmt)}</>,
+                'tBonus' : <>{pn(newHackVal, fmt, 2)}%</>,
+                'milestoneChange' : <>{milestoneChange > 0 ? "+" : ""}{pn(milestoneChange, fmt, 0)}<PlusMinusButtons state={playerStates} keyName={hack.getMilestoneExtraName()} /></>,
+                'time' : <>{dn(hackTime)}</>,
+                'minTime' : <>{dn(minHackTime)}</>,
+                'change' : <>x {pn(newHackVal / curVal, fmt)} = </>
+            }
+        })
+    } catch {
+
+    }
+
 
     hackDayRows['total'] = {
         'name' : "Total",
         'isTotal' : true,
-        'time' : <>{dn(hackDayTime.add(hackHackTime))}</>,
-        'minTime': <>{dn(minHackDayTime)}</>
+        'time' : <>{dn(totalHackDayTimeMax)}</>,
+        'minTime': <>{dn(totalHackDayTimeMin)}</>
     }
+
+
+
      
 
     var hackDayOrder = ['name', 'level', 'target', 'milestoneChange', 'bonus', 'change', 'tBonus', 'time', 'minTime']
@@ -198,6 +247,7 @@ export default function Page() {
         "target": "text-blue-500",
         'tBonus': "text-blue-500",
         "change": "text-green-500",
+        "milestoneChange" : "text-right",
     }
 
     

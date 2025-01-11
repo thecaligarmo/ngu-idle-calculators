@@ -1,12 +1,12 @@
 'use client'
 import { Hack } from '@/assets/hacks';
-import { ChoiceButton } from '@/components/buttons';
+import { ChoiceButton, PlusMinusButtons } from '@/components/buttons';
 import Content, { requiredDataType } from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
 import { disableItem } from '@/components/dataListColumns';
 import { StandardTable, StandardTableRowType } from '@/components/standardTable';
-import { bd, dn, isOne, pn, toNum } from '@/helpers/numbers';
+import { bd, dn, greaterThan, isOne, isZero, pn, toNum } from '@/helpers/numbers';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
@@ -23,21 +23,21 @@ export default function Page() {
     // Set data required (from playerData)
     var infoRequired : requiredDataType = [['totalRes3Power', 'totalRes3Cap', 'totalHackSpeed%', 'blueHeart^'],
         [   
-            'hackMilestoneStat',
-            'hackMilestoneAdventure',
-            'hackMilestoneTimeMachine',
-            'hackMilestoneDropChance',
-            'hackMilestoneAugment',
-            'hackMilestoneENGU',
-            'hackMilestoneMNGU',
-            'hackMilestoneBlood',
-            'hackMilestoneQP',
-            'hackMilestoneDaycare',
-            'hackMilestoneExp',
-            'hackMilestoneNumber',
-            'hackMilestonePP',
-            'hackMilestoneHack',
-            'hackMilestoneWish',
+            'hackMilestoneReductionStat',
+            'hackMilestoneReductionAdventure',
+            'hackMilestoneReductionTimeMachine',
+            'hackMilestoneReductionDropChance',
+            'hackMilestoneReductionAugment',
+            'hackMilestoneReductionENGU',
+            'hackMilestoneReductionMNGU',
+            'hackMilestoneReductionBlood',
+            'hackMilestoneReductionQP',
+            'hackMilestoneReductionDaycare',
+            'hackMilestoneReductionExp',
+            'hackMilestoneReductionNumber',
+            'hackMilestoneReductionPP',
+            'hackMilestoneReductionHack',
+            'hackMilestoneReductionWish',
         ],
         [
             'hackStatTarget',
@@ -58,28 +58,45 @@ export default function Page() {
         ]
     ]
     // Set extra required (not from playerData)
-    var extraRequired  : requiredDataType = [['percentIncrease%','milestoneIncrease-2','addRes3BetaPotion^', 'addRes3DeltaPotion^']
+    var extraRequired  : requiredDataType = [['percentIncrease%','milestoneIncrease-2','addRes3BetaPotion^', 'addRes3DeltaPotion^'],
+        [
+            'hackMilestoneExtraStat',
+            'hackMilestoneExtraAdventure',
+            'hackMilestoneExtraTimeMachine',
+            'hackMilestoneExtraDropChance',
+            'hackMilestoneExtraAugment',
+            'hackMilestoneExtraENGU',
+            'hackMilestoneExtraMNGU',
+            'hackMilestoneExtraBlood',
+            'hackMilestoneExtraQP',
+            'hackMilestoneExtraDaycare',
+            'hackMilestoneExtraExp',
+            'hackMilestoneExtraNumber',
+            'hackMilestoneExtraPP',
+            'hackMilestoneExtraHack',
+            'hackMilestoneExtraWish',
+        ]
     ]
     var goRequired : requiredDataType = [['goResource3Power%', 'goResource3Cap%', 'goRawHackSpeed%']]
     const playerStates = createStatesForData(extraRequired, goRequired);
     
     // Get required data
     var infoReq = getRequiredStates(infoRequired, playerStates, {
-        'hackMilestoneStat' : 'Attack/Defense Milestone Reduction',
-        'hackMilestoneAdventure' : 'Adventure Milestone Reduction',
-        'hackMilestoneTimeMachine' : 'Time Machine Milestone Reduction',
-        'hackMilestoneDropChance' : 'Drop Chance Milestone Reduction',
-        'hackMilestoneAugment' : 'Augment Milestone Reduction',
-        'hackMilestoneENGU' : 'Energy NGU Milestone Reduction',
-        'hackMilestoneMNGU' : 'Magic NGU Milestone Reduction',
-        'hackMilestoneBlood' : 'Blood Milestone Reduction',
-        'hackMilestoneQP' : 'QP Milestone Reduction',
-        'hackMilestoneDaycare' : 'Daycare Milestone Reduction',
-        'hackMilestoneExp' : 'Experience Milestone Reduction',
-        'hackMilestoneNumber' : 'Number Milestone Reduction',
-        'hackMilestonePP' : 'PP Milestone Reduction',
-        'hackMilestoneHack' : 'Hack Milestone Reduction',
-        'hackMilestoneWish' : 'Wish Milestone Reduction',
+        'hackMilestoneReductionStat' : 'Attack/Defense Milestone Reduction',
+        'hackMilestoneReductionAdventure' : 'Adventure Milestone Reduction',
+        'hackMilestoneReductionTimeMachine' : 'Time Machine Milestone Reduction',
+        'hackMilestoneReductionDropChance' : 'Drop Chance Milestone Reduction',
+        'hackMilestoneReductionAugment' : 'Augment Milestone Reduction',
+        'hackMilestoneReductionENGU' : 'Energy NGU Milestone Reduction',
+        'hackMilestoneReductionMNGU' : 'Magic NGU Milestone Reduction',
+        'hackMilestoneReductionBlood' : 'Blood Milestone Reduction',
+        'hackMilestoneReductionQP' : 'QP Milestone Reduction',
+        'hackMilestoneReductionDaycare' : 'Daycare Milestone Reduction',
+        'hackMilestoneReductionExp' : 'Experience Milestone Reduction',
+        'hackMilestoneReductionNumber' : 'Number Milestone Reduction',
+        'hackMilestoneReductionPP' : 'PP Milestone Reduction',
+        'hackMilestoneReductionHack' : 'Hack Milestone Reduction',
+        'hackMilestoneReductionWish' : 'Wish Milestone Reduction',
     })
     var extraReq = getRequiredStates(extraRequired, playerStates)
     var goReq = getRequiredStates(goRequired, playerStates)
@@ -112,7 +129,7 @@ export default function Page() {
     var hackRows : StandardTableRowType = {}
     var totalTime = bd(0)
     hacks.forEach((hack) => {
-        hack.milestoneReduction = toNum(v(hack.getMilestoneName()))
+        hack.milestoneReduction = toNum(v(hack.getMilestoneReductionName()))
         var curVal = hack.getStatValue()
         var milestone = hack.getMilestone()
         if (calcType == HACKS_PERCENTAGE) {
@@ -125,11 +142,17 @@ export default function Page() {
         } else {
             var target = hack.level
         }
+
+        var targetMilestone = hack.getMilestone(target)
+        if (!isZero(v(hack.getMilestoneExtraName()))) {
+            targetMilestone = targetMilestone + toNum(v(hack.getMilestoneExtraName()))
+            target = hack.getMilestoneLevel(targetMilestone)
+        }
         
         var newTargetVal = hack.getStatValue('', target) // Not necessarily the same as tVal since levels are discrete
         var time = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, target)
         totalTime = totalTime.add(time)
-        var milestoneChange = hack.getMilestone(target) - milestone
+        var milestoneChange = targetMilestone - milestone
         
         hackRows[hack.key] = {
             'name' : hack.name,
@@ -138,7 +161,7 @@ export default function Page() {
             'target' : <>{pn(target, fmt)}</>,
             'tBonus' : <>{pn(newTargetVal, fmt, 2)}%</>,
             'change' : <>x {pn(newTargetVal/curVal, fmt, 3)} = </>,
-            'milestoneChange' : <>+{pn(milestoneChange, fmt, 0)}</>,
+            'milestoneChange' : <>{milestoneChange > 0 ? "+" : ""}{pn(milestoneChange, fmt, 0)}<PlusMinusButtons state={playerStates} keyName={hack.getMilestoneExtraName()} /></>,
             'time' : <>{dn(time)}</>,
         }
     })
@@ -169,10 +192,31 @@ export default function Page() {
         "target": "text-blue-500",
         'tBonus': "text-blue-500",
         "change": "text-green-500",
+        "milestoneChange": "text-right",
     }
 
 
     var titleText = "How long does it take to increase hacks "
+    // We never want to show milestone increases:
+    extraReq = disableItem(extraReq, 
+        [
+            'hackMilestoneExtraStat',
+            'hackMilestoneExtraAdventure',
+            'hackMilestoneExtraTimeMachine',
+            'hackMilestoneExtraDropChance',
+            'hackMilestoneExtraAugment',
+            'hackMilestoneExtraENGU',
+            'hackMilestoneExtraMNGU',
+            'hackMilestoneExtraBlood',
+            'hackMilestoneExtraQP',
+            'hackMilestoneExtraDaycare',
+            'hackMilestoneExtraExp',
+            'hackMilestoneExtraNumber',
+            'hackMilestoneExtraPP',
+            'hackMilestoneExtraHack',
+            'hackMilestoneExtraWish',
+        ]
+    )
     switch (calcType) {
         case HACKS_TARGET:
             titleText += "using targets?"

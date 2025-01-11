@@ -671,35 +671,35 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'gameMode':
                 return playerData.settings.rebirthDifficulty.value__;
 
-            case 'hackMilestoneStat':
+            case 'hackMilestoneReductionStat':
                 return playerData.beastQuest.quirkLevel[57]
-            case 'hackMilestoneAdventure':
+            case 'hackMilestoneReductionAdventure':
                 return playerData.adventure.itopod.perkLevel[113]
-            case 'hackMilestoneTimeMachine':
+            case 'hackMilestoneReductionTimeMachine':
                 return playerData.beastQuest.quirkLevel[175]
-            case 'hackMilestoneDropChance':
+            case 'hackMilestoneReductionDropChance':
                 return playerData.adventure.itopod.perkLevel[217]
-            case 'hackMilestoneAugment':
+            case 'hackMilestoneReductionAugment':
                 return playerData.adventure.itopod.perkLevel[218]
-            case 'hackMilestoneENGU':
+            case 'hackMilestoneReductionENGU':
                 return playerData.beastQuest.quirkLevel[174]
-            case 'hackMilestoneMNGU':
+            case 'hackMilestoneReductionMNGU':
                 return playerData.adventure.itopod.perkLevel[219]
-            case 'hackMilestoneBlood':
+            case 'hackMilestoneReductionBlood':
                 return playerData.adventure.itopod.perkLevel[114]
-            case 'hackMilestoneQP':
+            case 'hackMilestoneReductionQP':
                 return playerData.wishes.wishes[76].level
-            case 'hackMilestoneDaycare':
+            case 'hackMilestoneReductionDaycare':
                 return playerData.adventure.itopod.perkLevel[115]
-            case 'hackMilestoneExp':
+            case 'hackMilestoneReductionExp':
                 return playerData.beastQuest.quirkLevel[59]
-            case 'hackMilestoneNumber':
+            case 'hackMilestoneReductionNumber':
                 return playerData.wishes.wishes[77].level
-            case 'hackMilestonePP':
+            case 'hackMilestoneReductionPP':
                 return playerData.beastQuest.quirkLevel[58]
-            case 'hackMilestoneHack':
+            case 'hackMilestoneReductionHack':
                 return playerData.wishes.wishes[78].level
-            case 'hackMilestoneWish':
+            case 'hackMilestoneReductionWish':
                 return playerData.beastQuest.quirkLevel[60]
 
             case 'hackStatTarget':
@@ -1503,21 +1503,21 @@ export function getPlayerNumberOptions() : string[]{
         'fruitOfKnowledgeSucks^',
         'fruitOfKnowledgeSTILLSucks^',
         'gameMode',
-        'hackMilestoneStat',
-        'hackMilestoneAdventure',
-        'hackMilestoneTimeMachine',
-        'hackMilestoneDropChance',
-        'hackMilestoneAugment',
-        'hackMilestoneENGU',
-        'hackMilestoneMNGU',
-        'hackMilestoneBlood',
-        'hackMilestoneQP',
-        'hackMilestoneDaycare',
-        'hackMilestoneExp',
-        'hackMilestoneNumber',
-        'hackMilestonePP',
-        'hackMilestoneHack',
-        'hackMilestoneWish',
+        'hackMilestoneReductionStat',
+        'hackMilestoneReductionAdventure',
+        'hackMilestoneReductionTimeMachine',
+        'hackMilestoneReductionDropChance',
+        'hackMilestoneReductionAugment',
+        'hackMilestoneReductionENGU',
+        'hackMilestoneReductionMNGU',
+        'hackMilestoneReductionBlood',
+        'hackMilestoneReductionQP',
+        'hackMilestoneReductionDaycare',
+        'hackMilestoneReductionExp',
+        'hackMilestoneReductionNumber',
+        'hackMilestoneReductionPP',
+        'hackMilestoneReductionHack',
+        'hackMilestoneReductionWish',
         'hackStatTarget',
         'hackAdventureTarget',
         'hackTimeMachineTarget',

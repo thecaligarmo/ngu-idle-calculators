@@ -149,39 +149,76 @@ export class Hack extends Resource {
         }
         return milestone * this.levelsPerMilestone()
     }
-    getMilestoneName() : string {
+    getMilestoneReductionName() : string {
         // Milestone reduction is dependent on key
         switch(this.key) {
             case HackKeys.STAT:
-                return 'hackMilestoneStat'
+                return 'hackMilestoneReductionStat'
             case HackKeys.ADVENTURE :
-                return 'hackMilestoneAdventure'
+                return 'hackMilestoneReductionAdventure'
             case HackKeys.TIME_MACHINE :
-                return 'hackMilestoneTimeMachine'
+                return 'hackMilestoneReductionTimeMachine'
             case HackKeys.DROP_CHANCE :
-                return 'hackMilestoneDropChance'
+                return 'hackMilestoneReductionDropChance'
             case HackKeys.AUGMENT_SPEED:
-                return 'hackMilestoneAugment'
+                return 'hackMilestoneReductionAugment'
             case HackKeys.ENERGY_NGU :
-                return 'hackMilestoneENGU'
+                return 'hackMilestoneReductionENGU'
             case HackKeys.MAGIC_NGU :
-                return 'hackMilestoneMNGU'
+                return 'hackMilestoneReductionMNGU'
             case HackKeys.BLOOD:
-                return 'hackMilestoneBlood'
+                return 'hackMilestoneReductionBlood'
             case HackKeys.QUEST:
-                return 'hackMilestoneQP'
+                return 'hackMilestoneReductionQP'
             case HackKeys.DAYCARE:
-                return 'hackMilestoneDaycare'
+                return 'hackMilestoneReductionDaycare'
             case HackKeys.EXP:
-                return 'hackMilestoneExp'
+                return 'hackMilestoneReductionExp'
             case HackKeys.NUMBER:
-                return 'hackMilestoneNumber'
+                return 'hackMilestoneReductionNumber'
             case HackKeys.PP:
-                return 'hackMilestonePP'
+                return 'hackMilestoneReductionPP'
             case HackKeys.HACK:
-                return 'hackMilestoneHack'
+                return 'hackMilestoneReductionHack'
             case HackKeys.WISH:
-                return 'hackMilestoneWish'
+                return 'hackMilestoneReductionWish'
+        }
+        return '' 
+    }
+
+    getMilestoneExtraName() : string {
+        // Milestone extra is dependent on key
+        switch(this.key) {
+            case HackKeys.STAT:
+                return 'hackMilestoneExtraStat'
+            case HackKeys.ADVENTURE :
+                return 'hackMilestoneExtraAdventure'
+            case HackKeys.TIME_MACHINE :
+                return 'hackMilestoneExtraTimeMachine'
+            case HackKeys.DROP_CHANCE :
+                return 'hackMilestoneExtraDropChance'
+            case HackKeys.AUGMENT_SPEED:
+                return 'hackMilestoneExtraAugment'
+            case HackKeys.ENERGY_NGU :
+                return 'hackMilestoneExtraENGU'
+            case HackKeys.MAGIC_NGU :
+                return 'hackMilestoneExtraMNGU'
+            case HackKeys.BLOOD:
+                return 'hackMilestoneExtraBlood'
+            case HackKeys.QUEST:
+                return 'hackMilestoneExtraQP'
+            case HackKeys.DAYCARE:
+                return 'hackMilestoneExtraDaycare'
+            case HackKeys.EXP:
+                return 'hackMilestoneExtraExp'
+            case HackKeys.NUMBER:
+                return 'hackMilestoneExtraNumber'
+            case HackKeys.PP:
+                return 'hackMilestoneExtraPP'
+            case HackKeys.HACK:
+                return 'hackMilestoneExtraHack'
+            case HackKeys.WISH:
+                return 'hackMilestoneExtraWish'
         }
         return '' 
     }
