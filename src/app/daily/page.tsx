@@ -136,7 +136,7 @@ export default function Page() {
     itopodZone.setLevel(v('itopodFloor-5'))
 
     var pppPerKill = itopodZone.getPPPPerKill(v('gameMode'), totalPPBonus, c('bluePill^'), c('blueHeart^'), v('bonusPP-4'));
-    var killsPerDay = itopodZone.getKillsPerHour(v('totalPower'), getIdleAttackModifier(c('spoopySetBonus^'), v('sadisticNoEquipmentChallenges')), c('redLiquidBonus^'), v('totalRespawnTime')).multiply(hoursPerDay)
+    var killsPerDay = itopodZone.getKillsPerHour(v('totalPower'), getIdleAttackModifier(c('spoopySetBonus^'), v('sadisticNoEquipmentChallenges-2')), c('redLiquidBonus^'), v('totalRespawnTime')).multiply(hoursPerDay)
 
     var PPPFromTower = killsPerDay.multiply(pppPerKill)
     var APFromTower = killsPerDay.divide(
