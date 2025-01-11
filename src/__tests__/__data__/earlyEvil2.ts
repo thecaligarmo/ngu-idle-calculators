@@ -11504,8 +11504,8 @@ var earlyEvilTwo = {
         "energyProgress": 0,
         "magicProgress": 0,
         "bootupProgress": 0,
-        "wandoosEnergy": 0,
-        "wandoosMagic": 0,
+        "wandoosEnergy": 145907876618,
+        "wandoosMagic": 145907876618,
         "energyLevel": 0,
         "magicLevel": 0,
         "baseEnergyTime": 0,
@@ -11532,7 +11532,7 @@ var earlyEvilTwo = {
             "__cname__": "PlayerTime"
         },
         "os": {
-            "value__": 1,
+            "value__": 0,
             "__cname__": "OSType"
         },
         "__cname__": "Wandoos98"

@@ -1,8 +1,12 @@
+import earlyEvil from '@/__tests__/__data__/earlyEvil1';
 import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
 import earlyNormal from '@/__tests__/__data__/earlyNormal1';
 import earlyNormalTwo from '@/__tests__/__data__/earlyNormal2';
+import earlySad from '@/__tests__/__data__/earlySad1';
+import lateEvil from '@/__tests__/__data__/lateEvil1';
 import lateNormal from '@/__tests__/__data__/lateNormal';
 import midEvil from '@/__tests__/__data__/midEvil1';
+import midEvilTwo from '@/__tests__/__data__/midEvil2';
 import midNormal from '@/__tests__/__data__/midNormal1';
 import midNormalTwo from '@/__tests__/__data__/midNormal2';
 import { expectClose, toDataObj } from '@/__tests__/testHelperFunctions';
@@ -10,10 +14,6 @@ import { AttackStat, Titans } from "@/assets/enemy";
 import { bd } from '@/helpers/numbers';
 import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from '@/helpers/pages/daily';
 import renderer from 'react-test-renderer';
-import earlyEvil from '@/__tests__/__data__/earlyEvil1';
-import midEvilTwo from '@/__tests__/__data__/midEvil2';
-import lateEvil from '@/__tests__/__data__/lateEvil1';
-import earlySad from '@/__tests__/__data__/earlySad1';
 
 
 

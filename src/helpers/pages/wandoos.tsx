@@ -45,11 +45,10 @@ export function getLevelsGainedInWandoos({
     magicFills ?: bigDecimal,
     wandoos ?: Wandoos
 }) : wandoosOsType {
-
     
     var sigFig = 20
     
-    var wandoosBase : osType= {
+    var wandoosBase : osType = {
         '98' : bd(1),
         'meh' : bd(1000),
         'xl' : bd(1000000),

@@ -11,6 +11,7 @@ What to do for a new file:
 8. Turn *on* some of the gold diggers
 9. Make sure auto merg/boost is off
 10. Make sure you're not in ITOPOD
+11. Once Wandoos is fully booted, Update numbers in save file with the energy/magic allocated
 
 --
 Update the following files:
