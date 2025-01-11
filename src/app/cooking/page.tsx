@@ -1,18 +1,14 @@
 'use client'
 import { Dish, Ingredient } from '@/assets/cooking';
-import { Hack } from '@/assets/hacks';
-import { Stat } from '@/assets/stat';
-import { Wish, WISHES } from '@/assets/wish';
 import Content, { requiredDataType } from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
-import { StandardTable, StandardTableRowType } from '@/components/standardTable';
-import { bd, dn, isOne, lessThan, pn, toNum } from '@/helpers/numbers';
+import { isOne } from '@/helpers/numbers';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
 import _ from 'lodash';
-import { ReactElement, useState } from 'react';
+import { ReactElement } from 'react';
 
 
 
@@ -55,7 +51,7 @@ export default function Page() {
         ings = dish.orderedIngredients()
         ings.forEach((p : Ingredient) => {
             if(p.isUnlocked){
-                ingList.push(<li key={p.key} className="inline-block w-1/2"><strong>{p.name}</strong>: <span className="text-green-500">{p.amount()}</span></li>)
+                ingList.push(<li key={p.key} className="inline-block w-1/2"><strong>{p.name}</strong>: <span className="text-green-500">{p.amount()}</span> {p.altAmount() ? <span className="text-blue-500">({p.altAmount()})</span> : null}</li>)
             }
         })
         pairs = dish.pairs
@@ -87,6 +83,7 @@ export default function Page() {
                         </ul>
                     </>
                 }
+                The amounts in <span className='text-blue-500'>blue</span> are for swapping for pairing (see below).
             </ContentSubsection>
             <ContentSubsection title="Which ingredients are paired?">
             {(_.isEmpty(pairs)) 

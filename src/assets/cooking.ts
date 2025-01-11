@@ -95,9 +95,12 @@ export class Dish extends Resource {
     makeOptimal() {
         var optimalScores : number[][] = this.getOptimalScore()
         for(var i in optimalScores) {
-            for(var j in optimalScores[i]) {
-                this.pairs[i][j].level = optimalScores[i][j]
-            }
+            this.pairs[i][0].level = optimalScores[i][0]
+            this.pairs[i][1].level = optimalScores[i][1]
+            this.pairs[i][0].altLevel = this.pairs[i][1].isUnlocked ? optimalScores[i][1] : optimalScores[i][0]
+            this.pairs[i][1].altLevel = this.pairs[i][0].isUnlocked ? optimalScores[i][0] : optimalScores[i][1]
+            this.pairs[i][0].altUnlocked = this.pairs[i][1].isUnlocked
+            this.pairs[i][1].altUnlocked = this.pairs[i][0].isUnlocked
         }
     }
 
@@ -110,8 +113,10 @@ export class Dish extends Resource {
             var ing2 = this.pairs[i][1]
             for(var k = 0; k < 21; k++) {
                 ing1.level = k
+                ing2.altLevel = k
                 for(var j = 0; j < 21; j++) {
                     ing2.level = j
+                    ing1.altLevel = j
                     var score = this.getScore(ing1, ing2, this.pairTargets[i])
                     if(greaterThan(score, maxScore)) {
                         maxScore = score
@@ -163,6 +168,8 @@ export class Ingredient extends Resource {
     targetLvl : number
     increment : number
     suffix: string
+    altLevel : number
+    altUnlocked : boolean
     constructor(id: number, key: string, name: string, suffix: string = '', increment : number = 1) {
         super(id, key, name, GameMode.ALL, 0, [])
         this.weight = 0
@@ -171,6 +178,8 @@ export class Ingredient extends Resource {
         this.targetLvl = 0
         this.increment = increment
         this.suffix = suffix
+        this.altLevel = 0
+        this.altUnlocked = false
     }
     importStats(data : any) {
         this.targetLvl = data.targetLevel
@@ -181,6 +190,10 @@ export class Ingredient extends Resource {
 
     amount() {
         return (this.level * this.increment).toString() + " " + this.suffix
+    }
+
+    altAmount() {
+        return this.altUnlocked ? (this.altLevel * this.increment).toString() + " " + this.suffix : ""
     }
 }
 
