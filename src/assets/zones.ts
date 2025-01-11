@@ -150,18 +150,18 @@ export default class Zone {
         return boostedVals
     }
 
+    baseChance(dropChance: bigDecimal) : bigDecimal {
+        if (this.id >= 22) {
+            return bd(Math.pow(toNum(dropChance.divide(bd(100))), 1/3))
+        }
+        return dropChance.divide(bd(100))
+    }
+
     boostChances(dropChance : bigDecimal) : bigDecimal[] {
         var boostChance : bigDecimal[] = []
 
         this.boosts.forEach((boost) => {
-            var maxChance = bd(1)
-            if (this.id >= 22) {
-                var root = Math.pow(toNum(dropChance.divide(bd(100))), 1/3)
-                maxChance = bd(boost[1]).divide(bd(100)).multiply(bd(root))
-
-            } else {
-                maxChance = bd(boost[1]).divide(bd(100)).multiply(dropChance).divide(bd(100))
-            }
+            var maxChance = bd(boost[1]).divide(bd(100)).multiply(this.baseChance(dropChance))
             var bC = bigdec_min(bd(boost[2]).divide(bd(100)), maxChance)
             boostChance.push(bC)
         })
@@ -179,10 +179,33 @@ export default class Zone {
         }
         return bigdec_min(bd(this.exp[2]).divide(bd(100)), maxChance).multiply(this.bossChance())
     }
-    getKillsPerHour(redLiquidBonus : boolean = false, totalRespawnTime : bigDecimal = bd(4)) : bigDecimal {
+
+    getKillsPerHour(totalPower: bigDecimal, idleAttackModifier : bigDecimal, redLiquidBonus : boolean = false, totalRespawnTime : bigDecimal = bd(4)) : bigDecimal {
         var idleAttackCooldown = redLiquidBonus ? bd(0.8) : bd(1)
         var respawnTime = totalRespawnTime.round(2, bigDecimal.RoundingModes.CEILING)
-        return bd(60 * 60).divide( respawnTime.add(idleAttackCooldown))
+        return bd(60 * 60).divide( respawnTime.add(idleAttackCooldown.multiply(bd(this.getHitsPerKill(totalPower, idleAttackModifier))))).floor()
+    }
+
+    getHitsPerKill(totalPower: bigDecimal, idleAttackModifier : bigDecimal) : number {
+        // =MAX ( 1.05 ^ ( G51 - MAX(0,LOG(B2/765 * B10, 1.05))) ,1)
+        if (this.id == 0) {
+            return Math.max(
+                1.05 ** (
+                    this.level - Math.max(
+                                            0,
+                                            Math.log(toNum(totalPower.multiply(idleAttackModifier).divide(bd(765)))) / Math.log(1.05)
+                                        )
+                        ),
+                1
+            )
+        } else {
+            var hits = this.enemies.map(function(enemy) {
+                return enemy.numHitsToKill(totalPower, idleAttackModifier)
+            })
+
+            return toNum(hits.reduce((prev, cur, ind) => {return prev.add(cur)}, bd(0)).divide(bd(hits.length)))
+        }
+        return 1
     }
 
     // ITOPOD Specific things
@@ -531,7 +554,7 @@ export const Zones : {[key: string]: Zone} = {
     HALLOWEEN: new Zone(
             39, 'halloweenies', 'The Halloweenies',
             [[10000, 0.000004, 15], [10000, 0.000004, 15]], [1200, 0.000005, 15],
-            []
+            [Enemies.ULTRA_INSTINCT_STONER, Enemies.A_SKELETON_INSIDE_A_BODY, Enemies.A_BADLY_MADE_SEXY_FLORIDA_COSTUME, Enemies.AN_UNNECESSARY_SEQUEL, Enemies.AN_ELEVATOR_FULL_OF_BLOOD, Enemies.CANDY_CORN, Enemies.TEXAS_CHAINSAW_MASCARA, Enemies.JIGSAW]
         ),
     ROCKLOBSTER: new Zone(
             40, 'rockLobster1', 'Rock Lobster',

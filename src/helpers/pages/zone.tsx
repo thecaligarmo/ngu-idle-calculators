@@ -1,7 +1,8 @@
-import { Zones } from "@/assets/zones";
+import Zone, { Zones } from "@/assets/zones";
 import bigDecimal from "js-big-decimal";
 import { getIdleAttackModifier } from "../calculators";
-import { bd, bigdec_max, greaterThan, isZero, toNum } from "../numbers";
+import { bd, bigdec_equals, bigdec_max, bigdec_power, factorial, greaterThan, isZero, Polynomial, toNum } from "../numbers";
+import { ItemSet, ItemSets } from "@/assets/sets";
 
 
 type zoneType = {
@@ -9,6 +10,8 @@ type zoneType = {
     name: string,
     boost: bigDecimal,
     exp: bigDecimal,
+    hitsToKill: number,
+    killsPerHour: bigDecimal,
 }
 
 export function getZoneInfo(v : any) : zoneType[]{
@@ -25,6 +28,7 @@ export function getZoneInfo(v : any) : zoneType[]{
     var itopodExpValue = bd(itopodZone.exp[0] * itopodZone.exp[1]);
     var itopodBoostChance = itopodZone.boostChances(v['totalDropChance'])[0] 
     var itopodBoostedVal = itopodBoostChance.multiply(itopodZone.boostedValue(v['boostRecyclying'])[0]);
+    var optExpectedHits = itopodZone.getHitsPerKill(v['totalPower'], idleAttackModifier)
 
     // Let the optimal itopod be the optimal zone for now
     var ito : zoneType = {
@@ -32,6 +36,8 @@ export function getZoneInfo(v : any) : zoneType[]{
         name: itopodZone.name + " (floor: " + optimalITOPODFloor + ")",
         boost: itopodBoostedVal,
         exp: itopodExpValue,
+        hitsToKill: optExpectedHits,
+        killsPerHour: itopodZone.getKillsPerHour(v['totalPower'], idleAttackModifier, v['redLiquidBonus'], v['totalRespawnTime']),
     };
 
     // Keep track of all the boost information
@@ -45,17 +51,7 @@ export function getZoneInfo(v : any) : zoneType[]{
     var nonOptExpVal = bd(nonOptItopodZone.exp[0] * nonOptItopodZone.exp[1]);
     var nonOptBoostChance = nonOptItopodZone.boostChances(v['totalDropChance'])[0] 
     var nonOptBoostedVal = nonOptBoostChance.multiply(nonOptItopodZone.boostedValue(v['boostRecyclying'])[0]);
-
-    // =MAX ( 1.05 ^ ( G51 - MAX(0,LOG(B2/765 * B10, 1.05))) ,1)
-    var nonOptExpectedHits = Math.max(
-        1.05 ** (
-                    nonOptFloor - Math.max(
-                                    0,
-                                    Math.log(toNum(v['totalPower'].multiply(idleAttackModifier).divide(bd(765)))) / Math.log(1.05)
-                                )
-                ),
-        1
-    )
+    var nonOptExpectedHits = nonOptItopodZone.getHitsPerKill(v['totalPower'], idleAttackModifier)
 
     var nonOptHitRatio : bigDecimal = (v['totalRespawnTime'].add(idleAttackCooldown)).divide(v['totalRespawnTime'].add(idleAttackCooldown.multiply(bd(nonOptExpectedHits))))
     var nonOptItopod : zoneType = {
@@ -63,6 +59,8 @@ export function getZoneInfo(v : any) : zoneType[]{
         name: nonOptItopodZone.name + " Non-optimal" + " (floor: " + nonOptItopodZone.level + ")",
         boost: nonOptBoostedVal.multiply(nonOptHitRatio),
         exp: nonOptExpVal.multiply(nonOptHitRatio),
+        hitsToKill: nonOptExpectedHits,
+        killsPerHour: nonOptItopodZone.getKillsPerHour(v['totalPower'], idleAttackModifier, v['redLiquidBonus'], v['totalRespawnTime']),
     }
     zoneBoostInfo.push(nonOptItopod)
 
@@ -81,7 +79,7 @@ export function getZoneInfo(v : any) : zoneType[]{
                     return sum.add(boostValueChance)
                 }, bd(0));
 
-                var powerRat = bigdec_max((oneHitPower.divide(v['totalPower'])).ceil(), bd(1))
+                var powerRat = zone.hardestEnemy().numHitsToKill(v['totalPower'], idleAttackModifier)
                 var expValZone = (v['totalRespawnTime'].add(idleAttackCooldown))
                     .divide(
                     v['totalRespawnTime'].add(
@@ -109,6 +107,8 @@ export function getZoneInfo(v : any) : zoneType[]{
                     name: zone.name,
                     boost: zoneBoostedVal,
                     exp: expValZone,
+                    hitsToKill: zone.getHitsPerKill(v['totalPower'], idleAttackModifier),
+                    killsPerHour: zone.getKillsPerHour(v['totalPower'], idleAttackModifier, v['redLiquidBonus'], v['totalRespawnTime']),
                 }
                 zoneBoostInfo.push(zoneInfo);                
             }
@@ -138,17 +138,22 @@ export function getOptimalExpZone(zoneBoostInfo : zoneType[]) : zoneType{
     return optimalZone
 }
 
-// infoReq
-// extraReq
-//optimalZone
-//optZoneChosen
-//zoneList -> zoneBoostInfo
-//zoneBoonList -> zoneBoostInfo
+export function itemSetInfo(v: any) {
+    var itemSets: ItemSet[] = Object.values(v['itemSets'])
+    var notMaxed = itemSets.filter((itSet : ItemSet) => !itSet.isMaxxed && itSet.isZoneSet())
+    var ret : any = {}
+    for(let itSet of notMaxed) {
+        // Since it's a zone set, we know `getZones()` only has one zone
+        var zone : Zone = itSet.getZones()[0]
+        ret[itSet.key] = {
+            'zone' : zone,
+            'set': itSet
+        }
+    }
+    return ret
+}
 
-
-
-
-/*
-Missing Options:
-Sadistic NECs (max 5)
-*/
+export function itemSetDropChance(v : any) : bigDecimal | string{
+    var idleAttackModifier = getIdleAttackModifier(v['spoopySetBonus'], v['sadisticNoEquipmentChallenges'])
+    return ItemSets.HALLOWEEN.secsToCompletion(v['totalDropChance'], v['totalPower'], idleAttackModifier, v['redLiquidBonus'], v['totalRespawnTime'])
+}

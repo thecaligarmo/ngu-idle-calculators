@@ -1,4 +1,4 @@
-import { bd, bigdec_max, lessThan } from "@/helpers/numbers"
+import { bd, bigdec_max, isZero, lessThan } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { Wish } from "./wish"
@@ -16,6 +16,7 @@ export class AttackStat {
         this.regen = regen
         this.hp = hp
     }
+
     oneHitPower(attackModifier: bigDecimal = bd(1)) : bigDecimal{
         return (this.hp.divide(bd(0.8)).divide(attackModifier)).add(
                     this.toughness.divide(bd(2))
@@ -81,6 +82,11 @@ export class Enemy {
     }
     oneHitPower(attackModifier: bigDecimal = bd(1), version : number = 0) : bigDecimal{
         return this.attackStat[version].oneHitPower(attackModifier)
+    }
+
+    numHitsToKill(totalPower : bigDecimal, attackModifier : bigDecimal = bd(1), version : number = 0) : bigDecimal {
+        var oneHit = this.oneHitPower(attackModifier, version)
+        return !isZero(totalPower) ? bigdec_max(oneHit.divide(totalPower).ceil(), bd(1)) : bd(1)
     }
 }
 
@@ -537,15 +543,15 @@ export const Enemies :  {[k: string]: Enemy} = {
     // THE WORST VINYL RECORD
     // THE 'FRO
 
-    // // The Halloweenies
-    // Ultra Instinct Stoner
-    // A Skeleton Inside a Body
-    // A Badly Made Sexy Florida Costume
-    // An Unnecessary Sequel
-    // An Elevator Full of Blood
-    // Candy Corn
-    // TEXAS CHAINSAW MASCARA
-    // JIGSAW
+    // The Halloweenies
+    ULTRA_INSTINCT_STONER: new Enemy(217, 'ultraInstinctStoner', 'Ultra Instinct Stoner', ENEMY_TYPE.NORMAL, new AttackStat(1, bd(1e30), bd(1.2e30), bd(1.2e29), bd(6e31))),
+    A_SKELETON_INSIDE_A_BODY: new Enemy(218, 'aSkeletonInsideaBody', 'A Skeleton Inside a Body', ENEMY_TYPE.PARALYZE, new AttackStat(1, bd(1e30), bd(1.22e30), bd(1.22e29), bd(6e31))),
+    A_BADLY_MADE_SEXY_FLORIDA_COSTUME: new Enemy(219, 'aBadlyMadeSexyFloridaCostume', 'A Badly Made Sexy Florida Costume', ENEMY_TYPE.NORMAL, new AttackStat(1, bd(1e30), bd(1.2e30), bd(1.2e29), bd(6e31))),
+    AN_UNNECESSARY_SEQUEL: new Enemy(220, 'anUnnecessarySequel', 'An Unnecessary Sequel', ENEMY_TYPE.NORMAL, new AttackStat(1, bd(1e30), bd(1.2e30), bd(1.2e29), bd(6e31))),
+    AN_ELEVATOR_FULL_OF_BLOOD: new Enemy(221, 'anElevatorFullofBlood', 'An Elevator Full of Blood', ENEMY_TYPE.CHARGER, new AttackStat(1, bd(1.04e30), bd(1.24e30), bd(1.24e29), bd(6.5e31))),
+    CANDY_CORN: new Enemy(222, 'candyCorn', 'Candy Corn', ENEMY_TYPE.NORMAL, new AttackStat(1, bd(1.06e30), bd(1.26e30), bd(1.26e29), bd(6.5e31))),
+    TEXAS_CHAINSAW_MASCARA: new Enemy(223, 'tEXASCHAINSAWMASCARA', 'TEXAS CHAINSAW MASCARA', ENEMY_TYPE.NORMAL, new AttackStat(1, bd(1.08e30), bd(1.28e30), bd(1.28e29), bd(6e31)), true),
+    JIGSAW: new Enemy(224, 'JIGSAW', 'JIGSAW', ENEMY_TYPE.CHARGER, new AttackStat(1, bd(1.12e30), bd(1.3e30), bd(1.25e29), bd(6.5e31)), true),
 
     // // Construction Zone
     // A Construction Slob

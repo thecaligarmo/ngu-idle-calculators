@@ -2,8 +2,9 @@
 import Content, { requiredDataType } from '@/components/content';
 import ContentSubsection from '@/components/contentSubsection';
 import { getNumberFormat } from '@/components/context';
-import { bd, isOne, isZero, pn } from '@/helpers/numbers';
-import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo } from '@/helpers/pages/zone';
+import { getIdleAttackModifier } from '@/helpers/calculators';
+import { bd, dn, isOne, isZero, pn } from '@/helpers/numbers';
+import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo, itemSetDropChance, itemSetInfo } from '@/helpers/pages/zone';
 import { parseNum, parseObj } from '@/helpers/parsers';
 import { createStatesForData, getRequiredStates } from '@/helpers/stateForData';
 import bigDecimal from 'js-big-decimal';
@@ -51,6 +52,7 @@ export default function Page() {
         totalDropChance: v('totalDropChance%'),
         totalPower: v('totalPower'),
         totalRespawnTime: v('totalRespawnTime'),
+        itemSets: j('itemSets'),
     }
     var zoneInfo = getZoneInfo(data)
     var optimalBoostZone = getOptimalBoostZone(zoneInfo);
@@ -79,7 +81,21 @@ export default function Page() {
         </li>
         )
     })
-    
+
+    // var zoneHitList = zoneInfo.map(function(zone) {
+    //     return (
+    //         <li key={zone.key}>
+    //             {zone.name} is {zone.hitsToKill} hits per kill with {pn(zone.killsPerHour, fmt, 4)} kills per hour.
+    //         </li>
+    //     )
+    // })
+
+    // let dc = itemSetDropChance(data)
+    // if (dc instanceof bigDecimal) {
+    //     console.log('hii', dn(dc))
+    // } else {
+    //     console.log('hii', dc)
+    // }
     
     return (
         <Content title="Optimal Zones" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
@@ -129,6 +145,17 @@ export default function Page() {
                     </ul>
                 </div>
             </ContentSubsection>
+            {/* <ContentSubsection title="Drop Chance">
+                <p>
+                    Drop Chance info?
+                </p>
+                <br />
+                <div className='pl-10'>
+                    <ul>
+                        {zoneHitList}
+                    </ul>
+                </div>
+            </ContentSubsection> */}
         </Content>
     )
 }

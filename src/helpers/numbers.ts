@@ -37,6 +37,22 @@ export function bigdec_equals(left : bigDecimal, right : bigDecimal) : boolean {
     return left.compareTo(right) == 0
 }
 
+export function bigdec_power(num : bigDecimal | number, exponent : bigDecimal | number) :bigDecimal {
+    num = bd(num)
+    exponent = toNum(exponent)
+    if (Math.round(exponent) != exponent) {
+        throw new Error("Exponent must be integer: " + exponent.toString())
+    }
+    if (exponent < 0) {
+        throw new Error("Exponent must be positive: " + exponent.toString())
+    }
+    let newNum = bd(1)
+    for(let i = 0; i < exponent; i++) {
+        newNum = newNum.multiply(num)
+    }
+    return newNum
+}
+
 export function isZero(number: bigDecimal) : boolean{
     return bigdec_equals(number, bd(0))
 }
@@ -144,4 +160,58 @@ export function dn(num : bigDecimal) : string{
         }
     }
     return str
+}
+
+export function factorial(n: number) : number{
+    let x = 1
+    for(let i = 1; i <= n; i++) {
+        x *= i
+    }
+    return x
+}
+
+
+export class Polynomial {
+    coefficients : bigDecimal[]
+    constructor(coefficients: (number | bigDecimal)[]){
+        this.coefficients = coefficients.map((e) => bd(e))
+    }
+    length() {
+        return this.coefficients.length
+    }
+    coefficient(i: number) : bigDecimal{
+        if(i < this.length()){
+            return this.coefficients[i]
+        }
+        return bd(0)
+    }
+    round(r: number) {
+        this.coefficients = this.coefficients.map((c) => c.round(r))
+    }
+
+    isZero() {
+        return this.length() == 0
+    }
+    add(other: Polynomial) : Polynomial{
+        let n = Math.max(this.length(), other.length())
+        let coefficients : bigDecimal[] = []
+        for(let i = 0; i < n; i++) {
+            coefficients.push(this.coefficient(i).add(other.coefficient(i)))
+        }
+        return new Polynomial(coefficients)
+    }
+    multiply(other: Polynomial) : Polynomial {
+        let tl = this.length()
+        let ol = other.length()
+        let coefficients : bigDecimal[] = Array(tl + ol - 1).fill(bd(0))
+        
+        for(let i = 0; i < tl; i++) {
+            for(let j = 0; j < ol; j++) {
+                let c = this.coefficient(i).multiply(other.coefficient(j))
+                coefficients[i+j] = coefficients[i+j].add(c)
+            }
+        }
+
+        return new Polynomial(coefficients)
+    }
 }

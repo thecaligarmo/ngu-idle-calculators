@@ -1,26 +1,40 @@
 import _ from "lodash"
+import { Item, ITEMS } from "./items"
+import Zone from "./zones"
+import bigDecimal from "js-big-decimal"
+import { bd, bigdec_equals, bigdec_max, bigdec_min, bigdec_power, factorial, lessThan, Polynomial, toNum } from "@/helpers/numbers"
+
 
 export class ItemSet {
     key: string
     name: string
-    items: number[]
+    items: Item[]
     isMaxxed: boolean
     numMaxxed: number
-    constructor(key: string, items : number | number[]) {
+    dropChance : [number, number, number, number]
+    lvlDropped : number
+    constructor(key: string, items : number | number[], dropChance :  [number, number, number, number] | [] = [], lvlDropped : number = 0) {
         this.key = key
         this.name = key
-        this.items = (typeof items == 'number') ? [items] : items
+        this.items = (typeof items == 'number') 
+                        ? [_.cloneDeep(ITEMS[items])] 
+                        : items.map(function(id) {
+                            return _.cloneDeep(ITEMS[id])
+                        })
         this.isMaxxed = false
         this.numMaxxed = 0
+        this.dropChance = (dropChance.length == 0) ? [0,0,0,0] : dropChance // [normal base, normal max, ]
+        this.lvlDropped = lvlDropped
     }
+
     updateStats(data : any) : void{
         this.isMaxxed = false
         if (!_.isUndefined(data.inventory.itemList[this.key + "Complete"]) && data.inventory.itemList[this.key + "Complete"] === 1) {
             this.isMaxxed = true
         } else {
             var maxxed = true
-            for(var item of this.items) {
-                if(data.inventory.itemList.itemMaxxed[item] == 0) {
+            for(let item of this.items) {
+                if(data.inventory.itemList.itemMaxxed[item.id] == 0) {
                     maxxed = false
                 }
             }
@@ -31,13 +45,187 @@ export class ItemSet {
         this.numMaxxed = 0
         if(this.isMaxxed) {
             this.numMaxxed = this.items.length
+            for(let item in this.items) {
+                this.items[item].level = 100
+            }
         } else {
             for(var item of this.items) {
-                if(data.inventory.itemList.itemMaxxed[item] == 1) {
+                if(data.inventory.itemList.itemMaxxed[item.id] == 1) {
                     this.numMaxxed += 1
+                }
+                var inv = data.inventory.inventory.filter((it : any) => it.id == item.id)
+                if (inv.length > 0) {
+                    for(let it of inv) {
+                        item.importStats(it)
+                    }
                 }
             }
         }
+    }
+
+    getDropChance(totalDropChance : bigDecimal) : bigDecimal {
+        if(this.isZoneSet()) {
+            let zone = this.getZones()[0]
+            let regDC = bigdec_min(zone.baseChance(totalDropChance).multiply(bd(this.dropChance[0])), bd(this.dropChance[1])).divide(bd(100))
+            let bossDC = bigdec_min(zone.baseChance(totalDropChance).multiply(bd(this.dropChance[2])), bd(this.dropChance[3])).divide(bd(100))
+            let bossChance = zone.bossChance()
+            return regDC.multiply(bd(1).subtract(bossChance)).add(
+                bossDC.multiply(bossChance)
+            )
+        }
+        return bd(0)
+    }
+
+    killsToCompletion(totalDropChance : bigDecimal) : bigDecimal | string {
+        if(this.isMaxxed) {
+            return bd(0)
+        }
+        if(this.isZoneSet()) {
+            // Based on: https://math.stackexchange.com/a/3475218/86555
+            let p = this.getDropChance(totalDropChance)
+            let pfix = 1
+            while (lessThan(p, bd(1))) {
+                p = p.multiply(bd(10))
+                pfix = pfix * 10
+            }
+            p = p.divide(bd(10 * this.items.length))
+            pfix = pfix / 10
+
+            let P = Array(this.items.length).fill(p)
+            let Q = bd(1).subtract(P.reduce((prev, cur) => {return prev.add(cur)}, bd(0)))
+            let v = this.items.map((it) => Math.ceil((100 - it.level) / (this.lvlDropped + 1)))
+            
+            // For quick test and sigfig
+            let x = Math.max(...v)
+            let y = 1 / toNum(p)
+            let sigFig = Math.max(20, Math.ceil( (1.25 * x) + (x * Math.log(y) / 2)))
+
+        
+            let quickTest = x * y
+            if(quickTest > 400000) {
+                return 'infinity'
+            }
+
+            // console.log('here', p.getValue(), x, y, sigFig)
+            // console.log(P, Q, v, x, y, x * y, sigFig)
+        
+            // [i, Poly] -> e^(ix) - (Poly)
+            let F : [bigDecimal, Polynomial][][] = P.map((pi : bigDecimal, i) => {
+                let coeffs : bigDecimal[] = []
+                for(let j = 0; j < v[i]; j++) {
+                    coeffs.push(bd(-(toNum(pi)**j)).divide(bd(factorial(j)), sigFig))
+                }
+                return [[bd(pi), new Polynomial([1])], [bd(0), new Polynomial(coeffs)]]
+            })
+        
+            let start : [bigDecimal, Polynomial][] = [[bd(Q), new Polynomial([1])]]
+            
+            let G = F.reduce((prev : [bigDecimal, Polynomial][], cur) => {
+                let retStuff : {[key:string]: [bigDecimal, Polynomial]} = {}
+                for(let p of prev) {
+                    if(!cur[0][1].isZero()){
+                        let newP : [bigDecimal, Polynomial] = [p[0].add(cur[0][0]), p[1].multiply(cur[0][1])]
+                        let e = newP[0].getValue()
+                        if(Object.keys(retStuff).includes(e)) {
+                            retStuff[e] = [newP[0], retStuff[e][1].add(newP[1])]
+                        } else {
+                            retStuff[e] = newP
+                        }
+                    }
+                    if(!cur[1][1].isZero()){
+                        let newP : [bigDecimal, Polynomial] = [p[0].add(cur[1][0]), p[1].multiply(cur[1][1])]
+                        let e = newP[0].getValue()
+                        if(Object.keys(retStuff).includes(e)) {
+                            retStuff[e] = [newP[0], retStuff[e][1].add(newP[1])]
+                        } else {
+                            retStuff[e] = newP
+                        }
+                    }
+                }
+        
+                return Object.values(retStuff)
+            }, start)
+
+            
+            // Make factorial calculation faster
+            let cf = bd(1)
+            let facts = [bd(cf)]
+            let maxCoeff = Math.max(...G.map((g: [bigDecimal, Polynomial]) => {return g[1].coefficients.length}))
+            for(let i = 1; i <= maxCoeff; i++) {
+                cf = cf.multiply(bd(i))
+                facts.push(cf)
+            }
+
+        
+            let integral = G.reduce((prev, cur, ind) => {
+                if(bigdec_equals(cur[0], bd(1))) {
+                    return prev
+                }
+
+                // Make power calculation faster
+                let cf = bd(1)
+                let powers = [cf]
+                let maxCoeff = cur[1].length()
+                let mult = bd(1 / (toNum(cur[0]) - 1))
+                for(let i = 1; i <= maxCoeff+1; i++) {
+                    cf = cf.multiply(mult)
+                    powers.push(cf)
+                }
+
+                return prev.add(cur[1].coefficients.reduce((prevIn, curIn, indIn) => {
+                    
+                    if(bigdec_equals(cur[0], bd(1))) {
+                        return prevIn
+                    }
+                    return prevIn.add(
+                        curIn.multiply(bd((-1)**indIn))
+                            .multiply(facts[indIn])
+                            .multiply(
+                                powers[indIn + 1]
+                            )
+                    )
+                }, bd(0)))
+            }, bd(0))
+        
+            return integral.multiply(bd(pfix)).ceil()
+        }
+        return 'Not Implemented'
+    }
+
+    secsToCompletion(totalDropChance : bigDecimal, totalPower: bigDecimal, idleAttackModifier : bigDecimal, redLiquidBonus : boolean = false, totalRespawnTime : bigDecimal = bd(4)) : bigDecimal | string {
+        if(this.isZoneSet()) {
+            var killsToCompletion = this.killsToCompletion(totalDropChance)
+            if(_.isString(killsToCompletion)) {
+                return killsToCompletion
+            }
+            var killsPerHour = this.getZones()[0].getKillsPerHour(totalPower, idleAttackModifier, redLiquidBonus, totalRespawnTime)
+            console.log('info', killsPerHour, killsToCompletion)
+            return killsToCompletion.multiply(bd(60 * 60)).divide(killsPerHour)
+        }
+        return 'Not Implemented'
+    }
+
+    isZoneSet() : boolean {
+        // Must have more than one item
+        // And be only in one zone
+        let z = this.getZones()
+        return this.items.length > 4 && z.length == 1
+    }
+
+    getZones(): Zone[] {
+        var zones :Zone[] = []
+        var seen : number[][] = []
+        for(let it of this.items) {
+            for(let z of it.zone) {
+                let s = [z.id, z.level]
+                // Can't do a direct `includes` because [1,2] !== [1,2]
+                if(!seen.some((e) => e[0] == s[0] && e[1] == s[1])){
+                    zones.push(z)
+                    seen.push(s)
+                }
+            }
+        }
+        return zones
     }
 }
 
@@ -76,13 +264,13 @@ export const ItemSets : {[k: string]: ItemSet} = {
     FAD: new ItemSet('fad', [308, 309, 310, 311, 312, 313, 314]),
     JRPG: new ItemSet('jrpg', [315, 316, 317, 318, 319, 320, 321]),
     EXILE: new ItemSet('exile', [322, 323, 324, 325, 326]),
-    RADLANDS: new ItemSet('rad', [345, 346, 347, 348, 349, 350, 341]),
+    RADLANDS: new ItemSet('rad', [345, 346, 347, 348, 349, 350, 351]),
     BACKTOSCHOOL: new ItemSet('school', [352, 353, 354, 355, 356, 357, 358]),
     WESTWORLD: new ItemSet('western', [359, 360, 361, 362, 363, 364, 365]),
     ITHUNGERS: new ItemSet('itHungers', [373, 374, 375, 376, 377, 378, 379]),
     BREADVERSE: new ItemSet('bread', [392, 393, 394, 395, 396, 397, 398, 399]),
     SEVENTIES: new ItemSet('that70s', [400, 401, 402, 403, 404, 405, 406, 407]),
-    HALLOWEEN: new ItemSet('halloweenies', [408, 409, 410, 411, 412, 413, 414, 415]),
+    HALLOWEEN: new ItemSet('halloweenies', [408, 409, 410, 411, 412, 413, 414, 415], [0.0000016, 4, 0.000005, 15], 1),
     ROCKLOBSTER: new ItemSet('rockLobster', [416, 417, 418, 419, 420, 421, 422, 423]),
     CONSTRUCTION: new ItemSet('construction', [453, 454, 455, 456, 457, 458, 459, 460]),
     NETHER: new ItemSet('nether', [461, 462, 463, 464, 465, 466, 467, 468]),

@@ -10,6 +10,7 @@ import ContentSubsection from "@/components/contentSubsection";
 import { getNumberFormat } from "@/components/context";
 import { disableItem } from "@/components/dataListColumns";
 import { StandardTable } from "@/components/standardTable";
+import { getIdleAttackModifier } from "@/helpers/calculators";
 import { getGameMode, isEvilMode, isNormalMode, questsUnlocked, titanKilled, wishesUnlocked, yggUnlocked } from "@/helpers/gameMode";
 import { bd, isOne, pn, toNum } from "@/helpers/numbers";
 import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from "@/helpers/pages/daily";
@@ -135,7 +136,7 @@ export default function Page() {
     itopodZone.setLevel(v('itopodFloor-5'))
 
     var pppPerKill = itopodZone.getPPPPerKill(v('gameMode'), totalPPBonus, c('bluePill^'), c('blueHeart^'), v('bonusPP-4'));
-    var killsPerDay = itopodZone.getKillsPerHour(c('redLiquidBonus^'), v('totalRespawnTime')).multiply(hoursPerDay)
+    var killsPerDay = itopodZone.getKillsPerHour(v('totalPower'), getIdleAttackModifier(c('spoopySetBonus^'), v('sadisticNoEquipmentChallenges')), c('redLiquidBonus^'), v('totalRespawnTime')).multiply(hoursPerDay)
 
     var PPPFromTower = killsPerDay.multiply(pppPerKill)
     var APFromTower = killsPerDay.divide(
