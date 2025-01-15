@@ -183,15 +183,22 @@ export default function Page() {
     try {
         var hackHack = hacks[13]
         var hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED)
-        var newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, hackDayTargets[hackHack.key])
+        var hackHackTarget = hackDayTargets[hackHack.key]
+        if (!isZero(v(hackHack.getMilestoneExtraName()))) {
+            let targetMilestone = hackHack.getMilestone(hackHackTarget) + toNum(v(hackHack.getMilestoneExtraName()))
+            hackHackTarget = hackHack.getMilestoneLevel(targetMilestone)
+        }
+        var newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, hackHackTarget)
         var newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal))
         hacks.forEach((hack) => {
             var curVal = hack.getStatValue()
             var hackTarget = hackDayTargets[hack.key]
+
             if (!isZero(v(hack.getMilestoneExtraName()))) {
                 let targetMilestone = hack.getMilestone(hackTarget) + toNum(v(hack.getMilestoneExtraName()))
                 hackTarget = hack.getMilestoneLevel(targetMilestone)
             }
+
             var newHackVal = hack.getStatValue('', hackTarget)
             var hackTime = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, hackTarget, -1, true)
             

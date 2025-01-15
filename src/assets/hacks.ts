@@ -334,7 +334,7 @@ export class Hack extends Resource {
         }
 
         var a = 1.0078
-        return bd( 1 + (a * level - level - 1) * a**level)
+        return bd( 1 + (a * level + a - level - 2) * a**(level + 1))
                 .divide(bd((1 - a)**2))
         
     }
