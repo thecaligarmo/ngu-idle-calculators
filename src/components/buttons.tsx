@@ -48,18 +48,18 @@ export function PlusMinusButtons({state, keyName} : {state : any, keyName : stri
                 className="rounded-md border-2 border-pink-500 text-pink-500 px-1 ml-2"
                 onClick={(e) => {
                     let curVal = parseInt(state[keyName][0])
-                    state[keyName][1]((curVal + 1).toString())
-                    
-                }}
-                >+</button>
-            <button
-                className="rounded-md border-2 border-pink-500 text-pink-500 px-1 ml-2"
-                onClick={(e) => {
-                    let curVal = parseInt(state[keyName][0])
                     state[keyName][1]((curVal - 1).toString())
                     
                 }}
                 >-</button>
+            <button
+                className="rounded-md border-2 border-pink-500 text-pink-500 px-1 ml-2"
+                onClick={(e) => {
+                    let curVal = parseInt(state[keyName][0])
+                    state[keyName][1]((curVal + 1).toString())
+                    
+                }}
+                >+</button>
             </>
         )
     }
