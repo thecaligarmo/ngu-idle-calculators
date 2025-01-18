@@ -1,24 +1,29 @@
 import _ from "lodash";
-import { getPlayerData, isPlayerDataUpdated } from "../components/context";
-import { defaultPlayerData, getCalculatedOptions, getGOOptions, getPlayerNumberOptions, getPlayerOptions } from "./defaultPlayerData";
+import { getPlayerData, isPlayerDataUpdated, useSavedDataContext } from "../components/context";
+import { defaultPlayerData, getCalculatedOptions, getCleanAfterUpdateOptions, getGOOptions, getPlayerNumberOptions, getPlayerOptions } from "./defaultPlayerData";
 import { useLocalStorage, useLocalStorageNumber } from "./localStorage";
 import { camelToTitle } from "./strings";
 import { requiredDataType } from "@/components/content";
 
 export function createStatesForData(extraRequired: requiredDataType = [], goRequired: requiredDataType = [], filter : (string | [string, number])[] | boolean = false, filterKey : string = '') : any{
     const playerData = getPlayerData();
+    const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();
     var playerNumberOptions : (string | [string, number])[] = getPlayerNumberOptions();
     var playerOptions : string[] = getPlayerOptions();
     var calculatedOptions : string[] = getCalculatedOptions();
     var goOptions : string[] = getGOOptions();
     var dataObj : {[key: string] : any}= {}
     var isUpdated = isPlayerDataUpdated()
+    var cleanAfterUpdate = getCleanAfterUpdateOptions()
     for (var col of extraRequired) {
         for (var erKey of col) {
             // playerNumberOptions.push(key)
             var erKeyString : string = filterKey + (_.isArray(erKey) ? erKey[0] : erKey)
             var defaultVal = defaultPlayerData(playerData, erKey)
             var dataStateNum = useLocalStorageNumber(erKeyString, defaultVal)
+            if (isUpdated && cleanAfterUpdate.includes(erKeyString) && defaultVal != dataStateNum[0]) {
+                dataStateNum[1](defaultVal)
+            }
             dataObj[erKeyString] = dataStateNum
         }
     }
@@ -66,7 +71,6 @@ export function createStatesForData(extraRequired: requiredDataType = [], goRequ
         }
         dataObj[coKeyString] = dataStateNum
     }
-
     return dataObj;
 }
 

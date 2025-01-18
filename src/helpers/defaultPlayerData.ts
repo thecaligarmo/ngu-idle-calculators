@@ -1687,3 +1687,23 @@ export function getGOOptions() : string[] {
         'goYggdrasilYield%',
     ]
 }
+
+export function getCleanAfterUpdateOptions() : string[] {
+    return [
+        'hackMilestoneExtraStat',
+        'hackMilestoneExtraAdventure',
+        'hackMilestoneExtraTimeMachine',
+        'hackMilestoneExtraDropChance',
+        'hackMilestoneExtraAugment',
+        'hackMilestoneExtraENGU',
+        'hackMilestoneExtraMNGU',
+        'hackMilestoneExtraBlood',
+        'hackMilestoneExtraQP',
+        'hackMilestoneExtraDaycare',
+        'hackMilestoneExtraExp',
+        'hackMilestoneExtraNumber',
+        'hackMilestoneExtraPP',
+        'hackMilestoneExtraHack',
+        'hackMilestoneExtraWish',
+    ]
+}

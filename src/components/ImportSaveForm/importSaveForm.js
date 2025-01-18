@@ -2,7 +2,6 @@
 import { useDataContext, useSavedDataContext } from '@/components/context';
 import { useRef } from 'react';
 import { Deserializer } from './deserializeDotNet';
-import _ from 'lodash';
 
 
 const ImportSaveForm = (props) => {
@@ -38,7 +37,7 @@ const ImportSaveForm = (props) => {
         } catch {
             inputElem.current.value = null
         }
-
+        setPlayerDataUpdated(false)
     }
 
     return (
