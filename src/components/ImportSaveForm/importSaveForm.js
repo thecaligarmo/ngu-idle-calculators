@@ -16,19 +16,12 @@ const ImportSaveForm = (props) => {
     const handleFileRead = (rawSave) => (e) => {
         let data
         if (rawSave) {
-            // const deserializer = Deserializer.fromFile(fileReader.result)
-            // deserializer.parse()
-            /** @type Data */
-            // data = deserializer.getJson('PlayerData')
             const rawData = Deserializer.fromFile(fileReader.result)[1];
             data = Deserializer.convertData(undefined, rawData);
         } else {
             const content = fileReader.result
             data = JSON.parse(content)
         }
-
-        // data = findme(data)
-        // console.log(typeof data['training']['_attackEnergy'][0])
 
         console.log("Imported data", data)
         setPlayerData(JSON.stringify(data))
