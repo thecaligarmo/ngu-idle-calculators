@@ -4,41 +4,6 @@ import { useRef } from 'react';
 import { Deserializer } from './deserializeDotNet';
 import _ from 'lodash';
 
-function delme(data, keys) {
-    for(let key of keys) {
-        if(Object.keys(data).includes(key)){
-            delete data[key]
-        }
-    }
-    return data
-}
-
-function findme(data) {
-    data = delme(data, [
-        "ModData",
-        "NGU", 'achievements', 'advancedTraining', 'arbitrary', 'augments', 'beards', 'beastQuest', 'bestiary', 'bloodMagic', 'boostState',
-        'adventure', 'cards', 'challenges', 'cooking', 'daily',
-        'diggers', 'yggdrasil', 'wishes',
-        'wandoos98', 'totalPlaytime',
-        // 'training',
-    ])
-    for(var d in Object.values(data)) {
-        if (d instanceof BigInt){
-            console.log("Found one", d)
-        }
-        if (_.isArray(d) || _.isObject(d)) {
-            return findme(d)
-        }
-    }
-    for(var k in Object.keys(data)) {
-        if(k instanceof BigInt) {
-            console.log("Found another", k)
-        }
-    }
-    
-
-    return data
-}
 
 const ImportSaveForm = (props) => {
     let fileReader;
@@ -55,7 +20,6 @@ const ImportSaveForm = (props) => {
             // deserializer.parse()
             /** @type Data */
             // data = deserializer.getJson('PlayerData')
-            console.log("Hiya")
             const rawData = Deserializer.fromFile(fileReader.result)[1];
             data = Deserializer.convertData(undefined, rawData);
         } else {
@@ -70,8 +34,6 @@ const ImportSaveForm = (props) => {
         setPlayerData(JSON.stringify(data))
         setPlayerDataUpdated(true)
     }
-
-
 
     const handleFilePick = (e) => {
         let file = e.target.files[0]
