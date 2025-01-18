@@ -2,6 +2,43 @@
 import { useDataContext, useSavedDataContext } from '@/components/context';
 import { useRef } from 'react';
 import { Deserializer } from './deserializeDotNet';
+import _ from 'lodash';
+
+function delme(data, keys) {
+    for(let key of keys) {
+        if(Object.keys(data).includes(key)){
+            delete data[key]
+        }
+    }
+    return data
+}
+
+function findme(data) {
+    data = delme(data, [
+        "ModData",
+        "NGU", 'achievements', 'advancedTraining', 'arbitrary', 'augments', 'beards', 'beastQuest', 'bestiary', 'bloodMagic', 'boostState',
+        'adventure', 'cards', 'challenges', 'cooking', 'daily',
+        'diggers', 'yggdrasil', 'wishes',
+        'wandoos98', 'totalPlaytime',
+        // 'training',
+    ])
+    for(var d in Object.values(data)) {
+        if (d instanceof BigInt){
+            console.log("Found one", d)
+        }
+        if (_.isArray(d) || _.isObject(d)) {
+            return findme(d)
+        }
+    }
+    for(var k in Object.keys(data)) {
+        if(k instanceof BigInt) {
+            console.log("Found another", k)
+        }
+    }
+    
+
+    return data
+}
 
 const ImportSaveForm = (props) => {
     let fileReader;
@@ -14,16 +51,22 @@ const ImportSaveForm = (props) => {
     const handleFileRead = (rawSave) => (e) => {
         let data
         if (rawSave) {
-            const deserializer = Deserializer.fromFile(fileReader.result)
-            deserializer.parse()
+            // const deserializer = Deserializer.fromFile(fileReader.result)
+            // deserializer.parse()
             /** @type Data */
-            data = deserializer.getJson('PlayerData')
+            // data = deserializer.getJson('PlayerData')
+            console.log("Hiya")
+            const rawData = Deserializer.fromFile(fileReader.result)[1];
+            data = Deserializer.convertData(undefined, rawData);
         } else {
             const content = fileReader.result
             data = JSON.parse(content)
         }
 
-        console.log(data)
+        // data = findme(data)
+        // console.log(typeof data['training']['_attackEnergy'][0])
+
+        console.log("Imported data", data)
         setPlayerData(JSON.stringify(data))
         setPlayerDataUpdated(true)
     }
@@ -37,7 +80,7 @@ const ImportSaveForm = (props) => {
         fileReader.onloadend = handleFileRead(file.type !== 'application/json');
         try {
             fileReader.readAsText(file)
-        } catch{
+        } catch {
             inputElem.current.value = null
         }
 

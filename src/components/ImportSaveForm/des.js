@@ -1,6 +1,4 @@
-import _ from 'lodash';
 import {NRBFReader} from './jsBinaryFormatDataStructure/src/BinaryFormatterReader';
-import BigInt from "core-js/features/bigint";
 
 export class Deserializer {
     /**
@@ -41,13 +39,6 @@ export class Deserializer {
         if (entry.value) {
             return Deserializer.convertData(tag, entry.value);
         }
-
-        if (_.isArray(entry)) {
-            return entry.map((d) => {
-              return Deserializer.convertData(null, d)
-            })
-        }
-
         if (!entry._members) {
             return entry;
         }

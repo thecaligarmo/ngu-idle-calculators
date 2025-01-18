@@ -33,10 +33,10 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
         let taggedCards : number[]= []
         if(!_.isUndefined(playerData.cards.taggedBonuses) && playerData.cards.taggedBonuses.length > 0) {
             taggedCards = [
-                playerData.cards.taggedBonuses[0][1].value__,
-                playerData.cards.taggedBonuses[1][1].value__,
-                playerData.cards.taggedBonuses[2][1].value__,
-                playerData.cards.taggedBonuses[3][1].value__,
+                playerData.cards.taggedBonuses[0].value__,
+                playerData.cards.taggedBonuses[1].value__,
+                playerData.cards.taggedBonuses[2].value__,
+                playerData.cards.taggedBonuses[3].value__,
             ]
         }
         
@@ -73,7 +73,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.res3.res3Power;
 
             case 'beastMode':
-                return playerData.adventure.beastModeOn
+                return playerData.adventure.beastModeOn ? 1 : 0
             case 'beefyWish-1':
                 return playerData.wishes.wishes[162].level
                         + playerData.wishes.wishes[220].level
@@ -86,7 +86,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'bloodMagicTimeMachine':
                 return Math.ceil(Math.log2(playerData.bloodMagic.goldSpellBlood / 1000000) ** 2)
             case 'blueHeart^':
-                return playerData.inventory.itemList.blueHeartComplete
+                return playerData.inventory.itemList.blueHeartComplete ? 1 : 0;
             case 'bonusPP-4':
                 return playerData.beastQuest.quirkLevel[70] * 10
                     + playerData.wishes.wishes[79].level * 50
@@ -530,89 +530,89 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.NGU.magicSkills[6].sadisticTarget;
 
             case 'eatFruitOfGold^':
-                return playerData.yggdrasil.fruits[0].eatFruit;
+                return playerData.yggdrasil.fruits[0].eatFruit ? 1 : 0;
             case 'eatFruitOfPowerA^':
-                return playerData.yggdrasil.fruits[1].eatFruit;
+                return playerData.yggdrasil.fruits[1].eatFruit ? 1 : 0;
             case 'eatFruitOfAdventure^':
-                return playerData.yggdrasil.fruits[2].eatFruit;
+                return playerData.yggdrasil.fruits[2].eatFruit ? 1 : 0;
             case 'eatFruitOfKnowledge^':
-                return playerData.yggdrasil.fruits[3].eatFruit;
+                return playerData.yggdrasil.fruits[3].eatFruit ? 1 : 0;
             case 'eatFruitOfPomegranate^':
-                return playerData.yggdrasil.fruits[4].eatFruit;
+                return playerData.yggdrasil.fruits[4].eatFruit ? 1 : 0;
             case 'eatFruitOfLuck^':
-                return playerData.yggdrasil.fruits[5].eatFruit;
+                return playerData.yggdrasil.fruits[5].eatFruit ? 1 : 0;
             case 'eatFruitOfPowerB^':
-                return playerData.yggdrasil.fruits[6].eatFruit;
+                return playerData.yggdrasil.fruits[6].eatFruit ? 1 : 0;
             case 'eatFruitOfArbitrariness^':
-                return playerData.yggdrasil.fruits[7].eatFruit;
+                return playerData.yggdrasil.fruits[7].eatFruit ? 1 : 0;
             case 'eatFruitOfNumbers^':
-                return playerData.yggdrasil.fruits[8].eatFruit;
+                return playerData.yggdrasil.fruits[8].eatFruit ? 1 : 0;
             case 'eatFruitOfRage^':
-                return playerData.yggdrasil.fruits[9].eatFruit;
+                return playerData.yggdrasil.fruits[9].eatFruit ? 1 : 0;
             case 'eatFruitOfMacguffinA^':
-                return playerData.yggdrasil.fruits[10].eatFruit;
+                return playerData.yggdrasil.fruits[10].eatFruit ? 1 : 0;
             case 'eatFruitOfPowerD^':
-                return playerData.yggdrasil.fruits[11].eatFruit;
+                return playerData.yggdrasil.fruits[11].eatFruit ? 1 : 0;
             case 'eatFruitOfWatermelon^':
-                return playerData.yggdrasil.fruits[12].eatFruit;
+                return playerData.yggdrasil.fruits[12].eatFruit ? 1 : 0;
             case 'eatFruitOfMacguffinB^':
-                return playerData.yggdrasil.fruits[13].eatFruit;
+                return playerData.yggdrasil.fruits[13].eatFruit ? 1 : 0;
             case 'eatFruitOfQuirks^':
-                return playerData.yggdrasil.fruits[14].eatFruit;
+                return playerData.yggdrasil.fruits[14].eatFruit ? 1 : 0;
             case 'eatFruitOfAngryMayo^':
-                return playerData.yggdrasil.fruits[15].eatFruit;
+                return playerData.yggdrasil.fruits[15].eatFruit ? 1 : 0;
             case 'eatFruitOfSadMayo^':
-                return playerData.yggdrasil.fruits[16].eatFruit;
+                return playerData.yggdrasil.fruits[16].eatFruit ? 1 : 0;
             case 'eatFruitOfMoldyMayo^':
-                return playerData.yggdrasil.fruits[17].eatFruit;
+                return playerData.yggdrasil.fruits[17].eatFruit ? 1 : 0;
             case 'eatFruitOfAyyMayo^':
-                return playerData.yggdrasil.fruits[18].eatFruit;
+                return playerData.yggdrasil.fruits[18].eatFruit ? 1 : 0;
             case 'eatFruitOfCincoDeMayo^':
-                return playerData.yggdrasil.fruits[19].eatFruit;
+                return playerData.yggdrasil.fruits[19].eatFruit ? 1 : 0;
             case 'eatFruitOfPrettyMayo^':
-                return playerData.yggdrasil.fruits[20].eatFruit;
+                return playerData.yggdrasil.fruits[20].eatFruit ? 1 : 0;
             case 'poopFruitOfGold^':
-                return playerData.yggdrasil.fruits[0].usePoop;
+                return playerData.yggdrasil.fruits[0].usePoop ? 1 : 0;
             case 'poopFruitOfPowerA^':
-                return playerData.yggdrasil.fruits[1].usePoop;
+                return playerData.yggdrasil.fruits[1].usePoop ? 1 : 0;
             case 'poopFruitOfAdventure^':
-                return playerData.yggdrasil.fruits[2].usePoop;
+                return playerData.yggdrasil.fruits[2].usePoop ? 1 : 0;
             case 'poopFruitOfKnowledge^':
-                return playerData.yggdrasil.fruits[3].usePoop;
+                return playerData.yggdrasil.fruits[3].usePoop ? 1 : 0;
             case 'poopFruitOfPomegranate^':
-                return playerData.yggdrasil.fruits[4].usePoop;
+                return playerData.yggdrasil.fruits[4].usePoop ? 1 : 0;
             case 'poopFruitOfLuck^':
-                return playerData.yggdrasil.fruits[5].usePoop;
+                return playerData.yggdrasil.fruits[5].usePoop ? 1 : 0;
             case 'poopFruitOfPowerB^':
-                return playerData.yggdrasil.fruits[6].usePoop;
+                return playerData.yggdrasil.fruits[6].usePoop ? 1 : 0;
             case 'poopFruitOfArbitrariness^':
-                return playerData.yggdrasil.fruits[7].usePoop;
+                return playerData.yggdrasil.fruits[7].usePoop ? 1 : 0;
             case 'poopFruitOfNumbers^':
-                return playerData.yggdrasil.fruits[8].usePoop;
+                return playerData.yggdrasil.fruits[8].usePoop ? 1 : 0;
             case 'poopFruitOfRage^':
-                return playerData.yggdrasil.fruits[9].usePoop;
+                return playerData.yggdrasil.fruits[9].usePoop ? 1 : 0;
             case 'poopFruitOfMacguffinA^':
-                return playerData.yggdrasil.fruits[10].usePoop;
+                return playerData.yggdrasil.fruits[10].usePoop ? 1 : 0;
             case 'poopFruitOfPowerD^':
-                return playerData.yggdrasil.fruits[11].usePoop;
+                return playerData.yggdrasil.fruits[11].usePoop ? 1 : 0;
             case 'poopFruitOfWatermelon^':
-                return playerData.yggdrasil.fruits[12].usePoop;
+                return playerData.yggdrasil.fruits[12].usePoop ? 1 : 0;
             case 'poopFruitOfMacguffinB^':
-                return playerData.yggdrasil.fruits[13].usePoop;
+                return playerData.yggdrasil.fruits[13].usePoop ? 1 : 0;
             case 'poopFruitOfQuirks^':
-                return playerData.yggdrasil.fruits[14].usePoop;
+                return playerData.yggdrasil.fruits[14].usePoop ? 1 : 0;
             case 'poopFruitOfAngryMayo^':
-                return playerData.yggdrasil.fruits[15].usePoop;
+                return playerData.yggdrasil.fruits[15].usePoop ? 1 : 0;
             case 'poopFruitOfSadMayo^':
-                return playerData.yggdrasil.fruits[16].usePoop;
+                return playerData.yggdrasil.fruits[16].usePoop ? 1 : 0;
             case 'poopFruitOfMoldyMayo^':
-                return playerData.yggdrasil.fruits[17].usePoop;
+                return playerData.yggdrasil.fruits[17].usePoop ? 1 : 0;
             case 'poopFruitOfAyyMayo^':
-                return playerData.yggdrasil.fruits[18].usePoop;
+                return playerData.yggdrasil.fruits[18].usePoop ? 1 : 0;
             case 'poopFruitOfCincoDeMayo^':
-                return playerData.yggdrasil.fruits[19].usePoop;
+                return playerData.yggdrasil.fruits[19].usePoop ? 1 : 0;
             case 'poopFruitOfPrettyMayo^':
-                return playerData.yggdrasil.fruits[20].usePoop;
+                return playerData.yggdrasil.fruits[20].usePoop ? 1 : 0;
             case 'tierFruitOfGold-2':
                 return playerData.yggdrasil.fruits[0].maxTier;
             case 'tierFruitOfPowerA-2':
@@ -657,9 +657,9 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                 return playerData.yggdrasil.fruits[20].maxTier;
 
             case 'fadLandsSetBonus^':
-                return playerData.inventory.itemList.fadComplete
+                return playerData.inventory.itemList.fadComplete ? 1 : 0;
             case 'fasterQuesting^':
-                return playerData.arbitrary.hasFasterQuests
+                return playerData.arbitrary.hasFasterQuests ? 1 : 0;
             case 'fibQuestRNG^':
                 return (playerData.adventure.itopod.perkLevel[94] >= 610) ? 1 : 0;
             case 'firstHarvestPerk':
@@ -765,13 +765,13 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
                         + playerData.adventure.itopod.perkLevel[147] // Improved Major Quest QP Rewards
                         + playerData.wishes.wishes[101].level // I wish Major Quests had better Base QP Rewards
             case 'redLiquidBonus^':
-                return playerData.inventory.itemList.redLiquidComplete
+                return playerData.inventory.itemList.redLiquidComplete ? 1 : 0;
             case 'res3Active':
-                return playerData.res3.res3On;
+                return playerData.res3.res3On ? 1 : 0;
             case 'sadisticNoEquipmentChallenges-2':
                 return playerData.challenges.noEquipmentChallenge.curSadisticCompletions
             case 'spoopySetBonus^':
-                return playerData.inventory.itemList.ghostComplete
+                return playerData.inventory.itemList.ghostComplete ? 1 : 0;
             case 'twentyFourHourChallenge-2':
                 return playerData.challenges.hour24Challenge.curCompletions
             case 'twentyFourHourEvilChallenge-2':
@@ -810,7 +810,7 @@ export function defaultPlayerData(playerData : any, info : string | [string, num
             case 'yggdrasilDropChance':
                 return playerData.yggdrasil.totalLuck / 20 + 100
             case '70sSet^':
-                return playerData.inventory.itemList.that70sComplete
+                return playerData.inventory.itemList.that70sComplete ? 1 : 0;
 
 
 
