@@ -2,8 +2,6 @@
 import Container from '@/components/container';
 import ContentSection from '@/components/contentSection';
 
-
-
 export default function Home() {
     return (
         <Container title="NGU Idle">
