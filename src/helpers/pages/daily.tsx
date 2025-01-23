@@ -1,8 +1,8 @@
-import { AttackStat, Titan, Titans } from "@/assets/enemy";
-import { Wish } from "@/assets/wish";
-import bigDecimal from "js-big-decimal";
-import { ReactElement } from "react";
-import { bd, bigdec_min, greaterThan, toNum } from "../numbers";
+import bigDecimal from "js-big-decimal"
+import { ReactElement } from "react"
+import { Titans, Titan, AttackStat } from "../../assets/enemy"
+import { Wish } from "../../assets/wish"
+import { bd, greaterThan, bigdec_min, toNum } from "../numbers"
 
 
 

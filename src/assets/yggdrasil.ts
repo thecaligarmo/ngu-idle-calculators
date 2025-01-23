@@ -1,4 +1,4 @@
-import { bd, toNum } from "@/helpers/numbers"
+import { bd, toNum } from "../helpers/numbers"
 import bigDecimal from "js-big-decimal"
 
 
@@ -82,15 +82,15 @@ export class Yggdrasil {
     }
 
     poopKey() : string {
-        return 'poop' + this.key.charAt(0).toUpperCase() + this.key.slice(1) + '^'
+        return 'poop' + this.key.charAt(0).toUpperCase() + this.key.slice(1)
     }
 
     tierKey() : string {
-        return 'tier' + this.key.charAt(0).toUpperCase() + this.key.slice(1) + '-2'
+        return 'tier' + this.key.charAt(0).toUpperCase() + this.key.slice(1)
     }
 
     eatKey() : string {
-        return 'eat' + this.key.charAt(0).toUpperCase() + this.key.slice(1) + '^'
+        return 'eat' + this.key.charAt(0).toUpperCase() + this.key.slice(1)
     }
 
     upgradeCost() : number {

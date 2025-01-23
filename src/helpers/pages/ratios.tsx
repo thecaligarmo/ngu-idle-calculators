@@ -1,9 +1,7 @@
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { bd, bigdec_max, bigdec_min } from "../numbers"
-
-
-
+import { Player } from "../../assets/player"
 
 type gensType = {
     energy : {
@@ -84,15 +82,15 @@ function toStr(ty : string, elt : string, upperFirst : boolean = false) {
 }
 
 
+export function getRatioInfo(player : Player) : [gensType, gensType, gensBDType, string] {
+    let ratMax : gensType = _.cloneDeep(basicGens)
+    let ratUnit : gensType = _.cloneDeep(basicGens)
+    let desired : gensType = _.cloneDeep(basicGens)
+    let buy : gensType = _.cloneDeep(basicGens)
+    let res3Active = player.get('res3Active')
+    
 
-
-export function getRatioInfo(v : {[key: string] : bigDecimal}, res3Active : boolean = false) : [gensType, gensType, gensBDType, string] {
-    var ratMax : gensType = _.cloneDeep(basicGens)
-    var ratUnit : gensType = _.cloneDeep(basicGens)
-    var desired : gensType = _.cloneDeep(basicGens)
-    var buy : gensType = _.cloneDeep(basicGens)
-
-    var ty: keyof typeof ratMax
+    let ty: keyof typeof ratMax
     for (ty in basicGens) {
         var elt: keyof (typeof ratMax)[keyof typeof ratMax]
         if (ty == 'res3' && !res3Active) {
@@ -102,12 +100,12 @@ export function getRatioInfo(v : {[key: string] : bigDecimal}, res3Active : bool
             }
         } else {
             for (elt in basicGens[ty as keyof gensType]) {
-                let baseName = 'base' + toStr(ty, elt, true)
-                let ratName = toStr(ty, elt) + 'Ratio'
-                let otherRatName = (ty == 'energy') ? 'magicRatio' : 'energyRatio'
-                let thirdRatio = (ty == 'res3') ? 'magicRatio' : 'res3Ratio'
-                ratMax[ty][elt] = getRatMax(v[baseName], v[ratName], v[otherRatName], res3Active ? v[thirdRatio] : bd(1));
-                ratUnit[ty][elt] = getRatUnit(v[baseName], v[ratName], v[ty + 'Ratio'])
+                let base = player.get('base' + toStr(ty, elt, true))
+                let ratio = player.get(toStr(ty, elt) + 'Ratio')
+                let otherRatio = player.get((ty == 'energy') ? 'magicRatio' : 'energyRatio')
+                let thirdRatio = player.get((ty == 'res3') ? 'magicRatio' : 'res3Ratio')
+                ratMax[ty][elt] = getRatMax(base, ratio, otherRatio, res3Active ? thirdRatio : bd(1));
+                ratUnit[ty][elt] = getRatUnit(base, ratio, player.get(ty + 'Ratio'))
             }
         }
     }
@@ -115,16 +113,16 @@ export function getRatioInfo(v : {[key: string] : bigDecimal}, res3Active : bool
     // Calculate desired amount
     // The largest max is where we are trying to be. So take max of all values and
     // do everything relative to that
-    var maxItem = bigdec_max(
+    let maxItem = bigdec_max(
             ratMax['energy']['power'],ratMax['energy']['cap'],ratMax['energy']['bar'],
             ratMax['magic']['power'],ratMax['magic']['cap'],ratMax['magic']['bar']
         )
-    var minItem = bigdec_min(
+    let minItem = bigdec_min(
             ratUnit['energy']['power'],ratUnit['energy']['cap'],ratUnit['energy']['bar'],
             ratUnit['magic']['power'],ratUnit['magic']['cap'],ratUnit['magic']['bar']
     )
 
-    if (res3Active) {
+    if (player.get('res3Active')) {
         maxItem = bigdec_max(maxItem, ratMax['res3']['power'],ratMax['res3']['cap'],ratMax['res3']['bar'])
         minItem = bigdec_min(minItem, ratUnit['res3']['power'],ratUnit['res3']['cap'],ratUnit['res3']['bar'])
     }
@@ -138,9 +136,9 @@ export function getRatioInfo(v : {[key: string] : bigDecimal}, res3Active : bool
             }
         } else {
             for (elt in basicGens[ty as keyof gensType]) {
-                let baseName = 'base' + toStr(ty, elt, true)
-                desired[ty][elt] = getDesired(maxItem, v[baseName], ratMax[ty][elt])
-                buy[ty][elt] = getBuy(desired[ty][elt], v[baseName])
+                let base = player.get('base' + toStr(ty, elt, true))
+                desired[ty][elt] = getDesired(maxItem, base, ratMax[ty][elt])
+                buy[ty][elt] = getBuy(desired[ty][elt], base)
             }
         }
     }
@@ -182,13 +180,13 @@ export function getRatioInfo(v : {[key: string] : bigDecimal}, res3Active : bool
         case ratUnit['res3']['bar']:
             suggestedBuy = "Resource 3 Bar"
             break;
-        case ratUnit['res3']['power']:
+        case ratUnit['magic']['power']:
             suggestedBuy = "Magic Power"
             break;
-        case ratUnit['res3']['cap']:
+        case ratUnit['magic']['cap']:
             suggestedBuy = "Magic Cap"
             break;
-        case ratUnit['res3']['bar']:
+        case ratUnit['magic']['bar']:
             suggestedBuy = "Magic Bar"
             break;
     }

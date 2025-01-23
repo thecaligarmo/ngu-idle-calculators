@@ -1,6 +1,6 @@
-import { toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
+import { toNum } from "../helpers/numbers"
 
 
 export type prop = [string, number][] | [string, number, number][]

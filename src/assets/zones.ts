@@ -1,7 +1,8 @@
-import { bd, bigdec_equals, bigdec_min, greaterThan, toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
+import { isEvilMode, isSadMode } from "../helpers/gameMode"
+import { bd, bigdec_equals, bigdec_min, greaterThan, toNum } from "../helpers/numbers"
 import { ENEMY_TYPE, Enemies, Enemy } from "./enemy"
-import { isEvilMode, isSadMode } from "@/helpers/gameMode"
+
 
 
 var boostTable : number[] = [0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]

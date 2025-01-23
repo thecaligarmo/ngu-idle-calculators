@@ -1,4 +1,3 @@
-
 export function setInputValue(input, value) {
     const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
         window.HTMLInputElement.prototype,

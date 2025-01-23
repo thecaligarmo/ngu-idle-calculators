@@ -90,7 +90,7 @@ export function pn(num : bigDecimal | number, numberFormat : string = 'scientifi
 
     // We should only start for billions as until then it's pretty human readable
     if (nl < 10) {
-        if (nl < 3 && precision == 0) {
+        if (nl <= 3 && precision == 0) {
             precision = 2
         }
         return toNum(num.round(precision)).toLocaleString(undefined, { maximumFractionDigits: precision }) //.toFixed(precision).toLocaleString()

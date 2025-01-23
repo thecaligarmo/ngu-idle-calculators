@@ -2,7 +2,7 @@ import bigDecimal from "js-big-decimal";
 import { GameMode } from "./mode";
 import Resource, { ResourceContainer, prop } from "./resource";
 import { Stat } from "./stat";
-import { bd } from "@/helpers/numbers";
+import { bd } from "../helpers/numbers";
 
 export const CardKeys : {[key: string]: string} = {
     ENERGY_NGU : 'cardEnergyNGU',
@@ -93,11 +93,11 @@ export class Card extends Resource {
     }
     
     tierKey() : string {
-        return this.key.replace('card', 'cardTier') + '-2'
+        return this.key.replace('card', 'cardTier')
     }
 
     taggedKey() : string {
-        return this.key.replace('card', 'cardTagged') + '^'
+        return this.key.replace('card', 'cardTagged')
     }
 
     rarityKey() : string {
@@ -105,7 +105,7 @@ export class Card extends Resource {
     }
 
     chonkKey() : string {
-        return this.key.replace('card', 'cardChonked') + '^'
+        return this.key.replace('card', 'cardChonked')
     }
 
     tagFormula(tagEffect: bigDecimal, numberOfTags: number) : bigDecimal{

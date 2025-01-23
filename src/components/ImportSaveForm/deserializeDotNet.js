@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import {NRBFReader} from './jsBinaryFormatDataStructure/src/BinaryFormatterReader';
 import BigInt from "core-js/features/bigint";
+import { Buffer } from 'buffer';
 
 export class Deserializer {
     /**

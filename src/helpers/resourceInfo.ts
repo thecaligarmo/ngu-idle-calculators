@@ -1,28 +1,28 @@
-import { AdvTraining } from "@/assets/advTraining";
-import { APItem } from "@/assets/apItems";
-import { Beard } from "@/assets/beards";
-import { Card } from "@/assets/cards";
-import { Challenge, CHALLENGES } from "@/assets/challenges";
-import { Digger } from "@/assets/diggers";
-import { Hack } from "@/assets/hacks";
-import { Item } from "@/assets/items";
-import { MacGuffin } from "@/assets/macguffins";
-import { ALL_GAME_MODES, GameMode } from "@/assets/mode";
-import { NGU } from "@/assets/ngus";
-import { Perk } from "@/assets/perks";
-import { Quirk } from "@/assets/quirks";
-import { ItemSet, ItemSets } from "@/assets/sets";
-import { Stat } from "@/assets/stat";
-import { Wandoos } from "@/assets/wandoos";
-import { Wish } from "@/assets/wish";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
+import { AdvTraining } from "../assets/advTraining";
+import { APItem } from "../assets/apItems";
+import { Beard } from "../assets/beards";
+import { Card } from "../assets/cards";
+import { Challenge, CHALLENGES } from "../assets/challenges";
+import { Digger } from "../assets/diggers";
+import { Hack } from "../assets/hacks";
+import { Item } from "../assets/items";
+import { MacGuffin } from "../assets/macguffins";
+import { ALL_GAME_MODES, GameMode } from "../assets/mode";
+import { NGU } from "../assets/ngus";
+import { Perk } from "../assets/perks";
+import { Player } from "../assets/player";
+import { Quirk } from "../assets/quirks";
+import { ItemSet, ItemSets } from "../assets/sets";
+import { Stat } from "../assets/stat";
+import { Wandoos } from "../assets/wandoos";
+import { Wish } from "../assets/wish";
 import { getGameMode } from "./gameMode";
 import { bd, lessThan, toNum } from "./numbers";
-import { parseNum, parseObj } from "./parsers";
 
-export function achievementAPBonus(data : any) : bigDecimal {
-    var achievements = parseObj(data, 'achievements')
+export function achievementAPBonus(player: Player) : bigDecimal {
+    var achievements = player.get('achievements')
     
     var sum = 0
     for (var i = 0; i < achievements.length; i++) {
@@ -138,8 +138,8 @@ export function achievementAPBonus(data : any) : bigDecimal {
     return bd(sum / 100 + 100)
 }
 
-export function advTrainingInfo(data: any, key: string) : bigDecimal {
-    var advTrainings : AdvTraining[] = parseObj(data, 'advTrainings')
+export function advTrainingInfo(player: Player, key: string) : bigDecimal {
+    var advTrainings : AdvTraining[] = player.get('advTrainings')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if (advTrainings.length > 0) {
@@ -151,10 +151,10 @@ export function advTrainingInfo(data: any, key: string) : bigDecimal {
     return bd(stat)
 }
 
-export function apItemInfo(data: any, key: string) : bigDecimal {
-    var apItems : APItem[] = parseObj(data, 'apItems')
+export function apItemInfo(player: Player, key: string) : bigDecimal {
+    var apItems : APItem[] = player.get('apItems')
     var stat : number = 100;
-    var blueHeart = isMaxxedItemSet(data, ItemSets.BLUE_HEART)
+    var blueHeart = isMaxxedItemSet(player, ItemSets.BLUE_HEART)
     if (Object.values(Stat).includes(key)) {
         if(apItems.length > 0) {
             apItems.forEach((g) => {
@@ -173,8 +173,8 @@ export function apItemInfo(data: any, key: string) : bigDecimal {
     return bd(stat > 0 ? stat : 100)
 }
 
-export function beardInfoTemp(data: any, key: string, pretendOn : boolean = false) : bigDecimal{
-    var beards : Beard[] = parseObj(data, 'beards')
+export function beardInfoTemp(player: Player, key: string, pretendOn : boolean = false) : bigDecimal{
+    var beards : Beard[] = player.get('beards')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( beards.length > 0) {
@@ -186,8 +186,8 @@ export function beardInfoTemp(data: any, key: string, pretendOn : boolean = fals
     return bd(stat)
 }
 
-export function beardInfoPerm(data: any, key: string) : bigDecimal{
-    var beards : Beard[] = parseObj(data, 'beards')
+export function beardInfoPerm(player: Player, key: string) : bigDecimal{
+    var beards : Beard[] = player.get('beards')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( beards.length > 0) {
@@ -199,8 +199,8 @@ export function beardInfoPerm(data: any, key: string) : bigDecimal{
     return bd(stat)
 }
 
-export function cardInfo(data : any, key: string) :bigDecimal {
-    var cards : Card[] = parseObj(data, 'cards')
+export function cardInfo(player: Player, key: string) :bigDecimal {
+    var cards : Card[] = player.get('cards')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if(cards.length > 0) {
@@ -215,8 +215,8 @@ export function cardInfo(data : any, key: string) :bigDecimal {
     return bd(stat)
 }
 
-export function activeBeards(data : any, type : string = '') : bigDecimal {
-    var beards : Beard[] = parseObj(data, 'beards')
+export function activeBeards(player: Player, type : string = '') : bigDecimal {
+    var beards : Beard[] = player.get('beards')
     var activeBeards = 0
     if ( beards.length > 0) {
         beards.forEach((g) => {
@@ -232,8 +232,8 @@ export function activeBeards(data : any, type : string = '') : bigDecimal {
     return bd(activeBeards);
 }
 
-export function challengeInfo(data : any, key : string, gameMode : number = GameMode.ALL) : bigDecimal{
-    var challenges : {[key:number] : Challenge[]} = parseObj(data, 'challenges')
+export function challengeInfo(player: Player, key : string, gameMode : number = GameMode.ALL) : bigDecimal{
+    var challenges : {[key:number] : Challenge[]} = player.get('challenges')
     var stat : number = 1
     if (Object.values(Stat).includes(key)) {
         if(gameMode === GameMode.ALL) {
@@ -255,16 +255,16 @@ export function challengeInfo(data : any, key : string, gameMode : number = Game
     return bd(stat * 100)
 }
 
-export function cookingInfo(data : any, key : string) : bigDecimal {
+export function cookingInfo(player: Player, key : string) : bigDecimal {
     if (key == Stat.EXPERIENCE) {
-        return parseNum(data, 'cookingExp')
+        return player.get('cookingExp')
     }
     return bd(1)
 }
 
-function cubeInfo(data : any, key : string, capAmount : bigDecimal = bd(-1)) : bigDecimal {
-    var power = parseNum(data, 'cubePower')
-    var toughness = parseNum(data, 'cubeToughness')
+function cubeInfo(player: Player, key : string, capAmount : bigDecimal = bd(-1)) : bigDecimal {
+    var power = player.get('cubePower')
+    var toughness = player.get('cubeToughness')
     var total = power.add(toughness)
     var digits = total.floor().getValue().length
     switch(key) {
@@ -337,16 +337,16 @@ function cubeInfo(data : any, key : string, capAmount : bigDecimal = bd(-1)) : b
     return bd(0)
 }
 
-function globalDiggerBonus(data: any ) : number{
-    var diggers : any = parseObj(data, 'diggers')
+function globalDiggerBonus(player: Player ) : number{
+    var diggers : any = player.get('diggers')
     var totalLevel : number = 0
     if (diggers.length){
         totalLevel = Object.keys(diggers).reduce((curVal: number, d : string) => {return diggers[d].maxLevel + curVal}, 0)
     }
-    var challenges : Challenge[] = parseObj(data, 'challenges')
+    var challenges : Challenge[] = player.get('challenges')
     var challengeBonus : number = (!_.isUndefined(challenges[GameMode.NORMAL]) && !_.isUndefined(challenges[GameMode.NORMAL][10]) && challenges[GameMode.NORMAL][10].level > 0) ? 5 : 0;
 
-    var partySetBonus : number = isMaxxedItemSet(data, ItemSets.PARTY) ? 5 : 0;
+    var partySetBonus : number = isMaxxedItemSet(player, ItemSets.PARTY) ? 5 : 0;
 
     if (totalLevel <= 500) {
         return 100 + 0.05 * totalLevel + challengeBonus + partySetBonus
@@ -355,8 +355,8 @@ function globalDiggerBonus(data: any ) : number{
 
 }
 
-export function diggerInfo(data: any, key: string) : bigDecimal{
-    var diggers : Digger[] = parseObj(data, 'diggers')
+export function diggerInfo(player: Player, key: string) : bigDecimal{
+    var diggers : Digger[] = player.get('diggers')
     var stat : number = 0
     if (Object.values(Stat).includes(key)) {
         if ( diggers.length > 0) {
@@ -367,23 +367,23 @@ export function diggerInfo(data: any, key: string) : bigDecimal{
             })
         }
     }
-    stat *= (globalDiggerBonus(data) / 100)
+    stat *= (globalDiggerBonus(player) / 100)
     if (stat === 0) {
         return bd(100)
     } 
     return bd(stat)
 }
 
-export function equipmentInfo(data: any, key: string) : bigDecimal {
+export function equipmentInfo(player: Player, key: string) : bigDecimal {
     var gear : (Item | null)[] = [
-        parseObj(data, 'equipmentHead'),
-        parseObj(data, 'equipmentChest'),
-        parseObj(data, 'equipmentLegs'),
-        parseObj(data, 'equipmentBoots'),
-        parseObj(data, 'equipmentWeapon'),
-        parseObj(data, 'equipmentWeaponTwo'),
+        player.get('equipmentHead'),
+        player.get('equipmentChest'),
+        player.get('equipmentLegs'),
+        player.get('equipmentBoots'),
+        player.get('equipmentWeapon'),
+        player.get('equipmentWeaponTwo'),
     ]
-    var accs : Item[] = parseObj(data, 'equipmentAccesories')
+    var accs : Item[] = player.get('equipmentAccesories')
     var stat : number = (key == Stat.POWER || key == Stat.TOUGHNESS || key == Stat.HEALTH || key == Stat.REGEN) ? 0 : 100;
     if (Object.values(Stat).includes(key)) {
             gear.forEach((g) => {
@@ -399,7 +399,7 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
 
     }
     if (key == Stat.EXPERIENCE) {
-        if (isMaxxedItemSet(data, ItemSets.RED_HEART)) {
+        if (isMaxxedItemSet(player, ItemSets.RED_HEART)) {
             if ( accs.length > 0) {
                 accs.forEach((g) => {
                     if(g.id == 119) {
@@ -413,24 +413,24 @@ export function equipmentInfo(data: any, key: string) : bigDecimal {
 }
 
 
-export function equipmentWithCubeInfo(data: any, key: string) : bigDecimal {
-    var stat = equipmentInfo(data, key)
+export function equipmentWithCubeInfo(player: Player, key: string) : bigDecimal {
+    var stat = equipmentInfo(player, key)
     
     let capAmount = bd(-1)
     if(key == Stat.POWER) {
-        capAmount = parseNum(data, 'baseAdventurePower').add(bd(stat))
+        capAmount = player.get('baseAdventurePower').add(bd(stat))
     }
     if(key == Stat.TOUGHNESS) {
-        capAmount = parseNum(data, 'baseAdventureToughness').add(bd(stat))
+        capAmount = player.get('baseAdventureToughness').add(bd(stat))
     }
     if(key == Stat.HEALTH) {
-        capAmount = parseNum(data, 'baseAdventurePower').add(equipmentInfo(data, Stat.POWER))
+        capAmount = player.get('baseAdventurePower').add(equipmentInfo(player, Stat.POWER))
     }
     if(key == Stat.REGEN) {
-        capAmount = parseNum(data, 'baseAdventureToughness').add(equipmentInfo(data, Stat.TOUGHNESS))
+        capAmount = player.get('baseAdventureToughness').add(equipmentInfo(player, Stat.TOUGHNESS))
     }
 
-    var cube = cubeInfo(data, key, capAmount)
+    var cube = cubeInfo(player, key, capAmount)
 
     switch(key) {
         case Stat.POWER:
@@ -448,10 +448,10 @@ export function equipmentWithCubeInfo(data: any, key: string) : bigDecimal {
     return bd(stat).add(cube)//.round(0, bigDecimal.RoundingModes.DOWN)
 }
 
-export function hackInfo(data : any, key : string) : bigDecimal{
-    var hacks : Hack[] = parseObj(data, 'hacks')
+export function hackInfo(player: Player, key : string) : bigDecimal{
+    var hacks : Hack[] = player.get('hacks')
     var stat : number = 100
-    var gameMode : number = getGameMode(data)
+    var gameMode : number = getGameMode(player)
     if (Object.values(Stat).includes(key)) {
         if ( hacks.length > 0) {
             hacks.forEach((g) => {
@@ -465,8 +465,8 @@ export function hackInfo(data : any, key : string) : bigDecimal{
     return bd(stat)
 }
 
-export function macguffinInfo(data : any, key : string) : bigDecimal {
-    var macguffins : MacGuffin[] = parseObj(data, 'macguffins')
+export function macguffinInfo(player: Player, key : string) : bigDecimal {
+    var macguffins : MacGuffin[] = player.get('macguffins')
     var stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( macguffins.length > 0) {
@@ -480,10 +480,10 @@ export function macguffinInfo(data : any, key : string) : bigDecimal {
     return bd(stat)
 }
 
-export function nguInfo(data : any, key : string) : bigDecimal{
-    var engus : NGU[] = parseObj(data, 'energyNGUs')
-    var mngus : NGU[] = parseObj(data, 'magicNGUs')
-    var gameMode : number = getGameMode(data)
+export function nguInfo(player: Player, key : string) : bigDecimal{
+    var engus : NGU[] = player.get('energyNGUs')
+    var mngus : NGU[] = player.get('magicNGUs')
+    var gameMode : number = getGameMode(player)
     var stat : number = 1
     if (Object.values(Stat).includes(key)) {
         if ( engus.length > 0) {
@@ -508,10 +508,10 @@ export function nguInfo(data : any, key : string) : bigDecimal{
     return bd( stat == 1 ? 100 : stat * 100)
 }
 
-export function perkInfo(data : any, key : string) : bigDecimal{
-    var perks : Perk[] = parseObj(data, 'perks')
+export function perkInfo(player: Player, key : string) : bigDecimal{
+    var perks : Perk[] = player.get('perks')
     var stat : number = 100
-    var gameMode : number = getGameMode(data)
+    var gameMode : number = getGameMode(player)
     
     if (Object.values(Stat).includes(key)) {
         if ( perks.length > 0) {
@@ -526,8 +526,8 @@ export function perkInfo(data : any, key : string) : bigDecimal{
 }
 
 
-export function perkLevel(data : any, key : string) : number {
-    var perks : Perk[] = parseObj(data, 'perks')
+export function perkLevel(player: Player, key : string) : number {
+    var perks : Perk[] = player.get('perks')
     
     if(perks.length > 0) {
         for(var p of perks) {
@@ -539,10 +539,10 @@ export function perkLevel(data : any, key : string) : number {
     return 0
 }
 
-export function quirkInfo(data : any, key : string) : bigDecimal{
-    var quirks : Quirk[] = parseObj(data, 'quirks')
+export function quirkInfo(player: Player, key : string) : bigDecimal{
+    var quirks : Quirk[] = player.get('quirks')
     var stat : number = 100
-    var gameMode : number = getGameMode(data)
+    var gameMode : number = getGameMode(player)
 
     if (Object.values(Stat).includes(key)) {
         if ( quirks.length > 0) {
@@ -557,18 +557,18 @@ export function quirkInfo(data : any, key : string) : bigDecimal{
     return bd(stat)
 }
 
-export function wandoosOSLevel(data : any) : bigDecimal {
-    var wandoos : Wandoos[] = parseObj(data, 'wandoos')
+export function wandoosOSLevel(player: Player) : bigDecimal {
+    var wandoos : Wandoos[] = player.get('wandoos')
     if(!_.isUndefined(wandoos[0])){
         return bd(wandoos[0].osLevel)
     }
     return bd(0)
 }
 
-export function wishInfo(data : any, key : string) : bigDecimal{
-    var wishes : Wish[] = parseObj(data, 'wishes')
+export function wishInfo(player: Player, key : string) : bigDecimal{
+    var wishes : Wish[] = player.get('wishes')
     var stat : number = 100
-    var gameMode : number = getGameMode(data)
+    var gameMode : number = getGameMode(player)
 
     if (Object.values(Stat).includes(key)) {
         if ( wishes.length > 0) {
@@ -583,25 +583,25 @@ export function wishInfo(data : any, key : string) : bigDecimal{
     return bd(stat)
 }
 
-// export function isMaxxedItem(data : any, itemId : number) : boolean {
-//     var itemList = parseObj(data, 'maxxedItems')
+// export function isMaxxedItem(player: Player, itemId : number) : boolean {
+//     var itemList = player.get('maxxedItems')
 //     if(_.isArray(itemList)){
-//         return parseObj(data, 'maxxedItems').includes(itemId)
+//         return player.get('maxxedItems').includes(itemId)
 //     }
 //     return false
 // }
 
-export function isMaxxedItemSet(data : any, itemSet : ItemSet) : boolean {
-    var itemSets = parseObj(data, 'itemSets')
+export function isMaxxedItemSet(player: Player, itemSet : ItemSet) : boolean {
+    var itemSets = player.get('itemSets')
     return (itemSet.key in itemSets) ? itemSets[itemSet.key].isMaxxed : false;
 }
 
-export function maxxedItemSetNum(data : any, itemSet : ItemSet) : number {
-    var itemSets = parseObj(data, 'itemSets')
+export function maxxedItemSetNum(player: Player, itemSet : ItemSet) : number {
+    var itemSets = player.get('itemSets')
     return (itemSet.key in itemSets) ? itemSets[itemSet.key].numMaxxed : 0;
 }
 
-export function isCompletedChallenge(data : any, key : string, mode : number, level : number) : boolean {
+export function isCompletedChallenge(player: Player, key : string, mode : number, level : number) : boolean {
     if (mode == GameMode.NORMAL) {
         key = 'normal' + key
     } else if (mode == GameMode.EVIL) {
@@ -609,7 +609,7 @@ export function isCompletedChallenge(data : any, key : string, mode : number, le
     } else if (mode == GameMode.SADISTIC) {
         key = 'sadistic' + key
     }
-    var challenges = parseObj(data, 'challenges')
+    var challenges = player.get('challenges')
     var challenge = CHALLENGES.getByKey(key)
     var chosenChallenge = (!_.isUndefined(challenges[mode]) && !_.isUndefined(challenge) && challenges[mode][challenge.id % 100])
     return (!_.isUndefined(chosenChallenge) && chosenChallenge.level >= level)

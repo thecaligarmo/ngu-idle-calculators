@@ -1,11 +1,12 @@
-import { GameMode } from "@/assets/mode"
-import { parseNum } from "./parsers"
 import bigDecimal from "js-big-decimal"
+import { Titan, Titans } from "../assets/enemy"
+import { GameMode } from "../assets/mode"
 import { bd, bigdec_equals, toNum } from "./numbers"
-import { Titan, Titans } from "@/assets/enemy"
+import { parseNum } from "./parsers"
+import { Player } from "../assets/player"
 
-export function getGameMode(data : any | bigDecimal) : number{
-    var gameMode = (data instanceof bigDecimal) ? data : parseNum(data, 'gameMode') 
+export function getGameMode(data : Player | bigDecimal) : number{
+    var gameMode = (data instanceof bigDecimal) ? data : data.get('gameMode') 
     if(isEvilMode(gameMode)) {
         return GameMode.EVIL
     }

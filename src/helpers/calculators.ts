@@ -1,71 +1,70 @@
-import { ChallengeKeys } from "@/assets/challenges";
-import { GameMode } from "@/assets/mode";
-import { ItemSets } from "@/assets/sets";
-import bigDecimal from "js-big-decimal";
-import _ from "lodash";
-import { Stat } from "../assets/stat";
-import { bd, bigdec_equals, bigdec_max, bigdec_min, greaterThan, greaterThanOrEqual, isZero, toNum } from "./numbers";
-import { parseNum, parseObj } from "./parsers";
-import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo";
-import { getGameMode } from "./gameMode";
-import { Titan } from "@/assets/enemy";
-
+import bigDecimal from "js-big-decimal"
+import _ from "lodash"
+import { Challenge, ChallengeKeys } from "../assets/challenges"
+import { Titan } from "../assets/enemy"
+import { GameMode } from "../assets/mode"
+import { Player } from "../assets/player"
+import { ItemSets } from "../assets/sets"
+import { Stat } from "../assets/stat"
+import { getGameMode } from "./gameMode"
+import { bd, bigdec_equals, bigdec_max, bigdec_min, greaterThan, greaterThanOrEqual, isZero, toNum } from "./numbers"
+import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo"
 
 // General Calc - gives a percentage
-function calcAll(data : any, stat : string) : bigDecimal{
+function calcAll(player: Player, stat : string) : bigDecimal{
     var base = bd(100)
 
-    if (isInitilizing(data)) {
+    if (isInitilizing(player)) {
         return bd(0)
     }
 
     if(false) {
         if(Stat.AUGMENT_SPEED == stat) {
             console.log('----------------------------------------')
-            console.log('advTraining', advTrainingInfo(data, stat).getValue())
-            console.log('ap', apItemInfo(data, stat).getValue())    
-            console.log('beard', beardInfoTemp(data, stat).getValue())
-            console.log('beard', beardInfoPerm(data, stat).getValue())
-            console.log('challenge', challengeInfo(data, stat).getValue())
-            console.log('digger', diggerInfo(data, stat).getValue())
-            console.log('equipment', equipmentWithCubeInfo(data, stat).getValue())
-            console.log('hack', hackInfo(data, stat).getValue())
-            console.log('ngu', nguInfo(data, stat).getValue())
-            console.log('macguffin', macguffinInfo(data, stat).getValue())
-            console.log('perk', perkInfo(data, stat).getValue())
-            console.log('quirk', quirkInfo(data, stat).getValue())
-            console.log('wish', wishInfo(data, stat).getValue())
+            console.log('advTraining', advTrainingInfo(player, stat).getValue())
+            console.log('ap', apItemInfo(player, stat).getValue())    
+            console.log('beard', beardInfoTemp(player, stat).getValue())
+            console.log('beard', beardInfoPerm(player, stat).getValue())
+            console.log('challenge', challengeInfo(player, stat).getValue())
+            console.log('digger', diggerInfo(player, stat).getValue())
+            console.log('equipment', equipmentWithCubeInfo(player, stat).getValue())
+            console.log('hack', hackInfo(player, stat).getValue())
+            console.log('ngu', nguInfo(player, stat).getValue())
+            console.log('macguffin', macguffinInfo(player, stat).getValue())
+            console.log('perk', perkInfo(player, stat).getValue())
+            console.log('quirk', quirkInfo(player, stat).getValue())
+            console.log('wish', wishInfo(player, stat).getValue())
         }
     }
 
     return bd(1)
-        .multiply(advTrainingInfo(data, stat).divide(base))    
-        .multiply(apItemInfo(data, stat).divide(base))    
-        .multiply(beardInfoTemp(data, stat).divide(base))
-        .multiply(beardInfoPerm(data, stat).divide(base))
-        .multiply(cardInfo(data, stat).divide(base))
-        .multiply(challengeInfo(data, stat))
-        .multiply(diggerInfo(data, stat).divide(base))
-        .multiply(equipmentWithCubeInfo(data, stat).divide(base))
-        .multiply(hackInfo(data, stat).divide(base))
-        .multiply(nguInfo(data, stat).divide(base))
-        .multiply(macguffinInfo(data, stat).divide(base))
-        .multiply(perkInfo(data, stat).divide(base))
-        .multiply(quirkInfo(data, stat).divide(base))
-        .multiply(wishInfo(data, stat).divide(base))
-        .multiply(cookingInfo(data, stat)) // Already divided
+        .multiply(advTrainingInfo(player, stat).divide(base))    
+        .multiply(apItemInfo(player, stat).divide(base))    
+        .multiply(beardInfoTemp(player, stat).divide(base))
+        .multiply(beardInfoPerm(player, stat).divide(base))
+        .multiply(cardInfo(player, stat).divide(base))
+        .multiply(challengeInfo(player, stat))
+        .multiply(diggerInfo(player, stat).divide(base))
+        .multiply(equipmentWithCubeInfo(player, stat).divide(base))
+        .multiply(hackInfo(player, stat).divide(base))
+        .multiply(nguInfo(player, stat).divide(base))
+        .multiply(macguffinInfo(player, stat).divide(base))
+        .multiply(perkInfo(player, stat).divide(base))
+        .multiply(quirkInfo(player, stat).divide(base))
+        .multiply(wishInfo(player, stat).divide(base))
+        .multiply(cookingInfo(player, stat)) // Already divided
         
 }
 
-function isInitilizing(data : any ) : boolean {
+export function isInitilizing(player: Player ) : boolean {
     // We want to return 0 if we don't have data yet
-    var basePower = parseNum(data, 'baseAdventurePower')
+    var basePower = player.get('baseAdventurePower')
     return isZero(basePower)
 }
 
-export function boostRecyclying(data : any) : bigDecimal {
-    var boostRecyclying = parseNum(data, 'boostRecyclyingPurchase').multiply(bd(100))
-    var challenges = parseObj(data, 'challenges')
+export function boostRecyclying(player: Player) : bigDecimal {
+    var boostRecyclying : bigDecimal = player.get('boostRecyclyingPurchase').multiply(bd(100))
+    var challenges : Challenge[]= player.get('challenges')
     if(challenges && !_.isUndefined(challenges[0])) {
         boostRecyclying = boostRecyclying.add(bd(challenges[0].level * 10)) // 10 % each level
     }
@@ -74,110 +73,110 @@ export function boostRecyclying(data : any) : bigDecimal {
 
 
 /** Energy */
-export function totalEnergyPower(data : any) : bigDecimal {
+export function totalEnergyPower(player: Player) : bigDecimal {
     return bigdec_min(
-        bd(1e18).multiply(apItemInfo(data, Stat.ENERGY_POWER)),
-        parseNum(data, 'baseEnergyPower')
-            .multiply(calcAll(data, Stat.ENERGY_POWER)).divide(bd(100))
+        bd(1e18).multiply(apItemInfo(player, Stat.ENERGY_POWER)),
+        player.get('baseEnergyPower')
+            .multiply(calcAll(player, Stat.ENERGY_POWER)).divide(bd(100))
 )
 }
 
-export function totalEnergyBar(data : any) : bigDecimal {
+export function totalEnergyBar(player: Player) : bigDecimal {
     return bigdec_min(
-            bd(1e18).multiply(apItemInfo(data, Stat.ENERGY_BARS)),
-            parseNum(data, 'baseEnergyBar')
-                .multiply(calcAll(data, Stat.ENERGY_BARS)).divide(bd(100))
+            bd(1e18).multiply(apItemInfo(player, Stat.ENERGY_BARS)),
+            player.get('baseEnergyBar')
+                .multiply(calcAll(player, Stat.ENERGY_BARS)).divide(bd(100))
         )
     }
 
-export function totalEnergyCap(data : any) : bigDecimal {
+export function totalEnergyCap(player: Player) : bigDecimal {
     return bigdec_min(bd(9e18),
-        parseNum(data, 'baseEnergyCap')
-        .multiply(calcAll(data, Stat.ENERGY_CAP)).divide(bd(100))
+        player.get('baseEnergyCap')
+        .multiply(calcAll(player, Stat.ENERGY_CAP)).divide(bd(100))
     )
 }
 
 /** Magic */
 
-export function totalMagicPower(data : any) : bigDecimal {
+export function totalMagicPower(player: Player) : bigDecimal {
     return bigdec_min(
-        bd(1e18).multiply(apItemInfo(data, Stat.MAGIC_POWER)),
-        parseNum(data, 'baseMagicPower')
-            .multiply(calcAll(data, Stat.MAGIC_POWER)).divide(bd(100))
+        bd(1e18).multiply(apItemInfo(player, Stat.MAGIC_POWER)),
+        player.get('baseMagicPower')
+            .multiply(calcAll(player, Stat.MAGIC_POWER)).divide(bd(100))
     )
 }
 
-export function totalMagicBar(data : any) : bigDecimal {
+export function totalMagicBar(player: Player) : bigDecimal {
     return bigdec_min(
-        bd(1e18).multiply(apItemInfo(data, Stat.MAGIC_BARS)),
-        parseNum(data, 'baseMagicBar')
-            .multiply(calcAll(data, Stat.MAGIC_BARS)).divide(bd(100))
+        bd(1e18).multiply(apItemInfo(player, Stat.MAGIC_BARS)),
+        player.get('baseMagicBar')
+            .multiply(calcAll(player, Stat.MAGIC_BARS)).divide(bd(100))
     )
 }
 
-export function totalMagicCap(data : any) : bigDecimal {
+export function totalMagicCap(player: Player) : bigDecimal {
     return bigdec_min(bd(9e18),
-        parseNum(data, 'baseMagicCap')
-        .multiply(calcAll(data, Stat.MAGIC_CAP)).divide(bd(100))
+        player.get('baseMagicCap')
+        .multiply(calcAll(player, Stat.MAGIC_CAP)).divide(bd(100))
     );
 }
 
 
 /** Resource 3 */
 
-export function totalRes3Power(data : any) : bigDecimal {
-    return parseNum(data, 'baseRes3Power')
-        .multiply(calcAll(data, Stat.RES3_POWER)).divide(bd(100));
+export function totalRes3Power(player: Player) : bigDecimal {
+    return player.get('baseRes3Power')
+        .multiply(calcAll(player, Stat.RES3_POWER)).divide(bd(100));
 }
 
-export function totalRes3Bar(data : any) : bigDecimal {
-    return parseNum(data, 'baseRes3Bar')
-        .multiply(calcAll(data, Stat.RES3_BARS)).divide(bd(100))
+export function totalRes3Bar(player: Player) : bigDecimal {
+    return player.get('baseRes3Bar')
+        .multiply(calcAll(player, Stat.RES3_BARS)).divide(bd(100))
         .floor();
 }
 
-export function totalRes3Cap(data : any) : bigDecimal {
-    return parseNum(data, 'baseRes3Cap')
-        .multiply(calcAll(data, Stat.RES3_CAP)).divide(bd(100));
+export function totalRes3Cap(player: Player) : bigDecimal {
+    return player.get('baseRes3Cap')
+        .multiply(calcAll(player, Stat.RES3_CAP)).divide(bd(100));
 }
 
 /** Augments */
-export function totalAugmentSpeed(data : any) : bigDecimal {
-    var gen : bigDecimal = calcAll(data, Stat.AUGMENT_SPEED)
+export function totalAugmentSpeed(player: Player) : bigDecimal {
+    var gen : bigDecimal = calcAll(player, Stat.AUGMENT_SPEED)
 
     return gen
-        .multiply(totalEnergyPower(data))
+        .multiply(totalEnergyPower(player))
 }
 
 
 /** NGU */
-export function totalEnergyNGUSpeedFactor(data : any) : bigDecimal {
-    var aNumberSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
-    var metaSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.META) ? bd(1.2) : bd(1);
-    var schoolSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.BACKTOSCHOOL) ? bd(1.15) : bd(1);
-    var gen : bigDecimal = calcAll(data, Stat.ENERGY_NGU_SPEED)
-    var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.SADISTIC, 1)) ? bd(3) : bd(1);
+export function totalEnergyNGUSpeedFactor(player: Player) : bigDecimal {
+    var aNumberSetModifier : bigDecimal = isMaxxedItemSet(player, ItemSets.NUMBER) ? bd(1.1) : bd(1);
+    var metaSetModifier : bigDecimal = isMaxxedItemSet(player, ItemSets.META) ? bd(1.2) : bd(1);
+    var schoolSetModifier : bigDecimal = isMaxxedItemSet(player, ItemSets.BACKTOSCHOOL) ? bd(1.15) : bd(1);
+    var gen : bigDecimal = calcAll(player, Stat.ENERGY_NGU_SPEED)
+    var tcNum : bigDecimal = (isCompletedChallenge(player, ChallengeKeys.TROLL, GameMode.SADISTIC, 1)) ? bd(3) : bd(1);
     
     return gen
-        .multiply(totalEnergyPower(data))
+        .multiply(totalEnergyPower(player))
         .multiply(aNumberSetModifier)
         .multiply(metaSetModifier)
         .multiply(schoolSetModifier)
         .multiply(tcNum)
 }
 
-export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
-    var aNumberSetModifier : bigDecimal = isMaxxedItemSet(data, ItemSets.NUMBER) ? bd(1.1) : bd(1);
-    var metaSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.META) ? bd(1.2) : bd(1);
-    var schoolSetModifier : bigDecimal= isMaxxedItemSet(data, ItemSets.BACKTOSCHOOL) ? bd(1.15) : bd(1);
-    var gen : bigDecimal = calcAll(data, Stat.MAGIC_NGU_SPEED)
+export function totalMagicNGUSpeedFactor(player: Player) : bigDecimal {
+    var aNumberSetModifier : bigDecimal = isMaxxedItemSet(player, ItemSets.NUMBER) ? bd(1.1) : bd(1);
+    var metaSetModifier : bigDecimal = isMaxxedItemSet(player, ItemSets.META) ? bd(1.2) : bd(1);
+    var schoolSetModifier : bigDecimal = isMaxxedItemSet(player, ItemSets.BACKTOSCHOOL) ? bd(1.15) : bd(1);
+    var gen : bigDecimal = calcAll(player, Stat.MAGIC_NGU_SPEED)
 
-    var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.NORMAL, 1)) ? bd(3) : bd(1);
+    var tcNum : bigDecimal = (isCompletedChallenge(player, ChallengeKeys.TROLL, GameMode.NORMAL, 1)) ? bd(3) : bd(1);
     
     
     return bd(1)
         .multiply(gen)
-        .multiply(totalMagicPower(data))
+        .multiply(totalMagicPower(player))
         .multiply(aNumberSetModifier)
         .multiply(metaSetModifier)
         .multiply(schoolSetModifier)
@@ -185,20 +184,20 @@ export function totalMagicNGUSpeedFactor(data : any) : bigDecimal {
 }
 
 /** Exp, AP, PP */
-export function totalExpBonus(data : any) : bigDecimal {
-    var redHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.RED_HEART) ? bd(1.1) : bd(1)
-    var gen : bigDecimal = calcAll(data, Stat.EXPERIENCE)
+export function totalExpBonus(player: Player) : bigDecimal {
+    var redHeartBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.RED_HEART) ? bd(1.1) : bd(1)
+    var gen : bigDecimal = calcAll(player, Stat.EXPERIENCE)
 
     return gen
         .multiply(redHeartBonus)
 }
 
-export function totalAPBonus(data: any) : bigDecimal {
-    var gen : bigDecimal = calcAll(data, Stat.AP)
-    var yellowHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.YELLOW_HEART) ? bd(1.2) : bd(1)
-    var achievBonus = achievementAPBonus(data)
+export function totalAPBonus(player: Player) : bigDecimal {
+    var gen : bigDecimal = calcAll(player, Stat.AP)
+    var yellowHeartBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.YELLOW_HEART) ? bd(1.2) : bd(1)
+    var achievBonus = achievementAPBonus(player)
 
-    if (isInitilizing(data)) {
+    if (isInitilizing(player)) {
         return bd(0)
     }
 
@@ -209,12 +208,12 @@ export function totalAPBonus(data: any) : bigDecimal {
 }
 
 
-export function totalPPBonus(data: any) : bigDecimal {
-    var greenHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.GREEN_HEART) ? bd(1.2) : bd(1)
-    var pissedOffKeyBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.PISSED_OFF_KEY) ? bd(1.1) : bd(1)
-    var halloweenBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.HALLOWEEN) ? bd(1.45) : bd(1)
-    var PPPSetBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.PRETTY) ? bd(1.1) : bd(1)
-    var gen : bigDecimal = calcAll(data, Stat.PP)
+export function totalPPBonus(player: Player) : bigDecimal {
+    var greenHeartBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.GREEN_HEART) ? bd(1.2) : bd(1)
+    var pissedOffKeyBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.PISSED_OFF_KEY) ? bd(1.1) : bd(1)
+    var halloweenBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.HALLOWEEN) ? bd(1.45) : bd(1)
+    var PPPSetBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.PRETTY) ? bd(1.1) : bd(1)
+    var gen : bigDecimal = calcAll(player, Stat.PP)
     
 
     return bd(1)
@@ -227,16 +226,14 @@ export function totalPPBonus(data: any) : bigDecimal {
 
 
 /** Misc. */
-export function totalDaycareSpeed(data : any) :bigDecimal {
-    var gen : bigDecimal = calcAll(data, Stat.DAYCARE_SPEED)
-
-    return gen
+export function totalDaycareSpeed(player: Player) :bigDecimal {
+    return calcAll(player, Stat.DAYCARE_SPEED)
 }
 
-export function totalHackSpeed(data : any) :bigDecimal {
-    var gen : bigDecimal = calcAll(data, Stat.HACK_SPEED)
-    var greyHearthBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.GREY_HEART) ? bd(1.25) : bd(1)
-    var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.EVIL, 5)) ? bd(1.25) : bd(1);
+export function totalHackSpeed(player: Player) :bigDecimal {
+    var gen : bigDecimal = calcAll(player, Stat.HACK_SPEED)
+    var greyHearthBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.GREY_HEART) ? bd(1.25) : bd(1)
+    var tcNum : bigDecimal = (isCompletedChallenge(player, ChallengeKeys.TROLL, GameMode.EVIL, 5)) ? bd(1.25) : bd(1);
 
     return gen
         .multiply(greyHearthBonus)
@@ -244,10 +241,10 @@ export function totalHackSpeed(data : any) :bigDecimal {
 }
 
 
-export function totalWishSpeed(data : any) :bigDecimal {
-    var gen : bigDecimal = calcAll(data, Stat.WISH_SPEED)
-    var severedHeadBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.SEVERED_HEAD) ? bd(1.1337) : bd(1)
-    var typoSetBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.TYPO) ? bd(1.2) : bd(1)
+export function totalWishSpeed(player: Player) :bigDecimal {
+    var gen : bigDecimal = calcAll(player, Stat.WISH_SPEED)
+    var severedHeadBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.SEVERED_HEAD) ? bd(1.1337) : bd(1)
+    var typoSetBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.TYPO) ? bd(1.2) : bd(1)
 
     return gen
         .multiply(severedHeadBonus)
@@ -255,21 +252,21 @@ export function totalWishSpeed(data : any) :bigDecimal {
 }
 
 /** Adventure Stats */
-export function totalPower(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.POWER)
-    var equipPower = equipmentWithCubeInfo(data, Stat.POWER)
-    var basePower = parseNum(data, 'baseAdventurePower')
+export function totalPower(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.POWER)
+    var equipPower = equipmentWithCubeInfo(player, Stat.POWER)
+    var basePower : bigDecimal = player.get('baseAdventurePower')
 
     // Want to add equipPower instead of multiply
     var subtotal = basePower.add(equipPower)
 
     // Beast multiplier
-    var beast = (bigdec_equals(parseNum(data, 'beastMode'), bd(1)))
-                ? ( (isMaxxedItemSet(data, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(1.5) : bd(1.4))
+    var beast = player.get('beastMode')
+                ? ( (isMaxxedItemSet(player, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(1.5) : bd(1.4))
                 : bd(1)
 
     // Evil Accessories
-    var adventureSetModifier = isMaxxedItemSet(data, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
+    var adventureSetModifier = isMaxxedItemSet(player, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
     
     return bigdec_min(
         bd(1000e33),
@@ -282,16 +279,16 @@ export function totalPower(data : any) : bigDecimal {
     )
 }
 
-export function totalToughness(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.TOUGHNESS)
-    var equipPower = equipmentWithCubeInfo(data, Stat.TOUGHNESS)
-    var basePower = parseNum(data, 'baseAdventureToughness')
+export function totalToughness(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.TOUGHNESS)
+    var equipPower = equipmentWithCubeInfo(player, Stat.TOUGHNESS)
+    var basePower : bigDecimal = player.get('baseAdventureToughness')
 
     // Want to add equipPower instead of multiply
     var subtotal = basePower.add(equipPower)
 
     // Evil Accessories
-    var adventureSetModifier = isMaxxedItemSet(data, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
+    var adventureSetModifier = isMaxxedItemSet(player, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
     
     
     return bigdec_min(
@@ -303,16 +300,16 @@ export function totalToughness(data : any) : bigDecimal {
     )
 }
 
-export function totalHealth(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.HEALTH)
-    var equipHealth = equipmentWithCubeInfo(data, Stat.HEALTH)
-    var baseHealth = parseNum(data, 'baseAdventureHealth')
+export function totalHealth(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.HEALTH)
+    var equipHealth = equipmentWithCubeInfo(player, Stat.HEALTH)
+    var baseHealth : bigDecimal = player.get('baseAdventureHealth')
 
     // Want to add equipHealth instead of multiply
     var subtotal = baseHealth.add(equipHealth)
 
     // Evil Accessories
-    var adventureSetModifier = isMaxxedItemSet(data, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
+    var adventureSetModifier = isMaxxedItemSet(player, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
     
 
     return subtotal
@@ -321,16 +318,16 @@ export function totalHealth(data : any) : bigDecimal {
         .multiply(adventureSetModifier)
 }
 
-export function totalRegen(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.REGEN)
-    var equipRegen = equipmentWithCubeInfo(data, Stat.REGEN)
-    var baseRegen = parseNum(data, 'baseAdventureRegen')
+export function totalRegen(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.REGEN)
+    var equipRegen = equipmentWithCubeInfo(player, Stat.REGEN)
+    var baseRegen : bigDecimal = player.get('baseAdventureRegen')
 
     // Want to add equipRegen instead of multiply
     var subtotal = baseRegen.add(equipRegen)
 
     // Evil Accessories
-    var adventureSetModifier = isMaxxedItemSet(data, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
+    var adventureSetModifier = isMaxxedItemSet(player, ItemSets.EVIL_ACC) ? bd(1.2) : bd(1)
     
     
     return subtotal
@@ -341,35 +338,35 @@ export function totalRegen(data : any) : bigDecimal {
 
 
 /** Misc Adventure */
-export function totalGoldDrop(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.GOLD_DROP);
+export function totalGoldDrop(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.GOLD_DROP);
 
     return bd(1)
         .multiply(gen)
 }
 
-export function totalRespawnRate(data : any) : bigDecimal {
-    if (isInitilizing(data)) {
+export function totalRespawnRate(player: Player) : bigDecimal {
+    if (isInitilizing(player)) {
         return bd(0)
     }
-    var clockSetModifier = isMaxxedItemSet(data, ItemSets.CLOCK) ? bd(0.95) : bd(1);
+    var clockSetModifier = isMaxxedItemSet(player, ItemSets.CLOCK) ? bd(0.95) : bd(1);
 
     // Can't use Gen because of the equipment
     return bd(1)
-        .multiply(bd(200).subtract(equipmentWithCubeInfo(data, Stat.RESPAWN))).divide(bd(100))
-        .multiply(nguInfo(data, Stat.RESPAWN).divide(bd(100)))
+        .multiply(bd(200).subtract(equipmentWithCubeInfo(player, Stat.RESPAWN))).divide(bd(100))
+        .multiply(nguInfo(player, Stat.RESPAWN).divide(bd(100)))
         .multiply(clockSetModifier)
-        .multiply(perkInfo(data, Stat.RESPAWN).divide(bd(100)))
-        .multiply(wishInfo(data, Stat.RESPAWN).divide(bd(100)))
+        .multiply(perkInfo(player, Stat.RESPAWN).divide(bd(100)))
+        .multiply(wishInfo(player, Stat.RESPAWN).divide(bd(100)))
         .multiply(bd(100))
 }
 
-export function totalDropChance(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.DROP_CHANCE)
-    var twoDSetModifier = isMaxxedItemSet(data, ItemSets.TWO_D) ? bd(1.0743) : bd(1)
-    var dropChanceSetModifier = isMaxxedItemSet(data, ItemSets.NORMAL_ACC) ? bd(1.25) : bd(1)
-    var bloodModifier = (parseNum(data, 'bloodMagicDropChance').add(bd(100))).divide(bd(100))
-    var yggdrasilModifier = parseNum(data, 'yggdrasilDropChance').divide(bd(100))
+export function totalDropChance(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.DROP_CHANCE)
+    var twoDSetModifier = isMaxxedItemSet(player, ItemSets.TWO_D) ? bd(1.0743) : bd(1)
+    var dropChanceSetModifier = isMaxxedItemSet(player, ItemSets.NORMAL_ACC) ? bd(1.25) : bd(1)
+    var bloodModifier : bigDecimal = (player.get('bloodMagicDropChance').add(bd(100))).divide(bd(100))
+    var yggdrasilModifier : bigDecimal = player.get('yggdrasilDropChance').divide(bd(100))
 
     return bd(1)
         .multiply(gen)
@@ -381,13 +378,13 @@ export function totalDropChance(data : any) : bigDecimal {
 }
 
 /** Beards */
-export function totalEnergyBeardSpeed(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.ENERGY_BEARD_SPEED)
-    var eBar = totalEnergyBar(data).floor();
-    var ePower = bd(Math.sqrt(toNum(totalEnergyPower(data))))
-    var armpitSet = isMaxxedItemSet(data, ItemSets.UUG) ? bd(1.1) : bd(1);
-    var beardSet = isMaxxedItemSet(data, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)
-    var abeards = bigdec_max(activeBeards(data, 'energy').multiply(beardSet), bd(1))
+export function totalEnergyBeardSpeed(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.ENERGY_BEARD_SPEED)
+    var eBar = totalEnergyBar(player).floor();
+    var ePower = bd(Math.sqrt(toNum(totalEnergyPower(player))))
+    var armpitSet = isMaxxedItemSet(player, ItemSets.UUG) ? bd(1.1) : bd(1);
+    var beardSet = isMaxxedItemSet(player, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)
+    var abeards = bigdec_max(activeBeards(player, 'energy').multiply(beardSet), bd(1))
     return gen
         .multiply(eBar)
         .multiply(ePower)
@@ -395,13 +392,13 @@ export function totalEnergyBeardSpeed(data : any) : bigDecimal {
         .divide(bd(abeards))
 }
 
-export function totalMagicBeardSpeed(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.MAGIC_BEARD_SPEED)
-    var mBar = totalMagicBar(data).floor();
-    var mPower = bd(Math.sqrt(toNum(totalMagicPower(data))))
-    var armpitSet = isMaxxedItemSet(data, ItemSets.UUG) ? bd(1.1) : bd(1);
-    var beardSet = isMaxxedItemSet(data, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)
-    var abeards = bigdec_max(activeBeards(data, 'magic').multiply(beardSet), bd(1))
+export function totalMagicBeardSpeed(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.MAGIC_BEARD_SPEED)
+    var mBar = totalMagicBar(player).floor();
+    var mPower = bd(Math.sqrt(toNum(totalMagicPower(player))))
+    var armpitSet = isMaxxedItemSet(player, ItemSets.UUG) ? bd(1.1) : bd(1);
+    var beardSet = isMaxxedItemSet(player, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)
+    var abeards = bigdec_max(activeBeards(player, 'magic').multiply(beardSet), bd(1))
     return gen
         .multiply(mBar)
         .multiply(mPower)
@@ -411,12 +408,12 @@ export function totalMagicBeardSpeed(data : any) : bigDecimal {
 
 
 /** Wandoos */
-export function totalEnergyWandoosSpeed(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.ENERGY_WANDOOS_SPEED)
-    var osLevel = (wandoosOSLevel(data).add(bd(1))).multiply(bd(0.04))
-    var bootup = isMaxxedItemSet(data, ItemSets.WANDOOS) ? bd(1.1) : bd(1)
-    var gm = getGameMode(data)
-    var div = gm == GameMode.SADISTIC ? bd(1e12) : bd(1)
+export function totalEnergyWandoosSpeed(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.ENERGY_WANDOOS_SPEED)
+    var osLevel = (wandoosOSLevel(player).add(bd(1))).multiply(bd(0.04))
+    var bootup = isMaxxedItemSet(player, ItemSets.WANDOOS) ? bd(1.1) : bd(1)
+    var gm = getGameMode(player)
+    var div = (gm == GameMode.SADISTIC) ? bd(1e12) : bd(1)
     
     // OS Level
     // Bootup
@@ -426,12 +423,12 @@ export function totalEnergyWandoosSpeed(data : any) : bigDecimal {
         .divide(div)
 }
 
-export function totalMagicWandoosSpeed(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.MAGIC_WANDOOS_SPEED)
-    var osLevel = (wandoosOSLevel(data).add(bd(1))).multiply(bd(0.04))
-    var bootup = isMaxxedItemSet(data, ItemSets.WANDOOS) ? bd(1.1) : bd(1)
-    var gm = getGameMode(data)
-    var div = gm == GameMode.SADISTIC ? bd(1e12) : bd(1)
+export function totalMagicWandoosSpeed(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.MAGIC_WANDOOS_SPEED)
+    var osLevel = (wandoosOSLevel(player).add(bd(1))).multiply(bd(0.04))
+    var bootup = isMaxxedItemSet(player, ItemSets.WANDOOS) ? bd(1.1) : bd(1)
+    var gm = getGameMode(player)
+    var div = (gm == GameMode.SADISTIC) ? bd(1e12) : bd(1)
     
     // OS Level
     // Bootup
@@ -443,21 +440,21 @@ export function totalMagicWandoosSpeed(data : any) : bigDecimal {
 
 
 /** Other */
-export function totalSeedGainBonus(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.SEED_GAIN)
+export function totalSeedGainBonus(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.SEED_GAIN)
     return gen
 }
 
-export function totalYggdrasilYieldBonus(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.YGGDRASIL_YIELD)
+export function totalYggdrasilYieldBonus(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.YGGDRASIL_YIELD)
     return gen
 }
 
-export function totalQuestRewardBonus(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.QUEST_REWARD)
-    var questSet =  bd(1.02 ** maxxedItemSetNum(data, ItemSets.QUESTS))
-    var mobsterSet = isMaxxedItemSet(data, ItemSets.MOBSTER) ? bd(1.15) : bd(1)
-    var orangeHeart = isMaxxedItemSet(data, ItemSets.ORANGE_HEART) ? bd(1.2) : bd(1)
+export function totalQuestRewardBonus(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.QUEST_REWARD)
+    var questSet =  bd(1.02 ** maxxedItemSetNum(player, ItemSets.QUESTS))
+    var mobsterSet = isMaxxedItemSet(player, ItemSets.MOBSTER) ? bd(1.15) : bd(1)
+    var orangeHeart = isMaxxedItemSet(player, ItemSets.ORANGE_HEART) ? bd(1.2) : bd(1)
     
     return gen
         .multiply(questSet)
@@ -466,20 +463,20 @@ export function totalQuestRewardBonus(data : any) : bigDecimal {
 }
 
 
-export function totalQuestDropBonus(data : any) : bigDecimal {
-    var gen = calcAll(data, Stat.QUEST_DROP)
-    var sigilSet = isMaxxedItemSet(data, ItemSets.SIGIL) ? bd(1.1) : bd(1)
+export function totalQuestDropBonus(player: Player) : bigDecimal {
+    var gen = calcAll(player, Stat.QUEST_DROP)
+    var sigilSet = isMaxxedItemSet(player, ItemSets.SIGIL) ? bd(1.1) : bd(1)
     
     return gen
         .multiply(sigilSet)
 }
 
-export function totalMayoSpeed(data : any) :bigDecimal {
-    var gen = calcAll(data, Stat.MAYO_SPEED)
-    var generators = ((totalMayoGeneration(data).subtract(bd(1))).multiply(bd(2))).add(bd(100))
-    var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.SADISTIC, 6)) ? bd(1.1) : bd(1);
-    var rainbowHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.RAINBOW_HEART) ? bd(1.1) : bd(1)
-    var duckSet : bigDecimal = isMaxxedItemSet(data, ItemSets.DUCK) ? bd(1.06) : bd(1)
+export function totalMayoSpeed(player: Player) :bigDecimal {
+    var gen = calcAll(player, Stat.MAYO_SPEED)
+    var generators = ((totalMayoGeneration(player).subtract(bd(1))).multiply(bd(2))).add(bd(100))
+    var tcNum : bigDecimal = (isCompletedChallenge(player, ChallengeKeys.TROLL, GameMode.SADISTIC, 6)) ? bd(1.1) : bd(1);
+    var rainbowHeartBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.RAINBOW_HEART) ? bd(1.1) : bd(1)
+    var duckSet : bigDecimal = isMaxxedItemSet(player, ItemSets.DUCK) ? bd(1.06) : bd(1)
 
     return gen
         .multiply(generators).divide(bd(100))
@@ -488,36 +485,36 @@ export function totalMayoSpeed(data : any) :bigDecimal {
         .multiply(duckSet)
 }
 
-export function totalCardSpeed(data : any) :bigDecimal {
-    var gen = calcAll(data, Stat.CARD_SPEED)
-    var tcNum : bigDecimal = (isCompletedChallenge(data, ChallengeKeys.TROLL, GameMode.SADISTIC, 5)) ? bd(1.1) : bd(1);
-    var rainbowHeartBonus : bigDecimal = isMaxxedItemSet(data, ItemSets.RAINBOW_HEART) ? bd(1.1) : bd(1)
-    var duckSet : bigDecimal = isMaxxedItemSet(data, ItemSets.DUCK) ? bd(1.06) : bd(1)
+export function totalCardSpeed(player: Player) :bigDecimal {
+    var gen = calcAll(player, Stat.CARD_SPEED)
+    var tcNum : bigDecimal = (isCompletedChallenge(player, ChallengeKeys.TROLL, GameMode.SADISTIC, 5)) ? bd(1.1) : bd(1);
+    var rainbowHeartBonus : bigDecimal = isMaxxedItemSet(player, ItemSets.RAINBOW_HEART) ? bd(1.1) : bd(1)
+    var duckSet : bigDecimal = isMaxxedItemSet(player, ItemSets.DUCK) ? bd(1.06) : bd(1)
     return gen
         .multiply(tcNum)
         .multiply(rainbowHeartBonus)
         .multiply(duckSet)
 }
 
-export function totalMayoGeneration(data : any) :bigDecimal {
+export function totalMayoGeneration(player: Player) :bigDecimal {
     return bd(1)
-        .add(apItemInfo(data, Stat.MAYO_GENERATOR))
-        .add(perkInfo(data, Stat.MAYO_GENERATOR))
-        .add(quirkInfo(data, Stat.MAYO_GENERATOR))
-        .add(wishInfo(data, Stat.MAYO_GENERATOR))
+        .add(apItemInfo(player, Stat.MAYO_GENERATOR))
+        .add(perkInfo(player, Stat.MAYO_GENERATOR))
+        .add(quirkInfo(player, Stat.MAYO_GENERATOR))
+        .add(wishInfo(player, Stat.MAYO_GENERATOR))
         .subtract(bd(400))
 }
 
-export function totalTagEffect(data : any) :bigDecimal {
-    var beatingHeartbonus : bigDecimal = isMaxxedItemSet(data, ItemSets.BEATING_HEART) ? bd(1) : bd(0)
-    if (isInitilizing(data)) {
+export function totalTagEffect(player: Player) :bigDecimal {
+    var beatingHeartbonus : bigDecimal = isMaxxedItemSet(player, ItemSets.BEATING_HEART) ? bd(1) : bd(0)
+    if (isInitilizing(player)) {
         return bd(0)
     }
     return bd(10)
         .add(beatingHeartbonus)
-        .add(perkInfo(data, Stat.TAG_EFFECT))
-        .add(quirkInfo(data, Stat.TAG_EFFECT))
-        .add(wishInfo(data, Stat.TAG_EFFECT))
+        .add(perkInfo(player, Stat.TAG_EFFECT))
+        .add(quirkInfo(player, Stat.TAG_EFFECT))
+        .add(wishInfo(player, Stat.TAG_EFFECT))
         .subtract(bd(300))
 }
 

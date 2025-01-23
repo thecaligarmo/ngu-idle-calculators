@@ -1,9 +1,9 @@
 import bigDecimal from "js-big-decimal";
-import { GameMode } from "./mode"
-import Resource, { prop, ResourceContainer } from "./resource"
-import { Stat } from "./stat"
-import { bd, toNum } from "@/helpers/numbers";
 import _ from "lodash";
+import { bd, toNum } from "../helpers/numbers";
+import { GameMode } from "./mode";
+import Resource, { prop, ResourceContainer } from "./resource";
+import { Stat } from "./stat";
 
 export const WANDOOS_OS : {[key: string]: number } = {
     NINETY_EIGHT : 0,

@@ -1,13 +1,12 @@
-import { ItemSets } from "@/assets/sets"
-import { Stat } from "@/assets/stat"
 import _ from "lodash"
-import { totalEnergyPower, totalEnergyNGUSpeedFactor, totalExpBonus, totalAPBonus, totalPPBonus, totalDaycareSpeed, totalHackSpeed, totalWishSpeed, totalPower, totalToughness, totalHealth, totalGoldDrop, totalRespawnRate, totalDropChance, totalAugmentSpeed, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyWandoosSpeed, totalQuestRewardBonus, totalEnergyCap, totalRegen, totalMayoGeneration, totalMayoSpeed, totalCardSpeed, totalTagEffect } from "../calculators"
-import { bd, bigdec_equals, bigdec_max, isOne, pn, toNum } from "../numbers"
-import { equipmentWithCubeInfo, macguffinInfo, perkInfo, quirkInfo, wishInfo, apItemInfo, isMaxxedItemSet, nguInfo, beardInfoPerm, beardInfoTemp, diggerInfo, challengeInfo, hackInfo, achievementAPBonus, advTrainingInfo, activeBeards, wandoosOSLevel, cardInfo, isCompletedChallenge, maxxedItemSetNum, cookingInfo } from "../resourceInfo"
-import bigDecimal from "js-big-decimal"
-import { parseNum, parseObj } from "../parsers"
-import { ChallengeKeys } from "@/assets/challenges"
-import { GameMode } from "@/assets/mode"
+import { ChallengeKeys } from "../../assets/challenges"
+import { GameMode } from "../../assets/mode"
+import { Player } from "../../assets/player"
+import { ItemSets } from "../../assets/sets"
+import { Stat } from "../../assets/stat"
+import { totalAPBonus, totalAugmentSpeed, totalCardSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMayoGeneration, totalMayoSpeed, totalPower, totalPPBonus, totalQuestRewardBonus, totalRegen, totalRespawnRate, totalTagEffect, totalToughness, totalWishSpeed } from "../calculators"
+import { bd, bigdec_equals, bigdec_max, pn, toNum } from "../numbers"
+import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "../resourceInfo"
 
 
 export function describeStat(data : any, fmt : string, isRespawn : boolean = false) {
@@ -50,50 +49,44 @@ export function describeStat(data : any, fmt : string, isRespawn : boolean = fal
     )
 }
 
-export function getStatInfo(playerStates : any) {
-    // Helper function - Needed in every isntance (makes code easier to read too)
-    function v(key : string) : bigDecimal{
-        return parseNum(playerStates, key)
-    }
-    function j(key : string) : any{
-        return parseObj(playerStates, key)
-    }
+export function getStatInfo(player : Player) {
+
     return {
         'energyPower' : {
             'base' : {
                 'name' : "Base Energy Power",
-                'val' : v('baseEnergyPower'),
+                'val' : player.get('baseEnergyPower'),
                 'sigFig' : 2,
                 'noPer' : true,
             },
             'equip' : {
                 'name' : 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.ENERGY_POWER),
+                'val' : equipmentWithCubeInfo(player, Stat.ENERGY_POWER),
                 'sigFig' : 2,
             },
             'macguffin' : {
                 'name': 'x Macguffin ',
-                'val' : macguffinInfo(playerStates, Stat.ENERGY_POWER),
+                'val' : macguffinInfo(player, Stat.ENERGY_POWER),
             },
             'perk' : {
                 'name': 'x Perk ',
-                'val' : perkInfo(playerStates, Stat.ENERGY_POWER),
+                'val' : perkInfo(player, Stat.ENERGY_POWER),
             },
             'quirk' : {
                 'name': 'x Quirk ',
-                'val' : quirkInfo(playerStates, Stat.ENERGY_POWER),
+                'val' : quirkInfo(player, Stat.ENERGY_POWER),
             },
             'wish' : {
                 'name': 'x Wish ',
-                'val' : wishInfo(playerStates, Stat.ENERGY_POWER),
+                'val' : wishInfo(player, Stat.ENERGY_POWER),
             },
             'apitems' : {
                 'name': 'x Potions ',
-                'val' : apItemInfo(playerStates, Stat.ENERGY_POWER),
+                'val' : apItemInfo(player, Stat.ENERGY_POWER),
             },
             'total' : {
                 'name': 'Total',
-                'val' : totalEnergyPower(playerStates),
+                'val' : totalEnergyPower(player),
                 'sigFig': 4,
                 'noPer' : true,
             }
@@ -101,38 +94,38 @@ export function getStatInfo(playerStates : any) {
         'energyBar' : {
             'base' : {
                 'name' : "Base Energy Bars",
-                'val' : v('baseEnergyBar'),
+                'val' : player.get('baseEnergyBar'),
                 'sigFig' : 2,
                 'noPer' : true,
             },
             'equip' : {
                 'name' : 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.ENERGY_BARS),
+                'val' : equipmentWithCubeInfo(player, Stat.ENERGY_BARS),
                 'sigFig' : 2,
             },
             'macguffin' : {
                 'name': 'x Macguffin ',
-                'val' : macguffinInfo(playerStates, Stat.ENERGY_BARS),
+                'val' : macguffinInfo(player, Stat.ENERGY_BARS),
             },
             'perk' : {
                 'name': 'x Perk ',
-                'val' : perkInfo(playerStates, Stat.ENERGY_BARS),
+                'val' : perkInfo(player, Stat.ENERGY_BARS),
             },
             'quirk' : {
                 'name': 'x Quirk ',
-                'val' : quirkInfo(playerStates, Stat.ENERGY_BARS),
+                'val' : quirkInfo(player, Stat.ENERGY_BARS),
             },
             'wish' : {
                 'name': 'x Wish ',
-                'val' : wishInfo(playerStates, Stat.ENERGY_BARS),
+                'val' : wishInfo(player, Stat.ENERGY_BARS),
             },
             'apitems' : {
                 'name': 'x Potions ',
-                'val' : apItemInfo(playerStates, Stat.ENERGY_BARS),
+                'val' : apItemInfo(player, Stat.ENERGY_BARS),
             },
             'total' : {
                 'name': 'Total',
-                'val' : totalEnergyBar(playerStates),
+                'val' : totalEnergyBar(player),
                 'sigFig': 4,
                 'noPer' : true,
             }
@@ -144,38 +137,38 @@ export function getStatInfo(playerStates : any) {
             },
             'energyPower' : {
                 'name' : 'x Energy Power',
-                'val' : totalEnergyPower(playerStates).multiply(bd(100)),
+                'val' : totalEnergyPower(player).multiply(bd(100)),
             },
             'equipment' : {
                 'name': 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.AUGMENT_SPEED),
+                'val' : equipmentWithCubeInfo(player, Stat.AUGMENT_SPEED),
             },
             'macguffin' : {
                 'name': 'x Macguffin',
-                'val' : macguffinInfo(playerStates, Stat.AUGMENT_SPEED),
+                'val' : macguffinInfo(player, Stat.AUGMENT_SPEED),
                 'sigFig' : 2,
             },
             'challenges' : {
                 'name': 'x Challenges',
-                'val' : challengeInfo(playerStates, Stat.AUGMENT_SPEED),
+                'val' : challengeInfo(player, Stat.AUGMENT_SPEED),
                 'sigFig' : 2,
             },
             'hacks' : {
                 'name': 'x Hacks',
-                'val' : hackInfo(playerStates, Stat.AUGMENT_SPEED),
+                'val' : hackInfo(player, Stat.AUGMENT_SPEED),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.AUGMENT_SPEED),
+                'val' : cardInfo(player, Stat.AUGMENT_SPEED),
                 'sigFig': 2,
             },
             'perk' : {
                 'name' : 'x Perks (is not shown in game, but is applied)',
-                'val' : perkInfo(playerStates, Stat.AUGMENT_SPEED),
+                'val' : perkInfo(player, Stat.AUGMENT_SPEED),
                 'sigFig': 2,
             },
             'total' : {
-                'val' : totalAugmentSpeed(playerStates),
+                'val' : totalAugmentSpeed(player),
             }
         },
         'enguSpeed' : {
@@ -185,64 +178,64 @@ export function getStatInfo(playerStates : any) {
             },
             'energyPower' : {
                 'name' : 'x Energy Power',
-                'val' : totalEnergyPower(playerStates).multiply(bd(100)),
+                'val' : totalEnergyPower(player).multiply(bd(100)),
             },
             'equipment' : {
                 'name': 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.ENERGY_NGU_SPEED),
+                'val' : equipmentWithCubeInfo(player, Stat.ENERGY_NGU_SPEED),
             },
             'macguffin' : {
                 'name': 'x Macguffin',
-                'val' : macguffinInfo(playerStates, Stat.ENERGY_NGU_SPEED),
+                'val' : macguffinInfo(player, Stat.ENERGY_NGU_SPEED),
                 'sigFig' : 2,
             },
             'Number' : {
                 'name': 'x \'A Number\' Set',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.NUMBER) ? bd(110) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.NUMBER) ? bd(110) : bd(100),
             },
             'NumbMetaer' : {
                 'name': 'x Meta Set',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.META) ? bd(120) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.META) ? bd(120) : bd(100),
             },
             'schoolSet' : {
                 'name': 'x School Set',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.BACKTOSCHOOL) ? bd(115) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.BACKTOSCHOOL) ? bd(115) : bd(100),
             },
             'magicNGU' : {
                 'name': 'x Magic NGU',
-                'val' : nguInfo(playerStates, Stat.ENERGY_NGU_SPEED),
+                'val' : nguInfo(player, Stat.ENERGY_NGU_SPEED),
             },
             'beard' : {
                 'name': 'x Beard',
-                'val' : beardInfoPerm(playerStates, Stat.ENERGY_NGU_SPEED).divide(bd(100)).multiply(beardInfoTemp(playerStates, Stat.ENERGY_NGU_SPEED).divide(bd(100))).multiply(bd(100)).round(),
+                'val' : beardInfoPerm(player, Stat.ENERGY_NGU_SPEED).divide(bd(100)).multiply(beardInfoTemp(player, Stat.ENERGY_NGU_SPEED).divide(bd(100))).multiply(bd(100)).round(),
             },
             'digger' : {
                 'name': 'x Digger',
-                'val' : diggerInfo(playerStates, Stat.ENERGY_NGU_SPEED),
+                'val' : diggerInfo(player, Stat.ENERGY_NGU_SPEED),
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.ENERGY_NGU_SPEED).round(),
+                'val' : perkInfo(player, Stat.ENERGY_NGU_SPEED).round(),
             },
             'challenge' : {
                 'name': 'x Challenge ',
-                'val' : challengeInfo(playerStates, Stat.ENERGY_NGU_SPEED),
+                'val' : challengeInfo(player, Stat.ENERGY_NGU_SPEED),
             },
             'trollChallenge' : {
                 'name' : 'x Sad Troll Challenge',
-                'val' : isCompletedChallenge(playerStates, ChallengeKeys.TROLL, GameMode.SADISTIC, 1) ? bd(300) : bd(100),
+                'val' : isCompletedChallenge(player, ChallengeKeys.TROLL, GameMode.SADISTIC, 1) ? bd(300) : bd(100),
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.ENERGY_NGU_SPEED).round(),
+                'val' : hackInfo(player, Stat.ENERGY_NGU_SPEED).round(),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.ENERGY_NGU_SPEED),
+                'val' : cardInfo(player, Stat.ENERGY_NGU_SPEED),
                 'sigFig': 2,
             },
             'total' : {
-                'val' : totalEnergyNGUSpeedFactor(playerStates),
+                'val' : totalEnergyNGUSpeedFactor(player),
             },
         },
         'exp' : {
@@ -252,39 +245,39 @@ export function getStatInfo(playerStates : any) {
             },
             'heart' : {
                 'name' : 'x Red Heart Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.RED_HEART) ? bd(110) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.RED_HEART) ? bd(110) : bd(100),
             },
             'ngu' : {
                 'name': 'x NGU',
-                'val' : nguInfo(playerStates, Stat.EXPERIENCE),
+                'val' : nguInfo(player, Stat.EXPERIENCE),
                 'sigFig' : 2,
             },
             'digger' : {
                 'name': 'x Digger',
-                'val' : diggerInfo(playerStates, Stat.EXPERIENCE),
+                'val' : diggerInfo(player, Stat.EXPERIENCE),
                 'sigFig' : 2,
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.EXPERIENCE),
+                'val' : perkInfo(player, Stat.EXPERIENCE),
                 'sigFig' : 2,
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.EXPERIENCE),
+                'val' : hackInfo(player, Stat.EXPERIENCE),
             },
             'wish' : {
                 'name': 'x Wish',
-                'val' : wishInfo(playerStates, Stat.EXPERIENCE),
+                'val' : wishInfo(player, Stat.EXPERIENCE),
             },
             'cooking' : {
                 'name': 'x Cooking',
-                'val' : cookingInfo(playerStates, Stat.EXPERIENCE).multiply(bd(100)),
+                'val' : cookingInfo(player, Stat.EXPERIENCE).multiply(bd(100)),
                 'sigFig' : 2,
             },
             'total' : {
                 'name': 'Total',
-                'val' : totalExpBonus(playerStates),
+                'val' : totalExpBonus(player),
                 'sigFig': 2,
             },
         },
@@ -295,21 +288,21 @@ export function getStatInfo(playerStates : any) {
             },
             'heart' : {
                 'name': 'x Yellow Heart Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.YELLOW_HEART) ? bd(120) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.YELLOW_HEART) ? bd(120) : bd(100),
             },
             'ngu' : {
                 'name': 'x Achievements',
-                'val' : achievementAPBonus(playerStates),
+                'val' : achievementAPBonus(player),
                 'sigFig' : 2,
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.AP),
+                'val' : perkInfo(player, Stat.AP),
                 'sigFig' : 2,
             },
             'total' : {
                 'name': 'Total',
-                'val' : totalAPBonus(playerStates),
+                'val' : totalAPBonus(player),
                 'sigFig': 2,
             },
     
@@ -322,46 +315,46 @@ export function getStatInfo(playerStates : any) {
             },
             'heart' : {
                 'name': 'x Green Heart Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.GREEN_HEART) ? bd(120) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.GREEN_HEART) ? bd(120) : bd(100),
             },
             'podKey' : {
                 'name': 'x Pissed Off Key Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.PISSED_OFF_KEY) ? bd(110) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.PISSED_OFF_KEY) ? bd(110) : bd(100),
             },
             'PPPL' : {
                 'name': 'x PPP Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.PRETTY) ? bd(110) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.PRETTY) ? bd(110) : bd(100),
             },
             'halloweenKey' : {
                 'name': 'x Halloweenies Set Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.HALLOWEEN) ? bd(145) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.HALLOWEEN) ? bd(145) : bd(100),
             },
             'ngu' : {
                 'name': 'x NGU',
-                'val' : nguInfo(playerStates, Stat.PP),
+                'val' : nguInfo(player, Stat.PP),
             },
             'digger' : {
                 'name': 'x Digger',
-                'val' : diggerInfo(playerStates, Stat.PP),
+                'val' : diggerInfo(player, Stat.PP),
                 'sigFig' : 2,
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.PP),
+                'val' : perkInfo(player, Stat.PP),
                 'sigFig' : 2,
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.PP),
+                'val' : hackInfo(player, Stat.PP),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.PP),
+                'val' : cardInfo(player, Stat.PP),
                 'sigFig': 2,
             },
             'total' : {
                 'name': 'Total',
-                'val' : totalPPBonus(playerStates),
+                'val' : totalPPBonus(player),
                 'sigFig': 2,
             },
                     
@@ -373,37 +366,37 @@ export function getStatInfo(playerStates : any) {
             },
             'digger' : {
                 'name': 'x Digger',
-                'val' : diggerInfo(playerStates, Stat.DAYCARE_SPEED),
+                'val' : diggerInfo(player, Stat.DAYCARE_SPEED),
                 'sigFig' : 2,
             },
             'equipment' : {
                 'name': 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.DAYCARE_SPEED),
+                'val' : equipmentWithCubeInfo(player, Stat.DAYCARE_SPEED),
             },
             'challenges' : {
                 'name': 'x Challenges',
-                'val' : challengeInfo(playerStates, Stat.DAYCARE_SPEED),
+                'val' : challengeInfo(player, Stat.DAYCARE_SPEED),
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.DAYCARE_SPEED),
+                'val' : hackInfo(player, Stat.DAYCARE_SPEED),
             },
             'wish' : {
                 'name': 'x Wish',
-                'val' : wishInfo(playerStates, Stat.DAYCARE_SPEED),
+                'val' : wishInfo(player, Stat.DAYCARE_SPEED),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.DAYCARE_SPEED),
+                'val' : cardInfo(player, Stat.DAYCARE_SPEED),
                 'sigFig': 2,
             },
             'perk' : {
                 'name': 'x Fibonnacci',
-                'val' : perkInfo(playerStates, Stat.DAYCARE_SPEED),
+                'val' : perkInfo(player, Stat.DAYCARE_SPEED),
             },
             'total' : {
                 'name': 'Total',
-                'val' : totalDaycareSpeed(playerStates),
+                'val' : totalDaycareSpeed(player),
                 'sigFig': 2,
             },
         },
@@ -414,36 +407,36 @@ export function getStatInfo(playerStates : any) {
             },
             'equipment' : {
                 'name': 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.HACK_SPEED),
+                'val' : equipmentWithCubeInfo(player, Stat.HACK_SPEED),
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.HACK_SPEED),
+                'val' : hackInfo(player, Stat.HACK_SPEED),
             },
             'wish' : {
                 'name': 'x Wish',
-                'val' : wishInfo(playerStates, Stat.HACK_SPEED),
+                'val' : wishInfo(player, Stat.HACK_SPEED),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.HACK_SPEED),
+                'val' : cardInfo(player, Stat.HACK_SPEED),
                 'sigFig': 2,
             },
             'heart' : {
                 'name': 'x Grey Heart Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.GREY_HEART) ? bd(125) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.GREY_HEART) ? bd(125) : bd(100),
             },
             'challenges' : {
                 'name': 'x Evil No NGU Challenge',
-                'val' : challengeInfo(playerStates, Stat.HACK_SPEED),
+                'val' : challengeInfo(player, Stat.HACK_SPEED),
             },
             'trollChallenge' : {
                 'name' : 'x Evil Troll Challenge',
-                'val' : isCompletedChallenge(playerStates, ChallengeKeys.TROLL, GameMode.EVIL, 5) ? bd(125) : bd(100),
+                'val' : isCompletedChallenge(player, ChallengeKeys.TROLL, GameMode.EVIL, 5) ? bd(125) : bd(100),
             },
             'total' : {
                 'name': 'Total',
-                'val' : totalHackSpeed(playerStates),
+                'val' : totalHackSpeed(player),
                 'sigFig': 2,
             },
         },
@@ -454,333 +447,333 @@ export function getStatInfo(playerStates : any) {
             },
             'wish' : {
                 'name': 'x Wish Modifier',
-                'val' : wishInfo(playerStates, Stat.WISH_SPEED),
+                'val' : wishInfo(player, Stat.WISH_SPEED),
             },
             'equipment' : {
                 'name': 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.WISH_SPEED),
+                'val' : equipmentWithCubeInfo(player, Stat.WISH_SPEED),
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.WISH_SPEED).round(),
+                'val' : hackInfo(player, Stat.WISH_SPEED).round(),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.WISH_SPEED),
+                'val' : cardInfo(player, Stat.WISH_SPEED),
                 'sigFig': 2,
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.WISH_SPEED).round(),
+                'val' : perkInfo(player, Stat.WISH_SPEED).round(),
             },
             'head' : {
                 'name': 'x Severed Head Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.SEVERED_HEAD) ? bd(113.37) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.SEVERED_HEAD) ? bd(113.37) : bd(100),
             },
             'fasterWish' : {
                 'name' : 'x Faster Wish (AP item)',
-                'val' : apItemInfo(playerStates, Stat.WISH_SPEED)
+                'val' : apItemInfo(player, Stat.WISH_SPEED)
             },
             'typo' : {
                 'name': 'x Typo Set Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.SEVERED_HEAD) ? bd(120) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.SEVERED_HEAD) ? bd(120) : bd(100),
             },
             'total' : {
                 'name': 'Total',
-                'val' : totalWishSpeed(playerStates),
+                'val' : totalWishSpeed(player),
                 'sigFig': 2,
             },
         },
         'advPower' : { // Will need altering
             'base' : {
                 'name': 'Base Adventure Power ',
-                'val' : v('baseAdventurePower'),
+                'val' : player.get('baseAdventurePower'),
                 'noPer' : true,
             },
             'equipment' : {
                 'name': '+ Equipment Power + Infinity Cube',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.POWER),
+                'val' : equipmentWithCubeInfo(player, Stat.POWER),
                 'noPer' : true,
             },
             'subtotal' : {
-                'val' : v('baseAdventurePower').add(equipmentWithCubeInfo(playerStates, Stat.POWER)),
+                'val' : player.get('baseAdventurePower').add(equipmentWithCubeInfo(player, Stat.POWER)),
             },
             'at' : {
                 'name': 'x Advanced Training',
-                'val' : advTrainingInfo(playerStates, Stat.POWER),
+                'val' : advTrainingInfo(player, Stat.POWER),
             },
             'engu' : {
                 'name': 'x (Energy x Magic) NGU',
-                'val' : nguInfo(playerStates, Stat.POWER),
+                'val' : nguInfo(player, Stat.POWER),
             },
             'digger' : {
                 'name': 'x Digger',
-                'val' : diggerInfo(playerStates, Stat.POWER),
+                'val' : diggerInfo(player, Stat.POWER),
             },
             'basicChallenge' : {
                 'name': 'x Basic Challenge',
-                'val' : challengeInfo(playerStates, Stat.POWER),
+                'val' : challengeInfo(player, Stat.POWER),
             },
             'beardTemp' : {
                 'name' : 'x Beard (this run)',
-                'val' : beardInfoTemp(playerStates, Stat.POWER)
+                'val' : beardInfoTemp(player, Stat.POWER)
             },
             'beardPerm' : {
                 'name' : 'x Beard (permanent)',
-                'val' : beardInfoPerm(playerStates, Stat.POWER)
+                'val' : beardInfoPerm(player, Stat.POWER)
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.POWER).round(),
+                'val' : perkInfo(player, Stat.POWER).round(),
             },
             'quirk' : {
                 'name': 'x Quirk',
-                'val' : quirkInfo(playerStates, Stat.POWER).round(),
+                'val' : quirkInfo(player, Stat.POWER).round(),
             },
             'wish' : {
                 'name': 'x Wish',
-                'val' : wishInfo(playerStates, Stat.POWER).round(),
+                'val' : wishInfo(player, Stat.POWER).round(),
             },
             'macguffin' : {
                 'name': 'x Macguffin',
-                'val' : macguffinInfo(playerStates, Stat.POWER),
+                'val' : macguffinInfo(player, Stat.POWER),
                 'sigFig' : 2,
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.POWER).round(),
+                'val' : hackInfo(player, Stat.POWER).round(),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.POWER),
+                'val' : cardInfo(player, Stat.POWER),
                 'sigFig': 2,
             },
             'beastMode' : {
                 'name': 'x Beast Mode',
-                'val' :  (isOne(v('beastMode')) ? ( (isMaxxedItemSet(playerStates, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(150) : bd(140)) : bd(100)),
+                'val' :  (player.get('beastMode') ? ( (isMaxxedItemSet(player, ItemSets.MYSTERIOUS_PURPLE_LIQUID)) ? bd(150) : bd(140)) : bd(100)),
             },
             'acc' : {
                 'name': 'x Evil Accs Set Bonus',
-                'val' :  (isMaxxedItemSet(playerStates, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
+                'val' :  (isMaxxedItemSet(player, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
             },
             'total' : {
-                'val' : totalPower(playerStates),
+                'val' : totalPower(player),
             },
         },
         'advToughness' : { // Will need altering    
             'base' : {
                 'name': 'Base Adventure Toughness ',
-                'val' : v('baseAdventureToughness'),
+                'val' : player.get('baseAdventureToughness'),
                 'noPer' : true,
             },
             'equipment' : {
                 'name': '+ Equipment Toughness + Infinity Cube',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.TOUGHNESS),
+                'val' : equipmentWithCubeInfo(player, Stat.TOUGHNESS),
                 'noPer' : true,
             },
             'subtotal' : {
-                'val' : v('baseAdventureToughness').add(equipmentWithCubeInfo(playerStates, Stat.TOUGHNESS)),
+                'val' : player.get('baseAdventureToughness').add(equipmentWithCubeInfo(player, Stat.TOUGHNESS)),
             },
             'at' : {
                 'name': 'x Advanced Training',
-                'val' : advTrainingInfo(playerStates, Stat.TOUGHNESS),
+                'val' : advTrainingInfo(player, Stat.TOUGHNESS),
             },
             'engu' : {
                 'name' : 'x (Energy x Magic) NGU',
-                'val' : nguInfo(playerStates, Stat.TOUGHNESS),
+                'val' : nguInfo(player, Stat.TOUGHNESS),
             },
             'digger' : {
                 'name': 'x Digger',
-                'val' : diggerInfo(playerStates, Stat.TOUGHNESS),
+                'val' : diggerInfo(player, Stat.TOUGHNESS),
             },
             'basicChallenge' : {
                 'name': 'x Basic Challenge',
-                'val' : challengeInfo(playerStates, Stat.TOUGHNESS),
+                'val' : challengeInfo(player, Stat.TOUGHNESS),
             },
             'beardTemp' : {
                 'name' : 'x Beard (this run)',
-                'val' : beardInfoTemp(playerStates, Stat.TOUGHNESS)
+                'val' : beardInfoTemp(player, Stat.TOUGHNESS)
             },
             'beardPerm' : {
                 'name' : 'x Beard (permanent)',
-                'val' : beardInfoPerm(playerStates, Stat.TOUGHNESS)
+                'val' : beardInfoPerm(player, Stat.TOUGHNESS)
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.TOUGHNESS).round(),
+                'val' : perkInfo(player, Stat.TOUGHNESS).round(),
             },
             'quirk' : {
                 'name': 'x Quirk',
-                'val' : quirkInfo(playerStates, Stat.TOUGHNESS).round(),
+                'val' : quirkInfo(player, Stat.TOUGHNESS).round(),
             },
             'wish' : {
                 'name': 'x Wish',
-                'val' : wishInfo(playerStates, Stat.TOUGHNESS).round(),
+                'val' : wishInfo(player, Stat.TOUGHNESS).round(),
             },
             'macguffin' : {
                 'name': 'x Macguffin',
-                'val' : macguffinInfo(playerStates, Stat.TOUGHNESS),
+                'val' : macguffinInfo(player, Stat.TOUGHNESS),
                 'sigFig' : 2,
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.TOUGHNESS).round(),
+                'val' : hackInfo(player, Stat.TOUGHNESS).round(),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.TOUGHNESS),
+                'val' : cardInfo(player, Stat.TOUGHNESS),
                 'sigFig': 2,
             },
             'acc' : {
                 'name': 'x Evil Accs Set Bonus',
-                'val' :  (isMaxxedItemSet(playerStates, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
+                'val' :  (isMaxxedItemSet(player, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
             },
             'total' : {
-                'val' : totalToughness(playerStates),
+                'val' : totalToughness(player),
             },
         },
         'advHealth' : { // Will need altering
             'base' : {
                 'name': 'Base Adventure Health ',
-                'val' : v('baseAdventureHealth'),
+                'val' : player.get('baseAdventureHealth'),
                 'noPer' : true,
             },
             'equipment' : {
                 'name': '+ Equipment Health + Infinity Cube',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.HEALTH),
+                'val' : equipmentWithCubeInfo(player, Stat.HEALTH),
                 'noPer' : true,
             },
             'subtotal' : {
-                'val' : v('baseAdventureHealth').add(equipmentWithCubeInfo(playerStates, Stat.HEALTH)),
+                'val' : player.get('baseAdventureHealth').add(equipmentWithCubeInfo(player, Stat.HEALTH)),
             },
             'at' : {
                 'name': 'x Advanced Training',
-                'val' : advTrainingInfo(playerStates, Stat.HEALTH),
+                'val' : advTrainingInfo(player, Stat.HEALTH),
             },
             'engu' : {
                 'name' : 'x (Energy x Magic) NGU',
-                'val' : nguInfo(playerStates, Stat.HEALTH),
+                'val' : nguInfo(player, Stat.HEALTH),
             },
             'digger' : {
                 'name': 'x Digger',
-                'val' : diggerInfo(playerStates, Stat.HEALTH),
+                'val' : diggerInfo(player, Stat.HEALTH),
             },
             'basicChallenge' : {
                 'name': 'x Basic Challenge',
-                'val' : challengeInfo(playerStates, Stat.HEALTH),
+                'val' : challengeInfo(player, Stat.HEALTH),
             },
             'beardTemp' : {
                 'name' : 'x Beard (this run)',
-                'val' : beardInfoTemp(playerStates, Stat.HEALTH)
+                'val' : beardInfoTemp(player, Stat.HEALTH)
             },
             'beardPerm' : {
                 'name' : 'x Beard (permanent)',
-                'val' : beardInfoPerm(playerStates, Stat.HEALTH)
+                'val' : beardInfoPerm(player, Stat.HEALTH)
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.HEALTH).round(),
+                'val' : perkInfo(player, Stat.HEALTH).round(),
             },
             'quirk' : {
                 'name': 'x Quirk',
-                'val' : quirkInfo(playerStates, Stat.HEALTH).round(),
+                'val' : quirkInfo(player, Stat.HEALTH).round(),
             },
             'wish' : {
                 'name': 'x Wish',
-                'val' : wishInfo(playerStates, Stat.HEALTH).round(),
+                'val' : wishInfo(player, Stat.HEALTH).round(),
             },
             'macguffin' : {
                 'name': 'x Macguffin',
-                'val' : macguffinInfo(playerStates, Stat.HEALTH),
+                'val' : macguffinInfo(player, Stat.HEALTH),
                 'sigFig' : 2,
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.HEALTH).round(),
+                'val' : hackInfo(player, Stat.HEALTH).round(),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.HEALTH),
+                'val' : cardInfo(player, Stat.HEALTH),
                 'sigFig': 2,
             },
             'acc' : {
                 'name': 'x Evil Accs Set Bonus',
-                'val' :  (isMaxxedItemSet(playerStates, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
+                'val' :  (isMaxxedItemSet(player, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
             },
             'total' : {
-                'val' : totalHealth(playerStates),
+                'val' : totalHealth(player),
             },
         },
         'advRegen' : { // Will need altering
             'base' : {
                 'name': 'Base Adventure Regen ',
-                'val' : v('baseAdventureRegen'),
+                'val' : player.get('baseAdventureRegen'),
                 'noPer' : true,
             },
             'equipment' : {
                 'name': '+ Equipment Regen + Infinity Cube',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.REGEN),
+                'val' : equipmentWithCubeInfo(player, Stat.REGEN),
                 'noPer' : true,
             },
             'subtotal' : {
-                'val' : v('baseAdventureRegen').add(equipmentWithCubeInfo(playerStates, Stat.REGEN)),
+                'val' : player.get('baseAdventureRegen').add(equipmentWithCubeInfo(player, Stat.REGEN)),
             },
             'at' : {
                 'name': 'x Advanced Training',
-                'val' : advTrainingInfo(playerStates, Stat.REGEN),
+                'val' : advTrainingInfo(player, Stat.REGEN),
             },
             'engu' : {
                 'name' : 'x (Energy x Magic) NGU',
-                'val' : nguInfo(playerStates, Stat.REGEN),
+                'val' : nguInfo(player, Stat.REGEN),
             },
             'digger' : {
                 'name': 'x Digger',
-                'val' : diggerInfo(playerStates, Stat.REGEN),
+                'val' : diggerInfo(player, Stat.REGEN),
             },
             'basicChallenge' : {
                 'name': 'x Basic Challenge',
-                'val' : challengeInfo(playerStates, Stat.REGEN),
+                'val' : challengeInfo(player, Stat.REGEN),
             },
             'beardTemp' : {
                 'name' : 'x Beard (this run)',
-                'val' : beardInfoTemp(playerStates, Stat.REGEN)
+                'val' : beardInfoTemp(player, Stat.REGEN)
             },
             'beardPerm' : {
                 'name' : 'x Beard (permanent)',
-                'val' : beardInfoPerm(playerStates, Stat.REGEN)
+                'val' : beardInfoPerm(player, Stat.REGEN)
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.REGEN).round(),
+                'val' : perkInfo(player, Stat.REGEN).round(),
             },
             'quirk' : {
                 'name': 'x Quirk',
-                'val' : quirkInfo(playerStates, Stat.REGEN).round(),
+                'val' : quirkInfo(player, Stat.REGEN).round(),
             },
             'wish' : {
                 'name': 'x Wish',
-                'val' : wishInfo(playerStates, Stat.REGEN).round(),
+                'val' : wishInfo(player, Stat.REGEN).round(),
             },
             'macguffin' : {
                 'name': 'x Macguffin',
-                'val' : macguffinInfo(playerStates, Stat.REGEN),
+                'val' : macguffinInfo(player, Stat.REGEN),
                 'sigFig' : 2,
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.REGEN).round(),
+                'val' : hackInfo(player, Stat.REGEN).round(),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.REGEN),
+                'val' : cardInfo(player, Stat.REGEN),
                 'sigFig': 2,
             },
             'acc' : {
                 'name': 'x Evil Accs Set Bonus',
-                'val' :  (isMaxxedItemSet(playerStates, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
+                'val' :  (isMaxxedItemSet(player, ItemSets.EVIL_ACC)) ? bd(120) : bd(100),
             },
             'total' : {
-                'val' : totalRegen(playerStates),
+                'val' : totalRegen(player),
             },
         },
         'gold' : {
@@ -790,33 +783,33 @@ export function getStatInfo(playerStates : any) {
             },
             'equipment' : {
                 'name': 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.GOLD_DROP),
+                'val' : equipmentWithCubeInfo(player, Stat.GOLD_DROP),
                 'sigFig' : 3,
             },
             'ngu' : {
                 'name': 'x NGU',
-                'val' : nguInfo(playerStates, Stat.GOLD_DROP),
+                'val' : nguInfo(player, Stat.GOLD_DROP),
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.GOLD_DROP),
+                'val' : perkInfo(player, Stat.GOLD_DROP),
             },
             'quirk' : {
                 'name': 'x Quirk',
-                'val' : quirkInfo(playerStates, Stat.GOLD_DROP),
+                'val' : quirkInfo(player, Stat.GOLD_DROP),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.GOLD_DROP),
+                'val' : cardInfo(player, Stat.GOLD_DROP),
                 'sigFig': 2,
             },
             'challenge' : {
                 'name' : 'x No TM Challenge',
-                'val' : challengeInfo(playerStates, Stat.GOLD_DROP),
+                'val' : challengeInfo(player, Stat.GOLD_DROP),
                 'sigFig': 2,
             },
             'total' : {
-                'val' : totalGoldDrop(playerStates),
+                'val' : totalGoldDrop(player),
             },
         },
         'respawn' : { // Will need altering
@@ -826,30 +819,30 @@ export function getStatInfo(playerStates : any) {
             },
             'equipment' : {
                 'name': 'x Equipment',
-                'val' : bd(200).subtract(equipmentWithCubeInfo(playerStates, Stat.RESPAWN)).round(),
+                'val' : bd(200).subtract(equipmentWithCubeInfo(player, Stat.RESPAWN)).round(),
             },
             'ngu' : {
                 'name': 'x NGU',
-                'val' : nguInfo(playerStates, Stat.RESPAWN),
+                'val' : nguInfo(player, Stat.RESPAWN),
                 'sigFig' : 2,
             },
             'Number' : {
                 'name': 'x Clock Set Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.CLOCK) ? bd(95) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.CLOCK) ? bd(95) : bd(100),
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.RESPAWN),
+                'val' : perkInfo(player, Stat.RESPAWN),
                 'sigFig' : 2,
             },
             'wish' : {
                 'name': 'x Wish',
-                'val' : wishInfo(playerStates, Stat.RESPAWN),
+                'val' : wishInfo(player, Stat.RESPAWN),
                 'sigFig' : 2,
             },
             'total' : {
                 'name': 'Total',
-                'val' : totalRespawnRate(playerStates),
+                'val' : totalRespawnRate(player),
                 'sigFig': 2,
             },
         },
@@ -860,62 +853,62 @@ export function getStatInfo(playerStates : any) {
             },
             'equipment' : {
                 'name': 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.DROP_CHANCE),
+                'val' : equipmentWithCubeInfo(player, Stat.DROP_CHANCE),
             },
             'macguffin' : {
                 'name': 'x MacGuffin',
-                'val' : macguffinInfo(playerStates, Stat.DROP_CHANCE),
+                'val' : macguffinInfo(player, Stat.DROP_CHANCE),
                 'sigFig' : 2,
             },
             '2d' : {
                 'name' : 'x 2D Set Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.TWO_D) ? bd(107.43) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.TWO_D) ? bd(107.43) : bd(100),
                 'sigFigs' : 2,
             },
             'blood' : {
                 'name': 'x Blood Magic',
-                'val' : v('bloodMagicDropChance').add(bd(100)),
+                'val' : player.get('bloodMagicDropChance').add(bd(100)),
             },
             'Yggdrasil' : {
                 'name': 'x Yggdrasil Fruit',
-                'val' : v('yggdrasilDropChance'),
+                'val' : player.get('yggdrasilDropChance'),
             },
             'ngu' : {
                 'name': 'x NGU',
-                'val' : nguInfo(playerStates, Stat.DROP_CHANCE),
+                'val' : nguInfo(player, Stat.DROP_CHANCE),
             },
             'digger' : {
                 'name': 'x Digger',
-                'val' : diggerInfo(playerStates, Stat.DROP_CHANCE),
+                'val' : diggerInfo(player, Stat.DROP_CHANCE),
                 'sigFig' : 2,
             },
             'beardTemp' : {
                 'name' : 'x Beard (this run)',
-                'val' : beardInfoTemp(playerStates, Stat.DROP_CHANCE)
+                'val' : beardInfoTemp(player, Stat.DROP_CHANCE)
             },
             'beardPerm' : {
                 'name' : 'x Beard (permanent)',
-                'val' : beardInfoPerm(playerStates, Stat.DROP_CHANCE)
+                'val' : beardInfoPerm(player, Stat.DROP_CHANCE)
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.DROP_CHANCE),
+                'val' : perkInfo(player, Stat.DROP_CHANCE),
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.DROP_CHANCE),
+                'val' : hackInfo(player, Stat.DROP_CHANCE),
             },
             'acc' : {
                 'name': 'x Normal Bonus Acc Set Bonus',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.NORMAL_ACC) ? bd(125) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.NORMAL_ACC) ? bd(125) : bd(100),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.DROP_CHANCE),
+                'val' : cardInfo(player, Stat.DROP_CHANCE),
                 'sigFig': 2,
             },
             'total' : {
-                'val' : totalDropChance(playerStates),
+                'val' : totalDropChance(player),
             },
         },
         'eBeards' : {
@@ -925,28 +918,28 @@ export function getStatInfo(playerStates : any) {
             },
             'eBar' : {
                 'name' : 'x Energy Bar',
-                'val' : totalEnergyBar(playerStates).floor().multiply(bd(100)),
+                'val' : totalEnergyBar(player).floor().multiply(bd(100)),
             },
             'ePower' : {
                 'name' : 'x Energy Power',
-                'val' : bd(Math.sqrt(toNum(totalEnergyPower(playerStates)))).multiply(bd(100)),
+                'val' : bd(Math.sqrt(toNum(totalEnergyPower(player)))).multiply(bd(100)),
             },
             'equipment' : {
                 'name' : 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.ENERGY_BEARD_SPEED),
+                'val' : equipmentWithCubeInfo(player, Stat.ENERGY_BEARD_SPEED),
             },
             'setBonus' : {
                 'name' : 'x (UUG) Armpit Set',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.UUG) ? bd(110) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.UUG) ? bd(110) : bd(100),
             },
             'countDiv' : {
                 'name' : '/ Count Divider',
-                'val' : bigdec_max(activeBeards(playerStates, 'energy').multiply(isMaxxedItemSet(playerStates, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)), bd(1)),
+                'val' : bigdec_max(activeBeards(player, 'energy').multiply(isMaxxedItemSet(player, ItemSets.BEARDVERSE) ? bd(0.9) : bd(1)), bd(1)),
                 'sigFig' : 1,
                 'noPer' : true,
             },
             'total' : {
-                'val' : totalEnergyBeardSpeed(playerStates),
+                'val' : totalEnergyBeardSpeed(player),
             }
         },
         'eWandoos' : {
@@ -956,48 +949,48 @@ export function getStatInfo(playerStates : any) {
             },
             'macguffin' : {
                 'name': 'x MacGuffin',
-                'val' : macguffinInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+                'val' : macguffinInfo(player, Stat.ENERGY_WANDOOS_SPEED),
                 'sigFig' : 2,
             },
             'equipment' : {
                 'name' : 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+                'val' : equipmentWithCubeInfo(player, Stat.ENERGY_WANDOOS_SPEED),
             },
             'osLevel' : {
                 'name' : 'x OS Level',
-                'val' : (wandoosOSLevel(playerStates).add(bd(1))).multiply(bd(4)),
+                'val' : (wandoosOSLevel(player).add(bd(1))).multiply(bd(4)),
             },
             'bootup' : {
                 'name' : 'x Bootup',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.WANDOOS) ? bd(110) : bd(100)
+                'val' : isMaxxedItemSet(player, ItemSets.WANDOOS) ? bd(110) : bd(100)
             },
             'at' : {
                 'name' : 'x Advanced Training',
-                'val' : advTrainingInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+                'val' : advTrainingInfo(player, Stat.ENERGY_WANDOOS_SPEED),
             },
             'ngu' : {
                 'name' : 'x NGU',
-                'val' : nguInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+                'val' : nguInfo(player, Stat.ENERGY_WANDOOS_SPEED),
             },
             'challenges': {
                 'name' : 'x Challenges',
-                'val' : challengeInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+                'val' : challengeInfo(player, Stat.ENERGY_WANDOOS_SPEED),
             },
             'beardTemp' : {
                 'name' : 'x Beard (this run)',
-                'val' : beardInfoTemp(playerStates, Stat.ENERGY_WANDOOS_SPEED)
+                'val' : beardInfoTemp(player, Stat.ENERGY_WANDOOS_SPEED)
             },
             'beardPerm' : {
                 'name' : 'x Beard (permanent)',
-                'val' : beardInfoPerm(playerStates, Stat.ENERGY_WANDOOS_SPEED)
+                'val' : beardInfoPerm(player, Stat.ENERGY_WANDOOS_SPEED)
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.ENERGY_WANDOOS_SPEED),
+                'val' : cardInfo(player, Stat.ENERGY_WANDOOS_SPEED),
                 'sigFig': 2,
             },
             'total' : {
-                'val' : totalEnergyWandoosSpeed(playerStates),
+                'val' : totalEnergyWandoosSpeed(player),
             }
         },
         'questRewards': {
@@ -1007,39 +1000,39 @@ export function getStatInfo(playerStates : any) {
             },
             'equipment' : {
                 'name' : 'x Equipment',
-                'val' : equipmentWithCubeInfo(playerStates, Stat.QUEST_REWARD),
+                'val' : equipmentWithCubeInfo(player, Stat.QUEST_REWARD),
             },
             'perk' : {
                 'name': 'x Perk',
-                'val' : perkInfo(playerStates, Stat.QUEST_REWARD),
+                'val' : perkInfo(player, Stat.QUEST_REWARD),
             },
             'hack' : {
                 'name': 'x Hack',
-                'val' : hackInfo(playerStates, Stat.QUEST_REWARD),
+                'val' : hackInfo(player, Stat.QUEST_REWARD),
             },
             'wish' : {
                 'name': 'x Wish ',
-                'val' : wishInfo(playerStates, Stat.QUEST_REWARD),
+                'val' : wishInfo(player, Stat.QUEST_REWARD),
             },
             'card' : {
                 'name' : 'x Cards',
-                'val' : cardInfo(playerStates, Stat.QUEST_REWARD),
+                'val' : cardInfo(player, Stat.QUEST_REWARD),
                 'sigFig': 2,
             },
             'questSet' : {
                 'name': 'x Quest Sets',
-                'val' : bd(1.02 ** maxxedItemSetNum(playerStates, ItemSets.QUESTS) * 100),
+                'val' : bd(1.02 ** maxxedItemSetNum(player, ItemSets.QUESTS) * 100),
             },
             'mobster' : {
                 'name': 'x Mobster Set',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.MOBSTER) ? bd(115) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.MOBSTER) ? bd(115) : bd(100),
             },
             'orangeHeart' : {
                 'name': 'x Orange Heart',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.ORANGE_HEART) ? bd(120) : bd(100)
+                'val' : isMaxxedItemSet(player, ItemSets.ORANGE_HEART) ? bd(120) : bd(100)
             },
             'total' : {
-                'val' : totalQuestRewardBonus(playerStates),
+                'val' : totalQuestRewardBonus(player),
             }
         },
         'mayoSpeed' : {
@@ -1049,37 +1042,37 @@ export function getStatInfo(playerStates : any) {
             },
             'generators': {
                 'name' : 'x Generators',
-                'val' : ((totalMayoGeneration(playerStates).subtract(bd(1))).multiply(bd(2))).add(bd(100)),
+                'val' : ((totalMayoGeneration(player).subtract(bd(1))).multiply(bd(2))).add(bd(100)),
             },
             'perk' : {
                 'name': 'x Perk ',
-                'val' : perkInfo(playerStates, Stat.MAYO_SPEED),
+                'val' : perkInfo(player, Stat.MAYO_SPEED),
                 'sigFig': 2,
             },
             'quirk' : {
                 'name': 'x Quirk ',
-                'val' : quirkInfo(playerStates, Stat.MAYO_SPEED),
+                'val' : quirkInfo(player, Stat.MAYO_SPEED),
                 'sigFig': 2,
             },
             'wish' : {
                 'name': 'x Wish ',
-                'val' : wishInfo(playerStates, Stat.MAYO_SPEED),
+                'val' : wishInfo(player, Stat.MAYO_SPEED),
                 'sigFig': 2,
             },
             'trollChallenge' : {
                 'name' : 'x Sad Troll Challenge',
-                'val' : isCompletedChallenge(playerStates, ChallengeKeys.TROLL, GameMode.SADISTIC, 6) ? bd(110) : bd(100),
+                'val' : isCompletedChallenge(player, ChallengeKeys.TROLL, GameMode.SADISTIC, 6) ? bd(110) : bd(100),
             },
             'rainbowHeart' : {
                 'name': 'x Rainbow Heart',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.RAINBOW_HEART) ? bd(110) : bd(100)
+                'val' : isMaxxedItemSet(player, ItemSets.RAINBOW_HEART) ? bd(110) : bd(100)
             },
             'duck' : {
                 'name': 'x Duck Set',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.DUCK) ? bd(106) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.DUCK) ? bd(106) : bd(100),
             },
             'total' : {
-                'val' : totalMayoSpeed(playerStates),
+                'val' : totalMayoSpeed(player),
                 'sigFig': 2,
             }
         },
@@ -1090,33 +1083,33 @@ export function getStatInfo(playerStates : any) {
             },
             'perk' : {
                 'name': 'x Perk ',
-                'val' : perkInfo(playerStates, Stat.CARD_SPEED),
+                'val' : perkInfo(player, Stat.CARD_SPEED),
                 'sigFig': 2,
             },
             'quirk' : {
                 'name': 'x Quirk ',
-                'val' : quirkInfo(playerStates, Stat.CARD_SPEED),
+                'val' : quirkInfo(player, Stat.CARD_SPEED),
                 'sigFig': 2,
             },
             'wish' : {
                 'name': 'x Wish ',
-                'val' : wishInfo(playerStates, Stat.CARD_SPEED),
+                'val' : wishInfo(player, Stat.CARD_SPEED),
                 'sigFig': 2,
             },
             'trollChallenge' : {
                 'name' : 'x Sad Troll Challenge',
-                'val' : isCompletedChallenge(playerStates, ChallengeKeys.TROLL, GameMode.SADISTIC, 5) ? bd(110) : bd(100),
+                'val' : isCompletedChallenge(player, ChallengeKeys.TROLL, GameMode.SADISTIC, 5) ? bd(110) : bd(100),
             },
             'rainbowHeart' : {
                 'name': 'x Rainbow Heart',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.RAINBOW_HEART) ? bd(110) : bd(100)
+                'val' : isMaxxedItemSet(player, ItemSets.RAINBOW_HEART) ? bd(110) : bd(100)
             },
             'duck' : {
                 'name': 'x Duck Set',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.DUCK) ? bd(106) : bd(100),
+                'val' : isMaxxedItemSet(player, ItemSets.DUCK) ? bd(106) : bd(100),
             },
             'total' : {
-                'val' : totalCardSpeed(playerStates),
+                'val' : totalCardSpeed(player),
                 'sigFig': 2,
             }
         },
@@ -1127,25 +1120,25 @@ export function getStatInfo(playerStates : any) {
             },
             'perk' : {
                 'name': '+ Perk ',
-                'val' : perkInfo(playerStates, Stat.TAG_EFFECT).subtract(bd(100)),
+                'val' : perkInfo(player, Stat.TAG_EFFECT).subtract(bd(100)),
                 'sigFig': 3,
             },
             'quirk' : {
                 'name': '+ Quirk ',
-                'val' : quirkInfo(playerStates, Stat.TAG_EFFECT).subtract(bd(100)),
+                'val' : quirkInfo(player, Stat.TAG_EFFECT).subtract(bd(100)),
                 'sigFig': 3,
             },
             'wish' : {
                 'name': '+ Wish ',
-                'val' : wishInfo(playerStates, Stat.TAG_EFFECT).subtract(bd(100)),
+                'val' : wishInfo(player, Stat.TAG_EFFECT).subtract(bd(100)),
                 'sigFig': 3,
             },
             'beatingHeart' : {
                 'name': '+ Beating Heart Set',
-                'val' : isMaxxedItemSet(playerStates, ItemSets.BEATING_HEART) ? bd(1) : bd(0),
+                'val' : isMaxxedItemSet(player, ItemSets.BEATING_HEART) ? bd(1) : bd(0),
             },
             'total' : {
-                'val' : totalTagEffect(playerStates),
+                'val' : totalTagEffect(player),
                 'sigFig': 3,
             }
         },

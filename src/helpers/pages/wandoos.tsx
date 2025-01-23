@@ -1,7 +1,8 @@
-import { Wandoos, WANDOOS_OS, WANDOOSLIST } from "@/assets/wandoos"
 import bigDecimal from "js-big-decimal"
+import { WANDOOS_OS, WANDOOSLIST, Wandoos } from "../../assets/wandoos"
 import { isNormalMode } from "../gameMode"
-import { bd, bigdec_equals, bigdec_max, bigdec_min, greaterThan } from "../numbers"
+import { bd, bigdec_min, greaterThan, bigdec_max, bigdec_equals } from "../numbers"
+
 
 
 type wandoosType = {

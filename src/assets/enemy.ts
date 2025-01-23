@@ -1,6 +1,6 @@
-import { bd, bigdec_max, isZero, lessThan } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
+import { bd, bigdec_max, isZero, lessThan } from "../helpers/numbers"
 import { Wish } from "./wish"
 
 export class AttackStat {
