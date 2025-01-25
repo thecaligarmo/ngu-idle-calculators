@@ -1,15 +1,13 @@
-import bigDecimal from "js-big-decimal";
 import { useState } from "react";
 import { Hack } from "../assets/hacks";
 import { ChoiceButton } from "../components/buttons/ChoiceButton";
 import { PlusMinusButtons } from "../components/buttons/PlusMinusButtons";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
-import { getPlayer, getNumberFormat } from "../components/Context";
+import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
-import { StandardTableRowType, StandardTable } from "../components/StandardTable";
-import { isOne, bd, toNum, isZero, pn, dn } from "../helpers/numbers";
-import { parseNum, parseObj } from "../helpers/parsers";
+import { StandardTable, StandardTableRowType } from "../components/StandardTable";
+import { bd, dn, isZero, pn, toNum } from "../helpers/numbers";
 import { getPlayerDataInfo } from "../helpers/playerInfo";
 
 

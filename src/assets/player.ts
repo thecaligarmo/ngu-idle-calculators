@@ -49,6 +49,29 @@ export class Player {
     }
     
     get(key : string) : any {
+
+        const calcToGo : {[k:string] : string} = {
+            'totalAPBonus' : 'goAP',
+            'totalDropChance' : 'goDropChance',
+            'totalEnergyCap' : 'goEnergyCap',
+            'totalEnergyNGUSpeedFactor' : 'goEnergyNGU',
+            'totalEnergyPower' : 'goEnergyPower',
+            'totalExpBonus' : 'goExperience',
+            'totalHackSpeed' : 'goRawHackSpeed',
+            'totalMagicCap' : 'goMagicCap',
+            'totalMagicNGUSpeedFactor' : 'goMagicNGU',
+            'totalMagicPower' : 'goMagicPower',
+            'totalPower' : 'goPower',
+            'totalQuestDropBonus' : 'goQuestDrop',
+            'totalRes3Cap' : 'goResource3Cap',
+            'totalRes3Power' : 'goResource3Power',
+            'totalRespawnTime' : 'goRespawn',
+            'totalSeedGainBonus' : 'goSeedGain',
+            'totalWishSpeed' : 'goRawWishSpeed',
+            'totalYggdrasilYieldBonus' : 'goYggdrasilYield',
+        }
+        
+
         if(_.isUndefined(this.playerData[key])) {
             console.log("Can't get key: ", key, " as it doesn't exist.")
             return bd(0)
@@ -59,7 +82,15 @@ export class Player {
             if(_.isNaN(val) || val == 'NaN'){
                 console.log("Getting NaN", key)
             }
-            return bd(val)
+
+            // Handle gear optimizer stuff
+            val = bd(val)
+            if(key in calcToGo) {
+                val = val.multiply(
+                    this.get(calcToGo[key]).divide(bd(100)).add(bd(1))
+                )
+            }
+            return val
         } else if(playerDataInfo[key]['type'] == 'boolean') {
             return JSON.parse(val)
         } else if(playerDataInfo[key]['type'] == 'object') {
@@ -675,9 +706,6 @@ export class Player {
             itopodZone.getOptimalFloor(totalPower(this), idleAttackModifier)
         )
     }
-
-    
-
     
 
             
