@@ -73,7 +73,7 @@ export class Perk extends Resource{
         this.updateStats()
     }
     updateStats() {
-        for (var prop of Object.keys(this.base)) {
+        for (let prop of Object.keys(this.base)) {
             // Fibonacci Perk
             if (this.id == 94) {
                 this[prop] = (this.level > 0) ?  this.base[prop] : 0

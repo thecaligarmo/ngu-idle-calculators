@@ -4,9 +4,7 @@ import ImportSaveForm from "./ImportSaveForm/importSaveForm";
 import { cardsUnlocked, cookingUnlocked, getGameMode, hacksUnlocked, isAtLeastEvilMode, isSadMode, wandoosUnlocked, wishesUnlocked, yggUnlocked } from "@/helpers/gameMode";
 import { NavLink, useLocation } from "react-router";
 
-
-
-export default function Nav({ children } : PropsWithChildren) {
+export default function Nav({ } : PropsWithChildren) {
     const {numberFormat, setNumberFormat} = useNumberFormatContext();
     const pathname = useLocation().pathname;
     
@@ -17,7 +15,7 @@ export default function Nav({ children } : PropsWithChildren) {
     const inactiveTab = tabClasses + "bg-white dark:bg-black text-blue-500 dark:hover:text-blue-800 hover:text-blue-300"
 
     function NavElt({children, href, hasChildren=false} : {children: ReactNode, href: string, hasChildren?: boolean}) {
-        var actTab = hasChildren ? (pathname.startsWith(href)) : (pathname == href)
+        const actTab = hasChildren ? (pathname.startsWith(href)) : (pathname == href)
         return (<li key="home" className={actTab ? activeTabLi : inactiveTabLi}>
             <NavLink className={actTab ? activeTab : inactiveTab} to={href}>{children}</NavLink>
         </li>)
@@ -25,8 +23,8 @@ export default function Nav({ children } : PropsWithChildren) {
 
     const player = getPlayer()
     
-    var curTitan = player.get('highestTitanKilledId')
-    var gameMode = getGameMode(player.get('gameMode'))
+    const curTitan = player.get('highestTitanKilledId')
+    const gameMode = getGameMode(player.get('gameMode'))
     
     return (
       <nav>

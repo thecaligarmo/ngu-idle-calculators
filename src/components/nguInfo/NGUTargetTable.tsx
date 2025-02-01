@@ -15,9 +15,9 @@ interface NGUProps {
 }
 
 export default function NGUTargetTable({type, NGUs, targets, seconds, totalSeconds, fmt} : NGUProps) : ReactNode{
-    var order = ["type", "time", "target", "curVal", "incAmt", "tarVal"]
+    const order = ["type", "time", "target", "curVal", "incAmt", "tarVal"]
     
-    var header = {
+    const header = {
         "type": <span>{type} NGU</span>,
         "time": "Time",
         "target": "Target",
@@ -25,18 +25,18 @@ export default function NGUTargetTable({type, NGUs, targets, seconds, totalSecon
         "incAmt": "Increase Amount",
         "tarVal": "Value at Target",
     }
-    var dataRows : StandardTableRowType = {}
+    let dataRows : StandardTableRowType = {}
     
     for (let index in NGUs) {
         let ngu = NGUs[index]
 
-        var targetLvl = targets[index]
-        var secs = seconds[index]
+        let targetLvl = targets[index]
+        let secs = seconds[index]
         
-        var val = bd(ngu.getStatValue(ngu.statnames[0], toNum(targetLvl)))
-        var curVal = bd(ngu.getStatValue(ngu.statnames[0]))
+        let val = bd(ngu.getStatValue(ngu.statnames[0], toNum(targetLvl)))
+        let curVal = bd(ngu.getStatValue(ngu.statnames[0]))
 
-        var precision = 0;
+        let precision = 0;
         if (ngu.key == 'NGUWandoos' || ngu.key == 'NGUAdventureA' || ngu.key == 'NGUDropChance' || ngu.key == 'NGUMagicNGU'
             || ngu.key == 'NGUYggdrasil' || ngu.key == 'NGUTimeMachine' || ngu.key == 'NGUEnergyNGU'
         ) {
@@ -63,7 +63,7 @@ export default function NGUTargetTable({type, NGUs, targets, seconds, totalSecon
         "time" : dn(totalSeconds),
     }
 
-    var extraClasses = {
+    const extraClasses = {
         "time": "text-right text-red-500",
         "target": "text-blue-500",
         "incAmt": "text-green-500"

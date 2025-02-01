@@ -1,9 +1,8 @@
-import bigDecimal from "js-big-decimal";
-import { ReactElement } from "react";
 import { NGU } from "@/assets/ngus";
 import { pn } from "@/helpers/numbers";
+import bigDecimal from "js-big-decimal";
+import { ReactElement } from "react";
 import { StandardTable, StandardTableRowType } from "../StandardTable";
-
 
 interface NGUProps {
     type: string;
@@ -15,13 +14,13 @@ interface NGUProps {
 
 export default function NGUCapTable({type, NGUs, targets, speedFactor, fmt} : NGUProps) : ReactElement {
 
-    var order = ["type", "cap", "target"]
-    var header = {
+    const order = ["type", "cap", "target"]
+    const header = {
         "type": <span>{type} NGU</span>,
         "cap": "Cap",
         "target": "Target"
     }
-    var dataRows : StandardTableRowType = {}
+    const dataRows : StandardTableRowType = {}
     for (let index in NGUs) {
         let ngu = NGUs[index]
         dataRows[ngu.key] = {

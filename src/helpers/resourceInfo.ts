@@ -1,5 +1,3 @@
-import bigDecimal from "js-big-decimal";
-import _ from "lodash";
 import { AdvTraining } from "@/assets/advTraining";
 import { APItem } from "@/assets/apItems";
 import { Beard } from "@/assets/beards";
@@ -18,18 +16,20 @@ import { ItemSet, ItemSets } from "@/assets/sets";
 import { Stat } from "@/assets/stat";
 import { Wandoos } from "@/assets/wandoos";
 import { Wish } from "@/assets/wish";
+import bigDecimal from "js-big-decimal";
+import _ from "lodash";
 import { getGameMode } from "./gameMode";
 import { bd, lessThan, toNum } from "./numbers";
 
 export function achievementAPBonus(player: Player) : bigDecimal {
-    var achievements = player.get('achievements')
+    const achievements = player.get('achievements')
     
-    var sum = 0
-    for (var i = 0; i < achievements.length; i++) {
+    let sum = 0
+    for (let i = 0; i < achievements.length; i++) {
         if(achievements[i] == 1) {
             // There are 16 of the first 6, so we can collapse as they
             // have identical points
-            var j = (i < 96) ? i % 16 : i
+            let j = (i < 96) ? i % 16 : i
             switch(j) {
                 case 0:
                 case 96:
@@ -139,8 +139,8 @@ export function achievementAPBonus(player: Player) : bigDecimal {
 }
 
 export function advTrainingInfo(player: Player, key: string) : bigDecimal {
-    var advTrainings : AdvTraining[] = player.get('advTrainings')
-    var stat : number = 100
+    const advTrainings : AdvTraining[] = player.get('advTrainings')
+    let stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if (advTrainings.length > 0) {
             advTrainings.forEach((g) => {
@@ -152,9 +152,9 @@ export function advTrainingInfo(player: Player, key: string) : bigDecimal {
 }
 
 export function apItemInfo(player: Player, key: string) : bigDecimal {
-    var apItems : APItem[] = player.get('apItems')
-    var stat : number = 100;
-    var blueHeart = isMaxxedItemSet(player, ItemSets.BLUE_HEART)
+    let apItems : APItem[] = player.get('apItems')
+    let stat : number = 100;
+    const blueHeart = isMaxxedItemSet(player, ItemSets.BLUE_HEART)
     if (Object.values(Stat).includes(key)) {
         if(apItems.length > 0) {
             apItems.forEach((g) => {
@@ -174,8 +174,8 @@ export function apItemInfo(player: Player, key: string) : bigDecimal {
 }
 
 export function beardInfoTemp(player: Player, key: string, pretendOn : boolean = false) : bigDecimal{
-    var beards : Beard[] = player.get('beards')
-    var stat : number = 100
+    let beards : Beard[] = player.get('beards')
+    let stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( beards.length > 0) {
             beards.forEach((g) => {
@@ -187,8 +187,8 @@ export function beardInfoTemp(player: Player, key: string, pretendOn : boolean =
 }
 
 export function beardInfoPerm(player: Player, key: string) : bigDecimal{
-    var beards : Beard[] = player.get('beards')
-    var stat : number = 100
+    let beards : Beard[] = player.get('beards')
+    let stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( beards.length > 0) {
             beards.forEach((g) => {
@@ -200,8 +200,8 @@ export function beardInfoPerm(player: Player, key: string) : bigDecimal{
 }
 
 export function cardInfo(player: Player, key: string) :bigDecimal {
-    var cards : Card[] = player.get('cards')
-    var stat : number = 100
+    let cards : Card[] = player.get('cards')
+    let stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if(cards.length > 0) {
             cards.forEach((g) => {
@@ -216,8 +216,8 @@ export function cardInfo(player: Player, key: string) :bigDecimal {
 }
 
 export function activeBeards(player: Player, type : string = '') : bigDecimal {
-    var beards : Beard[] = player.get('beards')
-    var activeBeards = 0
+    let beards : Beard[] = player.get('beards')
+    let activeBeards = 0
     if ( beards.length > 0) {
         beards.forEach((g) => {
             if(g.active) {
@@ -233,8 +233,8 @@ export function activeBeards(player: Player, type : string = '') : bigDecimal {
 }
 
 export function challengeInfo(player: Player, key : string, gameMode : number = GameMode.ALL) : bigDecimal{
-    var challenges : {[key:number] : Challenge[]} = player.get('challenges')
-    var stat : number = 1
+    let challenges : {[key:number] : Challenge[]} = player.get('challenges')
+    let stat : number = 1
     if (Object.values(Stat).includes(key)) {
         if(gameMode === GameMode.ALL) {
             ALL_GAME_MODES.forEach((mode) => {
@@ -263,10 +263,10 @@ export function cookingInfo(player: Player, key : string) : bigDecimal {
 }
 
 function cubeInfo(player: Player, key : string, capAmount : bigDecimal = bd(-1)) : bigDecimal {
-    var power = player.get('cubePower')
-    var toughness = player.get('cubeToughness')
-    var total = power.add(toughness)
-    var digits = total.floor().getValue().length
+    let power = player.get('cubePower')
+    let toughness = player.get('cubeToughness')
+    let total = power.add(toughness)
+    let digits = total.floor().getValue().length
     switch(key) {
         case Stat.POWER:
             var extraPow = 0
@@ -338,15 +338,15 @@ function cubeInfo(player: Player, key : string, capAmount : bigDecimal = bd(-1))
 }
 
 function globalDiggerBonus(player: Player ) : number{
-    var diggers : any = player.get('diggers')
-    var totalLevel : number = 0
+    let diggers : any = player.get('diggers')
+    let totalLevel : number = 0
     if (diggers.length){
         totalLevel = Object.keys(diggers).reduce((curVal: number, d : string) => {return diggers[d].maxLevel + curVal}, 0)
     }
-    var challenges : Challenge[] = player.get('challenges')
-    var challengeBonus : number = (!_.isUndefined(challenges[GameMode.NORMAL]) && !_.isUndefined(challenges[GameMode.NORMAL][10]) && challenges[GameMode.NORMAL][10].level > 0) ? 5 : 0;
+    let challenges : Challenge[] = player.get('challenges')
+    let challengeBonus : number = (!_.isUndefined(challenges[GameMode.NORMAL]) && !_.isUndefined(challenges[GameMode.NORMAL][10]) && challenges[GameMode.NORMAL][10].level > 0) ? 5 : 0;
 
-    var partySetBonus : number = isMaxxedItemSet(player, ItemSets.PARTY) ? 5 : 0;
+    let partySetBonus : number = isMaxxedItemSet(player, ItemSets.PARTY) ? 5 : 0;
 
     if (totalLevel <= 500) {
         return 100 + 0.05 * totalLevel + challengeBonus + partySetBonus
@@ -356,8 +356,8 @@ function globalDiggerBonus(player: Player ) : number{
 }
 
 export function diggerInfo(player: Player, key: string) : bigDecimal{
-    var diggers : Digger[] = player.get('diggers')
-    var stat : number = 0
+    let diggers : Digger[] = player.get('diggers')
+    let stat : number = 0
     if (Object.values(Stat).includes(key)) {
         if ( diggers.length > 0) {
             diggers.forEach((g) => {
@@ -375,7 +375,7 @@ export function diggerInfo(player: Player, key: string) : bigDecimal{
 }
 
 export function equipmentInfo(player: Player, key: string) : bigDecimal {
-    var gear : (Item | null)[] = [
+    let gear : (Item | null)[] = [
         player.get('equipmentHead'),
         player.get('equipmentChest'),
         player.get('equipmentLegs'),
@@ -383,8 +383,8 @@ export function equipmentInfo(player: Player, key: string) : bigDecimal {
         player.get('equipmentWeapon'),
         player.get('equipmentWeaponTwo'),
     ]
-    var accs : Item[] = player.get('equipmentAccesories')
-    var stat : number = (key == Stat.POWER || key == Stat.TOUGHNESS || key == Stat.HEALTH || key == Stat.REGEN) ? 0 : 100;
+    let accs : Item[] = player.get('equipmentAccesories')
+    let stat : number = (key == Stat.POWER || key == Stat.TOUGHNESS || key == Stat.HEALTH || key == Stat.REGEN) ? 0 : 100;
     if (Object.values(Stat).includes(key)) {
             gear.forEach((g) => {
                 if(g instanceof Item) {
@@ -414,7 +414,7 @@ export function equipmentInfo(player: Player, key: string) : bigDecimal {
 
 
 export function equipmentWithCubeInfo(player: Player, key: string) : bigDecimal {
-    var stat = equipmentInfo(player, key)
+    let stat = equipmentInfo(player, key)
     
     let capAmount = bd(-1)
     if(key == Stat.POWER) {
@@ -430,7 +430,7 @@ export function equipmentWithCubeInfo(player: Player, key: string) : bigDecimal 
         capAmount = player.get('baseAdventureToughness').add(equipmentInfo(player, Stat.TOUGHNESS))
     }
 
-    var cube = cubeInfo(player, key, capAmount)
+    let cube = cubeInfo(player, key, capAmount)
 
     switch(key) {
         case Stat.POWER:
@@ -449,9 +449,9 @@ export function equipmentWithCubeInfo(player: Player, key: string) : bigDecimal 
 }
 
 export function hackInfo(player: Player, key : string) : bigDecimal{
-    var hacks : Hack[] = player.get('hacks')
-    var stat : number = 100
-    var gameMode : number = getGameMode(player)
+    let hacks : Hack[] = player.get('hacks')
+    let stat : number = 100
+    let gameMode : number = getGameMode(player)
     if (Object.values(Stat).includes(key)) {
         if ( hacks.length > 0) {
             hacks.forEach((g) => {
@@ -466,8 +466,8 @@ export function hackInfo(player: Player, key : string) : bigDecimal{
 }
 
 export function macguffinInfo(player: Player, key : string) : bigDecimal {
-    var macguffins : MacGuffin[] = player.get('macguffins')
-    var stat : number = 100
+    let macguffins : MacGuffin[] = player.get('macguffins')
+    let stat : number = 100
     if (Object.values(Stat).includes(key)) {
         if ( macguffins.length > 0) {
             macguffins.forEach((g) => {
@@ -481,10 +481,10 @@ export function macguffinInfo(player: Player, key : string) : bigDecimal {
 }
 
 export function nguInfo(player: Player, key : string) : bigDecimal{
-    var engus : NGU[] = player.get('energyNGUs')
-    var mngus : NGU[] = player.get('magicNGUs')
-    var gameMode : number = getGameMode(player)
-    var stat : number = 1
+    let engus : NGU[] = player.get('energyNGUs')
+    let mngus : NGU[] = player.get('magicNGUs')
+    let gameMode : number = getGameMode(player)
+    let stat : number = 1
     if (Object.values(Stat).includes(key)) {
         if ( engus.length > 0) {
             engus.forEach((g) => {
@@ -494,7 +494,7 @@ export function nguInfo(player: Player, key : string) : bigDecimal{
             })
         }
         
-        // var x = 1
+        // let x = 1
         if ( mngus.length > 0) {
             mngus.forEach((g) => {
                 if(g.appliesToGameMode(gameMode)) {
@@ -509,9 +509,9 @@ export function nguInfo(player: Player, key : string) : bigDecimal{
 }
 
 export function perkInfo(player: Player, key : string) : bigDecimal{
-    var perks : Perk[] = player.get('perks')
-    var stat : number = 100
-    var gameMode : number = getGameMode(player)
+    let perks : Perk[] = player.get('perks')
+    let stat : number = 100
+    let gameMode : number = getGameMode(player)
     
     if (Object.values(Stat).includes(key)) {
         if ( perks.length > 0) {
@@ -527,10 +527,10 @@ export function perkInfo(player: Player, key : string) : bigDecimal{
 
 
 export function perkLevel(player: Player, key : string) : number {
-    var perks : Perk[] = player.get('perks')
+    let perks : Perk[] = player.get('perks')
     
     if(perks.length > 0) {
-        for(var p of perks) {
+        for(let p of perks) {
             if(p.key == key) {
                 return p.level
             }
@@ -540,9 +540,9 @@ export function perkLevel(player: Player, key : string) : number {
 }
 
 export function quirkInfo(player: Player, key : string) : bigDecimal{
-    var quirks : Quirk[] = player.get('quirks')
-    var stat : number = 100
-    var gameMode : number = getGameMode(player)
+    let quirks : Quirk[] = player.get('quirks')
+    let stat : number = 100
+    let gameMode : number = getGameMode(player)
 
     if (Object.values(Stat).includes(key)) {
         if ( quirks.length > 0) {
@@ -558,7 +558,7 @@ export function quirkInfo(player: Player, key : string) : bigDecimal{
 }
 
 export function wandoosOSLevel(player: Player) : bigDecimal {
-    var wandoos : Wandoos[] = player.get('wandoos')
+    let wandoos : Wandoos[] = player.get('wandoos')
     if(!_.isUndefined(wandoos[0])){
         return bd(wandoos[0].osLevel)
     }
@@ -566,9 +566,9 @@ export function wandoosOSLevel(player: Player) : bigDecimal {
 }
 
 export function wishInfo(player: Player, key : string) : bigDecimal{
-    var wishes : Wish[] = player.get('wishes')
-    var stat : number = 100
-    var gameMode : number = getGameMode(player)
+    let wishes : Wish[] = player.get('wishes')
+    let stat : number = 100
+    let gameMode : number = getGameMode(player)
 
     if (Object.values(Stat).includes(key)) {
         if ( wishes.length > 0) {
@@ -584,7 +584,7 @@ export function wishInfo(player: Player, key : string) : bigDecimal{
 }
 
 // export function isMaxxedItem(player: Player, itemId : number) : boolean {
-//     var itemList = player.get('maxxedItems')
+//     let itemList = player.get('maxxedItems')
 //     if(_.isArray(itemList)){
 //         return player.get('maxxedItems').includes(itemId)
 //     }
@@ -592,12 +592,12 @@ export function wishInfo(player: Player, key : string) : bigDecimal{
 // }
 
 export function isMaxxedItemSet(player: Player, itemSet : ItemSet) : boolean {
-    var itemSets = player.get('itemSets')
+    let itemSets = player.get('itemSets')
     return (itemSet.key in itemSets) ? itemSets[itemSet.key].isMaxxed : false;
 }
 
 export function maxxedItemSetNum(player: Player, itemSet : ItemSet) : number {
-    var itemSets = player.get('itemSets')
+    let itemSets = player.get('itemSets')
     return (itemSet.key in itemSets) ? itemSets[itemSet.key].numMaxxed : 0;
 }
 
@@ -609,8 +609,8 @@ export function isCompletedChallenge(player: Player, key : string, mode : number
     } else if (mode == GameMode.SADISTIC) {
         key = 'sadistic' + key
     }
-    var challenges = player.get('challenges')
-    var challenge = CHALLENGES.getByKey(key)
-    var chosenChallenge = (!_.isUndefined(challenges[mode]) && !_.isUndefined(challenge) && challenges[mode][challenge.id % 100])
+    let challenges = player.get('challenges')
+    let challenge = CHALLENGES.getByKey(key)
+    let chosenChallenge = (!_.isUndefined(challenges[mode]) && !_.isUndefined(challenge) && challenges[mode][challenge.id % 100])
     return (!_.isUndefined(chosenChallenge) && chosenChallenge.level >= level)
 }

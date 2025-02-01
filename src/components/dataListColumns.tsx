@@ -1,16 +1,15 @@
-import { ReactNode } from "react";
-import { getNumberFormat } from "./Context";
-import { bd, pn, toNum } from "@/helpers/numbers";
-import { ChoiceButton } from "./buttons/ChoiceButton";
 import { CardRarityText } from "@/assets/cards";
-import _ from "lodash";
 import Player from "@/assets/player";
+import { pn, toNum } from "@/helpers/numbers";
+import _ from "lodash";
+import { ReactNode } from "react";
+import { ChoiceButton } from "./buttons/ChoiceButton";
+import { getNumberFormat } from "./Context";
 
 
 export function disableItem(reqs: any, itemToRemove: string[]) : string[][] {
-    
-    for(var i = 0; i < reqs.length; i++) {
-        for(var j = 0; j< reqs[i].length; j++) {
+    for(let i = 0; i < reqs.length; i++) {
+        for(let j = 0; j< reqs[i].length; j++) {
             if(itemToRemove.includes(reqs[i][j].key)) {
                 reqs[i][j].key = reqs[i][j].key + "DISABLED"
             }
@@ -24,12 +23,9 @@ export function disableItem(reqs: any, itemToRemove: string[]) : string[][] {
 */
 function dataToList(player : Player, d : any, input : boolean = false) : ReactNode{
     // const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();
-    var fmt = getNumberFormat();
+    const fmt = getNumberFormat();
     
-    var disabled = ""
-    if(d.disabled) {
-        disabled += "hidden"
-    }
+    let disabled = d.disabled ? "hidden" : ""
 
     if (input) {
         // For some reason a checkbox isn't working... so we'll do this instead.
@@ -89,7 +85,7 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
         if (d.key.startsWith('cardRarity')) {
             let rarityOptions : ReactNode[] = []
             for(let k in Object.keys(CardRarityText)) {
-                let v = k.toString()
+                // let v = k.toString()
                 rarityOptions.push(
                     (<ChoiceButton
                         text={CardRarityText[k]}
@@ -110,7 +106,7 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
             </li>)
         }
 
-        var inputClass = "text-black font-normal rounded border border-black dark:border-white"
+        let inputClass = "text-black font-normal rounded border border-black dark:border-white"
         if(d.pre == '') {
             inputClass += " w-32"
         } else {
@@ -204,10 +200,10 @@ export function dataToCols(player: Player, dr : any[], input : boolean = false) 
         params = {...params, ...extraParams}
     }
     
-    for (var colNum in dr) {
-        var col = dr[colNum]
-        var colKey = ''
-        for (var d of col) {
+    for (let colNum in dr) {
+        let col = dr[colNum]
+        let colKey = ''
+        for (let d of col) {
             if(d.key.includes('DISABLED')) {
                 d.key = d.key.replace('DISABLED', '')
                 d.disabled = true
@@ -218,7 +214,7 @@ export function dataToCols(player: Player, dr : any[], input : boolean = false) 
         if(colKey == ''){
             colKey = colNum.toString()
         }
-        var cc = 'inline-block align-top mb-5 '
+        let cc = 'inline-block align-top mb-5 '
         if('colWidths' in params) {
             cc += params['colWidths'][colNum]
         } else {

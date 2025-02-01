@@ -1,7 +1,7 @@
+import Player from "@/assets/player"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { bd, bigdec_max, bigdec_min } from "../numbers"
-import Player from "@/assets/player"
 
 type gensType = {
     energy : {
@@ -71,7 +71,7 @@ function getBuy(desired : bigDecimal, base : bigDecimal) : bigDecimal {
 
 
 function toStr(ty : string, elt : string, upperFirst : boolean = false) {
-    var str = '';
+    let str = '';
     if (upperFirst) {
         str += ty.charAt(0).toUpperCase() + ty.slice(1);
     } else {
@@ -144,7 +144,7 @@ export function getRatioInfo(player : Player) : [gensType, gensType, gensBDType,
     }
 
     // Cost to increase all the things
-    var cost : gensBDType = {'energy' : bd(0), 'magic' : bd(0), 'res3' : bd(0), 'total' : bd(0)}
+    let cost : gensBDType = {'energy' : bd(0), 'magic' : bd(0), 'res3' : bd(0), 'total' : bd(0)}
     cost['energy'] = buy['energy']['power'].multiply(bd(150))
                     .add(buy['energy']['cap'].multiply(bd(40)).divide(bd(10000)))
                     .add(buy['energy']['bar'].multiply(bd(80))).ceil();
@@ -160,7 +160,7 @@ export function getRatioInfo(player : Player) : [gensType, gensType, gensBDType,
     }
     
     // Text for what to buy
-    var suggestedBuy = ""
+    let suggestedBuy = ""
     switch(minItem) {
         case ratUnit['energy']['power']:
             suggestedBuy = "Energy Power"

@@ -49,9 +49,9 @@ export function getLevelsGainedInWandoos({
     wandoos ?: Wandoos
 }) : wandoosOsType {
     
-    var sigFig = 20
+    const sigFig = 20
     
-    var wandoosBase : osType = {
+    let wandoosBase : osType = {
         '98' : bd(1),
         'meh' : bd(1000),
         'xl' : bd(1000000),
@@ -67,12 +67,12 @@ export function getLevelsGainedInWandoos({
     }
 
     // need baseMultiplier before we change the bases
-    var baseMultiplier = wandoosBase['98']
+    let baseMultiplier = wandoosBase['98']
     if(wandoos.os != WANDOOS_OS.NINETY_EIGHT) {
-        var baseMultiplier = wandoos.os == WANDOOS_OS.MEH ? wandoosBase['meh'] : wandoosBase['xl'];
+        baseMultiplier = wandoos.os == WANDOOS_OS.MEH ? wandoosBase['meh'] : wandoosBase['xl'];
     }
 
-    var wandoosRatios = {
+    let wandoosRatios = {
         '98' : baseMultiplier.divide(wandoosBase['98'], sigFig),
         'meh' : baseMultiplier.divide(wandoosBase['meh'], sigFig),
         'xl' : baseMultiplier.divide(wandoosBase['xl'], sigFig),
@@ -90,7 +90,7 @@ export function getLevelsGainedInWandoos({
         }
     }
 
-    var fillsPerMinute : wandoosOsType = {} as wandoosOsType; // : {[key : 'energy' | 'magic'] : bigDecimal }
+    let fillsPerMinute : wandoosOsType = {} as wandoosOsType; // : {[key : 'energy' | 'magic'] : bigDecimal }
     var os : keyof typeof fillsPerMinute
     for(os in wandoosRatios) {
         fillsPerMinute[os] = {} as wandoosType;
@@ -100,7 +100,7 @@ export function getLevelsGainedInWandoos({
         }
     }
 
-    var timeToFill : wandoosOsType = {} as wandoosOsType; 
+    let timeToFill : wandoosOsType = {} as wandoosOsType; 
     var os : keyof typeof timeToFill
     for(os in wandoosRatios) {
         timeToFill[os] = {} as wandoosType;
@@ -113,7 +113,7 @@ export function getLevelsGainedInWandoos({
         }
     }
 
-    var lvlsGained : wandoosOsType = {} as wandoosOsType; 
+    let lvlsGained : wandoosOsType = {} as wandoosOsType; 
     var os : keyof typeof lvlsGained
     for(os in wandoosRatios) {
         lvlsGained[os] = {} as wandoosType;
@@ -129,8 +129,8 @@ export function getLevelsGainedInWandoos({
 }
 
 export function getWandoosBonuses(lvlsGained : wandoosOsType, wandoos : Wandoos = WANDOOSLIST[0]) : osType {
-    var bonuses : osType = {} as osType;
-    var os : keyof typeof bonuses
+    let bonuses : osType = {} as osType;
+    let os : keyof typeof bonuses
     for(os in lvlsGained) {
         bonuses[os] = wandoos.getStatByLevel(lvlsGained[os]['energy'], lvlsGained[os]['magic'], osMap[os])
                 .multiply(bd(100))
@@ -142,8 +142,8 @@ export function getWandoosBonuses(lvlsGained : wandoosOsType, wandoos : Wandoos 
 
 
 export function getMaxOSBonus(bonuses : osType) : string {
-    var max = bigdec_max(...Object.values(bonuses))
-    for(var ty of Object.keys(bonuses)){
+    const max = bigdec_max(...Object.values(bonuses))
+    for(let ty of Object.keys(bonuses)){
         if (bigdec_equals(bonuses[ty as keyof typeof bonuses], max)) {
             return ty
         }

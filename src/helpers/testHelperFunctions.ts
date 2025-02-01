@@ -45,8 +45,8 @@ export function expectClose(value : number | bigDecimal , expect : number | bigD
         range = Math.max(bd(expect).floor().getValue().length - 3, 0)
     }
 
-    var v = value / (10 ** range)
-    var e = expect / (10 ** range)
+    const v = value / (10 ** range)
+    const e = expect / (10 ** range)
     return [v, e]
 }
 

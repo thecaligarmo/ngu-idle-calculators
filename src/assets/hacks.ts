@@ -1,6 +1,6 @@
+import { bd, lessThan } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
-import { bd, lessThan } from "@/helpers/numbers"
 import { GameMode } from "./mode"
 import Resource, { ResourceContainer, prop } from "./resource"
 import { Stat } from "./stat"
@@ -101,7 +101,7 @@ export class Hack extends Resource {
         this.updateStats()
     }
     updateStats() : void {
-        for (var prop of Object.keys(this.base)) {
+        for (let prop of Object.keys(this.base)) {
             this[prop] = this.base[prop] * this.level
         }
     }
@@ -120,7 +120,7 @@ export class Hack extends Resource {
     }
 
     getStatAtMilestone(milestone : number) : number {
-        var level = this.levelsPerMilestone() * milestone
+        const level = this.levelsPerMilestone() * milestone
         return this.getStatValue('', level)
     }
 
@@ -139,7 +139,7 @@ export class Hack extends Resource {
         if(level == -1) {
             level = this.level
         }
-        var numMilestones = this.getMilestone(level)
+        const numMilestones = this.getMilestone(level)
         return this.milestoneBonus ** numMilestones
     }
     
@@ -261,9 +261,9 @@ export class Hack extends Resource {
 
     getLevelFromVal(value : number) : number {
         // Due to the milestones, there's no "nice" way to do this other than looping.
-        var prop = Object.keys(this.base)[0]
-        var level = this.level
-        var val = this.getStatValue(prop)
+        let prop = Object.keys(this.base)[0]
+        let level = this.level
+        let val = this.getStatValue(prop)
         // First go down
         while(val > value) {
             level = level - 1
@@ -333,7 +333,7 @@ export class Hack extends Resource {
             level = this.level
         }
 
-        var a = 1.0078
+        const a = 1.0078
         return bd( 1 + (a * level + a - level - 2) * a**(level + 1))
                 .divide(bd((1 - a)**2))
         
@@ -344,8 +344,8 @@ export class Hack extends Resource {
             level = this.level
         }
 
-        var levelsPerMilestone = this.levelsPerMilestone()
-        var milestones = this.getMilestone(level)
+        const levelsPerMilestone = this.levelsPerMilestone()
+        const milestones = this.getMilestone(level)
         return (milestones + 1) * levelsPerMilestone
     }
 
@@ -354,9 +354,9 @@ export class Hack extends Resource {
             level = this.level
         }
 
-        var levelsPerMilestone = this.levelsPerMilestone()
-        var milestones = this.getMilestone(level)
-        var lvl = milestones * levelsPerMilestone
+        const levelsPerMilestone = this.levelsPerMilestone()
+        const milestones = this.getMilestone(level)
+        const lvl = milestones * levelsPerMilestone
         if (lvl == level) {
             return (milestones - 1) * levelsPerMilestone
         }
@@ -364,9 +364,9 @@ export class Hack extends Resource {
     }
 
     getMaxLevelHackDay(res3cap : bigDecimal, res3pow : bigDecimal, hackSpeed : bigDecimal) : number {
-        var level = this.getNextMilestone()
+        let level = this.getNextMilestone()
 
-        var maxTime = bd(this.getMaxTimeHackDay())
+        const maxTime = bd(this.getMaxTimeHackDay())
 
         // var t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, level)
         // if(isOne(t)) {
@@ -380,9 +380,9 @@ export class Hack extends Resource {
         // return level - levelsPerMilestone
 
         // We use math to find a smaller equation.
-        var a = 1.0078
-        var sigfig = 12
-        var gt = maxTime
+        const a = 1.0078
+        const sigfig = 12
+        const gt = maxTime
                     .multiply(res3cap)
                     .multiply(res3pow)
                     .multiply(hackSpeed)
@@ -394,7 +394,7 @@ export class Hack extends Resource {
                 )
 
         // var level = this.level + levelsPerMilestone
-        var t = bd((a * level - 1 - level) * a**(level))
+        let t = bd((a * level - 1 - level) * a**(level))
         while (lessThan(t, gt)) { 
             level = this.getNextMilestone(level)
             t = bd((a * level - 1 - level) * a**(level))

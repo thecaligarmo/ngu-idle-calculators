@@ -1,6 +1,6 @@
+import { bd, bigdec_equals, bigdec_min, factorial, lessThan, Polynomial, toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
-import { bd, bigdec_equals, bigdec_min, factorial, lessThan, Polynomial, toNum } from "@/helpers/numbers"
 import { Item, ITEMS } from "./items"
 import Zone from "./zones"
 
@@ -31,7 +31,7 @@ export class ItemSet {
         if (!_.isUndefined(data.inventory.itemList[this.key + "Complete"]) && data.inventory.itemList[this.key + "Complete"] === 1) {
             this.isMaxxed = true
         } else {
-            var maxxed = true
+            let maxxed = true
             for(let item of this.items) {
                 if(data.inventory.itemList.itemMaxxed[item.id] == 0) {
                     maxxed = false
@@ -48,11 +48,11 @@ export class ItemSet {
                 this.items[item].level = 100
             }
         } else {
-            for(var item of this.items) {
+            for(let item of this.items) {
                 if(data.inventory.itemList.itemMaxxed[item.id] == 1) {
                     this.numMaxxed += 1
                 }
-                var inv = data.inventory.inventory.filter((it : any) => it.id == item.id)
+                let inv = data.inventory.inventory.filter((it : any) => it.id == item.id)
                 if (inv.length > 0) {
                     for(let it of inv) {
                         item.importStats(it)
@@ -193,12 +193,11 @@ export class ItemSet {
 
     secsToCompletion(totalDropChance : bigDecimal, totalPower: bigDecimal, idleAttackModifier : bigDecimal, redLiquidBonus : boolean = false, totalRespawnTime : bigDecimal = bd(4)) : bigDecimal | string {
         if(this.isZoneSet()) {
-            var killsToCompletion = this.killsToCompletion(totalDropChance)
+            let killsToCompletion = this.killsToCompletion(totalDropChance)
             if(_.isString(killsToCompletion)) {
                 return killsToCompletion
             }
-            var killsPerHour = this.getZones()[0].getKillsPerHour(totalPower, idleAttackModifier, redLiquidBonus, totalRespawnTime)
-            console.log('info', killsPerHour, killsToCompletion)
+            let killsPerHour = this.getZones()[0].getKillsPerHour(totalPower, idleAttackModifier, redLiquidBonus, totalRespawnTime)
             return killsToCompletion.multiply(bd(60 * 60)).divide(killsPerHour)
         }
         return 'Not Implemented'
@@ -212,8 +211,8 @@ export class ItemSet {
     }
 
     getZones(): Zone[] {
-        var zones :Zone[] = []
-        var seen : number[][] = []
+        let zones :Zone[] = []
+        let seen : number[][] = []
         for(let it of this.items) {
             for(let z of it.zone) {
                 let s = [z.id, z.level]

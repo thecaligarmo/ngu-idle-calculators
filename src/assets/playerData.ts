@@ -524,13 +524,3 @@ export const playerDataInfo : {[k:string] : dataInfoType}= {
     'goExperience' : {'type': 'number', 'default': 0, 'percent': true},
     
 }
-
-
-
-/*
-
-[['hoursPerDay-2', 24], 'hoursOfflinePerDay-2',],
-        [ 'bluePill^','beastButter^', 'includeMajorQuests^', 'idleMajorQuests^'],
-        ['dailySpinTier-1', 'includeDailySpinJackpots^', 'includeValueOfConsumables^',  'moneyPitGoldToss?1e', 'moneyPitTossesPerDay-2',],
-        
-        */

@@ -1,8 +1,7 @@
-import bigDecimal from "js-big-decimal";
 import { bd, greaterThan } from "@/helpers/numbers";
+import bigDecimal from "js-big-decimal";
 import { GameMode } from "./mode";
 import Resource, { ResourceContainer } from "./resource";
-
 
 export class Dish extends Resource {
     pairs : Ingredient[][]
@@ -18,23 +17,23 @@ export class Dish extends Resource {
     }
 
     importStats(data : any) {
-        var ing1Data = data.ingredients[data.pair1[0]]
-        var ing2Data = data.ingredients[data.pair1[1]]
-        var ing3Data = data.ingredients[data.pair2[0]]
-        var ing4Data = data.ingredients[data.pair2[1]]
-        var ing5Data = data.ingredients[data.pair3[0]]
-        var ing6Data = data.ingredients[data.pair3[1]]
-        var ing7Data = data.ingredients[data.pair4[0]]
-        var ing8Data = data.ingredients[data.pair4[1]]
+        const ing1Data = data.ingredients[data.pair1[0]]
+        const ing2Data = data.ingredients[data.pair1[1]]
+        const ing3Data = data.ingredients[data.pair2[0]]
+        const ing4Data = data.ingredients[data.pair2[1]]
+        const ing5Data = data.ingredients[data.pair3[0]]
+        const ing6Data = data.ingredients[data.pair3[1]]
+        const ing7Data = data.ingredients[data.pair4[0]]
+        const ing8Data = data.ingredients[data.pair4[1]]
 
-        var ing1 = INGREDIENTS[ing1Data.propertyIndex]
-        var ing2 = INGREDIENTS[ing2Data.propertyIndex]
-        var ing3 = INGREDIENTS[ing3Data.propertyIndex]
-        var ing4 = INGREDIENTS[ing4Data.propertyIndex]
-        var ing5 = INGREDIENTS[ing5Data.propertyIndex]
-        var ing6 = INGREDIENTS[ing6Data.propertyIndex]
-        var ing7 = INGREDIENTS[ing7Data.propertyIndex]
-        var ing8 = INGREDIENTS[ing8Data.propertyIndex]
+        const ing1 = INGREDIENTS[ing1Data.propertyIndex]
+        const ing2 = INGREDIENTS[ing2Data.propertyIndex]
+        const ing3 = INGREDIENTS[ing3Data.propertyIndex]
+        const ing4 = INGREDIENTS[ing4Data.propertyIndex]
+        const ing5 = INGREDIENTS[ing5Data.propertyIndex]
+        const ing6 = INGREDIENTS[ing6Data.propertyIndex]
+        const ing7 = INGREDIENTS[ing7Data.propertyIndex]
+        const ing8 = INGREDIENTS[ing8Data.propertyIndex]
 
         ing1.importStats(ing1Data)
         ing2.importStats(ing2Data)
@@ -85,16 +84,16 @@ export class Dish extends Resource {
     }
 
     orderedIngredients() : Ingredient[]{
-        var ings : Ingredient[] = []
-        for(var i of this.ingredientsOrder) {
+        let ings : Ingredient[] = []
+        for(let i of this.ingredientsOrder) {
             ings.push(this.pairs[this.ingToPairMap[i][0]][this.ingToPairMap[i][1]])
         }
         return ings
     }
 
     makeOptimal() {
-        var optimalScores : number[][] = this.getOptimalScore()
-        for(var i in optimalScores) {
+        let optimalScores : number[][] = this.getOptimalScore()
+        for(let i in optimalScores) {
             this.pairs[i][0].level = optimalScores[i][0]
             this.pairs[i][1].level = optimalScores[i][1]
             this.pairs[i][0].altLevel = this.pairs[i][1].isUnlocked ? optimalScores[i][1] : optimalScores[i][0]
@@ -105,19 +104,19 @@ export class Dish extends Resource {
     }
 
     getOptimalScore() : number[][]{
-        var maxPairs : number[][] = []
-        for(var i in this.pairs) {
-            var maxScore = bd(0)
-            var maxPair = [0,0]
-            var ing1 = this.pairs[i][0]
-            var ing2 = this.pairs[i][1]
-            for(var k = 0; k < 21; k++) {
+        let maxPairs : number[][] = []
+        for(let i in this.pairs) {
+            let maxScore = bd(0)
+            let maxPair = [0,0]
+            const ing1 = this.pairs[i][0]
+            const ing2 = this.pairs[i][1]
+            for(let k = 0; k < 21; k++) {
                 ing1.level = k
                 ing2.altLevel = k
-                for(var j = 0; j < 21; j++) {
+                for(let j = 0; j < 21; j++) {
                     ing2.level = j
                     ing1.altLevel = j
-                    var score = this.getScore(ing1, ing2, this.pairTargets[i])
+                    const score = this.getScore(ing1, ing2, this.pairTargets[i])
                     if(greaterThan(score, maxScore)) {
                         maxScore = score
                         maxPair = [k, j]
@@ -130,7 +129,7 @@ export class Dish extends Resource {
     }
 
     getScore(ing1: Ingredient, ing2 : Ingredient, pairTarget : number) : bigDecimal {
-        var sum = bd(0)
+        let sum = bd(0)
         if (ing1.isUnlocked) {
             sum = sum
                     .add(this.singleScore(ing1, ing1))

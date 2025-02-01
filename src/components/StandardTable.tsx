@@ -6,7 +6,7 @@ export type StandardTableRowType = {[key:string]: {[k:string] : string|ReactNode
 export function StandardTable({order, header, rows, fullWidth = true, extraRowClasses = {}}
     : {order: string[], header: {[key:string]:(string|ReactNode)}, rows: StandardTableRowType, fullWidth ?: boolean, extraRowClasses ?: {[k:string] : string} })
     {
-    var headRow : ReactNode[] = []
+    let headRow : ReactNode[] = []
     for(let it of order) {
         headRow.push((
             <th key={it} className="px-2">
@@ -15,7 +15,7 @@ export function StandardTable({order, header, rows, fullWidth = true, extraRowCl
         ))
     }
 
-    var contentRows : ReactNode[] = []
+    let contentRows : ReactNode[] = []
     let i = 0
     for(let key in rows) {
         i += 1

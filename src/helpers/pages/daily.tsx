@@ -1,10 +1,8 @@
+import { AttackStat, Titan, Titans } from "@/assets/enemy"
+import { Wish } from "@/assets/wish"
 import bigDecimal from "js-big-decimal"
 import { ReactElement } from "react"
-import { Titans, Titan, AttackStat } from "@/assets/enemy"
-import { Wish } from "@/assets/wish"
-import { bd, greaterThan, bigdec_min, toNum } from "../numbers"
-
-
+import { bd, bigdec_min, greaterThan, toNum } from "../numbers"
 
 export function getQuestInfo(
     {
@@ -54,15 +52,15 @@ export function getQuestInfo(
     'qp' : {'major' : bigDecimal, 'minor': bigDecimal, 'perMajor' : bigDecimal, 'perMinor' : bigDecimal},
 } {
 
-    var itemsPerQuest = bd(fibQuestRNG ? 50 : 54.5)
-    var beastButterMultiplier = beastButter
+    let itemsPerQuest = bd(fibQuestRNG ? 50 : 54.5)
+    const beastButterMultiplier = beastButter
         ? (blueHeart ? bd(2.2) : bd(2))
         : bd(1)
-    var idleAttackCooldown = redLiquidBonus ? bd(0.8) : bd(1)
-    var respawnTime = totalRespawnTime.round(2, bigDecimal.RoundingModes.CEILING)
+    const idleAttackCooldown = redLiquidBonus ? bd(0.8) : bd(1)
+    const respawnTime = totalRespawnTime.round(2, bigDecimal.RoundingModes.CEILING)
 
 
-    var secondsPerIdleQuestItemDrop = (bd(60)
+    const secondsPerIdleQuestItemDrop = (bd(60)
                 .multiply(idleAttackCooldown.add(respawnTime))
                 .multiply(bd(50))
                 .multiply(questIdleDivider)
@@ -74,7 +72,7 @@ export function getQuestInfo(
 
     // =ROUND( 60 * ( IF(B10,0.8,1)+B11 ) / (3 * B19) * B18 * 50  ,0) / 50
 
-    var secondsPerManualQuestItemDrop = bd(60)
+    const secondsPerManualQuestItemDrop = bd(60)
         .multiply(idleAttackCooldown.add(respawnTime))
         .multiply(bd(50))
         .divide(greaterThan(totalQuestDropBonus, bd(0)) ? totalQuestDropBonus.divide(bd(100)) : bd(1)) // Quest Drop (Idle)
@@ -82,7 +80,7 @@ export function getQuestInfo(
         .round(0)
         .divide(bd(50))
     
-    var secondsPerIdleQuest = secondsPerIdleQuestItemDrop
+    const secondsPerIdleQuest = secondsPerIdleQuestItemDrop
         .multiply(
             greaterThan(hoursOfflinePerDay, bd(0))
             ?   (
@@ -96,8 +94,8 @@ export function getQuestInfo(
 
     
 
-    var majorsPerDay = bd(0)
-    var totalSecondsMajorQuest = bd(0)
+    let majorsPerDay = bd(0)
+    let totalSecondsMajorQuest = bd(0)
     if (includeMajorQuests) {
 
         // =60*B15/(470 * (1-0.1*D29) * (1-0.2*D28))
@@ -110,7 +108,7 @@ export function getQuestInfo(
         if(idleMajorQuests) {
             totalSecondsMajorQuest = secondsPerIdleQuest.multiply(majorsPerDay)
         } else {
-            var secondsPerManualQuest = itemsPerQuest
+            let secondsPerManualQuest = itemsPerQuest
                 .multiply(secondsPerManualQuestItemDrop)
             totalSecondsMajorQuest = secondsPerManualQuest.multiply(majorsPerDay)
         }   
@@ -127,20 +125,20 @@ export function getQuestInfo(
         var minorsPerDay = bd(1)
     }
 
-    var QPPerMinor = questMinorQP
+    const QPPerMinor = questMinorQP
         .multiply(totalQPBonus.divide(bd(100)))
         .floor()
     
-    var APPerMinor = bigdec_min(bd(12), questMinorQP)
+    const APPerMinor = bigdec_min(bd(12), questMinorQP)
         .multiply(totalAPBonus).divide(bd(100))
         .floor()
 
-    var QPPerMajor = questMajorQP
+    let QPPerMajor = questMajorQP
         .multiply(totalQPBonus.divide(bd(100)))
         .multiply(beastButterMultiplier)
         .floor()
     
-    var APPerMajor = bd(50).multiply(totalAPBonus).divide(bd(100)).floor()
+    let APPerMajor = bd(50).multiply(totalAPBonus).divide(bd(100)).floor()
 
     // If we are manualling, make the amounts active
     if(!idleMajorQuests) {
@@ -160,10 +158,10 @@ export function getQuestInfo(
             ).multiply(totalAPBonus).divide(bd(100)).floor()
     }
 
-    var QPFromMajors = QPPerMajor.multiply(majorsPerDay).floor()
-    var QPFromMinors = QPPerMinor.multiply(minorsPerDay).floor()
-    var APFromMajors = APPerMajor.multiply(majorsPerDay).floor()
-    var APFromMinors = APPerMinor.multiply(minorsPerDay).floor()
+    const QPFromMajors = QPPerMajor.multiply(majorsPerDay).floor()
+    const QPFromMinors = QPPerMinor.multiply(minorsPerDay).floor()
+    const APFromMajors = APPerMajor.multiply(majorsPerDay).floor()
+    const APFromMinors = APPerMinor.multiply(minorsPerDay).floor()
 
     return {
         'ap' : {'major': APFromMajors, 'minor' : APFromMinors, 'perMajor' : APPerMajor, 'perMinor' : APPerMinor},
@@ -175,10 +173,10 @@ export function getQuestInfo(
 
 
 export function getTitanList() : ReactElement[]{
-    var titanOptions : ReactElement[] = []
-    for (var titan of Object.values(Titans)) {
+    let titanOptions : ReactElement[] = []
+    for (let titan of Object.values(Titans)) {
         if(titan.id < 13) {
-            for(var i = 0; i < titan.versions; i++) {
+            for(let i = 0; i < titan.versions; i++) {
                 if(titan.id == 5 && i > 0) {
                     continue
                 }
@@ -195,10 +193,10 @@ export function getTitanList() : ReactElement[]{
 
 
 export function getMaxTitanByAK(titans: Titan[], playerAttack : AttackStat) : [Titan, number]{
-    var maxTitanByAK : [Titan, number] = [Titans.NONE, 0]
+    let maxTitanByAK : [Titan, number] = [Titans.NONE, 0]
     Object.values(titans).forEach((titan) => {
         if (titan.id < 13) {
-            for(var i = 0; i < titan.versions; i++) {
+            for(let i = 0; i < titan.versions; i++) {
                 if(titan.canAutoKill(playerAttack, i)) {
                     maxTitanByAK = [titan, i]
                 }
@@ -239,18 +237,18 @@ export function getTitanHourlyInfo(maxTitan : [Titan, number], {
     'qp' : bigDecimal,
 } {
     // Need to look up current tier for Titan
-    var hourlyTitanAP : bigDecimal = bd(0);
-    var hourlyTitanEXP : bigDecimal = bd(0);
-    var hourlyTitanPP : bigDecimal = bd(0);
-    var hourlyTitanQP : bigDecimal = bd(0);
+    let hourlyTitanAP : bigDecimal = bd(0);
+    let hourlyTitanEXP : bigDecimal = bd(0);
+    let hourlyTitanPP : bigDecimal = bd(0);
+    let hourlyTitanQP : bigDecimal = bd(0);
 
-    var wishLevel = toNum(wishTitansHadBetterRewards);
-    var rbChallenges : bigDecimal = numRebirthChallenges
-    var bonusExpPerk = greaterThan(bonusTitanEXPPerk, bd(0)) ? bd(1.5) : bd(1)
+    const wishLevel = toNum(wishTitansHadBetterRewards);
+    const rbChallenges = numRebirthChallenges
+    const bonusExpPerk = greaterThan(bonusTitanEXPPerk, bd(0)) ? bd(1.5) : bd(1)
 
     Object.values(Titans).forEach((titan) => {
         if(titan.id <= maxTitan[0].id) {
-            var titanMultiplier = bd(1)
+            let titanMultiplier = bd(1)
             if(titan.id < maxTitan[0].id) {
                 if(titan.versions == 4) {
                     if(wishLevel == 3) {
@@ -271,12 +269,12 @@ export function getTitanHourlyInfo(maxTitan : [Titan, number], {
                 }
             }
             
-            var titanRespawn = titan.getRespawnTime(rbChallenges)
+            const titanRespawn = titan.getRespawnTime(rbChallenges)
 
-            var titanAP = titan.getAP(totalAPBonus).floor().divide(titanRespawn)
-            var titanEXP = titan.getEXP(totalExpBonus, twentyFourHourChallenge, twentyFourHourEvilChallenge, twentyFourHourSadisticChallenge).multiply(titanMultiplier).floor().divide(titanRespawn)
-            var titanPP = (titan.getPP(totalPPBonus).multiply(titanMultiplier).floor()).divide(titanRespawn)
-            var titanQP = titan.getQP(wishes, totalQPBonus).floor().multiply(titanMultiplier).floor().divide(titanRespawn)
+            const titanAP = titan.getAP(totalAPBonus).floor().divide(titanRespawn)
+            const titanEXP = titan.getEXP(totalExpBonus, twentyFourHourChallenge, twentyFourHourEvilChallenge, twentyFourHourSadisticChallenge).multiply(titanMultiplier).floor().divide(titanRespawn)
+            const titanPP = (titan.getPP(totalPPBonus).multiply(titanMultiplier).floor()).divide(titanRespawn)
+            const titanQP = titan.getQP(wishes, totalQPBonus).floor().multiply(titanMultiplier).floor().divide(titanRespawn)
 
             hourlyTitanAP = hourlyTitanAP.add(titanAP)
             hourlyTitanEXP = hourlyTitanEXP.add(titanEXP)

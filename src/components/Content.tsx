@@ -1,8 +1,8 @@
+import _ from "lodash";
 import { ReactNode } from "react";
 import Container from "./Container";
-import ContentSectionWithData from "./ContentSectionWithData";
 import ContentSection from "./ContentSection";
-import _ from "lodash";
+import ContentSectionWithData from "./ContentSectionWithData";
 
 
 export type requiredDataType =  (string | [string, number])[][];

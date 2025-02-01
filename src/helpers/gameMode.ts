@@ -5,7 +5,7 @@ import Player from "@/assets/player"
 import { bd, bigdec_equals, toNum } from "./numbers"
 
 export function getGameMode(data : Player | bigDecimal) : number{
-    var gameMode = (data instanceof bigDecimal) ? data : data.get('gameMode') 
+    const gameMode = (data instanceof bigDecimal) ? data : data.get('gameMode') 
     if(isEvilMode(gameMode)) {
         return GameMode.EVIL
     }

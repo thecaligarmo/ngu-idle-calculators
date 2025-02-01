@@ -2,8 +2,6 @@ import { GameMode } from "./mode";
 import Resource, { ResourceContainer, prop } from "./resource";
 import { Stat } from "./stat";
 
-
-
 export const ChallengeKeys : {[key: string]: string} = {
     BASIC: 'BasicChallenge',
     NO_AUG : 'NoAugmentationsChallenge',
@@ -18,7 +16,6 @@ export const ChallengeKeys : {[key: string]: string} = {
     NO_TM: 'NoTimeMachineChallenge',
 } as const satisfies {[key: string]: string};
 
-
 function getModeKey(key: string , mode: number) {
     if (mode == GameMode.NORMAL) {
         key = 'normal' + key
@@ -29,7 +26,6 @@ function getModeKey(key: string , mode: number) {
     }
     return key
 }
-
 
 export class Challenge extends Resource {
     extraProps: any[]
@@ -42,11 +38,11 @@ export class Challenge extends Resource {
     }
 
     updateStats() {
-        for (var prop of this.statnames) {
+        for (let prop of this.statnames) {
             this[prop] = this.level * this.base[prop]
         }
         if (this.extraProps) {
-            for (var eprop of this.extraProps) {
+            for (let eprop of this.extraProps) {
                 if (this.level >= eprop[2]) {
                     if (this.statnames.includes(eprop[0])) {
                         if(eprop[0] == Stat.AUGMENT_SPEED) {

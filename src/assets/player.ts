@@ -1,8 +1,8 @@
-import bigDecimal from "js-big-decimal"
-import _ from "lodash"
 import { boostRecyclying, getHighestKilledTitanId, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalHackSpeed, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMayoSpeed, totalPower, totalPPBonus, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Cap, totalRes3Power, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalWishSpeed, totalYggdrasilYieldBonus } from "@/helpers/calculators"
 import { useLocalStorage, useLocalStorageObject } from "@/helpers/localStorage"
 import { bd } from "@/helpers/numbers"
+import bigDecimal from "js-big-decimal"
+import _ from "lodash"
 import { AdvTraining, ADVTRAININGS } from "./advTraining"
 import { APItem, APITEMLIST, APITEMS } from "./apItems"
 import { Beard, BEARDS } from "./beards"
@@ -37,8 +37,8 @@ export default class Player {
         this.playerUpdatedData = {}
         this.withoutSave = withoutSave
         if(!withoutSetup) {
-            for(var key in playerDataInfo){
-                var defVal = this.typeSet(key, playerDataInfo[key]['default'])
+            for(let key in playerDataInfo){
+                let defVal = this.typeSet(key, playerDataInfo[key]['default'])
                 if(!this.withoutSave){
                     if(playerDataInfo[key]['type'] == 'object') {
                         // handled differently for speed purposes
@@ -706,10 +706,10 @@ export default class Player {
         this.set('totalWishSpeed', totalWishSpeed(this));
         this.set('totalYggdrasilYieldBonus', totalYggdrasilYieldBonus(this));
 
-        var itopodZone = Zones.ITOPOD;
-        var spoopySetBonus = this.get('spoopySetBonus')
-        var sadisticNoEquipmentChallenges = this.get('sadisticNoEquipmentChallenges')
-        var idleAttackModifier = getIdleAttackModifier(spoopySetBonus, sadisticNoEquipmentChallenges);
+        const itopodZone = Zones.ITOPOD;
+        const spoopySetBonus : boolean = this.get('spoopySetBonus')
+        const sadisticNoEquipmentChallenges : bigDecimal = this.get('sadisticNoEquipmentChallenges')
+        const idleAttackModifier = getIdleAttackModifier(spoopySetBonus, sadisticNoEquipmentChallenges);
         this.set('itopodFloor', 
             itopodZone.getOptimalFloor(totalPower(this), idleAttackModifier)
         )
@@ -873,7 +873,7 @@ export default class Player {
         this.set('diggers', diggers);
     }
     setDish(playerData : any) : void {
-        var dish : Dish = DISHES[playerData.cooking.curDishIndex]
+        let dish : Dish = DISHES[playerData.cooking.curDishIndex]
         dish.importStats(playerData.cooking)
         this.set('dish', dish);
     }

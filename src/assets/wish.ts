@@ -1,6 +1,6 @@
+import { bd, bigdec_max, isZero, toNum } from "@/helpers/numbers";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
-import { bd, bigdec_max, isZero, toNum } from "@/helpers/numbers";
 import { GameMode } from "./mode";
 import Resource, { ResourceContainer, prop } from "./resource";
 import { Stat } from "./stat";
@@ -20,7 +20,7 @@ export class Wish  extends Resource {
         this.maxLevel = maxLevel
     }
     updateStats() {
-        for (var prop of Object.keys(this.base)) {
+        for (let prop of Object.keys(this.base)) {
             this[prop] = (this.level > 0) ?  this.base[prop] * this.level : 0
         }
     }
@@ -57,8 +57,8 @@ export class Wish  extends Resource {
             return bd(0)
         }
         
-        var speed = this.speed(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, level)
-        var timeTaken = bd(0)
+        const speed = this.speed(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, level)
+        let timeTaken = bd(0)
         if (!isZero(speed)) {
             let prog = (this.level == level) ? this.progress : 0
             timeTaken = bigdec_max(bd(1 - prog).divide(speed, 100), bd(4 * 60 * 60).subtract(bd(4 * 60 * 60 * prog)))

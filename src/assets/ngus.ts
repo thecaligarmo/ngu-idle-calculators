@@ -1,6 +1,6 @@
+import { bd, bigdec_equals, bigdec_max, bigdec_min, bigdec_round, greaterThan, isZero, lessThan, lessThanOrEqual, toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
-import { bd, bigdec_equals, bigdec_max, bigdec_min, bigdec_round, greaterThan, isZero, lessThan, lessThanOrEqual, toNum } from "@/helpers/numbers"
 import { GameMode } from "./mode"
 import Resource, { ResourceContainer, prop } from "./resource"
 import { Stat } from "./stat"
@@ -60,7 +60,7 @@ export class NGU extends Resource {
         this.updateStats()
     }
     updateStats() : void {
-        for (var prop of Object.keys(this.base)) {
+        for (let prop of Object.keys(this.base)) {
             this[prop] = this.getStatValueInternal(this.level, prop)
         }
     }
@@ -78,11 +78,9 @@ export class NGU extends Resource {
     }
     // Internal value is different for calc value (for respawn in particular)
     getStatValueInternal(level: number, prop: string) : number {
-        var base = this.base[prop]
-        var diminishing : boolean = false
-        if (level > this.diminishingReturnLevel) {
-            diminishing = true
-        }
+        const base = this.base[prop]
+        const diminishing : boolean = (level > this.diminishingReturnLevel)
+
         // MaxLevel = 1 billion
         if(level > 1000000000) {
             level = 1000000000
@@ -175,12 +173,12 @@ export class NGU extends Resource {
     }
     // The above formula's inverses
     getLevelFromVal(value: number, prop: string, forceDiminished : boolean = false, forceNotDiminished : boolean = false) : number{
-        var base = this.base[prop]
+        let base = this.base[prop]
         if (this.isRespawn() && (value > 100)) {
             return 0
         }
         value = value - 100
-        var diminishing = (forceDiminished || this.level > this.diminishingReturnLevel)
+        let diminishing = (forceDiminished || this.level > this.diminishingReturnLevel)
         if (this.diminishingReturnLevel === 0 || !diminishing || forceNotDiminished) {
             return  value / base
             
@@ -286,8 +284,8 @@ export class NGU extends Resource {
     percentIncrease(percent: bigDecimal | number) : bigDecimal{
         percent = toNum(percent)
         
-        var prop = this.statnames[0]
-        var curVal = this.getStatValueInternal(this.level, prop)
+        const prop = this.statnames[0]
+        let curVal = this.getStatValueInternal(this.level, prop)
 
         if (this.isRespawn()) { // Respawn has weird scaling so we need to fix it.
             curVal = curVal - 100 // Make it < 0
@@ -301,7 +299,7 @@ export class NGU extends Resource {
             }
         }
         
-        var desiredVal = curVal * (percent/100 + 1)
+        const desiredVal = curVal * (percent/100 + 1)
         return (this.valueIncrease(desiredVal))
     }
 
@@ -309,28 +307,27 @@ export class NGU extends Resource {
     valueIncrease(desiredVal: bigDecimal | number) : bigDecimal {
         desiredVal = toNum(desiredVal)
         
-        var prop = this.statnames[0]
+        const prop = this.statnames[0]
         
-        var desiredLevel = this.getLevelFromVal(desiredVal, prop)
+        let desiredLevel = this.getLevelFromVal(desiredVal, prop)
 
         if (desiredLevel > this.diminishingReturnLevel && this.level <= this.diminishingReturnLevel && this.diminishingReturnLevel > 0) {
             desiredLevel = this.getLevelFromVal(desiredVal, prop, true)
         } else if (this.level >= this.diminishingReturnLevel && (desiredLevel < this.diminishingReturnLevel || this.diminishingReturnLevel == 0)) {
             desiredLevel = this.getLevelFromVal(desiredVal, prop, false, true)
         }
-        var maxLvl = Math.min(Math.max(0, desiredLevel), 1000000000)
+        const maxLvl = Math.min(Math.max(0, desiredLevel), 1000000000)
 
         return bd(maxLvl).ceil()
     }
 
     // Gets target for a set duration of minutes
     timeIncrease(numMinutes: bigDecimal | number, cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal{
-        var numSeconds = bd(numMinutes).multiply(bd(60)).add(bd(1))
-
-        var roundingDigs = this.roundingDigs(cap, speedFactor)
-        var baseTimePerLevel = this.baseTimePerLevel(cap, speedFactor)
+        const numSeconds = bd(numMinutes).multiply(bd(60)).add(bd(1))
+        const roundingDigs = this.roundingDigs(cap, speedFactor)
+        let baseTimePerLevel = this.baseTimePerLevel(cap, speedFactor)
         baseTimePerLevel = isZero(baseTimePerLevel) ? bd(1) : baseTimePerLevel
-        var curLevel = bd(this.level)
+        const curLevel = bd(this.level)
 
         /*
         Want to solve for n:
@@ -341,15 +338,12 @@ export class NGU extends Resource {
             n^2 + n + (numSeconds / baseTimePerLevel + (level+1)(level+2)/2) * -2
                 = n^2 + n + c
         */
-        var lvlDiff = numSeconds.divide(baseTimePerLevel, roundingDigs)
-        
-        var targDiff = lvlDiff.add(
+        const lvlDiff = numSeconds.divide(baseTimePerLevel, roundingDigs)
+        const targDiff = lvlDiff.add(
             (curLevel.add(bd(1))).multiply(curLevel.add(bd(2))).divide(bd(2))
         )
-
-        var c = targDiff.multiply(bd(-2))
-
-        var target = (bd(Math.sqrt(toNum(bd(1).subtract(bd(4).multiply(c))))).subtract(bd(1))).divide(bd(2))        
+        const c = targDiff.multiply(bd(-2))
+        const target = (bd(Math.sqrt(toNum(bd(1).subtract(bd(4).multiply(c))))).subtract(bd(1))).divide(bd(2))        
         return target.floor().subtract(bd(1))
     }
 
@@ -359,12 +353,13 @@ export class NGU extends Resource {
 
     baseTimePerLevel(cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal {
         // Grab base amount of time things will take
-        var baseCost = this.baseCost
-        var roundingDigs = this.roundingDigs(cap, speedFactor)
+        const baseCost = this.baseCost
+        const roundingDigs = this.roundingDigs(cap, speedFactor)
+        let baseTimePerLevel : bigDecimal;
         try {            
-            var baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap, roundingDigs).divide(speedFactor, roundingDigs)
+            baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap, roundingDigs).divide(speedFactor, roundingDigs)
         } catch (error) {
-            var baseTimePerLevel = bd(0)
+            baseTimePerLevel = bd(0)
         }
 
         return baseTimePerLevel
@@ -372,27 +367,27 @@ export class NGU extends Resource {
 
     speedAtLevel(level : bigDecimal | number, baseTimePerLevel : bigDecimal) : bigDecimal{
         level = bd(level)
-        var speed = baseTimePerLevel.multiply(level).round(2, bigDecimal.RoundingModes.CEILING)
+        const speed = baseTimePerLevel.multiply(level).round(2, bigDecimal.RoundingModes.CEILING)
 
         // We can never go faster than 50 levels/second
         return lessThanOrEqual(speed, bd(0.02)) ? bd(0.02) : bigdec_round(speed, bd(0.02))
     }
 
     calcSecondsToTarget(cap : bigDecimal, speedFactor : bigDecimal, target : bigDecimal = bd(-1)) : bigDecimal {
-        var level = bd(this.level)
+        const level = bd(this.level)
         if ( bigdec_equals(target, bd(-1)) ) {
             target = bd(this.target)
         }
 
 
         // Grab base amount of time things will take
-        var roundingDigs = this.roundingDigs(cap, speedFactor)
-        var baseTimePerLevel = this.baseTimePerLevel(cap, speedFactor)
+        const roundingDigs = this.roundingDigs(cap, speedFactor)
+        const baseTimePerLevel = this.baseTimePerLevel(cap, speedFactor)
 
         
         // Grab the starting time and the ending time
-        var startingSpeed = this.speedAtLevel(level.add(bd(1)), baseTimePerLevel)
-        var endingSpeed = this.speedAtLevel(target, baseTimePerLevel)
+        const startingSpeed = this.speedAtLevel(level.add(bd(1)), baseTimePerLevel)
+        const endingSpeed = this.speedAtLevel(target, baseTimePerLevel)
 
         
         // Grab the number of levels that will be calculated with starting, middle (average) and end times
@@ -402,7 +397,7 @@ export class NGU extends Resource {
                 bd(0)
             )
 
-            var x = (endingSpeed.subtract(bd(0.02))).divide(baseTimePerLevel, roundingDigs).floor().subtract(level).subtract(startingSpeedLevels)
+            let x = (endingSpeed.subtract(bd(0.02))).divide(baseTimePerLevel, roundingDigs).floor().subtract(level).subtract(startingSpeedLevels)
             var middleSpeedLevels = greaterThan(x, bd(0)) ? x : bd(0);
 
             x = bigdec_min(endingSpeed.divide(baseTimePerLevel, roundingDigs), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
@@ -414,21 +409,17 @@ export class NGU extends Resource {
             var endingSpeedLevels = bd(0);
         }
 
-        var seconds = startingSpeedLevels.multiply(startingSpeed)
+        return startingSpeedLevels.multiply(startingSpeed)
                 .add(endingSpeed.multiply(endingSpeedLevels))
-                .add((endingSpeed.add(startingSpeed)).divide(bd(2), roundingDigs).multiply(middleSpeedLevels))
-
-        return seconds
-    
+                .add((endingSpeed.add(startingSpeed)).divide(bd(2), roundingDigs).multiply(middleSpeedLevels))    
     }
 
     capAtTarget(speedFactor : bigDecimal, level : bigDecimal) : bigDecimal {
-        var baseCost = this.baseCost
-
         if ( lessThan(level, bd(0))) {
             return bd(0)
         }
-        var roundingDigs = speedFactor.floor().getValue().length + this.baseCost.getValue().length
+        const baseCost = this.baseCost
+        const roundingDigs = speedFactor.floor().getValue().length + this.baseCost.getValue().length
         try {
             var baseTimePerLevel = baseCost.divide(speedFactor, roundingDigs)
         } catch (error) {
@@ -445,8 +436,8 @@ export class NGU extends Resource {
     }
 
     capToReachMaxInDay(speedFactor : bigDecimal) : bigDecimal {
-        var level = bd(this.level)
-        var targetLvl = level.add(bd(60 * 60 * 24 * 50)) // 50 ticks per second * seconds
+        const level = bd(this.level)
+        const targetLvl = level.add(bd(60 * 60 * 24 * 50)) // 50 ticks per second * seconds
         return this.capToReachMaxTarget(speedFactor, targetLvl)
     }
 }

@@ -1,7 +1,6 @@
 import { bd, toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 
-
 export type fruitYieldType = {
     apBonus: bigDecimal, // AP
     baseToughness: bigDecimal, // Adv
@@ -265,7 +264,7 @@ export class FruitOfPowerB extends Yggdrasil {
             return bd(0)
         }
         
-        var levelInc = Math.ceil(
+        const levelInc = Math.ceil(
                 Math.ceil(this.tier ** 1.5)
                 * (1 + firstHarvest / 10)
                 * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
@@ -324,7 +323,7 @@ export class FruitOfNumbers extends Yggdrasil {
             return bd(0)
         }
 
-        var levelInc = Math.ceil(
+        const levelInc = Math.ceil(
             Math.ceil(this.tier ** 1.5)
             * (1 + firstHarvest / 10)
             * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
@@ -347,7 +346,7 @@ export class FruitOfRage extends Yggdrasil {
         if(!this.eatFruit) {
             return bd(0)
         }
-        var noNGUYieldModifier = yieldModifier.divide(nguYgg)
+        const noNGUYieldModifier = yieldModifier.divide(nguYgg)
         return bd(
                 Math.ceil(
                     Math.ceil(this.tier ** 1.5)
@@ -373,7 +372,7 @@ export class FruitOfMacguffinA extends Yggdrasil {
         if(!this.eatFruit) {
             return bd(0)
         }
-        var noNGUYieldModifier = yieldModifier.divide(nguYgg)
+        const noNGUYieldModifier = yieldModifier.divide(nguYgg)
         return bd(
                 Math.ceil(
                     Math.ceil(this.tier ** 1.5)
@@ -409,7 +408,7 @@ export class FruitOfPowerD extends Yggdrasil {
         if(!this.eatFruit) {
             return bd(0)
         }
-        var levelInc = Math.ceil(
+        const levelInc = Math.ceil(
                     Math.ceil(this.tier ** 1.5)
                     * (1 + firstHarvest / 10)
                     * (this.usePoop ? (blueHeart ? 1.65 : 1.5) : 1)
@@ -443,7 +442,7 @@ export class FruitOfMacguffinB extends Yggdrasil {
         if(!this.eatFruit) {
             return bd(0)
         }
-        var noNGUYieldModifier = yieldModifier.divide(nguYgg)
+        const noNGUYieldModifier = yieldModifier.divide(nguYgg)
         return bd(
                 Math.ceil(
                     Math.ceil(this.tier ** 1.5)
@@ -468,7 +467,7 @@ export class FruitOfQuirks extends Yggdrasil {
         if(!this.eatFruit) {
             return bd(0)
         }
-        var noNGUYieldModifier = yieldModifier.divide(nguYgg)
+        const noNGUYieldModifier = yieldModifier.divide(nguYgg)
         return bd(
                 Math.ceil(
                     this.tier

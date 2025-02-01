@@ -6,7 +6,7 @@ export function bigdec_max(...args : bigDecimal[]) : bigDecimal {
     if (args.length < 1){ 
         throw 'Max of empty list';
     }
-    var m = args[0];
+    let m = args[0];
     args.forEach( a => {
         if (lessThan(m, a)) {
             m = a
@@ -19,7 +19,7 @@ export function bigdec_min(...args : bigDecimal[]) : bigDecimal {
     if (args.length < 1){ 
         throw 'Min of empty list';
     }
-    var m = args[0];
+    let m = args[0];
     args.forEach( a => {
         if (greaterThan(m, a)) {
             m = a
@@ -85,8 +85,8 @@ export function pn(num : bigDecimal | number, numberFormat : string = 'scientifi
         num = bd(num)
     }
     // Get the floor of the number for processing
-    var n = num.floor().getValue();
-    var nl = n.length // number length
+    let n = num.floor().getValue();
+    let nl = n.length // number length
 
     // We should only start for billions as until then it's pretty human readable
     if (nl < 10) {
@@ -98,20 +98,20 @@ export function pn(num : bigDecimal | number, numberFormat : string = 'scientifi
     
     // If we're in scientific format, we only want the first 4 digits
     if (numberFormat == 'scientific') {
-        var e = nl - 1
-        var firstFour = n.slice(0,4);
+        let e = nl - 1
+        let firstFour = n.slice(0,4);
         return (Number(firstFour) / 1000).toFixed(3).toLocaleString() + "E+" + e
     }
 
     // Number of digits in front
-    var nmod = nl % 3
+    let nmod = nl % 3
     // Number of 3 numbers
-    var e = (nmod == 0) ? Math.floor(nl / 3) - 1 : Math.floor(nl / 3);
-    var firstNum = (nmod == 0) ? n.slice(0, 6) : n.slice(0, nmod + 3);
+    let e = (nmod == 0) ? Math.floor(nl / 3) - 1 : Math.floor(nl / 3);
+    let firstNum = (nmod == 0) ? n.slice(0, 6) : n.slice(0, nmod + 3);
     if (numberFormat == 'engineering') {
         return (Number(firstNum) / 1000).toFixed(3).toLocaleString() + "E+" + (e * 3)
     }
-    var suffix = getLargeSuffix(e-1)
+    const suffix = getLargeSuffix(e-1)
     return (Number(firstNum) / 1000).toFixed(3).toLocaleString() + " " + suffix
 }
 
@@ -135,19 +135,19 @@ export function dn(num : bigDecimal) : string{
     if ( _.isUndefined(num) || lessThan(num, bd(0))) {
         return '00:00'
     }
-    var day = bd(3600 * 24)
-    var hour = bd(3600)
-    var minute = bd(60)
-    var num = num.floor()
-    var d = num.divide(day).floor();
-    var h = num.modulus(day).divide(hour).floor();
-    var m = num.modulus(hour).divide(minute).floor();
-    var s = num.modulus(minute).floor();
+    const day = bd(3600 * 24)
+    const hour = bd(3600)
+    const minute = bd(60)
+    num = num.floor()
+    const d = num.divide(day).floor();
+    const h = num.modulus(day).divide(hour).floor();
+    const m = num.modulus(hour).divide(minute).floor();
+    const s = num.modulus(minute).floor();
 
-    var dString = d.getValue() + ":"
-    var hString = h.getValue().padStart(2, '0') + ":"
-    var mString = m.getValue().padStart(2, '0') + ":"
-    var sString = s.getValue().padStart(2, '0')
+    const dString = d.getValue() + ":"
+    const hString = h.getValue().padStart(2, '0') + ":"
+    const mString = m.getValue().padStart(2, '0') + ":"
+    const sString = s.getValue().padStart(2, '0')
 
     var str = mString + sString
     if (greaterThan(h, bd(0))  || greaterThan(d, bd(0))) {

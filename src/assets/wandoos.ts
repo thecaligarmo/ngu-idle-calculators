@@ -1,6 +1,6 @@
+import { bd, toNum } from "@/helpers/numbers";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
-import { bd, toNum } from "@/helpers/numbers";
 import { GameMode } from "./mode";
 import Resource, { prop, ResourceContainer } from "./resource";
 import { Stat } from "./stat";
@@ -62,9 +62,9 @@ export class Wandoos extends Resource{
         magicLevel = toNum(magicLevel)
         os = toNum(os)
 
-        var energyMult = 0.01
-        var magicMult = 0.04
-        var exponent = 0.8
+        let energyMult = 0.01
+        let magicMult = 0.04
+        let exponent = 0.8
         if(os == WANDOOS_OS.MEH) {
             energyMult = 0.2
             magicMult = 2
@@ -80,7 +80,7 @@ export class Wandoos extends Resource{
     }
 
     updateStats() {
-        for (var prop of this.statnames) {
+        for (let prop of this.statnames) {
             this[prop] = this.getStatByLevel()
         }
     }

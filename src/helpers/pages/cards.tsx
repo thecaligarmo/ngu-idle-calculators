@@ -1,7 +1,6 @@
+import { FruitOfMayo, Yggdrasil } from "@/assets/yggdrasil"
 import bigDecimal from "js-big-decimal"
-import { Yggdrasil, FruitOfMayo } from "@/assets/yggdrasil"
 import { bd, isOne } from "../numbers"
-
 
 export var cardReqFruit = [
     'twoFruitPerInfuser',
@@ -39,8 +38,6 @@ export var cardReqChonkers = [
     'chonkChonkier',
     'chonkLessNotChonkier'
 ]
-
-
 
 export function getCardsPerDay(cardSpeed: bigDecimal, recycleCard:bigDecimal) :bigDecimal{
     return bd(24).multiply(cardSpeed.divide(bd(100)))

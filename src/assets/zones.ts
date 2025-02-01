@@ -1,9 +1,7 @@
-import bigDecimal from "js-big-decimal"
 import { isEvilMode, isSadMode } from "@/helpers/gameMode"
 import { bd, bigdec_equals, bigdec_min, greaterThan, toNum } from "@/helpers/numbers"
+import bigDecimal from "js-big-decimal"
 import { ENEMY_TYPE, Enemies, Enemy } from "./enemy"
-
-
 
 var boostTable : number[] = [0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
 
@@ -32,7 +30,7 @@ export default class Zone {
         this.level = level
         // For Itopod, update boosts
         if (this.id === 0) {
-            var boostValue = 1
+            let boostValue = 1
             if (level >= 1150) {
                 boostValue = 10000
             } else if (level >= 850) {
@@ -62,8 +60,7 @@ export default class Zone {
             this.boosts = [[boostValue, 14, 14]]
         }
 
-        var expChance = 1 / Math.max(20, 40 - Math.ceil((level + 1) / 50))
-
+        let expChance = 1 / Math.max(20, 40 - Math.ceil((level + 1) / 50))
         if (level >= 50) {
             this.exp = [Math.floor(level / 50) * (Math.floor(level / 50) - 1) + 2, expChance, expChance]
         } else {
@@ -71,10 +68,10 @@ export default class Zone {
         }
     }
     hardestEnemy() : Enemy {
-        var hp = bd(0)
-        var toughness = bd(0)
-        var power = bd(0)
-        var retEnemy = this.enemies[0];
+        let hp = bd(0)
+        let toughness = bd(0)
+        let power = bd(0)
+        let retEnemy = this.enemies[0];
         this.enemies.forEach((enemy) => {
             if( greaterThan(enemy.hp(), hp)) {
                 retEnemy = enemy
@@ -99,7 +96,7 @@ export default class Zone {
         if (this.bossChanceVal > 0) {
             return bd(this.bossChanceVal)
         }
-        var bossEnemies = 0
+        let bossEnemies = 0
         this.enemies.forEach((enemy) => {
             if (enemy.isBoss) {
                 bossEnemies += 1
@@ -108,10 +105,10 @@ export default class Zone {
         return bd(bossEnemies).divide(bd(this.enemies.length))
     }
     paralyzeEnemies() : bigDecimal {
-        var paralyzeEnemies = 0
-        var paralyzeBosses = 0
-        var totalNormals = 0
-        var totalBosses = 0
+        let paralyzeEnemies = 0
+        let paralyzeBosses = 0
+        let totalNormals = 0
+        let totalBosses = 0
         this.enemies.forEach((enemy) => {
             if (enemy.type === ENEMY_TYPE.PARALYZE || enemy.type === ENEMY_TYPE.POISONPARALYZE) {
                 if(enemy.isBoss) {
@@ -128,18 +125,16 @@ export default class Zone {
             }
 
         })
-        var bossChance = this.bossChance()
-        var chanceParalyze = bd(paralyzeEnemies).multiply(bd(1).subtract(bossChance)).divide(bd(totalNormals))
-        var chanceBossParalyze = bd(paralyzeBosses).multiply(bossChance).divide(bd(totalBosses))
+        const bossChance = this.bossChance()
+        const chanceParalyze = bd(paralyzeEnemies).multiply(bd(1).subtract(bossChance)).divide(bd(totalNormals))
+        const chanceBossParalyze = bd(paralyzeBosses).multiply(bossChance).divide(bd(totalBosses))
         return chanceParalyze.add(chanceBossParalyze)
     }
     boostedValue(boostRecyclying : bigDecimal) : bigDecimal[] { 
-        var boostRecyclying : bigDecimal = boostRecyclying;
-
-        var boostedVals : bigDecimal[] = []
+        let boostedVals : bigDecimal[] = []
 
         this.boosts.forEach((boost) => {
-            var recycledValue = boostTable.reduce((boostSum, boostVal) => {
+            let recycledValue = boostTable.reduce((boostSum, boostVal) => {
                 if (boostVal <= boost[0]) {
                     return boostSum.multiply(boostRecyclying).divide(bd(100)).add(bd(boostVal));
                 }
@@ -159,20 +154,19 @@ export default class Zone {
     }
 
     boostChances(dropChance : bigDecimal) : bigDecimal[] {
-        var boostChance : bigDecimal[] = []
+        let boostChance : bigDecimal[] = []
 
         this.boosts.forEach((boost) => {
-            var maxChance = bd(boost[1]).divide(bd(100)).multiply(this.baseChance(dropChance))
-            var bC = bigdec_min(bd(boost[2]).divide(bd(100)), maxChance)
-            boostChance.push(bC)
+            const maxChance = bd(boost[1]).divide(bd(100)).multiply(this.baseChance(dropChance))
+            boostChance.push(bigdec_min(bd(boost[2]).divide(bd(100)), maxChance))
         })
         return boostChance
     }
 
     expChance(dropChance : bigDecimal) : bigDecimal {
-        var maxChance = bd(1)
+        let maxChance = bd(1)
         if (this.id >= 22) {
-            var root = Math.pow(toNum(dropChance.divide(bd(100))), 1/3)
+            const root = Math.pow(toNum(dropChance.divide(bd(100))), 1/3)
             maxChance = bd(this.exp[1]).divide(bd(100)).multiply(bd(root))
 
         } else {
@@ -182,8 +176,8 @@ export default class Zone {
     }
 
     getKillsPerHour(totalPower: bigDecimal, idleAttackModifier : bigDecimal, redLiquidBonus : boolean = false, totalRespawnTime : bigDecimal = bd(4)) : bigDecimal {
-        var idleAttackCooldown = redLiquidBonus ? bd(0.8) : bd(1)
-        var respawnTime = totalRespawnTime.round(2, bigDecimal.RoundingModes.CEILING)
+        const idleAttackCooldown = redLiquidBonus ? bd(0.8) : bd(1)
+        const respawnTime = totalRespawnTime.round(2, bigDecimal.RoundingModes.CEILING)
         return bd(60 * 60).divide( respawnTime.add(idleAttackCooldown.multiply(bd(this.getHitsPerKill(totalPower, idleAttackModifier))))).floor()
     }
 
@@ -200,7 +194,7 @@ export default class Zone {
                 1
             )
         } else {
-            var hits = this.enemies.map(function(enemy) {
+            let hits = this.enemies.map(function(enemy) {
                 return enemy.numHitsToKill(totalPower, idleAttackModifier)
             })
 
@@ -226,13 +220,13 @@ export default class Zone {
         )
     }
     getPPPPerKill(gameMode:bigDecimal, totalPPBonus : bigDecimal = bd(1), bluePill : boolean = false, blueHeart : boolean = false, bonusPPP : number | bigDecimal = 0) : bigDecimal{
-        var bluePillMultiplier = bluePill
+        const bluePillMultiplier = bluePill
                                     ? (blueHeart ? bd(2.2) : bd(2))
                                     : bd(1)
     
         bonusPPP = toNum(bonusPPP)
         
-        var floorAdd = 200
+        let floorAdd = 200
         if(isEvilMode(gameMode)) {
             floorAdd = 700
         } else if(isSadMode(gameMode)) {

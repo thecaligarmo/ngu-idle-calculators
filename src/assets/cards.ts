@@ -45,7 +45,6 @@ export const CardRarityText : {[key: number]: string} = {
     8: 'Chonker',
 } as const satisfies {[key: number]: string};
 
-
 export function cardRarityRange(rarity: number, seventiesSet : boolean = false) : [number, number] {
     switch(rarity) {
         case CardRarity.CRAPPY:
@@ -68,7 +67,6 @@ export function cardRarityRange(rarity: number, seventiesSet : boolean = false) 
     return [1.2, 1.2]
 }
 
-
 export class Card extends Resource {
     tier: number
     isTagged: boolean
@@ -87,7 +85,7 @@ export class Card extends Resource {
         this.setLevel(data[this.id])
     }
     updateStats() {
-        for (var prop of this.statnames) {
+        for (let prop of this.statnames) {
             this[prop] = this.base[prop] * this.level
         }
     }

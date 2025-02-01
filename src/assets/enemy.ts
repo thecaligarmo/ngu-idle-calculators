@@ -1,6 +1,6 @@
+import { bd, bigdec_max, isZero, lessThan } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
-import { bd, bigdec_max, isZero, lessThan } from "@/helpers/numbers"
 import { Wish } from "./wish"
 
 export class AttackStat {
@@ -85,7 +85,7 @@ export class Enemy {
     }
 
     numHitsToKill(totalPower : bigDecimal, attackModifier : bigDecimal = bd(1), version : number = 0) : bigDecimal {
-        var oneHit = this.oneHitPower(attackModifier, version)
+        const oneHit = this.oneHitPower(attackModifier, version)
         return !isZero(totalPower) ? bigdec_max(oneHit.divide(totalPower).ceil(), bd(1)) : bd(1)
     }
 }
@@ -203,7 +203,7 @@ export class Titan extends Enemy {
         return 0
     }
     getQP(wishes : Wish[], qpBonus : bigDecimal = bd(1)) : bigDecimal {
-        var qpAmount = bd(0)
+        let qpAmount = bd(0)
         if(this.getQPWishNum() > 0 && !_.isUndefined(wishes[73]) && wishes[this.getQPWishNum()].completed()) {
             qpAmount = bd(this.qp)
         }

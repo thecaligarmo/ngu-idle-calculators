@@ -1,6 +1,5 @@
 import { MouseEventHandler, ReactNode } from "react";
 
-
 export function ListInputSwitcher({text, onClick} : {text: ReactNode, onClick: MouseEventHandler}) {
     return (
         <button

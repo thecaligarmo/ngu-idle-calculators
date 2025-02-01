@@ -10,12 +10,12 @@ import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInf
 
 
 export function describeStat(data : any, fmt : string, isRespawn : boolean = false) {
-    var rows = Object.keys(data).map((k) => {
+    let rows = Object.keys(data).map((k) => {
         if(k != 'base' && k != 'total' && bigdec_equals(data[k].val, bd(100))) {
             return null
         }
-        var sigFigs = (!_.isUndefined(data[k].sigFig)) ? data[k].sigFig : 0
-        var percent = (!_.isUndefined(data[k].noPer) && data[k].noPer) ? '': '%'
+        const sigFigs = (!_.isUndefined(data[k].sigFig)) ? data[k].sigFig : 0
+        let percent = (!_.isUndefined(data[k].noPer) && data[k].noPer) ? '': '%'
 
         if(k == 'total') {
             let extra = ''

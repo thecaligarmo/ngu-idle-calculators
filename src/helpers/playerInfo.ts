@@ -5,15 +5,15 @@ import { camelToTitle } from "./strings";
 
 // getRequiredStates
 export function getPlayerDataInfo(data : requiredDataType) : any{
-    var ir = []
-    for (var col of data) {
+    let ir = []
+    for (let col of data) {
         let colDr = []
-        for (var k of col) {
-            var kName : string = _.isArray(k) ? k[0] : k;
+        for (let k of col) {
+            let kName : string = _.isArray(k) ? k[0] : k;
             if (_.isUndefined(playerDataInfo[kName])) {
                 console.log('Player Data missing: ', kName)
             } 
-            var pi = playerDataInfo[kName];
+            let pi = playerDataInfo[kName];
 
             let name = camelToTitle(kName);
             if(!_.isUndefined(pi['percent']) && pi['percent']){

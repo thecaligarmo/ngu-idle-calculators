@@ -1,9 +1,9 @@
-import { ReactNode, useState } from "react";
 import { GameMode } from "@/assets/mode";
 import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import { bd, toNum } from "@/helpers/numbers";
 import { nguTargetElts, nguValueElts } from "@/helpers/pages/ngus";
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import { ReactNode, useState } from "react";
 import { ChoiceButton } from "../buttons/ChoiceButton";
 import Content, { requiredDataType } from "../Content";
 import ContentSubsection from "../ContentSubsection";
@@ -14,24 +14,22 @@ import NGUCapDayTable from "./NGUCapDayTable";
 import NGUCapTable from "./NGUCapTable";
 import NGUTargetTable from "./NGUTargetTable";
 
-
 const NGU_TARGET = 'target'
 const NGU_PERCENTAGE = 'percentage'
 const NGU_TIME = 'time'
 const NGU_VALUE = 'value'
-
 
 interface NGUProps {
     children ?: ReactNode;
     gameMode: number;
 }
 
-export default function NGUInfo({children, gameMode} : NGUProps) {
+export default function NGUInfo({gameMode} : NGUProps) {
     const [calcType, setCalcType] = useState(NGU_TARGET)
     const player = getPlayer();
     const fmt = getNumberFormat();
 
-    var modeText = ''
+    let modeText = ''
     if(gameMode == GameMode.EVIL) {
         modeText = 'Evil'
     } else if(gameMode == GameMode.SADISTIC) {
@@ -39,7 +37,7 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
     }
 
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [
+    let infoRequired : requiredDataType = [
         ['totalEnergyCap', 'totalEnergyNGUSpeedFactor'],
         ['totalMagicCap', 'totalMagicNGUSpeedFactor'],
         [
@@ -84,7 +82,7 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
     ]
 
     // Set extra required (not from playerData)
-    var extraRequired : requiredDataType = [
+    let extraRequired : requiredDataType = [
         ['nguPercentageIncrease', 'timeInMinutes'], [],
         [
             'energyNGUAugments' + modeText + 'Value',
@@ -106,23 +104,23 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
             'magicNGUAdventureB' + modeText + 'Value'
         ]
     ]
-    var goRequired : requiredDataType = [['goEnergyCap', 'goEnergyNGU', 'goMagicCap', 'goMagicNGU']]
+    let goRequired : requiredDataType = [['goEnergyCap', 'goEnergyNGU', 'goMagicCap', 'goMagicNGU']]
     
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    let infoReq = getPlayerDataInfo(infoRequired)
+    let extraReq = getPlayerDataInfo(extraRequired)
+    let goReq = getPlayerDataInfo(goRequired)
 
     
     // Get all the NGUs and have it split by type
-    var types = ['energy', 'magic']
-    var NGUs : NGU[][] = types.map((ty) => {
-        var ngus = (ty === 'energy') ? ENERGY_NGUS : MAGIC_NGUS
-        var nguIds = (ty === 'energy') ? ENERGY_NGUS.ids : MAGIC_NGUS.ids
+    let types = ['energy', 'magic']
+    let NGUs : NGU[][] = types.map((ty) => {
+        let ngus = (ty === 'energy') ? ENERGY_NGUS : MAGIC_NGUS
+        let nguIds = (ty === 'energy') ? ENERGY_NGUS.ids : MAGIC_NGUS.ids
 
-        var retNgus = []
-        for(var nguId of nguIds) {
-            var ngu : NGU = ngus[nguId]
+        let retNgus = []
+        for(let nguId of nguIds) {
+            let ngu : NGU = ngus[nguId]
             if(ngu.mode == gameMode) {
                 ngu.setLevel(toNum(player.get(ty + ngu.key + modeText + "Level")))
                 ngu.target = toNum(player.get(ty + ngu.key + modeText + "Target"))
@@ -134,8 +132,8 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
 
 
     // Get all targets
-    var targets = NGUs.map((tyNGUs, index) => {
-        var ty = types[index]
+    let targets = NGUs.map((tyNGUs, index) => {
+        let ty = types[index]
         return tyNGUs.map((ngu) => {
             switch(calcType) {
                 case NGU_PERCENTAGE:
@@ -153,8 +151,8 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
 
 
     // Get the number of seconds 
-    var seconds = NGUs.map((tyNGUs, index) => {
-        var ty = types[index]
+    let seconds = NGUs.map((tyNGUs, index) => {
+        let ty = types[index]
         ty = ty[0].toUpperCase() + ty.substring(1)
         return tyNGUs.map((ngu, innerIndex) => {
             return ngu.calcSecondsToTarget(player.get("total" + ty + "Cap"), player.get("total" + ty + "NGUSpeedFactor"), targets[index][innerIndex])
@@ -162,7 +160,7 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
     })
     
     // Get the total seconds
-    var totalSeconds = seconds.map((secs, index) => {
+    let totalSeconds = seconds.map((secs, index) => {
         return secs.reduce((total, current) => {
             return total.add(current)
         }, bd(0))
@@ -192,7 +190,7 @@ export default function NGUInfo({children, gameMode} : NGUProps) {
             break;
     }
     
-    var topButtons = (
+    let topButtons = (
         <>
             <p>How would you like to calculate NGUs?</p>
             <ChoiceButton text="Using Targets" onClick={() => setCalcType(NGU_TARGET)} active={calcType==NGU_TARGET} />

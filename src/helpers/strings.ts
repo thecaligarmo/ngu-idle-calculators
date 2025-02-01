@@ -1,5 +1,5 @@
 export function camelToTitle(text: string) : string {
-    var result: string = text.replace(/([A-Z0-9])/g, " $1");
+    let  result: string = text.replace(/([A-Z0-9])/g, " $1");
     result = result
                 .replace('%', ' (%)')
                 .replace(/ N G U( |$)/g, ' NGU ')

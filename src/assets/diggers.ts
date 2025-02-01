@@ -27,7 +27,7 @@ export class Digger extends Resource {
         this.maxLevel = maxLevel
     }
     updateStats() {
-        for (var prop of this.statnames) {
+        for (let prop of this.statnames) {
             switch(this.key) {
                 case DiggerKeys.DROP_CHANCE:
                 case DiggerKeys.WANDOOS:
