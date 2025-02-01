@@ -60,6 +60,7 @@ export default function WishesPage() {
                     setOptWishChosen(e.target.value)
                 }}
                 value={optWishChosen}
+                id="wish-look-select"
             >
                 <option key="current" value="current">Select a Wish</option>
                 {getWIshList(wishes, gameMode)}
@@ -174,6 +175,7 @@ export default function WishesPage() {
                     setOptWishChosen(e.target.value)
                 }}
                 value={optWishChosen}
+                id="chosen-wish-select"
             >
                 <option key="current" value="current">Select a Wish</option>
                 {getWIshList(wishes, gameMode)}

@@ -37,22 +37,22 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
                 <label className="inline-block text-black dark:text-white mt-2 mb-1 mr-2">
                     {/* htmlFor={d.id} */}
                     {d.name}:
+                    <ChoiceButton
+                        text="Yes"
+                        
+                        active={player.get(d.key)}
+                        onClick={() => {
+                            player.set(d.key, true)
+                        }}
+                        />
+                    <ChoiceButton
+                        text="No"
+                        active={!player.get(d.key)}
+                        onClick={() => {
+                            player.set(d.key, false)
+                        }}
+                        />
                 </label>
-                <ChoiceButton
-                    text="Yes"
-                    
-                    active={player.get(d.key)}
-                    onClick={() => {
-                        player.set(d.key, true)
-                    }}
-                    />
-                <ChoiceButton
-                    text="No"
-                    active={!player.get(d.key)}
-                    onClick={() => {
-                        player.set(d.key, false)
-                    }}
-                    />
             </li>)
         }
         // Game mode is weird
@@ -61,28 +61,28 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
                 <label className="inline-block text-black dark:text-white mt-2 mb-1 mr-2">
                     {/* htmlFor={d.id} */}
                     {d.name}:
+                    <ChoiceButton
+                        text="Normal"
+                        active={player.get(d.key).getValue() == '0'}
+                        onClick={() => {
+                            player.set(d.key, 0)
+                        }}
+                        />
+                    <ChoiceButton
+                        text="Evil"
+                        active={player.get(d.key).getValue() == '1'}
+                        onClick={() => {
+                            player.set(d.key, 1)
+                        }}
+                        />
+                    <ChoiceButton
+                        text="Sadistic"
+                        active={player.get(d.key).getValue() == '2'}
+                        onClick={() => {
+                            player.set(d.key, 2)
+                        }}
+                        />
                 </label>
-                <ChoiceButton
-                    text="Normal"
-                    active={player.get(d.key).getValue() == '0'}
-                    onClick={() => {
-                        player.set(d.key, 0)
-                    }}
-                    />
-                <ChoiceButton
-                    text="Evil"
-                    active={player.get(d.key).getValue() == '1'}
-                    onClick={() => {
-                        player.set(d.key, 1)
-                    }}
-                    />
-                <ChoiceButton
-                    text="Sadistic"
-                    active={player.get(d.key).getValue() == '2'}
-                    onClick={() => {
-                        player.set(d.key, 2)
-                    }}
-                    />
             </li>)
         }
         if (d.key.startsWith('cardRarity')) {
@@ -104,8 +104,8 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
                 <label className="inline-block text-black dark:text-white mt-2 mb-1 mr-2">
                     {/* htmlFor={d.id} */}
                     {d.name}:
-                </label>
                 {rarityOptions}
+                </label>
             </li>)
         }
 

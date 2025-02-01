@@ -197,14 +197,12 @@ export default function CardsPage() {
     }, bd(0))
     
     let cardsPerDay = getCardsPerDay(cardSpeed, recycleCard)
-    console.log(cardsPerDay)
     let cardsRecycled = getCardsRecycled(recycleCard, cardsPerDay)
     if (!player.get('cardRecyclingCard')) {
         cardsPerDay = cardsPerDay.subtract(cardsRecycled)
         cardsRecycled = bd(0)
     }
-    console.log(cardsPerDay, cardSpeed, recycleCard)
-
+    
 
     // Chonk info
     // J_i * O_i / cardSpeed
@@ -240,7 +238,6 @@ export default function CardsPage() {
     const [mayoFromFruit, mayoFromFruitLeftovers] = player.get('includeFruit')
         ? getMayoFromFruit(player.get('includeLeftovers'), fruits, fruitYieldData, player.get('poopAllLeftovers'))
         : [bd(0), bd(0)]
-    console.log(player.get('includeLeftovers'), fruits, fruitYieldData, player.get('poopAllLeftovers'))
     
     const mayoFromRecycling = player.get('cardRecyclingMayo') 
                 ? getMayoFromRecycling(cardsRecycled, chonksRecycled)

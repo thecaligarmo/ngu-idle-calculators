@@ -79,11 +79,12 @@ export default function ZonePage() {
                     <p>
                         Compare the optimal zone with:
                         <select
-                        className='ml-2 text-black'
-                        onChange={(e) => {
-                            setOptZoneChosen(e.target.value)
-                        }}
-                        value={optZoneChosen}
+                            className='ml-2 text-black'
+                            onChange={(e) => {
+                                setOptZoneChosen(e.target.value)
+                            }}
+                            value={optZoneChosen}
+                            id="compare-boost-select"
                         >
                         {zoneList}
                         </select>
@@ -102,11 +103,12 @@ export default function ZonePage() {
                     <p>
                         Compare the optimal zone with:
                         <select
-                        className='ml-2 text-black'
-                        onChange={(e) => {
-                            setOptZoneChosen(e.target.value)
-                        }}
-                        value={optZoneChosen}
+                            className='ml-2 text-black'
+                            onChange={(e) => {
+                                setOptZoneChosen(e.target.value)
+                            }}
+                            value={optZoneChosen}
+                            id="compare-exp-select"
                         >
                         {zoneList}
                         </select>

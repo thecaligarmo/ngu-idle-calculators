@@ -271,6 +271,7 @@ export default function Page() {
                     setOptMaxTitan(e.target.value)
                 }}
                 value={optMaxTitan}
+                id="max-titan-select"
             >
                 <option key="current" value="current">Highest Titan by Autokill - {maxTitanByAK[0].getFullName(maxTitanByAK[1])}</option>
                 {titanList}
