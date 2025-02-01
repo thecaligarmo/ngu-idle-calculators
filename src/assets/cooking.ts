@@ -154,7 +154,7 @@ export class Dish extends Resource {
     }
     pairScore(ing1 : Ingredient, ing2 :  Ingredient, pairTarget : number) : bigDecimal {
         return bd(
-            (1 - 0.03 * Math.abs(pairTarget - (ing1.level + ing2.level))) ** 30
+            (1 - 0.02 * Math.abs(pairTarget - (ing1.level + ing2.level))) ** 40
         ).multiply(bd(ing1.pairedWeight))
     }
 }
