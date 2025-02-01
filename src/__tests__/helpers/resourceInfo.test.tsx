@@ -920,10 +920,10 @@ describe('Resource Info - Item Set Info', () => {
         "Item Sets Info - %s",
         (_name, player, expectSets, noExpectSets, numQuests) => {
             
-            for(var itemSet of expectSets) {
+            for(const itemSet of expectSets) {
                 expect(isMaxxedItemSet(player,  itemSet)).toBeTruthy()
             }
-            for(var itemSet of noExpectSets) {
+            for(const itemSet of noExpectSets) {
                 expect(isMaxxedItemSet(player,  itemSet)).toBeFalsy()
             }
             expect(maxxedItemSetNum(player,  ItemSets.QUESTS)).toBe(numQuests)

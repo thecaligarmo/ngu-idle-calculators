@@ -215,6 +215,7 @@ export class Titan extends Enemy {
         }
         return bigdec_max(bd(1), bd(this.respawnTime).subtract(rbChallenges.multiply(bd(1/4))))
     }
+    //eslint-disable-next-line
     importKills(bestiary : any) {
         switch(this.id){
             case 1:

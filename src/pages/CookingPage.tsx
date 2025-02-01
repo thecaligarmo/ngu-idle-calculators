@@ -1,15 +1,15 @@
+import { Dish, Ingredient } from "@/assets/cooking";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
 import _ from "lodash";
 import { ReactElement } from "react";
-import { Dish, Ingredient } from "@/assets/cooking";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
-import { getNumberFormat, getPlayer } from "../components/Context";
-import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import { getPlayer } from "../components/Context";
 
 
 
 export default function CookingPage() {
-    const fmt = getNumberFormat();
+    // const fmt = getNumberFormat();
     const player = getPlayer();
 
     // Set data required (from playerData)

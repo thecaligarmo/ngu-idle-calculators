@@ -114,15 +114,16 @@ export function getQuestInfo(
         }   
     }
 
+    let minorsPerDay : bigDecimal
     try{
-        var minorsPerDay = (bd(60 * 60)
+        minorsPerDay = (bd(60 * 60)
                 .multiply(hoursPerDay)
                 .subtract(totalSecondsMajorQuest)
             )
             .divide(secondsPerIdleQuest)
 
-    } catch(exception) {
-        var minorsPerDay = bd(1)
+    } catch {
+        minorsPerDay = bd(1)
     }
 
     const QPPerMinor = questMinorQP

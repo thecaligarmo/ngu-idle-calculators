@@ -82,4 +82,4 @@ export const APITEMLIST = [
     new APItem(74, '500PP', '500 PP!', GameMode.ALL, 0, []),
 ];
 
-export var APITEMS = new ResourceContainer(APITEMLIST);
+export const APITEMS = new ResourceContainer(APITEMLIST);

@@ -267,7 +267,16 @@ export default function CardsPage() {
 
 
     // By Type Calculations
-    const infoByType = toObjectMap(cards,
+    const infoByType : {[k:string]: {
+        'cardsPerDay': bigDecimal,
+        'chonksPerDay': bigDecimal,
+        'bonusPerMayo': bigDecimal,
+        'bonusPerCard': bigDecimal,
+        'bonusPerChonk': bigDecimal,
+        'bonusPerDay' : bigDecimal,
+        'mayoNeeded' : bigDecimal,
+        'Hi' : bigDecimal,
+    }} = toObjectMap(cards,
         (card) => card.key,
         (card) => {
             const cardsPDay = cardsPerDay.multiply(card.tagFormula(tagEffect, numTagged))
@@ -294,10 +303,10 @@ export default function CardsPage() {
             return {
                 'cardsPerDay': cardsPDay,
                 'chonksPerDay': chonkPDay,
-                'bonusPerMayo%': bonusPerMayo.multiply(bd(100)),
-                'bonusPerCard%': bonusPerCard.multiply(bd(100)),
-                'bonusPerChonk%': bonusPerChonk.multiply(bd(100)),
-                'bonusPerDay%' : bonusPerDay.multiply(bd(100)),
+                'bonusPerMayo': bonusPerMayo.multiply(bd(100)),
+                'bonusPerCard': bonusPerCard.multiply(bd(100)),
+                'bonusPerChonk': bonusPerChonk.multiply(bd(100)),
+                'bonusPerDay' : bonusPerDay.multiply(bd(100)),
                 'mayoNeeded' : mayoNeeded,
                 'Hi' : Hi,
             }
@@ -305,7 +314,7 @@ export default function CardsPage() {
     )
 
     // Total Mayo Needed
-    const totalMayoNeeded = Object.keys(infoByType).reduce((mayoSum : bigDecimal, k : any) => {
+    const totalMayoNeeded = Object.keys(infoByType).reduce((mayoSum : bigDecimal, k : string) => {
         return mayoSum.add(infoByType[k]['mayoNeeded'])
     }, bd(0))
     const mayoLeftover = mayoPerDay.subtract(totalMayoNeeded)
@@ -350,10 +359,10 @@ export default function CardsPage() {
             'key': camelToTitle(k.replace('card', '')) + " Card",
             'cpd': <span className="text-red-500">{pn(infoByType[k]['cardsPerDay'], fmt)}</span>,
             'chpd': <span className="text-red-500">{pn(infoByType[k]['chonksPerDay'], fmt, 3)}</span>,
-            'bpm': pn(infoByType[k]['bonusPerMayo%'], fmt, 3) + "%",
-            'bpc': pn(infoByType[k]['bonusPerCard%'], fmt, 3) + "%",
-            'bpch': pn(infoByType[k]['bonusPerChonk%'], fmt, 3) + "%",
-            'bpd': <span className="text-green-500">{pn(infoByType[k]['bonusPerDay%'], fmt, 3) + "%"}</span>,
+            'bpm': pn(infoByType[k]['bonusPerMayo'], fmt, 3) + "%",
+            'bpc': pn(infoByType[k]['bonusPerCard'], fmt, 3) + "%",
+            'bpch': pn(infoByType[k]['bonusPerChonk'], fmt, 3) + "%",
+            'bpd': <span className="text-green-500">{pn(infoByType[k]['bonusPerDay'], fmt, 3) + "%"}</span>,
             'mpd': <span className="text-blue-500">{pn(infoByType[k]['mayoNeeded'], fmt, 2)}</span>,
         }
     }
@@ -398,7 +407,7 @@ export default function CardsPage() {
     const chanceOfTagged = bd(numTagged).multiply(tagEffect).add(
         (bd(1).subtract(bd(numTagged).multiply(tagEffect))).multiply(bd(numTagged / 14))
     )
-    let chanceCastable = (Object.keys(infoByType).reduce((cards : bigDecimal, k : any) => {
+    let chanceCastable = (Object.keys(infoByType).reduce((cards : bigDecimal, k : string) => {
         return cards.add(infoByType[k]['Hi'])
     }, bd(0)))
     if (greaterThan(cardsPerDay, bd(0))) {

@@ -41,8 +41,10 @@ export function useLocalStorage(key: string, fallbackValue: string) {
 
 
 // For speed purposes we want to keep the serialization in an effect
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function useLocalStorageObject(key: string, fallbackValue : any) {
     const fbV : string = fallbackValue.toString()
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     const [value, setValue] = useState<any>(fallbackValue);
 
     useEffect(() => {
@@ -62,7 +64,8 @@ export function useLocalStorageObject(key: string, fallbackValue : any) {
         } else {
             setValue(fbV)
         }
-    }, [fbV, key]);
+    }, [fbV, key]); // eslint-disable-line
+    // TODO - Fix the fact that `value` does not appear as a dependency
 
     useEffect(() => {
         const stored = localStorage.getItem(key);

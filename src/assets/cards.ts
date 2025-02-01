@@ -81,6 +81,7 @@ export class Card extends Resource {
         this.minCastRarity = 0
         this.constants = constants
     }
+    //eslint-disable-next-line
     importStats(data : any) {
         this.setLevel(data[this.id])
     }
@@ -162,4 +163,4 @@ export const CARDLIST = [
     new Card(14, CardKeys.QP, 'QP Card', [[Stat.QUEST_REWARD, 1],], [0.01, 0.02, 0.6, 1.08]),
 ]
 
-export var CARDS = new ResourceContainer(CARDLIST);
+export const CARDS = new ResourceContainer(CARDLIST);

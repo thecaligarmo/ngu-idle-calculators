@@ -47,6 +47,7 @@ export class Hack extends Resource {
         this.hardCap = hardCap
         this.milestoneReduction = 0
     }
+    //eslint-disable-next-line
     importStats(data: any, playerData : any) : void {
         this.level = data.level
         this.target = data.target
@@ -464,4 +465,4 @@ export const HACKLIST = [
     new Hack(14, HackKeys.WISH, 'Wish Hack', GameMode.EVIL, [[Stat.WISH_SPEED, 0.01]], 50, 1.005, bd('1e13'), 6262),
 ]
 
-export var HACKS = new ResourceContainer(HACKLIST);
+export const HACKS = new ResourceContainer(HACKLIST);

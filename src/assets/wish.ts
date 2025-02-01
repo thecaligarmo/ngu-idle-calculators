@@ -358,4 +358,4 @@ export const WISHLIST = [
     new Wish(230, 'iwishmychonkerswereLESSNOTCHONKIER', 'I wish my chonkers were LESS NOT CHONKIER', GameMode.SADISTIC, 5, [], bd('370e24')),
 ]
 
-export var WISHES = new ResourceContainer(WISHLIST);
+export const WISHES = new ResourceContainer(WISHLIST);

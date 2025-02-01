@@ -3,8 +3,8 @@ import { playerDataInfo } from "@/assets/playerData";
 import { requiredDataType } from "../components/Content";
 import { camelToTitle } from "./strings";
 
-// getRequiredStates
-export function getPlayerDataInfo(data : requiredDataType) : any{
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+export function getPlayerDataInfo(data : requiredDataType) : any {
     const ir = []
     for (const col of data) {
         const colDr = []

@@ -25,4 +25,4 @@ export const ADVTRAININGLIST = [
     new AdvTraining(4, 'wandoosMagicDump', 'The LadyBeard', GameMode.ALL, 0, [[Stat.MAGIC_WANDOOS_SPEED, 1]]),
 ]
 
-export var ADVTRAININGS = new ResourceContainer(ADVTRAININGLIST);
+export const ADVTRAININGS = new ResourceContainer(ADVTRAININGLIST);

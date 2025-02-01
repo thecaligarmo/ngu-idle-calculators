@@ -267,30 +267,32 @@ function cubeInfo(player: Player, key : string, capAmount : bigDecimal = bd(-1))
     let toughness = player.get('cubeToughness')
     const total = power.add(toughness)
     const digits = total.floor().getValue().length
+    let extraPow : number;
+    let extraTough : number;
     switch(key) {
         case Stat.POWER:
-            var extraPow = 0
+            extraPow = 0
             if( lessThan(capAmount, power)) {
                 extraPow = Math.sqrt(toNum(power.subtract(capAmount)))
                 power = capAmount
             }
             return power.add(bd(extraPow))
         case Stat.TOUGHNESS:
-            var extraTough = 0
+            extraTough = 0
             if( lessThan(capAmount, toughness)) {
                 extraTough = Math.sqrt(toNum(toughness.subtract(capAmount)))
                 toughness = capAmount
             }
             return toughness.add(bd(extraTough))
         case Stat.HEALTH:
-            var extraPow = 0
+            extraPow = 0
             if( lessThan(capAmount, power)) {
                 extraPow = Math.sqrt(toNum(power.subtract(capAmount)))
                 power = capAmount
             }
             return power.multiply(bd(3))
         case Stat.REGEN:
-            var extraTough = 0
+            extraTough = 0
             if( lessThan(capAmount, toughness)) {
                 extraTough = Math.sqrt(toNum(toughness.subtract(capAmount)))
                 toughness = capAmount
@@ -338,10 +340,10 @@ function cubeInfo(player: Player, key : string, capAmount : bigDecimal = bd(-1))
 }
 
 function globalDiggerBonus(player: Player ) : number{
-    const diggers : any = player.get('diggers')
+    const diggers : Digger[] = player.get('diggers')
     let totalLevel : number = 0
     if (diggers.length){
-        totalLevel = Object.keys(diggers).reduce((curVal: number, d : string) => {return diggers[d].maxLevel + curVal}, 0)
+        totalLevel = Object.values(diggers).reduce((curVal: number, d : Digger) => {return d.maxLevel + curVal}, 0)
     }
     const challenges : Challenge[] = player.get('challenges')
     const challengeBonus : number = (!_.isUndefined(challenges[GameMode.NORMAL]) && !_.isUndefined(challenges[GameMode.NORMAL][10]) && challenges[GameMode.NORMAL][10].level > 0) ? 5 : 0;

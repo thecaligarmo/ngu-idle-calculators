@@ -102,15 +102,16 @@ export default function HacksPage() {
         hack.milestoneReduction = toNum(player.get(hack.getMilestoneReductionName()))
         const curVal = hack.getStatValue()
         const milestone = hack.getMilestone()
+        let target : number
         if (calcType == HACKS_PERCENTAGE) {
             const targetVal = curVal * (toNum(player.get('percentIncrease')) / 100 + 1)
-            var target = hack.getLevelFromVal(targetVal)
+            target = hack.getLevelFromVal(targetVal)
         } else if (calcType == HACKS_MILESTONE) {
-            var target = hack.getMilestoneLevel(milestone + toNum(player.get('milestoneIncrease')))
+            target = hack.getMilestoneLevel(milestone + toNum(player.get('milestoneIncrease')))
         } else if (calcType == HACKS_TARGET) {
-            var target = toNum(player.get(hack.getTargetName()))
+            target = toNum(player.get(hack.getTargetName()))
         } else {
-            var target = hack.level
+            target = hack.level
         }
 
         let targetMilestone = hack.getMilestone(target)

@@ -70,14 +70,14 @@ export default function WishesPage() {
     let chosenWish : Wish = WISHES[0]
     if (wishes.length > 0) {
         if(optWishChosen == 'current') {
-            for (var wish of wishes) {
+            for (const wish of wishes) {
                 if (!wish.completed() && wish.appliesToGameMode(gameMode)) {
                     setOptWishChosen(wish.key)
                     break
                 }
             }
         } else {
-            for (var wish of wishes) {
+            for (const wish of wishes) {
                 if(wish.key == optWishChosen) {
                     chosenWish = wish
                     break

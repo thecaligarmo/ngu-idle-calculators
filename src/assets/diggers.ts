@@ -18,6 +18,8 @@ const DiggerKeys : {[key: string]: string} = {
 } as const satisfies {[key: string]: string};
 
 export class Digger extends Resource {
+    active: boolean
+    maxLevel: number
     constructor(id: number, key: string, name: string, props: prop) {
         super(id, key, name, GameMode.ALL, 0, props)
         this.active = false
@@ -79,4 +81,4 @@ export const DIGGERLIST = [
     new Digger(11, DiggerKeys.EXPERIENCE, 'EXP Digger', [[Stat.EXPERIENCE, 1],]),
 ]
 
-export var DIGGERS = new ResourceContainer(DIGGERLIST);
+export const DIGGERS = new ResourceContainer(DIGGERLIST);

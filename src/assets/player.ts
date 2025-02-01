@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import { boostRecyclying, getHighestKilledTitanId, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalHackSpeed, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMayoSpeed, totalPower, totalPPBonus, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Cap, totalRes3Power, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalWishSpeed, totalYggdrasilYieldBonus } from "@/helpers/calculators"
 import { useLocalStorage, useLocalStorageObject } from "@/helpers/localStorage"
 import { bd } from "@/helpers/numbers"

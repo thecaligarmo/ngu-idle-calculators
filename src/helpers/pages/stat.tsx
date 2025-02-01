@@ -8,7 +8,7 @@ import { totalAPBonus, totalAugmentSpeed, totalCardSpeed, totalDaycareSpeed, tot
 import { bd, bigdec_equals, bigdec_max, pn, toNum } from "../numbers"
 import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "../resourceInfo"
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function describeStat(data : any, fmt : string, isRespawn : boolean = false) {
     const rows = Object.keys(data).map((k) => {
         if(k != 'base' && k != 'total' && bigdec_equals(data[k].val, bd(100))) {

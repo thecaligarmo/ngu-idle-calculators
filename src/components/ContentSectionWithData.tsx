@@ -9,7 +9,7 @@ interface ContentSectionWithDataProps {
     preChildren ?: ReactNode;
     idKey : string;
     title : string;
-    data : any;
+    data : any; // eslint-disable-line
     listChildren ?: ReactNode;
     inputChildren ?: ReactNode;
     description ?: string;

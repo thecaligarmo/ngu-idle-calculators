@@ -1,6 +1,4 @@
-import { PropsWithChildren } from "react";
-
-export default function Footer({ } : PropsWithChildren) {
+export default function Footer() {
     return (
       <footer className="border-t border-black dark:border-white mt-10 py-5">
         <div className='w-3/4 mx-auto'>

@@ -10,6 +10,8 @@ export class MacGuffin extends Resource {
     updateStats() {
         // Don't do anything
     }
+
+    // eslint-disable-next-line
     importStats(data : any) : void{
         for (const prop of Object.keys(this.base)) {
             this[prop] = data[this.id]
@@ -54,4 +56,4 @@ export const MACGUFFINLIST = [
     new MacGuffin(22, 'resource3BarMacGuffin', 'Resource 3 Bar MacGuffin', [[Stat.RES3_BARS, 1]]),//id
 ]
 
-export var MACGUFFINS = new ResourceContainer(MACGUFFINLIST);
+export const MACGUFFINS = new ResourceContainer(MACGUFFINLIST);

@@ -3,6 +3,7 @@ import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { bd, bigdec_max, bigdec_min } from "../numbers"
 
+type gsType = 'power' | 'cap' | 'bar'
 type gensType = {
     energy : {
         power : bigDecimal,
@@ -38,7 +39,7 @@ function getRatMax(base : bigDecimal, ratio : bigDecimal, oppRatio : bigDecimal,
         const rat = base.round().divide(ratio, 20)
         // Take our units and multiply by the "opposite" ratio (see what quantity we need)
         return rat.multiply(oppRatio).multiply(thirdRatio)
-    } catch (error) {
+    } catch {
         return bd(0);
     }
 }
@@ -51,7 +52,7 @@ function getRatUnit(base : bigDecimal, ratio : bigDecimal, mainRatio : bigDecima
         const rat = base.round().divide(ratio)
         // Take our units and devide by the "same" ratio (smaller unit)
         return rat.divide(mainRatio)
-    } catch (error) {
+    } catch {
         return bd(0)
     }
 }
@@ -59,7 +60,7 @@ function getRatUnit(base : bigDecimal, ratio : bigDecimal, mainRatio : bigDecima
 function getDesired(maxItem : bigDecimal, base : bigDecimal, ratMax : bigDecimal) : bigDecimal {
     try {
         return (maxItem.multiply(base.round()).divide(ratMax)).floor()//.round(0, bigDecimal.RoundingModes.HALF_DOWN)
-    } catch(error) {
+    } catch {
         return bd(0);
     }
 }
@@ -91,8 +92,8 @@ export function getRatioInfo(player : Player) : [gensType, gensType, gensBDType,
     
 
     let ty: keyof typeof ratMax
+    let elt: gsType
     for (ty in basicGens) {
-        var elt: keyof (typeof ratMax)[keyof typeof ratMax]
         if (ty == 'res3' && !res3Active) {
             for (elt in basicGens[ty as keyof gensType]) {
                 ratMax[ty][elt] = bd(0);

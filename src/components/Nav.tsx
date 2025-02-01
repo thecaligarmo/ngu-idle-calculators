@@ -1,10 +1,10 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { cardsUnlocked, cookingUnlocked, getGameMode, hacksUnlocked, isAtLeastEvilMode, isSadMode, wandoosUnlocked, wishesUnlocked, yggUnlocked } from "@/helpers/gameMode";
+import { ReactNode } from "react";
+import { NavLink, useLocation } from "react-router";
 import { getPlayer, useNumberFormatContext } from "./Context";
 import ImportSaveForm from "./ImportSaveForm/importSaveForm";
-import { cardsUnlocked, cookingUnlocked, getGameMode, hacksUnlocked, isAtLeastEvilMode, isSadMode, wandoosUnlocked, wishesUnlocked, yggUnlocked } from "@/helpers/gameMode";
-import { NavLink, useLocation } from "react-router";
 
-export default function Nav({ } : PropsWithChildren) {
+export default function Nav() {
     const {numberFormat, setNumberFormat} = useNumberFormatContext();
     const pathname = useLocation().pathname;
     

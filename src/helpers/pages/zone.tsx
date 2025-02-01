@@ -141,7 +141,7 @@ export function getOptimalExpZone(zoneBoostInfo : zoneType[]) : zoneType{
 export function itemSetInfo(player: Player) {
     const itemSets: ItemSet[] = Object.values(player.get('itemSets'))
     const notMaxed = itemSets.filter((itSet : ItemSet) => !itSet.isMaxxed && itSet.isZoneSet())
-    const ret : any = {}
+    const ret : {[k: string] : {'zone': Zone, 'set': ItemSet}} = {}
     for(const itSet of notMaxed) {
         // Since it's a zone set, we know `getZones()` only has one zone
         const zone : Zone = itSet.getZones()[0]

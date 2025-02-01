@@ -28,6 +28,7 @@ function getModeKey(key: string , mode: number) {
 }
 
 export class Challenge extends Resource {
+    // eslint-disable-next-line
     extraProps: any[]
 
     constructor(id: number, key: string, name: string, mode : number, props: prop, extraProps: prop = []) {
@@ -57,6 +58,7 @@ export class Challenge extends Resource {
             }
         }
     }
+    // eslint-disable-next-line
     importStats(data: any) {
         if(this.mode == GameMode.NORMAL) {
             if(this.key == getModeKey(ChallengeKeys.BASIC, GameMode.NORMAL)) {
@@ -113,4 +115,4 @@ export const CHALLENGELIST = [
     new Challenge(210, ChallengeKeys.NO_TM, 'Sadistic No Time Machine Challenge',  GameMode.SADISTIC, [], []),
 ]
 
-export var CHALLENGES = new ResourceContainer(CHALLENGELIST);
+export const CHALLENGES = new ResourceContainer(CHALLENGELIST);

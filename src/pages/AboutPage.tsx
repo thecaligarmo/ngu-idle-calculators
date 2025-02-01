@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import Container from "../components/Container";
 import ContentSection from "../components/ContentSection";
 

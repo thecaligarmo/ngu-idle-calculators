@@ -160,7 +160,7 @@ export default function NGUInfo({gameMode} : NGUProps) {
     })
     
     // Get the total seconds
-    const totalSeconds = seconds.map((secs, index) => {
+    const totalSeconds = seconds.map((secs) => {
         return secs.reduce((total, current) => {
             return total.add(current)
         }, bd(0))

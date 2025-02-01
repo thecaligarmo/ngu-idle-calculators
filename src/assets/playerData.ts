@@ -1,6 +1,6 @@
 type dataInfoType = {
     'type' : 'number' | 'boolean' | 'object',
-    'default' : any,
+    'default' : any, // eslint-disable-line
     'length' ?: number,
     'percent' ?: boolean,
     'name' ?: string,

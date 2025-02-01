@@ -6,7 +6,9 @@ import { ReactNode } from "react";
 import { ChoiceButton } from "./buttons/ChoiceButton";
 import { getNumberFormat } from "./Context";
 
+// TODO - Fix the `any` in this page
 
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function disableItem(reqs: any, itemToRemove: string[]) : string[][] {
     for(let i = 0; i < reqs.length; i++) {
         for(let j = 0; j< reqs[i].length; j++) {
@@ -21,6 +23,7 @@ export function disableItem(reqs: any, itemToRemove: string[]) : string[][] {
 /*
  Returns the <li> or <input> needed for `dataToCols`
 */
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 function dataToList(player : Player, d : any, input : boolean = false) : ReactNode{
     // const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();
     const fmt = getNumberFormat();
@@ -190,8 +193,10 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
 /*
  Takes our data and returns many <ul> depending on data
 */
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function dataToCols(player: Player, dr : any[], input : boolean = false) : ReactNode{
     const cols = []
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     let params : {[k:string] : any} = {}
 
     dr = _.cloneDeep(dr)
@@ -236,9 +241,12 @@ export function dataToCols(player: Player, dr : any[], input : boolean = false) 
         }
         
         cols.push (<ul className={cc} key={colKey}>
-            {col.map((d : any) => {
-                return dataToList(player, d, input)
-            })}
+            {
+                // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+                col.map((d : any) => {
+                    return dataToList(player, d, input)
+                })
+            }
         </ul>)
     }
     return cols

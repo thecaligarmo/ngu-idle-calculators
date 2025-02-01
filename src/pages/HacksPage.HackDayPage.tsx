@@ -109,25 +109,25 @@ export default function HackDayPage() {
 
 
     // Figure out with hack info
-
     try{
-        var hackHack = hacks[13]
-        var hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED)
-        var newHackHackLvl = hackHack.level
+        const hackHack = hacks[13]
+        const hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED)
+        let newHackHackLvl = hackHack.level
         let i = 0
         while (!doneFindingOptimal && i < 20) {
             i = i + 1
-            var newHackHackLvl = hackHack.getNextMilestone(newHackHackLvl)
-            var newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, newHackHackLvl)
-            var newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal))
-            var newHackDayTime = bd(0)//hackHack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, newHackHackLvl)
-            var newHackDayTargets : any = {}
+            newHackHackLvl = hackHack.getNextMilestone(newHackHackLvl)
+            const newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, newHackHackLvl)
+            const newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal))
+            let newHackDayTime = bd(0)//hackHack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, newHackHackLvl)
+            const newHackDayTargets : {[k: string] : number} = {}
 
             hacks.forEach((hack) => {
+                let hackTarget : number;
                 if (hack.key == HackKeys.HACK) {
-                    var hackTarget = newHackHackLvl
+                    hackTarget = newHackHackLvl
                 } else {
-                    var hackTarget = hackDayTargets[hack.key]
+                    hackTarget = hackDayTargets[hack.key]
                 }
                 const minHackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget)
                 newHackDayTime = newHackDayTime.add(minHackTime)
@@ -142,22 +142,22 @@ export default function HackDayPage() {
             }
         }
     } catch {
-
+        console.log('')
     }
 
     // Fix extra targets
     let totalHackDayTimeMin = bd(0)
     let totalHackDayTimeMax = bd(0)
     try {
-        var hackHack = hacks[13]
-        var hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED)
+        const hackHack = hacks[13]
+        const hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED)
         let hackHackTarget = hackDayTargets[hackHack.key]
         if (!isZero(player.get(hackHack.getMilestoneExtraName()))) {
             const targetMilestone = hackHack.getMilestone(hackHackTarget) + toNum(player.get(hackHack.getMilestoneExtraName()))
             hackHackTarget = hackHack.getMilestoneLevel(targetMilestone)
         }
-        var newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, hackHackTarget)
-        var newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal))
+        const newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, hackHackTarget)
+        const newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal))
         hacks.forEach((hack) => {
             const curVal = hack.getStatValue()
             let hackTarget = hackDayTargets[hack.key]
@@ -188,7 +188,7 @@ export default function HackDayPage() {
             }
         })
     } catch {
-
+        console.log('')
     }
 
 

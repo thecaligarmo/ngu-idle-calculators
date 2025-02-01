@@ -33,6 +33,8 @@ export class Wandoos extends Resource{
         this.updateStats()
     }
 
+    // TODO - fix any
+    // eslint-disable-next-line
     importStats(data: any) : void {
         const wandoosOSLevel = data.wandoos98.OSlevel
                             + data.wandoos98.pitOSLevels
@@ -91,4 +93,4 @@ export const WANDOOSLIST = [
     new Wandoos(0, 'wandoos', 'Wandoos Dump', GameMode.NORMAL, [[Stat.ATTACK, 1], [Stat.DEFENSE, 1]]),
 ]
 
-export var WANDOOSS = new ResourceContainer(WANDOOSLIST);
+export const WANDOOSS = new ResourceContainer(WANDOOSLIST);

@@ -1,12 +1,12 @@
 
-const NGU_TARGET = 'target'
-const NGU_PERCENTAGE = 'percentage'
-const NGU_TIME = 'time'
-const NGU_VALUE = 'value'
+// const NGU_TARGET = 'target'
+// const NGU_PERCENTAGE = 'percentage'
+// const NGU_TIME = 'time'
+// const NGU_VALUE = 'value'
 
 
 
-export var nguValueElts = [
+export const nguValueElts = [
     'energyNGUAugmentsValue',
     'energyNGUWandoosValue',
     'energyNGURespawnValue',
@@ -59,7 +59,7 @@ export var nguValueElts = [
     'magicNGUAdventureBSadisticValue',
 ]
 
-export var nguTargetElts = [
+export const nguTargetElts = [
     'energyNGUAugmentsTarget',
     'energyNGUWandoosTarget',
     'energyNGURespawnTarget',

@@ -19,8 +19,8 @@ export class Item extends Resource {
         this.ratio = 1   
     }
 
-    // @ts-ignore
-    getStatValue(prop: string, level : number = -1) : number {
+    // @ts-expect-error ts(6133)
+    getStatValue(prop: string, level : number = -1) : number { // eslint-disable-line
         if(!_.isUndefined(this[prop])) {
             return this[prop] * this.ratio
         }
@@ -32,6 +32,7 @@ export class Item extends Resource {
         }
     }
     // They assume stats are green... Slightly problematic
+    // eslint-disable-next-line
     importStats(data: any) {
         if (data.level > this.level) {
             const types = [
@@ -3098,4 +3099,4 @@ export const ITEMLIST = [
     ]),
 ];
 
-export var ITEMS = new ResourceContainer(ITEMLIST);
+export const ITEMS = new ResourceContainer(ITEMLIST);

@@ -16,6 +16,7 @@ export class Dish extends Resource {
         this.ingToPairMap = {}
     }
 
+    //eslint-disable-next-line
     importStats(data : any) {
         const ing1Data = data.ingredients[data.pair1[0]]
         const ing2Data = data.ingredients[data.pair1[1]]
@@ -180,6 +181,7 @@ export class Ingredient extends Resource {
         this.altLevel = 0
         this.altUnlocked = false
     }
+    // eslint-disable-next-line
     importStats(data : any) {
         this.targetLvl = data.targetLevel
         this.weight = data.weight
@@ -244,5 +246,5 @@ export const INGREDIENTLIST = [
     new Ingredient(19, 'coffeeGrounds', 'Coffee Grounds', 'Tbsp'),
 ]
 
-export var DISHES = new ResourceContainer(DISHLIST);
-export var INGREDIENTS = new ResourceContainer(INGREDIENTLIST);
+export const DISHES = new ResourceContainer(DISHLIST);
+export const INGREDIENTS = new ResourceContainer(INGREDIENTLIST);

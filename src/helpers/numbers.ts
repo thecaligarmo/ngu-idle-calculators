@@ -116,7 +116,7 @@ export function pn(num : bigDecimal | number, numberFormat : string = 'scientifi
 }
 
 
-export function bd(num : any) : bigDecimal {
+export function bd(num : number | bigDecimal | string) : bigDecimal {
     if(num instanceof bigDecimal) {
         return num
     }

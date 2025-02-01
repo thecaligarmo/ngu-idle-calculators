@@ -26,6 +26,8 @@ export class ItemSet {
         this.lvlDropped = lvlDropped
     }
 
+    // TODO - Handle any
+    // eslint-disable-next-line
     updateStats(data : any) : void{
         this.isMaxxed = false
         if (!_.isUndefined(data.inventory.itemList[this.key + "Complete"]) && data.inventory.itemList[this.key + "Complete"] === 1) {
@@ -52,6 +54,7 @@ export class ItemSet {
                 if(data.inventory.itemList.itemMaxxed[item.id] == 1) {
                     this.numMaxxed += 1
                 }
+                // eslint-disable-next-line
                 const inv = data.inventory.inventory.filter((it : any) => it.id == item.id)
                 if (inv.length > 0) {
                     for(const it of inv) {

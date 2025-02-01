@@ -46,6 +46,7 @@ export class NGU extends Resource {
     isRespawn() : boolean {
         return (this.key === NGUKeys.RESPAWN)
     }
+    //eslint-disable-next-line
     importStats(data: any) : void {
         if(this.id >= 20) {
             this.level = data.sadisticLevel
@@ -358,7 +359,7 @@ export class NGU extends Resource {
         let baseTimePerLevel : bigDecimal;
         try {            
             baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap, roundingDigs).divide(speedFactor, roundingDigs)
-        } catch (error) {
+        } catch {
             baseTimePerLevel = bd(0)
         }
 
@@ -391,22 +392,25 @@ export class NGU extends Resource {
 
         
         // Grab the number of levels that will be calculated with starting, middle (average) and end times
+        let startingSpeedLevels : bigDecimal
+        let middleSpeedLevels : bigDecimal
+        let endingSpeedLevels : bigDecimal
         try {
-            var startingSpeedLevels = bigdec_max(
+            startingSpeedLevels = bigdec_max(
                 (bigdec_min(startingSpeed.divide(baseTimePerLevel, roundingDigs), target).subtract(level)).floor(),
                 bd(0)
             )
 
             let x = (endingSpeed.subtract(bd(0.02))).divide(baseTimePerLevel, roundingDigs).floor().subtract(level).subtract(startingSpeedLevels)
-            var middleSpeedLevels = greaterThan(x, bd(0)) ? x : bd(0);
+            middleSpeedLevels = greaterThan(x, bd(0)) ? x : bd(0);
 
             x = bigdec_min(endingSpeed.divide(baseTimePerLevel, roundingDigs), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
-            var endingSpeedLevels = greaterThan(x, bd(0)) ? x : bd(0);
+            endingSpeedLevels = greaterThan(x, bd(0)) ? x : bd(0);
 
-        } catch(error) {
-            var startingSpeedLevels = bd(0);
-            var middleSpeedLevels = bd(0);
-            var endingSpeedLevels = bd(0);
+        } catch {
+            startingSpeedLevels = bd(0);
+            middleSpeedLevels = bd(0);
+            endingSpeedLevels = bd(0);
         }
 
         return startingSpeedLevels.multiply(startingSpeed)
@@ -420,10 +424,11 @@ export class NGU extends Resource {
         }
         const baseCost = this.baseCost
         const roundingDigs = speedFactor.floor().getValue().length + this.baseCost.getValue().length
+        let baseTimePerLevel : bigDecimal
         try {
-            var baseTimePerLevel = baseCost.divide(speedFactor, roundingDigs)
-        } catch (error) {
-            var baseTimePerLevel = bd(0)
+            baseTimePerLevel = baseCost.divide(speedFactor, roundingDigs)
+        } catch {
+            baseTimePerLevel = bd(0)
         }
         return level.multiply(baseTimePerLevel).divide(bd(0.0002), roundingDigs)
     }
@@ -503,5 +508,5 @@ export const MNGULIST = [
     new NGU(26, NGUKeys.ADVENTURE_B, 'NGU Adventure β', GameMode.SADISTIC, [[Stat.POWER, 0.015], [Stat.TOUGHNESS, 0.015], [Stat.HEALTH, 0.015], [Stat.REGEN, 0.015]], 'magic', 1000, bd('2e43')),
 ]
 
-export var ENERGY_NGUS = new ResourceContainer(ENGULIST);
-export var MAGIC_NGUS = new ResourceContainer(MNGULIST);
+export const ENERGY_NGUS = new ResourceContainer(ENGULIST);
+export const MAGIC_NGUS = new ResourceContainer(MNGULIST);

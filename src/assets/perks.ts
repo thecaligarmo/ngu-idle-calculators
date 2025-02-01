@@ -319,4 +319,4 @@ export const PERKLIST = [
     new Perk(231, 'eRROR', 'ERROR', GameMode.SADISTIC, 0, []),
 ]
 
-export var PERKS = new ResourceContainer(PERKLIST);
+export const PERKS = new ResourceContainer(PERKLIST);

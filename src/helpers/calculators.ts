@@ -18,6 +18,8 @@ function calcAll(player: Player, stat : string) : bigDecimal{
         return bd(0)
     }
 
+    // For easy testing when things go down
+    // eslint-disable-next-line
     if(false) {
         if(Stat.AUGMENT_SPEED == stat) {
             console.log('----------------------------------------')

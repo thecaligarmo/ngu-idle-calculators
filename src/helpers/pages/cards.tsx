@@ -2,7 +2,7 @@ import { FruitOfMayo, Yggdrasil } from "@/assets/yggdrasil"
 import bigDecimal from "js-big-decimal"
 import { bd, isOne } from "../numbers"
 
-export var cardReqFruit = [
+export const cardReqFruit = [
     'twoFruitPerInfuser',
     'includeLeftovers',
     'poopAllLeftovers',
@@ -20,7 +20,7 @@ export var cardReqFruit = [
     'poopFruitOfPrettyMayo',
 ]
 
-export var cardReqChonkers = [
+export const cardReqChonkers = [
     'cardChonkedEnergyNGU',
     'cardChonkedMagicNGU',
     'cardChonkedWandoos',
@@ -70,7 +70,8 @@ export function getChonksRecycled(recycleChonk : bigDecimal, chonksPerDay : bigD
     return (recycleChonk.subtract(bd(1)).multiply(chonksPerDay)).divide(bd(-4))
 }
 
-
+// TODO - Fix the any below
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function getMayoFromFruit(withLeftovers : boolean, fruits : Yggdrasil[], fruitYieldData : any, poopLeftovers : boolean) : [bigDecimal, bigDecimal] {
     let mayoFromFruit = bd(0)
     let leftoverFromFruit = bd(0)

@@ -153,8 +153,8 @@ export default function NGUsComparePage() {
 
     // Information retrieval
     const infoRow = NGUs.map((tyNGUs, index) => {
-        let ty = types[index]
-        ty = ty[0].toUpperCase() + ty.substring(1)
+        // let ty = types[index]
+        // ty = ty[0].toUpperCase() + ty.substring(1)
         return tyNGUs.map(function(ngu, innerIndex) {
             const targetLvls = targets[index][innerIndex]
             const secs = seconds[index][innerIndex]

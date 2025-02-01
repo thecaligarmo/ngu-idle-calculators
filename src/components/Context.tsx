@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import Player from "@/assets/player";
 import { useLocalStorage } from "@/helpers/localStorage.ts";
 import { Dispatch, PropsWithChildren, SetStateAction, createContext, useContext } from "react";

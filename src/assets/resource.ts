@@ -6,14 +6,14 @@ import _ from "lodash"
 export type prop = [string, number][] | [string, number, number][]
 
 export default class Resource {
-    [key:string]:any
+    [key:string]:any // eslint-disable-line
     id: number
     key: string
     name: string
     mode: number
     level: number
     progress: number
-    base: {[index: string]: any}
+    base: {[index: string]: any} // eslint-disable-line
     statnames: string[]
     constructor(id: number, key: string, name: string, mode: number, level: number, props: prop) {
         this.id = id
@@ -39,8 +39,9 @@ export default class Resource {
             this[prop] = (this.level > 0) ?  this.base[prop] : 0
         }
     }
-    //@ts-ignore
-    getStatValue(prop: string, level : number = -1) : number {
+    
+    //@ts-expect-error ts(6133)
+    getStatValue(prop: string, level : number = -1) : number { // eslint-disable-line
         if(!_.isUndefined(this[prop])) {
             return this[prop]
         }
@@ -62,7 +63,7 @@ export default class Resource {
 }
 
 export class ResourceContainer {
-    [key:string]:any
+    [key:string] : any // eslint-disable-line
     names: string[]
     ids : number[]
     keys: string[]

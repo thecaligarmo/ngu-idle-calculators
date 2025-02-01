@@ -201,4 +201,4 @@ export const QUIRKLIST = [
     new Quirk(185, 'theFinalGenericResource3BarsQuirk', 'The Final Generic Resource 3 Bars Quirk', GameMode.SADISTIC, 1, [[Stat.RES3_BARS, 1]]),
 ]
 
-export var QUIRKS = new ResourceContainer(QUIRKLIST);
+export const QUIRKS = new ResourceContainer(QUIRKLIST);

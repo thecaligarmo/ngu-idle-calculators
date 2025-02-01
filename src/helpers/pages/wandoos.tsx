@@ -5,7 +5,7 @@ import { bd, bigdec_min, greaterThan, bigdec_max, bigdec_equals } from "../numbe
 
 
 export type wandoosNames = '98' | 'meh' | 'xl'
-
+type resourceTypes = 'energy' | 'magic'
 
 type wandoosType = {
     'energy' : bigDecimal
@@ -78,33 +78,32 @@ export function getLevelsGainedInWandoos({
         'xl' : baseMultiplier.divide(wandoosBase['xl'], sigFig),
     }
 
+    let fillRatio : {'energy' : bigDecimal, 'magic' : bigDecimal}
     try {
-        var fillRatio = {
+        fillRatio = {
             'energy' : energyFills.multiply(energyCap).divide(bd(50), sigFig).divide(wandoos.energyAllocated, sigFig),
             'magic' : magicFills.multiply(magicCap).divide(bd(50), sigFig).divide(wandoos.magicAllocated, sigFig)
         }
     } catch {
-        var fillRatio = {
+        fillRatio = {
             'energy' : bd(1),
             'magic' : bd(1)
         }
     }
 
     const fillsPerMinute : wandoosOsType = {} as wandoosOsType; // : {[key : 'energy' | 'magic'] : bigDecimal }
-    var os : keyof typeof fillsPerMinute
+    let os : wandoosNames
+    let ty : resourceTypes
     for(os in wandoosRatios) {
         fillsPerMinute[os] = {} as wandoosType;
-        var ty : keyof typeof fillsPerMinute[typeof os]    
         for(ty in fillRatio) {
             fillsPerMinute[os][ty] = bigdec_min(bd(50), fillRatio[ty].multiply(bd(wandoosRatios[os])));
         }
     }
 
     const timeToFill : wandoosOsType = {} as wandoosOsType; 
-    var os : keyof typeof timeToFill
     for(os in wandoosRatios) {
         timeToFill[os] = {} as wandoosType;
-        var ty : keyof typeof timeToFill[typeof os]    
         for(ty in fillRatio) {
             timeToFill[os][ty] = bd(0)
             if( greaterThan(fillsPerMinute[os][ty], bd(0))) {
@@ -114,10 +113,8 @@ export function getLevelsGainedInWandoos({
     }
 
     const lvlsGained : wandoosOsType = {} as wandoosOsType; 
-    var os : keyof typeof lvlsGained
     for(os in wandoosRatios) {
         lvlsGained[os] = {} as wandoosType;
-        var ty : keyof typeof lvlsGained[typeof os]    
         for(ty in fillRatio) {
             lvlsGained[os][ty] = bd(0)
             if(greaterThan(timeToFill[os][ty], bd(0))) {

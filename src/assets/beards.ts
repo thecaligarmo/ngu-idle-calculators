@@ -133,4 +133,4 @@ export const BEARDLIST = [
     new Beard(6, 'goldenBeard', 'The Golden Beard', 'magic', [[Stat.TIME_MACHINE, 1]]),    
 ]
 
-export var BEARDS = new ResourceContainer(BEARDLIST);
+export const BEARDS = new ResourceContainer(BEARDLIST);
