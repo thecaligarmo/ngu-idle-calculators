@@ -145,7 +145,7 @@ describe("Daily page - Quest Info", () => {
             let t : 'ap' | 'qp'
             const tt : (typeof t)[] = ['ap', 'qp']
             for (t of tt){
-                var m : 'major' | 'minor' | 'perMajor' | 'perMinor'
+                let m : 'major' | 'minor' | 'perMajor' | 'perMinor'
                 const mm : (typeof m)[] = ['major', 'minor', 'perMajor', 'perMinor']
                 for (m of mm) {
                     const ec = expectClose(questInfo[t][m], expectedValue[t][m])

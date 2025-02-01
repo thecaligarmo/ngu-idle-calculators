@@ -64,8 +64,6 @@ describe('Resource Info - Achievement Info', () => {
     test.each(cases)(
         "Achievement Info - %s",
         (_name, player, expectedValues) => {       
-            
-            expectedValues + 1
             const ec = expectClose(achievementAPBonus(player), expectedValues)
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
@@ -89,10 +87,9 @@ describe('Resource Info - Adv Training Info', () => {
     test.each(cases)(
         "Adv Training Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(advTrainingInfo(player, Stat.POWER), expectedValues['power'])
+            let ec = expectClose(advTrainingInfo(player, Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(advTrainingInfo(player, Stat.ENERGY_POWER), expectedValues['epower'])
+            ec = expectClose(advTrainingInfo(player, Stat.ENERGY_POWER), expectedValues['epower'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -116,7 +113,6 @@ describe('Resource Info - AP Info', () => {
     test.each(cases)(
         "AP Info - %s",
         (_name, player, expectedValues) => {
-            
             const ec = expectClose(apItemInfo(player, Stat.POWER), expectedValues)
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
@@ -144,10 +140,9 @@ describe('Resource Info - Beard Temp Info', () => {
     test.each(cases)(
         "Beard Temp Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(beardInfoTemp(player, Stat.POWER, true), expectedValues['power'])
+            let ec = expectClose(beardInfoTemp(player, Stat.POWER, true), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(beardInfoTemp(player, Stat.DROP_CHANCE, true), expectedValues['dc'])
+            ec = expectClose(beardInfoTemp(player, Stat.DROP_CHANCE, true), expectedValues['dc'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -172,10 +167,9 @@ describe('Resource Info - Beard Perm Info', () => {
     test.each(cases)(
         "Beard Perm Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(beardInfoPerm(player, Stat.POWER), expectedValues['power'])
+            let ec = expectClose(beardInfoPerm(player, Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(beardInfoPerm(player, Stat.DROP_CHANCE), expectedValues['dc'])
+            ec = expectClose(beardInfoPerm(player, Stat.DROP_CHANCE), expectedValues['dc'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -197,10 +191,9 @@ describe('Resource Info - Challenge Info', () => {
     test.each(cases)(
         "Challenge Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(challengeInfo(player,  Stat.POWER), expectedValues['power'])
+            let ec = expectClose(challengeInfo(player,  Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(challengeInfo(player,  Stat.MAGIC_NGU_SPEED), expectedValues['mngu'])
+            ec = expectClose(challengeInfo(player,  Stat.MAGIC_NGU_SPEED), expectedValues['mngu'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -225,7 +218,6 @@ describe('Resource Info - Digger Info', () => {
     test.each(cases)(
         "Digger Info - %s",
         (_name, player, expectedValues) => {
-            
             const ec = expectClose(diggerInfo(player,  Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
@@ -360,22 +352,21 @@ describe('Resource Info - Equipment Info', () => {
     test.each(cases)(
         "Equipment Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(equipmentWithCubeInfo(player,  Stat.POWER), expectedValues['power'])
+            let ec = expectClose(equipmentWithCubeInfo(player,  Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentWithCubeInfo(player,  Stat.TOUGHNESS), expectedValues['toughness'])
+            ec = expectClose(equipmentWithCubeInfo(player,  Stat.TOUGHNESS), expectedValues['toughness'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentWithCubeInfo(player,  Stat.ENERGY_POWER), expectedValues['epower'])
+            ec = expectClose(equipmentWithCubeInfo(player,  Stat.ENERGY_POWER), expectedValues['epower'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentWithCubeInfo(player,  Stat.MAGIC_CAP), expectedValues['mcap'])
+            ec = expectClose(equipmentWithCubeInfo(player,  Stat.MAGIC_CAP), expectedValues['mcap'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentWithCubeInfo(player,  Stat.DROP_CHANCE), expectedValues['dc'])
+            ec = expectClose(equipmentWithCubeInfo(player,  Stat.DROP_CHANCE), expectedValues['dc'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentWithCubeInfo(player,  Stat.RESPAWN), expectedValues['respawn'])
+            ec = expectClose(equipmentWithCubeInfo(player,  Stat.RESPAWN), expectedValues['respawn'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentWithCubeInfo(player,  Stat.ENERGY_NGU_SPEED), expectedValues['engu'])
+            ec = expectClose(equipmentWithCubeInfo(player,  Stat.ENERGY_NGU_SPEED), expectedValues['engu'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(equipmentWithCubeInfo(player,  Stat.MAGIC_WANDOOS_SPEED), expectedValues['mwandoos'])
+            ec = expectClose(equipmentWithCubeInfo(player,  Stat.MAGIC_WANDOOS_SPEED), expectedValues['mwandoos'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -447,12 +438,11 @@ describe('Resource Info - Hack Info', () => {
     test.each(cases)(
         "Hack Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(hackInfo(player,  Stat.POWER), expectedValues['power'])
+            let ec = expectClose(hackInfo(player,  Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(hackInfo(player,  Stat.QUEST_REWARD), expectedValues['qp'])
+            ec = expectClose(hackInfo(player,  Stat.QUEST_REWARD), expectedValues['qp'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(hackInfo(player,  Stat.WISH_SPEED), expectedValues['wish'])
+            ec = expectClose(hackInfo(player,  Stat.WISH_SPEED), expectedValues['wish'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -537,17 +527,16 @@ describe('Resource Info - Macguffin Info', () => {
     test.each(cases)(
         "Macguffin Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(macguffinInfo(player,  Stat.POWER), expectedValues['power'])
+            let ec = expectClose(macguffinInfo(player,  Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(macguffinInfo(player,  Stat.ENERGY_POWER), expectedValues['epower'])
+            ec = expectClose(macguffinInfo(player,  Stat.ENERGY_POWER), expectedValues['epower'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(macguffinInfo(player,  Stat.DROP_CHANCE), expectedValues['dc'])
+            ec = expectClose(macguffinInfo(player,  Stat.DROP_CHANCE), expectedValues['dc'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(macguffinInfo(player,  Stat.ATTACK), expectedValues['attack'])
+            ec = expectClose(macguffinInfo(player,  Stat.ATTACK), expectedValues['attack'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
             if ('blood' in expectedValues) {
-                var ec = expectClose(macguffinInfo(player,  Stat.BLOOD), expectedValues['blood'])
+                ec = expectClose(macguffinInfo(player,  Stat.BLOOD), expectedValues['blood'])
                 expect(ec[0]).toBeCloseTo(ec[1], 0)
             }
         }
@@ -647,16 +636,15 @@ describe('Resource Info - NGU Info', () => {
     test.each(cases)(
         "NGU Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(nguInfo(player,  Stat.POWER), expectedValues['power'])
+            let ec = expectClose(nguInfo(player,  Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(nguInfo(player,  Stat.YGGDRASIL_YIELD), expectedValues['ygg'])
+            ec = expectClose(nguInfo(player,  Stat.YGGDRASIL_YIELD), expectedValues['ygg'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(nguInfo(player,  Stat.DROP_CHANCE), expectedValues['dc'])
+            ec = expectClose(nguInfo(player,  Stat.DROP_CHANCE), expectedValues['dc'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(nguInfo(player,  Stat.ATTACK), expectedValues['attack'])
+            ec = expectClose(nguInfo(player,  Stat.ATTACK), expectedValues['attack'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(nguInfo(player,  Stat.ENERGY_NGU_SPEED), expectedValues['engu'])
+            ec = expectClose(nguInfo(player,  Stat.ENERGY_NGU_SPEED), expectedValues['engu'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -729,12 +717,11 @@ describe('Resource Info - Perk Info', () => {
     test.each(cases)(
         "Perk Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(perkInfo(player,  Stat.POWER), expectedValues['power'])
+            let ec = expectClose(perkInfo(player,  Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(perkInfo(player,  Stat.BOOSTS_BOOST), expectedValues['boosts'])
+            ec = expectClose(perkInfo(player,  Stat.BOOSTS_BOOST), expectedValues['boosts'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(perkInfo(player,  Stat.ENERGY_POWER), expectedValues['epower'])
+            ec = expectClose(perkInfo(player,  Stat.ENERGY_POWER), expectedValues['epower'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -811,12 +798,11 @@ describe('Resource Info - Quirk Info', () => {
     test.each(cases)(
         "Quirk Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(quirkInfo(player,  Stat.POWER), expectedValues['power'])
+            let ec = expectClose(quirkInfo(player,  Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(quirkInfo(player,  Stat.ENERGY_CAP), expectedValues['ecap'])
+            ec = expectClose(quirkInfo(player,  Stat.ENERGY_CAP), expectedValues['ecap'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(quirkInfo(player,  Stat.MAGIC_NGU_SPEED), expectedValues['mngu'])
+            ec = expectClose(quirkInfo(player,  Stat.MAGIC_NGU_SPEED), expectedValues['mngu'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -890,12 +876,11 @@ describe('Resource Info - Wish Info', () => {
     test.each(cases)(
         "Wish Info - %s",
         (_name, player, expectedValues) => {
-            
-            var ec = expectClose(wishInfo(player,  Stat.POWER), expectedValues['power'])
+            let ec = expectClose(wishInfo(player,  Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(wishInfo(player,  Stat.RES3_POWER), expectedValues['rpower'])
+            ec = expectClose(wishInfo(player,  Stat.RES3_POWER), expectedValues['rpower'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(wishInfo(player,  Stat.HACK_SPEED), expectedValues['hack'])
+            ec = expectClose(wishInfo(player,  Stat.HACK_SPEED), expectedValues['hack'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -919,7 +904,6 @@ describe('Resource Info - Item Set Info', () => {
     test.each(cases)(
         "Item Sets Info - %s",
         (_name, player, expectSets, noExpectSets, numQuests) => {
-            
             for(const itemSet of expectSets) {
                 expect(isMaxxedItemSet(player,  itemSet)).toBeTruthy()
             }

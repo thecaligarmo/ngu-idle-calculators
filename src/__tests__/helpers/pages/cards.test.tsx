@@ -18,7 +18,7 @@ earlySadPlayer.importPlayerData(earlySad)
 
 
 describe("Cards page - Cards Info", () => {
-    const cases : [Player, any, any][] = [
+    const cases : [Player, any, any][] = [ // eslint-disable-line
         [lateEvilPlayer, {
             'cardChonkedEnergyNGU' :0,
             'cardChonkedMagicNGU':0,
@@ -129,13 +129,13 @@ describe("Cards page - Cards Info", () => {
             const chonksPerDay = getChonksPerDay(cardSpeed, recycleChonk, player.get('cardRecyclingCard'))
             const chonksRecycled = player.get('cardRecyclingCard') ? getChonksRecycled(recycleChonk, chonksPerDay) : bd(0)
             
-            var ec = expectClose(cardsPerDay, expectedValue['cards'])
+            let ec = expectClose(cardsPerDay, expectedValue['cards'])
             expect(ec[0]).toBeCloseTo(ec[1], 2)
-            var ec = expectClose(chonksPerDay, expectedValue['chonks'])
+            ec = expectClose(chonksPerDay, expectedValue['chonks'])
             expect(ec[0]).toBeCloseTo(ec[1], 2)
-            var ec = expectClose(cardsRecycled, expectedValue['recycleCard'])
+            ec = expectClose(cardsRecycled, expectedValue['recycleCard'])
             expect(ec[0]).toBeCloseTo(ec[1], 2)
-            var ec = expectClose(chonksRecycled, expectedValue['recycleChonk'])
+            ec = expectClose(chonksRecycled, expectedValue['recycleChonk'])
             expect(ec[0]).toBeCloseTo(ec[1], 2)
         }
     )
@@ -215,15 +215,15 @@ describe("Cards page - Mayo Info", () => {
                     .add(mayoFromRecycling)
                     .add(mayoFromInfusers)
 
-            var ec = expectClose(mayoFromFruit, expectedValue['fruit'])
+            let ec = expectClose(mayoFromFruit, expectedValue['fruit'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(mayoFromFruitLeftovers, expectedValue['leftover'])
+            ec = expectClose(mayoFromFruitLeftovers, expectedValue['leftover'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(mayoFromRecycling, expectedValue['recycling'])
+            ec = expectClose(mayoFromRecycling, expectedValue['recycling'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(mayoFromInfusers, expectedValue['infusers'])
+            ec = expectClose(mayoFromInfusers, expectedValue['infusers'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(mayoPerDay, expectedValue['perDay'])
+            ec = expectClose(mayoPerDay, expectedValue['perDay'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )

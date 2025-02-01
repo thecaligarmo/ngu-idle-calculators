@@ -93,7 +93,7 @@ describe("Wandoos page", () => {
 
             let os : wandoosNames
             for(os in lvlsGained) {
-                var ty : 'energy' | 'magic'
+                let ty : 'energy' | 'magic'
                 for(ty in lvlsGained[os]) {
                     expect(Number(lvlsGained[os][ty].getValue())).toBeCloseTo(expectedLvls[os][ty])
                 }

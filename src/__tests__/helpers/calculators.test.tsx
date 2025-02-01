@@ -65,11 +65,11 @@ describe('Calculators - Energy', () => {
     test.each(cases)(
         "Calculators - Energy - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalEnergyPower(player), expectedValues['power'])
+            let ec = expectClose(totalEnergyPower(player), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalEnergyBar(player), expectedValues['bar'])
+            ec = expectClose(totalEnergyBar(player), expectedValues['bar'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalEnergyCap(player), expectedValues['cap'])
+            ec = expectClose(totalEnergyCap(player), expectedValues['cap'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -94,11 +94,11 @@ describe('Calculators - Magic', () => {
     test.each(cases)(
         "Calculators - Magic - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalMagicPower(player), expectedValues['power'])
+            let ec = expectClose(totalMagicPower(player), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalMagicBar(player), expectedValues['bar'])
+            ec = expectClose(totalMagicBar(player), expectedValues['bar'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalMagicCap(player), expectedValues['cap'])
+            ec = expectClose(totalMagicCap(player), expectedValues['cap'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -122,11 +122,11 @@ describe('Calculators - Resource 3', () => {
     test.each(cases)(
         "Calculators - Resource 3 - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalRes3Power(player), expectedValues['power'])
+            let ec = expectClose(totalRes3Power(player), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalRes3Bar(player), expectedValues['bar'])
+            ec = expectClose(totalRes3Bar(player), expectedValues['bar'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalRes3Cap(player), expectedValues['cap'])
+            ec = expectClose(totalRes3Cap(player), expectedValues['cap'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -176,9 +176,9 @@ describe('Calculators - NGU', () => {
     test.each(cases)(
         "Calculators - NGU - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalEnergyNGUSpeedFactor(player), expectedValues['engu'])
+            let ec = expectClose(totalEnergyNGUSpeedFactor(player), expectedValues['engu'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalMagicNGUSpeedFactor(player), expectedValues['mngu'])
+            ec = expectClose(totalMagicNGUSpeedFactor(player), expectedValues['mngu'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -203,11 +203,11 @@ describe('Calculators - EXP, AP, PP', () => {
     test.each(cases)(
         "Calculators - EXP, AP, PP - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalExpBonus(player), expectedValues['exp'])
+            let ec = expectClose(totalExpBonus(player), expectedValues['exp'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalAPBonus(player), expectedValues['ap'])
+            ec = expectClose(totalAPBonus(player), expectedValues['ap'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalPPBonus(player), expectedValues['pp'])
+            ec = expectClose(totalPPBonus(player), expectedValues['pp'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -232,11 +232,11 @@ describe('Calculators - Misc', () => {
     test.each(cases)(
         "Calculators - Misc - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalDaycareSpeed(player), expectedValues['daycare'])
+            let ec = expectClose(totalDaycareSpeed(player), expectedValues['daycare'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalHackSpeed(player), expectedValues['hack'])
+            ec = expectClose(totalHackSpeed(player), expectedValues['hack'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalWishSpeed(player), expectedValues['wish'])
+            ec = expectClose(totalWishSpeed(player), expectedValues['wish'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -261,9 +261,9 @@ describe('Calculators - Adventure', () => {
     test.each(cases)(
         "Calculators - Adventure - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalPower(player), expectedValues['power'])
+            let ec = expectClose(totalPower(player), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalToughness(player), expectedValues['toughness'])
+            ec = expectClose(totalToughness(player), expectedValues['toughness'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -288,11 +288,11 @@ describe('Calculators - Misc Adventure', () => {
     test.each(cases)(
         "Calculators - Misc Adventure - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalGoldDrop(player), expectedValues['gold'])
+            let ec = expectClose(totalGoldDrop(player), expectedValues['gold'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalRespawnRate(player), expectedValues['respawn'])
+            ec = expectClose(totalRespawnRate(player), expectedValues['respawn'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalDropChance(player), expectedValues['dc'])
+            ec = expectClose(totalDropChance(player), expectedValues['dc'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -320,9 +320,9 @@ describe('Calculators - Beards', () => {
     test.each(cases)(
         "Calculators - Beards - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalEnergyBeardSpeed(player), expectedValues['energy'])
+            let ec = expectClose(totalEnergyBeardSpeed(player), expectedValues['energy'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalMagicBeardSpeed(player), expectedValues['magic'])
+            ec = expectClose(totalMagicBeardSpeed(player), expectedValues['magic'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -348,9 +348,9 @@ describe('Calculators - Wandoos', () => {
     test.each(cases)(
         "Calculators - Wandoos - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalEnergyWandoosSpeed(player), expectedValues['energy'])
+            let ec = expectClose(totalEnergyWandoosSpeed(player), expectedValues['energy'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalMagicWandoosSpeed(player), expectedValues['magic'])
+            ec = expectClose(totalMagicWandoosSpeed(player), expectedValues['magic'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -377,9 +377,9 @@ describe('Calculators - Quests', () => {
     test.each(cases)(
         "Calculators - Quests - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalQuestRewardBonus(player), expectedValues['reward'])
+            let ec = expectClose(totalQuestRewardBonus(player), expectedValues['reward'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalQuestDropBonus(player), expectedValues['dc'])
+            ec = expectClose(totalQuestDropBonus(player), expectedValues['dc'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
             
         }
@@ -398,13 +398,13 @@ describe('Calculators - Mayo', () => {
     test.each(cases)(
         "Calculators - Quests - %s",
         (_name, player, expectedValues) => {
-            var ec = expectClose(totalMayoSpeed(player), expectedValues['mayoSpeed'])
+            let ec = expectClose(totalMayoSpeed(player), expectedValues['mayoSpeed'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalCardSpeed(player), expectedValues['cardSpeed'])
+            ec = expectClose(totalCardSpeed(player), expectedValues['cardSpeed'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalMayoGeneration(player), expectedValues['mayoGen'])
+            ec = expectClose(totalMayoGeneration(player), expectedValues['mayoGen'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
-            var ec = expectClose(totalTagEffect(player), expectedValues['tagEffect'])
+            ec = expectClose(totalTagEffect(player), expectedValues['tagEffect'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
             
         }

@@ -185,12 +185,12 @@ describe("Zone page", () => {
 
             // Check some arbitrary numbers
             for (const zone of zoneInfo) {
-                for(var key in caseBoosts) {
+                for(const key in caseBoosts) {
                     if (zone.key == key) {
                         expect(Number(zone['boost'].getValue())).toBeCloseTo(caseBoosts[key], 4)
                     }
                 }
-                for(var key in caseExp) {
+                for(const key in caseExp) {
                     if (zone.key == key) {
                         expect(Number(zone['exp'].getValue())).toBeCloseTo(caseExp[key], 4)
                     }
