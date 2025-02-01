@@ -85,8 +85,8 @@ export function pn(num : bigDecimal | number, numberFormat : string = 'scientifi
         num = bd(num)
     }
     // Get the floor of the number for processing
-    let n = num.floor().getValue();
-    let nl = n.length // number length
+    const n = num.floor().getValue();
+    const nl = n.length // number length
 
     // We should only start for billions as until then it's pretty human readable
     if (nl < 10) {
@@ -98,16 +98,16 @@ export function pn(num : bigDecimal | number, numberFormat : string = 'scientifi
     
     // If we're in scientific format, we only want the first 4 digits
     if (numberFormat == 'scientific') {
-        let e = nl - 1
-        let firstFour = n.slice(0,4);
+        const e = nl - 1
+        const firstFour = n.slice(0,4);
         return (Number(firstFour) / 1000).toFixed(3).toLocaleString() + "E+" + e
     }
 
     // Number of digits in front
-    let nmod = nl % 3
+    const nmod = nl % 3
     // Number of 3 numbers
-    let e = (nmod == 0) ? Math.floor(nl / 3) - 1 : Math.floor(nl / 3);
-    let firstNum = (nmod == 0) ? n.slice(0, 6) : n.slice(0, nmod + 3);
+    const e = (nmod == 0) ? Math.floor(nl / 3) - 1 : Math.floor(nl / 3);
+    const firstNum = (nmod == 0) ? n.slice(0, 6) : n.slice(0, nmod + 3);
     if (numberFormat == 'engineering') {
         return (Number(firstNum) / 1000).toFixed(3).toLocaleString() + "E+" + (e * 3)
     }
@@ -149,7 +149,7 @@ export function dn(num : bigDecimal) : string{
     const mString = m.getValue().padStart(2, '0') + ":"
     const sString = s.getValue().padStart(2, '0')
 
-    var str = mString + sString
+    let str = mString + sString
     if (greaterThan(h, bd(0))  || greaterThan(d, bd(0))) {
         str = hString + str
     }
@@ -193,21 +193,21 @@ export class Polynomial {
         return this.length() == 0
     }
     add(other: Polynomial) : Polynomial{
-        let n = Math.max(this.length(), other.length())
-        let coefficients : bigDecimal[] = []
+        const n = Math.max(this.length(), other.length())
+        const coefficients : bigDecimal[] = []
         for(let i = 0; i < n; i++) {
             coefficients.push(this.coefficient(i).add(other.coefficient(i)))
         }
         return new Polynomial(coefficients)
     }
     multiply(other: Polynomial) : Polynomial {
-        let tl = this.length()
-        let ol = other.length()
-        let coefficients : bigDecimal[] = Array(tl + ol - 1).fill(bd(0))
+        const tl = this.length()
+        const ol = other.length()
+        const coefficients : bigDecimal[] = Array(tl + ol - 1).fill(bd(0))
         
         for(let i = 0; i < tl; i++) {
             for(let j = 0; j < ol; j++) {
-                let c = this.coefficient(i).multiply(other.coefficient(j))
+                const c = this.coefficient(i).multiply(other.coefficient(j))
                 coefficients[i+j] = coefficients[i+j].add(c)
             }
         }

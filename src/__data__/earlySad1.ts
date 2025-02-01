@@ -1,4 +1,4 @@
-var earlySad = {
+const earlySad = {
     "playerName": "thecaligarmo",
     "firstTimePlaying": false,
     "version": 1260,

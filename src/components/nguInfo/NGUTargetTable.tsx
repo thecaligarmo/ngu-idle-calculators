@@ -25,16 +25,16 @@ export default function NGUTargetTable({type, NGUs, targets, seconds, totalSecon
         "incAmt": "Increase Amount",
         "tarVal": "Value at Target",
     }
-    let dataRows : StandardTableRowType = {}
+    const dataRows : StandardTableRowType = {}
     
-    for (let index in NGUs) {
-        let ngu = NGUs[index]
+    for (const index in NGUs) {
+        const ngu = NGUs[index]
 
-        let targetLvl = targets[index]
-        let secs = seconds[index]
+        const targetLvl = targets[index]
+        const secs = seconds[index]
         
-        let val = bd(ngu.getStatValue(ngu.statnames[0], toNum(targetLvl)))
-        let curVal = bd(ngu.getStatValue(ngu.statnames[0]))
+        const val = bd(ngu.getStatValue(ngu.statnames[0], toNum(targetLvl)))
+        const curVal = bd(ngu.getStatValue(ngu.statnames[0]))
 
         let precision = 0;
         if (ngu.key == 'NGUWandoos' || ngu.key == 'NGUAdventureA' || ngu.key == 'NGUDropChance' || ngu.key == 'NGUMagicNGU'

@@ -19,12 +19,12 @@ import { nguInfo } from "@/helpers/resourceInfo";
 
 
 export default function Page() {
-    var [optMaxTitan, setOptMaxTitan] = useState("current")
+    const [optMaxTitan, setOptMaxTitan] = useState("current")
     const player = getPlayer();
     const fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [
+    const infoRequired : requiredDataType = [
         ['gameMode', 'itopodFloor', 'bonusPP', 'numRebirthChallenges', 'twentyFourHourChallenge', 'twentyFourHourEvilChallenge', 'twentyFourHourSadisticChallenge'],
         ['questMinorQP', 'questMajorQP', 'questIdleDivider', 'activeQuestWishI', 'activeQuestWishII'],
         
@@ -36,22 +36,22 @@ export default function Page() {
     ]
 
     // Set extra required (not from playerData)
-    var extraRequired : requiredDataType = [
+    const extraRequired : requiredDataType = [
         ['hoursPerDay', 'hoursOfflinePerDay',],
         [ 'bluePill','beastButter', 'includeMajorQuests', 'idleMajorQuests'],
         ['dailySpinTier', 'includeDailySpinJackpots', 'includeValueOfConsumables',  'moneyPitGoldToss', 'moneyPitTossesPerDay',],
         
     ]
 
-    var goRequired : requiredDataType = [['goAP', 'goExperience', 'goPower', 'goQuestDrop', 'goRespawn', 'goYggdrasilYield']];
+    const goRequired : requiredDataType = [['goAP', 'goExperience', 'goPower', 'goQuestDrop', 'goRespawn', 'goYggdrasilYield']];
     
-    var gameMode = getGameMode(player)
-    var curTitan = player.get('highestTitanKilledId')
+    const gameMode = getGameMode(player)
+    const curTitan = player.get('highestTitanKilledId')
 
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    let infoReq = getPlayerDataInfo(infoRequired)
+    let extraReq = getPlayerDataInfo(extraRequired)
+    const goReq = getPlayerDataInfo(goRequired)
 
 
     // Hide unecessary stuff
@@ -95,13 +95,13 @@ export default function Page() {
     
 
     // Variables we use a lot
-    var hoursPerDay = player.get('hoursPerDay')//.compareTo(bd(0)) == 0 ? bd(24) : player.get('hoursPerDay')
-    var totalAPBonus = player.get('totalAPBonus')
-    var totalExpBonus = player.get('totalExpBonus')
-    var totalPPBonus = player.get('totalPPBonus')
-    var totalQPBonus = player.get('totalQuestRewardBonus')
-    var wishes : Wish[] = player.get('wishes')
-    var titans : Titan[] = player.get('titans')
+    const hoursPerDay = player.get('hoursPerDay')//.compareTo(bd(0)) == 0 ? bd(24) : player.get('hoursPerDay')
+    const totalAPBonus = player.get('totalAPBonus')
+    const totalExpBonus = player.get('totalExpBonus')
+    const totalPPBonus = player.get('totalPPBonus')
+    const totalQPBonus = player.get('totalQuestRewardBonus')
+    const wishes : Wish[] = player.get('wishes')
+    const titans : Titan[] = player.get('titans')
 
     // Update wishes with info above.
     if(!_.isUndefined(wishes[Titans.BEAST.getQPWishNum()])) {
@@ -118,17 +118,17 @@ export default function Page() {
 
 
     /* ITOPOD */
-    var itopodZone = Zones.ITOPOD;
+    const itopodZone = Zones.ITOPOD;
     itopodZone.setLevel(player.get('itopodFloor'))
 
-    var pppPerKill = itopodZone.getPPPPerKill(player.get('gameMode'), totalPPBonus, player.get('bluePill'), player.get('blueHeart'), player.get('bonusPP'));
-    var killsPerDay = itopodZone.getKillsPerHour(player.get('totalPower'), getIdleAttackModifier(player.get('spoopySetBonus'), player.get('sadisticNoEquipmentChallenges')), player.get('redLiquidBonus'), player.get('totalRespawnTime')).multiply(hoursPerDay)
+    const pppPerKill = itopodZone.getPPPPerKill(player.get('gameMode'), totalPPBonus, player.get('bluePill'), player.get('blueHeart'), player.get('bonusPP'));
+    const killsPerDay = itopodZone.getKillsPerHour(player.get('totalPower'), getIdleAttackModifier(player.get('spoopySetBonus'), player.get('sadisticNoEquipmentChallenges')), player.get('redLiquidBonus'), player.get('totalRespawnTime')).multiply(hoursPerDay)
 
-    var PPPFromTower = killsPerDay.multiply(pppPerKill)
-    var APFromTower = killsPerDay.divide(
+    const PPPFromTower = killsPerDay.multiply(pppPerKill)
+    const APFromTower = killsPerDay.divide(
             itopodZone.cycleLength()
             )
-    var EXPFromTower = killsPerDay.divide(
+    const EXPFromTower = killsPerDay.divide(
             itopodZone.cycleLength()
         ).multiply(
             bd(itopodZone.exp[0])
@@ -138,7 +138,7 @@ export default function Page() {
     
 
     /* Quest info */
-    var questData = {
+    const questData = {
         activeQuestWishI : player.get('activeQuestWishI'),
         activeQuestWishII : player.get('activeQuestWishII'),
         beastButter : player.get('beastButter'),
@@ -161,20 +161,20 @@ export default function Page() {
 
     }
     
-    var questInfo = getQuestInfo(questData);
-    var QPFromMajors = questInfo['qp']['major']
-    var QPFromMinors = questInfo['qp']['minor']
-    var QPPerMajor = questInfo['qp']['perMajor']
-    var QPPerMinor = questInfo['qp']['perMinor']
-    var APFromMajors = questInfo['ap']['major']
-    var APFromMinors = questInfo['ap']['minor']
-    var APPerMajor = questInfo['ap']['perMajor']
-    var APPerMinor = questInfo['ap']['perMinor']
+    const questInfo = getQuestInfo(questData);
+    const QPFromMajors = questInfo['qp']['major']
+    const QPFromMinors = questInfo['qp']['minor']
+    const QPPerMajor = questInfo['qp']['perMajor']
+    const QPPerMinor = questInfo['qp']['perMinor']
+    const APFromMajors = questInfo['ap']['major']
+    const APFromMinors = questInfo['ap']['minor']
+    const APPerMajor = questInfo['ap']['perMajor']
+    const APPerMinor = questInfo['ap']['perMinor']
     
 
 
     /* Titan Info */
-    var titanData = {
+    const titanData = {
         bonusTitanEXPPerk : player.get('bonusTitanEXPPerk'),
         numRebirthChallenges: player.get('numRebirthChallenges'),
         twentyFourHourChallenge: player.get('twentyFourHourChallenge'),
@@ -187,32 +187,32 @@ export default function Page() {
         wishTitansHadBetterRewards: player.get('wishTitansHadBetterRewards'),
         wishes : player.get('wishes'),
     }
-    var playerAttack = new AttackStat(1, player.get('totalPower'), player.get('totalToughness'), player.get('totalRegen'), player.get('totalHealth'))
+    const playerAttack = new AttackStat(1, player.get('totalPower'), player.get('totalToughness'), player.get('totalRegen'), player.get('totalHealth'))
     
-    var maxTitanByAK : [Titan, number] = getMaxTitanByAK(titans, playerAttack);
-    var maxTitan : [Titan, number] = maxTitanByAK
+    const maxTitanByAK : [Titan, number] = getMaxTitanByAK(titans, playerAttack);
+    let maxTitan : [Titan, number] = maxTitanByAK
 
     // Update titan if user wants a different one.
     if(optMaxTitan != 'current') {
-        var tt = optMaxTitan.split('-')
+        const tt = optMaxTitan.split('-')
         Object.values(Titans).forEach((titan) => {
             if (titan.id == Number(tt[0])) {
                 maxTitan = [titan, Number(tt[1])]
             }
         })
     }
-    var titanHourInfo = getTitanHourlyInfo(maxTitan, titanData);
-    var totalTitanAP = titanHourInfo['ap'].multiply(hoursPerDay)
-    var totalTitanEXP = titanHourInfo['exp'].multiply(hoursPerDay)
-    var totalTitanPP = titanHourInfo['ppp'].multiply(hoursPerDay).divide(bd(1000000))
-    var totalTitanQP = titanHourInfo['qp'].multiply(hoursPerDay)
-    var titanList = getTitanList();
+    const titanHourInfo = getTitanHourlyInfo(maxTitan, titanData);
+    const totalTitanAP = titanHourInfo['ap'].multiply(hoursPerDay)
+    const totalTitanEXP = titanHourInfo['exp'].multiply(hoursPerDay)
+    const totalTitanPP = titanHourInfo['ppp'].multiply(hoursPerDay).divide(bd(1000000))
+    const totalTitanQP = titanHourInfo['qp'].multiply(hoursPerDay)
+    const titanList = getTitanList();
 
 
     /* Ygg Info */
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
-    var blueHeart = player.get('blueHeart')
-    var fruitYieldData = {
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const blueHeart = player.get('blueHeart')
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
@@ -225,12 +225,12 @@ export default function Page() {
         fokStillSucksPerk: toNum(player.get('fruitOfKnowledgeSTILLSucks')),
     }
     
-    var fruitOfKnowledge : FruitOfKnowledge = new FruitOfKnowledge();
-    var fruitOfRage : FruitOfRage = new FruitOfRage();
-    var fruitOfQuirks : FruitOfQuirks = new FruitOfQuirks();
-    var fruitOfArbitrariness : FruitOfArbitrariness = new FruitOfArbitrariness();
-    var fruits : Yggdrasil[] = Object.values(player.get('yggdrasil'));
-    for (var fruit of fruits) {
+    let fruitOfKnowledge : FruitOfKnowledge = new FruitOfKnowledge();
+    let fruitOfRage : FruitOfRage = new FruitOfRage();
+    let fruitOfQuirks : FruitOfQuirks = new FruitOfQuirks();
+    let fruitOfArbitrariness : FruitOfArbitrariness = new FruitOfArbitrariness();
+    const fruits : Yggdrasil[] = Object.values(player.get('yggdrasil'));
+    for (const fruit of fruits) {
         if(fruit.key == FRUITS.RAGE.key) {
             fruitOfRage = fruit
         } else if(fruit.key == FRUITS.QUIRKS.key) {
@@ -244,26 +244,26 @@ export default function Page() {
     }
 
     
-    var apYggdrasil = fruitOfArbitrariness.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
-    var expYggdrasil = fruitOfKnowledge.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
-    var pppYggdrasil = fruitOfRage.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
-    var qpYggdrasil = fruitOfQuirks.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
+    const apYggdrasil = fruitOfArbitrariness.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
+    const expYggdrasil = fruitOfKnowledge.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
+    const pppYggdrasil = fruitOfRage.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
+    const qpYggdrasil = fruitOfQuirks.fruitYield(fruitYieldData).divide(bd(24)).multiply(hoursPerDay)
 
 
     // AP Stuff
-    var apRebirth = getRebirthAP(totalAPBonus, hoursPerDay)
-    var apMoneyPit = getMoneyPitAP(player.get('moneyPitGoldToss'), player.get('moneyPitTossesPerDay'), totalAPBonus);
-    var apDailySave = getDailySaveAP(totalAPBonus, hoursPerDay);
-    var apDailySpin = getDailySpinAP(player.get('dailySpinTier'), totalAPBonus, hoursPerDay, player.get('includeValueOfConsumables'), player.get('includeDailySpinJackpots'));
+    const apRebirth = getRebirthAP(totalAPBonus, hoursPerDay)
+    const apMoneyPit = getMoneyPitAP(player.get('moneyPitGoldToss'), player.get('moneyPitTossesPerDay'), totalAPBonus);
+    const apDailySave = getDailySaveAP(totalAPBonus, hoursPerDay);
+    const apDailySpin = getDailySpinAP(player.get('dailySpinTier'), totalAPBonus, hoursPerDay, player.get('includeValueOfConsumables'), player.get('includeDailySpinJackpots'));
 
 
-    var totalAPPerDay = apDailySave.add(apDailySpin).add(APFromTower).add(apMoneyPit).add(apRebirth).add(apYggdrasil).add(APFromMajors).add(APFromMinors).add(totalTitanAP)
-    var totalEXPPerDay = totalTitanEXP.add(expYggdrasil).add(EXPFromTower)
-    var totalPPPerDay = totalTitanPP.add(pppYggdrasil.divide(bd(1000000))).add(PPPFromTower.divide(bd(1000000)))
-    var totalQPPerDay = QPFromMajors.add(QPFromMinors).add(qpYggdrasil).add(totalTitanQP)
+    const totalAPPerDay = apDailySave.add(apDailySpin).add(APFromTower).add(apMoneyPit).add(apRebirth).add(apYggdrasil).add(APFromMajors).add(APFromMinors).add(totalTitanAP)
+    const totalEXPPerDay = totalTitanEXP.add(expYggdrasil).add(EXPFromTower)
+    const totalPPPerDay = totalTitanPP.add(pppYggdrasil.divide(bd(1000000))).add(PPPFromTower.divide(bd(1000000)))
+    const totalQPPerDay = QPFromMajors.add(QPFromMinors).add(qpYggdrasil).add(totalTitanQP)
 
 
-    var extraChildren = (
+    const extraChildren = (
         <>
             <strong>Max titan:</strong> <select
                 className="ml-2 text-black"
@@ -278,24 +278,24 @@ export default function Page() {
         </>
     )
 
-    let tableOrder = ["key", "amt", "extra"]
-    let apTableHeader = {
+    const tableOrder = ["key", "amt", "extra"]
+    const apTableHeader = {
         "key": "AP",
         "amt": "Amount",
     }
-    var expTableHeader = {
+    const expTableHeader = {
         'key': "EXP",
         "amt": "Amount",
     }
-    var ppTableHeader = {
+    const ppTableHeader = {
         'key': "PP",
         "amt": "Amount",
     }
-    var qpTableHeader = {
+    const qpTableHeader = {
         'key': "QP",
         "amt": "Amount",
     }
-    let apTableDataRows = {
+    const apTableDataRows = {
         "dailySave" : {
             "key" : "Daily Save",
             "amt" : <span className="text-red-500">{pn(apDailySave, fmt)}</span>,
@@ -342,7 +342,7 @@ export default function Page() {
             "isTotal" : true,
         },
     }
-    var expTableDataRows = {
+    const expTableDataRows = {
         "itopod" : {
             "key": "ITOPOD Tower",
             "amt": <span className="text-red-500">{pn(EXPFromTower, fmt)}</span>,
@@ -363,7 +363,7 @@ export default function Page() {
             "isTotal": true
         },
     }
-    var ppTableDataRows = {
+    const ppTableDataRows = {
        "itopod" : {
             "key": "ITOPOD Tower",
             "amt": <span className="text-red-500">{pn(PPPFromTower.divide(bd(1000000)), fmt)}</span>,
@@ -389,7 +389,7 @@ export default function Page() {
             "isTotal": true
         },
     }
-    var qpTableDataRows = {
+    const qpTableDataRows = {
         "questMajor" : {
             "key": "Major Quests",
             "amt": <span className="text-red-500">{pn(QPFromMajors, fmt)}</span>,

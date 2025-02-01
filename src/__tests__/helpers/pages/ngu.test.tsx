@@ -19,28 +19,28 @@ import { NGU } from '@/assets/ngus';
 
 
 
-var earlyNormalPlayer = new Player(false, true)
+const earlyNormalPlayer = new Player(false, true)
 earlyNormalPlayer.importPlayerData(earlyNormal)
-var earlyNormalTwoPlayer = new Player(false, true)
+const earlyNormalTwoPlayer = new Player(false, true)
 earlyNormalTwoPlayer.importPlayerData(earlyNormalTwo)
-var midNormalPlayer = new Player(false, true)
+const midNormalPlayer = new Player(false, true)
 midNormalPlayer.importPlayerData(midNormal)
-var midNormalTwoPlayer = new Player(false, true)
+const midNormalTwoPlayer = new Player(false, true)
 midNormalTwoPlayer.importPlayerData(midNormalTwo)
-var lateNormalPlayer = new Player(false, true)
+const lateNormalPlayer = new Player(false, true)
 lateNormalPlayer.importPlayerData(lateNormal)
 
-var earlyEvilPlayer = new Player(false, true)
+const earlyEvilPlayer = new Player(false, true)
 earlyEvilPlayer.importPlayerData(earlyEvil)
-var evilReturnToNormalPlayer = new Player(false, true)
+const evilReturnToNormalPlayer = new Player(false, true)
 evilReturnToNormalPlayer.importPlayerData(evilReturnToNormal)
-var earlyEvilTwoPlayer = new Player(false, true)
+const earlyEvilTwoPlayer = new Player(false, true)
 earlyEvilTwoPlayer.importPlayerData(earlyEvilTwo)
-var midEvilPlayer = new Player(false, true)
+const midEvilPlayer = new Player(false, true)
 midEvilPlayer.importPlayerData(midEvil)
-var midEvilTwoPlayer = new Player(false, true)
+const midEvilTwoPlayer = new Player(false, true)
 midEvilTwoPlayer.importPlayerData(midEvilTwo)
-var lateEvilPlayer = new Player(false, true)
+const lateEvilPlayer = new Player(false, true)
 lateEvilPlayer.importPlayerData(lateEvil)
 
 // var earlySadPlayer = new Player(false, true)
@@ -60,15 +60,15 @@ type nguExpected = {
 
 
 
-var types = ['energy', 'magic']
-var nguNames = [
+const types = ['energy', 'magic']
+const nguNames = [
     ['Augments', 'Wandoos', 'Respawn', 'Gold', 'AdvA', 'PowerA', 'DropChance', 'MNGU', 'PP'],
     ['Ygg', 'Exp', 'PowerB', 'Number', 'TM', 'ENGU', 'AdvB']
 ]
 
 
 // Set targets to 10 for early
-var earlyNormalExpected : nguExpected = {
+const earlyNormalExpected : nguExpected = {
     [GameMode.NORMAL] : {
         'seconds': [
             [1282051.4, 1282051.4, 1282051.4, 1282051.4, 1282051.4, 1282051.4, 128205137.8, 2564102564, 64102564103],
@@ -86,7 +86,7 @@ var earlyNormalExpected : nguExpected = {
 }
 
 // Set targets to 100 for early (except we did 200 for gold, power A)
-var earlyNormalTwoExpected : nguExpected = {
+const earlyNormalTwoExpected : nguExpected = {
     [GameMode.NORMAL] : {
         'seconds': [
             [1510613, 1510613, 1510613, 2669745.96, 1510613, 2014349.56, 151061254, 3021225068, 75530626667],
@@ -104,7 +104,7 @@ var earlyNormalTwoExpected : nguExpected = {
 }
 
 // Set targets for magic to 100 (except ygg, set to 200)
-var midNormalExpected : nguExpected = {
+const midNormalExpected : nguExpected = {
     [GameMode.NORMAL] : {
         'seconds': [
             [735869.24, 735898.8, 0, 558860.44, 269887.32, 735265.44, 582938.43, 600847, 15021167],
@@ -124,7 +124,7 @@ var midNormalExpected : nguExpected = {
 // Altered most targets:
 // 100k, 50k, 5k, 100k, 1m, 50k, 100k, 1k, 500
 // 200k, 4k, 500, 500, 200, 200, -1
-var midNormalTwoExpected : nguExpected = {
+const midNormalTwoExpected : nguExpected = {
     [GameMode.NORMAL] : {
         'seconds': [
             [36438.24, 7562.64, 134.82, 31064.48, 2467730.78, 7862.64, 1393661.24, 7200, 57600],
@@ -142,7 +142,7 @@ var midNormalTwoExpected : nguExpected = {
 }
 
 
-var lateNormalExpected : nguExpected = {
+const lateNormalExpected : nguExpected = {
     [GameMode.NORMAL] : {
         'seconds': [
             [40000, 40000, 40000, 40000, 712619.48, 40000, 1537348.74, 84459.48, 70709.4],
@@ -164,7 +164,7 @@ var lateNormalExpected : nguExpected = {
 //      Normal: 100M, 50M for DC+
 //          Magic: 100M (ygg, exp), 50M, 10M adv B
 // Evil had no change
-var earlyEvilExpected : nguExpected = {
+const earlyEvilExpected : nguExpected = {
     [GameMode.NORMAL] : {
         'seconds': [
             [404794.16, 404794.76, 404935.64, 404883.7, 191428.76, 404354.98, 102097.6, 134783.72, 1000944.16],
@@ -201,7 +201,7 @@ var earlyEvilExpected : nguExpected = {
 //          Magic: 100M (ygg, exp), 50M, 20M adv B
 // Evil : 6M, 6M, 2M, 2M, 2M, 500k, 500k, 50k, 20k
 //          30M, 5M, 500k, 250k, 100k, 50k, 20k
-var earlyEvilTwoExpected : nguExpected = {
+const earlyEvilTwoExpected : nguExpected = {
     [GameMode.NORMAL] : {
         'seconds': [
             [200899.12, 200899.28, 201041.32, 200988.66, 1986740.2, 200560.38, 104006.78, 137048.56, 343379.66],
@@ -237,7 +237,7 @@ var earlyEvilTwoExpected : nguExpected = {
 //          Magic: 200M All
 // Evil : 7.5M, 7.5M, 5M, 20M, 10M, 500k, 500k, 100k, 50k
 //          20M, 10M, 500k, 250k, 250k, 50k, 100k
-var midEvilExpected : nguExpected = {
+const midEvilExpected : nguExpected = {
     [GameMode.NORMAL] : {
         'seconds': [
             [303953.04, 303953.04, 304096.72, 304045.2, 83822.8, 303606.16, 1036817.68, 1071384.4, 1460947.28],
@@ -268,7 +268,7 @@ var midEvilExpected : nguExpected = {
     }
 }
 
-var midEvilTwoExpected : nguExpected = {
+const midEvilTwoExpected : nguExpected = {
     [GameMode.NORMAL] : {
         'seconds': [
             [400847.56, 406050.26, 458496.04, 364273.62, 258774.94, 24531.06, 644804.6, 82794.42, 601376.84],
@@ -299,7 +299,7 @@ var midEvilTwoExpected : nguExpected = {
     }
 }
 
-var lateEvilExpected : nguExpected = {
+const lateEvilExpected : nguExpected = {
     [GameMode.NORMAL] : {
         'seconds': [
             [278147.88, 283011.86, 346589.96, 259619.86, 151928.38, 81515.24, 779356.44, 1158138.8, 2054254.94],
@@ -355,7 +355,7 @@ for(let gm = 0; gm < 3; gm++) {
     }
 
     describe("NGU Page - " + gameModeName + " NGU", () => {
-        var cases : [string, Player, nguExpected][] = [
+        const cases : [string, Player, nguExpected][] = [
             ['Early Normal 1', earlyNormalPlayer, earlyNormalExpected],
             ['Early Normal 2', earlyNormalTwoPlayer, earlyNormalTwoExpected],
             ['Mid Normal 1', midNormalPlayer, midNormalExpected],
@@ -371,20 +371,20 @@ for(let gm = 0; gm < 3; gm++) {
             gameMode + " NGU - %s",
             (name, player, expected) => {
                 if(!_.isUndefined(expected[gameMode])) {
-                    var speedFactors = [
+                    const speedFactors = [
                         player.get('totalEnergyNGUSpeedFactor'),
                         player.get('totalMagicNGUSpeedFactor')
                     ]
-                    var expectedSeconds = expected[gameMode]['seconds']
-                    var expectedCap = expected[gameMode]['cap']
-                    var expectedCapDay = expected[gameMode]['capDay']
+                    const expectedSeconds = expected[gameMode]['seconds']
+                    const expectedCap = expected[gameMode]['cap']
+                    const expectedCapDay = expected[gameMode]['capDay']
                     
-                    var NGUs : NGU[][] = types.map((ty) => {
-                        var ngus = (ty === 'energy')
+                    const NGUs : NGU[][] = types.map((ty) => {
+                        const ngus = (ty === 'energy')
                             ? player.get('energyNGUs')
                             : player.get('magicNGUs')
-                        var retNgus = []
-                        for (var ngu of ngus) {
+                        const retNgus = []
+                        for (const ngu of ngus) {
                             if(ngu.mode == gameMode) {
                                 retNgus.push(ngu)
                             }
@@ -392,14 +392,14 @@ for(let gm = 0; gm < 3; gm++) {
                         return retNgus
                     })
 
-                    var targets = NGUs.map((tyNGUs) => {
+                    const targets = NGUs.map((tyNGUs) => {
                         return tyNGUs.map((ngu) => {
                             return bd(ngu.target);
                         })
                     })
 
-                    var seconds = NGUs.map((tyNGUs, index) => {
-                        var ty = types[index]
+                    const seconds = NGUs.map((tyNGUs, index) => {
+                        let ty = types[index]
                         ty = ty[0].toUpperCase() + ty.substring(1)
                         return tyNGUs.map((ngu, innerIndex) => {
                             return ngu.calcSecondsToTarget(
@@ -417,20 +417,20 @@ for(let gm = 0; gm < 3; gm++) {
 
                     // console.log(seconds, expectedSeconds)
                     for(let i = 0; i < 2; i++) {
-                        let maxJ = (i == 0) ? 9 : 7;
+                        const maxJ = (i == 0) ? 9 : 7;
                         for(let j = 0; j < maxJ; j++) {
                             test(gameModeName + ' NGU - ' + name + ' - ' + nguNames[i][j] + ' Seconds', () => {
-                                var ec = expectClose(seconds[i][j], expectedSeconds[i][j])
+                                const ec = expectClose(seconds[i][j], expectedSeconds[i][j])
                                 // console.log(i, j, seconds[i][j], expectedSeconds[i][j], ec)
                                 expect(ec[0]).toBeCloseTo(ec[1], 0)
                             })
                             test(gameModeName + ' NGU - ' + name + ' - ' + nguNames[i][j] + ' Cap', () => {
-                                var ec = expectClose(NGUs[i][j].capToReachMaxTarget(speedFactors[i]), expectedCap[i][j])
+                                const ec = expectClose(NGUs[i][j].capToReachMaxTarget(speedFactors[i]), expectedCap[i][j])
                                 // console.log(i, j, seconds[i][j], expectedSeconds[i][j], ec)
                                 expect(ec[0]).toBeCloseTo(ec[1], 0)
                             })
                             test(gameModeName + ' NGU - ' + name + ' - ' + nguNames[i][j] + ' Cap Day', () => {
-                                var ec = expectClose(NGUs[i][j].capToReachMaxInDay(speedFactors[i]), expectedCapDay[i][j])
+                                const ec = expectClose(NGUs[i][j].capToReachMaxInDay(speedFactors[i]), expectedCapDay[i][j])
                                 // console.log(i, j, seconds[i][j], expectedSeconds[i][j], ec)
                                 expect(ec[0]).toBeCloseTo(ec[1], 0)
                             })

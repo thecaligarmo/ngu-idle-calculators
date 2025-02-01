@@ -23,7 +23,7 @@ type gensType = {
 
 type gensBDType = {energy : bigDecimal, magic : bigDecimal, res3 : bigDecimal, total : bigDecimal}
 
-var basicGens : gensType = {
+const basicGens : gensType = {
     'energy' : {'power' : bd(0), 'cap' : bd(0), 'bar' : bd(0)},
     'magic' : {'power' : bd(0), 'cap' : bd(0), 'bar' : bd(0)},
     'res3' : {'power' : bd(0), 'cap' : bd(0), 'bar' : bd(0)},
@@ -35,7 +35,7 @@ function getRatMax(base : bigDecimal, ratio : bigDecimal, oppRatio : bigDecimal,
     // Might accidentally divide by 0
     try{
         // Get ratio of base power with our ratio (how many units we have of the ratio desired)
-        var rat = base.round().divide(ratio, 20)
+        const rat = base.round().divide(ratio, 20)
         // Take our units and multiply by the "opposite" ratio (see what quantity we need)
         return rat.multiply(oppRatio).multiply(thirdRatio)
     } catch (error) {
@@ -48,7 +48,7 @@ function getRatUnit(base : bigDecimal, ratio : bigDecimal, mainRatio : bigDecima
     // Might accidentally divide by 0
     try{
         // Get ratio of base power with our ratio (how many units we have of the ratio desired)
-        var rat = base.round().divide(ratio)
+        const rat = base.round().divide(ratio)
         // Take our units and devide by the "same" ratio (smaller unit)
         return rat.divide(mainRatio)
     } catch (error) {
@@ -83,11 +83,11 @@ function toStr(ty : string, elt : string, upperFirst : boolean = false) {
 
 
 export function getRatioInfo(player : Player) : [gensType, gensType, gensBDType, string] {
-    let ratMax : gensType = _.cloneDeep(basicGens)
-    let ratUnit : gensType = _.cloneDeep(basicGens)
-    let desired : gensType = _.cloneDeep(basicGens)
-    let buy : gensType = _.cloneDeep(basicGens)
-    let res3Active = player.get('res3Active')
+    const ratMax : gensType = _.cloneDeep(basicGens)
+    const ratUnit : gensType = _.cloneDeep(basicGens)
+    const desired : gensType = _.cloneDeep(basicGens)
+    const buy : gensType = _.cloneDeep(basicGens)
+    const res3Active = player.get('res3Active')
     
 
     let ty: keyof typeof ratMax
@@ -100,10 +100,10 @@ export function getRatioInfo(player : Player) : [gensType, gensType, gensBDType,
             }
         } else {
             for (elt in basicGens[ty as keyof gensType]) {
-                let base = player.get('base' + toStr(ty, elt, true))
-                let ratio = player.get(toStr(ty, elt) + 'Ratio')
-                let otherRatio = player.get((ty == 'energy') ? 'magicRatio' : 'energyRatio')
-                let thirdRatio = player.get((ty == 'res3') ? 'magicRatio' : 'res3Ratio')
+                const base = player.get('base' + toStr(ty, elt, true))
+                const ratio = player.get(toStr(ty, elt) + 'Ratio')
+                const otherRatio = player.get((ty == 'energy') ? 'magicRatio' : 'energyRatio')
+                const thirdRatio = player.get((ty == 'res3') ? 'magicRatio' : 'res3Ratio')
                 ratMax[ty][elt] = getRatMax(base, ratio, otherRatio, res3Active ? thirdRatio : bd(1));
                 ratUnit[ty][elt] = getRatUnit(base, ratio, player.get(ty + 'Ratio'))
             }
@@ -136,7 +136,7 @@ export function getRatioInfo(player : Player) : [gensType, gensType, gensBDType,
             }
         } else {
             for (elt in basicGens[ty as keyof gensType]) {
-                let base = player.get('base' + toStr(ty, elt, true))
+                const base = player.get('base' + toStr(ty, elt, true))
                 desired[ty][elt] = getDesired(maxItem, base, ratMax[ty][elt])
                 buy[ty][elt] = getBuy(desired[ty][elt], base)
             }
@@ -144,7 +144,7 @@ export function getRatioInfo(player : Player) : [gensType, gensType, gensBDType,
     }
 
     // Cost to increase all the things
-    let cost : gensBDType = {'energy' : bd(0), 'magic' : bd(0), 'res3' : bd(0), 'total' : bd(0)}
+    const cost : gensBDType = {'energy' : bd(0), 'magic' : bd(0), 'res3' : bd(0), 'total' : bd(0)}
     cost['energy'] = buy['energy']['power'].multiply(bd(150))
                     .add(buy['energy']['cap'].multiply(bd(40)).divide(bd(10000)))
                     .add(buy['energy']['bar'].multiply(bd(80))).ceil();

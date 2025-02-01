@@ -7,7 +7,7 @@ import bigDecimal from "js-big-decimal";
 type tempType = 
     'boostRecyclying' | 'redLiquidBonus' | 'sadisticNoEquipmentChallenges' | 'spoopySetBonus' | 'totalDropChance' | 'totalPower' | 'totalRespawnTime'
 
-var cases : [string, string, {[k:string]:number}, {[k:string]:number}, {
+const cases : [string, string, {[k:string]:number}, {[k:string]:number}, {
     boostRecyclying: bigDecimal,
     redLiquidBonus : boolean,
     sadisticNoEquipmentChallenges: bigDecimal,
@@ -169,22 +169,22 @@ describe("Zone page", () => {
     test.each(cases)(
         "Zone Page - Case %#",
         (caseBoostZone, caseExpZone, caseBoosts, caseExp, data) => {
-            var player = new Player(false, true)
-            var k : tempType
+            const player = new Player(false, true)
+            let k : tempType
             for(k in data) {
                 player.set(k, data[k])
             }
 
-            var zoneInfo =  getZoneInfo(player);
-            var boostZone = getOptimalBoostZone(zoneInfo);
-            var expZone = getOptimalExpZone(zoneInfo);
+            const zoneInfo =  getZoneInfo(player);
+            const boostZone = getOptimalBoostZone(zoneInfo);
+            const expZone = getOptimalExpZone(zoneInfo);
             
             // We should get the correct zones for exp and boost
             expect(boostZone.key).toBe(caseBoostZone)
             expect(expZone.key).toBe(caseExpZone)
 
             // Check some arbitrary numbers
-            for (var zone of zoneInfo) {
+            for (const zone of zoneInfo) {
                 for(var key in caseBoosts) {
                     if (zone.key == key) {
                         expect(Number(zone['boost'].getValue())).toBeCloseTo(caseBoosts[key], 4)

@@ -21,7 +21,7 @@ export default function HacksPage() {
     const fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [['totalRes3Power', 'totalRes3Cap', 'totalHackSpeed', 'blueHeart'],
+    const infoRequired : requiredDataType = [['totalRes3Power', 'totalRes3Cap', 'totalHackSpeed', 'blueHeart'],
         [   
             'hackMilestoneReductionStat',
             'hackMilestoneReductionAdventure',
@@ -58,7 +58,7 @@ export default function HacksPage() {
         ]
     ]
     // Set extra required (not from playerData)
-    var extraRequired  : requiredDataType = [['percentIncrease','milestoneIncrease','addRes3BetaPotion', 'addRes3DeltaPotion'],
+    const extraRequired  : requiredDataType = [['percentIncrease','milestoneIncrease','addRes3BetaPotion', 'addRes3DeltaPotion'],
         [
             'hackMilestoneExtraStat',
             'hackMilestoneExtraAdventure',
@@ -77,33 +77,33 @@ export default function HacksPage() {
             'hackMilestoneExtraWish',
         ]
     ]
-    var goRequired : requiredDataType = [['goResource3Power', 'goResource3Cap', 'goRawHackSpeed']]
+    const goRequired : requiredDataType = [['goResource3Power', 'goResource3Cap', 'goRawHackSpeed']]
     
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    let infoReq = getPlayerDataInfo(infoRequired)
+    let extraReq = getPlayerDataInfo(extraRequired)
+    const goReq = getPlayerDataInfo(goRequired)
 
     
-    var res3pow = player.get('totalRes3Power')
+    let res3pow = player.get('totalRes3Power')
     if (player.get('addRes3BetaPotion')) {
         res3pow = player.get('blueHeart') ? res3pow.multiply(bd(2.2)) : res3pow.multiply(bd(2))
     }
     if (player.get('addRes3DeltaPotion')) {
         res3pow = player.get('blueHeart') ? res3pow.multiply(bd(3.3)) : res3pow.multiply(bd(3))
     }
-    var res3cap = player.get('totalRes3Cap')
-    var hackSpeed = player.get('totalHackSpeed')
+    const res3cap = player.get('totalRes3Cap')
+    const hackSpeed = player.get('totalHackSpeed')
 
-    var hacks : Hack[] = Object.values(player.get('hacks'))
-    var hackRows : StandardTableRowType = {}
-    var totalTime = bd(0)
+    const hacks : Hack[] = Object.values(player.get('hacks'))
+    const hackRows : StandardTableRowType = {}
+    let totalTime = bd(0)
     hacks.forEach((hack) => {
         hack.milestoneReduction = toNum(player.get(hack.getMilestoneReductionName()))
-        var curVal = hack.getStatValue()
-        var milestone = hack.getMilestone()
+        const curVal = hack.getStatValue()
+        const milestone = hack.getMilestone()
         if (calcType == HACKS_PERCENTAGE) {
-            var targetVal = curVal * (toNum(player.get('percentIncrease')) / 100 + 1)
+            const targetVal = curVal * (toNum(player.get('percentIncrease')) / 100 + 1)
             var target = hack.getLevelFromVal(targetVal)
         } else if (calcType == HACKS_MILESTONE) {
             var target = hack.getMilestoneLevel(milestone + toNum(player.get('milestoneIncrease')))
@@ -113,16 +113,16 @@ export default function HacksPage() {
             var target = hack.level
         }
 
-        var targetMilestone = hack.getMilestone(target)
+        let targetMilestone = hack.getMilestone(target)
         if (!isZero(player.get(hack.getMilestoneExtraName()))) {
             targetMilestone = targetMilestone + toNum(player.get(hack.getMilestoneExtraName()))
             target = hack.getMilestoneLevel(targetMilestone)
         }
         
-        var newTargetVal = hack.getStatValue('', target) // Not necessarily the same as tVal since levels are discrete
-        var time = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, target)
+        const newTargetVal = hack.getStatValue('', target) // Not necessarily the same as tVal since levels are discrete
+        const time = hack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, target)
         totalTime = totalTime.add(time)
-        var milestoneChange = targetMilestone - milestone
+        const milestoneChange = targetMilestone - milestone
         
         hackRows[hack.key] = {
             'name' : hack.name,
@@ -143,8 +143,8 @@ export default function HacksPage() {
     }
      
 
-    var hackOrder = ['name', 'level', 'target', 'milestoneChange', 'bonus', 'change', 'tBonus', 'time']
-    var hackHeader = {
+    const hackOrder = ['name', 'level', 'target', 'milestoneChange', 'bonus', 'change', 'tBonus', 'time']
+    const hackHeader = {
         'name' : "Name",
         'level' : "Current Level",
         'bonus' : "Current Bonus",
@@ -156,7 +156,7 @@ export default function HacksPage() {
         'minTime' : "Min Time Taken",
     }
 
-    var extraClasses = {
+    const extraClasses = {
         "time": "text-right text-red-500",
         "minTime": "text-right text-red-500",
         "target": "text-blue-500",
@@ -166,7 +166,7 @@ export default function HacksPage() {
     }
 
 
-    var titleText = "How long does it take to increase hacks "
+    let titleText = "How long does it take to increase hacks "
     // We never want to show milestone increases:
     extraReq = disableItem(extraReq, 
         [
@@ -237,7 +237,7 @@ export default function HacksPage() {
     }
     
 
-    var topButtons = (
+    const topButtons = (
         <>
             <p>How would you like to calculate Hacks?</p>
             <ChoiceButton text="Using Targets" onClick={() => setCalcType(HACKS_TARGET)} active={calcType==HACKS_TARGET} />

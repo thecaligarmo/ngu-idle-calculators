@@ -52,7 +52,7 @@ export function getQuestInfo(
     'qp' : {'major' : bigDecimal, 'minor': bigDecimal, 'perMajor' : bigDecimal, 'perMinor' : bigDecimal},
 } {
 
-    let itemsPerQuest = bd(fibQuestRNG ? 50 : 54.5)
+    const itemsPerQuest = bd(fibQuestRNG ? 50 : 54.5)
     const beastButterMultiplier = beastButter
         ? (blueHeart ? bd(2.2) : bd(2))
         : bd(1)
@@ -108,7 +108,7 @@ export function getQuestInfo(
         if(idleMajorQuests) {
             totalSecondsMajorQuest = secondsPerIdleQuest.multiply(majorsPerDay)
         } else {
-            let secondsPerManualQuest = itemsPerQuest
+            const secondsPerManualQuest = itemsPerQuest
                 .multiply(secondsPerManualQuestItemDrop)
             totalSecondsMajorQuest = secondsPerManualQuest.multiply(majorsPerDay)
         }   
@@ -173,8 +173,8 @@ export function getQuestInfo(
 
 
 export function getTitanList() : ReactElement[]{
-    let titanOptions : ReactElement[] = []
-    for (let titan of Object.values(Titans)) {
+    const titanOptions : ReactElement[] = []
+    for (const titan of Object.values(Titans)) {
         if(titan.id < 13) {
             for(let i = 0; i < titan.versions; i++) {
                 if(titan.id == 5 && i > 0) {
@@ -322,7 +322,7 @@ export function getDailySaveAP(totalAPBonus : bigDecimal, hoursPerDay : bigDecim
 
 export function getDailySpinAP(dailySpinTier : number | bigDecimal, totalAPBonus : bigDecimal, hoursPerDay : bigDecimal, incConsumables : boolean = false, incJackpot : boolean = false) : bigDecimal{
     dailySpinTier = toNum(dailySpinTier)
-    var avgAPFromDailySpin = bd(0)
+    let avgAPFromDailySpin = bd(0)
     switch(dailySpinTier) {
         case 0:
             avgAPFromDailySpin = avgAPFromDailySpin

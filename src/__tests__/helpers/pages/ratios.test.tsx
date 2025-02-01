@@ -27,7 +27,7 @@ type tempType =
     'res3BarRatio' |
     'res3Active'
 
-var cases : [string, {
+const cases : [string, {
     'energy': bigDecimal,
     'magic': bigDecimal,
     'res3': bigDecimal,
@@ -177,13 +177,13 @@ describe("Ratio page", () => {
     test.each(cases)(
         "Ratio Page - Case %#",
         (sugBuy, expectedCost, data) => {
-            var player = new Player(false, true)
-            var k : tempType
+            const player = new Player(false, true)
+            let k : tempType
             for(k in data) {
                 player.set(k, data[k])
             }
-            var [desired, buy, cost, suggestedBuy] =  getRatioInfo(player);
-            var res3 : boolean = player.get('res3Active')
+            const [desired, buy, cost, suggestedBuy] =  getRatioInfo(player);
+            const res3 : boolean = player.get('res3Active')
 
             // Check desired ratios
             expect(Number(desired['energy']['power'].divide(desired['energy']['bar']).getValue()))

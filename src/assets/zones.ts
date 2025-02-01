@@ -3,7 +3,7 @@ import { bd, bigdec_equals, bigdec_min, greaterThan, toNum } from "@/helpers/num
 import bigDecimal from "js-big-decimal"
 import { ENEMY_TYPE, Enemies, Enemy } from "./enemy"
 
-var boostTable : number[] = [0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
+const boostTable : number[] = [0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
 
 export default class Zone {
     id: number
@@ -60,7 +60,7 @@ export default class Zone {
             this.boosts = [[boostValue, 14, 14]]
         }
 
-        let expChance = 1 / Math.max(20, 40 - Math.ceil((level + 1) / 50))
+        const expChance = 1 / Math.max(20, 40 - Math.ceil((level + 1) / 50))
         if (level >= 50) {
             this.exp = [Math.floor(level / 50) * (Math.floor(level / 50) - 1) + 2, expChance, expChance]
         } else {
@@ -131,10 +131,10 @@ export default class Zone {
         return chanceParalyze.add(chanceBossParalyze)
     }
     boostedValue(boostRecyclying : bigDecimal) : bigDecimal[] { 
-        let boostedVals : bigDecimal[] = []
+        const boostedVals : bigDecimal[] = []
 
         this.boosts.forEach((boost) => {
-            let recycledValue = boostTable.reduce((boostSum, boostVal) => {
+            const recycledValue = boostTable.reduce((boostSum, boostVal) => {
                 if (boostVal <= boost[0]) {
                     return boostSum.multiply(boostRecyclying).divide(bd(100)).add(bd(boostVal));
                 }
@@ -154,7 +154,7 @@ export default class Zone {
     }
 
     boostChances(dropChance : bigDecimal) : bigDecimal[] {
-        let boostChance : bigDecimal[] = []
+        const boostChance : bigDecimal[] = []
 
         this.boosts.forEach((boost) => {
             const maxChance = bd(boost[1]).divide(bd(100)).multiply(this.baseChance(dropChance))
@@ -194,7 +194,7 @@ export default class Zone {
                 1
             )
         } else {
-            let hits = this.enemies.map(function(enemy) {
+            const hits = this.enemies.map(function(enemy) {
                 return enemy.numHitsToKill(totalPower, idleAttackModifier)
             })
 

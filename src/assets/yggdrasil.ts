@@ -66,10 +66,10 @@ export class Yggdrasil {
         let maxTier = 24
         maxTier -= this.tier
         let leftover = bd(0)
-        let tmpTier = this.tier
-        let tmpPoop = this.usePoop
+        const tmpTier = this.tier
+        const tmpPoop = this.usePoop
         while(maxTier > 0) {
-            let nTier = (maxTier > this.tier) ? this.tier : maxTier
+            const nTier = (maxTier > this.tier) ? this.tier : maxTier
             this.tier = nTier
             this.usePoop = poopLeftovers
             leftover = leftover.add(this.fruitYield({...data, 'firstHarvest': 0}))

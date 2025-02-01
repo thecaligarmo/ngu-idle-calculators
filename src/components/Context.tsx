@@ -12,8 +12,8 @@ const DataContext = createContext<Player>(new Player(true));
 const NumberFormatContext = createContext<numberFormatType | string>("scientific")
 
 export function DataWrapper({children} : PropsWithChildren) {
-    let player = new Player();
-    let [numberFormat, setNumberFormat] = useLocalStorage("numberFormat", "scientific")
+    const player = new Player();
+    const [numberFormat, setNumberFormat] = useLocalStorage("numberFormat", "scientific")
 
     return (
             <DataContext.Provider value={player}>

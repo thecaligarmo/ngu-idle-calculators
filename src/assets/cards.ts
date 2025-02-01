@@ -85,7 +85,7 @@ export class Card extends Resource {
         this.setLevel(data[this.id])
     }
     updateStats() {
-        for (let prop of this.statnames) {
+        for (const prop of this.statnames) {
             this[prop] = this.base[prop] * this.level
         }
     }
@@ -116,10 +116,10 @@ export class Card extends Resource {
     }
 
     rarityRate(seventiesSet : boolean, tagEffect: bigDecimal, numberOfTags: number) : bigDecimal {
-        let maxRate = cardRarityRange(CardRarity.CHONKER)[0]
-        let minRate = cardRarityRange(CardRarity.CRAPPY, seventiesSet)[0]
-        let setRate = cardRarityRange(this.minCastRarity, seventiesSet)[0]
-        let rate = bd(
+        const maxRate = cardRarityRange(CardRarity.CHONKER)[0]
+        const minRate = cardRarityRange(CardRarity.CRAPPY, seventiesSet)[0]
+        const setRate = cardRarityRange(this.minCastRarity, seventiesSet)[0]
+        const rate = bd(
             (maxRate - setRate) / (maxRate - minRate)
         )
         return rate.multiply(this.tagFormula(tagEffect, numberOfTags))
@@ -127,7 +127,7 @@ export class Card extends Resource {
 
     bonusPerMayo(rarity : number, pen: boolean) : bigDecimal{
         // (con1 + con2 * rarity * tier^TierCon1 * tierCon2^tier) * Mayo / 100
-        let tier = pen ? this.tier + 2 : this.tier
+        const tier = pen ? this.tier + 2 : this.tier
         return (
                 bd(this.constants[0])
                 .add(

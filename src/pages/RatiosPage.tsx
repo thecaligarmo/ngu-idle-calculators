@@ -11,30 +11,30 @@ import { getPlayerDataInfo } from "@/helpers/playerInfo";
 
 export default function RatiosPage() {
     const player = getPlayer();
-    var fmt = getNumberFormat();
-    var res3Active = player.get("res3Active")
+    const fmt = getNumberFormat();
+    const res3Active = player.get("res3Active")
     
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [
+    const infoRequired : requiredDataType = [
         ["baseEnergyPower", "baseEnergyCap", "baseEnergyBar"],
         ["baseMagicPower", "baseMagicCap", "baseMagicBar"],
         ["baseRes3Power", "baseRes3Cap", "baseRes3Bar"]
     ]
     // Set extra required (not from playerData)
-    var extraRequired : requiredDataType = [
+    const extraRequired : requiredDataType = [
         ["energyRatio", "energyPowerRatio", "energyCapRatio", "energyBarRatio"],
         ["magicRatio", "magicPowerRatio", "magicCapRatio", "magicBarRatio"],
         ["res3Ratio", "res3PowerRatio", "res3CapRatio", "res3BarRatio"]
     ]
-    var goRequired : requiredDataType = [[]]
+    const goRequired : requiredDataType = [[]]
     
 
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    let infoReq = getPlayerDataInfo(infoRequired)
+    let extraReq = getPlayerDataInfo(extraRequired)
+    const goReq = getPlayerDataInfo(goRequired)
 
-    var [desired, buy, cost, suggestedBuy] = getRatioInfo(player)
+    const [desired, buy, cost, suggestedBuy] = getRatioInfo(player)
 
 
     if (!res3Active) {
@@ -43,7 +43,7 @@ export default function RatiosPage() {
     }
 
     // Children of the extra information
-    var extraChildren = (
+    const extraChildren = (
         <ChoiceButton
             text={res3Active ? "Hide R3" : "Show R3"}
             onClick={() => player.set('res3Active', !res3Active)}
@@ -51,9 +51,9 @@ export default function RatiosPage() {
     )
 
     // Children of the extra inputs
-    var selectBoxCSS = "inline-block align-top my-2 "
+    let selectBoxCSS = "inline-block align-top my-2 "
     selectBoxCSS += res3Active ? 'w-1/3' : 'w-1/2'
-    var ratioOptions = (
+    const ratioOptions = (
         <>
             <option key="131" value="1:37500:1">1:37500:1</option>
             <option key="514" value="5:160000:4">5:160000:4</option>
@@ -61,17 +61,17 @@ export default function RatiosPage() {
         </>
     )
 
-    var extraInputChildren = (
+    const extraInputChildren = (
         <>
             <div className="mt-2">
                 <p>Quick Selectors:</p>
                 <div className={selectBoxCSS}>
                 <select defaultValue='' className='text-black' id="emRatio" onChange={(e) => {
                     if (e.target.value){
-                        var [energy, magic] = e.target.value.split(":")
+                        const [energy, magic] = e.target.value.split(":")
 
-                        var erRatio : HTMLSelectElement | null = document.querySelector('select#erRatio')
-                        var [energyRes, res3] = (!_.isNull(erRatio) && erRatio.value)
+                        const erRatio : HTMLSelectElement | null = document.querySelector('select#erRatio')
+                        const [energyRes, res3] = (!_.isNull(erRatio) && erRatio.value)
                                                 ? erRatio.value.split(":")
                                                 : [0, 0]
 
@@ -99,9 +99,9 @@ export default function RatiosPage() {
                 <div className={selectBoxCSS}>
                     <select defaultValue='' className='text-black' id='erRatio' onChange={(e) => {
                     if (e.target.value){
-                        var [energy, res3] = e.target.value.split(":")
-                        var emRatio : HTMLSelectElement | null = document.querySelector('select#emRatio')
-                        var [energyMagic, magic] = (!_.isNull(emRatio) && emRatio.value)
+                        const [energy, res3] = e.target.value.split(":")
+                        const emRatio : HTMLSelectElement | null = document.querySelector('select#emRatio')
+                        const [energyMagic, magic] = (!_.isNull(emRatio) && emRatio.value)
                                                 ? emRatio.value.split(":")
                                                 : [0, 0]
                         
@@ -129,7 +129,7 @@ export default function RatiosPage() {
                 <div className={selectBoxCSS}>
                     <select defaultValue='' className='text-black' id="eratio" onChange={(e) => {
                     if (e.target.value){
-                        var [power, cap, bar] = e.target.value.split(":")
+                        const [power, cap, bar] = e.target.value.split(":")
                         setInputValue(document.getElementById('energyPowerRatio'), power)
                         setInputValue(document.getElementById('energyCapRatio'), cap)
                         setInputValue(document.getElementById('energyBarRatio'), bar)
@@ -142,7 +142,7 @@ export default function RatiosPage() {
                 <div className={selectBoxCSS}>
                     <select defaultValue='' className='text-black' id="mratio" onChange={(e) => {
                     if (e.target.value){
-                        var [power, cap, bar] = e.target.value.split(":")
+                        const [power, cap, bar] = e.target.value.split(":")
                         setInputValue(document.getElementById('magicPowerRatio'), power)
                         setInputValue(document.getElementById('magicCapRatio'), cap)
                         setInputValue(document.getElementById('magicBarRatio'), bar)
@@ -157,7 +157,7 @@ export default function RatiosPage() {
                 <div className={selectBoxCSS}>
                     <select defaultValue='' className='text-black' id="rratio" onChange={(e) => {
                     if (e.target.value){
-                        var [power, cap, bar] = e.target.value.split(":")
+                        const [power, cap, bar] = e.target.value.split(":")
                         setInputValue(document.getElementById('res3PowerRatio'), power)
                         setInputValue(document.getElementById('res3CapRatio'), cap)
                         setInputValue(document.getElementById('res3BarRatio'), bar)
@@ -174,7 +174,7 @@ export default function RatiosPage() {
     )
 
     // Children that comes before the containers
-    var prechildren = (
+    const prechildren = (
         <p>Calculate how much Energy/Magic{res3Active ? "/Resource 3" : null} you need in order to have the proper ratios.</p>
     )
 

@@ -14,7 +14,7 @@ export default function YggPage() {
     const fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [
+    const infoRequired : requiredDataType = [
         ['totalSeedGainBonus', 'totalYggdrasilYieldBonus'],
         ['totalAPBonus', 'totalExpBonus', 'totalPPBonus', 'totalQuestRewardBonus', 'totalMayoSpeed'],
         ['blueHeart', 'firstHarvestPerk', 'fruitOfKnowledgeSucks', 'fruitOfKnowledgeSTILLSucks'],
@@ -88,16 +88,16 @@ export default function YggPage() {
         ],
     ]
     // Set extra required (not from playerData)
-    var extraRequired : requiredDataType = [[]]
-    var goRequired : requiredDataType = [['goSeedGain', 'goYggdrasilYield'], ['goAP', 'goExperience'], []]
+    const extraRequired : requiredDataType = [[]]
+    const goRequired : requiredDataType = [['goSeedGain', 'goYggdrasilYield'], ['goAP', 'goExperience'], []]
     
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    const infoReq = getPlayerDataInfo(infoRequired)
+    const extraReq = getPlayerDataInfo(extraRequired)
+    const goReq = getPlayerDataInfo(goRequired)
 
 
-    var fruits : Yggdrasil[] = Object.values(player.get('yggdrasil'));
+    const fruits : Yggdrasil[] = Object.values(player.get('yggdrasil'));
     fruits.forEach((fruit) => {
         fruit.tier = toNum(player.get(fruit.tierKey()))
         fruit.usePoop = player.get(fruit.poopKey())
@@ -105,11 +105,11 @@ export default function YggPage() {
     })
 
     
-    var nguYgg = nguInfo(player, Stat.YGGDRASIL_YIELD)
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
-    var blueHeart = player.get('blueHeart')
+    const nguYgg = nguInfo(player, Stat.YGGDRASIL_YIELD)
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const blueHeart = player.get('blueHeart')
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         nguYgg: nguYgg,
@@ -125,7 +125,7 @@ export default function YggPage() {
         mayoSpeed: player.get('totalMayoSpeed'), // Mayo
     }
 
-    let order = [
+    const order = [
         "fruit",
         "tier",
         "poop",
@@ -136,7 +136,7 @@ export default function YggPage() {
         "24Cost"
     ]
 
-    let header = {
+    const header = {
         "fruit": "Fruit",
         "tier": "Current Tier",
         "poop": "Poop?",
@@ -146,9 +146,9 @@ export default function YggPage() {
         "cost": "Upgrade Cost",
         "24Cost": "Cost to upgrade to tier 24",
     }
-    var dataRows : StandardTableRowType = {}
-    for(let index in fruits) {
-        let fruit = fruits[index]
+    const dataRows : StandardTableRowType = {}
+    for(const index in fruits) {
+        const fruit = fruits[index]
         dataRows[fruit.key] = {
             "fruit": fruit.name,
             "tier": fruit.tier,

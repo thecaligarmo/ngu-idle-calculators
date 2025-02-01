@@ -19,7 +19,7 @@ export default function CardsPage() {
     const player = getPlayer();
 
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [
+    const infoRequired : requiredDataType = [
         [
             'blueHeart',
             'cardChonkers',
@@ -88,7 +88,7 @@ export default function CardsPage() {
     ]
 
     // Set extra required (not from playerData)
-    var extraRequired : requiredDataType = [
+    const extraRequired : requiredDataType = [
         [
             'includeFruit',
             'includeLeftovers',
@@ -135,13 +135,13 @@ export default function CardsPage() {
         ],
     ]
 
-    var goRequired : requiredDataType = [[]];
+    const goRequired : requiredDataType = [[]];
 
     
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    let infoReq = getPlayerDataInfo(infoRequired)
+    let extraReq = getPlayerDataInfo(extraRequired)
+    const goReq = getPlayerDataInfo(goRequired)
     extraReq.unshift({'colWidths':['w-1/3', 'w-1/3', 'w-1/3', 'w-2/3', 'w-1/3']})
 
     if (!player.get('includeFruit')) {
@@ -157,13 +157,13 @@ export default function CardsPage() {
 
     
 
-    let seventiesSet = player.get('70sSet')
-    let blackPen = player.get('blackPen')
-    let tagEffect =  player.get('totalTagEffect').divide(bd(100))
-    let cardSpeed = player.get('totalCardSpeed')
-    let mayoSpeed = player.get('totalMayoSpeed')
+    const seventiesSet = player.get('70sSet')
+    const blackPen = player.get('blackPen')
+    const tagEffect =  player.get('totalTagEffect').divide(bd(100))
+    const cardSpeed = player.get('totalCardSpeed')
+    const mayoSpeed = player.get('totalMayoSpeed')
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         blueHeart: player.get('blueHeart'),
         mayoSpeed: mayoSpeed, // Mayo
     }
@@ -171,7 +171,7 @@ export default function CardsPage() {
 
 
     // Grab card info
-    let cards : Card[] = Object.values(player.get('cards'));
+    const cards : Card[] = Object.values(player.get('cards'));
     let numTagged = 0
     cards.forEach((card) => {
         card.tier = toNum(player.get(card.tierKey()))
@@ -185,14 +185,14 @@ export default function CardsPage() {
 
 
     // H_i / cardsPeraDay
-    let cardTypeRarityRates : bigDecimalObj = toObjectMap(
+    const cardTypeRarityRates : bigDecimalObj = toObjectMap(
         cards,
         (card) => card.key,
         (card) => card.rarityRate(seventiesSet, tagEffect, numTagged)
     )
 
     // sum H_i / cardsPerDay
-    let recycleCard = Object.values(cardTypeRarityRates).reduce((rateSum : bigDecimal, rate : bigDecimal) => {
+    const recycleCard = Object.values(cardTypeRarityRates).reduce((rateSum : bigDecimal, rate : bigDecimal) => {
         return rateSum.add(rate)
     }, bd(0))
     
@@ -208,17 +208,17 @@ export default function CardsPage() {
 
     // Chonk info
     // J_i * O_i / cardSpeed
-    let chonkTags : bigDecimalObj = toObjectMap(
+    const chonkTags : bigDecimalObj = toObjectMap(
         cards,
         (card : Card) => card.key,
         (card : Card) => player.get(card.chonkKey()) ? card.tagFormula(tagEffect, numTagged) : bd(0)
     )
-    let recycleChonk = Object.values(chonkTags).reduce((tagSum : bigDecimal, tag: bigDecimal) => {
+    const recycleChonk = Object.values(chonkTags).reduce((tagSum : bigDecimal, tag: bigDecimal) => {
         return tagSum.add(tag)
     }, bd(0))
 
-    let chonksPerDay = getChonksPerDay(cardSpeed, recycleChonk, player.get('cardRecyclingCard'))
-    let chonksRecycled = player.get('cardRecyclingCard') ? getChonksRecycled(recycleChonk, chonksPerDay) : bd(0)
+    const chonksPerDay = getChonksPerDay(cardSpeed, recycleChonk, player.get('cardRecyclingCard'))
+    const chonksRecycled = player.get('cardRecyclingCard') ? getChonksRecycled(recycleChonk, chonksPerDay) : bd(0)
     
 
 
@@ -228,7 +228,7 @@ export default function CardsPage() {
     // Mayo
 
     // Grab Mayo generation from fruits
-    let fruits : Yggdrasil[] = Object.values(player.get('yggdrasil'));
+    const fruits : Yggdrasil[] = Object.values(player.get('yggdrasil'));
     fruits.forEach((fruit) => {
         if(fruit instanceof FruitOfMayo) {
             fruit.tier = toNum(player.get(fruit.tierKey()))
@@ -237,18 +237,18 @@ export default function CardsPage() {
         }
     })
 
-    let [mayoFromFruit, mayoFromFruitLeftovers] = player.get('includeFruit')
+    const [mayoFromFruit, mayoFromFruitLeftovers] = player.get('includeFruit')
         ? getMayoFromFruit(player.get('includeLeftovers'), fruits, fruitYieldData, player.get('poopAllLeftovers'))
         : [bd(0), bd(0)]
     console.log(player.get('includeLeftovers'), fruits, fruitYieldData, player.get('poopAllLeftovers'))
     
-    let mayoFromRecycling = player.get('cardRecyclingMayo') 
+    const mayoFromRecycling = player.get('cardRecyclingMayo') 
                 ? getMayoFromRecycling(cardsRecycled, chonksRecycled)
                 : bd(0);
-    let mayoFromInfusers = lessThan(player.get('infusersEveryXDays'), bd(1))
+    const mayoFromInfusers = lessThan(player.get('infusersEveryXDays'), bd(1))
                     ? bd(0) 
                     : getMayoFromInfusers(mayoSpeed, player.get('infusersEveryXDays'), player.get('twoFruitPerInfuser'), mayoFromFruit, mayoFromFruitLeftovers)
-    let mayoPerDay = (bd(24).multiply(mayoSpeed.divide(bd(100))))
+    const mayoPerDay = (bd(24).multiply(mayoSpeed.divide(bd(100))))
                         .add(mayoFromFruit)
                         .add(mayoFromFruitLeftovers)
                         .add(mayoFromRecycling)
@@ -257,29 +257,29 @@ export default function CardsPage() {
 
 
     // Grab min/max cord cost for normal cards and chonkers
-    let minCardCost = bd(1).add(player.get('wimpyWish'));
-    let maxCardCost = bd(9).add(player.get('beefyWish'));
-    let averageCardCost = (minCardCost.add(maxCardCost)).divide(bd(2))
+    const minCardCost = bd(1).add(player.get('wimpyWish'));
+    const maxCardCost = bd(9).add(player.get('beefyWish'));
+    const averageCardCost = (minCardCost.add(maxCardCost)).divide(bd(2))
 
-    let minChonkCardCost = bd(1).add(player.get('chonkLessNotChonkier'))
-    let maxChonkCardCost = bd(9).add(player.get('chonkChonkier'))
-    let averageChonkCardCost = bd(20).add((minChonkCardCost.add(maxChonkCardCost)).divide(bd(2)))
+    const minChonkCardCost = bd(1).add(player.get('chonkLessNotChonkier'))
+    const maxChonkCardCost = bd(9).add(player.get('chonkChonkier'))
+    const averageChonkCardCost = bd(20).add((minChonkCardCost.add(maxChonkCardCost)).divide(bd(2)))
 
 
     // By Type Calculations
-    let infoByType = toObjectMap(cards,
+    const infoByType = toObjectMap(cards,
         (card) => card.key,
         (card) => {
-            let cardsPDay = cardsPerDay.multiply(card.tagFormula(tagEffect, numTagged))
-            let chonkPDay = chonksPerDay.multiply(card.tagFormula(tagEffect, numTagged))
-            let bonusPerMayo = card.bonusPerMayo((cardRarityRange(card.minCastRarity, seventiesSet)[0] + 1.2)/2, blackPen)
-            let bonusPerCard = bonusPerMayo.multiply(averageCardCost)
-            let bonusPerChonk = card.bonusPerMayo(cardRarityRange(CardRarity.CHONKER)[0], blackPen)
+            const cardsPDay = cardsPerDay.multiply(card.tagFormula(tagEffect, numTagged))
+            const chonkPDay = chonksPerDay.multiply(card.tagFormula(tagEffect, numTagged))
+            const bonusPerMayo = card.bonusPerMayo((cardRarityRange(card.minCastRarity, seventiesSet)[0] + 1.2)/2, blackPen)
+            const bonusPerCard = bonusPerMayo.multiply(averageCardCost)
+            const bonusPerChonk = card.bonusPerMayo(cardRarityRange(CardRarity.CHONKER)[0], blackPen)
                                     .multiply(averageChonkCardCost)
 
-            let Hi = (cardTypeRarityRates[card.key]).multiply(cardsPerDay)
-            let Ji = !isZero(cardsPerDay) ? cardsPDay.divide(cardsPerDay).multiply(chonksPerDay) : bd(0)
-            let bonusPerDay = bonusPerCard.multiply(Hi)
+            const Hi = (cardTypeRarityRates[card.key]).multiply(cardsPerDay)
+            const Ji = !isZero(cardsPerDay) ? cardsPDay.divide(cardsPerDay).multiply(chonksPerDay) : bd(0)
+            const bonusPerDay = bonusPerCard.multiply(Hi)
                                     .add(
                                         bonusPerChonk
                                             .multiply(Ji)
@@ -287,7 +287,7 @@ export default function CardsPage() {
                                     )
 
             // Ki
-            let mayoNeeded = Hi.multiply(averageCardCost).add(
+            const mayoNeeded = Hi.multiply(averageCardCost).add(
                 Ji.multiply(averageChonkCardCost).multiply(player.get(card.chonkKey()) ? bd(1) : bd(0))
             )
 
@@ -305,13 +305,13 @@ export default function CardsPage() {
     )
 
     // Total Mayo Needed
-    let totalMayoNeeded = Object.keys(infoByType).reduce((mayoSum : bigDecimal, k : any) => {
+    const totalMayoNeeded = Object.keys(infoByType).reduce((mayoSum : bigDecimal, k : any) => {
         return mayoSum.add(infoByType[k]['mayoNeeded'])
     }, bd(0))
-    let mayoLeftover = mayoPerDay.subtract(totalMayoNeeded)
+    const mayoLeftover = mayoPerDay.subtract(totalMayoNeeded)
     
     
-    var perTypeOrder = [
+    let perTypeOrder = [
         "key",
         "bpd",
         "cpd",
@@ -332,7 +332,7 @@ export default function CardsPage() {
         ]
     }
 
-    var perTypeHeader = {
+    const perTypeHeader = {
         "key": "",
         "bpd": "Bonus per day",
         "cpd": "Cards per day",
@@ -344,8 +344,8 @@ export default function CardsPage() {
     }
     
 
-    var perTypeRows : StandardTableRowType = {}
-    for(let k of Object.keys(infoByType)) {
+    const perTypeRows : StandardTableRowType = {}
+    for(const k of Object.keys(infoByType)) {
         perTypeRows[k] = {
             'key': camelToTitle(k.replace('card', '')) + " Card",
             'cpd': <span className="text-red-500">{pn(infoByType[k]['cardsPerDay'], fmt)}</span>,
@@ -359,13 +359,13 @@ export default function CardsPage() {
     }
 
 
-    var dailyOrder = ["main", "amt", "extra"]
-    var dailyHeader = {
+    const dailyOrder = ["main", "amt", "extra"]
+    const dailyHeader = {
         "main": "",
         "amt": "Amount",
         "extra": "Extra Info"
     }
-    var dailyData : StandardTableRowType = {
+    const dailyData : StandardTableRowType = {
         "mayo": {
             "main": "Mayo",
             "amt": <span className="text-red-500">{pn(mayoPerDay, fmt)}</span>,
@@ -395,7 +395,7 @@ export default function CardsPage() {
     }
 
     
-    let chanceOfTagged = bd(numTagged).multiply(tagEffect).add(
+    const chanceOfTagged = bd(numTagged).multiply(tagEffect).add(
         (bd(1).subtract(bd(numTagged).multiply(tagEffect))).multiply(bd(numTagged / 14))
     )
     let chanceCastable = (Object.keys(infoByType).reduce((cards : bigDecimal, k : any) => {

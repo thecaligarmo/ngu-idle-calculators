@@ -1,4 +1,4 @@
-var earlyNormalTwo = {
+const earlyNormalTwo = {
     "playerName": "x",
     "firstTimePlaying": 0,
     "version": 1260,

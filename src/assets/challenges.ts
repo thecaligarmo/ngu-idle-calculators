@@ -38,11 +38,11 @@ export class Challenge extends Resource {
     }
 
     updateStats() {
-        for (let prop of this.statnames) {
+        for (const prop of this.statnames) {
             this[prop] = this.level * this.base[prop]
         }
         if (this.extraProps) {
-            for (let eprop of this.extraProps) {
+            for (const eprop of this.extraProps) {
                 if (this.level >= eprop[2]) {
                     if (this.statnames.includes(eprop[0])) {
                         if(eprop[0] == Stat.AUGMENT_SPEED) {

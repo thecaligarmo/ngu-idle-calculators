@@ -1,4 +1,4 @@
-var lateEvil : any = {
+const lateEvil : any = {
     "playerName": "xxx",
     "firstTimePlaying": 0,
     "version": 1260,

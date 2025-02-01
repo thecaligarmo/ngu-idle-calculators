@@ -10,15 +10,15 @@ import bigDecimal from 'js-big-decimal';
 import earlySad from '@/__data__/earlySad1';
 import lateEvil from '@/__data__/lateEvil1';
 
-var lateEvilPlayer = new Player(false, true)
+const lateEvilPlayer = new Player(false, true)
 lateEvilPlayer.importPlayerData(lateEvil)
 
-var earlySadPlayer = new Player(false, true)
+const earlySadPlayer = new Player(false, true)
 earlySadPlayer.importPlayerData(earlySad)
 
 
 describe("Cards page - Cards Info", () => {
-    var cases : [Player, any, any][] = [
+    const cases : [Player, any, any][] = [
         [lateEvilPlayer, {
             'cardChonkedEnergyNGU' :0,
             'cardChonkedMagicNGU':0,
@@ -83,10 +83,10 @@ describe("Cards page - Cards Info", () => {
     test.each(cases)(
         "Cards Page - Cards Info - Case %#",
         (player, extraInfo, expectedValue) => {
-            var cardSpeed = player.get('totalCardSpeed');
-            var seventiesSet = player.get('70sSet');
-            let tagEffect =  player.get('totalTagEffect').divide(bd(100))
-            let cards : Card[] = player.get('cards');
+            const cardSpeed = player.get('totalCardSpeed');
+            const seventiesSet = player.get('70sSet');
+            const tagEffect =  player.get('totalTagEffect').divide(bd(100))
+            const cards : Card[] = player.get('cards');
             let numTagged = 0
             cards.forEach((card) => {
                 card.tier = player.get(card.tierKey())
@@ -98,14 +98,14 @@ describe("Cards page - Cards Info", () => {
                 }
             })
 
-            let cardTypeRarityRates : {[k:string] : bigDecimal} = toObjectMap(
+            const cardTypeRarityRates : {[k:string] : bigDecimal} = toObjectMap(
                 cards,
                 (card) => card.key,
                 (card) => card.rarityRate(seventiesSet, tagEffect, numTagged)
             )
         
             // sum H_i / cardsPerDay
-            let recycleCard : bigDecimal = Object.values(cardTypeRarityRates).reduce((rateSum : bigDecimal, rate : bigDecimal) => {
+            const recycleCard : bigDecimal = Object.values(cardTypeRarityRates).reduce((rateSum : bigDecimal, rate : bigDecimal) => {
                 return rateSum.add(rate)
             }, bd(0))
 
@@ -117,17 +117,17 @@ describe("Cards page - Cards Info", () => {
             }
             
             // J_i / cardSpeed
-            let chonkTags : {[k:string] : bigDecimal} = toObjectMap(
+            const chonkTags : {[k:string] : bigDecimal} = toObjectMap(
                 cards,
                 (card) => card.key,
                 (card) => extraInfo[card.chonkKey()] ? card.tagFormula(tagEffect, numTagged) : bd(0)
             )
-            let recycleChonk = Object.values(chonkTags).reduce((tagSum, tag) => {
+            const recycleChonk = Object.values(chonkTags).reduce((tagSum, tag) => {
                 return tagSum.add(tag)
             }, bd(0))
 
-            let chonksPerDay = getChonksPerDay(cardSpeed, recycleChonk, player.get('cardRecyclingCard'))
-            let chonksRecycled = player.get('cardRecyclingCard') ? getChonksRecycled(recycleChonk, chonksPerDay) : bd(0)
+            const chonksPerDay = getChonksPerDay(cardSpeed, recycleChonk, player.get('cardRecyclingCard'))
+            const chonksRecycled = player.get('cardRecyclingCard') ? getChonksRecycled(recycleChonk, chonksPerDay) : bd(0)
             
             var ec = expectClose(cardsPerDay, expectedValue['cards'])
             expect(ec[0]).toBeCloseTo(ec[1], 2)
@@ -144,7 +144,7 @@ describe("Cards page - Cards Info", () => {
 
 
 describe("Cards page - Mayo Info", () => {
-    var cases : [Player, {[k:string]: number}, {[k:string]:number}][] = [
+    const cases : [Player, {[k:string]: number}, {[k:string]:number}][] = [
         [lateEvilPlayer, {
             'includeFruit': 0,
             'includeLeftovers': 0,
@@ -180,16 +180,16 @@ describe("Cards page - Mayo Info", () => {
         "Cards Page - Cards Info - Case %#",
         (player, extraInfo, expectedValue) => {
 
-            let mayoSpeed = player.get('totalMayoSpeed')
-            let cardsRecycled = bd(extraInfo['cardsRecycled'])
-            let chonksRecylced = bd(extraInfo['chonksRecylced'])
+            const mayoSpeed = player.get('totalMayoSpeed')
+            const cardsRecycled = bd(extraInfo['cardsRecycled'])
+            const chonksRecylced = bd(extraInfo['chonksRecylced'])
 
-            var fruitYieldData = {
+            const fruitYieldData = {
                 blueHeart: player.get('blueHeart'),
                 mayoSpeed: mayoSpeed, // Mayo
             }
 
-            let fruits : Yggdrasil[] = player.get('yggdrasil');
+            const fruits : Yggdrasil[] = player.get('yggdrasil');
             fruits.forEach((fruit) => {
                 if(fruit instanceof FruitOfMayo) {
                     fruit.tier = toNum(player.get(fruit.tierKey()))
@@ -198,18 +198,18 @@ describe("Cards page - Mayo Info", () => {
                 }
             })
 
-            let [mayoFromFruit, mayoFromFruitLeftovers] = (extraInfo['includeFruit'] == 1)
+            const [mayoFromFruit, mayoFromFruitLeftovers] = (extraInfo['includeFruit'] == 1)
                 ? getMayoFromFruit(extraInfo['includeLeftovers'] == 1, fruits, fruitYieldData, extraInfo['poopAllLeftovers'] == 1)
                 : [bd(0), bd(0)]
 
-            let mayoFromRecycling = player.get('cardRecyclingMayo')
+            const mayoFromRecycling = player.get('cardRecyclingMayo')
                 ? getMayoFromRecycling(cardsRecycled, chonksRecylced)
                 : bd(0);
-            let mayoFromInfusers = extraInfo['infusersEveryXDays'] < 1
+            const mayoFromInfusers = extraInfo['infusersEveryXDays'] < 1
                 ? bd(0) 
                 : getMayoFromInfusers(mayoSpeed, bd(extraInfo['infusersEveryXDays']), extraInfo['twoFruitPerInfuser'] == 1, mayoFromFruit, mayoFromFruitLeftovers)
 
-            let mayoPerDay = (bd(24).multiply(mayoSpeed.divide(bd(100))))
+            const mayoPerDay = (bd(24).multiply(mayoSpeed.divide(bd(100))))
                     .add(mayoFromFruit)
                     .add(mayoFromFruitLeftovers)
                     .add(mayoFromRecycling)

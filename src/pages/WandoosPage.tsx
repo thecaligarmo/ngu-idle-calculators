@@ -13,30 +13,30 @@ export default function WandoosPage() {
     const fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [
+    const infoRequired : requiredDataType = [
         ['gameMode','totalEnergyCap', 'totalMagicCap','wandoosEnergyAllocated', 'wandoosMagicAllocated']
     ]
     // Set extra required (not from playerData)
-    var extraRequired : requiredDataType = [
+    const extraRequired : requiredDataType = [
         ['minutesSpentInWandoos', 'energyFillsPerSecond', 'magicFillsPerSecond']
     ]
-    var goRequired : requiredDataType = [['goEnergyCap', 'goMagicCap']]
+    const goRequired : requiredDataType = [['goEnergyCap', 'goMagicCap']]
     
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    const infoReq = getPlayerDataInfo(infoRequired)
+    const extraReq = getPlayerDataInfo(extraRequired)
+    const goReq = getPlayerDataInfo(goRequired)
 
 
-    var gameMode = player.get('gameMode')
-    var wandoos : Wandoos = player.get('wandoos')[0]
+    const gameMode = player.get('gameMode')
+    let wandoos : Wandoos = player.get('wandoos')[0]
     if (_.isUndefined(wandoos)) {
         wandoos = _.cloneDeep(WANDOOSLIST[0])
     }
     wandoos.energyAllocated = player.get('wandoosEnergyAllocated');
     wandoos.magicAllocated = player.get('wandoosMagicAllocated');
 
-    var data = {
+    const data = {
         gameMode: gameMode,
         minutes : player.get('minutesSpentInWandoos'),
         energyCap : player.get('totalEnergyCap'),
@@ -45,12 +45,12 @@ export default function WandoosPage() {
         magicFills: player.get('magicFillsPerSecond'),
         wandoos: wandoos,
     }
-    var lvlsGained = getLevelsGainedInWandoos(data)
-    var bonuses = getWandoosBonuses(lvlsGained, wandoos)
+    const lvlsGained = getLevelsGainedInWandoos(data)
+    const bonuses = getWandoosBonuses(lvlsGained, wandoos)
 
-    var maxOS = getMaxOSBonus(bonuses)
+    const maxOS = getMaxOSBonus(bonuses)
 
-    var prechildren = (
+    const prechildren = (
         <p>See which wandoos is the most efficient for where you are. By <span className="text-red-500">&ldquo;fills per second&rdquo;</span> we mean how fast is your bar filling up. So if you&quot;re capped/BBd, then it&quot;s 50, etc.</p>
     )
     

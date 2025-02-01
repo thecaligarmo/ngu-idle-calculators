@@ -12,31 +12,31 @@ export default function ZonePage() {
     const fmt = getNumberFormat();
     
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [
+    const infoRequired : requiredDataType = [
         ['totalDropChance', 'totalPower', 'totalRespawnTime', 'boostRecyclying'],
         ['sadisticNoEquipmentChallenges', 'redLiquidBonus', 'spoopySetBonus']]
     // Set extra required (not from playerData)
-    var extraRequired : requiredDataType = [[]]
-    var goRequired : requiredDataType = [['goDropChance', 'goPower', 'goRespawn']]
+    const extraRequired : requiredDataType = [[]]
+    const goRequired : requiredDataType = [['goDropChance', 'goPower', 'goRespawn']]
     
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    const infoReq = getPlayerDataInfo(infoRequired)
+    const extraReq = getPlayerDataInfo(extraRequired)
+    const goReq = getPlayerDataInfo(goRequired)
 
 
-    var zoneInfo = getZoneInfo(player)
-    var optimalBoostZone = getOptimalBoostZone(zoneInfo);
-    var optimalExpZone = getOptimalExpZone(zoneInfo);
+    const zoneInfo = getZoneInfo(player)
+    const optimalBoostZone = getOptimalBoostZone(zoneInfo);
+    const optimalExpZone = getOptimalExpZone(zoneInfo);
 
-    var zoneList = zoneInfo.map(function(zone) {
+    const zoneList = zoneInfo.map(function(zone) {
         return (
         <option key={zone.key} value={zone.key}>{zone.name}</option>
         )
     })
 
-    var zoneBoonList = zoneInfo.map(function(zone) {
-        var bV = isZero(optimalBoostZone['boost']) ? bd(1) : optimalBoostZone['boost']
+    const zoneBoonList = zoneInfo.map(function(zone) {
+        const bV = isZero(optimalBoostZone['boost']) ? bd(1) : optimalBoostZone['boost']
         return (
         <li key={zone.key} className={optZoneChosen == zone.key ? "" : "hidden"}>
             {zone.name} is <span className="text-red-500">{pn(zone.boost.divide(bV).multiply(bd(100)), fmt, 2)}%</span> as efficient with a boost value of <span className="text-blue-500">{pn(zone.boost, fmt)}.</span>
@@ -44,8 +44,8 @@ export default function ZonePage() {
         )
     })
 
-    var zoneExpList = zoneInfo.map(function(zone) {
-        var eV = isZero(optimalExpZone['exp']) ? bd(1) : optimalExpZone['exp']
+    const zoneExpList = zoneInfo.map(function(zone) {
+        const eV = isZero(optimalExpZone['exp']) ? bd(1) : optimalExpZone['exp']
         return (
         <li key={zone.key} className={optZoneChosen == zone.key ? "" : "hidden"}>
             {zone.name} is <span className="text-red-500">{pn(zone.exp.divide(eV).multiply(bd(100)), fmt, 2)}%</span> as efficient with a exp value of <span className="text-blue-500">{pn(zone.exp, fmt)}.</span>

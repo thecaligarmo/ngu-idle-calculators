@@ -1,4 +1,4 @@
-var earlyEvilTwo = {
+const earlyEvilTwo = {
     "playerName": "x",
     "firstTimePlaying": 0,
     "version": 1260,

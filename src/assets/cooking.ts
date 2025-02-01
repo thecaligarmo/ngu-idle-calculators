@@ -84,16 +84,16 @@ export class Dish extends Resource {
     }
 
     orderedIngredients() : Ingredient[]{
-        let ings : Ingredient[] = []
-        for(let i of this.ingredientsOrder) {
+        const ings : Ingredient[] = []
+        for(const i of this.ingredientsOrder) {
             ings.push(this.pairs[this.ingToPairMap[i][0]][this.ingToPairMap[i][1]])
         }
         return ings
     }
 
     makeOptimal() {
-        let optimalScores : number[][] = this.getOptimalScore()
-        for(let i in optimalScores) {
+        const optimalScores : number[][] = this.getOptimalScore()
+        for(const i in optimalScores) {
             this.pairs[i][0].level = optimalScores[i][0]
             this.pairs[i][1].level = optimalScores[i][1]
             this.pairs[i][0].altLevel = this.pairs[i][1].isUnlocked ? optimalScores[i][1] : optimalScores[i][0]
@@ -104,8 +104,8 @@ export class Dish extends Resource {
     }
 
     getOptimalScore() : number[][]{
-        let maxPairs : number[][] = []
-        for(let i in this.pairs) {
+        const maxPairs : number[][] = []
+        for(const i in this.pairs) {
             let maxScore = bd(0)
             let maxPair = [0,0]
             const ing1 = this.pairs[i][0]

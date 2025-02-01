@@ -18,36 +18,36 @@ import { expectClose } from '../../../helpers/testHelperFunctions';
 
 
 
-var earlyNormalPlayer = new Player(false, true)
+const earlyNormalPlayer = new Player(false, true)
 earlyNormalPlayer.importPlayerData(earlyNormal)
-var earlyNormalTwoPlayer = new Player(false, true)
+const earlyNormalTwoPlayer = new Player(false, true)
 earlyNormalTwoPlayer.importPlayerData(earlyNormalTwo)
-var midNormalPlayer = new Player(false, true)
+const midNormalPlayer = new Player(false, true)
 midNormalPlayer.importPlayerData(midNormal)
-var midNormalTwoPlayer = new Player(false, true)
+const midNormalTwoPlayer = new Player(false, true)
 midNormalTwoPlayer.importPlayerData(midNormalTwo)
-var lateNormalPlayer = new Player(false, true)
+const lateNormalPlayer = new Player(false, true)
 lateNormalPlayer.importPlayerData(lateNormal)
 
-var earlyEvilPlayer = new Player(false, true)
+const earlyEvilPlayer = new Player(false, true)
 earlyEvilPlayer.importPlayerData(earlyEvil)
 // var evilReturnToNormalPlayer = new Player(false, true)
 // evilReturnToNormalPlayer.importPlayerData(evilReturnToNormal)
-var earlyEvilTwoPlayer = new Player(false, true)
+const earlyEvilTwoPlayer = new Player(false, true)
 earlyEvilTwoPlayer.importPlayerData(earlyEvilTwo)
-var midEvilPlayer = new Player(false, true)
+const midEvilPlayer = new Player(false, true)
 midEvilPlayer.importPlayerData(midEvil)
-var midEvilTwoPlayer = new Player(false, true)
+const midEvilTwoPlayer = new Player(false, true)
 midEvilTwoPlayer.importPlayerData(midEvilTwo)
-var lateEvilPlayer = new Player(false, true)
+const lateEvilPlayer = new Player(false, true)
 lateEvilPlayer.importPlayerData(lateEvil)
 
-var earlySadPlayer = new Player(false, true)
+const earlySadPlayer = new Player(false, true)
 earlySadPlayer.importPlayerData(earlySad)
 
 // getQuestInfo
 describe("Daily page - Quest Info", () => {
-    var cases : [Player, {
+    const cases : [Player, {
         beastButter : boolean,
         hoursOfflinePerDay : bigDecimal,
         hoursPerDay : bigDecimal,
@@ -122,7 +122,7 @@ describe("Daily page - Quest Info", () => {
         "Daily Page - Quest Info - Case %#",
         (player, extraData, expectedValue) => {
 
-            var infoData = {
+            const infoData = {
                 totalAPBonus: player.get('totalAPBonus'),
                 totalQPBonus: player.get('totalQuestRewardBonus'),
                 activeQuestWishI: player.get('activeQuestWishI'),
@@ -140,15 +140,15 @@ describe("Daily page - Quest Info", () => {
             }
 
 
-            var combinedData = {...infoData, ...extraData}
-            var questInfo = getQuestInfo(combinedData)
-            var t : 'ap' | 'qp'
-            var tt : (typeof t)[] = ['ap', 'qp']
+            const combinedData = {...infoData, ...extraData}
+            const questInfo = getQuestInfo(combinedData)
+            let t : 'ap' | 'qp'
+            const tt : (typeof t)[] = ['ap', 'qp']
             for (t of tt){
                 var m : 'major' | 'minor' | 'perMajor' | 'perMinor'
-                var mm : (typeof m)[] = ['major', 'minor', 'perMajor', 'perMinor']
+                const mm : (typeof m)[] = ['major', 'minor', 'perMajor', 'perMinor']
                 for (m of mm) {
-                    var ec = expectClose(questInfo[t][m], expectedValue[t][m])
+                    const ec = expectClose(questInfo[t][m], expectedValue[t][m])
                     expect(ec[0]).toBeCloseTo(ec[1], 0)
                 }
             }
@@ -165,7 +165,7 @@ describe("Daily page - Quest Info", () => {
 // })
 
 describe("Daily page - Max Titan AK", () => {
-    var cases : [Player, [Titan, number]][] = [
+    const cases : [Player, [Titan, number]][] = [
         [earlyNormalPlayer, [Titans.NONE, 0]], // 0
         [earlyNormalTwoPlayer, [Titans.GRAND_TREE, 0]],
         [midNormalPlayer, [Titans.UUG, 0]], // 2
@@ -181,9 +181,9 @@ describe("Daily page - Max Titan AK", () => {
     test.each(cases)(
         "Daily Page - Max Titan AK - Case %#",
         (player, expectedValue) => {
-            var playerAttack = new AttackStat(1, player.get('totalPower'), player.get('totalToughness'), player.get('totalRegen'), player.get('totalHealth'))
-            var titans : Titan[] = player.get('titans')
-            var maxTitanByAK = getMaxTitanByAK(titans, playerAttack)
+            const playerAttack = new AttackStat(1, player.get('totalPower'), player.get('totalToughness'), player.get('totalRegen'), player.get('totalHealth'))
+            const titans : Titan[] = player.get('titans')
+            const maxTitanByAK = getMaxTitanByAK(titans, playerAttack)
             expect(maxTitanByAK[0].key).toBe(expectedValue[0].key)
             expect(maxTitanByAK[1]).toBe(expectedValue[1])
         }
@@ -191,7 +191,7 @@ describe("Daily page - Max Titan AK", () => {
 })
 
 describe("Daily page - Titan Hourly Info", () => {
-    var cases : [[Titan, number], Player, {
+    const cases : [[Titan, number], Player, {
         'ap' : bigDecimal,
         'exp' : bigDecimal,
         'ppp' : bigDecimal,
@@ -263,7 +263,7 @@ describe("Daily page - Titan Hourly Info", () => {
         "Daily Page - Titan Hourly Info - Case %#",
         (maxTitan, player, expectedValue) => {
 
-            var infoData = {
+            const infoData = {
                 totalAPBonus: player.get('totalAPBonus'),
                 totalExpBonus: player.get('totalExpBonus'),
                 totalPPBonus : player.get('totalPPBonus'),
@@ -277,11 +277,11 @@ describe("Daily page - Titan Hourly Info", () => {
                 wishes : player.get('wishes'),
             }
 
-            var titanHourlyInfo = getTitanHourlyInfo(maxTitan, infoData)
-            var t : 'ap' | 'exp' | 'ppp' | 'qp'
-            var tt : (typeof t)[] = ['ap' , 'exp', 'ppp', 'qp']
+            const titanHourlyInfo = getTitanHourlyInfo(maxTitan, infoData)
+            let t : 'ap' | 'exp' | 'ppp' | 'qp'
+            const tt : (typeof t)[] = ['ap' , 'exp', 'ppp', 'qp']
             for (t of tt){
-                var ec = expectClose(titanHourlyInfo[t], expectedValue[t])
+                const ec = expectClose(titanHourlyInfo[t], expectedValue[t])
                 expect(ec[0]).toBeCloseTo(ec[1], 0)
             }
         }
@@ -290,7 +290,7 @@ describe("Daily page - Titan Hourly Info", () => {
 
 
 describe("Daily page - AP Rebirth", () => {
-    var cases : [bigDecimal, bigDecimal, number][] = [
+    const cases : [bigDecimal, bigDecimal, number][] = [
         [bd(124.7), bd(24), 206],
         [bd(158.5), bd(20), 216],
         [bd(175.35), bd(15), 176],
@@ -298,7 +298,7 @@ describe("Daily page - AP Rebirth", () => {
     test.each(cases)(
         "Daily Page - AP Rebirth - Case %#",
         (totalAPBonus, hoursPerDay, expectedValue) => {
-            var apRebirth = getRebirthAP(totalAPBonus, hoursPerDay,)
+            const apRebirth = getRebirthAP(totalAPBonus, hoursPerDay,)
             expect(Number(apRebirth.getValue())).toBeCloseTo(expectedValue)
         }
     )
@@ -306,7 +306,7 @@ describe("Daily page - AP Rebirth", () => {
 
 
 describe("Daily page - AP Money Pit", () => {
-    var cases : [bigDecimal, bigDecimal, bigDecimal, number][]  = [
+    const cases : [bigDecimal, bigDecimal, bigDecimal, number][]  = [
         [bd(50), bd(4), bd(175.35), 348],
         [bd(22), bd(6), bd(125.7), 162],
         [bd(25), bd(2), bd(150.15), 74],
@@ -314,7 +314,7 @@ describe("Daily page - AP Money Pit", () => {
     test.each(cases)(
         "Daily Page - AP Money Pit - Case %#",
         (goldToss, numTosses, totalAPBonus, expectedValue) => {
-            var apMoneyPit = getMoneyPitAP(goldToss, numTosses, totalAPBonus)
+            const apMoneyPit = getMoneyPitAP(goldToss, numTosses, totalAPBonus)
             expect(Number(apMoneyPit.getValue())).toBeCloseTo(expectedValue)
         }
     )
@@ -322,7 +322,7 @@ describe("Daily page - AP Money Pit", () => {
 
 
 describe("Daily page - AP Daily Save", () => {
-    var cases : [bigDecimal, bigDecimal, number][]  = [
+    const cases : [bigDecimal, bigDecimal, number][]  = [
         [bd(124.7), bd(24), 249],
         [bd(158.5), bd(20), 264.1667],
         [bd(175.35), bd(15), 218.75],
@@ -331,7 +331,7 @@ describe("Daily page - AP Daily Save", () => {
         "Daily Page - AP Daily Save - Case %#",
         (totalAPBonus, hoursPerDay, expectedValue) => {
 
-            var apDailySave = getDailySaveAP(totalAPBonus, hoursPerDay)
+            const apDailySave = getDailySaveAP(totalAPBonus, hoursPerDay)
             expect(Number(apDailySave.getValue())).toBeCloseTo(expectedValue)
         }
     )
@@ -339,7 +339,7 @@ describe("Daily page - AP Daily Save", () => {
 
 
 describe("Daily page - AP Daily Spin", () => {
-    var cases : [number, bigDecimal, bigDecimal, boolean, boolean, number][]  = [
+    const cases : [number, bigDecimal, bigDecimal, boolean, boolean, number][]  = [
         [1, bd(102), bd(24), false, false, 227],
         [2, bd(124.7), bd(24), true, true, 1080],
         [3, bd(124.7), bd(24), true, true, 2060],
@@ -357,7 +357,7 @@ describe("Daily page - AP Daily Spin", () => {
         "Daily Page - AP Daily Spin - Case %#",
         (dailySpinTier, totalAPBonus, hoursPerDay, incConsumables, incJackpot, expectedValue) => {
 
-            var apDailySpin = getDailySpinAP(dailySpinTier, totalAPBonus, hoursPerDay, incConsumables, incJackpot)
+            const apDailySpin = getDailySpinAP(dailySpinTier, totalAPBonus, hoursPerDay, incConsumables, incJackpot)
             expect(Number(apDailySpin.getValue())).toBeCloseTo(expectedValue, 0)
         }
     )

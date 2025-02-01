@@ -60,7 +60,7 @@ export class NGU extends Resource {
         this.updateStats()
     }
     updateStats() : void {
-        for (let prop of Object.keys(this.base)) {
+        for (const prop of Object.keys(this.base)) {
             this[prop] = this.getStatValueInternal(this.level, prop)
         }
     }
@@ -173,12 +173,12 @@ export class NGU extends Resource {
     }
     // The above formula's inverses
     getLevelFromVal(value: number, prop: string, forceDiminished : boolean = false, forceNotDiminished : boolean = false) : number{
-        let base = this.base[prop]
+        const base = this.base[prop]
         if (this.isRespawn() && (value > 100)) {
             return 0
         }
         value = value - 100
-        let diminishing = (forceDiminished || this.level > this.diminishingReturnLevel)
+        const diminishing = (forceDiminished || this.level > this.diminishingReturnLevel)
         if (this.diminishingReturnLevel === 0 || !diminishing || forceNotDiminished) {
             return  value / base
             

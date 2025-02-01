@@ -21,8 +21,8 @@ export default function NGUCapTable({type, NGUs, targets, speedFactor, fmt} : NG
         "target": "Target"
     }
     const dataRows : StandardTableRowType = {}
-    for (let index in NGUs) {
-        let ngu = NGUs[index]
+    for (const index in NGUs) {
+        const ngu = NGUs[index]
         dataRows[ngu.key] = {
             "type": ngu.name,
             "cap": <span className="text-red-500">{pn(ngu.capToReachMaxTarget(speedFactor), fmt)}</span>,

@@ -11,17 +11,17 @@ import bigDecimal from "js-big-decimal";
 
 
 
-var midNormalTwoPlayer = new Player(false, true)
+const midNormalTwoPlayer = new Player(false, true)
 midNormalTwoPlayer.importPlayerData(midNormalTwo)
-var lateNormalPlayer = new Player(false, true)
+const lateNormalPlayer = new Player(false, true)
 lateNormalPlayer.importPlayerData(lateNormal)
 
-var earlyEvilTwoPlayer = new Player(false, true)
+const earlyEvilTwoPlayer = new Player(false, true)
 earlyEvilTwoPlayer.importPlayerData(earlyEvilTwo)
-var midEvilTwoPlayer = new Player(false, true)
+const midEvilTwoPlayer = new Player(false, true)
 midEvilTwoPlayer.importPlayerData(midEvilTwo)
 
-var earlySadPlayer = new Player(false, true)
+const earlySadPlayer = new Player(false, true)
 earlySadPlayer.importPlayerData(earlySad)
 
 
@@ -31,7 +31,7 @@ type emNum = {'energy': number, 'magic': number}
 
 
 describe("Wandoos page", () => {
-    var cases : [Player, {'minutes': bigDecimal}, {'98': emNum, 'meh': emNum, 'xl': emNum}, {'98': number, 'meh': number, 'xl': number}, string][]= [
+    const cases : [Player, {'minutes': bigDecimal}, {'98': emNum, 'meh': emNum, 'xl': emNum}, {'98': number, 'meh': number, 'xl': number}, string][]= [
         [ midNormalTwoPlayer, {minutes: bd(60)},
             {
                 '98' : {'energy' : 180000, 'magic' : 180000},
@@ -77,7 +77,7 @@ describe("Wandoos page", () => {
     test.each(cases)(
         "Wandoos Page - Case %#",
         (player, extraData, expectedLvls, expectedBonuses, expectedMaxOs) => {
-            var infoData = {
+            const infoData = {
                 energyCap: player.get('totalEnergyCap'),
                 magicCap: player.get('totalMagicCap'),
                 energyAllocated: player.get('wandoosEnergyAllocated'),
@@ -85,13 +85,13 @@ describe("Wandoos page", () => {
                 wandoos: player.get('wandoos')[0],
                 gameMode: player.get('gameMode'),
             }
-            var combinedData = {...infoData, ...extraData}
+            const combinedData = {...infoData, ...extraData}
             
             combinedData['wandoos'].energyAllocated = combinedData['energyAllocated']
             combinedData['wandoos'].magicAllocated = combinedData['magicAllocated']
-            var lvlsGained = getLevelsGainedInWandoos({...combinedData})
+            const lvlsGained = getLevelsGainedInWandoos({...combinedData})
 
-            var os : wandoosNames
+            let os : wandoosNames
             for(os in lvlsGained) {
                 var ty : 'energy' | 'magic'
                 for(ty in lvlsGained[os]) {
@@ -99,12 +99,12 @@ describe("Wandoos page", () => {
                 }
             }
 
-            var bonuses = getWandoosBonuses(lvlsGained, combinedData['wandoos'])
+            const bonuses = getWandoosBonuses(lvlsGained, combinedData['wandoos'])
             for(os in bonuses) {
                 expect(Number(bonuses[os].getValue())).toBeCloseTo(expectedBonuses[os])
             }
             
-            var maxOs = getMaxOSBonus(bonuses)
+            const maxOs = getMaxOSBonus(bonuses)
             expect(maxOs).toBe(expectedMaxOs)
         }
     )

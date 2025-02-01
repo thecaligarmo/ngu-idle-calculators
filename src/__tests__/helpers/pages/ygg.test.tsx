@@ -19,14 +19,14 @@ import { toNum } from '@/helpers/numbers';
 
 
 test('Yggdrasil for Early Normal 2', () => {
-    var player = new Player(false, true)
+    const player = new Player(false, true)
     player.importPlayerData(earlyNormalTwo)
-    var ygg : Yggdrasil[] = player.get('yggdrasil')
-    var blueHeart : boolean = player.get('blueHeart') 
-    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const ygg : Yggdrasil[] = player.get('yggdrasil')
+    const blueHeart : boolean = player.get('blueHeart') 
+    const seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
@@ -76,14 +76,14 @@ test('Yggdrasil for Early Normal 2', () => {
 
 
 test('Yggdrasil for Mid Normal 1', () => {
-    var player = new Player(false, true)
+    const player = new Player(false, true)
     player.importPlayerData(midNormal)
-    var ygg : Yggdrasil[] = player.get('yggdrasil')
-    var blueHeart : boolean = player.get('blueHeart')
-    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const ygg : Yggdrasil[] = player.get('yggdrasil')
+    const blueHeart : boolean = player.get('blueHeart')
+    const seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
@@ -144,14 +144,14 @@ test('Yggdrasil for Mid Normal 1', () => {
 
 
 test('Yggdrasil for Mid Normal 2', () => {
-    var player = new Player(false, true)
+    const player = new Player(false, true)
     player.importPlayerData(midNormalTwo)
-    var ygg : Yggdrasil[] = player.get('yggdrasil')
-    var blueHeart : boolean = player.get('blueHeart')
-    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const ygg : Yggdrasil[] = player.get('yggdrasil')
+    const blueHeart : boolean = player.get('blueHeart')
+    const seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
@@ -215,14 +215,14 @@ test('Yggdrasil for Mid Normal 2', () => {
 
 
 test('Yggdrasil for Late Normal', () => {
-    var player = new Player(false, true)
+    const player = new Player(false, true)
     player.importPlayerData(lateNormal)
-    var ygg : Yggdrasil[] = player.get('yggdrasil')
-    var blueHeart : boolean = player.get('blueHeart')
-    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const ygg : Yggdrasil[] = player.get('yggdrasil')
+    const blueHeart : boolean = player.get('blueHeart')
+    const seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
@@ -295,14 +295,14 @@ test('Yggdrasil for Late Normal', () => {
 
 
 test('Yggdrasil for Early Evil 1', () => {
-    var player = new Player(false, true)
+    const player = new Player(false, true)
     player.importPlayerData(earlyEvil)
-    var ygg : Yggdrasil[] = player.get('yggdrasil')
-    var blueHeart : boolean = player.get('blueHeart')
-    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const ygg : Yggdrasil[] = player.get('yggdrasil')
+    const blueHeart : boolean = player.get('blueHeart')
+    const seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
@@ -398,15 +398,15 @@ test('Yggdrasil for Early Evil 1', () => {
 
 
 test('Yggdrasil for Early Evil 2', () => {
-    var player = new Player(false, true)
+    const player = new Player(false, true)
     player.importPlayerData(earlyEvilTwo)
-    var ygg : Yggdrasil[] = player.get('yggdrasil')
-    var blueHeart : boolean = player.get('blueHeart')
-    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const ygg : Yggdrasil[] = player.get('yggdrasil')
+    const blueHeart : boolean = player.get('blueHeart')
+    const seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
 
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
@@ -519,14 +519,14 @@ test('Yggdrasil for Early Evil 2', () => {
 
 
 test('Yggdrasil for Mid Evil 1', () => {
-    var player = new Player(false, true)
+    const player = new Player(false, true)
     player.importPlayerData(midEvil)
-    var ygg : Yggdrasil[] = player.get('yggdrasil')
-    var blueHeart : boolean = player.get('blueHeart')
-    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const ygg : Yggdrasil[] = player.get('yggdrasil')
+    const blueHeart : boolean = player.get('blueHeart')
+    const seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
@@ -643,14 +643,14 @@ test('Yggdrasil for Mid Evil 1', () => {
 
 
 test('Yggdrasil for Mid Evil 2', () => {
-    var player = new Player(false, true)
+    const player = new Player(false, true)
     player.importPlayerData(midEvilTwo)
-    var ygg : Yggdrasil[] = player.get('yggdrasil')
-    var blueHeart : boolean = player.get('blueHeart')
-    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const ygg : Yggdrasil[] = player.get('yggdrasil')
+    const blueHeart : boolean = player.get('blueHeart')
+    const seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
@@ -768,14 +768,14 @@ test('Yggdrasil for Mid Evil 2', () => {
 
 
 test('Yggdrasil for Late Evil 1', () => {
-    var player = new Player(false, true)
+    const player = new Player(false, true)
     player.importPlayerData(lateEvil)
-    var ygg : Yggdrasil[] = player.get('yggdrasil')
-    var blueHeart : boolean = player.get('blueHeart')
-    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const ygg : Yggdrasil[] = player.get('yggdrasil')
+    const blueHeart : boolean = player.get('blueHeart')
+    const seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
@@ -910,14 +910,14 @@ test('Yggdrasil for Late Evil 1', () => {
 
 
 test('Yggdrasil for Early Sad 1', () => {
-    var player = new Player(false, true)
+    const player = new Player(false, true)
     player.importPlayerData(earlySad)
-    var ygg : Yggdrasil[] = player.get('yggdrasil')
-    var blueHeart : boolean = player.get('blueHeart')
-    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
-    var firstHarvest = toNum(player.get('firstHarvestPerk'))
+    const ygg : Yggdrasil[] = player.get('yggdrasil')
+    const blueHeart : boolean = player.get('blueHeart')
+    const seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    const firstHarvest = toNum(player.get('firstHarvestPerk'))
 
-    var fruitYieldData = {
+    const fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,

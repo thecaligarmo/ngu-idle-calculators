@@ -31,7 +31,7 @@ export function getZoneInfo(player : Player) : zoneType[]{
     const optExpectedHits = itopodZone.getHitsPerKill(player.get('totalPower'), idleAttackModifier)
 
     // Let the optimal itopod be the optimal zone for now
-    let ito : zoneType = {
+    const ito : zoneType = {
         key: itopodZone.key,
         name: itopodZone.name + " (floor: " + optimalITOPODFloor + ")",
         boost: itopodBoostedVal,
@@ -41,7 +41,7 @@ export function getZoneInfo(player : Player) : zoneType[]{
     };
 
     // Keep track of all the boost information
-    let zoneBoostInfo : zoneType[] = [ito];
+    const zoneBoostInfo : zoneType[] = [ito];
 
 
     // Non-optimal ITOPOD (non-optimal is the next itopod floor set (by 50))
@@ -66,21 +66,21 @@ export function getZoneInfo(player : Player) : zoneType[]{
 
 
     if (!isZero(player.get('totalPower'))) {
-        for(let zone of Object.values(Zones)) {
+        for(const zone of Object.values(Zones)) {
             if(zone.hardestEnemy()){
                 // var oneHitPower = zone.hardestEnemy().oneHitPower(idleAttackModifier);
-                let paralyzer = zone.paralyzeEnemies();
-                let normalEnemyPercent = bd(1).subtract(zone.bossChance());
-                let exp = zone.exp[0]
-                let expChance = zone.expChance(player.get('totalDropChance'))
-                let boostChances = zone.boostChances(player.get('totalDropChance'))
-                let recycledValues = zone.boostedValue(player.get('boostRecyclying')).reduce((sum, boost, index) => {
-                    let boostValueChance = boost.multiply(boostChances[index])
+                const paralyzer = zone.paralyzeEnemies();
+                const normalEnemyPercent = bd(1).subtract(zone.bossChance());
+                const exp = zone.exp[0]
+                const expChance = zone.expChance(player.get('totalDropChance'))
+                const boostChances = zone.boostChances(player.get('totalDropChance'))
+                const recycledValues = zone.boostedValue(player.get('boostRecyclying')).reduce((sum, boost, index) => {
+                    const boostValueChance = boost.multiply(boostChances[index])
                     return sum.add(boostValueChance)
                 }, bd(0));
 
-                let powerRat = zone.hardestEnemy().numHitsToKill(player.get('totalPower'), idleAttackModifier)
-                let expValZone = (player.get('totalRespawnTime').add(idleAttackCooldown))
+                const powerRat = zone.hardestEnemy().numHitsToKill(player.get('totalPower'), idleAttackModifier)
+                const expValZone = (player.get('totalRespawnTime').add(idleAttackCooldown))
                     .divide(
                     player.get('totalRespawnTime').add(
                             idleAttackCooldown.multiply(powerRat)
@@ -91,7 +91,7 @@ export function getZoneInfo(player : Player) : zoneType[]{
                     .multiply(expChance)
                     .multiply(bd(exp))
                     
-                let zoneBoostedVal = (player.get('totalRespawnTime').add(idleAttackCooldown))
+                const zoneBoostedVal = (player.get('totalRespawnTime').add(idleAttackCooldown))
                     .divide(
                     player.get('totalRespawnTime').add(
                             idleAttackCooldown.multiply(powerRat)
@@ -102,7 +102,7 @@ export function getZoneInfo(player : Player) : zoneType[]{
                     .multiply(normalEnemyPercent)
                     .multiply(recycledValues)
                 
-                let zoneInfo : zoneType = {
+                const zoneInfo : zoneType = {
                     key: zone.key,
                     name: zone.name,
                     boost: zoneBoostedVal,
@@ -120,7 +120,7 @@ export function getZoneInfo(player : Player) : zoneType[]{
 
 export function getOptimalBoostZone(zoneBoostInfo : zoneType[]) : zoneType{
     let optimalZone = zoneBoostInfo[0]
-    for (let zone of zoneBoostInfo){
+    for (const zone of zoneBoostInfo){
         if(greaterThan(zone['boost'], optimalZone['boost'])) {
             optimalZone = zone
         }
@@ -130,7 +130,7 @@ export function getOptimalBoostZone(zoneBoostInfo : zoneType[]) : zoneType{
 
 export function getOptimalExpZone(zoneBoostInfo : zoneType[]) : zoneType{
     let optimalZone = zoneBoostInfo[0]
-    for (let zone of zoneBoostInfo){
+    for (const zone of zoneBoostInfo){
         if(greaterThan(zone['exp'], optimalZone['exp'])) {
             optimalZone = zone
         }
@@ -139,12 +139,12 @@ export function getOptimalExpZone(zoneBoostInfo : zoneType[]) : zoneType{
 }
 
 export function itemSetInfo(player: Player) {
-    let itemSets: ItemSet[] = Object.values(player.get('itemSets'))
-    let notMaxed = itemSets.filter((itSet : ItemSet) => !itSet.isMaxxed && itSet.isZoneSet())
-    let ret : any = {}
-    for(let itSet of notMaxed) {
+    const itemSets: ItemSet[] = Object.values(player.get('itemSets'))
+    const notMaxed = itemSets.filter((itSet : ItemSet) => !itSet.isMaxxed && itSet.isZoneSet())
+    const ret : any = {}
+    for(const itSet of notMaxed) {
         // Since it's a zone set, we know `getZones()` only has one zone
-        let zone : Zone = itSet.getZones()[0]
+        const zone : Zone = itSet.getZones()[0]
         ret[itSet.key] = {
             'zone' : zone,
             'set': itSet

@@ -14,7 +14,7 @@ export default function NGUsComparePage() {
     const fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [
+    const infoRequired : requiredDataType = [
         ['gameMode'], [],
         ['totalEnergyCap', 'totalEnergyNGUSpeedFactor'],
         ['totalMagicCap', 'totalMagicNGUSpeedFactor'],
@@ -78,15 +78,15 @@ export default function NGUsComparePage() {
     ]
 
     // Set extra required (not from playerData)
-    var extraRequired : requiredDataType= [
+    const extraRequired : requiredDataType= [
         ['nguPercentageIncrease'], []
     ]
-    var goRequired :requiredDataType = [['goEnergyCap', 'goEnergyNGU', 'goMagicCap', 'goMagicNGU']]
+    const goRequired :requiredDataType = [['goEnergyCap', 'goEnergyNGU', 'goMagicCap', 'goMagicNGU']]
     
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    let infoReq = getPlayerDataInfo(infoRequired)
+    const extraReq = getPlayerDataInfo(extraRequired)
+    const goReq = getPlayerDataInfo(goRequired)
 
 
     /**
@@ -102,21 +102,21 @@ export default function NGUsComparePage() {
      *  }
      * }
      */
-    var types = ['energy', 'magic']
-    var NGUs : {'normal' : NGU, 'evil' : NGU, 'sadistic' : NGU}[][] = types.map((ty) => {
-        var ngus = (ty === 'energy') ? ENERGY_NGUS : MAGIC_NGUS
-        var nguIds = (ty === 'energy') ? ENERGY_NGUS.ids : MAGIC_NGUS.ids
+    const types = ['energy', 'magic']
+    const NGUs : {'normal' : NGU, 'evil' : NGU, 'sadistic' : NGU}[][] = types.map((ty) => {
+        const ngus = (ty === 'energy') ? ENERGY_NGUS : MAGIC_NGUS
+        const nguIds = (ty === 'energy') ? ENERGY_NGUS.ids : MAGIC_NGUS.ids
 
-        var retNgus = []
-        for(var nguId of nguIds) {
+        const retNgus = []
+        for(const nguId of nguIds) {
             if (nguId < 10) {
-                var ngu : NGU = ngus[nguId]
+                const ngu : NGU = ngus[nguId]
                 ngu.setLevel(toNum(player.get(ty + ngu.key + "Level")))
 
-                var evilngu : NGU = ngus[nguId + 10]
+                const evilngu : NGU = ngus[nguId + 10]
                 evilngu.setLevel(toNum(player.get(ty + evilngu.key + "EvilLevel")))
 
-                var sadngu : NGU = ngus[nguId + 20]
+                const sadngu : NGU = ngus[nguId + 20]
                 sadngu.setLevel(toNum(player.get(ty + sadngu.key + "SadisticLevel")))
 
                 retNgus.push({
@@ -129,7 +129,7 @@ export default function NGUsComparePage() {
         return retNgus
     })
 
-    var targets = NGUs.map((tyNGUs) => {
+    const targets = NGUs.map((tyNGUs) => {
         return tyNGUs.map((ngu) => {
             return {
                 'normal' : ngu['normal'].percentIncrease(player.get("nguPercentageIncrease")),
@@ -139,8 +139,8 @@ export default function NGUsComparePage() {
         })
     })
     
-    var seconds = NGUs.map((tyNGUs, index) => {
-        var ty = types[index]
+    const seconds = NGUs.map((tyNGUs, index) => {
+        let ty = types[index]
         ty = ty[0].toUpperCase() + ty.substring(1)
         return tyNGUs.map((ngu, innerIndex) => {
             return {
@@ -152,21 +152,21 @@ export default function NGUsComparePage() {
     })
 
     // Information retrieval
-    var infoRow = NGUs.map((tyNGUs, index) => {
-        var ty = types[index]
+    const infoRow = NGUs.map((tyNGUs, index) => {
+        let ty = types[index]
         ty = ty[0].toUpperCase() + ty.substring(1)
         return tyNGUs.map(function(ngu, innerIndex) {
-            var targetLvls = targets[index][innerIndex]
-            var secs = seconds[index][innerIndex]
+            const targetLvls = targets[index][innerIndex]
+            const secs = seconds[index][innerIndex]
 
-            var minTime = bd(0)
+            let minTime = bd(0)
             if(isSadMode(player.get('gameMode'))) {
                 minTime = bigdec_min(secs['normal'], secs['evil'], secs['sadistic'])
             } else {
                 minTime = bigdec_min(secs['normal'], secs['evil'])
             }
 
-            var minbgClass = 'bg-green-200 dark:bg-green-900 '
+            const minbgClass = 'bg-green-200 dark:bg-green-900 '
 
             return (
                 <tr key={ngu['normal'].key} className={innerIndex % 2 == 0 ? "bg-slate-200 dark:bg-slate-900" : ""}>
@@ -187,8 +187,8 @@ export default function NGUsComparePage() {
             )
         })
     })
-    var energyRow = infoRow[0]
-    var magicRow = infoRow[1]
+    const energyRow = infoRow[0]
+    const magicRow = infoRow[1]
 
     if(!isSadMode(player.get('gameMode'))) {
         infoReq = disableItem(infoReq, [

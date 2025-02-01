@@ -32,7 +32,7 @@ export class ItemSet {
             this.isMaxxed = true
         } else {
             let maxxed = true
-            for(let item of this.items) {
+            for(const item of this.items) {
                 if(data.inventory.itemList.itemMaxxed[item.id] == 0) {
                     maxxed = false
                 }
@@ -44,17 +44,17 @@ export class ItemSet {
         this.numMaxxed = 0
         if(this.isMaxxed) {
             this.numMaxxed = this.items.length
-            for(let item in this.items) {
+            for(const item in this.items) {
                 this.items[item].level = 100
             }
         } else {
-            for(let item of this.items) {
+            for(const item of this.items) {
                 if(data.inventory.itemList.itemMaxxed[item.id] == 1) {
                     this.numMaxxed += 1
                 }
-                let inv = data.inventory.inventory.filter((it : any) => it.id == item.id)
+                const inv = data.inventory.inventory.filter((it : any) => it.id == item.id)
                 if (inv.length > 0) {
-                    for(let it of inv) {
+                    for(const it of inv) {
                         item.importStats(it)
                     }
                 }
@@ -64,10 +64,10 @@ export class ItemSet {
 
     getDropChance(totalDropChance : bigDecimal) : bigDecimal {
         if(this.isZoneSet()) {
-            let zone = this.getZones()[0]
-            let regDC = bigdec_min(zone.baseChance(totalDropChance).multiply(bd(this.dropChance[0])), bd(this.dropChance[1])).divide(bd(100))
-            let bossDC = bigdec_min(zone.baseChance(totalDropChance).multiply(bd(this.dropChance[2])), bd(this.dropChance[3])).divide(bd(100))
-            let bossChance = zone.bossChance()
+            const zone = this.getZones()[0]
+            const regDC = bigdec_min(zone.baseChance(totalDropChance).multiply(bd(this.dropChance[0])), bd(this.dropChance[1])).divide(bd(100))
+            const bossDC = bigdec_min(zone.baseChance(totalDropChance).multiply(bd(this.dropChance[2])), bd(this.dropChance[3])).divide(bd(100))
+            const bossChance = zone.bossChance()
             return regDC.multiply(bd(1).subtract(bossChance)).add(
                 bossDC.multiply(bossChance)
             )
@@ -90,17 +90,17 @@ export class ItemSet {
             p = p.divide(bd(10 * this.items.length))
             pfix = pfix / 10
 
-            let P = Array(this.items.length).fill(p)
-            let Q = bd(1).subtract(P.reduce((prev, cur) => {return prev.add(cur)}, bd(0)))
-            let v = this.items.map((it) => Math.ceil((100 - it.level) / (this.lvlDropped + 1)))
+            const P = Array(this.items.length).fill(p)
+            const Q = bd(1).subtract(P.reduce((prev, cur) => {return prev.add(cur)}, bd(0)))
+            const v = this.items.map((it) => Math.ceil((100 - it.level) / (this.lvlDropped + 1)))
             
             // For quick test and sigfig
-            let x = Math.max(...v)
-            let y = 1 / toNum(p)
-            let sigFig = Math.max(20, Math.ceil( (1.25 * x) + (x * Math.log(y) / 2)))
+            const x = Math.max(...v)
+            const y = 1 / toNum(p)
+            const sigFig = Math.max(20, Math.ceil( (1.25 * x) + (x * Math.log(y) / 2)))
 
         
-            let quickTest = x * y
+            const quickTest = x * y
             if(quickTest > 400000) {
                 return 'infinity'
             }
@@ -109,22 +109,22 @@ export class ItemSet {
             // console.log(P, Q, v, x, y, x * y, sigFig)
         
             // [i, Poly] -> e^(ix) - (Poly)
-            let F : [bigDecimal, Polynomial][][] = P.map((pi : bigDecimal, i) => {
-                let coeffs : bigDecimal[] = []
+            const F : [bigDecimal, Polynomial][][] = P.map((pi : bigDecimal, i) => {
+                const coeffs : bigDecimal[] = []
                 for(let j = 0; j < v[i]; j++) {
                     coeffs.push(bd(-(toNum(pi)**j)).divide(bd(factorial(j)), sigFig))
                 }
                 return [[bd(pi), new Polynomial([1])], [bd(0), new Polynomial(coeffs)]]
             })
         
-            let start : [bigDecimal, Polynomial][] = [[bd(Q), new Polynomial([1])]]
+            const start : [bigDecimal, Polynomial][] = [[bd(Q), new Polynomial([1])]]
             
-            let G = F.reduce((prev : [bigDecimal, Polynomial][], cur) => {
-                let retStuff : {[key:string]: [bigDecimal, Polynomial]} = {}
-                for(let p of prev) {
+            const G = F.reduce((prev : [bigDecimal, Polynomial][], cur) => {
+                const retStuff : {[key:string]: [bigDecimal, Polynomial]} = {}
+                for(const p of prev) {
                     if(!cur[0][1].isZero()){
-                        let newP : [bigDecimal, Polynomial] = [p[0].add(cur[0][0]), p[1].multiply(cur[0][1])]
-                        let e = newP[0].getValue()
+                        const newP : [bigDecimal, Polynomial] = [p[0].add(cur[0][0]), p[1].multiply(cur[0][1])]
+                        const e = newP[0].getValue()
                         if(Object.keys(retStuff).includes(e)) {
                             retStuff[e] = [newP[0], retStuff[e][1].add(newP[1])]
                         } else {
@@ -132,8 +132,8 @@ export class ItemSet {
                         }
                     }
                     if(!cur[1][1].isZero()){
-                        let newP : [bigDecimal, Polynomial] = [p[0].add(cur[1][0]), p[1].multiply(cur[1][1])]
-                        let e = newP[0].getValue()
+                        const newP : [bigDecimal, Polynomial] = [p[0].add(cur[1][0]), p[1].multiply(cur[1][1])]
+                        const e = newP[0].getValue()
                         if(Object.keys(retStuff).includes(e)) {
                             retStuff[e] = [newP[0], retStuff[e][1].add(newP[1])]
                         } else {
@@ -148,24 +148,24 @@ export class ItemSet {
             
             // Make factorial calculation faster
             let cf = bd(1)
-            let facts = [bd(cf)]
-            let maxCoeff = Math.max(...G.map((g: [bigDecimal, Polynomial]) => {return g[1].coefficients.length}))
+            const facts = [bd(cf)]
+            const maxCoeff = Math.max(...G.map((g: [bigDecimal, Polynomial]) => {return g[1].coefficients.length}))
             for(let i = 1; i <= maxCoeff; i++) {
                 cf = cf.multiply(bd(i))
                 facts.push(cf)
             }
 
         
-            let integral = G.reduce((prev, cur) => {
+            const integral = G.reduce((prev, cur) => {
                 if(bigdec_equals(cur[0], bd(1))) {
                     return prev
                 }
 
                 // Make power calculation faster
                 let cf = bd(1)
-                let powers = [cf]
-                let maxCoeff = cur[1].length()
-                let mult = bd(1 / (toNum(cur[0]) - 1))
+                const powers = [cf]
+                const maxCoeff = cur[1].length()
+                const mult = bd(1 / (toNum(cur[0]) - 1))
                 for(let i = 1; i <= maxCoeff+1; i++) {
                     cf = cf.multiply(mult)
                     powers.push(cf)
@@ -193,11 +193,11 @@ export class ItemSet {
 
     secsToCompletion(totalDropChance : bigDecimal, totalPower: bigDecimal, idleAttackModifier : bigDecimal, redLiquidBonus : boolean = false, totalRespawnTime : bigDecimal = bd(4)) : bigDecimal | string {
         if(this.isZoneSet()) {
-            let killsToCompletion = this.killsToCompletion(totalDropChance)
+            const killsToCompletion = this.killsToCompletion(totalDropChance)
             if(_.isString(killsToCompletion)) {
                 return killsToCompletion
             }
-            let killsPerHour = this.getZones()[0].getKillsPerHour(totalPower, idleAttackModifier, redLiquidBonus, totalRespawnTime)
+            const killsPerHour = this.getZones()[0].getKillsPerHour(totalPower, idleAttackModifier, redLiquidBonus, totalRespawnTime)
             return killsToCompletion.multiply(bd(60 * 60)).divide(killsPerHour)
         }
         return 'Not Implemented'
@@ -206,16 +206,16 @@ export class ItemSet {
     isZoneSet() : boolean {
         // Must have more than one item
         // And be only in one zone
-        let z = this.getZones()
+        const z = this.getZones()
         return this.items.length > 4 && z.length == 1
     }
 
     getZones(): Zone[] {
-        let zones :Zone[] = []
-        let seen : number[][] = []
-        for(let it of this.items) {
-            for(let z of it.zone) {
-                let s = [z.id, z.level]
+        const zones :Zone[] = []
+        const seen : number[][] = []
+        for(const it of this.items) {
+            for(const z of it.zone) {
+                const s = [z.id, z.level]
                 // Can't do a direct `includes` because [1,2] !== [1,2]
                 if(!seen.some((e) => e[0] == s[0] && e[1] == s[1])){
                     zones.push(z)

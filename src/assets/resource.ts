@@ -35,7 +35,7 @@ export default class Resource {
         this.updateStats()
     }
     updateStats() {
-        for (let prop of Object.keys(this.base)) {
+        for (const prop of Object.keys(this.base)) {
             this[prop] = (this.level > 0) ?  this.base[prop] : 0
         }
     }
@@ -77,7 +77,7 @@ export class ResourceContainer {
         // this.modes[GameMode.EVIL] = {};
         // this.modes[GameMode.SADISTIC] = {};
         
-        for (let r of resource) {
+        for (const r of resource) {
             this.ids.push(r.id);
             this.keys.push(r.key)
             this.names.push(r.name)

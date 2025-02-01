@@ -12,12 +12,12 @@ import { describeStat, getStatInfo } from "@/helpers/pages/stat";
 
 export default function StatsPage() {
     const player = getPlayer();
-    var fmt = getNumberFormat();
-    var res3Active = player.get('res3Active')
-    var curTitan = player.get('highestTitanKilledId')
+    const fmt = getNumberFormat();
+    const res3Active = player.get('res3Active')
+    const curTitan = player.get('highestTitanKilledId')
 
 
-    var pageData = getStatInfo(player);
+    const pageData = getStatInfo(player);
     
     return (
         <Container title="Stats">

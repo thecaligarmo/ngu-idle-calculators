@@ -10,9 +10,9 @@ import { getPlayerDataInfo } from "@/helpers/playerInfo";
 
 
 function getWIshList(wishes : Wish[], gameMode : bigDecimal) : ReactElement[]{
-    var wishOptions : ReactElement[] = []
+    const wishOptions : ReactElement[] = []
     if (wishes.length > 0) {
-        for (var wish of wishes) {
+        for (const wish of wishes) {
             if((!wish.completed() && wish.appliesToGameMode(gameMode))) {
                 wishOptions.push(<option key={wish.key} value={wish.key}>
                     {wish.id} - {wish.name}
@@ -24,35 +24,35 @@ function getWIshList(wishes : Wish[], gameMode : bigDecimal) : ReactElement[]{
 }
 
 export default function WishesPage() {
-    var [optWishChosen, setOptWishChosen] = useState("current")
+    const [optWishChosen, setOptWishChosen] = useState("current")
     const player = getPlayer();
     const fmt = getNumberFormat();
 
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [
+    const infoRequired : requiredDataType = [
         ['wishSlots'], ['totalWishSpeed'], [], 
         ['totalEnergyPower', 'totalEnergyCap'], ['totalMagicPower', 'totalMagicCap'], ['totalRes3Power', 'totalRes3Cap']
     ]
     // Set extra required (not from playerData)
-    var extraRequired  : requiredDataType = [
+    const extraRequired  : requiredDataType = [
         ['customPercentage', 'customEnergyAmount', 'customMagicAmount', 'customResource3Amount']
     ]
-    var goRequired : requiredDataType = [['goEnergyPower', 'goEnergyCap', 'goMagicPower', 'goMagicCap', 'goResource3Power', 'goResource3Cap', 'goRawWishSpeed']]
+    const goRequired : requiredDataType = [['goEnergyPower', 'goEnergyCap', 'goMagicPower', 'goMagicCap', 'goResource3Power', 'goResource3Cap', 'goRawWishSpeed']]
     
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    const infoReq = getPlayerDataInfo(infoRequired)
+    const extraReq = getPlayerDataInfo(extraRequired)
+    const goReq = getPlayerDataInfo(goRequired)
 
-    var gameMode = player.get('gameMode')
-    var wishes : Wish[] = player.get('wishes')
-    var wishSlots = toNum(player.get('wishSlots'))
+    const gameMode = player.get('gameMode')
+    const wishes : Wish[] = player.get('wishes')
+    const wishSlots = toNum(player.get('wishSlots'))
 
-    var totalEPower = player.get('totalEnergyPower')
-    var totalMPower = player.get('totalMagicPower')
-    var totalRPower = player.get('totalRes3Power')
+    const totalEPower = player.get('totalEnergyPower')
+    const totalMPower = player.get('totalMagicPower')
+    const totalRPower = player.get('totalRes3Power')
 
-    var extraChildren = (
+    const extraChildren = (
         <>
             <strong>Wish to look at:</strong> <select
                 className="ml-2 text-black"
@@ -67,7 +67,7 @@ export default function WishesPage() {
         </>
     )
 
-    var chosenWish : Wish = WISHES[0]
+    let chosenWish : Wish = WISHES[0]
     if (wishes.length > 0) {
         if(optWishChosen == 'current') {
             for (var wish of wishes) {
@@ -86,7 +86,7 @@ export default function WishesPage() {
         }
     }
 
-    var caps = {
+    const caps = {
         '100' : {
             'energy' : player.get('totalEnergyCap'),
             'magic' : player.get('totalMagicCap'),
@@ -114,9 +114,9 @@ export default function WishesPage() {
         },
     }
 
-    var wishRows : StandardTableRowType = {}
+    const wishRows : StandardTableRowType = {}
     for (let lev = chosenWish.level; lev < chosenWish.maxLevel; lev++) {
-        let capsNeeded = chosenWish.capToMaxLevel(totalEPower, caps['100']['energy'], totalMPower, caps['100']['magic'], totalRPower, caps['100']['res3'], player.get('totalWishSpeed'), lev)
+        const capsNeeded = chosenWish.capToMaxLevel(totalEPower, caps['100']['energy'], totalMPower, caps['100']['magic'], totalRPower, caps['100']['res3'], player.get('totalWishSpeed'), lev)
         
         wishRows[chosenWish.key + lev.toString()] = {
             'level' : lev + 1,
@@ -135,8 +135,8 @@ export default function WishesPage() {
     
      
 
-    var wishCapOrder = ['level', '100', '50', '33', '25', 'custom', 'customAmt']
-    var wishCapHeader = {
+    const wishCapOrder = ['level', '100', '50', '33', '25', 'custom', 'customAmt']
+    const wishCapHeader = {
         'level' : "Level",
         '100' : "100% of Caps",
         '50' : "50",
@@ -146,15 +146,15 @@ export default function WishesPage() {
         'customAmt': 'Custom Amounts',
     }
     
-    var wishMaxOrder = ['level', 'energy', 'magic', 'res3']
-    var wishMaxHeader = {
+    const wishMaxOrder = ['level', 'energy', 'magic', 'res3']
+    const wishMaxHeader = {
         'level': "Level",
         'energy' : "Energy Cap",
         'magic' : "Magic Cap",
         'res3' : "Resource 3 Cap"
     }
 
-    var extraClasses = {
+    const extraClasses = {
         "energy": "text-green-500",
         "magic": "text-blue-500",
         "res3": "text-red-500",

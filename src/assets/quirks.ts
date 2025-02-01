@@ -4,7 +4,7 @@ import { Stat } from "./stat";
 
 export class Quirk  extends Resource {
     updateStats() {
-        for (let prop of Object.keys(this.base)) {
+        for (const prop of Object.keys(this.base)) {
             this[prop] = (this.level > 0) ?  this.base[prop] * this.level : 0
         }
     }

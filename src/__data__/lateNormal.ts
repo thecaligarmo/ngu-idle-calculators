@@ -1,4 +1,4 @@
-var lateNormal = {
+const lateNormal = {
     "playerName": "x",
     "firstTimePlaying": 0,
     "version": 1260,

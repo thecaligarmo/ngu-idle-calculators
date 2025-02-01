@@ -80,7 +80,7 @@ export function getMayoFromFruit(withLeftovers : boolean, fruits : Yggdrasil[], 
             leftoverFromFruit = leftoverFromFruit.add(fruit.leftovers(fruitYieldData, poopLeftovers))
         }
     })    
-    let mayoFromFruitLeftovers = withLeftovers ? leftoverFromFruit : bd(0)
+    const mayoFromFruitLeftovers = withLeftovers ? leftoverFromFruit : bd(0)
     return [mayoFromFruit, mayoFromFruitLeftovers]
 }
 

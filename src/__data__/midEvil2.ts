@@ -1,4 +1,4 @@
-var midEvilTwo : any = {
+const midEvilTwo : any = {
     "playerName": "xxx",
     "firstTimePlaying": 0,
     "version": 1260,

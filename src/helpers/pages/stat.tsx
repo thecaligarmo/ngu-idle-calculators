@@ -10,7 +10,7 @@ import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInf
 
 
 export function describeStat(data : any, fmt : string, isRespawn : boolean = false) {
-    let rows = Object.keys(data).map((k) => {
+    const rows = Object.keys(data).map((k) => {
         if(k != 'base' && k != 'total' && bigdec_equals(data[k].val, bd(100))) {
             return null
         }

@@ -6,8 +6,8 @@ export type StandardTableRowType = {[key:string]: {[k:string] : string|ReactNode
 export function StandardTable({order, header, rows, fullWidth = true, extraRowClasses = {}}
     : {order: string[], header: {[key:string]:(string|ReactNode)}, rows: StandardTableRowType, fullWidth ?: boolean, extraRowClasses ?: {[k:string] : string} })
     {
-    let headRow : ReactNode[] = []
-    for(let it of order) {
+    const headRow : ReactNode[] = []
+    for(const it of order) {
         headRow.push((
             <th key={it} className="px-2">
                 {header[it]}
@@ -15,13 +15,13 @@ export function StandardTable({order, header, rows, fullWidth = true, extraRowCl
         ))
     }
 
-    let contentRows : ReactNode[] = []
+    const contentRows : ReactNode[] = []
     let i = 0
-    for(let key in rows) {
+    for(const key in rows) {
         i += 1
-        let contentData : ReactNode[] = []
-        for(let it of order) {
-            let d = _.isUndefined(rows[key][it])? "" : rows[key][it]
+        const contentData : ReactNode[] = []
+        for(const it of order) {
+            const d = _.isUndefined(rows[key][it])? "" : rows[key][it]
             let className = "px-2"
             if(!_.isUndefined(extraRowClasses[it])){
                 className += " " + extraRowClasses[it]

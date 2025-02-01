@@ -20,7 +20,7 @@ export class Wish  extends Resource {
         this.maxLevel = maxLevel
     }
     updateStats() {
-        for (let prop of Object.keys(this.base)) {
+        for (const prop of Object.keys(this.base)) {
             this[prop] = (this.level > 0) ?  this.base[prop] * this.level : 0
         }
     }
@@ -60,7 +60,7 @@ export class Wish  extends Resource {
         const speed = this.speed(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, level)
         let timeTaken = bd(0)
         if (!isZero(speed)) {
-            let prog = (this.level == level) ? this.progress : 0
+            const prog = (this.level == level) ? this.progress : 0
             timeTaken = bigdec_max(bd(1 - prog).divide(speed, 100), bd(4 * 60 * 60).subtract(bd(4 * 60 * 60 * prog)))
         }
         if (level > this.level) {
@@ -71,7 +71,7 @@ export class Wish  extends Resource {
     capToMaxLevel(epower : bigDecimal, ecap : bigDecimal, mpower : bigDecimal, mcap: bigDecimal, rpower : bigDecimal, rcap : bigDecimal, wishSpeed : bigDecimal, level : number | undefined = undefined)
         : {[key:string]: bigDecimal}
         {
-            let capsNeeded = {'energy' : bd(0), 'magic' : bd(0), 'res3' : bd(0)}
+            const capsNeeded = {'energy' : bd(0), 'magic' : bd(0), 'res3' : bd(0)}
             if (_.isUndefined(level)) {
                 level = this.level
             }
@@ -84,16 +84,16 @@ export class Wish  extends Resource {
                 return capsNeeded
             }
         
-            let speedNeeded = bd(1).divide(bd(4*60*60), 100)
-            let rootNeeded = speedNeeded.multiply(
+            const speedNeeded = bd(1).divide(bd(4*60*60), 100)
+            const rootNeeded = speedNeeded.multiply(
                 this.baseSpeedDivider.multiply(bd(level + 1))
             )
             .divide(wishSpeed).multiply(bd(100))
             .divide(bd(50)) // 50 per tick
-            let allCapsNeeded = bd(Math.pow(toNum(rootNeeded), 1/0.17)).divide(epower).divide(mpower).divide(rpower)
+            const allCapsNeeded = bd(Math.pow(toNum(rootNeeded), 1/0.17)).divide(epower).divide(mpower).divide(rpower)
             
 
-            let ecapNeeded = bd(
+            const ecapNeeded = bd(
                 Math.pow(
                     toNum(
                         allCapsNeeded.multiply(ecap).multiply(ecap).divide(mcap).divide(rcap)
@@ -102,7 +102,7 @@ export class Wish  extends Resource {
                 )
             ).ceil()
 
-            let mcapNeeded = bd(
+            const mcapNeeded = bd(
                 Math.pow(
                     toNum(
                         allCapsNeeded.multiply(mcap).multiply(mcap).divide(ecap).divide(rcap)
@@ -111,7 +111,7 @@ export class Wish  extends Resource {
                 )
             ).ceil()
 
-            let rcapNeeded = bd(
+            const rcapNeeded = bd(
                 Math.pow(
                     toNum(
                         allCapsNeeded.multiply(rcap).multiply(rcap).divide(mcap).divide(ecap)

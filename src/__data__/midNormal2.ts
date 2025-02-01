@@ -1,4 +1,4 @@
-var midNormalTwo = {
+const midNormalTwo = {
     "playerName": "x",
     "firstTimePlaying": 0,
     "version": 1260,

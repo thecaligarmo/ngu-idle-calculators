@@ -27,31 +27,31 @@ export class Item extends Resource {
         return 0
     }
     updateStats() {
-        for (let prop of Object.keys(this.base)) {
+        for (const prop of Object.keys(this.base)) {
             this[prop] = (1 + this.level / 100) * this.base[prop]
         }
     }
     // They assume stats are green... Slightly problematic
     importStats(data: any) {
         if (data.level > this.level) {
-            let types = [
+            const types = [
                 data.spec1Type.value__,
                 data.spec2Type.value__,
                 data.spec3Type.value__,
             ]
-            let nums = [
+            const nums = [
                 data.spec1Cur,
                 data.spec2Cur,
                 data.spec3Cur,
             ]
 
             
-            let added : string[] = []
+            const added : string[] = []
             types.forEach((id, index) => {
-                let ty = StatType[id]
+                const ty = StatType[id]
                 if (!_.isUndefined(ty)) {
-                    let stat = _.isArray(ty[0]) ? ty[0] : [ty[0]]
-                    let amt = Math.floor(nums[index] * ty[1]) / (ty[1] ** 2)
+                    const stat = _.isArray(ty[0]) ? ty[0] : [ty[0]]
+                    const amt = Math.floor(nums[index] * ty[1]) / (ty[1] ** 2)
                     stat.forEach((t) => {
                         if (added.includes(t)) {
                             this[t] += Math.floor(amt * 100) / 100    

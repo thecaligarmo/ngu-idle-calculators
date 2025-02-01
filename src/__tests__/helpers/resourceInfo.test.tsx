@@ -17,36 +17,36 @@ import { ItemSet, ItemSets } from "@/assets/sets"
 import { Stat } from "@/assets/stat"
 
 
-var earlyNormalPlayer = new Player(false, true)
+const earlyNormalPlayer = new Player(false, true)
 earlyNormalPlayer.importPlayerData(earlyNormal)
-var earlyNormalTwoPlayer = new Player(false, true)
+const earlyNormalTwoPlayer = new Player(false, true)
 earlyNormalTwoPlayer.importPlayerData(earlyNormalTwo)
-var midNormalPlayer = new Player(false, true)
+const midNormalPlayer = new Player(false, true)
 midNormalPlayer.importPlayerData(midNormal)
-var midNormalTwoPlayer = new Player(false, true)
+const midNormalTwoPlayer = new Player(false, true)
 midNormalTwoPlayer.importPlayerData(midNormalTwo)
-var lateNormalPlayer = new Player(false, true)
+const lateNormalPlayer = new Player(false, true)
 lateNormalPlayer.importPlayerData(lateNormal)
 
-var earlyEvilPlayer = new Player(false, true)
+const earlyEvilPlayer = new Player(false, true)
 earlyEvilPlayer.importPlayerData(earlyEvil)
-var evilReturnToNormalPlayer = new Player(false, true)
+const evilReturnToNormalPlayer = new Player(false, true)
 evilReturnToNormalPlayer.importPlayerData(evilReturnToNormal)
-var earlyEvilTwoPlayer = new Player(false, true)
+const earlyEvilTwoPlayer = new Player(false, true)
 earlyEvilTwoPlayer.importPlayerData(earlyEvilTwo)
-var midEvilPlayer = new Player(false, true)
+const midEvilPlayer = new Player(false, true)
 midEvilPlayer.importPlayerData(midEvil)
-var midEvilTwoPlayer = new Player(false, true)
+const midEvilTwoPlayer = new Player(false, true)
 midEvilTwoPlayer.importPlayerData(midEvilTwo)
-var lateEvilPlayer = new Player(false, true)
+const lateEvilPlayer = new Player(false, true)
 lateEvilPlayer.importPlayerData(lateEvil)
 
-var earlySadPlayer = new Player(false, true)
+const earlySadPlayer = new Player(false, true)
 earlySadPlayer.importPlayerData(earlySad)
 
 
 describe('Resource Info - Achievement Info', () => {
-    var cases : [string, Player, number][] = [
+    const cases : [string, Player, number][] = [
         ['Early Normal 1', earlyNormalPlayer, 102.35],
         ['Early Normal 2', earlyNormalTwoPlayer, 106.45],
         ['Mid Normal 1', midNormalPlayer, 116.15],
@@ -66,7 +66,7 @@ describe('Resource Info - Achievement Info', () => {
         (_name, player, expectedValues) => {       
             
             expectedValues + 1
-            var ec = expectClose(achievementAPBonus(player), expectedValues)
+            const ec = expectClose(achievementAPBonus(player), expectedValues)
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -75,7 +75,7 @@ describe('Resource Info - Achievement Info', () => {
 
 
 describe('Resource Info - Adv Training Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'epower'>][]= [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'epower'>][]= [
         ['Early Normal 1', earlyNormalPlayer, {'power' : 110, 'epower' : 100}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'power' : 301.3, 'epower' : 100}],
         ['Mid Normal 1', midNormalPlayer, {'power' : 113.2, 'epower' : 100}],
@@ -100,7 +100,7 @@ describe('Resource Info - Adv Training Info', () => {
 
 
 describe('Resource Info - AP Info', () => {
-    var cases : [string, Player, number][] = [
+    const cases : [string, Player, number][] = [
         ['Early Normal 1', earlyNormalPlayer, 100],
         // ['Early Normal 2', earlyNormalTwoPlayer, 100],
         // ['Mid Normal 1', midNormalPlayer, 100],
@@ -117,7 +117,7 @@ describe('Resource Info - AP Info', () => {
         "AP Info - %s",
         (_name, player, expectedValues) => {
             
-            var ec = expectClose(apItemInfo(player, Stat.POWER), expectedValues)
+            const ec = expectClose(apItemInfo(player, Stat.POWER), expectedValues)
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -127,7 +127,7 @@ describe('Resource Info - AP Info', () => {
 
 
 describe('Resource Info - Beard Temp Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'dc'>][]= [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'dc'>][]= [
         ['Early Normal 1', earlyNormalPlayer, {'power' : 100, 'dc' : 100}],
         // ['Early Normal 2', earlyNormalTwoPlayer, {'power' : 100, 'dc' : 100}],
         // ['Mid Normal 1', midNormalPlayer, {'power' : 100, 'dc' : 100}],
@@ -155,7 +155,7 @@ describe('Resource Info - Beard Temp Info', () => {
 
 
 describe('Resource Info - Beard Perm Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'dc'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'dc'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'power' : 100, 'dc' : 100}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'power' : 100, 'dc' : 100}],
         ['Mid Normal 1', midNormalPlayer, {'power' : 141, 'dc' : 148}],
@@ -182,7 +182,7 @@ describe('Resource Info - Beard Perm Info', () => {
 })
 
 describe('Resource Info - Challenge Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'mngu'>][]= [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'mngu'>][]= [
         ['Early Normal 1', earlyNormalPlayer, {'power' : 100, 'mngu' : 100}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'power' : 100, 'mngu' : 100}],
         ['Mid Normal 1', midNormalPlayer, {'power' : 135, 'mngu' : 100}],
@@ -208,7 +208,7 @@ describe('Resource Info - Challenge Info', () => {
 
 
 describe('Resource Info - Digger Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'power' : 100}],
         // ['Early Normal 2', earlyNormalTwoPlayer, {'power' : 100}],
         // ['Mid Normal 1', midNormalPlayer, {'power' : 100}],
@@ -226,7 +226,7 @@ describe('Resource Info - Digger Info', () => {
         "Digger Info - %s",
         (_name, player, expectedValues) => {
             
-            var ec = expectClose(diggerInfo(player,  Stat.POWER), expectedValues['power'])
+            const ec = expectClose(diggerInfo(player,  Stat.POWER), expectedValues['power'])
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -235,7 +235,7 @@ describe('Resource Info - Digger Info', () => {
 
 
 describe('Resource Info - Equipment Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'toughness' | 'epower' | 'mcap' | 'dc' | 'respawn' | 'engu' | 'mwandoos'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'toughness' | 'epower' | 'mcap' | 'dc' | 'respawn' | 'engu' | 'mwandoos'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {
             'power' : 435,
             'toughness' : 404,
@@ -382,7 +382,7 @@ describe('Resource Info - Equipment Info', () => {
 })
 
 describe('Resource Info - Hack Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'qp' | 'wish'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'qp' | 'wish'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {
             'power' : 100,
             'qp': 100,
@@ -459,7 +459,7 @@ describe('Resource Info - Hack Info', () => {
 })
 
 describe('Resource Info - Macguffin Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'epower' | 'dc' | 'attack'> & Partial<infoObjType>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'epower' | 'dc' | 'attack'> & Partial<infoObjType>][] = [
         ['Early Normal 1', earlyNormalPlayer, {
             'power' : 100,
             'epower' : 100,
@@ -558,7 +558,7 @@ describe('Resource Info - Macguffin Info', () => {
 
 
 describe('Resource Info - NGU Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'ygg' | 'dc' | 'attack' | 'engu'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'ygg' | 'dc' | 'attack' | 'engu'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {
             'power' : 100,
             'ygg' : 100,
@@ -664,7 +664,7 @@ describe('Resource Info - NGU Info', () => {
 
 
 describe('Resource Info - Perk Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'boosts' | 'epower'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'boosts' | 'epower'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {
             'power' : 110,
             'boosts': 100,
@@ -746,7 +746,7 @@ describe('Resource Info - Perk Info', () => {
 
 
 describe('Resource Info - Quirk Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'ecap' | 'mngu'>][]= [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'ecap' | 'mngu'>][]= [
         ['Early Normal 1', earlyNormalPlayer, {
             'power' : 100,
             'ecap': 100,
@@ -825,7 +825,7 @@ describe('Resource Info - Quirk Info', () => {
 
 
 describe('Resource Info - Wish Info', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'rpower' | 'hack'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'rpower' | 'hack'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {
             'power' : 100,
             'rpower': 100,
@@ -904,7 +904,7 @@ describe('Resource Info - Wish Info', () => {
 
 
 describe('Resource Info - Item Set Info', () => {
-    var cases : [string, Player, ItemSet[], ItemSet[], number][] = [
+    const cases : [string, Player, ItemSet[], ItemSet[], number][] = [
         ['Early Normal 1', earlyNormalPlayer, [ItemSets.FOREST, ItemSets.CAVE], [ItemSets.BADLY_DRAWN], 0],
         ['Early Normal 2', earlyNormalTwoPlayer, [ItemSets.FOREST, ItemSets.NUMBER], [ItemSets.BADLY_DRAWN], 0],
         ['Mid Normal 1', midNormalPlayer, [ItemSets.FOREST, ItemSets.NUMBER], [ItemSets.BADLY_DRAWN], 0],

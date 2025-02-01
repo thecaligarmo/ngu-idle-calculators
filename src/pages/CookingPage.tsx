@@ -13,23 +13,23 @@ export default function CookingPage() {
     const player = getPlayer();
 
     // Set data required (from playerData)
-    var infoRequired : requiredDataType = [[]]
+    const infoRequired : requiredDataType = [[]]
     
     // Set extra required (not from playerData)
-    var extraRequired  : requiredDataType = [[]]
-    var goRequired : requiredDataType = [[]]
+    const extraRequired  : requiredDataType = [[]]
+    const goRequired : requiredDataType = [[]]
     
     // Get required data
-    var infoReq = getPlayerDataInfo(infoRequired)
-    var extraReq = getPlayerDataInfo(extraRequired)
-    var goReq = getPlayerDataInfo(goRequired)
+    const infoReq = getPlayerDataInfo(infoRequired)
+    const extraReq = getPlayerDataInfo(extraRequired)
+    const goReq = getPlayerDataInfo(goRequired)
 
 
-    var dish : Dish= player.get('dish')
-    var ings : Ingredient[] = []
-    var ingList : ReactElement[] = []
-    var pairs : Ingredient[][] = []
-    var pairList : ReactElement[] = []
+    const dish : Dish= player.get('dish')
+    let ings : Ingredient[] = []
+    const ingList : ReactElement[] = []
+    let pairs : Ingredient[][] = []
+    const pairList : ReactElement[] = []
     if(!_.isEmpty(dish)) {
         ings = dish.orderedIngredients()
         ings.forEach((p : Ingredient) => {
@@ -39,9 +39,9 @@ export default function CookingPage() {
         })
         pairs = dish.pairs
         pairs.forEach((p : Ingredient[], ind : number) => {
-            let p1 = p[0].isUnlocked ? <>{p[0].name}</> : <strong className='text-red-500'>Locked</strong>
-            let p2 = p[1].isUnlocked ? <>{p[1].name}</> : <strong className='text-red-500'>Locked</strong>
-            let pkey = p[0].key + p[1].key
+            const p1 = p[0].isUnlocked ? <>{p[0].name}</> : <strong className='text-red-500'>Locked</strong>
+            const p2 = p[1].isUnlocked ? <>{p[1].name}</> : <strong className='text-red-500'>Locked</strong>
+            const pkey = p[0].key + p[1].key
             pairList.push(
                 <li key={pkey}>Pair {ind+1}: {p1} - {p2}</li>
             )

@@ -34,7 +34,7 @@ export class Wandoos extends Resource{
     }
 
     importStats(data: any) : void {
-        let wandoosOSLevel = data.wandoos98.OSlevel
+        const wandoosOSLevel = data.wandoos98.OSlevel
                             + data.wandoos98.pitOSLevels
                             + data.wandoos98.XLLevels
                             + (data.adventure.itopod.perkLevel[22] * 2)
@@ -80,7 +80,7 @@ export class Wandoos extends Resource{
     }
 
     updateStats() {
-        for (let prop of this.statnames) {
+        for (const prop of this.statnames) {
             this[prop] = this.getStatByLevel()
         }
     }

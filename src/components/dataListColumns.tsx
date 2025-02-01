@@ -25,7 +25,7 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
     // const {playerDataUpdated, setPlayerDataUpdated} = useSavedDataContext();
     const fmt = getNumberFormat();
     
-    let disabled = d.disabled ? "hidden" : ""
+    const disabled = d.disabled ? "hidden" : ""
 
     if (input) {
         // For some reason a checkbox isn't working... so we'll do this instead.
@@ -83,8 +83,8 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
             </li>)
         }
         if (d.key.startsWith('cardRarity')) {
-            let rarityOptions : ReactNode[] = []
-            for(let k in Object.keys(CardRarityText)) {
+            const rarityOptions : ReactNode[] = []
+            for(const k in Object.keys(CardRarityText)) {
                 // let v = k.toString()
                 rarityOptions.push(
                     (<ChoiceButton
@@ -196,14 +196,14 @@ export function dataToCols(player: Player, dr : any[], input : boolean = false) 
 
     dr = _.cloneDeep(dr)
     if (!_.isArray(dr[0])) {
-        let extraParams = dr.shift()
+        const extraParams = dr.shift()
         params = {...params, ...extraParams}
     }
     
-    for (let colNum in dr) {
-        let col = dr[colNum]
+    for (const colNum in dr) {
+        const col = dr[colNum]
         let colKey = ''
-        for (let d of col) {
+        for (const d of col) {
             if(d.key.includes('DISABLED')) {
                 d.key = d.key.replace('DISABLED', '')
                 d.disabled = true

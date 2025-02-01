@@ -3,20 +3,20 @@ import bigDecimal from 'js-big-decimal';
 
 
 test('Max of Big Decimal', () => {
-    var one = bd(1)
-    var pi = bd(3.1415926)
-    var four = bd(4)
-    var minus = bd(-1)
-    var max = bigdec_max(one, pi, four, minus)
+    const one = bd(1)
+    const pi = bd(3.1415926)
+    const four = bd(4)
+    const minus = bd(-1)
+    const max = bigdec_max(one, pi, four, minus)
     expect(max.getValue()).toBe("4");
 });
 
 test('Min of Big Decimal', () => {
-    var one = bd(1)
-    var pi = bd(3.1415926)
-    var four = bd(4)
-    var minus = bd(-1)
-    var min = bigdec_min(one, pi, four, minus)
+    const one = bd(1)
+    const pi = bd(3.1415926)
+    const four = bd(4)
+    const minus = bd(-1)
+    const min = bigdec_min(one, pi, four, minus)
     expect(min.getValue()).toBe("-1");
 });
 
@@ -27,9 +27,9 @@ test('Max and min failures', () => {
 
 
 test('Ensure we get big decimals', () => {
-    var one = bd(1)
-    var thousand = bd('1e3')
-    var decimal = bd('3.1415926535')
+    const one = bd(1)
+    const thousand = bd('1e3')
+    const decimal = bd('3.1415926535')
     expect(one.getValue()).toBe("1");
     expect(thousand.getValue()).toBe("1000");
     expect(decimal.getValue()).toBe("3.1415926535");
@@ -37,7 +37,7 @@ test('Ensure we get big decimals', () => {
 
 describe('Rounding of big decimals', () => {
     test('Rounding of big decimals', () => {
-        var decimal = bd('3.1415926535')
+        const decimal = bd('3.1415926535')
         expect(decimal.round(2, bigDecimal.RoundingModes.CEILING).getValue()).toBe("3.15");
     });
     
@@ -54,10 +54,10 @@ describe('Rounding of big decimals', () => {
 })
 
 test('Date numbers', () => {
-    var seconds = bd(5)
-    var minutes = bd(5 * 60)
-    var hours = bd(5 * 60 * 60)
-    var days = bd(5 * 24 * 60 * 60)
+    const seconds = bd(5)
+    const minutes = bd(5 * 60)
+    const hours = bd(5 * 60 * 60)
+    const days = bd(5 * 24 * 60 * 60)
     expect(dn(bd(0))).toBe("00:00")
     expect(dn(seconds)).toBe("00:05")
     expect(dn(minutes)).toBe("05:00")
@@ -66,11 +66,11 @@ test('Date numbers', () => {
 });
 
 test('Pretty numbers - scientific', () => {
-    var small = bd(500)
-    var large = bd('12345678901234567890')
-    var xlarge = bd('123456789012345678901')
-    var decimal = bd('1.2345678901234567890')
-    var largeDecimal = bd('1234567890.12345')
+    const small = bd(500)
+    const large = bd('12345678901234567890')
+    const xlarge = bd('123456789012345678901')
+    const decimal = bd('1.2345678901234567890')
+    const largeDecimal = bd('1234567890.12345')
     expect(pn(small, 'scientific')).toBe("500");
     expect(pn(large, 'scientific')).toBe("1.234E+19");
     expect(pn(xlarge, 'scientific')).toBe("1.234E+20");
@@ -79,11 +79,11 @@ test('Pretty numbers - scientific', () => {
 });
 
 test('Pretty numbers - engineering', () => {
-    var small = bd(500)
-    var large = bd('12345678901234567890')
-    var xlarge = bd('123456789012345678901')
-    var decimal = bd('1.2345678901234567890')
-    var largeDecimal = bd('1234567890.12345')
+    const small = bd(500)
+    const large = bd('12345678901234567890')
+    const xlarge = bd('123456789012345678901')
+    const decimal = bd('1.2345678901234567890')
+    const largeDecimal = bd('1234567890.12345')
     expect(pn(small, 'engineering')).toBe("500");
     expect(pn(large, 'engineering')).toBe("12.345E+18");
     expect(pn(xlarge, 'engineering')).toBe("123.456E+18");
@@ -92,11 +92,11 @@ test('Pretty numbers - engineering', () => {
 });
 
 test('Pretty numbers - suffix', () => {
-    var small = bd(500)
-    var large = bd('12345678901234567890')
-    var xlarge = bd('123456789012345678901')
-    var decimal = bd('1.2345678901234567890')
-    var largeDecimal = bd('1234567890.12345')
+    const small = bd(500)
+    const large = bd('12345678901234567890')
+    const xlarge = bd('123456789012345678901')
+    const decimal = bd('1.2345678901234567890')
+    const largeDecimal = bd('1234567890.12345')
     expect(pn(small, 'suffix')).toBe("500");
     expect(pn(large, 'suffix')).toBe("12.345 Quintillion");
     expect(pn(xlarge, 'suffix')).toBe("123.456 Quintillion");

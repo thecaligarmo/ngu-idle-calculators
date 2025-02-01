@@ -12,14 +12,14 @@ interface NGUProps {
 }
 
 export default function NGUCapDayTable({type, NGUs, speedFactor, fmt} : NGUProps) : ReactElement {
-    let order = ["type", "cap"]
-    let header = {
+    const order = ["type", "cap"]
+    const header = {
         "type": <span>{type} NGU</span>,
         "cap": "Cap",
     }
-    let dataRows : StandardTableRowType = {}
-    for (let index in NGUs) {
-        let ngu = NGUs[index]
+    const dataRows : StandardTableRowType = {}
+    for (const index in NGUs) {
+        const ngu = NGUs[index]
         dataRows[ngu.key] = {
             "type": ngu.name,
             "cap" : <span className="text-red-500">{pn(ngu.capToReachMaxInDay(speedFactor), fmt)}</span>,

@@ -101,7 +101,7 @@ export class Hack extends Resource {
         this.updateStats()
     }
     updateStats() : void {
-        for (let prop of Object.keys(this.base)) {
+        for (const prop of Object.keys(this.base)) {
             this[prop] = this.base[prop] * this.level
         }
     }
@@ -261,7 +261,7 @@ export class Hack extends Resource {
 
     getLevelFromVal(value : number) : number {
         // Due to the milestones, there's no "nice" way to do this other than looping.
-        let prop = Object.keys(this.base)[0]
+        const prop = Object.keys(this.base)[0]
         let level = this.level
         let val = this.getStatValue(prop)
         // First go down
@@ -283,7 +283,7 @@ export class Hack extends Resource {
             level = this.level
         }
         try {
-            let denominator = res3cap.multiply(res3pow).multiply(hackSpeed)
+            const denominator = res3cap.multiply(res3pow).multiply(hackSpeed)
             return bd(this.baseSpeedDivider)
                     .multiply(bd(1.0078**level))
                     .multiply(bd(level + 1))
@@ -303,21 +303,21 @@ export class Hack extends Resource {
         try {
             // If we're doing with a speed change, we go one at a time
             if (this.key == HackKeys.HACK && withSpeedChange) {
-                let X = bd(this.baseSpeedDivider)
+                const X = bd(this.baseSpeedDivider)
                         .multiply(bd(100))
                         .divide(
                             res3cap.multiply(res3pow)
                         )
                 let time = bd(0)
-                let a = 1.0078
-                let bonusHackSpeed = hackSpeed.divide(bd(this.getStatValue(Stat.HACK_SPEED)))
+                const a = 1.0078
+                const bonusHackSpeed = hackSpeed.divide(bd(this.getStatValue(Stat.HACK_SPEED)))
                 for(let i = level; i < targetLevel; i++) {
                     time = time.add(X.multiply(bd(a**i * (i+1)).divide(bonusHackSpeed.multiply(bd(this.getStatValue('', i)))))).ceil()
                 }
                 return time.divide(bd(50))
             }
 
-            let denominator = res3cap.multiply(res3pow).multiply(hackSpeed)
+            const denominator = res3cap.multiply(res3pow).multiply(hackSpeed)
         
             return (this.getFullSum(targetLevel).subtract(this.getFullSum(level)))
                 .multiply(bd(this.baseSpeedDivider))

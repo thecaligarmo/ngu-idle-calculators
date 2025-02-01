@@ -4,7 +4,7 @@ import { Stat } from "./stat"
 
 export class AdvTraining extends Resource{
     updateStats() {
-        for (let prop of Object.keys(this.base)) {
+        for (const prop of Object.keys(this.base)) {
             if (this.key == 'adventureToughness' || this.key == 'adventurePower') {
                 this[prop] = this.level ** 0.4 * 10
             } else if (this.key =='blockDamage') {

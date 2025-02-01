@@ -37,7 +37,7 @@ export class Beard extends Resource{
         return 0
     }
     updateStats() {
-        for (let prop of this.statnames) {
+        for (const prop of this.statnames) {
             this[prop] = {}
             switch(this.id) {
                 case 0: // Fu Mancu

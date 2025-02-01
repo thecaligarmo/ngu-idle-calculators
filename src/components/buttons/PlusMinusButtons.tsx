@@ -9,7 +9,7 @@ export function PlusMinusButtons({player, keyName} : {player : Player, keyName :
             <button
                 className="rounded-md border-2 border-pink-500 text-pink-500 px-1 ml-2"
                 onClick={(e) => {
-                    let curVal = toNum(player.get(keyName))
+                    const curVal = toNum(player.get(keyName))
                     player.set(keyName, (curVal - 1).toString())
                     
                 }}
@@ -17,7 +17,7 @@ export function PlusMinusButtons({player, keyName} : {player : Player, keyName :
             <button
                 className="rounded-md border-2 border-pink-500 text-pink-500 px-1 ml-2"
                 onClick={(e) => {
-                    let curVal = toNum(player.get(keyName))
+                    const curVal = toNum(player.get(keyName))
                     player.set(keyName, (curVal + 1).toString())
                     
                 }}

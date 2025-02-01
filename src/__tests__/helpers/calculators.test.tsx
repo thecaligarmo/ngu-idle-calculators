@@ -15,31 +15,31 @@ import earlySad from '@/__data__/earlySad1';
 import Player from '@/assets/player';
 
 
-var earlyNormalPlayer = new Player(false, true)
+const earlyNormalPlayer = new Player(false, true)
 earlyNormalPlayer.importPlayerData(earlyNormal)
-var earlyNormalTwoPlayer = new Player(false, true)
+const earlyNormalTwoPlayer = new Player(false, true)
 earlyNormalTwoPlayer.importPlayerData(earlyNormalTwo)
-var midNormalPlayer = new Player(false, true)
+const midNormalPlayer = new Player(false, true)
 midNormalPlayer.importPlayerData(midNormal)
-var midNormalTwoPlayer = new Player(false, true)
+const midNormalTwoPlayer = new Player(false, true)
 midNormalTwoPlayer.importPlayerData(midNormalTwo)
-var lateNormalPlayer = new Player(false, true)
+const lateNormalPlayer = new Player(false, true)
 lateNormalPlayer.importPlayerData(lateNormal)
 
-var earlyEvilPlayer = new Player(false, true)
+const earlyEvilPlayer = new Player(false, true)
 earlyEvilPlayer.importPlayerData(earlyEvil)
-var evilReturnToNormalPlayer = new Player(false, true)
+const evilReturnToNormalPlayer = new Player(false, true)
 evilReturnToNormalPlayer.importPlayerData(evilReturnToNormal)
-var earlyEvilTwoPlayer = new Player(false, true)
+const earlyEvilTwoPlayer = new Player(false, true)
 earlyEvilTwoPlayer.importPlayerData(earlyEvilTwo)
-var midEvilPlayer = new Player(false, true)
+const midEvilPlayer = new Player(false, true)
 midEvilPlayer.importPlayerData(midEvil)
-var midEvilTwoPlayer = new Player(false, true)
+const midEvilTwoPlayer = new Player(false, true)
 midEvilTwoPlayer.importPlayerData(midEvilTwo)
-var lateEvilPlayer = new Player(false, true)
+const lateEvilPlayer = new Player(false, true)
 lateEvilPlayer.importPlayerData(lateEvil)
 
-var earlySadPlayer = new Player(false, true)
+const earlySadPlayer = new Player(false, true)
 earlySadPlayer.importPlayerData(earlySad)
 
 
@@ -48,7 +48,7 @@ earlySadPlayer.importPlayerData(earlySad)
 
 
 describe('Calculators - Energy', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'bar' | 'cap'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'bar' | 'cap'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'power': 20.8, 'bar': 16.9, 'cap': 412500}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'power': 269, 'bar': 158, 'cap': 2262598}],
         ['Mid Normal 1', midNormalPlayer, {'power': 19795.5, 'bar': 10560, 'cap': 154393342}],
@@ -77,7 +77,7 @@ describe('Calculators - Energy', () => {
 
 
 describe('Calculators - Magic', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'bar' | 'cap'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'bar' | 'cap'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'power': 6.4, 'bar': 5, 'cap': 60000}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'power': 14, 'bar': 8, 'cap': 330000}],
         ['Mid Normal 1', midNormalPlayer, {'power': 1640, 'bar': 561.5, 'cap': 6941520}],
@@ -105,7 +105,7 @@ describe('Calculators - Magic', () => {
 })
 
 describe('Calculators - Resource 3', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'bar' | 'cap'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'bar' | 'cap'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'power': 1, 'bar': 0, 'cap': 0}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'power': 1, 'bar': 0, 'cap': 0}],
         ['Mid Normal 1', midNormalPlayer, {'power': 1, 'bar': 0, 'cap': 0}],
@@ -134,7 +134,7 @@ describe('Calculators - Resource 3', () => {
 
 
 describe('Calculators - Augments', () => {
-    var cases : [string, Player, number][] = [
+    const cases : [string, Player, number][] = [
         ['Early Normal 1', earlyNormalPlayer, 2080],
         ['Early Normal 2', earlyNormalTwoPlayer, 26864],
         ['Mid Normal 1', midNormalPlayer, 1.98e6],
@@ -151,7 +151,7 @@ describe('Calculators - Augments', () => {
     test.each(cases)(
         "Calculators - Augments - %s",
         (_name, player, expectedValue) => {
-            var ec = expectClose(totalAugmentSpeed(player), expectedValue)
+            const ec = expectClose(totalAugmentSpeed(player), expectedValue)
             expect(ec[0]).toBeCloseTo(ec[1], 0)
         }
     )
@@ -159,7 +159,7 @@ describe('Calculators - Augments', () => {
 
 
 describe('Calculators - NGU', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'engu'|'mngu'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'engu'|'mngu'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'engu': 2080, 'mngu': 640}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'engu': 29550, 'mngu': 1507}],
         ['Mid Normal 1', midNormalPlayer, {'engu': 2178000, 'mngu': 541060}],
@@ -186,7 +186,7 @@ describe('Calculators - NGU', () => {
 
 
 describe('Calculators - EXP, AP, PP', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'exp' | 'ap' | 'pp'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'exp' | 'ap' | 'pp'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'exp': 100, 'ap': 102.35, 'pp' : 100}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'exp': 100, 'ap': 106.45, 'pp' : 100}],
         ['Mid Normal 1', midNormalPlayer, {'exp': 100, 'ap': 116.15, 'pp' : 110}],
@@ -215,7 +215,7 @@ describe('Calculators - EXP, AP, PP', () => {
 
 
 describe('Calculators - Misc', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'daycare' | 'hack' | 'wish'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'daycare' | 'hack' | 'wish'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'daycare': 100, 'hack': 100, 'wish' : 100}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'daycare': 100, 'hack': 100, 'wish' : 100}],
         ['Mid Normal 1', midNormalPlayer, {'daycare': 100, 'hack': 100, 'wish' : 100}],
@@ -244,7 +244,7 @@ describe('Calculators - Misc', () => {
 
 
 describe('Calculators - Adventure', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'toughness'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'power' | 'toughness'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'power': 693, 'toughness': 651}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'power': 23253, 'toughness': 20102}],
         ['Mid Normal 1', midNormalPlayer, {'power': 1452000, 'toughness': 978531}],
@@ -271,7 +271,7 @@ describe('Calculators - Adventure', () => {
 
 
 describe('Calculators - Misc Adventure', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'gold' | 'respawn' | 'dc'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'gold' | 'respawn' | 'dc'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'gold': 100, 'respawn': 100, 'dc' : 114}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'gold': 854, 'respawn': 95, 'dc' : 155}],
         ['Mid Normal 1', midNormalPlayer, {'gold': 45377.5, 'respawn': 63.84, 'dc' : 705}],
@@ -303,7 +303,7 @@ describe('Calculators - Misc Adventure', () => {
 
 
 describe('Calculators - Beards', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'energy' | 'magic'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'energy' | 'magic'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'energy': 7297, 'magic': 1265}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'energy': 258965, 'magic': 2961}],
         ['Mid Normal 1', midNormalPlayer, {'energy': 2.133e8, 'magic': 3.262e6}],
@@ -331,7 +331,7 @@ describe('Calculators - Beards', () => {
 
 
 describe('Calculators - Wandoos', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'energy' | 'magic'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'energy' | 'magic'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'energy': 4.04, 'magic': 4.04}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'energy': 103, 'magic': 103}],
         ['Mid Normal 1', midNormalPlayer, {'energy': 1237, 'magic': 1237}],
@@ -360,7 +360,7 @@ describe('Calculators - Wandoos', () => {
 
 // Found on Questing page
 describe('Calculators - Quests', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'reward' | 'dc'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'reward' | 'dc'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'reward': 100, 'dc': 100}],
         ['Early Normal 2', earlyNormalTwoPlayer, {'reward': 100, 'dc': 100}],
         ['Mid Normal 1', midNormalPlayer, {'reward': 100, 'dc': 100}],
@@ -389,7 +389,7 @@ describe('Calculators - Quests', () => {
 
 // Found on Mayo
 describe('Calculators - Mayo', () => {
-    var cases : [string, Player, Pick<Required<infoObjType>, 'mayoSpeed' | 'cardSpeed' | 'mayoGen' | 'tagEffect'>][] = [
+    const cases : [string, Player, Pick<Required<infoObjType>, 'mayoSpeed' | 'cardSpeed' | 'mayoGen' | 'tagEffect'>][] = [
         ['Early Normal 1', earlyNormalPlayer, {'mayoSpeed': 100, 'cardSpeed': 100, 'mayoGen' : 1, 'tagEffect' : 10}],
         ['Early Evil 1', earlyEvilPlayer, {'mayoSpeed': 100, 'cardSpeed': 100, 'mayoGen' : 1, 'tagEffect' : 10}],
         ['Mid Evil 1', midEvilPlayer, {'mayoSpeed': 100, 'cardSpeed': 100, 'mayoGen' : 1, 'tagEffect' : 10}],

@@ -37,8 +37,8 @@ export default class Player {
         this.playerUpdatedData = {}
         this.withoutSave = withoutSave
         if(!withoutSetup) {
-            for(let key in playerDataInfo){
-                let defVal = this.typeSet(key, playerDataInfo[key]['default'])
+            for(const key in playerDataInfo){
+                const defVal = this.typeSet(key, playerDataInfo[key]['default'])
                 if(!this.withoutSave){
                     if(playerDataInfo[key]['type'] == 'object') {
                         // handled differently for speed purposes
@@ -500,10 +500,10 @@ export default class Player {
         this.set('hackTimeMachineTarget', playerData.hacks.hacks[2].target);
         this.set('hackWishTarget', playerData.hacks.hacks[14].target);
 
-        let titansList : Titan[] = [];
+        const titansList : Titan[] = [];
         Object.values(Titans).forEach((titan) => {
             if (!_.isUndefined(titan)) {
-                let t = _.cloneDeep(titan)
+                const t = _.cloneDeep(titan)
                 t.importKills(playerData.bestiary.enemies)
                 titansList.push(t)
             }
@@ -718,7 +718,7 @@ export default class Player {
 
             
     setAdvTrainings(playerData : any) : void {
-        let advTrainings: AdvTraining[] = []
+        const advTrainings: AdvTraining[] = []
         for (let c = 0; c < 5; c++) {
             advTrainings.push(_.cloneDeep(ADVTRAININGS[c]))
         }
@@ -728,8 +728,8 @@ export default class Player {
         this.set('advTrainings', advTrainings)
     }
     setApItems(playerData : any) : void {
-        let apItems : APItem[] = []
-        let apToAdd : {[key:string]: number} = {};
+        const apItems : APItem[] = []
+        const apToAdd : {[key:string]: number} = {};
         if (playerData.arbitrary.energyPotion1Time.totalseconds > 0) apToAdd['energyPotionA'] = 1;
         if (playerData.arbitrary.magicPotion1Time.totalseconds > 0) apToAdd['magicPotionA'] = 1;
         if (playerData.arbitrary.res3Potion1Time.totalseconds > 0) apToAdd['resource3PotionA'] = 1;
@@ -775,9 +775,9 @@ export default class Player {
         if (playerData.arbitrary.hasCubeFilter == 1) apToAdd['filterBoostsintoInfinityCube'] = 1;
         
 
-        for(let apItem of APITEMLIST) {
+        for(const apItem of APITEMLIST) {
             if(Object.keys(apToAdd).includes(apItem.key)){
-                let ap = _.cloneDeep(APITEMS[apItem.id]);
+                const ap = _.cloneDeep(APITEMS[apItem.id]);
                 ap.setLevel(apToAdd[apItem.key])
                 apItems.push(ap)
             }
@@ -785,10 +785,10 @@ export default class Player {
         this.set('apItems', apItems);
     }
     setBeards(playerData : any) : void {
-        let beards : Beard[] = []
+        const beards : Beard[] = []
         playerData.beards.beards.forEach((beard : any, index : number) => {
             if (!_.isUndefined(BEARDS[index])) {
-                let b = _.cloneDeep(BEARDS[index])
+                const b = _.cloneDeep(BEARDS[index])
                 b.setLevel(beard.beardLevel)
                 b.setPermLevel(beard.permLevel)
                 b.setActive(beard.active)
@@ -798,18 +798,18 @@ export default class Player {
         this.set('beards', beards);
     }
     setCards(playerData : any) : void {
-        let cards : Card[] = []
-        for (let card of CARDLIST) {
-            let c = _.cloneDeep(CARDS[card.id]);
+        const cards : Card[] = []
+        for (const card of CARDLIST) {
+            const c = _.cloneDeep(CARDS[card.id]);
             c.importStats(playerData.cards.bonuses)
             cards.push(c)
         }
         this.set('cards', cards);
     }
     setChallenges(playerData : any) : void {
-        let challenges : Challenge[] = []
-        let evilChallenges : Challenge[] = []
-        let sadChallenges : Challenge[] = []
+        const challenges : Challenge[] = []
+        const evilChallenges : Challenge[] = []
+        const sadChallenges : Challenge[] = []
         for (let c = 0; c < 11; c++) {
             challenges.push(_.cloneDeep(CHALLENGES[c]))
             evilChallenges.push(_.cloneDeep(CHALLENGES[c + 100]))
@@ -851,7 +851,7 @@ export default class Player {
         sadChallenges[9].importStats(playerData.challenges.nguChallenge)
         sadChallenges[10].importStats(playerData.challenges.timeMachineChallenge);
 
-        let cc : {[key:number] : Challenge[]} = {}
+        const cc : {[key:number] : Challenge[]} = {}
         cc[GameMode.NORMAL] = challenges
         cc[GameMode.EVIL] = evilChallenges;
         cc[GameMode.SADISTIC] = sadChallenges;
@@ -860,9 +860,9 @@ export default class Player {
         this.set('challenges', cc);
     }
     setDiggers(playerData : any) : void {
-        let diggers : Digger[] = []
+        const diggers : Digger[] = []
         playerData.diggers.diggers.forEach((digger : any, id : number) => {
-            let d = _.cloneDeep(DIGGERS[id])
+            const d = _.cloneDeep(DIGGERS[id])
             if (!_.isUndefined(d)) {
                 d.active = digger.active == 1 ? true : false;
                 d.setLevel(digger.curLevel)
@@ -873,21 +873,21 @@ export default class Player {
         this.set('diggers', diggers);
     }
     setDish(playerData : any) : void {
-        let dish : Dish = DISHES[playerData.cooking.curDishIndex]
+        const dish : Dish = DISHES[playerData.cooking.curDishIndex]
         dish.importStats(playerData.cooking)
         this.set('dish', dish);
     }
 
     setEquipmentWeapon(playerData : any) : void {
-        let weapon : any = playerData.inventory.weapon;
-        let weaponItem : Item = _.cloneDeep(ITEMS[weapon.id])
+        const weapon : any = playerData.inventory.weapon;
+        const weaponItem : Item = _.cloneDeep(ITEMS[weapon.id])
         weaponItem.importStats(weapon)
         this.set('equipmentWeapon', weaponItem)
     }
     setEquipmentWeaponTwo(playerData : any) : void {
-        let weaponTwo : any = playerData.inventory.weapon2;
+        const weaponTwo : any = playerData.inventory.weapon2;
         if (weaponTwo.id != 0 ) {
-            let weaponTwoItem : Item = _.cloneDeep(ITEMS[weaponTwo.id])
+            const weaponTwoItem : Item = _.cloneDeep(ITEMS[weaponTwo.id])
             // weapon 2 doesn't necessarily have a full ratio
             weaponTwoItem.ratio = playerData.wishes.wishes[28].level * 0.05
                                 + playerData.wishes.wishes[45].level * 0.05
@@ -899,44 +899,44 @@ export default class Player {
     }
                     
     setEquipmentHead(playerData : any) : void {
-        let head : any = playerData.inventory.head;
-        let headItem : Item = _.cloneDeep(ITEMS[head.id])
+        const head : any = playerData.inventory.head;
+        const headItem : Item = _.cloneDeep(ITEMS[head.id])
         headItem.importStats(head)
         this.set('equipmentHead', headItem);
     }
     setEquipmentChest(playerData : any) : void {
-        let chest : any = playerData.inventory.chest;
-        let chestItem : Item= _.cloneDeep(ITEMS[chest.id])
+        const chest : any = playerData.inventory.chest;
+        const chestItem : Item= _.cloneDeep(ITEMS[chest.id])
         chestItem.importStats(chest)
         this.set('equipmentChest', chestItem);
     }
     setEquipmentLegs(playerData : any) : void {
-        let legs : any = playerData.inventory.legs;
-        let legsItem : Item = _.cloneDeep(ITEMS[legs.id])
+        const legs : any = playerData.inventory.legs;
+        const legsItem : Item = _.cloneDeep(ITEMS[legs.id])
         legsItem.importStats(legs)
         this.set('equipmentLegs', legsItem);
     }
     setEquipmentBoots(playerData : any) : void {
-        let boots : any = playerData.inventory.boots;
-        let bootsItem : Item = _.cloneDeep(ITEMS[boots.id])
+        const boots : any = playerData.inventory.boots;
+        const bootsItem : Item = _.cloneDeep(ITEMS[boots.id])
         bootsItem.importStats(boots)
         this.set('equipmentBoots', bootsItem);
     }
     setEquipmentAccesories(playerData : any) : void {
-        let accesories : any = playerData.inventory.accs.filter((acc : any) => !_.isUndefined(acc.id) && !_.isNaN(acc.id))
-        let acc = accesories.map((acc : any) => {
-            let accItem : Item = _.cloneDeep(ITEMS[acc.id])
+        const accesories : any = playerData.inventory.accs.filter((acc : any) => !_.isUndefined(acc.id) && !_.isNaN(acc.id))
+        const acc = accesories.map((acc : any) => {
+            const accItem : Item = _.cloneDeep(ITEMS[acc.id])
             accItem.importStats(acc)
             return accItem
         })
         this.set('equipmentAccesories', acc);
     }
     setEquipmentTest(playerData : any) : void {
-        let items : any = playerData.inventory.inventory.filter((it : any) => !_.isUndefined(it.id) && !_.isNaN(it.id) && it.id > 0)
+        const items : any = playerData.inventory.inventory.filter((it : any) => !_.isUndefined(it.id) && !_.isNaN(it.id) && it.id > 0)
                     
         items.map((it : any) => {
             if(!_.isUndefined(ITEMS[it.id])) {
-                let item : Item = _.cloneDeep(ITEMS[it.id])
+                const item : Item = _.cloneDeep(ITEMS[it.id])
                 return item
             } else {
                 console.log(it, " is missing from item list.")
@@ -944,11 +944,11 @@ export default class Player {
         })
     }
     setEnergyNGUs(playerData : any) : void {
-        let energyNGUs : NGU[] = []
+        const energyNGUs : NGU[] = []
         playerData.NGU.skills.forEach((engu : any, index : number) => {
             if (!_.isUndefined(engu.level) && index < 10) {
                 for (let i = 0; i < 3; i++) {
-                    let ngu : NGU = _.cloneDeep(ENERGY_NGUS[index + (i * 10)])
+                    const ngu : NGU = _.cloneDeep(ENERGY_NGUS[index + (i * 10)])
                     if (!_.isUndefined(ngu)) {
                         ngu.importStats(engu)
                         energyNGUs.push(ngu)
@@ -959,11 +959,11 @@ export default class Player {
         this.set('energyNGUs', energyNGUs);
     }
     setMagicNGUs(playerData : any) : void {
-        let magicNGUs : NGU[] = []
+        const magicNGUs : NGU[] = []
         playerData.NGU.magicSkills.forEach((mngu : any, index : number) => {
             if (!_.isUndefined(mngu.level) && index < 10) {
                 for (let i = 0; i < 3; i++) {
-                    let ngu : NGU = _.cloneDeep(MAGIC_NGUS[index + (i * 10)])
+                    const ngu : NGU = _.cloneDeep(MAGIC_NGUS[index + (i * 10)])
                     if (!_.isUndefined(ngu)) {
                         ngu.importStats(mngu)
                         magicNGUs.push(ngu)
@@ -975,10 +975,10 @@ export default class Player {
     }
 
     setHacks(playerData : any) : void {
-                    let hacks: Hack[] = []
+                    const hacks: Hack[] = []
                     playerData.hacks.hacks.forEach((hackData : any, index : number) => {
                         if(index < 15) {
-                            let hack : Hack = _.cloneDeep(HACKS[index])
+                            const hack : Hack = _.cloneDeep(HACKS[index])
                             if(!_.isUndefined(hack)) {
                                 hack.importStats(hackData, playerData)
                                 hacks.push(hack)
@@ -989,7 +989,7 @@ export default class Player {
     }
                     
     setMacguffins(playerData : any) : void {
-        let macguffins : MacGuffin[] = []
+        const macguffins : MacGuffin[] = []
 
         for (let c = 0; c < 25; c++) {
             if(!_.isUndefined(MACGUFFINS[c])) {
@@ -1041,11 +1041,11 @@ export default class Player {
         this.set('macguffins', macguffins);
     }
     setPerks(playerData : any) : void {
-        let perks : Perk[] = []
+        const perks : Perk[] = []
         playerData.adventure.itopod.perkLevel.forEach((perk : any, index : number) => {
             if (!_.isUndefined(perk) && perk > 0) {
                 if (!_.isUndefined(PERKS[index])) {
-                    let p = _.cloneDeep(PERKS[index])
+                    const p = _.cloneDeep(PERKS[index])
                     p.setLevel(perk)
                     perks.push(p)
                 }
@@ -1055,11 +1055,11 @@ export default class Player {
         this.set('perks', perks);
     }
     setQuirks(playerData : any) : void {
-        let quirks : Quirk[]= []
+        const quirks : Quirk[]= []
         playerData.beastQuest.quirkLevel.forEach((quirk : any, index : number) => {
             if (!_.isUndefined(quirk) && quirk > 0) {
                 if (!_.isUndefined(QUIRKS[index])) {
-                    let q = _.cloneDeep(QUIRKS[index])
+                    const q = _.cloneDeep(QUIRKS[index])
                     q.setLevel(quirk)
                     quirks.push(q)
                 }
@@ -1068,10 +1068,10 @@ export default class Player {
         this.set('quirks', quirks);
     }
     setTitans(playerData : any) : void {
-        let titans : Titan[] = [];
+        const titans : Titan[] = [];
         Object.values(Titans).forEach((titan) => {
             if (!_.isUndefined(titan) && titan.id < 13) {
-                let t = _.cloneDeep(titan)
+                const t = _.cloneDeep(titan)
                 t.importKills(playerData.bestiary.enemies)
                 titans.push(t)
             }
@@ -1080,18 +1080,18 @@ export default class Player {
     }
 
     setWandoos(playerData : any) : void {
-        let wandoos : Wandoos[] = _.cloneDeep(Object.values(WANDOOSLIST))
+        const wandoos : Wandoos[] = _.cloneDeep(Object.values(WANDOOSLIST))
         wandoos.forEach((wandoo) => {
             wandoo.importStats(playerData)
         })
         this.set('wandoos', wandoos);
     }
     setWishes(playerData : any) : void {
-        let wishes : Wish[]= []
+        const wishes : Wish[]= []
         playerData.wishes.wishes.forEach((wish : any, index : number) => {
             if (!_.isUndefined(wish)) {
                 if (!_.isUndefined(WISHES[index])) {
-                    let w = _.cloneDeep(WISHES[index])
+                    const w = _.cloneDeep(WISHES[index])
                     w.setLevel(wish.level)
                     w.setProgress(wish.progress)
                     wishes.push(w)
@@ -1102,9 +1102,9 @@ export default class Player {
         this.set('wishes', wishes);
     }
     setYggdrasil(playerData : any) : void {
-        let yggdrasil: Yggdrasil[] = _.cloneDeep(Object.values(FRUITS))
+        const yggdrasil: Yggdrasil[] = _.cloneDeep(Object.values(FRUITS))
         yggdrasil.forEach((fruit) => {
-            let f = playerData.yggdrasil.fruits[fruit.id]
+            const f = playerData.yggdrasil.fruits[fruit.id]
             f['totalPermStatBonus'] = playerData.yggdrasil.totalPermStatBonus
             f['totalPermStatBonus2'] = playerData.yggdrasil.totalPermStatBonus2
             f['totalPermNumberBonus'] = playerData.yggdrasil.totalPermNumberBonus
@@ -1113,15 +1113,15 @@ export default class Player {
         this.set('yggdrasil', yggdrasil);
     }
     setItemSets(playerData : any) : void {
-        let itemSets : {[key: string]: ItemSet} = {}
-        for (let set of Object.values(ItemSets)) {
+        const itemSets : {[key: string]: ItemSet} = {}
+        for (const set of Object.values(ItemSets)) {
             set.updateStats(playerData)
             itemSets[set.key] = _.cloneDeep(set)
         }
         this.set('itemSets', itemSets);
     }
     setMaxxedItems(playerData : any) : void {
-        let maxxedItemIds : number[] = []
+        const maxxedItemIds : number[] = []
         playerData.inventory.itemList.itemMaxxed.forEach((maxxed: number, item: number) => {
             if (maxxed == 1) {
                 maxxedItemIds.push(item)

@@ -11,7 +11,7 @@ export class MacGuffin extends Resource {
         // Don't do anything
     }
     importStats(data : any) : void{
-        for (let prop of Object.keys(this.base)) {
+        for (const prop of Object.keys(this.base)) {
             this[prop] = data[this.id]
         }
     }

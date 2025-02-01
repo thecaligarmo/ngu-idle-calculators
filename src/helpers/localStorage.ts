@@ -42,13 +42,13 @@ export function useLocalStorage(key: string, fallbackValue: string) {
 
 // For speed purposes we want to keep the serialization in an effect
 export function useLocalStorageObject(key: string, fallbackValue : any) {
-    var fbV : string = fallbackValue.toString()
+    const fbV : string = fallbackValue.toString()
     const [value, setValue] = useState<any>(fallbackValue);
 
     useEffect(() => {
         const stored = localStorage.getItem(key);
         if (stored) {
-            var x = ESSerializer.deserialize(
+            const x = ESSerializer.deserialize(
                 stored, 
                 [
                     AdvTraining, APItem, Beard, Card, Challenge, Digger, Dish, Enemy, Ingredient, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Wandoos, Wish,
