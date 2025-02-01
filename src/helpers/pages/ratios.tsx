@@ -1,7 +1,7 @@
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { bd, bigdec_max, bigdec_min } from "../numbers"
-import { Player } from "../../assets/player"
+import Player from "@/assets/player"
 
 type gensType = {
     energy : {

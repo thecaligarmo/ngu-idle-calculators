@@ -1,38 +1,39 @@
-import { expectClose, toDataObj } from '@/__tests__/testHelperFunctions';
-import { Stat } from '@/assets/stat';
-import { defaultPlayerData } from '@/helpers/defaultPlayerData';
-import { bd } from '@/helpers/numbers';
-import { Card, CardRarity, cardRarityRange } from "@/assets/cards";
-import { bigDecimalObj, toObjectMap } from "@/helpers/objects";
-import { cardExtraNameChanges, cardReqChonkers, cardReqFruit, cardReqNameChanges, getCardsPerDay, getChonksPerDay, getMayoFromFruit, getMayoFromInfusers, getMayoFromRecycling, getCardsRecycled, getChonksRecycled } from "@/helpers/pages/cards";
+import { Card, CardRarity } from "@/assets/cards";
 import { FruitOfMayo, Yggdrasil } from "@/assets/yggdrasil";
+import { bd, toNum } from '@/helpers/numbers';
+import { toObjectMap } from "@/helpers/objects";
+import { getCardsPerDay, getCardsRecycled, getChonksPerDay, getChonksRecycled, getMayoFromFruit, getMayoFromInfusers, getMayoFromRecycling } from "@/helpers/pages/cards";
+import { expectClose } from '../../../helpers/testHelperFunctions';
 
-import lateEvil from '@/__tests__/__data__/lateEvil1';
-import earlyEvil from '../../__data__/earlyEvil1';
-import earlySad from '@/__tests__/__data__/earlySad1';
+import Player from '@/assets/player';
+import bigDecimal from 'js-big-decimal';
+import earlySad from '@/__data__/earlySad1';
+import lateEvil from '@/__data__/lateEvil1';
 
-var lateEvilData = toDataObj(lateEvil);
-var earlySadData = toDataObj(earlySad)
+var lateEvilPlayer = new Player(false, true)
+lateEvilPlayer.importPlayerData(lateEvil)
 
+var earlySadPlayer = new Player(false, true)
+earlySadPlayer.importPlayerData(earlySad)
 
 
 describe("Cards page - Cards Info", () => {
-    var cases = [
-        [lateEvilData, {
-            'cardChonkedEnergyNGU^' :0,
-            'cardChonkedMagicNGU^':0,
-            'cardChonkedWandoos^':0,
-            'cardChonkedAugments^':0,
-            'cardChonkedTimeMachine^':0,
-            'cardChonkedHack^':0,
-            'cardChonkedWish^':0,
-            'cardChonkedStat^':0,
-            'cardChonkedAdventure^':0,
-            'cardChonkedDropChance^':0,
-            'cardChonkedGoldDrop^':0,
-            'cardChonkedDaycare^':0,
-            'cardChonkedPP^':0,
-            'cardChonkedQP^':0,
+    var cases : [Player, any, any][] = [
+        [lateEvilPlayer, {
+            'cardChonkedEnergyNGU' :0,
+            'cardChonkedMagicNGU':0,
+            'cardChonkedWandoos':0,
+            'cardChonkedAugments':0,
+            'cardChonkedTimeMachine':0,
+            'cardChonkedHack':0,
+            'cardChonkedWish':0,
+            'cardChonkedStat':0,
+            'cardChonkedAdventure':0,
+            'cardChonkedDropChance':0,
+            'cardChonkedGoldDrop':0,
+            'cardChonkedDaycare':0,
+            'cardChonkedPP':0,
+            'cardChonkedQP':0,
             'cardRarityEnergyNGU': CardRarity.YEET,
             'cardRarityMagicNGU': CardRarity.YEET,
             'cardRarityWandoos': CardRarity.YEET,
@@ -48,21 +49,21 @@ describe("Cards page - Cards Info", () => {
             'cardRarityPP': CardRarity.YEET,
             'cardRarityQP': CardRarity.YEET,
         }, {'cards' : 26.4, 'chonks' : 0.366,  'recycleCard' : 0, 'recycleChonk' : 0} ],
-        [earlySadData, {
-            'cardChonkedEnergyNGU^' :0,
-            'cardChonkedMagicNGU^':0,
-            'cardChonkedWandoos^':0,
-            'cardChonkedAugments^':0,
-            'cardChonkedTimeMachine^':0,
-            'cardChonkedHack^':1,
-            'cardChonkedWish^':1,
-            'cardChonkedStat^':0,
-            'cardChonkedAdventure^':1,
-            'cardChonkedDropChance^':0,
-            'cardChonkedGoldDrop^':0,
-            'cardChonkedDaycare^':0,
-            'cardChonkedPP^':0,
-            'cardChonkedQP^':0,
+        [earlySadPlayer, {
+            'cardChonkedEnergyNGU' :0,
+            'cardChonkedMagicNGU':0,
+            'cardChonkedWandoos':0,
+            'cardChonkedAugments':0,
+            'cardChonkedTimeMachine':0,
+            'cardChonkedHack':1,
+            'cardChonkedWish':1,
+            'cardChonkedStat':0,
+            'cardChonkedAdventure':1,
+            'cardChonkedDropChance':0,
+            'cardChonkedGoldDrop':0,
+            'cardChonkedDaycare':0,
+            'cardChonkedPP':0,
+            'cardChonkedQP':0,
             'cardRarityEnergyNGU': CardRarity.YEET,
             'cardRarityMagicNGU': CardRarity.YEET,
             'cardRarityWandoos': CardRarity.YEET,
@@ -81,15 +82,15 @@ describe("Cards page - Cards Info", () => {
     ]
     test.each(cases)(
         "Cards Page - Cards Info - Case %#",
-        (data, extraInfo, expectedValue) => {
-            var cardSpeed = bd(data['totalCardSpeed%'][0]);
-            var seventiesSet = data['70sSet^'][0] == 1;
-            let tagEffect =  bd(data['totalTagEffect%'][0]).divide(bd(100))
-            let cards = data['cards'][0];
+        (player, extraInfo, expectedValue) => {
+            var cardSpeed = player.get('totalCardSpeed');
+            var seventiesSet = player.get('70sSet');
+            let tagEffect =  player.get('totalTagEffect').divide(bd(100))
+            let cards : Card[] = player.get('cards');
             let numTagged = 0
             cards.forEach((card) => {
-                card.tier = data[card.tierKey()][0]
-                card.isTagged = data[card.taggedKey()][0] == 1
+                card.tier = player.get(card.tierKey())
+                card.isTagged = player.get(card.taggedKey())
                 card.isChonked = extraInfo[card.chonkKey()] == 1
                 card.minCastRarity = extraInfo[card.rarityKey()]
                 if (card.isTagged) {
@@ -97,26 +98,26 @@ describe("Cards page - Cards Info", () => {
                 }
             })
 
-            let cardTypeRarityRates = toObjectMap(
+            let cardTypeRarityRates : {[k:string] : bigDecimal} = toObjectMap(
                 cards,
                 (card) => card.key,
                 (card) => card.rarityRate(seventiesSet, tagEffect, numTagged)
             )
         
             // sum H_i / cardsPerDay
-            let recycleCard = Object.values(cardTypeRarityRates).reduce((rateSum, rate) => {
+            let recycleCard : bigDecimal = Object.values(cardTypeRarityRates).reduce((rateSum : bigDecimal, rate : bigDecimal) => {
                 return rateSum.add(rate)
             }, bd(0))
 
             let cardsPerDay = getCardsPerDay(cardSpeed, recycleCard)
             let cardsRecycled = getCardsRecycled(recycleCard, cardsPerDay)
-            if (data['cardRecyclingCard^'][0] == 0) {
+            if (!player.get('cardRecyclingCard')) {
                 cardsPerDay = cardsPerDay.subtract(cardsRecycled)
                 cardsRecycled = bd(0)
             }
-
+            
             // J_i / cardSpeed
-            let chonkTags = toObjectMap(
+            let chonkTags : {[k:string] : bigDecimal} = toObjectMap(
                 cards,
                 (card) => card.key,
                 (card) => extraInfo[card.chonkKey()] ? card.tagFormula(tagEffect, numTagged) : bd(0)
@@ -125,8 +126,8 @@ describe("Cards page - Cards Info", () => {
                 return tagSum.add(tag)
             }, bd(0))
 
-            let chonksPerDay = getChonksPerDay(cardSpeed, recycleChonk, data['cardRecyclingCard^'][0])
-            let chonksRecycled = data['cardRecyclingCard^'][0] == 1 ? getChonksRecycled(recycleChonk, chonksPerDay) : bd(0)
+            let chonksPerDay = getChonksPerDay(cardSpeed, recycleChonk, player.get('cardRecyclingCard'))
+            let chonksRecycled = player.get('cardRecyclingCard') ? getChonksRecycled(recycleChonk, chonksPerDay) : bd(0)
             
             var ec = expectClose(cardsPerDay, expectedValue['cards'])
             expect(ec[0]).toBeCloseTo(ec[1], 2)
@@ -143,13 +144,13 @@ describe("Cards page - Cards Info", () => {
 
 
 describe("Cards page - Mayo Info", () => {
-    var cases = [
-        [lateEvilData, {
-            'includeFruit^': 0,
-            'includeLeftovers^': 0,
-            'poopAllLeftovers^': 0,
-            'infusersEveryXDays-2': 0,
-            'twoFruitPerInfuser^': 0,
+    var cases : [Player, {[k:string]: number}, {[k:string]:number}][] = [
+        [lateEvilPlayer, {
+            'includeFruit': 0,
+            'includeLeftovers': 0,
+            'poopAllLeftovers': 0,
+            'infusersEveryXDays': 0,
+            'twoFruitPerInfuser': 0,
             'recycleCard' : 0,
             'recycleChonk' : 0,
         }, {
@@ -159,12 +160,12 @@ describe("Cards page - Mayo Info", () => {
             'infusers': 0,
             'perDay': 26.4,
         } ], // fruit, leftover, recycling, infusers, perDay\
-        [earlySadData, {
-            'includeFruit^': 1,
-            'includeLeftovers^': 0,
-            'poopAllLeftovers^': 0,
-            'infusersEveryXDays-2': 0,
-            'twoFruitPerInfuser^': 0,
+        [earlySadPlayer, {
+            'includeFruit': 1,
+            'includeLeftovers': 0,
+            'poopAllLeftovers': 0,
+            'infusersEveryXDays': 0,
+            'twoFruitPerInfuser': 0,
             'cardsRecycled' : 2.21, // From Above
             'chonksRecylced' : 0.055,
         }, {
@@ -177,36 +178,36 @@ describe("Cards page - Mayo Info", () => {
     ]
     test.each(cases)(
         "Cards Page - Cards Info - Case %#",
-        (data, extraInfo, expectedValue) => {
+        (player, extraInfo, expectedValue) => {
 
-            let mayoSpeed = bd(data['totalMayoSpeed%'][0])
+            let mayoSpeed = player.get('totalMayoSpeed')
             let cardsRecycled = bd(extraInfo['cardsRecycled'])
             let chonksRecylced = bd(extraInfo['chonksRecylced'])
 
             var fruitYieldData = {
-                blueHeart: data['blueHeart^'][0] == 1,
+                blueHeart: player.get('blueHeart'),
                 mayoSpeed: mayoSpeed, // Mayo
             }
 
-            let fruits = data['yggdrasil'][0];
+            let fruits : Yggdrasil[] = player.get('yggdrasil');
             fruits.forEach((fruit) => {
                 if(fruit instanceof FruitOfMayo) {
-                    fruit.tier = data[fruit.tierKey()][0]
-                    fruit.usePoop = data[fruit.poopKey()][0] == 1
+                    fruit.tier = toNum(player.get(fruit.tierKey()))
+                    fruit.usePoop = player.get(fruit.poopKey())
                     fruit.eatFruit = true
                 }
             })
 
-            let [mayoFromFruit, mayoFromFruitLeftovers] = (extraInfo['includeFruit^'] == 1)
-                ? getMayoFromFruit(data['includeLeftovers^'] == 0, fruits, fruitYieldData, extraInfo['poopAllLeftovers^'] == 1)
+            let [mayoFromFruit, mayoFromFruitLeftovers] = (extraInfo['includeFruit'] == 1)
+                ? getMayoFromFruit(extraInfo['includeLeftovers'] == 1, fruits, fruitYieldData, extraInfo['poopAllLeftovers'] == 1)
                 : [bd(0), bd(0)]
 
-            let mayoFromRecycling = data['cardRecyclingMayo^'][0] == 1
+            let mayoFromRecycling = player.get('cardRecyclingMayo')
                 ? getMayoFromRecycling(cardsRecycled, chonksRecylced)
                 : bd(0);
-            let mayoFromInfusers = extraInfo['infusersEveryXDays-2'] < 1
+            let mayoFromInfusers = extraInfo['infusersEveryXDays'] < 1
                 ? bd(0) 
-                : getMayoFromInfusers(mayoSpeed, bd(extraInfo['infusersEveryXDays-2']), extraInfo['twoFruitPerInfuser^'] == 1, mayoFromFruit, mayoFromFruitLeftovers)
+                : getMayoFromInfusers(mayoSpeed, bd(extraInfo['infusersEveryXDays']), extraInfo['twoFruitPerInfuser'] == 1, mayoFromFruit, mayoFromFruitLeftovers)
 
             let mayoPerDay = (bd(24).multiply(mayoSpeed.divide(bd(100))))
                     .add(mayoFromFruit)

@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import { getNumberFormat } from "./Context";
-import { bd, pn, toNum } from "../helpers/numbers";
+import { bd, pn, toNum } from "@/helpers/numbers";
 import { ChoiceButton } from "./buttons/ChoiceButton";
-import { CardRarityText } from "../assets/cards";
+import { CardRarityText } from "@/assets/cards";
 import _ from "lodash";
-import { Player } from "../assets/player";
+import Player from "@/assets/player";
 
 
 export function disableItem(reqs: any, itemToRemove: string[]) : string[][] {

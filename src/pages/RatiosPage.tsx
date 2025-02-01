@@ -4,10 +4,10 @@ import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
-import { setInputValue } from "../helpers/inputUpdater";
-import { pn } from "../helpers/numbers";
-import { getRatioInfo } from "../helpers/pages/ratios";
-import { getPlayerDataInfo } from "../helpers/playerInfo";
+import { setInputValue } from "@/helpers/inputUpdater";
+import { pn } from "@/helpers/numbers";
+import { getRatioInfo } from "@/helpers/pages/ratios";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
 
 export default function RatiosPage() {
     const player = getPlayer();

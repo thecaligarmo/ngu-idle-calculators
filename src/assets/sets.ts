@@ -1,6 +1,6 @@
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
-import { bd, bigdec_equals, bigdec_min, factorial, lessThan, Polynomial, toNum } from "../helpers/numbers"
+import { bd, bigdec_equals, bigdec_min, factorial, lessThan, Polynomial, toNum } from "@/helpers/numbers"
 import { Item, ITEMS } from "./items"
 import Zone from "./zones"
 
@@ -156,7 +156,7 @@ export class ItemSet {
             }
 
         
-            let integral = G.reduce((prev, cur, ind) => {
+            let integral = G.reduce((prev, cur) => {
                 if(bigdec_equals(cur[0], bd(1))) {
                     return prev
                 }

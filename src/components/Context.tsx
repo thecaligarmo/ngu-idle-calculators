@@ -1,7 +1,7 @@
 'use client'
 import { Dispatch, PropsWithChildren, SetStateAction, createContext, useContext } from "react";
-import { Player } from "../assets/player.ts";
-import { useLocalStorage } from "../helpers/localStorage.ts";
+import Player from "@/assets/player";
+import { useLocalStorage } from "@/helpers/localStorage.ts";
 
 
 type numberFormatType = {

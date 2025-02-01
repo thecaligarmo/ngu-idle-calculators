@@ -1,26 +1,38 @@
 import { bd } from "@/helpers/numbers";
-import { getLevelsGainedInWandoos, getMaxOSBonus, getWandoosBonuses } from "@/helpers/pages/wandoos";
+import { getLevelsGainedInWandoos, getMaxOSBonus, getWandoosBonuses, wandoosNames } from "@/helpers/pages/wandoos";
 
-import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
-import earlySad from '@/__tests__/__data__/earlySad1';
-import lateNormal from '@/__tests__/__data__/lateNormal';
-import midEvilTwo from '@/__tests__/__data__/midEvil2';
-import midNormalTwo from '@/__tests__/__data__/midNormal2';
-import { toDataObj } from '@/__tests__/testHelperFunctions';
+import earlyEvilTwo from '@/__data__/earlyEvil2';
+import earlySad from '@/__data__/earlySad1';
+import lateNormal from '@/__data__/lateNormal';
+import midEvilTwo from '@/__data__/midEvil2';
+import midNormalTwo from '@/__data__/midNormal2';
+import Player from "@/assets/player";
+import bigDecimal from "js-big-decimal";
 
 
 
-var midNormalTwoData = toDataObj(midNormalTwo);
-var lateNormalData = toDataObj(lateNormal);
-var earlyEvilTwoData = toDataObj(earlyEvilTwo);
-var midEvilTwoData = toDataObj(midEvilTwo);
-var earlySadData = toDataObj(earlySad);
+var midNormalTwoPlayer = new Player(false, true)
+midNormalTwoPlayer.importPlayerData(midNormalTwo)
+var lateNormalPlayer = new Player(false, true)
+lateNormalPlayer.importPlayerData(lateNormal)
+
+var earlyEvilTwoPlayer = new Player(false, true)
+earlyEvilTwoPlayer.importPlayerData(earlyEvilTwo)
+var midEvilTwoPlayer = new Player(false, true)
+midEvilTwoPlayer.importPlayerData(midEvilTwo)
+
+var earlySadPlayer = new Player(false, true)
+earlySadPlayer.importPlayerData(earlySad)
+
+
+
+type emNum = {'energy': number, 'magic': number}
 
 
 
 describe("Wandoos page", () => {
-    var cases = [
-        [ midNormalTwoData, {minutes: bd(60)},
+    var cases : [Player, {'minutes': bigDecimal}, {'98': emNum, 'meh': emNum, 'xl': emNum}, {'98': number, 'meh': number, 'xl': number}, string][]= [
+        [ midNormalTwoPlayer, {minutes: bd(60)},
             {
                 '98' : {'energy' : 180000, 'magic' : 180000},
                 'meh' : {'energy' : 180000, 'magic' : 180000},
@@ -28,7 +40,7 @@ describe("Wandoos page", () => {
             },
             {'98' : 49014572, 'meh' : 1296039600100, 'xl' : 1021420233176 },
             'meh'
-        ], [ lateNormalData, {minutes: bd(60)},
+        ], [ lateNormalPlayer, {minutes: bd(60)},
             {
                 '98' : {'energy' : 180000, 'magic' : 180000},
                 'meh' : {'energy' : 180000, 'magic' : 180000},
@@ -36,7 +48,7 @@ describe("Wandoos page", () => {
             },
             {'98' : 49014572, 'meh' : 1296039600100, 'xl' : 3430003396372846 },
             'xl'
-        ], [ earlyEvilTwoData, {minutes: bd(60)},
+        ], [ earlyEvilTwoPlayer, {minutes: bd(60)},
             {
                 '98' : {'energy' : 180000, 'magic' : 180000},
                 'meh' : {'energy' : 32, 'magic' : 7},
@@ -44,7 +56,7 @@ describe("Wandoos page", () => {
             },
             {'98' : 49014572, 'meh' : 11100, 'xl' : 100 },
             '98'
-        ], [ midEvilTwoData, {minutes: bd(60)},
+        ], [ midEvilTwoPlayer, {minutes: bd(60)},
             {
                 '98' : {'energy' : 180000, 'magic' : 180000},
                 'meh' : {'energy' : 180000, 'magic' : 180000},
@@ -52,7 +64,7 @@ describe("Wandoos page", () => {
             },
             {'98' : 49014572, 'meh' : 1296039600100, 'xl' : 71307250568067 },
             'xl'
-        ], [ earlySadData, {minutes: bd(60)},
+        ], [ earlySadPlayer, {minutes: bd(60)},
             {
                 '98' : {'energy' : 180000, 'magic' : 180000},
                 'meh' : {'energy' : 622, 'magic' : 216},
@@ -64,14 +76,14 @@ describe("Wandoos page", () => {
     ]
     test.each(cases)(
         "Wandoos Page - Case %#",
-        (data, extraData, expectedLvls, expectedBonuses, expectedMaxOs) => {
+        (player, extraData, expectedLvls, expectedBonuses, expectedMaxOs) => {
             var infoData = {
-                energyCap: bd(data['totalEnergyCap'][0]),
-                magicCap: bd(data['totalMagicCap'][0]),
-                energyAllocated: bd(data['wandoosEnergyAllocated'][0]),
-                magicAllocated: bd(data['wandoosMagicAllocated'][0]),
-                wandoos: data['wandoos'][0][0],
-                gameMode: bd(data['gameMode'][0]),
+                energyCap: player.get('totalEnergyCap'),
+                magicCap: player.get('totalMagicCap'),
+                energyAllocated: player.get('wandoosEnergyAllocated'),
+                magicAllocated: player.get('wandoosMagicAllocated'),
+                wandoos: player.get('wandoos')[0],
+                gameMode: player.get('gameMode'),
             }
             var combinedData = {...infoData, ...extraData}
             
@@ -79,14 +91,16 @@ describe("Wandoos page", () => {
             combinedData['wandoos'].magicAllocated = combinedData['magicAllocated']
             var lvlsGained = getLevelsGainedInWandoos({...combinedData})
 
-            for(var os in lvlsGained) {
-                for(var ty in lvlsGained[os]) {
+            var os : wandoosNames
+            for(os in lvlsGained) {
+                var ty : 'energy' | 'magic'
+                for(ty in lvlsGained[os]) {
                     expect(Number(lvlsGained[os][ty].getValue())).toBeCloseTo(expectedLvls[os][ty])
                 }
             }
 
             var bonuses = getWandoosBonuses(lvlsGained, combinedData['wandoos'])
-            for(var os in bonuses) {
+            for(os in bonuses) {
                 expect(Number(bonuses[os].getValue())).toBeCloseTo(expectedBonuses[os])
             }
             

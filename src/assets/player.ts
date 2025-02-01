@@ -1,8 +1,8 @@
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
-import { boostRecyclying, getHighestKilledTitanId, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalHackSpeed, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMayoSpeed, totalPower, totalPPBonus, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Cap, totalRes3Power, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalWishSpeed, totalYggdrasilYieldBonus } from "../helpers/calculators"
-import { useLocalStorage, useLocalStorageObject } from "../helpers/localStorage"
-import { bd } from "../helpers/numbers"
+import { boostRecyclying, getHighestKilledTitanId, getIdleAttackModifier, totalAPBonus, totalCardSpeed, totalDropChance, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalExpBonus, totalHackSpeed, totalHealth, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMayoSpeed, totalPower, totalPPBonus, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Cap, totalRes3Power, totalRespawnRate, totalSeedGainBonus, totalTagEffect, totalToughness, totalWishSpeed, totalYggdrasilYieldBonus } from "@/helpers/calculators"
+import { useLocalStorage, useLocalStorageObject } from "@/helpers/localStorage"
+import { bd } from "@/helpers/numbers"
 import { AdvTraining, ADVTRAININGS } from "./advTraining"
 import { APItem, APITEMLIST, APITEMS } from "./apItems"
 import { Beard, BEARDS } from "./beards"
@@ -25,25 +25,31 @@ import { Wish, WISHES } from "./wish"
 import { FRUITS, Yggdrasil } from "./yggdrasil"
 import { Zones } from "./zones"
 
-export class Player {
+export default class Player {
     // playerData has the state data whereas the updated data has the current data
     // We do it this way because state data is asynchronous and so we can't set and get
     // at the same time
     playerData : {[k:string] : any}
     playerUpdatedData : {[k:string] : any}
-    constructor(without_setup : boolean = false) {
+    withoutSave : boolean
+    constructor(withoutSetup : boolean = false, withoutSave : boolean = false) {
         this.playerData = {}
         this.playerUpdatedData = {}
-        if(!without_setup) {
+        this.withoutSave = withoutSave
+        if(!withoutSetup) {
             for(var key in playerDataInfo){
                 var defVal = this.typeSet(key, playerDataInfo[key]['default'])
-                if(playerDataInfo[key]['type'] == 'object') {
-                    // handled differently for speed purposes
-                    this.playerData[key] = useLocalStorageObject(key, defVal)
+                if(!this.withoutSave){
+                    if(playerDataInfo[key]['type'] == 'object') {
+                        // handled differently for speed purposes
+                        this.playerData[key] = useLocalStorageObject(key, defVal)
+                    } else {
+                        this.playerData[key] = useLocalStorage(key, defVal)
+                    }
+                    this.playerUpdatedData[key] = this.playerData[key][0]
                 } else {
-                    this.playerData[key] = useLocalStorage(key, defVal)
+                    this.playerUpdatedData[key] = defVal
                 }
-                this.playerUpdatedData[key] = this.playerData[key][0]
             }
         }
     }
@@ -72,7 +78,7 @@ export class Player {
         }
         
 
-        if(_.isUndefined(this.playerData[key])) {
+        if(_.isUndefined(this.playerUpdatedData[key])) {
             console.log("Can't get key: ", key, " as it doesn't exist.")
             return bd(0)
         }
@@ -99,11 +105,13 @@ export class Player {
         return val
     }
     set(key : string, value : any) : void {
-        if(_.isUndefined(this.playerData[key])) {
+        if(_.isUndefined(this.playerUpdatedData[key])) {
             console.log("Can't set key: ", key, " as it doesn't exist.")
         } else {
             value = this.typeSet(key, value)
-            this.playerData[key][1](value)
+            if(!this.withoutSave) {
+                this.playerData[key][1](value)
+            }
             this.playerUpdatedData[key] = value
         }
     }
@@ -172,9 +180,9 @@ export class Player {
                 );
         this.set('bonusTitanEXPPerk', playerData.adventure.itopod.perkLevel[34]);
         this.set('boostRecyclyingPurchase', playerData.purchases.boost);
-        this.set('cardRecyclingCard', playerData.adventure.itopod.perkLevel[216]);
-        this.set('cardRecyclingMayo', playerData.beastQuest.quirkLevel[156]);
-        this.set('cardChonkers', playerData.beastQuest.quirkLevel[149]);
+        this.set('cardRecyclingCard', playerData.adventure.itopod.perkLevel[216] == 1);
+        this.set('cardRecyclingMayo', playerData.beastQuest.quirkLevel[156] == 1);
+        this.set('cardChonkers', playerData.beastQuest.quirkLevel[149] == 1);
         this.set('cardTaggedAdventure', taggedCards.includes(9));
         this.set('cardTaggedAugments', taggedCards.includes(4));
         this.set('cardTaggedDaycare', taggedCards.includes(12));
@@ -988,7 +996,7 @@ export class Player {
                 macguffins.push(_.cloneDeep(MACGUFFINS[c]))
             }
         }
-        playerData.inventory.macguffins.forEach((macguffin : any, index : number) => {
+        playerData.inventory.macguffins.forEach((macguffin : any) => {
             if(macguffin.id > 0) {
                 let macID = 0;
                 switch(macguffin.id) {

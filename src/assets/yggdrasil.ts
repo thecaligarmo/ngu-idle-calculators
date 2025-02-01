@@ -1,4 +1,4 @@
-import { bd, toNum } from "../helpers/numbers"
+import { bd, toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 
 
@@ -99,6 +99,7 @@ export class Yggdrasil {
         }
         return this.upgradeToTierCost(this.tier + 1)
     }
+    // @ts-ignore
     upgradeToTierCost(tier : number) : number {
         return 0
     }

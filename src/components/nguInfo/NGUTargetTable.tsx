@@ -1,7 +1,7 @@
 import bigDecimal from "js-big-decimal";
 import { ReactNode } from "react";
-import { NGU } from "../../assets/ngus";
-import { bd, toNum, dn, pn, lessThanOrEqual } from "../../helpers/numbers";
+import { NGU } from "@/assets/ngus";
+import { bd, toNum, dn, pn, lessThanOrEqual } from "@/helpers/numbers";
 import { StandardTableRowType, StandardTable } from "../StandardTable";
 
 

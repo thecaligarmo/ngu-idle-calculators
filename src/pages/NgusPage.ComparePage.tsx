@@ -1,12 +1,12 @@
-import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "../assets/ngus";
+import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
 import TimeText from "../components/TimeText";
-import { isSadMode } from "../helpers/gameMode";
-import { bd, bigdec_equals, bigdec_min, dn, pn, toNum } from "../helpers/numbers";
-import { getPlayerDataInfo } from "../helpers/playerInfo";
+import { isSadMode } from "@/helpers/gameMode";
+import { bd, bigdec_equals, bigdec_min, dn, pn, toNum } from "@/helpers/numbers";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
 
 // TODO - Should eventually integrate the NGU->NGU perk stuff for comparison
 export default function NGUsComparePage() {

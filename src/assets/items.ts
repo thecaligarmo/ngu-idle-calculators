@@ -19,6 +19,7 @@ export class Item extends Resource {
         this.ratio = 1   
     }
 
+    // @ts-ignore
     getStatValue(prop: string, level : number = -1) : number {
         if(!_.isUndefined(this[prop])) {
             return this[prop] * this.ratio

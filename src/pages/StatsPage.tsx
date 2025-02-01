@@ -2,10 +2,10 @@ import Container from "../components/Container";
 import ContentSection from "../components/ContentSection";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
-import { totalAPBonus, totalAugmentSpeed, totalCardSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalMayoSpeed, totalPower, totalPPBonus, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalTagEffect, totalToughness, totalWishSpeed } from "../helpers/calculators";
-import { cardsUnlocked, questsUnlocked } from "../helpers/gameMode";
-import { bd, pn } from "../helpers/numbers";
-import { describeStat, getStatInfo } from "../helpers/pages/stat";
+import { totalAPBonus, totalAugmentSpeed, totalCardSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalMayoSpeed, totalPower, totalPPBonus, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalTagEffect, totalToughness, totalWishSpeed } from "@/helpers/calculators";
+import { cardsUnlocked, questsUnlocked } from "@/helpers/gameMode";
+import { bd, pn } from "@/helpers/numbers";
+import { describeStat, getStatInfo } from "@/helpers/pages/stat";
 
 
 

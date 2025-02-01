@@ -1,6 +1,6 @@
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
-import { bd, bigdec_max, isZero, toNum } from "../helpers/numbers";
+import { bd, bigdec_max, isZero, toNum } from "@/helpers/numbers";
 import { GameMode } from "./mode";
 import Resource, { ResourceContainer, prop } from "./resource";
 import { Stat } from "./stat";

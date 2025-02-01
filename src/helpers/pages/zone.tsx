@@ -1,9 +1,9 @@
 import bigDecimal from "js-big-decimal";
-import { Player } from "../../assets/player";
+import Player from "@/assets/player";
 import { getIdleAttackModifier } from "../calculators";
 import { bd, greaterThan, isZero } from "../numbers";
-import Zone, { Zones } from "../../assets/zones";
-import { ItemSet, ItemSets } from "../../assets/sets";
+import Zone, { Zones } from "@/assets/zones";
+import { ItemSet, ItemSets } from "@/assets/sets";
 
 type zoneType = {
     key: string,
@@ -68,7 +68,7 @@ export function getZoneInfo(player : Player) : zoneType[]{
     if (!isZero(player.get('totalPower'))) {
         for(let zone of Object.values(Zones)) {
             if(zone.hardestEnemy()){
-                var oneHitPower = zone.hardestEnemy().oneHitPower(idleAttackModifier);
+                // var oneHitPower = zone.hardestEnemy().oneHitPower(idleAttackModifier);
                 var paralyzer = zone.paralyzeEnemies();
                 var normalEnemyPercent = bd(1).subtract(zone.bossChance());
                 var exp = zone.exp[0]

@@ -1,6 +1,6 @@
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
-import { bd, bigdec_max, isZero, lessThan } from "../helpers/numbers"
+import { bd, bigdec_max, isZero, lessThan } from "@/helpers/numbers"
 import { Wish } from "./wish"
 
 export class AttackStat {
@@ -139,10 +139,11 @@ export class Titan extends Enemy {
         
     }
     canAutoKill(player : AttackStat, version : number = 0, kills : number = 0) : boolean {
+        kills = (kills > 0) ? kills : this.kills[version]
         
         // Exile - 24 kilsl allows AK
         if (this.id == 9) {
-            if (this.kills[version] >=24) {
+            if (kills >=24) {
                 return true
             }
         }
@@ -152,13 +153,13 @@ export class Titan extends Enemy {
         }
         // IT Hungers, Rock Lobster, Amalgamate - 5 kills allows you to AK
         else if (this.id >= 10) {
-            if (this.kills[version] >= 5) {
+            if (kills >= 5) {
                 return true
             }
         }
         // Final version of walderp requires 3 kills
         else if (this.id == 5 && version == 4) {
-            return this.autokill[version].isWeaker(player) && this.kills[version] >= 3
+            return this.autokill[version].isWeaker(player) && kills >= 3
         }
         return this.autokill[version].isWeaker(player)
     }

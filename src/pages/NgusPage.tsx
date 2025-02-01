@@ -1,4 +1,4 @@
-import { GameMode } from "../assets/mode";
+import { GameMode } from "@/assets/mode";
 import NGUInfo from "../components/nguInfo/NGUInfo";
 
 

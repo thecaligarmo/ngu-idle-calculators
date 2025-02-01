@@ -1,5 +1,5 @@
 import bigDecimal from "js-big-decimal"
-import { Yggdrasil, FruitOfMayo } from "../../assets/yggdrasil"
+import { Yggdrasil, FruitOfMayo } from "@/assets/yggdrasil"
 import { bd, isOne } from "../numbers"
 
 

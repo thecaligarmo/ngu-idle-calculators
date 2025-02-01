@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from "react";
 import { getPlayer, useNumberFormatContext } from "./Context";
 import ImportSaveForm from "./ImportSaveForm/importSaveForm";
-import { cardsUnlocked, cookingUnlocked, getGameMode, hacksUnlocked, isAtLeastEvilMode, isSadMode, wandoosUnlocked, wishesUnlocked, yggUnlocked } from "../helpers/gameMode";
+import { cardsUnlocked, cookingUnlocked, getGameMode, hacksUnlocked, isAtLeastEvilMode, isSadMode, wandoosUnlocked, wishesUnlocked, yggUnlocked } from "@/helpers/gameMode";
 import { NavLink, useLocation } from "react-router";
 
 

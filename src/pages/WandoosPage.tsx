@@ -1,11 +1,11 @@
 import _ from "lodash";
-import { Wandoos, WANDOOSLIST } from "../assets/wandoos";
+import { Wandoos, WANDOOSLIST } from "@/assets/wandoos";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
-import { pn } from "../helpers/numbers";
-import { getLevelsGainedInWandoos, getMaxOSBonus, getWandoosBonuses } from "../helpers/pages/wandoos";
-import { getPlayerDataInfo } from "../helpers/playerInfo";
+import { pn } from "@/helpers/numbers";
+import { getLevelsGainedInWandoos, getMaxOSBonus, getWandoosBonuses } from "@/helpers/pages/wandoos";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
 
 
 export default function WandoosPage() {

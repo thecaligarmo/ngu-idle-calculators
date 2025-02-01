@@ -1,7 +1,7 @@
 import bigDecimal from "js-big-decimal"
-import { Titan, Titans } from "../assets/enemy"
-import { GameMode } from "../assets/mode"
-import { Player } from "../assets/player"
+import { Titan, Titans } from "@/assets/enemy"
+import { GameMode } from "@/assets/mode"
+import Player from "@/assets/player"
 import { bd, bigdec_equals, toNum } from "./numbers"
 
 export function getGameMode(data : Player | bigDecimal) : number{

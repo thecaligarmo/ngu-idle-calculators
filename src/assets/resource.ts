@@ -1,6 +1,6 @@
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
-import { toNum } from "../helpers/numbers"
+import { toNum } from "@/helpers/numbers"
 
 
 export type prop = [string, number][] | [string, number, number][]
@@ -39,6 +39,7 @@ export default class Resource {
             this[prop] = (this.level > 0) ?  this.base[prop] : 0
         }
     }
+    //@ts-ignore
     getStatValue(prop: string, level : number = -1) : number {
         if(!_.isUndefined(this[prop])) {
             return this[prop]

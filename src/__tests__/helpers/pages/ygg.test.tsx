@@ -1,48 +1,45 @@
-import { expectClose, toDataObj } from '@/__tests__/testHelperFunctions';
+import { expectClose } from '@/helpers/testHelperFunctions';
 import { Stat } from '@/assets/stat';
-import { defaultPlayerData } from '@/helpers/defaultPlayerData';
-import { bd } from '@/helpers/numbers';
 import { nguInfo } from '@/helpers/resourceInfo';
 
-import earlyEvilTwo from '@/__tests__/__data__/earlyEvil2';
-import earlyNormalTwo from '@/__tests__/__data__/earlyNormal2';
-import lateNormal from '@/__tests__/__data__/lateNormal';
-import lateEvil from '@/__tests__/__data__/lateEvil1';
-import midEvil from '@/__tests__/__data__/midEvil1';
-import midNormal from '@/__tests__/__data__/midNormal1';
-import midNormalTwo from '@/__tests__/__data__/midNormal2';
-import earlyEvil from '../../__data__/earlyEvil1';
-import midEvilTwo from '@/__tests__/__data__/midEvil2';
-import earlySad from '@/__tests__/__data__/earlySad1';
+import earlyEvilTwo from '@/__data__/earlyEvil2';
+import earlyNormalTwo from '@/__data__/earlyNormal2';
+import earlySad from '@/__data__/earlySad1';
+import lateEvil from '@/__data__/lateEvil1';
+import lateNormal from '@/__data__/lateNormal';
+import midEvil from '@/__data__/midEvil1';
+import midEvilTwo from '@/__data__/midEvil2';
+import midNormal from '@/__data__/midNormal1';
+import midNormalTwo from '@/__data__/midNormal2';
+import Player from '@/assets/player';
+import earlyEvil from '@/__data__/earlyEvil1';
+import { Yggdrasil } from '@/assets/yggdrasil';
+import bigDecimal from 'js-big-decimal';
+import { toNum } from '@/helpers/numbers';
 
 
 test('Yggdrasil for Early Normal 2', () => {
-    var playerData = toDataObj(earlyNormalTwo)
-    var ygg = playerData['yggdrasil'][0]
-    var blueHeart = (playerData['blueHeart^'][0] == 1)
-    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
-    var firstHarvest = playerData['firstHarvestPerk'][0]
-
-    var data = {
-        'energyNGUs' : [defaultPlayerData(lateNormal, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
-    }
+    var player = new Player(false, true)
+    player.importPlayerData(earlyNormalTwo)
+    var ygg : Yggdrasil[] = player.get('yggdrasil')
+    var blueHeart : boolean = player.get('blueHeart') 
+    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    var firstHarvest = toNum(player.get('firstHarvestPerk'))
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
-        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
-        baseToughness: bd(playerData['baseAdventureToughness'][0]),
-        expBonus: bd(playerData['totalExpBonus%'][0]),
-        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
-        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
-        apBonus: bd(playerData['totalAPBonus%'][0]),
-        ppBonus: bd(playerData['totalPPBonus%'][0]),
-        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
-        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+        yieldModifier: player.get('totalYggdrasilYieldBonus'),
+        nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
+        baseToughness: player.get('baseAdventureToughness'),
+        expBonus: player.get('totalExpBonus'),
+        fokSucksPerk: player.get('fruitOfKnowledgeSucks'),
+        fokStillSucksPerk: player.get('fruitOfKnowledgeSTILLSucks'),
+        apBonus: player.get('totalAPBonus'),
+        ppBonus: player.get('totalPPBonus'),
+        qpRewardBonus: player.get('totalQuestRewardBonus'),
+        mayoSpeed: player.get('totalMayoSpeed'),
     }
     
     // Gold
@@ -79,32 +76,27 @@ test('Yggdrasil for Early Normal 2', () => {
 
 
 test('Yggdrasil for Mid Normal 1', () => {
-    var playerData = toDataObj(midNormal)
-    var ygg = playerData['yggdrasil'][0]
-    var blueHeart = (playerData['blueHeart^'][0] == 1)
-    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
-    var firstHarvest = playerData['firstHarvestPerk'][0]
-
-    var data = {
-        'energyNGUs' : [defaultPlayerData(lateNormal, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
-    }
+    var player = new Player(false, true)
+    player.importPlayerData(midNormal)
+    var ygg : Yggdrasil[] = player.get('yggdrasil')
+    var blueHeart : boolean = player.get('blueHeart')
+    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    var firstHarvest = toNum(player.get('firstHarvestPerk'))
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
-        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
-        baseToughness: bd(playerData['baseAdventureToughness'][0]),
-        expBonus: bd(playerData['totalExpBonus%'][0]),
-        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
-        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
-        apBonus: bd(playerData['totalAPBonus%'][0]),
-        ppBonus: bd(playerData['totalPPBonus%'][0]),
-        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
-        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+        yieldModifier: player.get('totalYggdrasilYieldBonus'),
+        nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
+        baseToughness: player.get('baseAdventureToughness'),
+        expBonus: player.get('totalExpBonus'),
+        fokSucksPerk: player.get('fruitOfKnowledgeSucks') ,
+        fokStillSucksPerk: player.get('fruitOfKnowledgeSTILLSucks') ,
+        apBonus: player.get('totalAPBonus'),
+        ppBonus: player.get('totalPPBonus'),
+        qpRewardBonus: player.get('totalQuestRewardBonus'),
+        mayoSpeed: player.get('totalMayoSpeed'),
     }
     // Gold
     expect(Number(ygg[0].seedYield(seedModifier, firstHarvest, blueHeart).getValue())).toBe(73)
@@ -152,32 +144,27 @@ test('Yggdrasil for Mid Normal 1', () => {
 
 
 test('Yggdrasil for Mid Normal 2', () => {
-    var playerData = toDataObj(midNormalTwo)
-    var ygg = playerData['yggdrasil'][0]
-    var blueHeart = (playerData['blueHeart^'][0] == 1)
-    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
-    var firstHarvest = playerData['firstHarvestPerk'][0]
-
-    var data = {
-        'energyNGUs' : [defaultPlayerData(lateNormal, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
-    }
+    var player = new Player(false, true)
+    player.importPlayerData(midNormalTwo)
+    var ygg : Yggdrasil[] = player.get('yggdrasil')
+    var blueHeart : boolean = player.get('blueHeart')
+    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    var firstHarvest = toNum(player.get('firstHarvestPerk'))
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
-        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
-        baseToughness: bd(playerData['baseAdventureToughness'][0]),
-        expBonus: bd(playerData['totalExpBonus%'][0]),
-        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
-        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
-        apBonus: bd(playerData['totalAPBonus%'][0]),
-        ppBonus: bd(playerData['totalPPBonus%'][0]),
-        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
-        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+        yieldModifier: player.get('totalYggdrasilYieldBonus'),
+        nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
+        baseToughness: player.get('baseAdventureToughness'),
+        expBonus: player.get('totalExpBonus'),
+        fokSucksPerk: player.get('fruitOfKnowledgeSucks') ,
+        fokStillSucksPerk: player.get('fruitOfKnowledgeSTILLSucks') ,
+        apBonus: player.get('totalAPBonus'),
+        ppBonus: player.get('totalPPBonus'),
+        qpRewardBonus: player.get('totalQuestRewardBonus'),
+        mayoSpeed: player.get('totalMayoSpeed'),
     }
     // Seed calculations - Multiply by 1.3 since had already harvested apparently (Except gold/Pom)
 
@@ -228,32 +215,27 @@ test('Yggdrasil for Mid Normal 2', () => {
 
 
 test('Yggdrasil for Late Normal', () => {
-    var playerData = toDataObj(lateNormal)
-    var ygg = playerData['yggdrasil'][0]
-    var blueHeart = (playerData['blueHeart^'][0] == 1)
-    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
-    var firstHarvest = playerData['firstHarvestPerk'][0]
-
-    var data = {
-        'energyNGUs' : [defaultPlayerData(lateNormal, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(lateNormal, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(lateNormal, 'gameMode')],
-    }
+    var player = new Player(false, true)
+    player.importPlayerData(lateNormal)
+    var ygg : Yggdrasil[] = player.get('yggdrasil')
+    var blueHeart : boolean = player.get('blueHeart')
+    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    var firstHarvest = toNum(player.get('firstHarvestPerk'))
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
-        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
-        baseToughness: bd(playerData['baseAdventureToughness'][0]),
-        expBonus: bd(playerData['totalExpBonus%'][0]),
-        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
-        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
-        apBonus: bd(playerData['totalAPBonus%'][0]),
-        ppBonus: bd(playerData['totalPPBonus%'][0]),
-        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
-        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+        yieldModifier: player.get('totalYggdrasilYieldBonus'),
+        nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
+        baseToughness: player.get('baseAdventureToughness'),
+        expBonus: player.get('totalExpBonus'),
+        fokSucksPerk: player.get('fruitOfKnowledgeSucks') ,
+        fokStillSucksPerk: player.get('fruitOfKnowledgeSTILLSucks') ,
+        apBonus: player.get('totalAPBonus'),
+        ppBonus: player.get('totalPPBonus'),
+        qpRewardBonus: player.get('totalQuestRewardBonus'),
+        mayoSpeed: player.get('totalMayoSpeed'),
     }
     // Seed calculations - Multiply by 1.3 since had already harvested apparently (Except gold/Pom)
 
@@ -313,32 +295,27 @@ test('Yggdrasil for Late Normal', () => {
 
 
 test('Yggdrasil for Early Evil 1', () => {
-    var playerData = toDataObj(earlyEvil)
-    var ygg = playerData['yggdrasil'][0]
-    var blueHeart = (playerData['blueHeart^'][0] == 1)
-    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
-    var firstHarvest = playerData['firstHarvestPerk'][0]
-
-    var data = {
-        'energyNGUs' : [defaultPlayerData(earlyEvil, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(earlyEvil, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(earlyEvil, 'gameMode')],
-    }
+    var player = new Player(false, true)
+    player.importPlayerData(earlyEvil)
+    var ygg : Yggdrasil[] = player.get('yggdrasil')
+    var blueHeart : boolean = player.get('blueHeart')
+    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    var firstHarvest = toNum(player.get('firstHarvestPerk'))
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
-        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
-        baseToughness: bd(playerData['baseAdventureToughness'][0]),
-        expBonus: bd(playerData['totalExpBonus%'][0]),
-        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
-        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
-        apBonus: bd(playerData['totalAPBonus%'][0]),
-        ppBonus: bd(playerData['totalPPBonus%'][0]),
-        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
-        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+        yieldModifier: player.get('totalYggdrasilYieldBonus'),
+        nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
+        baseToughness: player.get('baseAdventureToughness'),
+        expBonus: player.get('totalExpBonus'),
+        fokSucksPerk: player.get('fruitOfKnowledgeSucks') ,
+        fokStillSucksPerk: player.get('fruitOfKnowledgeSTILLSucks') ,
+        apBonus: player.get('totalAPBonus'),
+        ppBonus: player.get('totalPPBonus'),
+        qpRewardBonus: player.get('totalQuestRewardBonus'),
+        mayoSpeed: player.get('totalMayoSpeed'),
     }
     // Seed calculations - Multiply by 1.3 since had already harvested apparently (Except gold/Pom)
 
@@ -421,32 +398,28 @@ test('Yggdrasil for Early Evil 1', () => {
 
 
 test('Yggdrasil for Early Evil 2', () => {
-    var playerData = toDataObj(earlyEvilTwo)
-    var ygg = playerData['yggdrasil'][0]
-    var blueHeart = (playerData['blueHeart^'][0] == 1)
-    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
-    var firstHarvest = playerData['firstHarvestPerk'][0]
+    var player = new Player(false, true)
+    player.importPlayerData(earlyEvilTwo)
+    var ygg : Yggdrasil[] = player.get('yggdrasil')
+    var blueHeart : boolean = player.get('blueHeart')
+    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    var firstHarvest = toNum(player.get('firstHarvestPerk'))
 
-    var data = {
-        'energyNGUs' : [defaultPlayerData(earlyEvilTwo, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(earlyEvilTwo, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(earlyEvilTwo, 'gameMode')],
-    }
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
-        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
-        baseToughness: bd(playerData['baseAdventureToughness'][0]),
-        expBonus: bd(playerData['totalExpBonus%'][0]),
-        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
-        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
-        apBonus: bd(playerData['totalAPBonus%'][0]),
-        ppBonus: bd(playerData['totalPPBonus%'][0]),
-        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
-        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+        yieldModifier: player.get('totalYggdrasilYieldBonus'),
+        nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
+        baseToughness: player.get('baseAdventureToughness'),
+        expBonus: player.get('totalExpBonus'),
+        fokSucksPerk: player.get('fruitOfKnowledgeSucks') ,
+        fokStillSucksPerk: player.get('fruitOfKnowledgeSTILLSucks') ,
+        apBonus: player.get('totalAPBonus'),
+        ppBonus: player.get('totalPPBonus'),
+        qpRewardBonus: player.get('totalQuestRewardBonus'),
+        mayoSpeed: player.get('totalMayoSpeed'),
     }
     // Seed calculations - Multiply by 1.3 since had already harvested apparently (Except gold/Pom)
 
@@ -546,32 +519,27 @@ test('Yggdrasil for Early Evil 2', () => {
 
 
 test('Yggdrasil for Mid Evil 1', () => {
-    var playerData = toDataObj(midEvil)
-    var ygg = playerData['yggdrasil'][0]
-    var blueHeart = (playerData['blueHeart^'][0] == 1)
-    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
-    var firstHarvest = playerData['firstHarvestPerk'][0]
-
-    var data = {
-        'energyNGUs' : [defaultPlayerData(midEvil, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(midEvil, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(midEvil, 'gameMode')],
-    }
+    var player = new Player(false, true)
+    player.importPlayerData(midEvil)
+    var ygg : Yggdrasil[] = player.get('yggdrasil')
+    var blueHeart : boolean = player.get('blueHeart')
+    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    var firstHarvest = toNum(player.get('firstHarvestPerk'))
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
-        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
-        baseToughness: bd(playerData['baseAdventureToughness'][0]),
-        expBonus: bd(playerData['totalExpBonus%'][0]),
-        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
-        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
-        apBonus: bd(playerData['totalAPBonus%'][0]),
-        ppBonus: bd(playerData['totalPPBonus%'][0]),
-        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
-        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+        yieldModifier: player.get('totalYggdrasilYieldBonus'),
+        nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
+        baseToughness: player.get('baseAdventureToughness'),
+        expBonus: player.get('totalExpBonus'),
+        fokSucksPerk: player.get('fruitOfKnowledgeSucks') ,
+        fokStillSucksPerk: player.get('fruitOfKnowledgeSTILLSucks') ,
+        apBonus: player.get('totalAPBonus'),
+        ppBonus: player.get('totalPPBonus'),
+        qpRewardBonus: player.get('totalQuestRewardBonus'),
+        mayoSpeed: player.get('totalMayoSpeed'),
     }
     // Seed calculations - Multiply by 1.3 since had already harvested apparently (Except gold/Pom)
 
@@ -675,32 +643,27 @@ test('Yggdrasil for Mid Evil 1', () => {
 
 
 test('Yggdrasil for Mid Evil 2', () => {
-    var playerData = toDataObj(midEvilTwo)
-    var ygg = playerData['yggdrasil'][0]
-    var blueHeart = (playerData['blueHeart^'][0] == 1)
-    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
-    var firstHarvest = playerData['firstHarvestPerk'][0]
-
-    var data = {
-        'energyNGUs' : [defaultPlayerData(midEvilTwo, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(midEvilTwo, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(midEvilTwo, 'gameMode')],
-    }
+    var player = new Player(false, true)
+    player.importPlayerData(midEvilTwo)
+    var ygg : Yggdrasil[] = player.get('yggdrasil')
+    var blueHeart : boolean = player.get('blueHeart')
+    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    var firstHarvest = toNum(player.get('firstHarvestPerk'))
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
-        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
-        baseToughness: bd(playerData['baseAdventureToughness'][0]),
-        expBonus: bd(playerData['totalExpBonus%'][0]),
-        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
-        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
-        apBonus: bd(playerData['totalAPBonus%'][0]),
-        ppBonus: bd(playerData['totalPPBonus%'][0]),
-        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
-        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+        yieldModifier: player.get('totalYggdrasilYieldBonus'),
+        nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
+        baseToughness: player.get('baseAdventureToughness'),
+        expBonus: player.get('totalExpBonus'),
+        fokSucksPerk: player.get('fruitOfKnowledgeSucks') ,
+        fokStillSucksPerk: player.get('fruitOfKnowledgeSTILLSucks') ,
+        apBonus: player.get('totalAPBonus'),
+        ppBonus: player.get('totalPPBonus'),
+        qpRewardBonus: player.get('totalQuestRewardBonus'),
+        mayoSpeed: player.get('totalMayoSpeed'),
     }
 
     // Gold
@@ -805,32 +768,27 @@ test('Yggdrasil for Mid Evil 2', () => {
 
 
 test('Yggdrasil for Late Evil 1', () => {
-    var playerData = toDataObj(lateEvil)
-    var ygg = playerData['yggdrasil'][0]
-    var blueHeart = (playerData['blueHeart^'][0] == 1)
-    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
-    var firstHarvest = playerData['firstHarvestPerk'][0]
-
-    var data = {
-        'energyNGUs' : [defaultPlayerData(lateEvil, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(lateEvil, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(lateEvil, 'gameMode')],
-    }
+    var player = new Player(false, true)
+    player.importPlayerData(lateEvil)
+    var ygg : Yggdrasil[] = player.get('yggdrasil')
+    var blueHeart : boolean = player.get('blueHeart')
+    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    var firstHarvest = toNum(player.get('firstHarvestPerk'))
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
-        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
-        baseToughness: bd(playerData['baseAdventureToughness'][0]),
-        expBonus: bd(playerData['totalExpBonus%'][0]),
-        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
-        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
-        apBonus: bd(playerData['totalAPBonus%'][0]),
-        ppBonus: bd(playerData['totalPPBonus%'][0]),
-        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
-        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+        yieldModifier: player.get('totalYggdrasilYieldBonus'),
+        nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
+        baseToughness: player.get('baseAdventureToughness'),
+        expBonus: player.get('totalExpBonus'),
+        fokSucksPerk: player.get('fruitOfKnowledgeSucks') ,
+        fokStillSucksPerk: player.get('fruitOfKnowledgeSTILLSucks') ,
+        apBonus: player.get('totalAPBonus'),
+        ppBonus: player.get('totalPPBonus'),
+        qpRewardBonus: player.get('totalQuestRewardBonus'),
+        mayoSpeed: player.get('totalMayoSpeed'),
     }
 
     // Gold
@@ -952,32 +910,27 @@ test('Yggdrasil for Late Evil 1', () => {
 
 
 test('Yggdrasil for Early Sad 1', () => {
-    var playerData = toDataObj(earlySad)
-    var ygg = playerData['yggdrasil'][0]
-    var blueHeart = (playerData['blueHeart^'][0] == 1)
-    var seedModifier = bd(playerData['totalSeedGainBonus%'][0])
-    var firstHarvest = playerData['firstHarvestPerk'][0]
-
-    var data = {
-        'energyNGUs' : [defaultPlayerData(earlySad, 'energyNGUs')],
-        'magicNGUs' : [defaultPlayerData(earlySad, 'magicNGUs')],
-        'gameMode' : [defaultPlayerData(earlySad, 'gameMode')],
-    }
+    var player = new Player(false, true)
+    player.importPlayerData(earlySad)
+    var ygg : Yggdrasil[] = player.get('yggdrasil')
+    var blueHeart : boolean = player.get('blueHeart')
+    var seedModifier : bigDecimal = player.get('totalSeedGainBonus')
+    var firstHarvest = toNum(player.get('firstHarvestPerk'))
 
     var fruitYieldData = {
         firstHarvest: firstHarvest,
         blueHeart: blueHeart,
         totalSeedGainBonus: seedModifier,
-        yieldModifier: bd(playerData['totalYggdrasilYieldBonus%'][0]),
-        nguYgg: nguInfo(data, Stat.YGGDRASIL_YIELD),
-        baseToughness: bd(playerData['baseAdventureToughness'][0]),
-        expBonus: bd(playerData['totalExpBonus%'][0]),
-        fokSucksPerk: playerData['fruitOfKnowledgeSucks^'][0] == 1,
-        fokStillSucksPerk: playerData['fruitOfKnowledgeSTILLSucks^'][0] == 1,
-        apBonus: bd(playerData['totalAPBonus%'][0]),
-        ppBonus: bd(playerData['totalPPBonus%'][0]),
-        qpRewardBonus: bd(playerData['totalQuestRewardBonus%'][0]),
-        mayoSpeed: bd(playerData['totalMayoSpeed%'][0]),
+        yieldModifier: player.get('totalYggdrasilYieldBonus'),
+        nguYgg: nguInfo(player, Stat.YGGDRASIL_YIELD),
+        baseToughness: player.get('baseAdventureToughness'),
+        expBonus: player.get('totalExpBonus'),
+        fokSucksPerk: player.get('fruitOfKnowledgeSucks') ,
+        fokStillSucksPerk: player.get('fruitOfKnowledgeSTILLSucks') ,
+        apBonus: player.get('totalAPBonus'),
+        ppBonus: player.get('totalPPBonus'),
+        qpRewardBonus: player.get('totalQuestRewardBonus'),
+        mayoSpeed: player.get('totalMayoSpeed'),
     }
 
     // Gold

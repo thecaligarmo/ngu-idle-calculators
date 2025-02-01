@@ -1,5 +1,5 @@
 import bigDecimal from "js-big-decimal";
-import { bd, greaterThan } from "../helpers/numbers";
+import { bd, greaterThan } from "@/helpers/numbers";
 import { GameMode } from "./mode";
 import Resource, { ResourceContainer } from "./resource";
 

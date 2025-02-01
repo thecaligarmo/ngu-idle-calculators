@@ -1,13 +1,13 @@
-import { Hack, HackKeys } from "../assets/hacks";
-import { Stat } from "../assets/stat";
+import { Hack, HackKeys } from "@/assets/hacks";
+import { Stat } from "@/assets/stat";
 import { PlusMinusButtons } from "../components/buttons/PlusMinusButtons";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getPlayer, getNumberFormat } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
 import { StandardTableRowType, StandardTable } from "../components/StandardTable";
-import { bd, lessThan, isZero, toNum, pn, dn } from "../helpers/numbers";
-import { getPlayerDataInfo } from "../helpers/playerInfo";
+import { bd, lessThan, isZero, toNum, pn, dn } from "@/helpers/numbers";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
 
 export default function HackDayPage() {
     const player = getPlayer();

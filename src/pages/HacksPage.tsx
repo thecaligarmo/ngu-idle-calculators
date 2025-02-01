@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Hack } from "../assets/hacks";
+import { Hack } from "@/assets/hacks";
 import { ChoiceButton } from "../components/buttons/ChoiceButton";
 import { PlusMinusButtons } from "../components/buttons/PlusMinusButtons";
 import Content, { requiredDataType } from "../components/Content";
@@ -7,8 +7,8 @@ import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
 import { StandardTable, StandardTableRowType } from "../components/StandardTable";
-import { bd, dn, isZero, pn, toNum } from "../helpers/numbers";
-import { getPlayerDataInfo } from "../helpers/playerInfo";
+import { bd, dn, isZero, pn, toNum } from "@/helpers/numbers";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
 
 
 const HACKS_TARGET = 'target'

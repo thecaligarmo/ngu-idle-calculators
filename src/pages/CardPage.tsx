@@ -1,16 +1,16 @@
 import bigDecimal from "js-big-decimal";
-import { Card, CardRarity, cardRarityRange } from "../assets/cards";
-import { FruitOfMayo, Yggdrasil } from "../assets/yggdrasil";
+import { Card, CardRarity, cardRarityRange } from "@/assets/cards";
+import { FruitOfMayo, Yggdrasil } from "@/assets/yggdrasil";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
 import { StandardTable, StandardTableRowType } from "../components/StandardTable";
-import { bd, greaterThan, isZero, lessThan, pn, toNum } from "../helpers/numbers";
-import { bigDecimalObj, toObjectMap } from "../helpers/objects";
-import { cardReqChonkers, cardReqFruit, getCardsPerDay, getCardsRecycled, getChonksPerDay, getChonksRecycled, getMayoFromFruit, getMayoFromInfusers, getMayoFromRecycling } from "../helpers/pages/cards";
-import { getPlayerDataInfo } from "../helpers/playerInfo";
-import { camelToTitle } from "../helpers/strings";
+import { bd, greaterThan, isZero, lessThan, pn, toNum } from "@/helpers/numbers";
+import { bigDecimalObj, toObjectMap } from "@/helpers/objects";
+import { cardReqChonkers, cardReqFruit, getCardsPerDay, getCardsRecycled, getChonksPerDay, getChonksRecycled, getMayoFromFruit, getMayoFromInfusers, getMayoFromRecycling } from "@/helpers/pages/cards";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import { camelToTitle } from "@/helpers/strings";
 
 
 
@@ -197,11 +197,13 @@ export default function CardsPage() {
     }, bd(0))
     
     let cardsPerDay = getCardsPerDay(cardSpeed, recycleCard)
+    console.log(cardsPerDay)
     let cardsRecycled = getCardsRecycled(recycleCard, cardsPerDay)
     if (!player.get('cardRecyclingCard')) {
         cardsPerDay = cardsPerDay.subtract(cardsRecycled)
         cardsRecycled = bd(0)
     }
+    console.log(cardsPerDay, cardSpeed, recycleCard)
 
 
     // Chonk info
@@ -238,6 +240,7 @@ export default function CardsPage() {
     let [mayoFromFruit, mayoFromFruitLeftovers] = player.get('includeFruit')
         ? getMayoFromFruit(player.get('includeLeftovers'), fruits, fruitYieldData, player.get('poopAllLeftovers'))
         : [bd(0), bd(0)]
+    console.log(player.get('includeLeftovers'), fruits, fruitYieldData, player.get('poopAllLeftovers'))
     
     let mayoFromRecycling = player.get('cardRecyclingMayo') 
                 ? getMayoFromRecycling(cardsRecycled, chonksRecycled)

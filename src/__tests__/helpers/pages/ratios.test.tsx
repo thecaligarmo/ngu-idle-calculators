@@ -1,8 +1,62 @@
+import Player from '@/assets/player';
 import { bd } from '@/helpers/numbers';
 import { getRatioInfo } from '@/helpers/pages/ratios';
+import bigDecimal from 'js-big-decimal';
 
-var cases = [
-    [false, 'Energy Cap', {
+type tempType = 
+    'baseEnergyPower' |
+    'baseEnergyCap' |
+    'baseEnergyBar' |
+    'baseMagicPower' |
+    'baseMagicCap' |
+    'baseMagicBar' |
+    'baseRes3Power' |
+    'baseRes3Cap' |
+    'baseRes3Bar' |
+    'energyRatio' |
+    'energyPowerRatio' |
+    'energyCapRatio' |
+    'energyBarRatio' |
+    'magicRatio' |
+    'magicPowerRatio' |
+    'magicCapRatio' |
+    'magicBarRatio' |
+    'res3Ratio' |
+    'res3PowerRatio' |
+    'res3CapRatio' |
+    'res3BarRatio' |
+    'res3Active'
+
+var cases : [string, {
+    'energy': bigDecimal,
+    'magic': bigDecimal,
+    'res3': bigDecimal,
+    'total': bigDecimal
+}, {
+    baseEnergyPower : bigDecimal,
+    baseEnergyCap : bigDecimal,
+    baseEnergyBar : bigDecimal,
+    baseMagicPower : bigDecimal,
+    baseMagicCap : bigDecimal,
+    baseMagicBar : bigDecimal,
+    baseRes3Power : bigDecimal,
+    baseRes3Cap : bigDecimal,
+    baseRes3Bar : bigDecimal,
+    energyRatio : bigDecimal,
+    energyPowerRatio : bigDecimal,
+    energyCapRatio : bigDecimal,
+    energyBarRatio : bigDecimal,
+    magicRatio : bigDecimal,
+    magicPowerRatio : bigDecimal,
+    magicCapRatio : bigDecimal,
+    magicBarRatio : bigDecimal,
+    res3Ratio : bigDecimal,
+    res3PowerRatio : bigDecimal,
+    res3CapRatio : bigDecimal,
+    res3BarRatio : bigDecimal,
+    res3Active : boolean,
+}][]= [
+    ['Energy Cap', {
         'energy': bd(14360),
         'magic': bd(1980),
         'res3': bd(0),
@@ -29,8 +83,9 @@ var cases = [
         res3PowerRatio : bd(0),
         res3CapRatio : bd(0),
         res3BarRatio : bd(0),
+        res3Active : false,
     }],
-    [false, 'Energy Cap', {
+    ['Energy Cap', {
         'energy': bd(192000000),
         'magic': bd(341999690),
         'res3': bd(0),
@@ -57,8 +112,9 @@ var cases = [
         res3PowerRatio : bd(0),
         res3CapRatio : bd(0),
         res3BarRatio : bd(0),
+        res3Active : false,
     }],
-    [true, 'Resource 3 Cap', {
+    ['Resource 3 Cap', {
         'energy': bd(555640560),
         'magic': bd(555640560),
         'res3': bd(1250000000),
@@ -85,7 +141,8 @@ var cases = [
         res3PowerRatio : bd(4),
         res3CapRatio : bd(150000),
         res3BarRatio : bd(1),
-    }],[true, 'Resource 3 Power', {
+        res3Active : true,
+    }],['Resource 3 Power', {
         'energy': bd(125608000),
         'magic': bd(29640000),
         'res3': bd(600000000),
@@ -112,14 +169,21 @@ var cases = [
         res3PowerRatio : bd(4),
         res3CapRatio : bd(150000),
         res3BarRatio : bd(1),
+        res3Active : true,
     }],
 ]
 
 describe("Ratio page", () => {
     test.each(cases)(
         "Ratio Page - Case %#",
-        (res3, sugBuy, expectedCost, data) => {
-            var [desired, buy, cost, suggestedBuy] =  getRatioInfo(data, res3);
+        (sugBuy, expectedCost, data) => {
+            var player = new Player(false, true)
+            var k : tempType
+            for(k in data) {
+                player.set(k, data[k])
+            }
+            var [desired, buy, cost, suggestedBuy] =  getRatioInfo(player);
+            var res3 : boolean = player.get('res3Active')
 
             // Check desired ratios
             expect(Number(desired['energy']['power'].divide(desired['energy']['bar']).getValue()))

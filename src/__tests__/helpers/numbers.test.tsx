@@ -58,7 +58,7 @@ test('Date numbers', () => {
     var minutes = bd(5 * 60)
     var hours = bd(5 * 60 * 60)
     var days = bd(5 * 24 * 60 * 60)
-    expect(dn()).toBe("00:00")
+    expect(dn(bd(0))).toBe("00:00")
     expect(dn(seconds)).toBe("00:05")
     expect(dn(minutes)).toBe("05:00")
     expect(dn(hours)).toBe("05:00:00")

@@ -1,21 +1,21 @@
 import _ from "lodash";
 import { useState } from "react";
-import { AttackStat, Titan, Titans } from "../assets/enemy";
-import { Stat } from "../assets/stat";
-import { Wish } from "../assets/wish";
-import { FruitOfArbitrariness, FruitOfKnowledge, FruitOfQuirks, FruitOfRage, FRUITS, Yggdrasil } from "../assets/yggdrasil";
-import { Zones } from "../assets/zones";
+import { AttackStat, Titan, Titans } from "@/assets/enemy";
+import { Stat } from "@/assets/stat";
+import { Wish } from "@/assets/wish";
+import { FruitOfArbitrariness, FruitOfKnowledge, FruitOfQuirks, FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
+import { Zones } from "@/assets/zones";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
 import { StandardTable } from "../components/StandardTable";
-import { getIdleAttackModifier } from "../helpers/calculators";
-import { getGameMode, isEvilMode, isNormalMode, questsUnlocked, titanKilled, wishesUnlocked, yggUnlocked } from "../helpers/gameMode";
-import { bd, pn, toNum } from "../helpers/numbers";
-import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from "../helpers/pages/daily";
-import { getPlayerDataInfo } from "../helpers/playerInfo";
-import { nguInfo } from "../helpers/resourceInfo";
+import { getIdleAttackModifier } from "@/helpers/calculators";
+import { getGameMode, isEvilMode, isNormalMode, questsUnlocked, titanKilled, wishesUnlocked, yggUnlocked } from "@/helpers/gameMode";
+import { bd, pn, toNum } from "@/helpers/numbers";
+import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from "@/helpers/pages/daily";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import { nguInfo } from "@/helpers/resourceInfo";
 
 
 export default function Page() {

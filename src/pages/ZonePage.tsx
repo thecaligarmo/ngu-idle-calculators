@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import Content, { requiredDataType } from "../components/Content";
-import { getPlayerDataInfo } from "../helpers/playerInfo";
-import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo } from "../helpers/pages/zone";
-import { bd, isZero, pn } from "../helpers/numbers";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo } from "@/helpers/pages/zone";
+import { bd, isZero, pn } from "@/helpers/numbers";
 import ContentSubsection from "../components/ContentSubsection";
 
 export default function ZonePage() {

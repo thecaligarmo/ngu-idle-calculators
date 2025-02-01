@@ -1,7 +1,7 @@
 import bigDecimal from "js-big-decimal"
 import { ReactElement } from "react"
-import { Titans, Titan, AttackStat } from "../../assets/enemy"
-import { Wish } from "../../assets/wish"
+import { Titans, Titan, AttackStat } from "@/assets/enemy"
+import { Wish } from "@/assets/wish"
 import { bd, greaterThan, bigdec_min, toNum } from "../numbers"
 
 

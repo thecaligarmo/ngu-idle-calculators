@@ -2,7 +2,7 @@ import bigDecimal from "js-big-decimal";
 import { GameMode } from "./mode";
 import Resource, { ResourceContainer, prop } from "./resource";
 import { Stat } from "./stat";
-import { bd } from "../helpers/numbers";
+import { bd } from "@/helpers/numbers";
 
 export const CardKeys : {[key: string]: string} = {
     ENERGY_NGU : 'cardEnergyNGU',

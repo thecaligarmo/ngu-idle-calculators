@@ -1,9 +1,9 @@
 import { ReactNode, useState } from "react";
-import { GameMode } from "../../assets/mode";
-import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "../../assets/ngus";
-import { bd, toNum } from "../../helpers/numbers";
-import { nguTargetElts, nguValueElts } from "../../helpers/pages/ngus";
-import { getPlayerDataInfo } from "../../helpers/playerInfo";
+import { GameMode } from "@/assets/mode";
+import { ENERGY_NGUS, MAGIC_NGUS, NGU } from "@/assets/ngus";
+import { bd, toNum } from "@/helpers/numbers";
+import { nguTargetElts, nguValueElts } from "@/helpers/pages/ngus";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
 import { ChoiceButton } from "../buttons/ChoiceButton";
 import Content, { requiredDataType } from "../Content";
 import ContentSubsection from "../ContentSubsection";

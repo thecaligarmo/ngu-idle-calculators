@@ -1,12 +1,12 @@
-import { Stat } from "../assets/stat";
-import { Yggdrasil } from "../assets/yggdrasil";
+import { Stat } from "@/assets/stat";
+import { Yggdrasil } from "@/assets/yggdrasil";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { StandardTable, StandardTableRowType } from "../components/StandardTable";
-import { pn, toNum } from "../helpers/numbers";
-import { getPlayerDataInfo } from "../helpers/playerInfo";
-import { nguInfo } from "../helpers/resourceInfo";
+import { pn, toNum } from "@/helpers/numbers";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import { nguInfo } from "@/helpers/resourceInfo";
 
 
 export default function YggPage() {

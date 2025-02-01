@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { playerDataInfo } from "../assets/playerData";
+import { playerDataInfo } from "@/assets/playerData";
 import { requiredDataType } from "../components/Content";
 import { camelToTitle } from "./strings";
 

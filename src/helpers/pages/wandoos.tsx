@@ -1,8 +1,10 @@
 import bigDecimal from "js-big-decimal"
-import { WANDOOS_OS, WANDOOSLIST, Wandoos } from "../../assets/wandoos"
+import { WANDOOS_OS, WANDOOSLIST, Wandoos } from "@/assets/wandoos"
 import { isNormalMode } from "../gameMode"
 import { bd, bigdec_min, greaterThan, bigdec_max, bigdec_equals } from "../numbers"
 
+
+export type wandoosNames = '98' | 'meh' | 'xl'
 
 
 type wandoosType = {

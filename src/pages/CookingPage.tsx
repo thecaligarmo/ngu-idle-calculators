@@ -1,10 +1,10 @@
 import _ from "lodash";
 import { ReactElement } from "react";
-import { Dish, Ingredient } from "../assets/cooking";
+import { Dish, Ingredient } from "@/assets/cooking";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
-import { getPlayerDataInfo } from "../helpers/playerInfo";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
 
 
 

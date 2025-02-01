@@ -1,6 +1,6 @@
-import { Player } from "../../assets/player"
-import { playerDataInfo } from "../../assets/playerData"
-import { toNum } from "../../helpers/numbers"
+import Player from "@/assets/player"
+import { playerDataInfo } from "@/assets/playerData"
+import { toNum } from "@/helpers/numbers"
 
 export function PlusMinusButtons({player, keyName} : {player : Player, keyName : string}) {
     if(keyName in playerDataInfo) {

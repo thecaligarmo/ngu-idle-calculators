@@ -1,6 +1,6 @@
 import bigDecimal from "js-big-decimal"
-import { isEvilMode, isSadMode } from "../helpers/gameMode"
-import { bd, bigdec_equals, bigdec_min, greaterThan, toNum } from "../helpers/numbers"
+import { isEvilMode, isSadMode } from "@/helpers/gameMode"
+import { bd, bigdec_equals, bigdec_min, greaterThan, toNum } from "@/helpers/numbers"
 import { ENEMY_TYPE, Enemies, Enemy } from "./enemy"
 
 
@@ -204,7 +204,7 @@ export default class Zone {
                 return enemy.numHitsToKill(totalPower, idleAttackModifier)
             })
 
-            return toNum(hits.reduce((prev, cur, ind) => {return prev.add(cur)}, bd(0)).divide(bd(hits.length)))
+            return toNum(hits.reduce((prev, cur) => {return prev.add(cur)}, bd(0)).divide(bd(hits.length)))
         }
         return 1
     }
