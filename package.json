@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint . --fix",
+    "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
     "coverage": "npm test --coverage --watchAll --collectCoverageFrom='src/**/*.{ts,tsx}'"
