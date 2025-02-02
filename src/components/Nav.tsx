@@ -13,12 +13,26 @@ export default function Nav() {
     const tabClasses = "inline-block py-2 px-2 font-semibold "
     const activeTab = tabClasses + "bg-blue-500 border-l border-blue-500 border-t border-r rounded-t text-white dark:text-black"
     const inactiveTab = tabClasses + "bg-white dark:bg-black text-blue-500 dark:hover:text-blue-800 hover:text-blue-300"
+    const unusableTab = tabClasses + "bg-white dark:bg-black text-grey-500"
 
-    function NavElt({children, href, hasChildren=false} : {children: ReactNode, href: string, hasChildren?: boolean}) {
-        const actTab = hasChildren ? (pathname.startsWith(href)) : (pathname == href)
-        return (<li key="home" className={actTab ? activeTabLi : inactiveTabLi}>
-            <NavLink className={actTab ? activeTab : inactiveTab} to={href}>{children}</NavLink>
+    function NavEltContainer({children, key, actTab=false} : {children: ReactNode, key: string, actTab ?: boolean}) {
+        return (<li key={key} className={actTab ? activeTabLi : inactiveTabLi}>
+            {children}
         </li>)
+    }
+
+    function NavUnclickable({children, key} : {children: ReactNode, key: string}) {
+        return (<NavEltContainer actTab={false} key={key}>
+            <span className={unusableTab}>{children}</span>
+        </NavEltContainer>)
+    }
+    
+
+    function NavElt({children, href, key, hasChildren=false} : {children: ReactNode, href: string, key: string, hasChildren?: boolean}) {
+        const actTab = hasChildren ? (pathname.startsWith(href)) : (pathname == href)
+        return (<NavEltContainer actTab={actTab} key={key}>
+            <NavLink className={actTab ? activeTab : inactiveTab} to={href}>{children}</NavLink>
+        </NavEltContainer>)
     }
 
     const player = getPlayer()
@@ -29,19 +43,19 @@ export default function Nav() {
     return (
       <nav>
         <ul className="flex border-b dark:border-white border-black">
-            <NavElt href="/">Home</NavElt>
-            {cardsUnlocked(curTitan) ? <NavElt href="/cards">Cards</NavElt> : null}
-            {cookingUnlocked(curTitan) ? <NavElt href="/cooking">Cooking</NavElt> : null}
-            <NavElt href="/daily">Daily</NavElt>
-            {hacksUnlocked(curTitan) ? <NavElt href="/hacks" hasChildren={true}>Hacks</NavElt> : null}
-            <NavElt href="/ngus" hasChildren={true}>NGUs</NavElt>
-            <NavElt href="/ratios">Ratios</NavElt>
-            {wandoosUnlocked(curTitan) ? <NavElt href="/wandoos">Wandoos</NavElt> : null}
-            {wishesUnlocked(curTitan) ? <NavElt href="/wishes">Wishes</NavElt> : null}
-            {yggUnlocked(curTitan) ? <NavElt href="/ygg">Ygg</NavElt> : null}
-            <NavElt href="/stats">Stats</NavElt>
-            <NavElt href="/zone">Zones</NavElt>
-            <NavElt href="/about">About</NavElt>
+            <NavElt href="/" key="home">Home</NavElt>
+            {cardsUnlocked(curTitan) ? <NavElt href="/cards" key="cards">Cards</NavElt> : <NavUnclickable key="cards"><>T9</></NavUnclickable>}
+            {cookingUnlocked(curTitan) ? <NavElt href="/cooking" key="cooking">Cooking</NavElt> : <NavUnclickable key="cards"><>T10</></NavUnclickable>}
+            <NavElt href="/daily" key="daily">Daily</NavElt>
+            {hacksUnlocked(curTitan) ? <NavElt href="/hacks" key="hacks" hasChildren={true}>Hacks</NavElt> : <NavUnclickable key="cards"><>T7</></NavUnclickable>}
+            <NavElt href="/ngus" hasChildren={true} key="ngu">NGUs</NavElt>
+            <NavElt href="/ratios" key="ratios">Ratios</NavElt>
+            {wandoosUnlocked(curTitan) ? <NavElt href="/wandoos" key="wandoos">Wandoos</NavElt> : <NavUnclickable key="cards"><>T1</></NavUnclickable>}
+            {wishesUnlocked(curTitan) ? <NavElt href="/wishes" key="wishes">Wishes</NavElt> : <NavUnclickable key="cards"><>T8</></NavUnclickable>}
+            {yggUnlocked(curTitan) ? <NavElt href="/ygg" key="ygg">Ygg</NavElt> : <NavUnclickable key="cards"><>T2</></NavUnclickable>}
+            <NavElt href="/stats" key="stats">Stats</NavElt>
+            <NavElt href="/zone" key="zone">Zones</NavElt>
+            <NavElt href="/about" key="about">About</NavElt>
 
             <li key="save" className="flex-grow">
                 <ImportSaveForm />
@@ -66,17 +80,17 @@ export default function Nav() {
         </ul>
         { pathname.startsWith('/ngus') ?
             <ul className="flex border-b dark:border-white border-black">
-                <NavElt href="/ngus">Normal</NavElt>
-                {isAtLeastEvilMode(gameMode) ? <NavElt href="/ngus/evil">Evil</NavElt> : null}
-                {isSadMode(gameMode) ? <NavElt href="/ngus/sadistic">Sadistic</NavElt> : null}
-                {isAtLeastEvilMode(gameMode) ? <NavElt href="/ngus/compare">Compare Modes</NavElt> : null}
+                <NavElt href="/ngus" key="ngu-normal">Normal</NavElt>
+                {isAtLeastEvilMode(gameMode) ? <NavElt href="/ngus/evil" key="ngu-evil">Evil</NavElt> : null}
+                {isSadMode(gameMode) ? <NavElt href="/ngus/sadistic" key="ngu-sad">Sadistic</NavElt> : null}
+                {isAtLeastEvilMode(gameMode) ? <NavElt href="/ngus/compare" key="ngu-compare">Compare Modes</NavElt> : null}
             </ul>
             : null
         }
         { pathname.startsWith('/hacks') ?
             <ul className="flex border-b dark:border-white border-black">
-                <NavElt href="/hacks">Normal</NavElt>
-                <NavElt href="/hacks/hackday">Hack Day</NavElt>
+                <NavElt href="/hacks" key="hacks-normal">Normal</NavElt>
+                <NavElt href="/hacks/hackday" key="hackday">Hack Day</NavElt>
             </ul>
             : null
         }
