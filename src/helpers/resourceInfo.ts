@@ -519,7 +519,11 @@ export function perkInfo(player: Player, key : string) : bigDecimal{
         if ( perks.length > 0) {
             perks.forEach((g) => {
                 if(g.getStatValue(key) != 0 && g.appliesToGameMode(gameMode)) {
-                    stat *= (100 + g.getStatValue(key)) / 100.0
+                    if(key == Stat.TAG_EFFECT) {
+                        stat += g.getStatValue(key)
+                    } else {
+                        stat *= (100 + g.getStatValue(key)) / 100.0
+                    }
                 }
             })
         }
@@ -550,7 +554,11 @@ export function quirkInfo(player: Player, key : string) : bigDecimal{
         if ( quirks.length > 0) {
             quirks.forEach((g) => {
                 if(g.appliesToGameMode(gameMode)) {
-                    stat *= ((g.getStatValue(key) + 100) / 100)
+                    if(key == Stat.TAG_EFFECT) {
+                        stat += g.getStatValue(key)
+                    } else {
+                        stat *= (100 + g.getStatValue(key)) / 100.0
+                    }
                 }
             })
         }
@@ -576,7 +584,11 @@ export function wishInfo(player: Player, key : string) : bigDecimal{
         if ( wishes.length > 0) {
             wishes.forEach((g) => {
                 if(g.appliesToGameMode(gameMode)) {
-                    stat *= ((g.getStatValue(key) + 100) / 100)
+                    if(key == Stat.TAG_EFFECT) {
+                        stat += g.getStatValue(key)
+                    } else {
+                        stat *= (100 + g.getStatValue(key)) / 100.0
+                    }
                 }
             })
         }

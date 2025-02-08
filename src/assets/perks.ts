@@ -298,7 +298,7 @@ export const PERKLIST = [
     new Perk(210, 'biggerDeckSizeIII', 'Bigger Deck Size III', GameMode.SADISTIC, 0, []),
     new Perk(211, 'extraMayoGenerator!', 'Extra Mayo Generator!', GameMode.EVIL, 0, [[Stat.MAYO_GENERATOR, 1]]),
     new Perk(212, 'betterTagsI', 'Better Tags I', GameMode.EVIL, 0, [[Stat.TAG_EFFECT, 0.05]]),
-    new Perk(213, 'betterTagsII', 'Better Tags II', GameMode.SADISTIC, 0, [[Stat.TAG_EFFECT, 0.45]]),
+    new Perk(213, 'betterTagsII', 'Better Tags II', GameMode.SADISTIC, 0, [[Stat.TAG_EFFECT, 0.04]]),
     new Perk(214, 'betterTagsIII', 'Better Tags III', GameMode.SADISTIC, 0, [[Stat.TAG_EFFECT, 0.04]]),
     new Perk(215, 'betterTagsIV', 'Better Tags IV', GameMode.SADISTIC, 0, [[Stat.TAG_EFFECT, 0.04]]),
     new Perk(216, 'cardRecycling:CardSpawn', 'Card Recycling: Card Spawn', GameMode.SADISTIC, 0, []),
