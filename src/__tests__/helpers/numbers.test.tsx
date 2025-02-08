@@ -1,4 +1,4 @@
-import { bd, bigdec_max, bigdec_min, bigdec_round, dn, pn } from '@/helpers/numbers';
+import { bd, bigdec_equals, bigdec_max, bigdec_min, bigdec_power, bigdec_round, dn, factorial, greaterThan, greaterThanOrEqual, isOne, isZero, lessThan, lessThanOrEqual, pn, Polynomial } from '@/helpers/numbers';
 import bigDecimal from 'js-big-decimal';
 
 
@@ -53,11 +53,71 @@ describe('Rounding of big decimals', () => {
     )
 })
 
+test('Equality of big decimals', () => {
+    const numOne = bd(1)
+    const numTwo = bd(2)
+    const numThree = bd(1)
+    expect(bigdec_equals(numOne, numTwo)).toBeFalsy()
+    expect(bigdec_equals(numOne, numThree)).toBeTruthy()
+})
+
+test('Powers of big decimals', () => {
+    const numOne = bd(2)
+    const numTwo = bd(3)
+    const numThree = bd(4)
+    expect(bigdec_power(numOne, numTwo).compareTo(bd(8))).toBe(0)
+    expect(bigdec_power(numTwo, numThree).compareTo(bd(3**4))).toBe(0)
+})
+
+test('Big Decimals Is Zero', () => {
+    expect(isZero(bd(0))).toBeTruthy()
+    expect(isZero(bd(1))).toBeFalsy()
+    expect(isZero(bd(-1))).toBeFalsy()
+})
+
+test('Big Decimals Is One', () => {
+    expect(isOne(bd(0))).toBeFalsy()
+    expect(isOne(bd(1))).toBeTruthy()
+    expect(isOne(bd(-1))).toBeFalsy()
+})
+
+describe('Inequalities', () => {
+    const numOne = bd(1)
+    const numTwo = bd(2)
+    const numThree = bd(3)
+    test('Inequalities - Greater than', () => {
+        expect(greaterThan(numOne, numTwo)).toBeFalsy()
+        expect(greaterThan(numTwo, numTwo)).toBeFalsy()
+        expect(greaterThan(numThree, numTwo)).toBeTruthy()
+    })
+
+    
+    test('Inequalities - Greater than or Equal', () => {
+        expect(greaterThanOrEqual(numOne, numTwo)).toBeFalsy()
+        expect(greaterThanOrEqual(numTwo, numTwo)).toBeTruthy()
+        expect(greaterThanOrEqual(numThree, numTwo)).toBeTruthy()
+    })
+
+    test('Inequalities - Less than', () => {
+        expect(lessThan(numOne, numTwo)).toBeTruthy()
+        expect(lessThan(numTwo, numTwo)).toBeFalsy()
+        expect(lessThan(numThree, numTwo)).toBeFalsy()
+    })
+    
+    test('Inequalities - Less than or equal', () => {
+        expect(lessThanOrEqual(numOne, numTwo)).toBeTruthy()
+        expect(lessThanOrEqual(numTwo, numTwo)).toBeTruthy()
+        expect(lessThanOrEqual(numThree, numTwo)).toBeFalsy()
+    })
+    
+})
+
 test('Date numbers', () => {
     const seconds = bd(5)
     const minutes = bd(5 * 60)
     const hours = bd(5 * 60 * 60)
     const days = bd(5 * 24 * 60 * 60)
+    expect(dn(bd(-1))).toBe("00:00")
     expect(dn(bd(0))).toBe("00:00")
     expect(dn(seconds)).toBe("00:05")
     expect(dn(minutes)).toBe("05:00")
@@ -66,7 +126,7 @@ test('Date numbers', () => {
 });
 
 test('Pretty numbers - scientific', () => {
-    const small = bd(500)
+    const small = 500
     const large = bd('12345678901234567890')
     const xlarge = bd('123456789012345678901')
     const decimal = bd('1.2345678901234567890')
@@ -103,3 +163,30 @@ test('Pretty numbers - suffix', () => {
     expect(pn(decimal, 'suffix')).toBe("1.23");
     expect(pn(largeDecimal, 'suffix')).toBe("1.234 Billion");
 });
+
+describe('Factorials', () => {
+    test.each([
+        [1, 1],
+        [2, 2],
+        [3, 6],
+    ])(
+        'Factorials - %#',
+        (num, expected) => {
+            expect(factorial(num)).toBe(expected)
+        }
+    )
+})
+
+test('Polynomials', () => {
+    const zeroPoly = new Polynomial([])
+    const onePoly = new Polynomial([1])
+    const xPlusThree = new Polynomial([3, 1])
+    const twoXPlusSix = new Polynomial([6, 2])
+    const xPlusFive = new Polynomial([5, 1])
+    const xSquared = new Polynomial([30, 16, 2])
+    expect(zeroPoly.isZero()).toBeTruthy()
+    expect(onePoly.isZero()).toBeFalsy()
+    expect(xPlusFive.length()).toBe(2)
+    expect(xPlusThree.add(xPlusThree).coefficients).toStrictEqual(twoXPlusSix.coefficients)
+    expect(twoXPlusSix.multiply(xPlusFive).coefficients).toStrictEqual(xSquared.coefficients)
+})
