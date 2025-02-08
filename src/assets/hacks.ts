@@ -414,7 +414,7 @@ export class Hack extends Resource {
             case HackKeys.ADVENTURE :
                 return 12 * 60 * 60
             case HackKeys.TIME_MACHINE :
-                return 30 * 60 * 1.3
+                return 15 * 60 * 1.1
             case HackKeys.DROP_CHANCE :
                 return 30 * 60 * 1.3
             case HackKeys.AUGMENT_SPEED:
