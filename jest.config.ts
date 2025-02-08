@@ -14,5 +14,12 @@ export default {
     moduleNameMapper: {
         "^@/(.*)$": "<rootDir>/src/$1",
     },
+    // Coverage Collection
+    collectCoverage: true,
+    coveragePathIgnorePatterns : [
+        "/node_modules/",
+        "<rootDir>/src/__data__/",
+        "<rootDir>/src/__tests__/",
+    ],
 }
 

@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
-    "coverage": "npm test --coverage --watchAll --collectCoverageFrom='src/**/*.{ts,tsx}'"
+    "coverage": "npm test --coverage --watchAll"
   },
   "dependencies": {
     "@react-router/fs-routes": "^7.1.3",
