@@ -50,16 +50,22 @@ export function useLocalStorageObject(key: string, fallbackValue : any) {
     useEffect(() => {
         const stored = localStorage.getItem(key);
         if (stored) {
-            const x = ESSerializer.deserialize(
-                stored, 
-                [
-                    AdvTraining, APItem, Beard, Card, Challenge, Digger, Dish, Enemy, Ingredient, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Wandoos, Wish,
-                    Zone, AttackStat, bigDecimal, Titan,
-                    Yggdrasil, FruitOfGold, FruitOfPowerA, FruitOfAdventure, FruitOfKnowledge, FruitOfPomegranate, FruitOfLuck, FruitOfPowerB, FruitOfArbitrariness, FruitOfNumbers, FruitOfRage, FruitOfMacguffinA, FruitOfPowerD, FruitOfWatermelon, FruitOfMacguffinB, FruitOfQuirks, FruitOfMayo,
-                ]
-            );
-            if (x != value) {
-                setValue(x); //
+            try {
+                const x = ESSerializer.deserialize(
+                    stored, 
+                    [
+                        AdvTraining, APItem, Beard, Card, Challenge, Digger, Dish, Enemy, Ingredient, Item, Hack, MacGuffin, GameMode, NGU, Perk, Quirk, Resource, ItemSet, Stat, Wandoos, Wish,
+                        Zone, AttackStat, bigDecimal, Titan,
+                        Yggdrasil, FruitOfGold, FruitOfPowerA, FruitOfAdventure, FruitOfKnowledge, FruitOfPomegranate, FruitOfLuck, FruitOfPowerB, FruitOfArbitrariness, FruitOfNumbers, FruitOfRage, FruitOfMacguffinA, FruitOfPowerD, FruitOfWatermelon, FruitOfMacguffinB, FruitOfQuirks, FruitOfMayo,
+                    ]
+                );
+                if (x != value) {
+                    setValue(x); //
+                }
+            } catch {
+                // If there's an error from the old system, clean it up.
+                localStorage.setItem(key, ESSerializer.serialize(fbV))
+                setValue(fbV);
             }
         } else {
             setValue(fbV)
