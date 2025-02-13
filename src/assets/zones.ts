@@ -242,14 +242,12 @@ export default class Zone {
     }
 }
 
-// Need to add "Boss Chance" as this is not as simple as ratio
 /*
     id: number, key: string, name: string,
     boosts: number[][], exp: number[],
     enemies: Enemy[],
     level: number = 0,  bossChanceVal : number = -1
 */
-
 export const Zones : {[key: string]: Zone} = {
     MISC: new Zone(-4, 'misc', 'Miscellaneous', [], [], []),
     HEART: new Zone(-3, 'hearts', 'My Hearts <3', [], [], []),

@@ -313,7 +313,7 @@ export const WISHLIST = [
     new Wish(185, 'iwishmyQPCardTierwashigherIV', 'I wish my QP Card Tier higher IV', GameMode.SADISTIC, 2, [], bd('1.5e24')),
     new Wish(186, 'iwishmyDaycareCardTierwashigherIV', 'I wish my Daycare Card Tier higher IV', GameMode.SADISTIC, 2, [], bd('1.6e24')),
     new Wish(187, 'iwishTitan11DroppedQP', 'I wish Titan 11 Dropped QP', GameMode.SADISTIC, 1, [], bd('2e25')),
-    new Wish(188, 'iwishIwasstrongerinAdventureModeV', 'I wish I was stronger in Adventure Mode V', GameMode.SADISTIC, 10, [[Stat.POWER, 1], [Stat.TOUGHNESS, 1], [Stat.HEALTH, 1], [Stat.REGEN, 1]], bd('1e24')),
+    new Wish(188, 'iwishIwasstrongerinAdventureModeV', 'I wish I was stronger in Adventure Mode V', GameMode.SADISTIC, 20, [[Stat.POWER, 1], [Stat.TOUGHNESS, 1], [Stat.HEALTH, 1], [Stat.REGEN, 1]], bd('1e24')),
     new Wish(189, 'iwishIcouldbeatupmorebossesV', 'I wish I could beat up more bosses V', GameMode.SADISTIC, 20, [[Stat.ATTACK, 100], [Stat.DEFENSE, 100]], bd('1e24')),
     new Wish(190, 'iwishIwasf**kingdonewithAdvancedTrainingforever!', 'I wish I was f**king done with Advanced Training forever!', GameMode.EVIL, 1, [], bd('1e18')),
     new Wish(191, 'iwishIcouldbeatupmoreBossesVI', 'I wish I could beat up more Bosses VI', GameMode.SADISTIC, 20, [[Stat.ATTACK, 100], [Stat.DEFENSE, 100]], bd('2e25')),
