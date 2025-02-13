@@ -8,7 +8,7 @@ import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { getGameMode } from "./gameMode"
 import { bd, bigdec_max, bigdec_min, greaterThan, greaterThanOrEqual, isZero, toNum } from "./numbers"
-import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo"
+import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo"
 
 // General Calc - gives a percentage
 function calcAll(player: Player, stat : string) : bigDecimal{
