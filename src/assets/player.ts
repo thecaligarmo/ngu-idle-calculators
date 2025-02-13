@@ -89,6 +89,9 @@ export default class Player {
             if(_.isNaN(val) || val == 'NaN'){
                 console.log("Getting NaN", key)
             }
+            if(typeof val == 'string'){
+                val = val.replace(/"/g, '').replace(/'/g, '')
+            }
 
             // Handle gear optimizer stuff
             val = bd(val)
