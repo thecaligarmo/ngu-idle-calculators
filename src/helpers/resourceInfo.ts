@@ -19,7 +19,7 @@ import { Wish } from "@/assets/wish";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { getGameMode } from "./gameMode";
-import { bd, lessThan, toNum } from "./numbers";
+import { bd, bigdec_equals, lessThan, toNum } from "./numbers";
 
 export function achievementAPBonus(player: Player) : bigDecimal {
     const achievements = player.get('achievements')
@@ -262,7 +262,7 @@ export function cookingInfo(player: Player, key : string) : bigDecimal {
     return bd(1)
 }
 
-function cubeInfo(player: Player, key : string, capAmount : bigDecimal = bd(-1)) : bigDecimal {
+export function cubeInfo(player: Player, key : string, capAmount : bigDecimal = bd(-1)) : bigDecimal {
     let power = player.get('cubePower')
     let toughness = player.get('cubeToughness')
     const total = power.add(toughness)
@@ -272,28 +272,28 @@ function cubeInfo(player: Player, key : string, capAmount : bigDecimal = bd(-1))
     switch(key) {
         case Stat.POWER:
             extraPow = 0
-            if( lessThan(capAmount, power)) {
+            if( !bigdec_equals(capAmount, bd(-1)) && lessThan(capAmount, power)) {
                 extraPow = Math.sqrt(toNum(power.subtract(capAmount)))
                 power = capAmount
             }
             return power.add(bd(extraPow))
         case Stat.TOUGHNESS:
             extraTough = 0
-            if( lessThan(capAmount, toughness)) {
+            if(!bigdec_equals(capAmount, bd(-1)) &&  lessThan(capAmount, toughness)) {
                 extraTough = Math.sqrt(toNum(toughness.subtract(capAmount)))
                 toughness = capAmount
             }
             return toughness.add(bd(extraTough))
         case Stat.HEALTH:
             extraPow = 0
-            if( lessThan(capAmount, power)) {
+            if(!bigdec_equals(capAmount, bd(-1)) &&  lessThan(capAmount, power)) {
                 extraPow = Math.sqrt(toNum(power.subtract(capAmount)))
                 power = capAmount
             }
             return power.multiply(bd(3))
         case Stat.REGEN:
             extraTough = 0
-            if( lessThan(capAmount, toughness)) {
+            if(!bigdec_equals(capAmount, bd(-1)) &&  lessThan(capAmount, toughness)) {
                 extraTough = Math.sqrt(toNum(toughness.subtract(capAmount)))
                 toughness = capAmount
             }

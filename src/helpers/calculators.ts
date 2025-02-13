@@ -8,7 +8,7 @@ import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { getGameMode } from "./gameMode"
 import { bd, bigdec_max, bigdec_min, greaterThan, greaterThanOrEqual, isZero, toNum } from "./numbers"
-import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo"
+import { achievementAPBonus, activeBeards, advTrainingInfo, apItemInfo, beardInfoPerm, beardInfoTemp, cardInfo, challengeInfo, cookingInfo, diggerInfo, equipmentInfo, equipmentWithCubeInfo, hackInfo, isCompletedChallenge, isMaxxedItemSet, macguffinInfo, maxxedItemSetNum, nguInfo, perkInfo, quirkInfo, wandoosOSLevel, wishInfo } from "./resourceInfo"
 
 // General Calc - gives a percentage
 function calcAll(player: Player, stat : string) : bigDecimal{
@@ -75,71 +75,158 @@ export function boostRecyclying(player: Player) : bigDecimal {
 
 
 /** Energy */
-export function totalEnergyPower(player: Player) : bigDecimal {
+export function totalEnergyPower(player: Player, nude : boolean = false) : bigDecimal {
+    let epower = player.get('baseEnergyPower')
+                        .multiply(calcAll(player, Stat.ENERGY_POWER)).divide(bd(100))
+
+    if (nude) {
+        epower = epower.multiply(bd(100 * 100))
+                    .divide(
+                        equipmentWithCubeInfo(player, Stat.ENERGY_POWER)
+                        .multiply(apItemInfo(player, Stat.ENERGY_POWER))
+                    )
+    }
     return bigdec_min(
         bd(1e18).multiply(apItemInfo(player, Stat.ENERGY_POWER)),
-        player.get('baseEnergyPower')
-            .multiply(calcAll(player, Stat.ENERGY_POWER)).divide(bd(100))
-)
+        epower
+    )
+        
 }
 
-export function totalEnergyBar(player: Player) : bigDecimal {
+export function totalEnergyBar(player: Player, nude: boolean = false) : bigDecimal {
+    let ebar = player.get('baseEnergyBar')
+                    .multiply(calcAll(player, Stat.ENERGY_BARS)).divide(bd(100))
+    if (nude) {
+        ebar = ebar.multiply(bd(100 * 100))
+                    .divide(
+                        equipmentWithCubeInfo(player, Stat.ENERGY_BARS)
+                        .multiply(apItemInfo(player, Stat.ENERGY_BARS))
+                    )
+    }
     return bigdec_min(
             bd(1e18).multiply(apItemInfo(player, Stat.ENERGY_BARS)),
-            player.get('baseEnergyBar')
-                .multiply(calcAll(player, Stat.ENERGY_BARS)).divide(bd(100))
+            ebar
         )
     }
 
-export function totalEnergyCap(player: Player) : bigDecimal {
+export function totalEnergyCap(player: Player, nude: boolean = false) : bigDecimal {
+    let ecap = player.get('baseEnergyCap')
+                    .multiply(calcAll(player, Stat.ENERGY_CAP)).divide(bd(100))
+    if (nude) {
+        ecap = ecap.multiply(bd(100 * 100))
+                    .divide(
+                        equipmentWithCubeInfo(player, Stat.ENERGY_CAP)
+                        .multiply(apItemInfo(player, Stat.ENERGY_CAP))
+                    )
+    }
     return bigdec_min(bd(9e18),
-        player.get('baseEnergyCap')
-        .multiply(calcAll(player, Stat.ENERGY_CAP)).divide(bd(100))
+        ecap
     )
 }
 
 /** Magic */
 
-export function totalMagicPower(player: Player) : bigDecimal {
+export function totalMagicPower(player: Player, nude: boolean = false) : bigDecimal {
+    let mpower = player.get('baseMagicPower')
+                    .multiply(calcAll(player, Stat.MAGIC_POWER)).divide(bd(100))
+    if (nude) {
+        mpower = mpower.multiply(bd(100 * 100))
+                    .divide(
+                        equipmentWithCubeInfo(player, Stat.MAGIC_POWER)
+                        .multiply(apItemInfo(player, Stat.MAGIC_POWER))
+                    )
+    }
     return bigdec_min(
         bd(1e18).multiply(apItemInfo(player, Stat.MAGIC_POWER)),
-        player.get('baseMagicPower')
-            .multiply(calcAll(player, Stat.MAGIC_POWER)).divide(bd(100))
+        mpower
     )
 }
 
-export function totalMagicBar(player: Player) : bigDecimal {
+export function totalMagicBar(player: Player, nude: boolean = false) : bigDecimal {
+    let mbar = player.get('baseMagicBar')
+                    .multiply(calcAll(player, Stat.MAGIC_BARS)).divide(bd(100))
+    if (nude) {
+        mbar = mbar.multiply(bd(100 * 100))
+                    .divide(
+                        equipmentWithCubeInfo(player, Stat.MAGIC_BARS)
+                        .multiply(apItemInfo(player, Stat.MAGIC_BARS))
+                    )
+    }
     return bigdec_min(
         bd(1e18).multiply(apItemInfo(player, Stat.MAGIC_BARS)),
-        player.get('baseMagicBar')
-            .multiply(calcAll(player, Stat.MAGIC_BARS)).divide(bd(100))
+        mbar
     )
 }
 
-export function totalMagicCap(player: Player) : bigDecimal {
-    return bigdec_min(bd(9e18),
-        player.get('baseMagicCap')
-        .multiply(calcAll(player, Stat.MAGIC_CAP)).divide(bd(100))
+export function totalMagicCap(player: Player, nude: boolean = false) : bigDecimal {
+    let mcap = player.get('baseMagicCap')
+                    .multiply(calcAll(player, Stat.MAGIC_CAP)).divide(bd(100))
+    if (nude) {
+        mcap = mcap.multiply(bd(100 * 100))
+                    .divide(
+                        equipmentWithCubeInfo(player, Stat.MAGIC_CAP)
+                        .multiply(apItemInfo(player, Stat.MAGIC_CAP))
+                    )
+    }
+    return bigdec_min(
+        bd(9e18),
+        mcap
     );
 }
 
 
 /** Resource 3 */
 
-export function totalRes3Power(player: Player) : bigDecimal {
-    return player.get('baseRes3Power')
-        .multiply(calcAll(player, Stat.RES3_POWER)).divide(bd(100));
+export function totalRes3Power(player: Player, nude: boolean = false) : bigDecimal {
+    let rpower = player.get('baseRes3Power')
+                        .multiply(calcAll(player, Stat.RES3_POWER)).divide(bd(100));
+
+    if (nude) {
+        rpower = rpower.multiply(bd(100 * 100))
+                    .divide(
+                        equipmentWithCubeInfo(player, Stat.RES3_POWER)
+                        .multiply(apItemInfo(player, Stat.RES3_POWER))
+                    )
+    }
+    return bigdec_min(
+        bd(1e18),
+        rpower
+    );
 }
 
-export function totalRes3Bar(player: Player) : bigDecimal {
-    return player.get('baseRes3Bar')
-        .multiply(calcAll(player, Stat.RES3_BARS)).divide(bd(100))
-        .floor();
+export function totalRes3Bar(player: Player, nude: boolean = false) : bigDecimal {
+    let rbar = player.get('baseRes3Bar')
+        .multiply(calcAll(player, Stat.RES3_BARS)).divide(bd(100));
+    if (nude) {
+        rbar = rbar.multiply(bd(100 * 100))
+                    .divide(
+                        equipmentWithCubeInfo(player, Stat.RES3_BARS)
+                        .multiply(apItemInfo(player, Stat.RES3_BARS))
+                    )
+    }
+        
+    return bigdec_min(
+        bd(1e18),
+        rbar.floor()
+    );
 }
 
-export function totalRes3Cap(player: Player) : bigDecimal {
-    return player.get('baseRes3Cap')
-        .multiply(calcAll(player, Stat.RES3_CAP)).divide(bd(100));
+export function totalRes3Cap(player: Player, nude: boolean = false) : bigDecimal {
+    let rcap = player.get('baseRes3Cap')
+                    .multiply(calcAll(player, Stat.RES3_CAP)).divide(bd(100));
+    
+    if (nude) {
+        rcap = rcap.multiply(bd(100 * 100))
+                    .divide(
+                        equipmentWithCubeInfo(player, Stat.RES3_CAP)
+                        .multiply(apItemInfo(player, Stat.RES3_CAP))
+                    )
+    }
+    
+    return bigdec_min(
+        bd(9e18),
+        rcap
+    );
 }
 
 /** Augments */

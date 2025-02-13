@@ -1,11 +1,13 @@
-import Container from "../components/Container";
-import ContentSection from "../components/ContentSection";
-import ContentSubsection from "../components/ContentSubsection";
-import { getNumberFormat, getPlayer } from "../components/Context";
 import { totalAPBonus, totalAugmentSpeed, totalCardSpeed, totalDaycareSpeed, totalDropChance, totalEnergyBar, totalEnergyBeardSpeed, totalEnergyCap, totalEnergyNGUSpeedFactor, totalEnergyPower, totalEnergyWandoosSpeed, totalExpBonus, totalGoldDrop, totalHackSpeed, totalHealth, totalMagicBar, totalMagicBeardSpeed, totalMagicCap, totalMagicNGUSpeedFactor, totalMagicPower, totalMagicWandoosSpeed, totalMayoSpeed, totalPower, totalPPBonus, totalQuestDropBonus, totalQuestRewardBonus, totalRegen, totalRes3Bar, totalRes3Cap, totalRes3Power, totalRespawnRate, totalTagEffect, totalToughness, totalWishSpeed } from "@/helpers/calculators";
 import { cardsUnlocked, questsUnlocked } from "@/helpers/gameMode";
 import { bd, pn } from "@/helpers/numbers";
 import { describeStat, getStatInfo } from "@/helpers/pages/stat";
+import Container from "../components/Container";
+import ContentSection from "../components/ContentSection";
+import ContentSubsection from "../components/ContentSubsection";
+import { getNumberFormat, getPlayer } from "../components/Context";
+import { Stat } from "@/assets/stat";
+import { cubeInfo, equipmentInfo } from "@/helpers/resourceInfo";
 
 
 
@@ -27,27 +29,52 @@ export default function StatsPage() {
                 If you see anything wrong, please let me know.
             </p>
 
-            <ContentSection title="Energy / Magic">
-                <ul>
-                    <li key="ePow"><strong>Energy Power:</strong> <span className="text-red-500">{pn(totalEnergyPower(player), fmt)}</span></li>
-                    <li key="eBar"><strong>Energy Bar:</strong> <span className="text-red-500">{pn(totalEnergyBar(player), fmt)}</span></li>
-                    <li key="eCap"><strong>Energy Cap:</strong> <span className="text-red-500">{pn(totalEnergyCap(player), fmt)}</span></li>
-                    
-                    <li key="mPow"><strong>Magic Power:</strong> <span className="text-red-500">{pn(totalMagicPower(player), fmt)}</span></li>
-                    <li key="mBar"><strong>Magic Bar:</strong> <span className="text-red-500">{pn(totalMagicBar(player), fmt)}</span></li>
-                    <li key="mCap"><strong>Magic Cap:</strong> <span className="text-red-500">{pn(totalMagicCap(player), fmt)}</span></li>
-                    { res3Active ?
-                        <>
-                            <li key="rPow"><strong>Resource 3 Power:</strong> <span className="text-red-500">{pn(totalRes3Power(player), fmt)}</span></li>
-                            <li key="rBar"><strong>Resource 3 Bar:</strong> <span className="text-red-500">{pn(totalRes3Bar(player), fmt)}</span></li>
-                            <li key="rCap"><strong>Resource 3 Cap:</strong> <span className="text-red-500">{pn(totalRes3Cap(player), fmt)}</span></li>
-                        </>
-                        : null
-                    }
-                </ul>
+            <ContentSection title={ res3Active ? "Energy / Magic / Res3" : "Energy / Magic"}>
+                <div className="columns-2">
+                    <strong className="text-blue-500">Current:</strong>
+                    <ul>
+                        <li key="ePow"><strong>Energy Power:</strong> <span className="text-red-500">{pn(totalEnergyPower(player), fmt)}</span></li>
+                        <li key="eBar"><strong>Energy Bar:</strong> <span className="text-red-500">{pn(totalEnergyBar(player), fmt)}</span></li>
+                        <li key="eCap"><strong>Energy Cap:</strong> <span className="text-red-500">{pn(totalEnergyCap(player), fmt)}</span></li>
+                        
+                        <li key="mPow"><strong>Magic Power:</strong> <span className="text-red-500">{pn(totalMagicPower(player), fmt)}</span></li>
+                        <li key="mBar"><strong>Magic Bar:</strong> <span className="text-red-500">{pn(totalMagicBar(player), fmt)}</span></li>
+                        <li key="mCap"><strong>Magic Cap:</strong> <span className="text-red-500">{pn(totalMagicCap(player), fmt)}</span></li>
+                        { res3Active ?
+                            <>
+                                <li key="rPow"><strong>Resource 3 Power:</strong> <span className="text-red-500">{pn(totalRes3Power(player), fmt)}</span></li>
+                                <li key="rBar"><strong>Resource 3 Bar:</strong> <span className="text-red-500">{pn(totalRes3Bar(player), fmt)}</span></li>
+                                <li key="rCap"><strong>Resource 3 Cap:</strong> <span className="text-red-500">{pn(totalRes3Cap(player), fmt)}</span></li>
+                            </>
+                            : null
+                        }
+                    </ul>
+                    <div>
+                        <strong className="text-blue-500">Nude (no equipment/potions - For Gear Optimizer):</strong>
+                        <ul>
+                            <li key="ePow"><strong>Energy Power:</strong> <span className="text-red-500">{pn(totalEnergyPower(player, true), fmt)}</span></li>
+                            <li key="eBar"><strong>Energy Bar:</strong> <span className="text-red-500">{pn(totalEnergyBar(player, true), fmt)}</span></li>
+                            <li key="eCap"><strong>Energy Cap:</strong> <span className="text-red-500">{pn(totalEnergyCap(player, true), fmt)}</span></li>
+                            
+                            <li key="mPow"><strong>Magic Power:</strong> <span className="text-red-500">{pn(totalMagicPower(player, true), fmt)}</span></li>
+                            <li key="mBar"><strong>Magic Bar:</strong> <span className="text-red-500">{pn(totalMagicBar(player, true), fmt)}</span></li>
+                            <li key="mCap"><strong>Magic Cap:</strong> <span className="text-red-500">{pn(totalMagicCap(player, true), fmt)}</span></li>
+                            { res3Active ?
+                                <>
+                                    <li key="rPow"><strong>Resource 3 Power:</strong> <span className="text-red-500">{pn(totalRes3Power(player, true), fmt)}</span></li>
+                                    <li key="rBar"><strong>Resource 3 Bar:</strong> <span className="text-red-500">{pn(totalRes3Bar(player, true), fmt)}</span></li>
+                                    <li key="rCap"><strong>Resource 3 Cap:</strong> <span className="text-red-500">{pn(totalRes3Cap(player, true), fmt)}</span></li>
+                                </>
+                                : null
+                            }
+                        </ul>
+                    </div>
+                </div>
+
                 <ContentSubsection title="Energy Power Calculation" defaultHide={true}>
                     {describeStat(pageData['energyPower'], fmt)}
                 </ContentSubsection>
+
             </ContentSection>
             <ContentSection title="Augments">
                 <ul>
@@ -99,11 +126,16 @@ export default function StatsPage() {
                 </ContentSubsection>
             </ContentSection>
             <ContentSection title="Adventure Stats">
-                <ul>
+                <ul className="columns-2">
                     <li key="power" className=""><strong>Total Power:</strong> <span className="text-red-500">{pn(totalPower(player), fmt)}</span></li>
                     <li key="toughness" className=""><strong>Total Toughness:</strong> <span className="text-red-500">{pn(totalToughness(player), fmt)}</span></li>
                     <li key="health" className=""><strong>Total Health:</strong> <span className="text-red-500">{pn(totalHealth(player), fmt)}</span></li>
                     <li key="regen" className=""><strong>Total Regen:</strong> <span className="text-red-500">{pn(totalRegen(player), fmt)}</span></li>
+
+                    <li key="cubePower"><strong>Cube Power Uncapped:</strong> <span className="text-red-500">{pn(cubeInfo(player, Stat.POWER),fmt)}</span></li>
+                    <li key="cubeToughness"><strong>Cube Toughness Uncapped:</strong> <span className="text-red-500">{pn(cubeInfo(player, Stat.TOUGHNESS),fmt)}</span></li>
+                    <li key="cubePowerCap"><strong>Cube Power Softcap:</strong> <span className="text-red-500">{pn(player.get('baseAdventurePower').add(equipmentInfo(player, Stat.POWER)),fmt)}</span></li>
+                    <li key="cubeToughnessCap"><strong>Cube Toughness Softcap:</strong> <span className="text-red-500">{pn(player.get('baseAdventureToughness').add(equipmentInfo(player, Stat.TOUGHNESS)),fmt)}</span></li>
                 </ul>
                 <ContentSubsection title="Adventure Power Calculation" defaultHide={true}>
                     {describeStat(pageData['advPower'], fmt)}
