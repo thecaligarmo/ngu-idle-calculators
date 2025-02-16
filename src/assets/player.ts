@@ -927,7 +927,7 @@ export default class Player {
         this.set('equipmentBoots', bootsItem);
     }
     setEquipmentAccesories(playerData : any) : void {
-        const accesories : any = playerData.inventory.accs.filter((acc : any) => !_.isUndefined(acc.id) && !_.isNaN(acc.id))
+        const accesories : any = playerData.inventory.accs.filter((acc : any) => !_.isNull(acc) && !_.isUndefined(acc.id) && !_.isNaN(acc.id))
         const acc = accesories.map((acc : any) => {
             const accItem : Item = _.cloneDeep(ITEMS[acc.id])
             accItem.importStats(acc)
