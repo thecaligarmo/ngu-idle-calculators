@@ -45,6 +45,18 @@ export const CardRarityText : {[key: number]: string} = {
     8: 'Chonker',
 } as const satisfies {[key: number]: string};
 
+export const CardRarityColor : {[key: number]: string} = {
+    0: 'text-black dark:text-white',
+    1: 'text-red-600',
+    2: 'text-red-400',
+    3: 'text-orange-400',
+    4: 'text-yellow-600',
+    5: 'text-lime-400',
+    6: 'text-lime-700',
+    7: 'text-green-700',
+    8: 'text-fuchsia-700',
+} as const satisfies {[key: number]: string};
+
 export function cardRarityRange(rarity: number, seventiesSet : boolean = false) : [number, number] {
     switch(rarity) {
         case CardRarity.CRAPPY:

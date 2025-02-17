@@ -1,4 +1,4 @@
-import { CardRarityText } from "@/assets/cards";
+import { CardRarityColor, CardRarityText } from "@/assets/cards";
 import Player from "@/assets/player";
 import { pn, toNum } from "@/helpers/numbers";
 import _ from "lodash";
@@ -90,21 +90,30 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
             for(const k in Object.keys(CardRarityText)) {
                 // let v = k.toString()
                 rarityOptions.push(
-                    (<ChoiceButton
-                        text={CardRarityText[k]}
-                        active={player.get(d.key).getValue() == k}
-                        key={'cardRarity-' + CardRarityText[k]}
-                        onClick={() => {
-                            player.set(d.key, k)
-                        }}
-                    />)
+                    (
+                        <option
+                            key={'cardRarity-' + CardRarityText[k]}
+                            value={k}
+                            className="text-black"
+                            >
+                                {CardRarityText[k]}
+                            </option>
+                    )
                 )
             }
             return (<li key={'in-'+d.key} id={'in-'+d.id} className={disabled}>
-                <label className="inline-block text-black dark:text-white mt-2 mb-1 mr-2">
+                <label className="inline-block mt-2 mb-1 mr-2">
                     {/* htmlFor={d.id} */}
                     {d.name}:
-                {rarityOptions}
+                    <select
+                        onChange={(e) => {
+                            player.set(d.key, e.target.value)
+                        }}
+                        value={player.get(d.key).getValue()}
+                        className="text-black ml-1"
+                    >
+                        {rarityOptions}
+                    </select>
                 </label>
             </li>)
         }
@@ -160,7 +169,7 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
         </li>)
     } else {
         
-        let dVal = ""
+        let dVal : string | ReactNode = ""
         if (d.type == 'boolean') {
             dVal = (player.get(d.key)) ? 'Yes' : 'No'
         } else if (d.type == 'number') {
@@ -181,7 +190,11 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
             }
         }
         if (d.key.startsWith('cardRarity')) {
-            dVal = CardRarityText[toNum(player.get(d.key))]
+            dVal = (
+                <span className={CardRarityColor[toNum(player.get(d.key))]}>
+                    {CardRarityText[toNum(player.get(d.key))]}
+                </span>
+            )
         }
 
         return (<li key={d.key} className={disabled}>
