@@ -1,4 +1,4 @@
-import { bd, bigdec_equals, bigdec_max, bigdec_min, bigdec_round, greaterThan, isZero, lessThan, lessThanOrEqual, toNum } from "@/helpers/numbers"
+import { bd, bigdec_equals, bigdec_min, bigdec_round, greaterThan, isZero, lessThan, lessThanOrEqual, toNum } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { GameMode } from "./mode"
@@ -281,8 +281,30 @@ export class NGU extends Resource {
         return 0
     }
 
+    // Amount of time it takes to get from lvl 0 to lvl 1
+    baseTimePerLevel(cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal {
+        // Grab base amount of time things will take
+        const baseCost = this.baseCost
+        const roundingDigs = this.roundingDigs(cap, speedFactor)
+        let baseTimePerLevel : bigDecimal;
+        try {            
+            baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap.multiply(speedFactor), roundingDigs)
+        } catch {
+            baseTimePerLevel = bd(0)
+        }
+
+        return baseTimePerLevel
+    }
+
+    // Max level to BB using cap
+    maxBBLevel(cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal {
+        const roundingDigs = this.roundingDigs(cap, speedFactor)
+        const btpl = this.baseTimePerLevel(cap, speedFactor)
+        return bd(0.02).divide(btpl, roundingDigs).floor()
+    }
+
     // Gets target for a percentage increase of value
-    percentIncrease(percent: bigDecimal | number) : bigDecimal{
+    getTargetUsingPercent(percent: bigDecimal | number) : bigDecimal{
         percent = toNum(percent)
         
         const prop = this.statnames[0]
@@ -301,11 +323,11 @@ export class NGU extends Resource {
         }
         
         const desiredVal = curVal * (percent/100 + 1)
-        return (this.valueIncrease(desiredVal))
+        return (this.getTargetUsingValue(desiredVal))
     }
 
     // Gets target for a set increase of value
-    valueIncrease(desiredVal: bigDecimal | number) : bigDecimal {
+    getTargetUsingValue(desiredVal: bigDecimal | number) : bigDecimal {
         desiredVal = toNum(desiredVal)
         
         const prop = this.statnames[0]
@@ -323,28 +345,42 @@ export class NGU extends Resource {
     }
 
     // Gets target for a set duration of minutes
-    timeIncrease(numMinutes: bigDecimal | number, cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal{
-        const numSeconds = bd(numMinutes).multiply(bd(60)).add(bd(1))
+    getTargetUsingTime(numMinutes: bigDecimal | number, cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal{
+        let numSeconds = bd(numMinutes).multiply(bd(60)).add(bd(1))
         const roundingDigs = this.roundingDigs(cap, speedFactor)
+        let curLevel = bd(this.level)
+        const maxBBLevel = this.maxBBLevel(cap, speedFactor)
+        const maxLevelInBB = numSeconds.multiply(bd(50)).add(curLevel)
+        
+        // We have problems otherwise
+        if (greaterThan(maxBBLevel, maxLevelInBB)) {
+            return maxLevelInBB.subtract(bd(1))
+        }
         let baseTimePerLevel = this.baseTimePerLevel(cap, speedFactor)
         baseTimePerLevel = isZero(baseTimePerLevel) ? bd(1) : baseTimePerLevel
-        const curLevel = bd(this.level)
+        
 
         /*
         Want to solve for n:
             SUM_i=level+1^n level <= numSeconds / baseTimePerLevel
 
-            n(n+1)/2 - (level+1)(level+2)/2 <= numSeconds / baseTimePerLevel
+            n(n+1)/2 - (level)(level+1)/2 <= numSeconds / baseTimePerLevel
 
-            n^2 + n + (numSeconds / baseTimePerLevel + (level+1)(level+2)/2) * -2
-                = n^2 + n + c
+            n^2 + n <= (2 * numSeconds / baseTimePerLevel + (level+1)(level+2))
+                => n^2 + n <= c
+                => n^2 + n - c <= 0 
+                is 0 when
+                -1 + sqrt(1 +4c) / 2
         */
-        const lvlDiff = numSeconds.divide(baseTimePerLevel, roundingDigs)
-        const targDiff = lvlDiff.add(
-            (curLevel.add(bd(1))).multiply(curLevel.add(bd(2))).divide(bd(2))
+        // We go up until the maxLevelInBB and then we do the summation
+        if(greaterThan(maxBBLevel, curLevel)){
+            numSeconds = maxBBLevel.subtract(curLevel).multiply(bd(0.02))
+            curLevel = maxBBLevel
+        }
+        const c = numSeconds.multiply(bd(2)).divide(baseTimePerLevel, roundingDigs).add(
+            (curLevel).multiply(curLevel.add(bd(1)))
         )
-        const c = targDiff.multiply(bd(-2))
-        const target = (bd(Math.sqrt(toNum(bd(1).subtract(bd(4).multiply(c))))).subtract(bd(1))).divide(bd(2))        
+        const target = (bd(Math.sqrt(toNum(bd(1).add(bd(4).multiply(c))))).subtract(bd(1))).divide(bd(2), roundingDigs)
         return target.floor().subtract(bd(1))
     }
 
@@ -352,21 +388,8 @@ export class NGU extends Resource {
         return cap.floor().getValue().length + speedFactor.floor().getValue().length + this.baseCost.getValue().length
     }
 
-    baseTimePerLevel(cap : bigDecimal, speedFactor : bigDecimal) : bigDecimal {
-        // Grab base amount of time things will take
-        const baseCost = this.baseCost
-        const roundingDigs = this.roundingDigs(cap, speedFactor)
-        let baseTimePerLevel : bigDecimal;
-        try {            
-            baseTimePerLevel = baseCost.multiply(bd(100)).divide(cap, roundingDigs).divide(speedFactor, roundingDigs)
-        } catch {
-            baseTimePerLevel = bd(0)
-        }
-
-        return baseTimePerLevel
-    }
-
-    speedAtLevel(level : bigDecimal | number, baseTimePerLevel : bigDecimal) : bigDecimal{
+    // in seconds
+    timeForLevel(level : bigDecimal | number, baseTimePerLevel : bigDecimal) : bigDecimal{
         level = bd(level)
         const speed = baseTimePerLevel.multiply(level).round(2, bigDecimal.RoundingModes.CEILING)
 
@@ -375,47 +398,34 @@ export class NGU extends Resource {
     }
 
     calcSecondsToTarget(cap : bigDecimal, speedFactor : bigDecimal, target : bigDecimal = bd(-1)) : bigDecimal {
-        const level = bd(this.level)
+        let level = bd(this.level)
         if ( bigdec_equals(target, bd(-1)) ) {
             target = bd(this.target)
         }
 
 
         // Grab base amount of time things will take
-        const roundingDigs = this.roundingDigs(cap, speedFactor)
         const baseTimePerLevel = this.baseTimePerLevel(cap, speedFactor)
+        const maxBBLevel = this.maxBBLevel(cap, speedFactor)
 
         
-        // Grab the starting time and the ending time
-        const startingSpeed = this.speedAtLevel(level.add(bd(1)), baseTimePerLevel)
-        const endingSpeed = this.speedAtLevel(target, baseTimePerLevel)
-
-        
-        // Grab the number of levels that will be calculated with starting, middle (average) and end times
-        let startingSpeedLevels : bigDecimal
-        let middleSpeedLevels : bigDecimal
-        let endingSpeedLevels : bigDecimal
-        try {
-            startingSpeedLevels = bigdec_max(
-                (bigdec_min(startingSpeed.divide(baseTimePerLevel, roundingDigs), target).subtract(level)).floor(),
-                bd(0)
-            )
-
-            let x = (endingSpeed.subtract(bd(0.02))).divide(baseTimePerLevel, roundingDigs).floor().subtract(level).subtract(startingSpeedLevels)
-            middleSpeedLevels = greaterThan(x, bd(0)) ? x : bd(0);
-
-            x = bigdec_min(endingSpeed.divide(baseTimePerLevel, roundingDigs), target).subtract(level).subtract(startingSpeedLevels).subtract(middleSpeedLevels).floor()
-            endingSpeedLevels = greaterThan(x, bd(0)) ? x : bd(0);
-
-        } catch {
-            startingSpeedLevels = bd(0);
-            middleSpeedLevels = bd(0);
-            endingSpeedLevels = bd(0);
+        let bbLevels = bd(0)
+        if (greaterThan(maxBBLevel, level)) {
+            bbLevels = bigdec_min(maxBBLevel.subtract(level), target.subtract(level))
+            level = level.add(bbLevels)
         }
-
-        return startingSpeedLevels.multiply(startingSpeed)
-                .add(endingSpeed.multiply(endingSpeedLevels))
-                .add((endingSpeed.add(startingSpeed)).divide(bd(2), roundingDigs).multiply(middleSpeedLevels))    
+        
+        const bbTime = bbLevels.multiply(bd(0.02)) // 50 levels per second
+        // n(n+1)/2 - (level)(level+1)/2 = numSeconds / baseTimePerLevel
+        const nonBBTime = (
+            (
+                target.multiply(target.add(bd(1))).divide(bd(2))
+                .subtract(
+                    level.multiply(level.add(bd(1))).divide(bd(2))
+                )
+            ).multiply(baseTimePerLevel)
+        )
+        return bbTime.add(nonBBTime) 
     }
 
     capAtTarget(speedFactor : bigDecimal, level : bigDecimal) : bigDecimal {

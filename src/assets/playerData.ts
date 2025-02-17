@@ -413,7 +413,7 @@ export const playerDataInfo : {[k:string] : dataInfoType}= {
     
     // NGUs
     'nguPercentageIncrease': {'type': 'number', 'default': 0, 'percent': true},
-    'timeInMinutes': {'type': 'number', 'default': 0},
+    'nguTimeInMinutes': {'type': 'number', 'default': 0, 'name': 'Time in Minutes'},
     'energyNGUAugmentsValue': {'type': 'number', 'default': 0, 'name': 'Augments Value'},
     'energyNGUWandoosValue': {'type': 'number', 'default': 0, 'name': 'Wandoos Value'},
     'energyNGURespawnValue': {'type': 'number', 'default': 0, 'name': 'Respawn Value'},

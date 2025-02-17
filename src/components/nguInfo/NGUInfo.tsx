@@ -83,7 +83,7 @@ export default function NGUInfo({gameMode} : NGUProps) {
 
     // Set extra required (not from playerData)
     const extraRequired : requiredDataType = [
-        ['nguPercentageIncrease', 'timeInMinutes'], [],
+        ['nguPercentageIncrease', 'nguTimeInMinutes'], [],
         [
             'energyNGUAugments' + modeText + 'Value',
             'energyNGUWandoos' + modeText + 'Value',
@@ -137,12 +137,12 @@ export default function NGUInfo({gameMode} : NGUProps) {
         return tyNGUs.map((ngu) => {
             switch(calcType) {
                 case NGU_PERCENTAGE:
-                    return ngu.percentIncrease(player.get("nguPercentageIncrease"))
+                    return ngu.getTargetUsingPercent(player.get("nguPercentageIncrease"))
                 case NGU_VALUE:
-                    return ngu.valueIncrease(player.get(ty + ngu.key + modeText + "Value"))
+                    return ngu.getTargetUsingValue(player.get(ty + ngu.key + modeText + "Value"))
                 case NGU_TIME:
                     ty = ty[0].toUpperCase() + ty.substring(1)
-                    return ngu.timeIncrease(player.get('timeInMinutes'), player.get("total" + ty + "Cap"), player.get("total" + ty + "NGUSpeedFactor"))
+                    return ngu.getTargetUsingTime(player.get('nguTimeInMinutes'), player.get("total" + ty + "Cap"), player.get("total" + ty + "NGUSpeedFactor"))
                 default: 
                     return bd(ngu.target);
             }
@@ -171,15 +171,15 @@ export default function NGUInfo({gameMode} : NGUProps) {
 
     switch (calcType) {
         case NGU_TARGET:
-            extraReq = disableItem(extraReq, ['nguPercentageIncrease', 'timeInMinutes']);
+            extraReq = disableItem(extraReq, ['nguPercentageIncrease', 'nguTimeInMinutes']);
             extraReq = disableItem(extraReq, nguValueElts)
             break;
         case NGU_VALUE:
-            extraReq = disableItem(extraReq, ['nguPercentageIncrease', 'timeInMinutes']);
+            extraReq = disableItem(extraReq, ['nguPercentageIncrease', 'nguTimeInMinutes']);
             infoReq = disableItem(infoReq, nguTargetElts)
             break;
         case NGU_PERCENTAGE:
-            extraReq = disableItem(extraReq, ['timeInMinutes']);
+            extraReq = disableItem(extraReq, ['nguTimeInMinutes']);
             extraReq = disableItem(extraReq, nguValueElts)
             infoReq = disableItem(infoReq, nguTargetElts)
             break;
@@ -196,7 +196,7 @@ export default function NGUInfo({gameMode} : NGUProps) {
             <ChoiceButton text="Using Targets" onClick={() => setCalcType(NGU_TARGET)} active={calcType==NGU_TARGET} />
             <ChoiceButton text="Using Percentage of Current Value" onClick={() => setCalcType(NGU_PERCENTAGE)}  active={calcType==NGU_PERCENTAGE} />
             <ChoiceButton text="Using Certain Value" onClick={() => setCalcType(NGU_VALUE)}  active={calcType==NGU_VALUE} />
-            <ChoiceButton text="Using Time" onClick={() => setCalcType(NGU_TIME)} />
+            <ChoiceButton text="Using Time" onClick={() => setCalcType(NGU_TIME)} active={calcType==NGU_TIME} />
         </>
     )
         

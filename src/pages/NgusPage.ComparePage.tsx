@@ -132,9 +132,9 @@ export default function NGUsComparePage() {
     const targets = NGUs.map((tyNGUs) => {
         return tyNGUs.map((ngu) => {
             return {
-                'normal' : ngu['normal'].percentIncrease(player.get("nguPercentageIncrease")),
-                'evil' : ngu['evil'].percentIncrease(player.get("nguPercentageIncrease")),
-                'sadistic' : ngu['sadistic'].percentIncrease(player.get("nguPercentageIncrease")),
+                'normal' : ngu['normal'].getTargetUsingPercent(player.get("nguPercentageIncrease")),
+                'evil' : ngu['evil'].getTargetUsingPercent(player.get("nguPercentageIncrease")),
+                'sadistic' : ngu['sadistic'].getTargetUsingPercent(player.get("nguPercentageIncrease")),
             }
         })
     })
