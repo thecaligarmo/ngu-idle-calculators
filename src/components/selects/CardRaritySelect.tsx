@@ -1,4 +1,4 @@
-import { CardRarityText } from "@/assets/cards";
+import { CardRarityColor, CardRarityText } from "@/assets/cards";
 import Player from "@/assets/player";
 import { ReactNode } from "react";
 import { InputSelect } from "./InputSelect";
@@ -13,7 +13,7 @@ export function CardRaritySelect({player, dkey} : {player: Player, dkey : string
                 <option
                     key={'cardRarity-' + CardRarityText[k]}
                     value={k}
-                    className="text-black dark:text-white"
+                    className={CardRarityColor[k]}
                     >
                         {CardRarityText[k]}
                     </option>
