@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { NavLink, useLocation } from "react-router";
 import { getPlayer, useNumberFormatContext } from "./Context";
 import ImportSaveForm from "./ImportSaveForm/importSaveForm";
+import { NavSelect } from "./selects/NavSelect";
 
 export default function Nav() {
     const {numberFormat, setNumberFormat} = useNumberFormatContext();
@@ -60,21 +61,7 @@ export default function Nav() {
             <li key="save" className="flex-grow">
                 <ImportSaveForm />
                 <form className="float-right mt-px">
-                    <select
-                        value={numberFormat}
-                        className="block px-2.5 py-2 bg-gray-50 dark:bg-gray-700
-                                border border-gray-300 dark:border-gray-600 rounded-lg
-                                text-gray-900 text-sm dark:placeholder-gray-400 dark:text-white
-                                "
-                        id="nav-select"
-                        onChange={(e) => {
-                            setNumberFormat(e.target.value)
-                        }}
-                    >
-                        <option key="engineering" value="engineering">Engineering</option>
-                        <option key="scientific" value="scientific">Scientific</option>
-                        <option key="suffix" value="suffix">Suffix</option>
-                    </select>
+                    <NavSelect numberFormat={numberFormat} setNumberFormat={setNumberFormat} />
                 </form>
             </li>
         </ul>

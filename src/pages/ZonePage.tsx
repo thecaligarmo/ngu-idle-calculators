@@ -5,6 +5,7 @@ import { getPlayerDataInfo } from "@/helpers/playerInfo";
 import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo } from "@/helpers/pages/zone";
 import { bd, isZero, pn } from "@/helpers/numbers";
 import ContentSubsection from "../components/ContentSubsection";
+import { InputSelect } from "@/components/selects/InputSelect";
 
 export default function ZonePage() {
     const [optZoneChosen, setOptZoneChosen] = useState('training')
@@ -78,16 +79,15 @@ export default function ZonePage() {
                 <div className="pl-10">
                     <p>
                         Compare the optimal zone with:
-                        <select
-                            className='ml-2 text-black'
+                        <InputSelect
                             onChange={(e) => {
-                                setOptZoneChosen(e.target.value)
+                                player.set('optZoneChosenBoost', e.target.value)
                             }}
-                            value={optZoneChosen}
+                            value={player.get('optZoneChosenBoost')}
                             id="compare-boost-select"
                         >
                         {zoneList}
-                        </select>
+                        </InputSelect>
                     </p>
                     <ul>
                         {zoneBoonList}
@@ -102,16 +102,15 @@ export default function ZonePage() {
                 <div className="pl-10">
                     <p>
                         Compare the optimal zone with:
-                        <select
-                            className='ml-2 text-black'
+                        <InputSelect
                             onChange={(e) => {
-                                setOptZoneChosen(e.target.value)
+                                player.set('optZoneChosenExp', e.target.value)
                             }}
-                            value={optZoneChosen}
-                            id="compare-exp-select"
+                            value={player.get('optZoneChosenExp')}
+                            id="compare-boost-select"
                         >
                         {zoneList}
-                        </select>
+                        </InputSelect>
                     </p>
                     <ul>
                         {zoneExpList}

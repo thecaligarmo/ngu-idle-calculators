@@ -5,6 +5,7 @@ import _ from "lodash";
 import { ReactNode } from "react";
 import { ChoiceButton } from "./buttons/ChoiceButton";
 import { getNumberFormat } from "./Context";
+import { CardRaritySelect } from "./selects/CardRaritySelect";
 
 // TODO - Fix the `any` in this page
 
@@ -86,40 +87,19 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
             </li>)
         }
         if (d.key.startsWith('cardRarity')) {
-            const rarityOptions : ReactNode[] = []
-            for(const k in Object.keys(CardRarityText)) {
-                // let v = k.toString()
-                rarityOptions.push(
-                    (
-                        <option
-                            key={'cardRarity-' + CardRarityText[k]}
-                            value={k}
-                            className="text-black"
-                            >
-                                {CardRarityText[k]}
-                            </option>
-                    )
-                )
-            }
             return (<li key={'in-'+d.key} id={'in-'+d.id} className={disabled}>
                 <label className="inline-block mt-2 mb-1 mr-2">
                     {/* htmlFor={d.id} */}
                     {d.name}:
-                    <select
-                        onChange={(e) => {
-                            player.set(d.key, e.target.value)
-                        }}
-                        value={player.get(d.key).getValue()}
-                        className="text-black ml-1"
-                    >
-                        {rarityOptions}
-                    </select>
+                    <CardRaritySelect player={player} dkey={d.key} />
                 </label>
             </li>)
         }
 
-        let inputClass = "text-black font-normal rounded border border-black dark:border-white"
-        if(d.pre == '') {
+        // dark:bg-black dark:text-white
+        let inputClass = "text-black font-normal rounded-lg border border-blue-500 px-1.5 py-1 dark:bg-black dark:text-white"
+        
+        if(_.isUndefined(d.pre) || d.pre == '') {
             inputClass += " w-32"
         } else {
             inputClass += " w-16"
@@ -129,7 +109,7 @@ function dataToList(player : Player, d : any, input : boolean = false) : ReactNo
             inputClass = inputClass.replace(' w-32', '').replace(' w-16', '')
             switch(d.length) {
                 case 1:
-                    inputClass += ' w-8'
+                    inputClass += ' w-10'
                     break
                 case 2:
                     inputClass += ' w-12'

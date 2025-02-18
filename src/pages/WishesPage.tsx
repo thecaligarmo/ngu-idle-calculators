@@ -7,6 +7,7 @@ import { getNumberFormat, getPlayer } from "../components/Context";
 import { StandardTable, StandardTableRowType } from "../components/StandardTable";
 import { bd, dn, pn, toNum } from "@/helpers/numbers";
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import { InputSelect } from "@/components/selects/InputSelect";
 
 
 function getWIshList(wishes : Wish[], gameMode : bigDecimal) : ReactElement[]{
@@ -54,17 +55,16 @@ export default function WishesPage() {
 
     const extraChildren = (
         <>
-            <strong>Wish to look at:</strong> <select
-                className="ml-2 text-black"
+            <strong>Wish to look at:</strong> <InputSelect
                 onChange={(e) =>{
-                    setOptWishChosen(e.target.value)
+                    player.set('chosenWish', e.target.value)
                 }}
-                value={optWishChosen}
+                value={player.get('chosenWish')}
                 id="wish-look-select"
             >
                 <option key="current" value="current">Select a Wish</option>
                 {getWIshList(wishes, gameMode)}
-            </select>
+            </InputSelect>
         </>
     )
 
@@ -169,17 +169,17 @@ export default function WishesPage() {
 
     return (
         <Content title="Wishes" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren} goRequired={goReq}>
-            Chosen Wish: <select
-                className="ml-2 text-black"
+            Chosen Wish: <InputSelect
                 onChange={(e) =>{
                     setOptWishChosen(e.target.value)
+                    player.set('chosenWish', e.target.value)
                 }}
-                value={optWishChosen}
+                value={player.get('chosenWish')}
                 id="chosen-wish-select"
             >
                 <option key="current" value="current">Select a Wish</option>
                 {getWIshList(wishes, gameMode)}
-            </select>
+            </InputSelect>
             <ContentSubsection title="How long will it take to finish my wish with a % of cap?">
                 The column in green is if you split your resources equally between all your wish slots. The column in blue is the custom % defined above.
                 <StandardTable order={wishCapOrder} header={wishCapHeader} rows={wishRows} extraRowClasses={extraClasses} />

@@ -8,6 +8,7 @@ import { setInputValue } from "@/helpers/inputUpdater";
 import { pn } from "@/helpers/numbers";
 import { getRatioInfo } from "@/helpers/pages/ratios";
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import { InputSelect } from "@/components/selects/InputSelect";
 
 export default function RatiosPage() {
     const player = getPlayer();
@@ -66,7 +67,7 @@ export default function RatiosPage() {
             <div className="mt-2">
                 <p>Quick Selectors:</p>
                 <div className={selectBoxCSS}>
-                <select defaultValue='' className='text-black' id="emRatio" onChange={(e) => {
+                    <InputSelect value={player.get('emRatio')} id="emRatio"  onChange={(e) => {
                     if (e.target.value){
                         const [energy, magic] = e.target.value.split(":")
 
@@ -84,6 +85,7 @@ export default function RatiosPage() {
                             setInputValue(document.getElementById('energyRatio'), energy)
                             setInputValue(document.getElementById('magicRatio'), magic)
                         }
+                        player.set('emRatio', e.target.value)
                     }
                     }}>
                     <option key="1" value=''>Energy to Magic Ratio</option>
@@ -91,13 +93,13 @@ export default function RatiosPage() {
                     <option key="5" value="5:1">5:1</option>
                     <option key="3" value="3:1">3:1</option>
                     <option key="2" value="2:1">2:1</option>
-                </select>
+                </InputSelect>
                 </div>
                 <div className={selectBoxCSS}></div>
                 {res3Active
                 ? 
                 <div className={selectBoxCSS}>
-                    <select defaultValue='' className='text-black' id='erRatio' onChange={(e) => {
+                    <InputSelect value={player.get('erRatio')} id='erRatio' onChange={(e) => {
                     if (e.target.value){
                         const [energy, res3] = e.target.value.split(":")
                         const emRatio : HTMLSelectElement | null = document.querySelector('select#emRatio')
@@ -110,6 +112,7 @@ export default function RatiosPage() {
                         if(Number(energyMagic) > 0) {
                             setInputValue(document.getElementById('magicRatio'), Math.round(Number(magic) * Number(energy) / Number(energyMagic)))
                         }
+                        player.set('erRatio', e.target.value)
                     }
                     }}>
                         <option key="0" value=''>Energy to Resource 3 Ratio</option>
@@ -122,50 +125,53 @@ export default function RatiosPage() {
                         <option key="600" value="600000:1">600,000:1</option>
                         <option key="750" value="750000:1">750,000:1</option>
                         <option key="1000" value="1000000:1">1,000,000:1</option>
-                    </select>
+                    </InputSelect>
                     </div>
                 : null
                 }
                 <div className={selectBoxCSS}>
-                    <select defaultValue='' className='text-black' id="eratio" onChange={(e) => {
+                    <InputSelect value={player.get('eratio')} id="eratio" onChange={(e) => {
                     if (e.target.value){
                         const [power, cap, bar] = e.target.value.split(":")
                         setInputValue(document.getElementById('energyPowerRatio'), power)
                         setInputValue(document.getElementById('energyCapRatio'), cap)
                         setInputValue(document.getElementById('energyBarRatio'), bar)
+                        player.set('eratio', e.target.value)
                     }
                     }}>
                         <option key="00" value=''>Energy Ratio quick select</option>
                         {ratioOptions}
-                    </select>
+                    </InputSelect>
                 </div>
                 <div className={selectBoxCSS}>
-                    <select defaultValue='' className='text-black' id="mratio" onChange={(e) => {
+                    <InputSelect value={player.get('mratio')} id="mratio" onChange={(e) => {
                     if (e.target.value){
                         const [power, cap, bar] = e.target.value.split(":")
                         setInputValue(document.getElementById('magicPowerRatio'), power)
                         setInputValue(document.getElementById('magicCapRatio'), cap)
                         setInputValue(document.getElementById('magicBarRatio'), bar)
+                        player.set('mratio', e.target.value)
                     }
                     }}>
                         <option key="00" value=''>Magic Ratio quick select</option>
                         {ratioOptions}
-                    </select>
+                    </InputSelect>
                 </div>
                 {res3Active
                 ? 
                 <div className={selectBoxCSS}>
-                    <select defaultValue='' className='text-black' id="rratio" onChange={(e) => {
+                    <InputSelect value={player.get('rratio')} id="rratio" onChange={(e) => {
                     if (e.target.value){
                         const [power, cap, bar] = e.target.value.split(":")
                         setInputValue(document.getElementById('res3PowerRatio'), power)
                         setInputValue(document.getElementById('res3CapRatio'), cap)
                         setInputValue(document.getElementById('res3BarRatio'), bar)
+                        player.set('rratio', e.target.value)
                     }
                     }}>
                     <option key="00" value=''>Resource 3 Ratio quick select</option>
                     {ratioOptions}
-                    </select>
+                    </InputSelect>
                     </div>
                 : null
                 }

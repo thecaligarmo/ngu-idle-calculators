@@ -172,27 +172,6 @@ export function getQuestInfo(
 }
 
 
-
-export function getTitanList() : ReactElement[]{
-    const titanOptions : ReactElement[] = []
-    for (const titan of Object.values(Titans)) {
-        if(titan.id < 13) {
-            for(let i = 0; i < titan.versions; i++) {
-                if(titan.id == 5 && i > 0) {
-                    continue
-                }
-                titanOptions.push(<option key={titan.getFullKey(i)} value={titan.id +'-' + i}>
-                    {titan.getFullName(i)}
-                </option>)
-                
-            }
-        }
-    }
-    return titanOptions;
-}
-
-
-
 export function getMaxTitanByAK(titans: Titan[], playerAttack : AttackStat) : [Titan, number]{
     let maxTitanByAK : [Titan, number] = [Titans.NONE, 0]
     Object.values(titans).forEach((titan) => {

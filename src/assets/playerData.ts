@@ -1,5 +1,5 @@
 type dataInfoType = {
-    'type' : 'number' | 'boolean' | 'object',
+    'type' : 'number' | 'boolean' | 'object' | 'string',
     'default' : any, // eslint-disable-line
     'length' ?: number,
     'percent' ?: boolean,
@@ -476,6 +476,11 @@ export const playerDataInfo : {[k:string] : dataInfoType}= {
     "res3PowerRatio" : {'type': 'number', 'default': 0, 'length': 3},
     "res3CapRatio" : {'type': 'number', 'default': 0},
     "res3BarRatio" : {'type': 'number', 'default': 0, 'length': 3},
+    "emRatio" : {'type': 'string', 'default' : ''},
+    "erRatio" : {'type': 'string', 'default' : ''},
+    "eRatio" : {'type': 'string', 'default' : ''},
+    "mRatio" : {'type': 'string', 'default' : ''},
+    "rRatio" : {'type': 'string', 'default' : ''},
 
     // Wandoos
     'minutesSpentInWandoos': {'type': 'number', 'default': 60},
@@ -483,10 +488,15 @@ export const playerDataInfo : {[k:string] : dataInfoType}= {
     'magicFillsPerSecond': {'type': 'number', 'default': 50},
 
     // Wishes
+    'chosenWish': {'type': 'string', 'default': 'current'},
     'customPercentage': {'type': 'number', 'default': 1, 'percent': true},
     'customEnergyAmount': {'type': 'number', 'default': 1},
     'customMagicAmount': {'type': 'number', 'default': 1},
     'customResource3Amount': {'type': 'number', 'default': 1},
+
+    // Zone
+    'optZoneChosenBoost' : {'type': 'string', 'default': 'training'},
+    'optZoneChosenExp' : {'type': 'string', 'default': 'training'},
 
     // Daily
     'hoursPerDay' : {'type': 'number', 'default': 24, 'length': 2},
@@ -500,6 +510,7 @@ export const playerDataInfo : {[k:string] : dataInfoType}= {
     'includeValueOfConsumables' : {'type': 'boolean', 'default': false},
     'moneyPitGoldToss' : {'type': 'number', 'default': 1, 'pre': '1e'},
     'moneyPitTossesPerDay' : {'type': 'number', 'default': 1, 'length': 2},
+    'dailyMaxTitan' : {'type': 'string', 'default': 'current'},
 
     // Go stuff
     'goDropChance' : {'type': 'number', 'default': 0, 'percent': true},

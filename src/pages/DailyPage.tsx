@@ -1,25 +1,25 @@
-import _ from "lodash";
-import { useState } from "react";
 import { AttackStat, Titan, Titans } from "@/assets/enemy";
 import { Stat } from "@/assets/stat";
 import { Wish } from "@/assets/wish";
 import { FruitOfArbitrariness, FruitOfKnowledge, FruitOfQuirks, FruitOfRage, FRUITS, Yggdrasil } from "@/assets/yggdrasil";
 import { Zones } from "@/assets/zones";
+import { TitanSelect } from "@/components/selects/TitanSelect";
+import { getIdleAttackModifier } from "@/helpers/calculators";
+import { getGameMode, isEvilMode, isNormalMode, questsUnlocked, titanKilled, wishesUnlocked, yggUnlocked } from "@/helpers/gameMode";
+import { bd, pn, toNum } from "@/helpers/numbers";
+import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo } from "@/helpers/pages/daily";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import { nguInfo } from "@/helpers/resourceInfo";
+import _ from "lodash";
+import { useState } from "react";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
 import { StandardTable } from "../components/StandardTable";
-import { getIdleAttackModifier } from "@/helpers/calculators";
-import { getGameMode, isEvilMode, isNormalMode, questsUnlocked, titanKilled, wishesUnlocked, yggUnlocked } from "@/helpers/gameMode";
-import { bd, pn, toNum } from "@/helpers/numbers";
-import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQuestInfo, getRebirthAP, getTitanHourlyInfo, getTitanList } from "@/helpers/pages/daily";
-import { getPlayerDataInfo } from "@/helpers/playerInfo";
-import { nguInfo } from "@/helpers/resourceInfo";
 
 
 export default function Page() {
-    const [optMaxTitan, setOptMaxTitan] = useState("current")
     const player = getPlayer();
     const fmt = getNumberFormat();
 
@@ -193,20 +193,20 @@ export default function Page() {
     let maxTitan : [Titan, number] = maxTitanByAK
 
     // Update titan if user wants a different one.
-    if(optMaxTitan != 'current') {
-        const tt = optMaxTitan.split('-')
+    if(player.get('dailyMaxTitan') != 'current') {
+        const tt = player.get('dailyMaxTitan').split('-')
         Object.values(Titans).forEach((titan) => {
             if (titan.id == Number(tt[0])) {
                 maxTitan = [titan, Number(tt[1])]
             }
         })
     }
+    
     const titanHourInfo = getTitanHourlyInfo(maxTitan, titanData);
     const totalTitanAP = titanHourInfo['ap'].multiply(hoursPerDay)
     const totalTitanEXP = titanHourInfo['exp'].multiply(hoursPerDay)
     const totalTitanPP = titanHourInfo['ppp'].multiply(hoursPerDay).divide(bd(1000000))
     const totalTitanQP = titanHourInfo['qp'].multiply(hoursPerDay)
-    const titanList = getTitanList();
 
 
     /* Ygg Info */
@@ -265,17 +265,8 @@ export default function Page() {
 
     const extraChildren = (
         <>
-            <strong>Max titan:</strong> <select
-                className="ml-2 text-black"
-                onChange={(e) =>{
-                    setOptMaxTitan(e.target.value)
-                }}
-                value={optMaxTitan}
-                id="max-titan-select"
-            >
-                <option key="current" value="current">Highest Titan by Autokill - {maxTitanByAK[0].getFullName(maxTitanByAK[1])}</option>
-                {titanList}
-            </select>
+            <strong>Max titan:</strong>
+            <TitanSelect maxTitanByAK={maxTitanByAK} player={player}/>
         </>
     )
 
