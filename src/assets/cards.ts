@@ -47,9 +47,9 @@ export const CardRarityText : {[key: number]: string} = {
 
 export const CardRarityColor : {[key: number]: string} = {
     0: 'text-black dark:text-white',
-    1: 'text-red-600',
-    2: 'text-red-400',
-    3: 'text-orange-400',
+    1: 'text-red-950',
+    2: 'text-red-600',
+    3: 'text-amber-600',
     4: 'text-yellow-600',
     5: 'text-lime-400',
     6: 'text-lime-700',
