@@ -281,17 +281,17 @@ export const Zones : {[key: string]: Zone} = {
     CAVE: new Zone(
             5, 'cave', 'Cave of Many Things',
             [[1, 13, 100], [2, 12, 100]], [1, 12, 15],
-            [Enemies.GORGONZOLA, Enemies.BRIE, Enemies.GOUDA, Enemies.BLUE_CHEESE, Enemies.PARMESAN, Enemies.LIMBURGER_CHEESE, Enemies.MEGA_RAT, Enemies.ROBOT, Enemies.A_FLUFFY_CHAIR, Enemies.COUCH, Enemies.FLOPPY_MATTRESS, Enemies.EVIL_FRIDGE, Enemies.T800, Enemies.A_WIDE_SCREEN_TV, Enemies.THE_KITCHEN_SINK, Enemies.A_FIFTH_GIANT_MOLE]
+            [Enemies.GORGONZOLA, Enemies.BRIE, Enemies.GOUDA, Enemies.BLUE_CHEESE, Enemies.PARMESAN, Enemies.LIMBURGER, Enemies.MEGA_RAT, Enemies.ROBOT, Enemies.FLUFFY_CHAIR, Enemies.COUCH, Enemies.FLOPPY_MATTRESS, Enemies.EVIL_FRIDGE, Enemies.T800, Enemies.WIDE_SCREEN_TV, Enemies.KITCHEN_SINK, Enemies.CHAD]
         ),
     SKY: new Zone(
             6, 'sky', 'The Sky',
             [[2, 8, 100], [5, 8, 100]], [1, 16, 20],
-            [Enemies.ICARUS_PROUDBOTTOM, Enemies.KID_ON_A_CLOUD, Enemies.NINJA_SAMURAI, Enemies.GIGANTIC_FLOCK_OF_SEAGULLS, Enemies.SEVENFORTYSEVEN, Enemies.TWO_HEADED_GUY, Enemies.LESTER, Enemies.ORIENTAL_DRAGON, Enemies.A_BIRD_PERSON, Enemies.GIGANTIC_FLOCK_OF_CANADA_GEESE]
+            [Enemies.ICARUS_PROUDBOTTOM, Enemies.KID_ON_A_CLOUD, Enemies.NINJA_SAMURAI, Enemies.GIGANTIC_FLOCK_OF_SEAGULLS, Enemies.SEVENFORTYSEVEN, Enemies.TWO_HEADED_GUY, Enemies.LESTER, Enemies.ORIENTAL_DRAGON, Enemies.BIRD_PERSON, Enemies.GFOCG]
         ),
     HSB: new Zone(
             7, 'HSB', 'High Security Base',
             [[2, 6, 100], [5, 1.5, 100]], [2, 9, 12],
-            [Enemies.HIGH_SECURITY_INSECT_GUARD_1, Enemies.HIGH_SECURITY_INSECT_GUARD_2, Enemies.A_WHOLE_LOTTA_GUARDS, Enemies.THE_EXPERIMENT, Enemies.GROSS_GREEN_ALIEN, Enemies.THE_RAT_GOD, Enemies.HOOLOOVOO, Enemies.MASSIVE_PLANT_MONSTER, Enemies.ONE_MEGA_GUARD, Enemies.SPIKY_HAIRED_GUY]
+            [Enemies.HIGH_SECURITY_INSECT_GUARD_1, Enemies.HIGH_SECURITY_INSECT_GUARD_2, Enemies.WHOLE_LOTTA_GUARDS, Enemies.THE_EXPERIMENT, Enemies.GROSS_GREEN_ALIEN, Enemies.THE_RAT_GOD, Enemies.HOOLOOVOO, Enemies.MASSIVE_PLANT_MONSTER, Enemies.MEGA_GUARD, Enemies.SPIKY_HAIRED_GUY]
         ),
     GRB: new Zone(
             8, 'GRB', 'Gordon Ramsay Bolton',
@@ -311,7 +311,7 @@ export const Zones : {[key: string]: Zone} = {
         ),
     TWO_D: new Zone(
             11, 'twoD', 'The 2D Universe',
-            [[10, 7, 15], [20, 7, 15]], [3, 5, 15],  [Enemies.A_FLAT_MOUSE, Enemies.A_TINY_TRIANGLE, Enemies.A_SQUARE_BEAR, Enemies.THE_PENTAGON, Enemies.THE_FIRST_STOP_SIGN, Enemies.THE_SECOND_STOP_SIGN, Enemies.KING_CIRCLE, Enemies.A_SUPER_HEXAGON]
+            [[10, 7, 15], [20, 7, 15]], [3, 5, 15],  [Enemies.A_FLAT_MOUSE, Enemies.A_TINY_TRIANGLE, Enemies.A_SQUARE_BEAR, Enemies.THE_PENTAGON, Enemies.THE_FIRST_STOP_SIGN, Enemies.THE_SECOND_STOP_SIGN, Enemies.KING_CIRCLE, Enemies.SUPER_HEXAGON]
         ),
     ANCIENT_BATTLEFIELD: new Zone(
             12, 'ghost', 'Ancient Battlefield',
@@ -341,7 +341,7 @@ export const Zones : {[key: string]: Zone} = {
     BEARDVERSE: new Zone(
             17, 'beardverse', 'The Beardverse',
             [[50, 0.35, 25], [100, 0.35, 25]], [20, 0.2, 10], 
-            [Enemies.A_BEARDED_LADY, Enemies.A_BEARDED_MAN, Enemies.COUSIN_ITT, Enemies.A_NAKED_MOLERAT, Enemies.ROB_BOSS, Enemies.GOSSAMER, Enemies.AN_ORANGE_TOUPEE_WITH_FISTS, Enemies.A_CLOGGED_SHOWER_DRAIN]
+            [Enemies.A_BEARDED_LADY, Enemies.A_BEARDED_MAN, Enemies.COUSIN_ITT, Enemies.A_NAKED_MOLERAT, Enemies.ROB_BOSS, Enemies.GOSSAMER, Enemies.ORANGE_TOUPEE_WITH_FISTS, Enemies.A_CLOGGED_SHOWER_DRAIN]
         ),
     WALDERP: new Zone(
             18, 'walderp', 'Walderp',
@@ -469,7 +469,7 @@ export const Zones : {[key: string]: Zone} = {
     JRPG: new Zone(
             31, 'jrpg', 'JRPGVille',
             [[2000, 0.0015, 10], [5000, 0.0015, 10]], [45, 0.0018, 3],
-            []
+            [Enemies.SENTIENT_PILE_OF_BELTS, Enemies.MIMIC_MIMIC_CHEST_CHEST, Enemies.A_SUPLEXING_TRAIN, Enemies.THE_ANNOYING_FAN, Enemies.THE_INFINITY_SWORD, Enemies.THE_DAMAGE_CAP, Enemies.FINAL_BOSS, Enemies.TRUE_FINAL_BOSS]
         ),
     EXILE: new Zone(
             32, 'exile1', 'The Exile',
@@ -498,17 +498,17 @@ export const Zones : {[key: string]: Zone} = {
     RADLANDS: new Zone(
             33, 'rad', 'The Rad Lands',
             [[2000, 0.00006, 15], [5000, 0.00006, 15]], [450, 0.00006, 15],
-            []
+            [Enemies.SMALL_BART, Enemies.PAIR_OF_SHADES_WEARING_SHADES, Enemies.AC_SKATER, Enemies.LAME_SECURITY_GUARD, Enemies.A_GIANT_VAT_OF_PLUTONIUM, Enemies.MUTANT_ZOMBIE_MARIE_CURIE, Enemies.NUCLEAR_POWER_PANTS, Enemies.A_WANDERING_GAMMA_RAY, Enemies.A_MASSIVE_SEALED_VAULT, Enemies.RADIOACTIVE_MACGUFFIN]
         ),
     BACKTOSCHOOL: new Zone(
             34, 'school', 'Back To School',
             [[5000, 0.00004, 10], [10000, 0.00004, 10]], [500, 0.000045, 15],
-            []
+            [Enemies.A_DIFFERENT_GREASY_NERD, Enemies.SENTIENT_JOCK_STRAP, Enemies.THE_FLYING_SPINELLI_MONSTER, Enemies.A_REALLY_STRICT_NUN, Enemies.THE_NUNS_RULER, Enemies.THE_MYSTERY_MEAT, Enemies.WILLY, Enemies.BELDING]
         ),
     WESTWORLD: new Zone(
             35, 'western', 'The West World',
             [[5000, 0.000025, 15], [10000, 0.000025, 15]], [600, 0.00003, 15],
-            []
+            [Enemies.A_STICKMAN_COWBOY, Enemies.A_GIANT_CANNON, Enemies.THE_ENTIRE_BAR, Enemies.A_PATHETIC_TUMBLEWEED, Enemies.A_SINGLE_COW, Enemies.HERD_OF_PISSED_OFF_COWS, Enemies.THE_OUTLAW, Enemies.THE_SHERIFF]
         ),
     ITHUNGERS: new Zone(
             36, 'hunger1', 'It Hungers',
@@ -537,12 +537,12 @@ export const Zones : {[key: string]: Zone} = {
     BREADVERSE: new Zone(
             37, 'bread', 'The Breadverse',
             [[5000, 0.00001, 15], [10000, 0.00001, 15]], [800, 0.000012, 15],
-            []
+            [Enemies.GRANDMAS_BROWNIES, Enemies.ANGRY_RAW_COOKIE_DOUGH, Enemies.A_BEARDED_BREADED_BRAID, Enemies.BUTCHER_CANDLESTICK_MAKER, Enemies.THE_EXGREATEST_THING, Enemies.MOLDY_SLICE_OF_BREAD, Enemies.THE_YEAST_BEAST, Enemies.A_DAY_OLD_BAGUETTE]
         ),
     SEVENTIES: new Zone(
             38, 'that70s', 'That 70\'s Zone',
             [[10000, 0.000006, 15], [10000, 0.000006, 15]], [1000, 0.000008, 15],
-            []
+            [Enemies.A_GROOVY_SAXOPHONE, Enemies.A_GIANT_PAIR_OF_ROLLER_SKATES, Enemies.A_S_PORN_MUSTASCHE, Enemies.A_DISGUSTING_BONG, Enemies.A_HIPPIE_WITH_A_HIP, Enemies.HOLY_CRAP_ITS_ANOTHER_SHARK, Enemies.THE_WORST_VINYL_RECORD, Enemies.THE_FRO]
         ),
     HALLOWEEN: new Zone(
             39, 'halloweenies', 'The Halloweenies',
@@ -576,17 +576,17 @@ export const Zones : {[key: string]: Zone} = {
     CONSTRUCTION: new Zone(
             41, 'construction', 'Construction Zone',
             [[10000, 0.0000025, 16], [10000, 0.0000025, 16]], [1200, 0.000004, 15],
-            []
+            [Enemies.A_CONSTRUCTION_SLOB, Enemies.QUICKSAND_CEMENT, Enemies.A_CEMENT_TRUCK, Enemies.A_BULLDOZER, Enemies.THREE_GUYS_CARRYING_A_BEAM, Enemies.A_PIANOSAFE, Enemies.SEVEN_GUYS_TAKING_A_BREAK, Enemies.THE_CRANE]
         ),
     DUCK: new Zone(
             42, 'duck', 'DUCK DUCK ZONE',
             [[10000, 0.000002, 17], [10000, 0.000002, 17]], [1200, 0.0000033, 15],
-            []
+            [Enemies.A_DUCK, Enemies.ANOTHER_DUCK, Enemies.GOOSE, Enemies.SCIENTIFICALLY_ACCURATE_DUCK, Enemies.A_MOTHERDUCKER, Enemies.TOTALLY_A_DUCK, Enemies.THE_DOG, Enemies.A_SINGLE_GRAPE]
         ),
     NETHER: new Zone(
             43, 'nether', 'The Nether Regions',
             [[10000, 0.0000016, 17], [10000, 0.0000016, 17]], [1200, 0.0000018, 15],
-            []
+            [Enemies.A_PATCH_OF_TULIPS, Enemies.A_RANDOM_LADY, Enemies.A_LOST_CANADIAN_MOOSE, Enemies.A_FIVE_BLADED_WINDMILL, Enemies.A_JERK_CYCLIST, Enemies.A_DUTCH_OVEN, Enemies.THE_GRAND_DUTCH_DUCHY, Enemies.DAAN_VAN_DER_VAN_JAANSEN]
         ),
     AMALGAMATE: new Zone(
             44, 'amalgamate1', 'Amalgamate',
@@ -615,6 +615,6 @@ export const Zones : {[key: string]: Zone} = {
     PIRATE: new Zone(
             45, 'pirate', 'The Aethereal Sea Part 1',
             [[10000, 0.000001, 17], [10000, 0.000001, 17]], [1200, 0.0000012, 15],
-            []
+            [Enemies.A_SEAGULL, Enemies.COSMIC_JELLYFISH, Enemies.AETHER_EEL, Enemies.YOU, Enemies.A_PIRAT, Enemies.A_BUNCH_OF_OLD_NEWSPAPERS, Enemies.THE_BUCKET, Enemies.A_TAR_BLOB_MONSTER, Enemies.ANOTHER_YOU, Enemies.A_PADDLEFISH, Enemies.AN_ANGLERFISH, Enemies.A_BUNCH_OF_CANNONS, Enemies.A_PILE_OF_ROPES, Enemies.LADDERS, Enemies.AND_SNAKES, Enemies.RAMSHACKLE_SEA_INN, Enemies.THE_FIRST_PIRATE, Enemies.THE_SECOND_PIRATE, Enemies.THE_THIRD_PIRATE, Enemies.THE_FOURTH_PIRATE_, Enemies.THE_CAPTAIN]
         ),
 } as const satisfies {[key: string]: Zone};
