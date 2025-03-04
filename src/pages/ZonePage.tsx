@@ -1,14 +1,19 @@
-import { useState } from "react";
-import { getNumberFormat, getPlayer } from "../components/Context";
-import Content, { requiredDataType } from "../components/Content";
-import { getPlayerDataInfo } from "@/helpers/playerInfo";
-import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo } from "@/helpers/pages/zone";
-import { bd, isZero, pn } from "@/helpers/numbers";
-import ContentSubsection from "../components/ContentSubsection";
 import { InputSelect } from "@/components/selects/InputSelect";
+import { bd, dn, isZero, pn } from "@/helpers/numbers";
+import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo, nextItemSetToMax } from "@/helpers/pages/zone";
+import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import { useEffect, useState } from "react";
+import Content, { requiredDataType } from "../components/Content";
+import ContentSubsection from "../components/ContentSubsection";
+import { getNumberFormat, getPlayer } from "../components/Context";
+import _ from "lodash";
+import { getIdleAttackModifier } from "@/helpers/calculators";
+import bigDecimal from "js-big-decimal";
 
 export default function ZonePage() {
     const [optZoneChosen, setOptZoneChosen] = useState('training')
+    const [timeToCompletion, setTimeToCompletion] = useState('')
+    const [killsToCompletion, setKillsToCompletion] = useState(0)
     const player = getPlayer();
     const fmt = getNumberFormat();
     
@@ -54,20 +59,42 @@ export default function ZonePage() {
         )
     })
 
-    // var zoneHitList = zoneInfo.map(function(zone) {
-    //     return (
-    //         <li key={zone.key}>
-    //             {zone.name} is {zone.hitsToKill} hits per kill with {pn(zone.killsPerHour, fmt, 4)} kills per hour.
-    //         </li>
-    //     )
-    // })
+    
+    useEffect(() => { 
+        if(!_.isEmpty(player.get('itemSets'))) {
+            let itemSet = nextItemSetToMax(player);
+            if(itemSet.set.isZoneSet()){
+                const dc = itemSet.set.getDropChance(player.get('totalDropChance'));
+                const items = itemSet.set.items.map((it) => Math.ceil((100 - it.level) / (itemSet.set.lvlDropped + 1)))
+                const idleAttackModifier = getIdleAttackModifier(player.get('spoopySetBonus'), player.get('sadisticNoEquipmentChallenges'))
+                fetch('https://thecaligarmo.com/ngu/index.php?dropChance=' + dc.getValue() + '&itemLevels=' + items.join(','))
+                    .then(response=> response.json())
+                    .then(data => {
+                        var time = itemSet.set.secsToCompletion(
+                            bd(data),
+                            player.get('totalPower'),
+                            idleAttackModifier,
+                            player.get('redLiquidBonus'),
+                            player.get('totalRespawnTime')
+                        )
+                        setKillsToCompletion(data);
+                        time = (time instanceof bigDecimal || typeof time == 'number') ? dn(time) : time.toString();
+                        setTimeToCompletion(time);
+                    })
+            }
+        }
+    }, [player])
 
-    // let dc = itemSetDropChance(data)
-    // if (dc instanceof bigDecimal) {
-    //     console.log('hii', dn(dc))
-    // } else {
-    //     console.log('hii', dc)
-    // }
+    let nextSet = '';
+    if(!_.isEmpty(player.get('itemSets'))) {
+        let itemSet = nextItemSetToMax(player);
+        if(itemSet.set.isZoneSet()) {
+            nextSet = itemSet.set.name;
+        }
+    }
+    if (nextSet == '') {
+        nextSet = 'None'
+    }
     
     return (
         <Content title="Optimal Zones" infoRequired={infoReq} extraRequired={extraReq} goRequired={goReq}>
@@ -117,17 +144,31 @@ export default function ZonePage() {
                     </ul>
                 </div>
             </ContentSubsection>
-            {/* <ContentSubsection title="Drop Chance">
-                <p>
-                    Drop Chance info?
-                </p>
-                <br />
-                <div className='pl-10'>
-                    <ul>
-                        {zoneHitList}
-                    </ul>
-                </div>
-            </ContentSubsection> */}
+            <ContentSubsection title="How long until I complete the next set?">
+            {
+                timeToCompletion == ''
+                ? (
+                    <>
+                        <p>
+                            The next set for you to complete is the <span className="text-blue-500">{nextSet}</span> set.
+                        </p>
+                        <p className="text-red-500">
+                            Loading... (can take many minutes to calculate.)
+                        </p>
+                    </>
+                    )
+                :
+                (
+                    <p>
+                    The next set for you to complete is the <span className="text-blue-500">{nextSet}</span> set.
+                    You will need to kill <span className="text-green-500">{pn(killsToCompletion)}</span> enemies to complete the set.
+                    This should take roughly <span className="text-green-500">{timeToCompletion}</span>.
+                    </p>
+                )
+                 
+            }
+            <small className="text-cyan-700">The numbers above are only estimates as they are dependent on luck.</small>
+            </ContentSubsection>
         </Content>
     )
 }

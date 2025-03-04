@@ -81,9 +81,7 @@ export function lessThanOrEqual(left : bigDecimal, right : bigDecimal) : boolean
 
 // print/pretty number
 export function pn(num : bigDecimal | number, numberFormat : string = 'scientific', precision : number = 0) : string {
-    if (typeof num == 'number') {
-        num = bd(num)
-    }
+    num = bd(num)
     // Get the floor of the number for processing
     const n = num.floor().getValue();
     const nl = n.length // number length
@@ -131,7 +129,8 @@ export function toNum(bigDec: bigDecimal | number) : number {
 }
 
 // date number
-export function dn(num : bigDecimal) : string{
+export function dn(num : bigDecimal | number) : string{
+    num = bd(num);
     if ( _.isUndefined(num) || lessThan(num, bd(0))) {
         return '00:00'
     }

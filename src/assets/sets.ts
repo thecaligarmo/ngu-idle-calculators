@@ -78,14 +78,18 @@ export class ItemSet {
         return bd(0)
     }
 
+    // This method should *not* be used as it takes to long
+    // Use the PHP script instead
     killsToCompletion(totalDropChance : bigDecimal) : bigDecimal | string {
+        console.log('killsToCompletion takes to long, use php instead');
         if(this.isMaxxed) {
             return bd(0)
         }
-        if(this.isZoneSet()) {
+        if(this.isZoneSet() && false) {
             // Based on: https://math.stackexchange.com/a/3475218/86555
             let p = this.getDropChance(totalDropChance)
             let pfix = 1
+            
             while (lessThan(p, bd(1))) {
                 p = p.multiply(bd(10))
                 pfix = pfix * 10
@@ -101,6 +105,7 @@ export class ItemSet {
             const x = Math.max(...v)
             const y = 1 / toNum(p)
             const sigFig = Math.max(20, Math.ceil( (1.25 * x) + (x * Math.log(y) / 2)))
+            var maxLen = 0;
 
         
             const quickTest = x * y
@@ -108,22 +113,23 @@ export class ItemSet {
                 return 'infinity'
             }
 
-            // console.log('here', p.getValue(), x, y, sigFig)
-            // console.log(P, Q, v, x, y, x * y, sigFig)
-        
             // [i, Poly] -> e^(ix) - (Poly)
             const F : [bigDecimal, Polynomial][][] = P.map((pi : bigDecimal, i) => {
                 const coeffs : bigDecimal[] = []
                 for(let j = 0; j < v[i]; j++) {
                     coeffs.push(bd(-(toNum(pi)**j)).divide(bd(factorial(j)), sigFig))
                 }
+                for(var jj of coeffs) {
+                    maxLen = Math.max(maxLen, jj.getValue().length);
+                }
                 return [[bd(pi), new Polynomial([1])], [bd(0), new Polynomial(coeffs)]]
             })
-        
+            
             const start : [bigDecimal, Polynomial][] = [[bd(Q), new Polynomial([1])]]
             
             const G = F.reduce((prev : [bigDecimal, Polynomial][], cur) => {
                 const retStuff : {[key:string]: [bigDecimal, Polynomial]} = {}
+
                 for(const p of prev) {
                     if(!cur[0][1].isZero()){
                         const newP : [bigDecimal, Polynomial] = [p[0].add(cur[0][0]), p[1].multiply(cur[0][1])]
@@ -159,7 +165,7 @@ export class ItemSet {
             }
 
         
-            const integral = G.reduce((prev, cur) => {
+            const integral = G.reduce((prev, cur, ind) => {
                 if(bigdec_equals(cur[0], bd(1))) {
                     return prev
                 }
@@ -174,11 +180,17 @@ export class ItemSet {
                     powers.push(cf)
                 }
 
-                return prev.add(cur[1].coefficients.reduce((prevIn, curIn, indIn) => {
-                    
+                const newInt = cur[1].coefficients.reduce((prevIn, curIn, indIn) => {
                     if(bigdec_equals(cur[0], bd(1))) {
                         return prevIn
                     }
+                    if (indIn == 60) {
+                        console.log("inside newInt " + indIn, prevIn);
+
+                        console.log("Counting ", prevIn.getValue().length)
+                    }
+                    maxLen = Math.max(maxLen, prevIn.getValue().length);
+                    
                     return prevIn.add(
                         curIn.multiply(bd((-1)**indIn))
                             .multiply(facts[indIn])
@@ -186,17 +198,18 @@ export class ItemSet {
                                 powers[indIn + 1]
                             )
                     )
-                }, bd(0)))
+                }, bd(0))
+                console.log("newInt " + ind, newInt);
+                return prev.add(newInt);
             }, bd(0))
-        
+
             return integral.multiply(bd(pfix)).ceil()
         }
         return 'Not Implemented'
     }
 
-    secsToCompletion(totalDropChance : bigDecimal, totalPower: bigDecimal, idleAttackModifier : bigDecimal, redLiquidBonus : boolean = false, totalRespawnTime : bigDecimal = bd(4)) : bigDecimal | string {
+    secsToCompletion(killsToCompletion : bigDecimal | string, totalPower: bigDecimal, idleAttackModifier : bigDecimal, redLiquidBonus : boolean = false, totalRespawnTime : bigDecimal = bd(4)) : bigDecimal | string {
         if(this.isZoneSet()) {
-            const killsToCompletion = this.killsToCompletion(totalDropChance)
             if(_.isString(killsToCompletion)) {
                 return killsToCompletion
             }
@@ -276,7 +289,7 @@ export const ItemSets : {[k: string]: ItemSet} = {
     CONSTRUCTION: new ItemSet('construction', [453, 454, 455, 456, 457, 458, 459, 460]),
     NETHER: new ItemSet('nether', [461, 462, 463, 464, 465, 466, 467, 468]),
     AMALGAMATE: new ItemSet('amalgamate', [469, 470, 471, 472, 473, 474, 475, 476]),
-    DUCK: new ItemSet('duck', [496, 497, 498, 499, 450, 451, 452, 453]),
+    DUCK: new ItemSet('duck', [496, 497, 498, 499, 450, 451, 452, 453], [0.0000008, 5, 0.0000024, 15], 1),
     PIRATE: new ItemSet('pirate', [507, 508, 509, 510, 511, 512, 513, 514]),
 
     // Hearts

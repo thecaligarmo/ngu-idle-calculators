@@ -1,7 +1,7 @@
 import bigDecimal from "js-big-decimal";
 import Player from "@/assets/player";
 import { getIdleAttackModifier } from "../calculators";
-import { bd, greaterThan, isZero } from "../numbers";
+import { bd, dn, greaterThan, isZero, pn } from "../numbers";
 import Zone, { Zones } from "@/assets/zones";
 import { ItemSet, ItemSets } from "@/assets/sets";
 
@@ -150,10 +150,19 @@ export function itemSetInfo(player: Player) {
             'set': itSet
         }
     }
+
     return ret
 }
 
-export function itemSetDropChance(player : Player) : bigDecimal | string{
-    const idleAttackModifier = getIdleAttackModifier(player.get('spoopySetBonus'), player.get('sadisticNoEquipmentChallenges'))
-    return ItemSets.HALLOWEEN.secsToCompletion(player.get('totalDropChance'), player.get('totalPower'), idleAttackModifier, player.get('redLiquidBonus'), player.get('totalRespawnTime'))
+export function nextItemSetToMax(player:Player) : {'zone': Zone, 'set': ItemSet}{
+    const itemSetsLeftToMax = Object.values(itemSetInfo(player))
+    let minSet : {'zone': Zone, 'set': ItemSet} = itemSetsLeftToMax[0]
+    let minZoneId = minSet.zone.id
+    for(let itemSet of Object.values(itemSetsLeftToMax)) {
+        if(itemSet.zone.id < minZoneId) {
+            minZoneId = itemSet.zone.id
+            minSet = itemSet
+        }
+    }
+    return minSet
 }
