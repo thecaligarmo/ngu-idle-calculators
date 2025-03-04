@@ -2953,6 +2953,7 @@ export const ITEMLIST = [
         [Stat.RES3_BARS, 2200],
     ]),
     new Item(481, 'theEnd', 'The End', Slot.OTHER, Zones.MISC, [], 100),
+    new Item(483, 'theEnd', 'The End', Slot.OTHER, Zones.MISC, [], 100),
     new Item(496, 'aFakeDuckbill', 'A Fake Duckbill', Slot.HEAD, Zones.DUCK, [
         [Stat.POWER, 100000000],
         [Stat.TOUGHNESS, 2820000000],
