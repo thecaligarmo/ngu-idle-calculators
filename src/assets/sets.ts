@@ -1,4 +1,4 @@
-import { bd, bigdec_equals, bigdec_min, factorial, lessThan, Polynomial, toNum } from "@/helpers/numbers"
+import { bd, bigdec_min } from "@/helpers/numbers"
 import bigDecimal from "js-big-decimal"
 import _ from "lodash"
 import { Item, ITEMS } from "./items"
@@ -10,9 +10,7 @@ export class ItemSet {
     items: Item[]
     isMaxxed: boolean
     numMaxxed: number
-    dropChance : [number, number, number, number]
-    lvlDropped : number
-    constructor(key: string, items : number | number[], dropChance :  [number, number, number, number] | [] = [], lvlDropped : number = 0) {
+    constructor(key: string, items : number | number[]) {
         this.key = key
         this.name = key
         this.items = (typeof items == 'number') 
@@ -22,8 +20,6 @@ export class ItemSet {
                         })
         this.isMaxxed = false
         this.numMaxxed = 0
-        this.dropChance = (dropChance.length == 0) ? [0,0,0,0] : dropChance // [normal base, normal max, ]
-        this.lvlDropped = lvlDropped
     }
 
     // TODO - Handle any
@@ -68,8 +64,8 @@ export class ItemSet {
     getDropChance(totalDropChance : bigDecimal) : bigDecimal {
         if(this.isZoneSet()) {
             const zone = this.getZones()[0]
-            const regDC = bigdec_min(zone.baseChance(totalDropChance).multiply(bd(this.dropChance[0])), bd(this.dropChance[1])).divide(bd(100))
-            const bossDC = bigdec_min(zone.baseChance(totalDropChance).multiply(bd(this.dropChance[2])), bd(this.dropChance[3])).divide(bd(100))
+            const regDC = bigdec_min(zone.baseChance(totalDropChance).multiply(bd(zone.itemDrop[0])), bd(zone.itemDrop[1])).divide(bd(100))
+            const bossDC = bigdec_min(zone.baseChance(totalDropChance).multiply(bd(zone.itemDrop[2])), bd(zone.itemDrop[3])).divide(bd(100))
             const bossChance = zone.bossChance()
             return regDC.multiply(bd(1).subtract(bossChance)).add(
                 bossDC.multiply(bossChance)
@@ -80,131 +76,134 @@ export class ItemSet {
 
     // This method should *not* be used as it takes to long
     // Use the PHP script instead
+    // commenting everything out
     killsToCompletion(totalDropChance : bigDecimal) : bigDecimal | string {
         console.log('killsToCompletion takes to long, use php instead');
-        if(this.isMaxxed) {
-            return bd(0)
-        }
-        if(this.isZoneSet() && false) {
-            // Based on: https://math.stackexchange.com/a/3475218/86555
-            let p = this.getDropChance(totalDropChance)
-            let pfix = 1
+        totalDropChance.getValue();
+        // if(this.isMaxxed) {
+        //     return bd(0)
+        // }
+        // if(this.isZoneSet()) {
+        //     // Based on: https://math.stackexchange.com/a/3475218/86555
+        //     let p = this.getDropChance(totalDropChance)
+        //     let pfix = 1
             
-            while (lessThan(p, bd(1))) {
-                p = p.multiply(bd(10))
-                pfix = pfix * 10
-            }
-            p = p.divide(bd(10 * this.items.length))
-            pfix = pfix / 10
+        //     while (lessThan(p, bd(1))) {
+        //         p = p.multiply(bd(10))
+        //         pfix = pfix * 10
+        //     }
+        //     p = p.divide(bd(10 * this.items.length))
+        //     pfix = pfix / 10
 
-            const P = Array(this.items.length).fill(p)
-            const Q = bd(1).subtract(P.reduce((prev, cur) => {return prev.add(cur)}, bd(0)))
-            const v = this.items.map((it) => Math.ceil((100 - it.level) / (this.lvlDropped + 1)))
+        //     const P = Array(this.items.length).fill(p)
+        //     const Q = bd(1).subtract(P.reduce((prev, cur) => {return prev.add(cur)}, bd(0)))
+        //     const lvlDropped = 0
+        //     const v = this.items.map((it) => Math.ceil((100 - it.level) / (lvlDropped + 1)))
             
-            // For quick test and sigfig
-            const x = Math.max(...v)
-            const y = 1 / toNum(p)
-            const sigFig = Math.max(20, Math.ceil( (1.25 * x) + (x * Math.log(y) / 2)))
-            var maxLen = 0;
+        //     // For quick test and sigfig
+        //     const x = Math.max(...v)
+        //     const y = 1 / toNum(p)
+        //     const sigFig = Math.max(20, Math.ceil( (1.25 * x) + (x * Math.log(y) / 2)))
+        //     let maxLen = 0;
 
         
-            const quickTest = x * y
-            if(quickTest > 400000) {
-                return 'infinity'
-            }
+        //     const quickTest = x * y
+        //     if(quickTest > 400000) {
+        //         return 'infinity'
+        //     }
 
-            // [i, Poly] -> e^(ix) - (Poly)
-            const F : [bigDecimal, Polynomial][][] = P.map((pi : bigDecimal, i) => {
-                const coeffs : bigDecimal[] = []
-                for(let j = 0; j < v[i]; j++) {
-                    coeffs.push(bd(-(toNum(pi)**j)).divide(bd(factorial(j)), sigFig))
-                }
-                for(var jj of coeffs) {
-                    maxLen = Math.max(maxLen, jj.getValue().length);
-                }
-                return [[bd(pi), new Polynomial([1])], [bd(0), new Polynomial(coeffs)]]
-            })
+        //     // [i, Poly] -> e^(ix) - (Poly)
+        //     const F : [bigDecimal, Polynomial][][] = P.map((pi : bigDecimal, i) => {
+        //         const coeffs : bigDecimal[] = []
+        //         for(let j = 0; j < v[i]; j++) {
+        //             coeffs.push(bd(-(toNum(pi)**j)).divide(bd(factorial(j)), sigFig))
+        //         }
+        //         for(const jj of coeffs) {
+        //             maxLen = Math.max(maxLen, jj.getValue().length);
+        //         }
+        //         return [[bd(pi), new Polynomial([1])], [bd(0), new Polynomial(coeffs)]]
+        //     })
             
-            const start : [bigDecimal, Polynomial][] = [[bd(Q), new Polynomial([1])]]
+        //     const start : [bigDecimal, Polynomial][] = [[bd(Q), new Polynomial([1])]]
             
-            const G = F.reduce((prev : [bigDecimal, Polynomial][], cur) => {
-                const retStuff : {[key:string]: [bigDecimal, Polynomial]} = {}
+        //     const G = F.reduce((prev : [bigDecimal, Polynomial][], cur) => {
+        //         const retStuff : {[key:string]: [bigDecimal, Polynomial]} = {}
 
-                for(const p of prev) {
-                    if(!cur[0][1].isZero()){
-                        const newP : [bigDecimal, Polynomial] = [p[0].add(cur[0][0]), p[1].multiply(cur[0][1])]
-                        const e = newP[0].getValue()
-                        if(Object.keys(retStuff).includes(e)) {
-                            retStuff[e] = [newP[0], retStuff[e][1].add(newP[1])]
-                        } else {
-                            retStuff[e] = newP
-                        }
-                    }
-                    if(!cur[1][1].isZero()){
-                        const newP : [bigDecimal, Polynomial] = [p[0].add(cur[1][0]), p[1].multiply(cur[1][1])]
-                        const e = newP[0].getValue()
-                        if(Object.keys(retStuff).includes(e)) {
-                            retStuff[e] = [newP[0], retStuff[e][1].add(newP[1])]
-                        } else {
-                            retStuff[e] = newP
-                        }
-                    }
-                }
+        //         for(const p of prev) {
+        //             if(!cur[0][1].isZero()){
+        //                 const newP : [bigDecimal, Polynomial] = [p[0].add(cur[0][0]), p[1].multiply(cur[0][1])]
+        //                 const e = newP[0].getValue()
+        //                 if(Object.keys(retStuff).includes(e)) {
+        //                     retStuff[e] = [newP[0], retStuff[e][1].add(newP[1])]
+        //                 } else {
+        //                     retStuff[e] = newP
+        //                 }
+        //             }
+        //             if(!cur[1][1].isZero()){
+        //                 const newP : [bigDecimal, Polynomial] = [p[0].add(cur[1][0]), p[1].multiply(cur[1][1])]
+        //                 const e = newP[0].getValue()
+        //                 if(Object.keys(retStuff).includes(e)) {
+        //                     retStuff[e] = [newP[0], retStuff[e][1].add(newP[1])]
+        //                 } else {
+        //                     retStuff[e] = newP
+        //                 }
+        //             }
+        //         }
         
-                return Object.values(retStuff)
-            }, start)
+        //         return Object.values(retStuff)
+        //     }, start)
 
             
-            // Make factorial calculation faster
-            let cf = bd(1)
-            const facts = [bd(cf)]
-            const maxCoeff = Math.max(...G.map((g: [bigDecimal, Polynomial]) => {return g[1].coefficients.length}))
-            for(let i = 1; i <= maxCoeff; i++) {
-                cf = cf.multiply(bd(i))
-                facts.push(cf)
-            }
+        //     // Make factorial calculation faster
+        //     let cf = bd(1)
+        //     const facts = [bd(cf)]
+        //     const maxCoeff = Math.max(...G.map((g: [bigDecimal, Polynomial]) => {return g[1].coefficients.length}))
+        //     for(let i = 1; i <= maxCoeff; i++) {
+        //         cf = cf.multiply(bd(i))
+        //         facts.push(cf)
+        //     }
 
         
-            const integral = G.reduce((prev, cur, ind) => {
-                if(bigdec_equals(cur[0], bd(1))) {
-                    return prev
-                }
+        //     const integral = G.reduce((prev, cur, ind) => {
+        //         if(bigdec_equals(cur[0], bd(1))) {
+        //             return prev
+        //         }
 
-                // Make power calculation faster
-                let cf = bd(1)
-                const powers = [cf]
-                const maxCoeff = cur[1].length()
-                const mult = bd(1 / (toNum(cur[0]) - 1))
-                for(let i = 1; i <= maxCoeff+1; i++) {
-                    cf = cf.multiply(mult)
-                    powers.push(cf)
-                }
+        //         // Make power calculation faster
+        //         let cf = bd(1)
+        //         const powers = [cf]
+        //         const maxCoeff = cur[1].length()
+        //         const mult = bd(1 / (toNum(cur[0]) - 1))
+        //         for(let i = 1; i <= maxCoeff+1; i++) {
+        //             cf = cf.multiply(mult)
+        //             powers.push(cf)
+        //         }
 
-                const newInt = cur[1].coefficients.reduce((prevIn, curIn, indIn) => {
-                    if(bigdec_equals(cur[0], bd(1))) {
-                        return prevIn
-                    }
-                    if (indIn == 60) {
-                        console.log("inside newInt " + indIn, prevIn);
+        //         const newInt = cur[1].coefficients.reduce((prevIn, curIn, indIn) => {
+        //             if(bigdec_equals(cur[0], bd(1))) {
+        //                 return prevIn
+        //             }
+        //             if (indIn == 60) {
+        //                 console.log("inside newInt " + indIn, prevIn);
 
-                        console.log("Counting ", prevIn.getValue().length)
-                    }
-                    maxLen = Math.max(maxLen, prevIn.getValue().length);
+        //                 console.log("Counting ", prevIn.getValue().length)
+        //             }
+        //             maxLen = Math.max(maxLen, prevIn.getValue().length);
                     
-                    return prevIn.add(
-                        curIn.multiply(bd((-1)**indIn))
-                            .multiply(facts[indIn])
-                            .multiply(
-                                powers[indIn + 1]
-                            )
-                    )
-                }, bd(0))
-                console.log("newInt " + ind, newInt);
-                return prev.add(newInt);
-            }, bd(0))
+        //             return prevIn.add(
+        //                 curIn.multiply(bd((-1)**indIn))
+        //                     .multiply(facts[indIn])
+        //                     .multiply(
+        //                         powers[indIn + 1]
+        //                     )
+        //             )
+        //         }, bd(0))
+        //         console.log("newInt " + ind, newInt);
+        //         return prev.add(newInt);
+        //     }, bd(0))
 
-            return integral.multiply(bd(pfix)).ceil()
-        }
+        //     return integral.multiply(bd(pfix)).ceil()
+        // }
         return 'Not Implemented'
     }
 
@@ -223,11 +222,18 @@ export class ItemSet {
         // Must have more than one item
         // And be only in one zone
         const z = this.getZones()
-        return this.items.length > 4 && z.length == 1
+        return z.length == 1 && z[0].isZone
+    }
+
+    isTitanSet() : boolean {
+        // Must have more than one item
+        // And be only in one zone
+        const z = this.getZones()
+        return z.length == 1 && z[0].isTitan
     }
 
     getZones(): Zone[] {
-        const zones :Zone[] = []
+        const zones : Zone[] = []
         const seen : number[][] = []
         for(const it of this.items) {
             for(const z of it.zone) {
@@ -284,12 +290,12 @@ export const ItemSets : {[k: string]: ItemSet} = {
     ITHUNGERS: new ItemSet('itHungers', [373, 374, 375, 376, 377, 378, 379]),
     BREADVERSE: new ItemSet('bread', [392, 393, 394, 395, 396, 397, 398, 399]),
     SEVENTIES: new ItemSet('that70s', [400, 401, 402, 403, 404, 405, 406, 407]),
-    HALLOWEEN: new ItemSet('halloweenies', [408, 409, 410, 411, 412, 413, 414, 415], [0.0000016, 4, 0.000005, 15], 1),
+    HALLOWEEN: new ItemSet('halloweenies', [408, 409, 410, 411, 412, 413, 414, 415]),
     ROCKLOBSTER: new ItemSet('rockLobster', [416, 417, 418, 419, 420, 421, 422, 423]),
     CONSTRUCTION: new ItemSet('construction', [453, 454, 455, 456, 457, 458, 459, 460]),
     NETHER: new ItemSet('nether', [461, 462, 463, 464, 465, 466, 467, 468]),
     AMALGAMATE: new ItemSet('amalgamate', [469, 470, 471, 472, 473, 474, 475, 476]),
-    DUCK: new ItemSet('duck', [496, 497, 498, 499, 450, 451, 452, 453], [0.0000008, 5, 0.0000024, 15], 1),
+    DUCK: new ItemSet('duck', [496, 497, 498, 499, 450, 451, 452, 453]),
     PIRATE: new ItemSet('pirate', [507, 508, 509, 510, 511, 512, 513, 514]),
 
     // Hearts

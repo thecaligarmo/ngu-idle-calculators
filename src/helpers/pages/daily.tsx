@@ -1,7 +1,6 @@
 import { AttackStat, Titan, Titans } from "@/assets/enemy"
 import { Wish } from "@/assets/wish"
 import bigDecimal from "js-big-decimal"
-import { ReactElement } from "react"
 import { bd, bigdec_min, greaterThan, toNum } from "../numbers"
 
 export function getQuestInfo(

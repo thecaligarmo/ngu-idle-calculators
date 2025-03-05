@@ -11,7 +11,6 @@ import { getDailySaveAP, getDailySpinAP, getMaxTitanByAK, getMoneyPitAP, getQues
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
 import { nguInfo } from "@/helpers/resourceInfo";
 import _ from "lodash";
-import { useState } from "react";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";

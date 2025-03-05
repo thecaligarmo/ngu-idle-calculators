@@ -1,9 +1,9 @@
-import bigDecimal from "js-big-decimal";
 import Player from "@/assets/player";
-import { getIdleAttackModifier } from "../calculators";
-import { bd, dn, greaterThan, isZero, pn } from "../numbers";
+import { ItemSet } from "@/assets/sets";
 import Zone, { Zones } from "@/assets/zones";
-import { ItemSet, ItemSets } from "@/assets/sets";
+import bigDecimal from "js-big-decimal";
+import { getIdleAttackModifier } from "../calculators";
+import { bd, greaterThan, isZero } from "../numbers";
 
 type zoneType = {
     key: string,
@@ -158,7 +158,7 @@ export function nextItemSetToMax(player:Player) : {'zone': Zone, 'set': ItemSet}
     const itemSetsLeftToMax = Object.values(itemSetInfo(player))
     let minSet : {'zone': Zone, 'set': ItemSet} = itemSetsLeftToMax[0]
     let minZoneId = minSet.zone.id
-    for(let itemSet of Object.values(itemSetsLeftToMax)) {
+    for(const itemSet of Object.values(itemSetsLeftToMax)) {
         if(itemSet.zone.id < minZoneId) {
             minZoneId = itemSet.zone.id
             minSet = itemSet

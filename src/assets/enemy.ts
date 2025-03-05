@@ -628,7 +628,7 @@ export const Titans : {[k: string]: Titan} = {
         new AttackStat(2, bd(666), bd(666), bd(66), bd(300000)),
         new AttackStat(0, bd(3000), bd(2500), bd(0), bd(0)),
         1,
-        bd(35), [bd(1000000), bd(1250000)], 10, 0, 0
+        bd(35), [bd(1000000), bd(1250000)], 10, 0, 0,
     ),
     GRAND_TREE: new Titan(
         2, 'grandCorruptedTree', 'Grand Corrupted Tree',

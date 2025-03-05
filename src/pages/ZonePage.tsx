@@ -1,17 +1,16 @@
 import { InputSelect } from "@/components/selects/InputSelect";
+import { getIdleAttackModifier } from "@/helpers/calculators";
 import { bd, dn, isZero, pn } from "@/helpers/numbers";
 import { getOptimalBoostZone, getOptimalExpZone, getZoneInfo, nextItemSetToMax } from "@/helpers/pages/zone";
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
+import bigDecimal from "js-big-decimal";
+import _ from "lodash";
 import { useEffect, useState } from "react";
 import Content, { requiredDataType } from "../components/Content";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
-import _ from "lodash";
-import { getIdleAttackModifier } from "@/helpers/calculators";
-import bigDecimal from "js-big-decimal";
 
 export default function ZonePage() {
-    const [optZoneChosen, setOptZoneChosen] = useState('training')
     const [timeToCompletion, setTimeToCompletion] = useState('')
     const [killsToCompletion, setKillsToCompletion] = useState(0)
     const player = getPlayer();
@@ -44,7 +43,7 @@ export default function ZonePage() {
     const zoneBoonList = zoneInfo.map(function(zone) {
         const bV = isZero(optimalBoostZone['boost']) ? bd(1) : optimalBoostZone['boost']
         return (
-        <li key={zone.key} className={optZoneChosen == zone.key ? "" : "hidden"}>
+        <li key={zone.key} className={player.get('optZoneChosenBoost') == zone.key ? "" : "hidden"}>
             {zone.name} is <span className="text-red-500">{pn(zone.boost.divide(bV).multiply(bd(100)), fmt, 2)}%</span> as efficient with a boost value of <span className="text-blue-500">{pn(zone.boost, fmt)}.</span>
         </li>
         )
@@ -53,7 +52,7 @@ export default function ZonePage() {
     const zoneExpList = zoneInfo.map(function(zone) {
         const eV = isZero(optimalExpZone['exp']) ? bd(1) : optimalExpZone['exp']
         return (
-        <li key={zone.key} className={optZoneChosen == zone.key ? "" : "hidden"}>
+        <li key={zone.key} className={player.get('optZoneChosenExp') == zone.key ? "" : "hidden"}>
             {zone.name} is <span className="text-red-500">{pn(zone.exp.divide(eV).multiply(bd(100)), fmt, 2)}%</span> as efficient with a exp value of <span className="text-blue-500">{pn(zone.exp, fmt)}.</span>
         </li>
         )
@@ -62,15 +61,15 @@ export default function ZonePage() {
     
     useEffect(() => { 
         if(!_.isEmpty(player.get('itemSets'))) {
-            let itemSet = nextItemSetToMax(player);
+            const itemSet = nextItemSetToMax(player);
             if(itemSet.set.isZoneSet()){
                 const dc = itemSet.set.getDropChance(player.get('totalDropChance'));
-                const items = itemSet.set.items.map((it) => Math.ceil((100 - it.level) / (itemSet.set.lvlDropped + 1)))
+                const items = itemSet.set.items.map((it) => Math.ceil((100 - it.level) / (itemSet.zone.itemDrop[4] + 1)))
                 const idleAttackModifier = getIdleAttackModifier(player.get('spoopySetBonus'), player.get('sadisticNoEquipmentChallenges'))
                 fetch('https://thecaligarmo.com/ngu/index.php?dropChance=' + dc.getValue() + '&itemLevels=' + items.join(','))
                     .then(response=> response.json())
                     .then(data => {
-                        var time = itemSet.set.secsToCompletion(
+                        let time = itemSet.set.secsToCompletion(
                             bd(data),
                             player.get('totalPower'),
                             idleAttackModifier,
@@ -87,7 +86,7 @@ export default function ZonePage() {
 
     let nextSet = '';
     if(!_.isEmpty(player.get('itemSets'))) {
-        let itemSet = nextItemSetToMax(player);
+        const itemSet = nextItemSetToMax(player);
         if(itemSet.set.isZoneSet()) {
             nextSet = itemSet.set.name;
         }
