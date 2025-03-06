@@ -1,7 +1,7 @@
 import { playerImportType } from "@/helpers/types"
 
 const earlySad : playerImportType = {
-    "playerName": "thecaligarmo",
+    "playerName": "x",
     "firstTimePlaying": false,
     "version": 1260,
     "lastTime": 1734924344,

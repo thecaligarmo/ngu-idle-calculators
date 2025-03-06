@@ -1,11 +1,12 @@
-const lateNormal = {
+import { playerImportType } from "@/helpers/types";
+
+const lateNormal : playerImportType= {
     "playerName": "x",
-    "firstTimePlaying": 0,
+    "firstTimePlaying": false,
     "version": 1260,
     "lastTime": 1716934978,
     "nextRebirthDifficulty": {
-        "value__": 0,
-        "__cname__": "difficulty"
+        "value__": 0
     },
     "maxHP": 6.469455127207537e+281,
     "curHP": 6.469455127207537e+281,
@@ -125,9 +126,8 @@ const lateNormal = {
             50000,
             200000
         ],
-        "_hasAutoAdvance": 0,
-        "_autoAdvanceToggle": 0,
-        "__cname__": "Training"
+        "_hasAutoAdvance": false,
+        "_autoAdvanceToggle": false
     },
     "bossID": 281,
     "bossAttack": 1.983642578125e+279,
@@ -139,7 +139,7 @@ const lateNormal = {
     "highestBoss": 281,
     "highestHardBoss": 1,
     "highestSadisticBoss": 1,
-    "firstBossEver": 0,
+    "firstBossEver": false,
     "currentHighestBoss": 281,
     "adventure": {
         "attack": 443425,
@@ -150,56 +150,51 @@ const lateNormal = {
         "respawnRate": 5,
         "attackSpeed": 0.800000011920929,
         "zone": -1,
-        "autoattacking": 1,
+        "autoattacking": true,
         "boss1Spawn": {
             "totalseconds": 2542.624185216642,
             "seconds": 22.624185216642218,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss1Defeated": 0,
+        "boss1Defeated": false,
         "titan1Kills": 664,
         "boss2Spawn": {
             "totalseconds": 2542.624185216642,
             "seconds": 22.624185216642218,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss2Defeated": 0,
+        "boss2Defeated": false,
         "titan2Kills": 664,
         "boss3Spawn": {
             "totalseconds": 2542.624185216642,
             "seconds": 22.624185216642218,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss3Defeated": 0,
+        "boss3Defeated": false,
         "titan3Kills": 664,
         "boss4Spawn": {
             "totalseconds": 2542.624185216642,
             "seconds": 22.624185216642218,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss4Defeated": 0,
+        "boss4Defeated": false,
         "titan4Kills": 664,
         "boss5Spawn": {
             "totalseconds": 2542.624185216642,
             "seconds": 22.624185216642218,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss5Defeated": 0,
+        "boss5Defeated": false,
         "waldoDefeats": 4,
         "waldoFinds": 4,
         "boss5Kills": 526,
@@ -209,16 +204,15 @@ const lateNormal = {
             "seconds": 0.001422025467036292,
             "minutes": 0,
             "hours": 1,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss6Defeated": 0,
+        "boss6Defeated": false,
         "titan6Kills": 668,
-        "clue1Complete": 1,
-        "clue2Complete": 1,
-        "clue3Complete": 1,
-        "clue4Complete": 1,
-        "titan6Unlocked": 1,
+        "clue1Complete": true,
+        "clue2Complete": true,
+        "clue3Complete": true,
+        "clue4Complete": true,
+        "titan6Unlocked": true,
         "titan6Version": 3,
         "boss6Kills": 300,
         "titan6V1Kills": 0,
@@ -230,15 +224,14 @@ const lateNormal = {
             "seconds": 0,
             "minutes": 0,
             "hours": 2,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss7Defeated": 0,
-        "titan7questStarted": 0,
+        "boss7Defeated": false,
+        "titan7questStarted": false,
         "titan7QuestSequence": 0,
-        "titan7questComplete": 0,
+        "titan7questComplete": false,
         "titan7Kills": 0,
-        "titan7Unlocked": 0,
+        "titan7Unlocked": false,
         "titan7Version": 0,
         "boss7Kills": 0,
         "titan7V1Kills": 0,
@@ -250,40 +243,38 @@ const lateNormal = {
             "seconds": 0,
             "minutes": 0,
             "hours": 2,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss8Defeated": 0,
-        "titan8questStarted": 0,
+        "boss8Defeated": false,
+        "titan8questStarted": false,
         "titan8QuestSequence": 0,
-        "titan8questComplete": 0,
+        "titan8questComplete": false,
         "titan8Kills": 0,
-        "titan8Unlocked": 0,
+        "titan8Unlocked": false,
         "titan8Version": 0,
         "boss8Kills": 0,
         "titan8V1Kills": 0,
         "titan8V2Kills": 0,
         "titan8V3Kills": 0,
         "titan8V4Kills": 0,
-        "skeletonWhacked": 0,
-        "icarusWhacked": 0,
-        "emptyNameWhacked": 0,
-        "kingCircleWhacked": 0,
-        "robBossWhacked": 0,
+        "skeletonWhacked": false,
+        "icarusWhacked": false,
+        "emptyNameWhacked": false,
+        "kingCircleWhacked": false,
+        "robBossWhacked": false,
         "boss9Spawn": {
             "totalseconds": 10800,
             "seconds": 0,
             "minutes": 0,
             "hours": 3,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss9Defeated": 0,
-        "titan9questStarted": 0,
-        "titan9questComplete": 0,
-        "titan9SpecialReward": 0,
+        "boss9Defeated": false,
+        "titan9questStarted": false,
+        "titan9questComplete": false,
+        "titan9SpecialReward": false,
         "titan9Kills": 0,
-        "titan9Unlocked": 0,
+        "titan9Unlocked": false,
         "titan9Version": 0,
         "boss9Kills": 0,
         "titan9V1Kills": 0,
@@ -295,14 +286,13 @@ const lateNormal = {
             "seconds": 0,
             "minutes": 0,
             "hours": 4,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss10Defeated": 0,
-        "titan10questStarted": 0,
-        "titan10SpecialReward": 0,
+        "boss10Defeated": false,
+        "titan10questStarted": false,
+        "titan10SpecialReward": false,
         "titan10Kills": 0,
-        "titan10Unlocked": 1,
+        "titan10Unlocked": true,
         "titan10Version": 0,
         "boss10Kills": 0,
         "titan10V1Kills": 0,
@@ -314,12 +304,11 @@ const lateNormal = {
             "seconds": 0,
             "minutes": 0,
             "hours": 4,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss11Defeated": 0,
+        "boss11Defeated": false,
         "titan11Kills": 0,
-        "titan11Unlocked": 1,
+        "titan11Unlocked": true,
         "titan11Version": 0,
         "boss11Kills": 0,
         "titan11V1Kills": 0,
@@ -331,35 +320,32 @@ const lateNormal = {
             "seconds": 0,
             "minutes": 0,
             "hours": 5,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss12Defeated": 0,
+        "boss12Defeated": false,
         "titan12Kills": 0,
-        "titan12Unlocked": 1,
+        "titan12Unlocked": true,
         "titan12Version": 0,
         "boss12Kills": 0,
         "titan12V1Kills": 0,
         "titan12V2Kills": 0,
         "titan12V3Kills": 0,
         "titan12V4Kills": 0,
-        "ratTitanDefeated": 0,
+        "ratTitanDefeated": false,
         "boss13Spawn": {
             "totalseconds": 18000,
             "seconds": 0.002027218259172514,
             "minutes": 0,
             "hours": 5,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "finalTitanDefeated": 0,
+        "finalTitanDefeated": false,
         "boss14Spawn": {
             "totalseconds": 18000,
             "seconds": 0.002027218259172514,
             "minutes": 0,
             "hours": 5,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "itopodStart": 447,
         "itopodEnd": 447,
@@ -629,20 +615,17 @@ const lateNormal = {
             "enemiesKilled": 2570246,
             "poopProgress": 6730,
             "buffedKills": 0,
-            "filterDiff": 1,
-            "filterAfford": 0,
-            "filterMaxxed": 0,
+            "filterDiff": true,
+            "filterAfford": false,
+            "filterMaxxed": false,
             "orderType": {
-                "value__": 2,
-                "__cname__": "orderPerks"
-            },
-            "__cname__": "ITOPOD"
+                "value__": 2
+            }
         },
-        "beastModeOn": 1,
-        "didAdvAdvance": 0,
-        "move69Unlocked": 0,
-        "move69Used": 0,
-        "__cname__": "Adventure"
+        "beastModeOn": true,
+        "didAdvAdvance": false,
+        "move69Unlocked": false,
+        "move69Used": 0
     },
     "inventory": {
         "spaces": 60,
@@ -651,8 +634,7 @@ const lateNormal = {
         "head": {
             "id": 184,
             "type": {
-                "value__": 0,
-                "__cname__": "part"
+                "value__": 0
             },
             "bossRequired": 100,
             "capAttack": 11000,
@@ -660,32 +642,27 @@ const lateNormal = {
             "capDefense": 242000,
             "curDefense": 484000,
             "spec1Type": {
-                "value__": 27,
-                "__cname__": "specType"
+                "value__": 27
             },
             "spec1Cur": 2800000,
             "spec1Cap": 1400000,
             "spec2Type": {
-                "value__": 38,
-                "__cname__": "specType"
+                "value__": 38
             },
             "spec2Cur": 3000000,
             "spec2Cap": 1500000,
             "spec3Type": {
-                "value__": 36,
-                "__cname__": "specType"
+                "value__": 36
             },
             "spec3Cur": 2000000,
             "spec3Cap": 1000000,
-            "removable": 1,
-            "level": 100,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 100
         },
         "chest": {
             "id": 178,
             "type": {
-                "value__": 1,
-                "__cname__": "part"
+                "value__": 1
             },
             "bossRequired": 100,
             "capAttack": 8000,
@@ -693,32 +670,27 @@ const lateNormal = {
             "capDefense": 150000,
             "curDefense": 300000,
             "spec1Type": {
-                "value__": 28,
-                "__cname__": "specType"
+                "value__": 28
             },
             "spec1Cur": 4000000,
             "spec1Cap": 2000000,
             "spec2Type": {
-                "value__": 29,
-                "__cname__": "specType"
+                "value__": 29
             },
             "spec2Cur": 4200000,
             "spec2Cap": 2100000,
             "spec3Type": {
-                "value__": 39,
-                "__cname__": "specType"
+                "value__": 39
             },
             "spec3Cur": 4000000,
             "spec3Cap": 2000000,
-            "removable": 1,
-            "level": 100,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 100
         },
         "legs": {
             "id": 223,
             "type": {
-                "value__": 2,
-                "__cname__": "part"
+                "value__": 2
             },
             "bossRequired": 100,
             "capAttack": 20000,
@@ -726,32 +698,27 @@ const lateNormal = {
             "capDefense": 355000,
             "curDefense": 710000,
             "spec1Type": {
-                "value__": 35,
-                "__cname__": "specType"
+                "value__": 35
             },
             "spec1Cur": 3400000,
             "spec1Cap": 1700000,
             "spec2Type": {
-                "value__": 27,
-                "__cname__": "specType"
+                "value__": 27
             },
             "spec2Cur": 5600000,
             "spec2Cap": 2800000,
             "spec3Type": {
-                "value__": 37,
-                "__cname__": "specType"
+                "value__": 37
             },
             "spec3Cur": 4600000,
             "spec3Cap": 2300000,
-            "removable": 0,
-            "level": 100,
-            "__cname__": "Equipment"
+            "removable": false,
+            "level": 100
         },
         "boots": {
             "id": 187,
             "type": {
-                "value__": 3,
-                "__cname__": "part"
+                "value__": 3
             },
             "bossRequired": 100,
             "capAttack": 10000,
@@ -759,32 +726,27 @@ const lateNormal = {
             "capDefense": 240000,
             "curDefense": 480000,
             "spec1Type": {
-                "value__": 29,
-                "__cname__": "specType"
+                "value__": 29
             },
             "spec1Cur": 2800000,
             "spec1Cap": 1400000,
             "spec2Type": {
-                "value__": 28,
-                "__cname__": "specType"
+                "value__": 28
             },
             "spec2Cur": 2800000,
             "spec2Cap": 1400000,
             "spec3Type": {
-                "value__": 27,
-                "__cname__": "specType"
+                "value__": 27
             },
             "spec3Cur": 2800000,
             "spec3Cap": 1400000,
-            "removable": 1,
-            "level": 100,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 100
         },
         "weapon": {
             "id": 177,
             "type": {
-                "value__": 4,
-                "__cname__": "part"
+                "value__": 4
             },
             "bossRequired": 100,
             "capAttack": 1000000,
@@ -792,32 +754,27 @@ const lateNormal = {
             "capDefense": 60000,
             "curDefense": 120000,
             "spec1Type": {
-                "value__": 29,
-                "__cname__": "specType"
+                "value__": 29
             },
             "spec1Cur": 2400000,
             "spec1Cap": 1200000,
             "spec2Type": {
-                "value__": 27,
-                "__cname__": "specType"
+                "value__": 27
             },
             "spec2Cur": 2400000,
             "spec2Cap": 1200000,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 100,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 100
         },
         "weapon2": {
             "id": 0,
             "type": {
-                "value__": 9,
-                "__cname__": "part"
+                "value__": 9
             },
             "bossRequired": -1,
             "capAttack": 0,
@@ -825,32 +782,27 @@ const lateNormal = {
             "capDefense": 0,
             "curDefense": 0,
             "spec1Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec1Cur": 0,
             "spec1Cap": 0,
             "spec2Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec2Cur": 0,
             "spec2Cap": 0,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 0,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 0
         },
         "acc1": {
             "id": 0,
             "type": {
-                "value__": 9,
-                "__cname__": "part"
+                "value__": 9
             },
             "bossRequired": -1,
             "capAttack": 0,
@@ -858,32 +810,27 @@ const lateNormal = {
             "capDefense": 0,
             "curDefense": 0,
             "spec1Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec1Cur": 0,
             "spec1Cap": 0,
             "spec2Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec2Cur": 0,
             "spec2Cap": 0,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 0,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 0
         },
         "acc2": {
             "id": 0,
             "type": {
-                "value__": 9,
-                "__cname__": "part"
+                "value__": 9
             },
             "bossRequired": -1,
             "capAttack": 0,
@@ -891,32 +838,27 @@ const lateNormal = {
             "capDefense": 0,
             "curDefense": 0,
             "spec1Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec1Cur": 0,
             "spec1Cap": 0,
             "spec2Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec2Cur": 0,
             "spec2Cap": 0,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 0,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 0
         },
         "acc3": {
             "id": 0,
             "type": {
-                "value__": 9,
-                "__cname__": "part"
+                "value__": 9
             },
             "bossRequired": -1,
             "capAttack": 0,
@@ -924,32 +866,27 @@ const lateNormal = {
             "capDefense": 0,
             "curDefense": 0,
             "spec1Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec1Cur": 0,
             "spec1Cap": 0,
             "spec2Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec2Cur": 0,
             "spec2Cap": 0,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 0,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 0
         },
         "temp": {
             "id": 0,
             "type": {
-                "value__": 9,
-                "__cname__": "part"
+                "value__": 9
             },
             "bossRequired": -1,
             "capAttack": 0,
@@ -957,32 +894,27 @@ const lateNormal = {
             "capDefense": 0,
             "curDefense": 0,
             "spec1Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec1Cur": 0,
             "spec1Cap": 0,
             "spec2Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec2Cur": 0,
             "spec2Cap": 0,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 0,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 0
         },
         "trash": {
             "id": 159,
             "type": {
-                "value__": 4,
-                "__cname__": "part"
+                "value__": 4
             },
             "bossRequired": 100,
             "capAttack": 170000,
@@ -990,33 +922,28 @@ const lateNormal = {
             "capDefense": 12000,
             "curDefense": 13920,
             "spec1Type": {
-                "value__": 27,
-                "__cname__": "specType"
+                "value__": 27
             },
             "spec1Cur": 1033439.5,
             "spec1Cap": 1000000,
             "spec2Type": {
-                "value__": 28,
-                "__cname__": "specType"
+                "value__": 28
             },
             "spec2Cur": 1007307.9375,
             "spec2Cap": 1000000,
             "spec3Type": {
-                "value__": 29,
-                "__cname__": "specType"
+                "value__": 29
             },
             "spec3Cur": 1000000,
             "spec3Cap": 1000000,
-            "removable": 1,
-            "level": 100,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 100
         },
         "items": [
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1024,34 +951,29 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             }
         ],
         "accessories": [
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1059,32 +981,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1092,32 +1009,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1125,32 +1037,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1158,32 +1065,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1191,32 +1093,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1224,41 +1121,35 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             }
         ],
         "boostCombineState": {
             "s0": 1400715221,
             "s1": 1444611082,
             "s2": -1038618125,
-            "s3": -2053996576,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": -2053996576
         },
         "inventory": [
             {
                 "id": 221,
                 "type": {
-                    "value__": 0,
-                    "__cname__": "part"
+                    "value__": 0
                 },
                 "bossRequired": 100,
                 "capAttack": 30000,
@@ -1266,32 +1157,27 @@ const lateNormal = {
                 "capDefense": 352000,
                 "curDefense": 646460.6875,
                 "spec1Type": {
-                    "value__": 33,
-                    "__cname__": "specType"
+                    "value__": 33
                 },
                 "spec1Cur": 3906992.5,
                 "spec1Cap": 2600000,
                 "spec2Type": {
-                    "value__": 38,
-                    "__cname__": "specType"
+                    "value__": 38
                 },
                 "spec2Cur": 2777616,
                 "spec2Cap": 1900000,
                 "spec3Type": {
-                    "value__": 36,
-                    "__cname__": "specType"
+                    "value__": 36
                 },
                 "spec3Cur": 1934271.75,
                 "spec3Cap": 1400000,
-                "removable": 0,
-                "level": 98,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 98
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1299,32 +1185,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1332,32 +1213,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 142,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 40000,
@@ -1365,32 +1241,27 @@ const lateNormal = {
                 "capDefense": 40000,
                 "curDefense": 40000,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 1000,
                 "spec1Cap": 1000,
                 "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec2Cur": 800,
                 "spec2Cap": 800,
                 "spec3Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
+                    "value__": 16
                 },
                 "spec3Cur": 2700,
                 "spec3Cap": 2700,
-                "removable": 1,
-                "level": 2,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 2
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1398,32 +1269,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1431,32 +1297,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1464,32 +1325,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1497,32 +1353,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1530,32 +1381,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1563,32 +1409,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1596,32 +1437,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1629,32 +1465,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1662,32 +1493,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1695,32 +1521,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1728,32 +1549,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1761,32 +1577,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1794,32 +1605,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1827,32 +1633,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1860,32 +1661,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1893,32 +1689,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1926,32 +1717,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1959,32 +1745,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1992,32 +1773,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2025,32 +1801,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2058,32 +1829,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2091,32 +1857,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2124,32 +1885,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2157,32 +1913,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2190,32 +1941,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2223,32 +1969,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2256,32 +1997,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2289,32 +2025,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2322,32 +2053,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2355,32 +2081,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2388,32 +2109,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2421,32 +2137,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2454,32 +2165,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2487,32 +2193,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2520,32 +2221,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2553,32 +2249,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2586,32 +2277,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2619,32 +2305,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2652,32 +2333,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2685,32 +2361,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2718,32 +2389,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2751,32 +2417,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2784,32 +2445,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2817,32 +2473,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 222,
                 "type": {
-                    "value__": 1,
-                    "__cname__": "part"
+                    "value__": 1
                 },
                 "bossRequired": 100,
                 "capAttack": 20000,
@@ -2850,32 +2501,27 @@ const lateNormal = {
                 "capDefense": 370000,
                 "curDefense": 580900,
                 "spec1Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec1Cur": 4950000,
                 "spec1Cap": 3000000,
                 "spec2Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
+                    "value__": 27
                 },
                 "spec2Cur": 4728927.5,
                 "spec2Cap": 2900000,
                 "spec3Type": {
-                    "value__": 36,
-                    "__cname__": "specType"
+                    "value__": 36
                 },
                 "spec3Cur": 3225000,
                 "spec3Cap": 2500000,
-                "removable": 0,
-                "level": 91,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 91
             },
             {
                 "id": 224,
                 "type": {
-                    "value__": 3,
-                    "__cname__": "part"
+                    "value__": 3
                 },
                 "bossRequired": 100,
                 "capAttack": 20000,
@@ -2883,32 +2529,27 @@ const lateNormal = {
                 "capDefense": 366000,
                 "curDefense": 554117,
                 "spec1Type": {
-                    "value__": 37,
-                    "__cname__": "specType"
+                    "value__": 37
                 },
                 "spec1Cur": 4211420,
                 "spec1Cap": 3400000,
                 "spec2Type": {
-                    "value__": 35,
-                    "__cname__": "specType"
+                    "value__": 35
                 },
                 "spec2Cur": 4080000,
                 "spec2Cap": 3400000,
                 "spec3Type": {
-                    "value__": 33,
-                    "__cname__": "specType"
+                    "value__": 33
                 },
                 "spec3Cur": 4080000,
                 "spec3Cap": 3400000,
-                "removable": 0,
-                "level": 91,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 91
             },
             {
                 "id": 193,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 50000,
@@ -2916,32 +2557,27 @@ const lateNormal = {
                 "capDefense": 50000,
                 "curDefense": 100000,
                 "spec1Type": {
-                    "value__": 15,
-                    "__cname__": "specType"
+                    "value__": 15
                 },
                 "spec1Cur": 100000,
                 "spec1Cap": 50000,
                 "spec2Type": {
-                    "value__": 43,
-                    "__cname__": "specType"
+                    "value__": 43
                 },
                 "spec2Cur": 2000000,
                 "spec2Cap": 1000000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 100
             },
             {
                 "id": 225,
                 "type": {
-                    "value__": 4,
-                    "__cname__": "part"
+                    "value__": 4
                 },
                 "bossRequired": 100,
                 "capAttack": 3800000,
@@ -2949,32 +2585,27 @@ const lateNormal = {
                 "capDefense": 200000,
                 "curDefense": 400000,
                 "spec1Type": {
-                    "value__": 38,
-                    "__cname__": "specType"
+                    "value__": 38
                 },
                 "spec1Cur": 4359018,
                 "spec1Cap": 2900000,
                 "spec2Type": {
-                    "value__": 33,
-                    "__cname__": "specType"
+                    "value__": 33
                 },
                 "spec2Cur": 3998681.5,
                 "spec2Cap": 3000000,
                 "spec3Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
+                    "value__": 28
                 },
                 "spec3Cur": 1944000,
                 "spec3Cap": 1800000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2982,32 +2613,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -3015,32 +2641,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -3048,32 +2669,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -3081,32 +2697,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -3114,32 +2725,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 142,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 40000,
@@ -3147,32 +2753,27 @@ const lateNormal = {
                 "capDefense": 40000,
                 "curDefense": 40000,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 1000,
                 "spec1Cap": 1000,
                 "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec2Cur": 800,
                 "spec2Cap": 800,
                 "spec3Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
+                    "value__": 16
                 },
                 "spec3Cur": 2700,
                 "spec3Cap": 2700,
-                "removable": 0,
-                "level": 26,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 26
             },
             {
                 "id": 173,
                 "type": {
-                    "value__": 0,
-                    "__cname__": "part"
+                    "value__": 0
                 },
                 "bossRequired": 100,
                 "capAttack": 5000,
@@ -3180,32 +2781,27 @@ const lateNormal = {
                 "capDefense": 112000,
                 "curDefense": 114245.3984375,
                 "spec1Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec1Cur": 1700000,
                 "spec1Cap": 850000,
                 "spec2Type": {
-                    "value__": 33,
-                    "__cname__": "specType"
+                    "value__": 33
                 },
                 "spec2Cur": 2400000,
                 "spec2Cap": 1200000,
                 "spec3Type": {
-                    "value__": 37,
-                    "__cname__": "specType"
+                    "value__": 37
                 },
                 "spec3Cur": 1800000,
                 "spec3Cap": 900000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 168,
                 "type": {
-                    "value__": 4,
-                    "__cname__": "part"
+                    "value__": 4
                 },
                 "bossRequired": 100,
                 "capAttack": 500000,
@@ -3213,32 +2809,27 @@ const lateNormal = {
                 "capDefense": 25000,
                 "curDefense": 34500,
                 "spec1Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec1Cur": 1200000,
                 "spec1Cap": 600000,
                 "spec2Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
+                    "value__": 27
                 },
                 "spec2Cur": 1200000,
                 "spec2Cap": 600000,
                 "spec3Type": {
-                    "value__": 30,
-                    "__cname__": "specType"
+                    "value__": 30
                 },
                 "spec3Cur": 2400000,
                 "spec3Cap": 1200000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 170,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 100000,
@@ -3246,32 +2837,27 @@ const lateNormal = {
                 "capDefense": 100000,
                 "curDefense": 103000,
                 "spec1Type": {
-                    "value__": 45,
-                    "__cname__": "specType"
+                    "value__": 45
                 },
                 "spec1Cur": 5150000,
                 "spec1Cap": 5000000,
                 "spec2Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec2Cur": 1236000,
                 "spec2Cap": 1200000,
                 "spec3Type": {
-                    "value__": 41,
-                    "__cname__": "specType"
+                    "value__": 41
                 },
                 "spec3Cur": 2575000,
                 "spec3Cap": 2500000,
-                "removable": 0,
-                "level": 3,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 3
             },
             {
                 "id": 169,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 100000,
@@ -3279,32 +2865,27 @@ const lateNormal = {
                 "capDefense": 100000,
                 "curDefense": 101000,
                 "spec1Type": {
-                    "value__": 41,
-                    "__cname__": "specType"
+                    "value__": 41
                 },
                 "spec1Cur": 1010000,
                 "spec1Cap": 1000000,
                 "spec2Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
+                    "value__": 27
                 },
                 "spec2Cur": 404000,
                 "spec2Cap": 400000,
                 "spec3Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec3Cur": 404000,
                 "spec3Cap": 400000,
-                "removable": 0,
-                "level": 1,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 1
             },
             {
                 "id": 186,
                 "type": {
-                    "value__": 2,
-                    "__cname__": "part"
+                    "value__": 2
                 },
                 "bossRequired": 100,
                 "capAttack": 10000,
@@ -3312,32 +2893,27 @@ const lateNormal = {
                 "capDefense": 245000,
                 "curDefense": 490000,
                 "spec1Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
+                    "value__": 28
                 },
                 "spec1Cur": 2000000,
                 "spec1Cap": 1000000,
                 "spec2Type": {
-                    "value__": 33,
-                    "__cname__": "specType"
+                    "value__": 33
                 },
                 "spec2Cur": 3600000,
                 "spec2Cap": 1800000,
                 "spec3Type": {
-                    "value__": 37,
-                    "__cname__": "specType"
+                    "value__": 37
                 },
                 "spec3Cur": 3200000,
                 "spec3Cap": 1600000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 188,
                 "type": {
-                    "value__": 4,
-                    "__cname__": "part"
+                    "value__": 4
                 },
                 "bossRequired": 100,
                 "capAttack": 2200000,
@@ -3345,32 +2921,27 @@ const lateNormal = {
                 "capDefense": 100000,
                 "curDefense": 200000,
                 "spec1Type": {
-                    "value__": 38,
-                    "__cname__": "specType"
+                    "value__": 38
                 },
                 "spec1Cur": 4000000,
                 "spec1Cap": 2000000,
                 "spec2Type": {
-                    "value__": 34,
-                    "__cname__": "specType"
+                    "value__": 34
                 },
                 "spec2Cur": 4000000,
                 "spec2Cap": 2000000,
                 "spec3Type": {
-                    "value__": 36,
-                    "__cname__": "specType"
+                    "value__": 36
                 },
                 "spec3Cur": 2400000,
                 "spec3Cap": 1200000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 164,
                 "type": {
-                    "value__": 0,
-                    "__cname__": "part"
+                    "value__": 0
                 },
                 "bossRequired": 100,
                 "capAttack": 0,
@@ -3378,32 +2949,27 @@ const lateNormal = {
                 "capDefense": 60000,
                 "curDefense": 120000,
                 "spec1Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
+                    "value__": 28
                 },
                 "spec1Cur": 900000,
                 "spec1Cap": 450000,
                 "spec2Type": {
-                    "value__": 32,
-                    "__cname__": "specType"
+                    "value__": 32
                 },
                 "spec2Cur": 3200000,
                 "spec2Cap": 1600000,
                 "spec3Type": {
-                    "value__": 40,
-                    "__cname__": "specType"
+                    "value__": 40
                 },
                 "spec3Cur": 2400000,
                 "spec3Cap": 1200000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 160,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 15000,
@@ -3411,32 +2977,27 @@ const lateNormal = {
                 "capDefense": 15000,
                 "curDefense": 30000,
                 "spec1Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
+                    "value__": 27
                 },
                 "spec1Cur": 1000000,
                 "spec1Cap": 500000,
                 "spec2Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec2Cur": 600000,
                 "spec2Cap": 300000,
                 "spec3Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec3Cur": 600,
                 "spec3Cap": 300,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 443,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -3444,32 +3005,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
+                    "value__": 27
                 },
                 "spec1Cur": 2000000,
                 "spec1Cap": 1000000,
                 "spec2Type": {
-                    "value__": 38,
-                    "__cname__": "specType"
+                    "value__": 38
                 },
                 "spec2Cur": 3000000,
                 "spec2Cap": 1500000,
                 "spec3Type": {
-                    "value__": 26,
-                    "__cname__": "specType"
+                    "value__": 26
                 },
                 "spec3Cur": 50000,
                 "spec3Cap": 25000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 185,
                 "type": {
-                    "value__": 1,
-                    "__cname__": "part"
+                    "value__": 1
                 },
                 "bossRequired": 100,
                 "capAttack": 11000,
@@ -3477,32 +3033,27 @@ const lateNormal = {
                 "capDefense": 250000,
                 "curDefense": 500000,
                 "spec1Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec1Cur": 3000000,
                 "spec1Cap": 1500000,
                 "spec2Type": {
-                    "value__": 34,
-                    "__cname__": "specType"
+                    "value__": 34
                 },
                 "spec2Cur": 2111147,
                 "spec2Cap": 1400000,
                 "spec3Type": {
-                    "value__": 35,
-                    "__cname__": "specType"
+                    "value__": 35
                 },
                 "spec3Cur": 1200000,
                 "spec3Cap": 1200000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 176,
                 "type": {
-                    "value__": 3,
-                    "__cname__": "part"
+                    "value__": 3
                 },
                 "bossRequired": 100,
                 "capAttack": 5000,
@@ -3510,32 +3061,27 @@ const lateNormal = {
                 "capDefense": 122000,
                 "curDefense": 123220,
                 "spec1Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec1Cur": 1200000,
                 "spec1Cap": 600000,
                 "spec2Type": {
-                    "value__": 34,
-                    "__cname__": "specType"
+                    "value__": 34
                 },
                 "spec2Cur": 2800000,
                 "spec2Cap": 1400000,
                 "spec3Type": {
-                    "value__": 37,
-                    "__cname__": "specType"
+                    "value__": 37
                 },
                 "spec3Cur": 2800000,
                 "spec3Cap": 1400000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 189,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 33333,
@@ -3543,32 +3089,27 @@ const lateNormal = {
                 "capDefense": 33333,
                 "curDefense": 66666,
                 "spec1Type": {
-                    "value__": 31,
-                    "__cname__": "specType"
+                    "value__": 31
                 },
                 "spec1Cur": 4000000,
                 "spec1Cap": 2000000,
                 "spec2Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec2Cur": 3000000,
                 "spec2Cap": 1500000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 442,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 0,
@@ -3576,32 +3117,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
+                    "value__": 27
                 },
                 "spec1Cur": 800000,
                 "spec1Cap": 400000,
                 "spec2Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec2Cur": 800000,
                 "spec2Cap": 400000,
                 "spec3Type": {
-                    "value__": 41,
-                    "__cname__": "specType"
+                    "value__": 41
                 },
                 "spec3Cur": 800000,
                 "spec3Cap": 400000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -3609,32 +3145,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 153,
                 "type": {
-                    "value__": 3,
-                    "__cname__": "part"
+                    "value__": 3
                 },
                 "bossRequired": 100,
                 "capAttack": 1000,
@@ -3642,32 +3173,27 @@ const lateNormal = {
                 "capDefense": 24000,
                 "curDefense": 34612.5234375,
                 "spec1Type": {
-                    "value__": 12,
-                    "__cname__": "specType"
+                    "value__": 12
                 },
                 "spec1Cur": 26000,
                 "spec1Cap": 13000,
                 "spec2Type": {
-                    "value__": 22,
-                    "__cname__": "specType"
+                    "value__": 22
                 },
                 "spec2Cur": 12000,
                 "spec2Cap": 6000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 140,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 1000,
@@ -3675,32 +3201,27 @@ const lateNormal = {
                 "capDefense": 1000,
                 "curDefense": 2000,
                 "spec1Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
+                    "value__": 17
                 },
                 "spec1Cur": 5000,
                 "spec1Cap": 2500,
                 "spec2Type": {
-                    "value__": 19,
-                    "__cname__": "specType"
+                    "value__": 19
                 },
                 "spec2Cur": 2400,
                 "spec2Cap": 1200,
                 "spec3Type": {
-                    "value__": 21,
-                    "__cname__": "specType"
+                    "value__": 21
                 },
                 "spec3Cur": 8000,
                 "spec3Cap": 4000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 440,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 82,
                 "capAttack": 4000,
@@ -3708,32 +3229,27 @@ const lateNormal = {
                 "capDefense": 4000,
                 "curDefense": 8000,
                 "spec1Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
+                    "value__": 16
                 },
                 "spec1Cur": 3200,
                 "spec1Cap": 1600,
                 "spec2Type": {
-                    "value__": 18,
-                    "__cname__": "specType"
+                    "value__": 18
                 },
                 "spec2Cur": 2000,
                 "spec2Cap": 1000,
                 "spec3Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
+                    "value__": 20
                 },
                 "spec3Cur": 10000,
                 "spec3Cap": 5000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 139,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 1000,
@@ -3741,32 +3257,27 @@ const lateNormal = {
                 "capDefense": 1000,
                 "curDefense": 2000,
                 "spec1Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
+                    "value__": 16
                 },
                 "spec1Cur": 5000,
                 "spec1Cap": 2500,
                 "spec2Type": {
-                    "value__": 18,
-                    "__cname__": "specType"
+                    "value__": 18
                 },
                 "spec2Cur": 2400,
                 "spec2Cap": 1200,
                 "spec3Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
+                    "value__": 20
                 },
                 "spec3Cur": 8000,
                 "spec3Cap": 4000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 137,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 6666,
@@ -3774,32 +3285,27 @@ const lateNormal = {
                 "capDefense": 6666,
                 "curDefense": 13332,
                 "spec1Type": {
-                    "value__": 14,
-                    "__cname__": "specType"
+                    "value__": 14
                 },
                 "spec1Cur": 2000,
                 "spec1Cap": 1000,
                 "spec2Type": {
-                    "value__": 23,
-                    "__cname__": "specType"
+                    "value__": 23
                 },
                 "spec2Cur": 4000,
                 "spec2Cap": 2000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 142,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 40000,
@@ -3807,32 +3313,27 @@ const lateNormal = {
                 "capDefense": 40000,
                 "curDefense": 80000,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 2000,
                 "spec1Cap": 1000,
                 "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec2Cur": 1600,
                 "spec2Cap": 800,
                 "spec3Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
+                    "value__": 16
                 },
                 "spec3Cur": 5400,
                 "spec3Cap": 2700,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 157,
                 "type": {
-                    "value__": 2,
-                    "__cname__": "part"
+                    "value__": 2
                 },
                 "bossRequired": 100,
                 "capAttack": 1000,
@@ -3840,32 +3341,27 @@ const lateNormal = {
                 "capDefense": 23000,
                 "curDefense": 29853.63671875,
                 "spec1Type": {
-                    "value__": 19,
-                    "__cname__": "specType"
+                    "value__": 19
                 },
                 "spec1Cur": 16000,
                 "spec1Cap": 8000,
                 "spec2Type": {
-                    "value__": 21,
-                    "__cname__": "specType"
+                    "value__": 21
                 },
                 "spec2Cur": 17000,
                 "spec2Cap": 8500,
                 "spec3Type": {
-                    "value__": 18,
-                    "__cname__": "specType"
+                    "value__": 18
                 },
                 "spec3Cur": 4000,
                 "spec3Cap": 2000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 441,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 82,
                 "capAttack": 0,
@@ -3873,32 +3369,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 26,
-                    "__cname__": "specType"
+                    "value__": 26
                 },
                 "spec1Cur": 24000,
                 "spec1Cap": 12000,
                 "spec2Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
+                    "value__": 20
                 },
                 "spec2Cur": 12000,
                 "spec2Cap": 6000,
                 "spec3Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
+                    "value__": 17
                 },
                 "spec3Cur": 9000,
                 "spec3Cap": 4500,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 158,
                 "type": {
-                    "value__": 3,
-                    "__cname__": "part"
+                    "value__": 3
                 },
                 "bossRequired": 100,
                 "capAttack": 1000,
@@ -3906,32 +3397,27 @@ const lateNormal = {
                 "capDefense": 24000,
                 "curDefense": 31200,
                 "spec1Type": {
-                    "value__": 15,
-                    "__cname__": "specType"
+                    "value__": 15
                 },
                 "spec1Cur": 60000,
                 "spec1Cap": 30000,
                 "spec2Type": {
-                    "value__": 26,
-                    "__cname__": "specType"
+                    "value__": 26
                 },
                 "spec2Cur": 80000,
                 "spec2Cap": 40000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 149,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 12000,
@@ -3939,32 +3425,27 @@ const lateNormal = {
                 "capDefense": 12000,
                 "curDefense": 24000,
                 "spec1Type": {
-                    "value__": 22,
-                    "__cname__": "specType"
+                    "value__": 22
                 },
                 "spec1Cur": 20000,
                 "spec1Cap": 10000,
                 "spec2Type": {
-                    "value__": 15,
-                    "__cname__": "specType"
+                    "value__": 15
                 },
                 "spec2Cur": 30000,
                 "spec2Cap": 15000,
                 "spec3Type": {
-                    "value__": 26,
-                    "__cname__": "specType"
+                    "value__": 26
                 },
                 "spec3Cur": 20000,
                 "spec3Cap": 10000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 138,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 1000,
@@ -3972,32 +3453,27 @@ const lateNormal = {
                 "capDefense": 1000,
                 "curDefense": 2000,
                 "spec1Type": {
-                    "value__": 22,
-                    "__cname__": "specType"
+                    "value__": 22
                 },
                 "spec1Cur": 10000,
                 "spec1Cap": 5000,
                 "spec2Type": {
-                    "value__": 12,
-                    "__cname__": "specType"
+                    "value__": 12
                 },
                 "spec2Cur": 10000,
                 "spec2Cap": 5000,
                 "spec3Type": {
-                    "value__": 13,
-                    "__cname__": "specType"
+                    "value__": 13
                 },
                 "spec3Cur": 10000,
                 "spec3Cap": 5000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4005,32 +3481,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 101,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 58,
                 "capAttack": 0,
@@ -4038,32 +3509,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 12,
-                    "__cname__": "specType"
+                    "value__": 12
                 },
                 "spec1Cur": 6000,
                 "spec1Cap": 3000,
                 "spec2Type": {
-                    "value__": 13,
-                    "__cname__": "specType"
+                    "value__": 13
                 },
                 "spec2Cur": 8000,
                 "spec2Cap": 4000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 121,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -4071,32 +3537,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 23,
-                    "__cname__": "specType"
+                    "value__": 23
                 },
                 "spec1Cur": 8000,
                 "spec1Cap": 4000,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 116,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 82,
                 "capAttack": 0,
@@ -4104,32 +3565,27 @@ const lateNormal = {
                 "capDefense": 82,
                 "curDefense": 164,
                 "spec1Type": {
-                    "value__": 22,
-                    "__cname__": "specType"
+                    "value__": 22
                 },
                 "spec1Cur": 12000,
                 "spec1Cap": 6000,
                 "spec2Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
+                    "value__": 17
                 },
                 "spec2Cur": 2164,
                 "spec2Cap": 1082,
                 "spec3Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec3Cur": 400,
                 "spec3Cap": 200,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 94,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 67,
                 "capAttack": 800,
@@ -4137,32 +3593,27 @@ const lateNormal = {
                 "capDefense": 800,
                 "curDefense": 200,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 800,
                 "spec1Cap": 400,
                 "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec2Cur": 800,
                 "spec2Cap": 400,
                 "spec3Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
+                    "value__": 17
                 },
                 "spec3Cur": 2000,
                 "spec3Cap": 1000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 110,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 82,
                 "capAttack": 82,
@@ -4170,32 +3621,27 @@ const lateNormal = {
                 "capDefense": 82,
                 "curDefense": 155,
                 "spec1Type": {
-                    "value__": 21,
-                    "__cname__": "specType"
+                    "value__": 21
                 },
                 "spec1Cur": 4564,
                 "spec1Cap": 2282,
                 "spec2Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
+                    "value__": 17
                 },
                 "spec2Cur": 2164,
                 "spec2Cap": 1082,
                 "spec3Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec3Cur": 400,
                 "spec3Cap": 200,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 128,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 82,
                 "capAttack": 200,
@@ -4203,32 +3649,27 @@ const lateNormal = {
                 "capDefense": 200,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 800,
                 "spec1Cap": 400,
                 "spec2Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
+                    "value__": 16
                 },
                 "spec2Cur": 2000,
                 "spec2Cap": 1000,
                 "spec3Type": {
-                    "value__": 17,
-                    "__cname__": "specType"
+                    "value__": 17
                 },
                 "spec3Cur": 2000,
                 "spec3Cap": 1000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4236,32 +3677,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4269,32 +3705,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4302,32 +3733,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4335,32 +3761,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4368,32 +3789,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4401,32 +3817,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4434,32 +3845,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4467,32 +3873,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4500,32 +3901,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4533,32 +3929,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4566,32 +3957,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -4599,32 +3985,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 278,
                 "type": {
-                    "value__": 10,
-                    "__cname__": "part"
+                    "value__": 10
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -4632,32 +4013,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 11,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 11
             },
             {
                 "id": 279,
                 "type": {
-                    "value__": 10,
-                    "__cname__": "part"
+                    "value__": 10
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -4665,32 +4041,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 8,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 8
             },
             {
                 "id": 283,
                 "type": {
-                    "value__": 10,
-                    "__cname__": "part"
+                    "value__": 10
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -4698,32 +4069,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 171,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 100,
@@ -4731,32 +4097,27 @@ const lateNormal = {
                 "capDefense": 100,
                 "curDefense": 200,
                 "spec1Type": {
-                    "value__": 41,
-                    "__cname__": "specType"
+                    "value__": 41
                 },
                 "spec1Cur": 1000000,
                 "spec1Cap": 500000,
                 "spec2Type": {
-                    "value__": 23,
-                    "__cname__": "specType"
+                    "value__": 23
                 },
                 "spec2Cur": 8000,
                 "spec2Cap": 4000,
                 "spec3Type": {
-                    "value__": 42,
-                    "__cname__": "specType"
+                    "value__": 42
                 },
                 "spec3Cur": 600000,
                 "spec3Cap": 300000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 129,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 100,
@@ -4764,32 +4125,27 @@ const lateNormal = {
                 "capDefense": 100,
                 "curDefense": 69,
                 "spec1Type": {
-                    "value__": 25,
-                    "__cname__": "specType"
+                    "value__": 25
                 },
                 "spec1Cur": 200000,
                 "spec1Cap": 100000,
                 "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec2Cur": 600,
                 "spec2Cap": 300,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 196,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 420,
@@ -4797,32 +4153,27 @@ const lateNormal = {
                 "capDefense": 420,
                 "curDefense": 69,
                 "spec1Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec1Cur": 200,
                 "spec1Cap": 100,
                 "spec2Type": {
-                    "value__": 39,
-                    "__cname__": "specType"
+                    "value__": 39
                 },
                 "spec2Cur": 800000,
                 "spec2Cap": 400000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 207,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -4830,32 +4181,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 10,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 10
             },
             {
                 "id": 200,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -4863,32 +4209,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 8,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 8
             },
             {
                 "id": 201,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -4896,32 +4237,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 12,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 12
             },
             {
                 "id": 203,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -4929,32 +4265,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 202,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -4962,32 +4293,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 14,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 14
             },
             {
                 "id": 198,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -4995,32 +4321,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 11,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 11
             },
             {
                 "id": 206,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -5028,32 +4349,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 8,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 8
             },
             {
                 "id": 204,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -5061,32 +4377,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 10,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 10
             },
             {
                 "id": 199,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -5094,32 +4405,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 1,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 1
             },
             {
                 "id": 91,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -5127,32 +4433,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 14,
-                    "__cname__": "specType"
+                    "value__": 14
                 },
                 "spec1Cur": 2000,
                 "spec1Cap": 1000,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 76,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 58,
                 "capAttack": 100,
@@ -5160,32 +4461,27 @@ const lateNormal = {
                 "capDefense": 100,
                 "curDefense": 200,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 400,
                 "spec1Cap": 200,
                 "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec2Cur": 400,
                 "spec2Cap": 200,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 119,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 100,
@@ -5193,32 +4489,27 @@ const lateNormal = {
                 "capDefense": 100,
                 "curDefense": 69,
                 "spec1Type": {
-                    "value__": 24,
-                    "__cname__": "specType"
+                    "value__": 24
                 },
                 "spec1Cur": 100000,
                 "spec1Cap": 50000,
                 "spec2Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec2Cur": 600,
                 "spec2Cap": 300,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 210,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -5226,32 +4517,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 25,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 25
             },
             {
                 "id": 209,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -5259,186 +4545,29 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 33,
-                "__cname__": "Equipment"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "removable": true,
+                "level": 33
+            }
         ],
         "accs": [
             {
                 "id": 192,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 30000,
@@ -5446,32 +4575,27 @@ const lateNormal = {
                 "capDefense": 30000,
                 "curDefense": 60000,
                 "spec1Type": {
-                    "value__": 40,
-                    "__cname__": "specType"
+                    "value__": 40
                 },
                 "spec1Cur": 6000000,
                 "spec1Cap": 3000000,
                 "spec2Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec2Cur": 4000000,
                 "spec2Cap": 2000000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 161,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 5000,
@@ -5479,32 +4603,27 @@ const lateNormal = {
                 "capDefense": 5000,
                 "curDefense": 10000,
                 "spec1Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
+                    "value__": 28
                 },
                 "spec1Cur": 1000000,
                 "spec1Cap": 500000,
                 "spec2Type": {
-                    "value__": 22,
-                    "__cname__": "specType"
+                    "value__": 22
                 },
                 "spec2Cur": 30000,
                 "spec2Cap": 15000,
                 "spec3Type": {
-                    "value__": 12,
-                    "__cname__": "specType"
+                    "value__": 12
                 },
                 "spec3Cur": 24000,
                 "spec3Cap": 12000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 444,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 0,
@@ -5512,32 +4631,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
+                    "value__": 28
                 },
                 "spec1Cur": 4000000,
                 "spec1Cap": 2000000,
                 "spec2Type": {
-                    "value__": 15,
-                    "__cname__": "specType"
+                    "value__": 15
                 },
                 "spec2Cur": 100000,
                 "spec2Cap": 50000,
                 "spec3Type": {
-                    "value__": 39,
-                    "__cname__": "specType"
+                    "value__": 39
                 },
                 "spec3Cur": 4000000,
                 "spec3Cap": 2000000,
-                "removable": 0,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 100
             },
             {
                 "id": 190,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 66666,
@@ -5545,32 +4659,27 @@ const lateNormal = {
                 "capDefense": 66666,
                 "curDefense": 133332,
                 "spec1Type": {
-                    "value__": 42,
-                    "__cname__": "specType"
+                    "value__": 42
                 },
                 "spec1Cur": 4000000,
                 "spec1Cap": 2000000,
                 "spec2Type": {
-                    "value__": 39,
-                    "__cname__": "specType"
+                    "value__": 39
                 },
                 "spec2Cur": 4000000,
                 "spec2Cap": 2000000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 100
             },
             {
                 "id": 136,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 0,
@@ -5578,32 +4687,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec1Cur": 1600,
                 "spec1Cap": 800,
                 "spec2Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec2Cur": 1200,
                 "spec2Cap": 600,
                 "spec3Type": {
-                    "value__": 23,
-                    "__cname__": "specType"
+                    "value__": 23
                 },
                 "spec3Cur": 16000,
                 "spec3Cap": 8000,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 118,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 82,
                 "capAttack": 500,
@@ -5611,32 +4715,27 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
+                    "value__": 20
                 },
                 "spec1Cur": 6000,
                 "spec1Cap": 3000,
                 "spec2Type": {
-                    "value__": 23,
-                    "__cname__": "specType"
+                    "value__": 23
                 },
                 "spec2Cur": 12000,
                 "spec2Cap": 6000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 100
             },
             {
                 "id": 195,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 100000,
@@ -5644,32 +4743,27 @@ const lateNormal = {
                 "capDefense": 100000,
                 "curDefense": 118000,
                 "spec1Type": {
-                    "value__": 38,
-                    "__cname__": "specType"
+                    "value__": 38
                 },
                 "spec1Cur": 6720000,
                 "spec1Cap": 6000000,
                 "spec2Type": {
-                    "value__": 34,
-                    "__cname__": "specType"
+                    "value__": 34
                 },
                 "spec2Cur": 6720000,
                 "spec2Cap": 6000000,
                 "spec3Type": {
-                    "value__": 33,
-                    "__cname__": "specType"
+                    "value__": 33
                 },
                 "spec3Cur": 6720000,
                 "spec3Cap": 6000000,
-                "removable": 0,
-                "level": 18,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 18
             },
             {
                 "id": 194,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 250000,
@@ -5677,42 +4771,29 @@ const lateNormal = {
                 "capDefense": 250000,
                 "curDefense": 345915.4375,
                 "spec1Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
+                    "value__": 27
                 },
                 "spec1Cur": 4080000,
                 "spec1Cap": 3000000,
                 "spec2Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
+                    "value__": 28
                 },
                 "spec2Cur": 4080000,
                 "spec2Cap": 3000000,
                 "spec3Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec3Cur": 4080000,
                 "spec3Cap": 3000000,
-                "removable": 0,
-                "level": 42,
-                "__cname__": "Equipment"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "removable": false,
+                "level": 42
+            }
         ],
         "macguffins": [
             {
                 "id": 208,
                 "type": {
-                    "value__": 11,
-                    "__cname__": "part"
+                    "value__": 11
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -5720,34 +4801,29 @@ const lateNormal = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 16,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 16
             }
         ],
         "daycare": [
             {
                 "id": 293,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 100,
@@ -5755,32 +4831,27 @@ const lateNormal = {
                 "capDefense": 1000,
                 "curDefense": 69,
                 "spec1Type": {
-                    "value__": 45,
-                    "__cname__": "specType"
+                    "value__": 45
                 },
                 "spec1Cur": 5000000,
                 "spec1Cap": 5000000,
                 "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec2Cur": 300,
                 "spec2Cap": 300,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 16,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 16
             },
             {
                 "id": 142,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 40000,
@@ -5788,32 +4859,27 @@ const lateNormal = {
                 "capDefense": 40000,
                 "curDefense": 40000,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 1000,
                 "spec1Cap": 1000,
                 "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec2Cur": 800,
                 "spec2Cap": 800,
                 "spec3Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
+                    "value__": 16
                 },
                 "spec3Cur": 2700,
                 "spec3Cap": 2700,
-                "removable": 0,
-                "level": 15,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 15
             },
             {
                 "id": 195,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 100000,
@@ -5821,32 +4887,27 @@ const lateNormal = {
                 "capDefense": 100000,
                 "curDefense": 100000,
                 "spec1Type": {
-                    "value__": 38,
-                    "__cname__": "specType"
+                    "value__": 38
                 },
                 "spec1Cur": 6000000,
                 "spec1Cap": 6000000,
                 "spec2Type": {
-                    "value__": 34,
-                    "__cname__": "specType"
+                    "value__": 34
                 },
                 "spec2Cur": 6000000,
                 "spec2Cap": 6000000,
                 "spec3Type": {
-                    "value__": 33,
-                    "__cname__": "specType"
+                    "value__": 33
                 },
                 "spec3Cur": 6000000,
                 "spec3Cap": 6000000,
-                "removable": 1,
-                "level": 5,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 5
             },
             {
                 "id": 194,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 100,
                 "capAttack": 250000,
@@ -5854,26 +4915,22 @@ const lateNormal = {
                 "capDefense": 250000,
                 "curDefense": 250000,
                 "spec1Type": {
-                    "value__": 27,
-                    "__cname__": "specType"
+                    "value__": 27
                 },
                 "spec1Cur": 3000000,
                 "spec1Cap": 3000000,
                 "spec2Type": {
-                    "value__": 28,
-                    "__cname__": "specType"
+                    "value__": 28
                 },
                 "spec2Cur": 3000000,
                 "spec2Cap": 3000000,
                 "spec3Type": {
-                    "value__": 29,
-                    "__cname__": "specType"
+                    "value__": 29
                 },
                 "spec3Cur": 3000000,
                 "spec3Cap": 3000000,
-                "removable": 1,
-                "level": 5,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 5
             }
         ],
         "daycareTimers": [
@@ -5882,3186 +4939,3181 @@ const lateNormal = {
                 "seconds": 29.82454918231815,
                 "minutes": 0,
                 "hours": 9,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             {
                 "totalseconds": 2448440.255431443,
                 "seconds": 20.255431442987174,
                 "minutes": 0,
                 "hours": 8,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             {
                 "totalseconds": 2394763.0202406994,
                 "seconds": 43.02024069940671,
                 "minutes": 0,
                 "hours": 17,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             {
                 "totalseconds": 2443206.3546125,
                 "seconds": 6.35461249994114,
                 "minutes": 0,
                 "hours": 6,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             }
         ],
         "itemList": {
             "itemDropped": [
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                0,
-                1,
-                1,
-                1,
-                0,
-                1,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                false,
+                true,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
             ],
             "itemMaxxed": [
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                0,
-                1,
-                1,
-                1,
-                0,
-                1,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                false,
+                true,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
             ],
             "itemFiltered": [
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                1,
-                1,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
             ],
             "totalDiscovered": 226,
             "totalMaxxed": 203,
-            "trainingComplete": 1,
-            "sewersComplete": 1,
-            "forestComplete": 1,
-            "caveComplete": 1,
-            "skyComplete": 0,
-            "HSBComplete": 1,
-            "GRBComplete": 1,
-            "clockComplete": 1,
-            "twoDComplete": 1,
-            "ghostComplete": 1,
-            "jakeComplete": 1,
-            "gaudyComplete": 1,
-            "megaComplete": 1,
-            "beardverseComplete": 1,
-            "waldoComplete": 1,
-            "antiWaldoComplete": 1,
-            "badlyDrawnComplete": 1,
-            "stealthComplete": 1,
-            "beast1complete": 1,
-            "chocoComplete": 0,
-            "edgyComplete": 0,
-            "edgyBootsComplete": 0,
-            "prettyComplete": 0,
-            "nerdComplete": 0,
-            "metaComplete": 0,
-            "partyComplete": 0,
-            "godmotherComplete": 0,
-            "typoComplete": 0,
-            "fadComplete": 0,
-            "jrpgComplete": 0,
-            "exileComplete": 0,
-            "radComplete": 0,
-            "schoolComplete": 0,
-            "westernComplete": 0,
-            "spaceComplete": 0,
-            "breadverseComplete": 0,
-            "that70sComplete": 0,
-            "halloweeniesComplete": 0,
-            "rockLobsterComplete": 0,
-            "constructionComplete": 0,
-            "duckComplete": 0,
-            "netherComplete": 0,
-            "amalgamateComplete": 0,
-            "pirateComplete": 0,
-            "wandoosComplete": 1,
-            "tutorialCubeComplete": 1,
-            "numberComplete": 1,
-            "flubberComplete": 1,
-            "seedComplete": 1,
-            "uugComplete": 1,
-            "uugRingComplete": 1,
-            "redLiquidComplete": 1,
-            "brownHeartComplete": 0,
-            "xlComplete": 1,
-            "greenHeartComplete": 1,
-            "itopodKeyComplete": 1,
-            "purpleLiquidComplete": 1,
-            "blueHeartComplete": 1,
-            "jakeNoteComplete": 1,
-            "purpleHeartComplete": 0,
-            "orangeHeartComplete": 0,
-            "greyHeartComplete": 0,
-            "sigilComplete": 1,
-            "evidenceComplete": 0,
-            "pinkHeartComplete": 0,
-            "severedHeadComplete": 0,
-            "rainbowHeartComplete": 0,
-            "beatingHeartComplete": 0,
-            "normalBonusAccComplete": 1,
-            "evilBonusAccComplete": 0,
-            "__cname__": "ItemList"
+            "trainingComplete": true,
+            "sewersComplete": true,
+            "forestComplete": true,
+            "caveComplete": true,
+            "skyComplete": false,
+            "HSBComplete": true,
+            "GRBComplete": true,
+            "clockComplete": true,
+            "twoDComplete": true,
+            "ghostComplete": true,
+            "jakeComplete": true,
+            "gaudyComplete": true,
+            "megaComplete": true,
+            "beardverseComplete": true,
+            "waldoComplete": true,
+            "antiWaldoComplete": true,
+            "badlyDrawnComplete": true,
+            "stealthComplete": true,
+            "beast1complete": true,
+            "chocoComplete": false,
+            "edgyComplete": false,
+            "edgyBootsComplete": false,
+            "prettyComplete": false,
+            "nerdComplete": false,
+            "metaComplete": false,
+            "partyComplete": false,
+            "godmotherComplete": false,
+            "typoComplete": false,
+            "fadComplete": false,
+            "jrpgComplete": false,
+            "exileComplete": false,
+            "radComplete": false,
+            "schoolComplete": false,
+            "westernComplete": false,
+            "spaceComplete": false,
+            "breadverseComplete": false,
+            "that70sComplete": false,
+            "halloweeniesComplete": false,
+            "rockLobsterComplete": false,
+            "constructionComplete": false,
+            "duckComplete": false,
+            "netherComplete": false,
+            "amalgamateComplete": false,
+            "pirateComplete": false,
+            "wandoosComplete": true,
+            "tutorialCubeComplete": true,
+            "numberComplete": true,
+            "flubberComplete": true,
+            "seedComplete": true,
+            "uugComplete": true,
+            "uugRingComplete": true,
+            "redLiquidComplete": true,
+            "brownHeartComplete": false,
+            "xlComplete": true,
+            "greenHeartComplete": true,
+            "itopodKeyComplete": true,
+            "purpleLiquidComplete": true,
+            "blueHeartComplete": true,
+            "jakeNoteComplete": true,
+            "purpleHeartComplete": false,
+            "orangeHeartComplete": false,
+            "greyHeartComplete": false,
+            "sigilComplete": true,
+            "evidenceComplete": false,
+            "pinkHeartComplete": false,
+            "severedHeadComplete": false,
+            "rainbowHeartComplete": false,
+            "beatingHeartComplete": false,
+            "normalBonusAccComplete": true,
+            "evilBonusAccComplete": false
         },
         "autoMergeSlot1": 0,
         "mergeTime": {
@@ -9069,16 +8121,14 @@ const lateNormal = {
             "seconds": 39.186846999800764,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "boostTime": {
             "totalseconds": 1071.2805484935234,
             "seconds": 51.28054849352338,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "loadouts": [
             {
@@ -9099,8 +8149,7 @@ const lateNormal = {
                     10007
                 ],
                 "temp": -1000,
-                "loadoutName": "AUG",
-                "__cname__": "Loadout"
+                "loadoutName": "AUG"
             },
             {
                 "head": 64,
@@ -9120,8 +8169,7 @@ const lateNormal = {
                     84
                 ],
                 "temp": -1000,
-                "loadoutName": "AT",
-                "__cname__": "Loadout"
+                "loadoutName": "AT"
             },
             {
                 "head": -1,
@@ -9141,8 +8189,7 @@ const lateNormal = {
                     10007
                 ],
                 "temp": -1000,
-                "loadoutName": "NGU",
-                "__cname__": "Loadout"
+                "loadoutName": "NGU"
             },
             {
                 "head": -1000,
@@ -9162,8 +8209,7 @@ const lateNormal = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 4",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 4"
             },
             {
                 "head": -1000,
@@ -9183,8 +8229,7 @@ const lateNormal = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 5",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 5"
             },
             {
                 "head": -1000,
@@ -9204,8 +8249,7 @@ const lateNormal = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 6",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 6"
             },
             {
                 "head": -1000,
@@ -9225,8 +8269,7 @@ const lateNormal = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 7",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 7"
             },
             {
                 "head": -1000,
@@ -9246,8 +8289,7 @@ const lateNormal = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 8",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 8"
             },
             {
                 "head": -1000,
@@ -9267,8 +8309,7 @@ const lateNormal = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 9",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 9"
             },
             {
                 "head": -1000,
@@ -9288,56 +8329,31 @@ const lateNormal = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 10",
-                "__cname__": "Loadout"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "loadoutName": "Loadout 10"
+            }
         ],
         "cubePower": 20413406,
         "cubeToughness": 20327854,
         "selectedGraphic": 3,
-        "disabled": 0,
+        "disabled": false,
         "kittyArt": 1,
         "unlockedKittyArt": [
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
         ],
         "macguffinBonuses": [
             1,
@@ -9364,8 +8380,7 @@ const lateNormal = {
             1,
             1,
             1
-        ],
-        "__cname__": "Inventory"
+        ]
     },
     "advancedTraining": {
         "training": [
@@ -9440,9 +8455,8 @@ const lateNormal = {
             0,
             0
         ],
-        "transferredBankedLevels": 1,
-        "autoAdvance": 1,
-        "__cname__": "AdvancedTraining"
+        "transferredBankedLevels": true,
+        "autoAdvance": true
     },
     "augments": {
         "augs": [
@@ -9454,8 +8468,7 @@ const lateNormal = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             },
             {
                 "augLevel": 0,
@@ -9465,8 +8478,7 @@ const lateNormal = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             },
             {
                 "augLevel": 0,
@@ -9476,8 +8488,7 @@ const lateNormal = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             },
             {
                 "augLevel": 0,
@@ -9487,8 +8498,7 @@ const lateNormal = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             },
             {
                 "augLevel": 0,
@@ -9498,8 +8508,7 @@ const lateNormal = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": 0,
-                "upgradeTarget": 0,
-                "__cname__": "Aug"
+                "upgradeTarget": 0
             },
             {
                 "augLevel": 23407,
@@ -9509,8 +8518,7 @@ const lateNormal = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": 0,
-                "upgradeTarget": 0,
-                "__cname__": "Aug"
+                "upgradeTarget": 0
             },
             {
                 "augLevel": 0,
@@ -9520,12 +8528,10 @@ const lateNormal = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             }
         ],
-        "advanceEnergy": 1,
-        "__cname__": "Augmentation"
+        "advanceEnergy": true
     },
     "magic": {
         "capMagic": 303200000,
@@ -9535,8 +8541,7 @@ const lateNormal = {
         "magicPerBar": 7580,
         "magicGained": 0,
         "magicPower": 9475,
-        "magicBarProgress": 0,
-        "__cname__": "Magic"
+        "magicBarProgress": 0
     },
     "machine": {
         "baseGold": 0,
@@ -9559,64 +8564,52 @@ const lateNormal = {
         "multiTarget": 0,
         "speedBankLevels": 0,
         "goldMultiBankLevels": 0,
-        "transferredBankLevels": 1,
-        "__cname__": "TimeMachine"
+        "transferredBankLevels": true
     },
     "bloodMagic": {
         "rituals": [
-            [
-                null,
-                null
-            ]
+            null
         ],
         "ritual": [
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 382141,
-                "__cname__": "Ritual"
+                "level": 382141
             },
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 382141,
-                "__cname__": "Ritual"
+                "level": 382141
             },
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 382141,
-                "__cname__": "Ritual"
+                "level": 382141
             },
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 382141,
-                "__cname__": "Ritual"
+                "level": 382141
             },
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 382141,
-                "__cname__": "Ritual"
+                "level": 382141
             },
             {
                 "progress": 0.6632851958274841,
                 "magic": 0,
-                "level": 382141,
-                "__cname__": "Ritual"
+                "level": 382141
             },
             {
                 "progress": 0.45789048075675964,
                 "magic": 0,
-                "level": 382433,
-                "__cname__": "Ritual"
+                "level": 382433
             },
             {
                 "progress": 0.6629225015640259,
                 "magic": 0,
-                "level": 382143,
-                "__cname__": "Ritual"
+                "level": 382143
             }
         ],
         "bloodPoints": 0.00537109375,
@@ -9626,102 +8619,93 @@ const lateNormal = {
             "seconds": 36.58457235759124,
             "minutes": 0,
             "hours": 10,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "macguffin1Time": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "macguffin2Time": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "goldSpellBlood": 829000780129225,
         "lootSpellBlood": 828779981367911,
-        "rebirthAutoSpell": 1,
-        "lootAutoSpell": 0,
-        "goldAutoSpell": 0,
-        "__cname__": "BloodMagic"
+        "rebirthAutoSpell": true,
+        "lootAutoSpell": false,
+        "goldAutoSpell": false
     },
     "rebirthTime": {
         "totalseconds": 2439744.932713771,
         "seconds": 24.932713770773262,
         "minutes": 0,
         "hours": 5,
-        "days": 0,
-        "__cname__": "PlayerTime"
+        "days": 0
     },
     "totalPlaytime": {
         "totalseconds": 11443796.23400006,
         "seconds": 56.23400006070733,
         "minutes": 0,
         "hours": 10,
-        "days": 0,
-        "__cname__": "PlayerTime"
+        "days": 0
     },
     "lootState": {
         "s0": 1861856313,
         "s1": -2069269668,
         "s2": -2016145859,
-        "s3": -1195961582,
-        "__cname__": "UnityEngine.Random+State"
+        "s3": -1195961582
     },
     "boostState": {
         "s0": 1827351488,
         "s1": -1566579254,
         "s2": 1498681903,
-        "s3": 39490332,
-        "__cname__": "UnityEngine.Random+State"
+        "s3": 39490332
     },
     "purchases": {
-        "hasCustomEnergyButton1": 1,
-        "hasCustomEnergyButton2": 1,
-        "hasCustomMagicButton1": 1,
-        "hasCustomMagicButton2": 1,
-        "hasAutoAdvance": 1,
-        "hasFilter": 1,
-        "hasAcc3": 1,
+        "hasCustomEnergyButton1": true,
+        "hasCustomEnergyButton2": true,
+        "hasCustomMagicButton1": true,
+        "hasCustomMagicButton2": true,
+        "hasAutoAdvance": true,
+        "hasFilter": true,
+        "hasAcc3": true,
         "boost": 0.5,
         "boostCombineLevel": 0,
-        "hasAutoMerge": 1,
-        "hasAutoBoost": 1,
-        "hasCustomEnergyPercent1": 0,
-        "hasCustomEnergyPercent2": 0,
-        "hasCustomMagicPercent1": 0,
-        "hasCustomMagicPercent2": 0,
-        "hasCustomRes3Percent1": 0,
-        "hasCustomRes3Percent2": 0,
-        "hasCustomIdleEnergyPercent1": 0,
-        "hasCustomIdleEnergyPercent2": 0,
-        "hasCustomIdleMagicPercent1": 0,
-        "hasCustomIdleMagicPercent2": 0,
-        "hasCustomIdleRes3Percent1": 0,
-        "hasCustomIdleRes3Percent2": 0,
-        "hasAcc5": 1,
-        "hasloadout1": 1,
-        "hasloadout2": 1,
-        "hasBeardSlot1": 1,
-        "hasDaycare": 1,
-        "hasDaycareSlot2": 1,
-        "hasDaycareSlot3": 1,
-        "hasDiggerSlot1": 1,
-        "hasDiggerSlot2": 0,
-        "hasMacguffinSlot1": 0,
-        "hasMacguffinSlot2": 0,
-        "hasSpecialPrize1": 1,
-        "choseKitty": 1,
+        "hasAutoMerge": true,
+        "hasAutoBoost": true,
+        "hasCustomEnergyPercent1": false,
+        "hasCustomEnergyPercent2": false,
+        "hasCustomMagicPercent1": false,
+        "hasCustomMagicPercent2": false,
+        "hasCustomRes3Percent1": false,
+        "hasCustomRes3Percent2": false,
+        "hasCustomIdleEnergyPercent1": false,
+        "hasCustomIdleEnergyPercent2": false,
+        "hasCustomIdleMagicPercent1": false,
+        "hasCustomIdleMagicPercent2": false,
+        "hasCustomIdleRes3Percent1": false,
+        "hasCustomIdleRes3Percent2": false,
+        "hasAcc5": true,
+        "hasloadout1": true,
+        "hasloadout2": true,
+        "hasBeardSlot1": true,
+        "hasDaycare": true,
+        "hasDaycareSlot2": true,
+        "hasDaycareSlot3": true,
+        "hasDiggerSlot1": true,
+        "hasDiggerSlot2": false,
+        "hasMacguffinSlot1": false,
+        "hasMacguffinSlot2": false,
+        "hasSpecialPrize1": true,
+        "choseKitty": true,
         "holidayspins": 0,
-        "hasInvMerge": 1,
-        "__cname__": "Purchases"
+        "hasInvMerge": true
     },
     "stats": {
         "rebirthNumber": 679,
@@ -9735,8 +8719,7 @@ const lateNormal = {
         "titansDefeated": 7303,
         "bossesDefeated": 51738,
         "lastBloodMagic": 3748660608207524,
-        "poopUsed": 156,
-        "__cname__": "Stats"
+        "poopUsed": 156
     },
     "perks": {
         "statPerk": {
@@ -9744,211 +8727,179 @@ const lateNormal = {
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "advStat1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "lootPerk": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "energyPower1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "magicPower1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "energyBar1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "magicBar1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "discount1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "cooldown1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "goldBoost1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "recycleBonus1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "paralyze": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "wandoos1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "yggdrasil1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "respecTime": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
-        },
-        "__cname__": "Perks"
+            "days": 0
+        }
     },
     "settings": {
         "numberDisplay": 2,
-        "tooltipsOn": 1,
-        "special1Bought": 1,
-        "special2Bought": 1,
-        "special3Bought": 1,
-        "specialAdvHpBars": 1,
-        "filterOn": 0,
-        "wandoos98On": 1,
+        "tooltipsOn": true,
+        "special1Bought": true,
+        "special2Bought": true,
+        "special3Bought": true,
+        "specialAdvHpBars": true,
+        "filterOn": false,
+        "wandoos98On": true,
         "customEnergy1": 100000000,
         "customEnergy2": 10000000000,
         "customMagic1": 1000000000,
         "customMagic2": 6,
-        "yggdrasilOn": 1,
-        "filterHead": 0,
-        "filterChest": 0,
-        "filterLegs": 0,
-        "filterBoots": 0,
-        "filterWeapon": 0,
-        "filterAccessory": 0,
-        "filterBoosts": 0,
-        "filterBoostAtk": 1,
-        "filterBoostDef": 1,
-        "filterBoostSpec": 1,
-        "filterMisc": 0,
-        "filterTitan": 0,
-        "syncTraining": 1,
-        "hasHyperRegen": 1,
+        "yggdrasilOn": true,
+        "filterHead": false,
+        "filterChest": false,
+        "filterLegs": false,
+        "filterBoots": false,
+        "filterWeapon": false,
+        "filterAccessory": false,
+        "filterBoosts": false,
+        "filterBoostAtk": true,
+        "filterBoostDef": true,
+        "filterBoostSpec": true,
+        "filterMisc": false,
+        "filterTitan": false,
+        "syncTraining": true,
+        "hasHyperRegen": true,
         "rebirthDifficulty": {
-            "value__": 0,
-            "__cname__": "difficulty"
+            "value__": 0
         },
         "rebirthLevels": 5308972,
         "speedrunCount": 3,
-        "gotSpeedrunSecret": 1,
-        "nguOn": 1,
-        "inventoryOn": 1,
-        "antiFlickerBars": 1,
-        "autoAssignOn": 0,
+        "gotSpeedrunSecret": true,
+        "nguOn": true,
+        "inventoryOn": true,
+        "antiFlickerBars": true,
+        "autoAssignOn": false,
         "autoAssignTime": 0,
         "machineEnergyAmount": 0,
         "machineGoldMultiAmount": 0,
         "tutorialState": -1,
-        "tutorialOffForever": 0,
-        "tutorial1Complete": 0,
-        "expPopups": 1,
+        "tutorialOffForever": false,
+        "tutorial1Complete": false,
+        "expPopups": true,
         "dailySaveRewardTime": {
             "totalseconds": 11565.76540695582,
             "seconds": 45.765406955819344,
             "minutes": 0,
             "hours": 3,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "submitHighscores": 1,
-        "timedTooltipsOn": 1,
-        "autoMergeOn": 1,
+        "submitHighscores": true,
+        "timedTooltipsOn": true,
+        "autoMergeOn": true,
         "inputAmount": 1000000000,
-        "autoKillTitans": 1,
-        "autoBoostOn": 0,
+        "autoKillTitans": true,
+        "autoBoostOn": false,
         "customEnergyPercent1": 1,
         "customEnergyPercent2": 1,
         "customMagicPercent1": 1,
@@ -9961,19 +8912,19 @@ const lateNormal = {
         "customIdleMagicPercent2": 1,
         "customIdleRes3Percent1": 1,
         "customIdleRes3Percent2": 1,
-        "autoboostRecycledBoosts": 1,
-        "unassignWhenSwapping": 0,
-        "shakeySales": 0,
-        "beardsOn": 1,
-        "beardPopup": 0,
-        "checkForUpdates": 1,
-        "fancyYggBars": 1,
+        "autoboostRecycledBoosts": true,
+        "unassignWhenSwapping": false,
+        "shakeySales": false,
+        "beardsOn": true,
+        "beardPopup": false,
+        "checkForUpdates": true,
+        "fancyYggBars": true,
         "autoTransform": 0,
-        "simpleInvShortcuts": 1,
-        "poopOnlyMaxTier": 0,
-        "itopodOn": 1,
-        "itopodConfirmation": 1,
-        "buffedKillsOn": 0,
+        "simpleInvShortcuts": true,
+        "poopOnlyMaxTier": false,
+        "itopodOn": true,
+        "itopodConfirmation": true,
+        "buffedKillsOn": false,
         "customPowerAmount": 1500,
         "customBarAmount": 1200,
         "customCapAmount": 48000000,
@@ -9989,326 +8940,286 @@ const lateNormal = {
         "customToughnessInput": 10000,
         "customHPInput": 100000,
         "customRegenInput": 10000,
-        "beastModeUnlocked": 1,
-        "diggersOn": 1,
+        "beastModeUnlocked": true,
+        "diggersOn": true,
         "nguLevelTrack": {
-            "value__": 0,
-            "__cname__": "difficulty"
+            "value__": 0
         },
-        "pitUnlocked": 1,
+        "pitUnlocked": true,
         "themeID": 0,
         "genericRes3ColourID": 0,
-        "beastConfirmation": 1,
-        "beastOn": 1,
-        "useMajorQuests": 1,
-        "autoNukeOn": 0,
+        "beastConfirmation": true,
+        "beastOn": true,
+        "useMajorQuests": true,
+        "autoNukeOn": false,
         "nguCapModifier": 1,
-        "idleQuestAutocycle": 1,
-        "res3NameGeneratorOn": 0,
-        "claimedKartPromo": 0,
-        "claimedSteamPromo": 1,
-        "assholeSetting": 1,
-        "badge1Complete": 0,
-        "badge2Started": 0,
-        "badge2Part1Complete": 0,
-        "badge2Part2Complete": 0,
-        "badge2Part3Complete": 0,
-        "badge2Part4Complete": 0,
-        "invAutoMergeOn": 1,
-        "invAutoBoostOn": 1,
-        "exilev4Defeated": 0,
+        "idleQuestAutocycle": true,
+        "res3NameGeneratorOn": false,
+        "claimedKartPromo": false,
+        "claimedSteamPromo": true,
+        "assholeSetting": true,
+        "badge1Complete": false,
+        "badge2Started": false,
+        "badge2Part1Complete": false,
+        "badge2Part2Complete": false,
+        "badge2Part3Complete": false,
+        "badge2Part4Complete": false,
+        "invAutoMergeOn": true,
+        "invAutoBoostOn": true,
+        "exilev4Defeated": false,
         "prizePicked": 0,
-        "picked2ndPrize": 0,
-        "isNaughty": 0,
-        "foilsOn": 1,
-        "__cname__": "PlayerSettings"
+        "picked2ndPrize": false,
+        "isNaughty": false,
+        "foilsOn": true
     },
     "challenges": {
         "basicChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 5,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 11847,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "noAugsChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 5,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 3324,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "hour24Challenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 6,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 6020,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 188,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "levelChallenge10k": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 5,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 5355,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "noEquipmentChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 5,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 4359,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "noRebirthChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 10,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 43817,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 85,
-            "unlocked": 1,
-            "__cname__": "Challenge"
+            "unlocked": true
         },
         "trollChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 7,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 2623,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "laserSwordChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 20,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 1748,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "blindChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 10,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 1778,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "nguChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 10,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 13021,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "timeMachineChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 6,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 6214,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
-        "unlocked": 1,
-        "inChallenge": 0,
+        "unlocked": true,
+        "inChallenge": false,
         "curChallengeType": {
-            "value__": 0,
-            "__cname__": "challengeType"
+            "value__": 0
         },
         "curPoints": 0,
         "maxPoints": 0,
         "trollCounter": 0,
-        "trollUnlocked": 1,
-        "trollDisplay": 0,
-        "trollMenuSwap": 0,
-        "trollDivided": 0,
-        "blindChallengeUnlocked": 1,
-        "laserSwordChallengeUnlocked": 1,
-        "__cname__": "Challenges"
+        "trollUnlocked": true,
+        "trollDisplay": false,
+        "trollMenuSwap": false,
+        "trollDivided": false,
+        "blindChallengeUnlocked": true,
+        "laserSwordChallengeUnlocked": true
     },
     "pit": {
         "totalGold": 5.158670810033501e+38,
         "highestTier": 0,
-        "tossedGold": 0,
+        "tossedGold": false,
         "pitState": {
             "s0": 318314852,
             "s1": 789203656,
             "s2": -1174268967,
-            "s3": 553874252,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": 553874252
         },
         "pitTime": {
             "totalseconds": 2364346,
             "seconds": 46,
             "minutes": 0,
             "hours": 8,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "tier1TRewarded": 1,
-        "tier2TRewarded": 1,
-        "tier3TRewarded": 1,
-        "tier4TRewarded": 1,
-        "tier5TRewarded": 1,
-        "tossCount": 4,
-        "__cname__": "Pit"
+        "tier1TRewarded": true,
+        "tier2TRewarded": true,
+        "tier3TRewarded": true,
+        "tier4TRewarded": true,
+        "tier5TRewarded": true,
+        "tossCount": 4
     },
     "lootBoxes": {
         "expBoxCount": 0,
@@ -10316,33 +9227,29 @@ const lateNormal = {
             "s0": 0,
             "s1": 0,
             "s2": 0,
-            "s3": 0,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": 0
         },
         "advBoxCount": 0,
         "advBoxState": {
             "s0": 0,
             "s1": 0,
             "s2": 0,
-            "s3": 0,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": 0
         },
         "dailyBoxCount": 0,
         "dailyBoxState": {
             "s0": 0,
             "s1": 0,
             "s2": 0,
-            "s3": 0,
-            "__cname__": "UnityEngine.Random+State"
-        },
-        "__cname__": "LootBoxes"
+            "s3": 0
+        }
     },
     "wandoos98": {
         "energyProgress": 0,
         "magicProgress": 0,
         "bootupProgress": 0,
-        "wandoosEnergy": 26816678,
-        "wandoosMagic": 26816678,
+        "wandoosEnergy": 0,
+        "wandoosMagic": 0,
         "energyLevel": 382323,
         "magicLevel": 382295,
         "baseEnergyTime": 0,
@@ -10350,412 +9257,399 @@ const lateNormal = {
         "OSlevel": 100,
         "pitOSLevels": 46,
         "XLLevels": 100,
-        "installed": 1,
-        "disabled": 0,
+        "installed": true,
+        "disabled": false,
         "bootupTime": {
             "totalseconds": 3600,
             "seconds": 0,
             "minutes": 0,
             "hours": 1,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "installTime": {
             "totalseconds": 86400,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "os": {
-            "value__": 2,
-            "__cname__": "OSType"
-        },
-        "__cname__": "Wandoos98"
+            "value__": 2
+        }
     },
     "yggdrasil": {
         "goldFruit": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 1,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "adventureFruit": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 0,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "luckFruit": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 0,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "statFruit": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 0,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "knowledgeFruit": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 0,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "pomegranate": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 0,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "fruits": [
             {
                 "seconds": 84960,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 24,
-                "permCostPaid": 1,
-                "usePoop": 0,
-                "eatFruit": 0,
+                "permCostPaid": true,
+                "usePoop": false,
+                "eatFruit": false,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 84960,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 24,
-                "permCostPaid": 1,
-                "usePoop": 0,
-                "eatFruit": 0,
+                "permCostPaid": true,
+                "usePoop": false,
+                "eatFruit": false,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 84960,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 24,
-                "permCostPaid": 1,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": true,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 84960,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 24,
-                "permCostPaid": 1,
-                "usePoop": 1,
-                "eatFruit": 1,
+                "permCostPaid": true,
+                "usePoop": true,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 84960,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 24,
-                "permCostPaid": 1,
-                "usePoop": 1,
-                "eatFruit": 0,
+                "permCostPaid": true,
+                "usePoop": true,
+                "eatFruit": false,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 84960,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 24,
-                "permCostPaid": 1,
-                "usePoop": 1,
-                "eatFruit": 1,
+                "permCostPaid": true,
+                "usePoop": true,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 84960,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 24,
-                "permCostPaid": 1,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": true,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 84960,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 24,
-                "permCostPaid": 1,
-                "usePoop": 1,
-                "eatFruit": 1,
+                "permCostPaid": true,
+                "usePoop": true,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 49560,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 14,
-                "permCostPaid": 1,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": true,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 38940,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 11,
-                "permCostPaid": 1,
-                "usePoop": 1,
-                "eatFruit": 1,
+                "permCostPaid": true,
+                "usePoop": true,
+                "eatFruit": true,
                 "harvests": 1,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "totalPermStatBonus": 7592,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 9873
+            }
         ],
         "resetFactor": 0,
         "statBonus": 0,
         "seeds": 48384,
         "totalLuck": 21956,
         "totalPermStatBonus": 7592,
-        "permBonusOn": 1,
+        "permBonusOn": true,
         "totalPermStatBonus2": 0,
         "totalPermNumberBonus": 9873,
-        "permNumberBonusOn": 1,
-        "usePoop": 0,
-        "__cname__": "Yggdrasil"
+        "permNumberBonusOn": true,
+        "usePoop": false
     },
     "NGU": {
         "skills": [
@@ -10770,8 +9664,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 7000000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -10784,8 +9677,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 7000000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -10798,8 +9690,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 7000000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -10812,8 +9703,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 7000000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -10826,8 +9716,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 75000000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -10840,8 +9729,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 7000000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0.9039554595947266,
@@ -10854,8 +9742,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 15000000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -10868,8 +9755,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 500000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -10882,8 +9768,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 100000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -10896,8 +9781,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -10910,29 +9794,8 @@ const lateNormal = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "sadisticTarget": 0
+            }
         ],
         "magicSkills": [
             {
@@ -10946,8 +9809,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 50000000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0.9757259488105774,
@@ -10960,8 +9822,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 25000000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0.5032600164413452,
@@ -10974,8 +9835,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 800000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0.8440289497375488,
@@ -10988,8 +9848,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 600000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0.4874049425125122,
@@ -11002,8 +9861,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 200000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -11016,8 +9874,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 100000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -11030,8 +9887,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 20000,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -11044,8 +9900,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -11058,8 +9913,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -11072,8 +9926,7 @@ const lateNormal = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -11086,33 +9939,11 @@ const lateNormal = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "sadisticTarget": 0
+            }
         ],
-        "autoAdvance": 1,
-        "disabled": 0,
-        "__cname__": "NUMBERSSGOUP"
+        "autoAdvance": true,
+        "disabled": false
     },
     "arbitrary": {
         "arbitraryPoints": 0,
@@ -11125,30 +9956,27 @@ const lateNormal = {
             "seconds": -0.0020960979745723307,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "energyPotion2Count": 2,
-        "energyPotion2InUse": 0,
+        "energyPotion2InUse": false,
         "magicPotion1Count": 2,
         "magicPotion1Time": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "magicPotion2Count": 1,
-        "magicPotion2InUse": 0,
+        "magicPotion2InUse": false,
         "lootCharm1Count": 1,
         "lootcharm1Time": {
             "totalseconds": 0,
             "seconds": -0.0012672403827309608,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "energyBarBar1Count": 2,
         "energyBarBar1Time": {
@@ -11156,8 +9984,7 @@ const lateNormal = {
             "seconds": -0.0025738905533216894,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "magicBarBar1Count": 2,
         "magicBarBar1Time": {
@@ -11165,8 +9992,7 @@ const lateNormal = {
             "seconds": -0.0026407933910377324,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "macGuffinBooster1Count": 0,
         "macGuffinBooster1Time": {
@@ -11174,75 +10000,72 @@ const lateNormal = {
             "seconds": -58,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "macGuffinBooster1InUse": 0,
+        "macGuffinBooster1InUse": false,
         "nukeTimer": {
             "totalseconds": 50,
             "seconds": 50,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boughtAutoNuke": 0,
-        "lootFilter": 1,
-        "improvedAutoBoostMerge": 0,
-        "instaTrain": 0,
+        "boughtAutoNuke": false,
+        "lootFilter": true,
+        "improvedAutoBoostMerge": false,
+        "instaTrain": false,
         "inventorySpaces": 0,
-        "hasStarterPack": 0,
-        "hasAcc4": 1,
-        "hasAcc5": 1,
-        "hasAcc6": 0,
-        "hasAcc7": 0,
-        "hasAcc8": 0,
-        "hasAcc9": 0,
-        "hasYggdrasilReminder": 0,
-        "hasExtendedSpinBank": 0,
+        "hasStarterPack": false,
+        "hasAcc4": true,
+        "hasAcc5": true,
+        "hasAcc6": false,
+        "hasAcc7": false,
+        "hasAcc8": false,
+        "hasAcc9": false,
+        "hasYggdrasilReminder": false,
+        "hasExtendedSpinBank": false,
         "curLoadoutSlots": 0,
         "poop1Count": 175,
         "energyPotion3Count": 0,
         "magicPotion3Count": 0,
         "beardSlots": 1,
-        "hasCubeFilter": 1,
+        "hasCubeFilter": true,
         "lootCharm2Count": 0,
-        "hasDaycareSpeed": 0,
-        "boughtNewbiePack": 0,
-        "boughtAscendedNewbiePack": 0,
-        "boughtAscendedNewbiePack2": 0,
-        "boughtAscendedNewbiePack3": 0,
-        "boughtAscendedNewbiePack4": 0,
-        "boughtFashionPack1": 0,
-        "boughtLazyITOPOD": 0,
-        "lazyITOPODOn": 0,
-        "boughtRes3Pack": 0,
+        "hasDaycareSpeed": false,
+        "boughtNewbiePack": false,
+        "boughtAscendedNewbiePack": false,
+        "boughtAscendedNewbiePack2": false,
+        "boughtAscendedNewbiePack3": false,
+        "boughtAscendedNewbiePack4": false,
+        "boughtFashionPack1": false,
+        "boughtLazyITOPOD": false,
+        "lazyITOPODOn": false,
+        "boughtRes3Pack": false,
         "diggerSlots": 0,
         "macguffinSlots": 0,
         "nameSlotsBought": 0,
         "beastButterCount": 0,
-        "hasQuestLight": 0,
-        "hasFasterQuests": 0,
-        "hasExtendedQuestBank": 0,
-        "boughtDaycareArt": 0,
-        "hasNGUCapModifier": 0,
+        "hasQuestLight": false,
+        "hasFasterQuests": false,
+        "hasExtendedQuestBank": false,
+        "boughtDaycareArt": false,
+        "hasNGUCapModifier": false,
         "res3Potion1Count": 0,
         "res3Potion1Time": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "res3Potion2Count": 0,
-        "res3Potion2InUse": 0,
+        "res3Potion2InUse": false,
         "res3Potion3Count": 0,
-        "res3NameGeneratorBought": 0,
-        "wishSpeedBoster": 0,
+        "res3NameGeneratorBought": false,
+        "wishSpeedBoster": false,
         "wishSlotsBought": 0,
-        "boughtFoils": 0,
-        "gotTagslot1": 0,
+        "boughtFoils": false,
+        "gotTagslot1": false,
         "mayoGenSlots": 0,
         "deckSpaceBought": 0,
         "mayoSpeedPotCount": 0,
@@ -11251,278 +10074,275 @@ const lateNormal = {
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "cardTierUpperCount": 0,
         "invMergeSlots": 0,
-        "advLightBought": 0,
-        "advAdvancerBought": 0,
+        "advLightBought": false,
+        "advAdvancerBought": false,
         "advAdvancerZone": 0,
-        "goToQuestZoneBought": 0,
-        "__cname__": "Arbitrary"
+        "goToQuestZoneBought": false
     },
     "achievements": {
         "achievementComplete": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            1,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
         ],
-        "totalAchieves": 0,
-        "__cname__": "AchievementList"
+        "totalAchieves": 0
     },
     "daily": {
         "totalSpins": 112,
@@ -11531,81 +10351,68 @@ const lateNormal = {
             "seconds": 0,
             "minutes": 0,
             "hours": 12,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "dailyRewardState": {
             "s0": -1726044169,
             "s1": 335257738,
             "s2": 286501437,
-            "s3": -814207804,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": -814207804
         },
-        "freeSpins": 0,
-        "__cname__": "DailyReward"
+        "freeSpins": 0
     },
     "beards": {
         "beards": [
             {
                 "progress": 0,
-                "active": 0,
+                "active": false,
                 "beardLevel": 0,
                 "permLevel": 2596,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0.7911327481269836,
-                "active": 0,
+                "active": false,
                 "beardLevel": 1093322,
                 "permLevel": 38904,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0,
-                "active": 0,
+                "active": false,
                 "beardLevel": 0,
                 "permLevel": 2093,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0.4134747087955475,
-                "active": 0,
+                "active": false,
                 "beardLevel": 598889,
                 "permLevel": 29214,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0,
-                "active": 0,
+                "active": false,
                 "beardLevel": 0,
                 "permLevel": 1457,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0.9358709454536438,
-                "active": 0,
+                "active": false,
                 "beardLevel": 345782,
                 "permLevel": 23153,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0.25233975052833557,
-                "active": 0,
+                "active": false,
                 "beardLevel": 140460,
                 "permLevel": 11497,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
-            [
-                null,
-                null
-            ]
+            null
         ],
         "activeBeards": [
             0,
@@ -11616,196 +10423,155 @@ const lateNormal = {
         "capBeards": 1,
         "energyBeardCount": 0,
         "magicBeardCount": 0,
-        "disabled": 0,
-        "transferredBankedLevels": 1,
-        "__cname__": "Beards"
+        "disabled": false,
+        "transferredBankedLevels": true
     },
     "diggers": {
         "diggers": [
             {
                 "curLevel": 129,
                 "maxLevel": 139,
-                "active": 1,
+                "active": true,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 126,
                 "maxLevel": 132,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 128,
                 "maxLevel": 132,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 131,
                 "maxLevel": 133,
-                "active": 1,
+                "active": true,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 83,
                 "maxLevel": 88,
-                "active": 1,
+                "active": true,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 84,
                 "maxLevel": 85,
-                "active": 1,
+                "active": true,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 70,
                 "maxLevel": 70,
-                "active": 1,
+                "active": true,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 62,
                 "maxLevel": 71,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 64,
                 "maxLevel": 66,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 51,
                 "maxLevel": 58,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 40,
                 "maxLevel": 47,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 49,
                 "maxLevel": 53,
-                "active": 1,
+                "active": true,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                    "days": 0
+                }
+            }
         ],
         "activeDiggers": [
             11,
@@ -11826,8 +10592,7 @@ const lateNormal = {
             11,
             0,
             0
-        ],
-        "__cname__": "GoldDiggers"
+        ]
     },
     "beastQuest": {
         "quirkLevel": [
@@ -12090,9 +10855,9 @@ const lateNormal = {
         ],
         "quirkPoints": 1742,
         "lifetimePoints": 0,
-        "questsUnlocked": 0,
-        "inQuest": 1,
-        "idleMode": 1,
+        "questsUnlocked": false,
+        "inQuest": true,
+        "idleMode": true,
         "questID": 287,
         "targetDrops": 51,
         "curDrops": 31,
@@ -12101,8 +10866,7 @@ const lateNormal = {
             "seconds": 32.91695109879947,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "curBankedQuests": 1,
         "maxBankedQuests": 10,
@@ -12110,21 +10874,18 @@ const lateNormal = {
             "s0": 680694068,
             "s1": -1206206225,
             "s2": -896419858,
-            "s3": 1676488341,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": 1676488341
         },
-        "reducedRewards": 1,
-        "allActive": 0,
-        "usedButter": 0,
+        "reducedRewards": true,
+        "allActive": false,
+        "usedButter": false,
         "idleProgress": 0.9200490713119507,
-        "filterDiff": 1,
-        "filterAfford": 0,
-        "filterMaxxed": 1,
+        "filterDiff": true,
+        "filterAfford": false,
+        "filterMaxxed": true,
         "orderType": {
-            "value__": 0,
-            "__cname__": "orderQuirks"
-        },
-        "__cname__": "BeastQuest"
+            "value__": 0
+        }
     },
     "res3": {
         "capRes3": 0,
@@ -12139,8 +10900,7 @@ const lateNormal = {
         "res3R": 0.800000011920929,
         "res3G": 0.25,
         "res3B": 0,
-        "res3On": 0,
-        "__cname__": "Resource3"
+        "res3On": false
     },
     "hacks": {
         "hacks": [
@@ -12148,120 +10908,103 @@ const lateNormal = {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             }
         ],
-        "hacksOn": 0,
-        "autoAdvance": 1,
+        "hacksOn": false,
+        "autoAdvance": true,
         "target": 0,
-        "disabled": 0,
-        "__cname__": "Hacks"
+        "disabled": false
     },
     "wishes": {
         "wishes": [
@@ -12270,4146 +11013,2900 @@ const lateNormal = {
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "progress": 0
+            }
         ],
-        "wishesOn": 0,
-        "filterDiff": 0,
-        "filterAfford": 0,
-        "filterMaxxed": 0,
+        "wishesOn": false,
+        "filterDiff": false,
+        "filterAfford": false,
+        "filterMaxxed": false,
         "orderType": {
-            "value__": 0,
-            "__cname__": "orderWish"
-        },
-        "__cname__": "Wishes"
+            "value__": 0
+        }
     },
     "portraits": {
         "portraitUnlocked": [
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
         ],
-        "curPortrait": 46,
-        "__cname__": "PlayerPortraits"
+        "curPortrait": 46
     },
     "bestiary": {
         "enemies": [
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 553,
-                "__cname__": "BestiaryInfo"
+                "kills": 553
             },
             {
-                "kills": 620,
-                "__cname__": "BestiaryInfo"
+                "kills": 620
             },
             {
-                "kills": 671,
-                "__cname__": "BestiaryInfo"
+                "kills": 671
             },
             {
-                "kills": 7890,
-                "__cname__": "BestiaryInfo"
+                "kills": 7890
             },
             {
-                "kills": 7411,
-                "__cname__": "BestiaryInfo"
+                "kills": 7411
             },
             {
-                "kills": 7298,
-                "__cname__": "BestiaryInfo"
+                "kills": 7298
             },
             {
-                "kills": 7242,
-                "__cname__": "BestiaryInfo"
+                "kills": 7242
             },
             {
-                "kills": 6412,
-                "__cname__": "BestiaryInfo"
+                "kills": 6412
             },
             {
-                "kills": 6470,
-                "__cname__": "BestiaryInfo"
+                "kills": 6470
             },
             {
-                "kills": 6447,
-                "__cname__": "BestiaryInfo"
+                "kills": 6447
             },
             {
-                "kills": 6573,
-                "__cname__": "BestiaryInfo"
+                "kills": 6573
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 6439,
-                "__cname__": "BestiaryInfo"
+                "kills": 6439
             },
             {
-                "kills": 6462,
-                "__cname__": "BestiaryInfo"
+                "kills": 6462
             },
             {
-                "kills": 6428,
-                "__cname__": "BestiaryInfo"
+                "kills": 6428
             },
             {
-                "kills": 6448,
-                "__cname__": "BestiaryInfo"
+                "kills": 6448
             },
             {
-                "kills": 6494,
-                "__cname__": "BestiaryInfo"
+                "kills": 6494
             },
             {
-                "kills": 2004,
-                "__cname__": "BestiaryInfo"
+                "kills": 2004
             },
             {
-                "kills": 1970,
-                "__cname__": "BestiaryInfo"
+                "kills": 1970
             },
             {
-                "kills": 1993,
-                "__cname__": "BestiaryInfo"
+                "kills": 1993
             },
             {
-                "kills": 1977,
-                "__cname__": "BestiaryInfo"
+                "kills": 1977
             },
             {
-                "kills": 1911,
-                "__cname__": "BestiaryInfo"
+                "kills": 1911
             },
             {
-                "kills": 1930,
-                "__cname__": "BestiaryInfo"
+                "kills": 1930
             },
             {
-                "kills": 1959,
-                "__cname__": "BestiaryInfo"
+                "kills": 1959
             },
             {
-                "kills": 1967,
-                "__cname__": "BestiaryInfo"
+                "kills": 1967
             },
             {
-                "kills": 1912,
-                "__cname__": "BestiaryInfo"
+                "kills": 1912
             },
             {
-                "kills": 1959,
-                "__cname__": "BestiaryInfo"
+                "kills": 1959
             },
             {
-                "kills": 1970,
-                "__cname__": "BestiaryInfo"
+                "kills": 1970
             },
             {
-                "kills": 1889,
-                "__cname__": "BestiaryInfo"
+                "kills": 1889
             },
             {
-                "kills": 2053,
-                "__cname__": "BestiaryInfo"
+                "kills": 2053
             },
             {
-                "kills": 1929,
-                "__cname__": "BestiaryInfo"
+                "kills": 1929
             },
             {
-                "kills": 1984,
-                "__cname__": "BestiaryInfo"
+                "kills": 1984
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 2049,
-                "__cname__": "BestiaryInfo"
+                "kills": 2049
             },
             {
-                "kills": 4771,
-                "__cname__": "BestiaryInfo"
+                "kills": 4771
             },
             {
-                "kills": 4924,
-                "__cname__": "BestiaryInfo"
+                "kills": 4924
             },
             {
-                "kills": 4753,
-                "__cname__": "BestiaryInfo"
+                "kills": 4753
             },
             {
-                "kills": 4776,
-                "__cname__": "BestiaryInfo"
+                "kills": 4776
             },
             {
-                "kills": 4870,
-                "__cname__": "BestiaryInfo"
+                "kills": 4870
             },
             {
-                "kills": 4794,
-                "__cname__": "BestiaryInfo"
+                "kills": 4794
             },
             {
-                "kills": 4789,
-                "__cname__": "BestiaryInfo"
+                "kills": 4789
             },
             {
-                "kills": 4818,
-                "__cname__": "BestiaryInfo"
+                "kills": 4818
             },
             {
-                "kills": 4718,
-                "__cname__": "BestiaryInfo"
+                "kills": 4718
             },
             {
-                "kills": 4607,
-                "__cname__": "BestiaryInfo"
+                "kills": 4607
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 5418,
-                "__cname__": "BestiaryInfo"
+                "kills": 5418
             },
             {
-                "kills": 5350,
-                "__cname__": "BestiaryInfo"
+                "kills": 5350
             },
             {
-                "kills": 5344,
-                "__cname__": "BestiaryInfo"
+                "kills": 5344
             },
             {
-                "kills": 5437,
-                "__cname__": "BestiaryInfo"
+                "kills": 5437
             },
             {
-                "kills": 5464,
-                "__cname__": "BestiaryInfo"
+                "kills": 5464
             },
             {
-                "kills": 5303,
-                "__cname__": "BestiaryInfo"
+                "kills": 5303
             },
             {
-                "kills": 5303,
-                "__cname__": "BestiaryInfo"
+                "kills": 5303
             },
             {
-                "kills": 5436,
-                "__cname__": "BestiaryInfo"
+                "kills": 5436
             },
             {
-                "kills": 5359,
-                "__cname__": "BestiaryInfo"
+                "kills": 5359
             },
             {
-                "kills": 5489,
-                "__cname__": "BestiaryInfo"
+                "kills": 5489
             },
             {
-                "kills": 2290,
-                "__cname__": "BestiaryInfo"
+                "kills": 2290
             },
             {
-                "kills": 2246,
-                "__cname__": "BestiaryInfo"
+                "kills": 2246
             },
             {
-                "kills": 2248,
-                "__cname__": "BestiaryInfo"
+                "kills": 2248
             },
             {
-                "kills": 2232,
-                "__cname__": "BestiaryInfo"
+                "kills": 2232
             },
             {
-                "kills": 2173,
-                "__cname__": "BestiaryInfo"
+                "kills": 2173
             },
             {
-                "kills": 2225,
-                "__cname__": "BestiaryInfo"
+                "kills": 2225
             },
             {
-                "kills": 2283,
-                "__cname__": "BestiaryInfo"
+                "kills": 2283
             },
             {
-                "kills": 4515,
-                "__cname__": "BestiaryInfo"
+                "kills": 4515
             },
             {
-                "kills": 5323,
-                "__cname__": "BestiaryInfo"
+                "kills": 5323
             },
             {
-                "kills": 5253,
-                "__cname__": "BestiaryInfo"
+                "kills": 5253
             },
             {
-                "kills": 5376,
-                "__cname__": "BestiaryInfo"
+                "kills": 5376
             },
             {
-                "kills": 5267,
-                "__cname__": "BestiaryInfo"
+                "kills": 5267
             },
             {
-                "kills": 5326,
-                "__cname__": "BestiaryInfo"
+                "kills": 5326
             },
             {
-                "kills": 5391,
-                "__cname__": "BestiaryInfo"
+                "kills": 5391
             },
             {
-                "kills": 5347,
-                "__cname__": "BestiaryInfo"
+                "kills": 5347
             },
             {
-                "kills": 5288,
-                "__cname__": "BestiaryInfo"
+                "kills": 5288
             },
             {
-                "kills": 3508,
-                "__cname__": "BestiaryInfo"
+                "kills": 3508
             },
             {
-                "kills": 3390,
-                "__cname__": "BestiaryInfo"
+                "kills": 3390
             },
             {
-                "kills": 3569,
-                "__cname__": "BestiaryInfo"
+                "kills": 3569
             },
             {
-                "kills": 3612,
-                "__cname__": "BestiaryInfo"
+                "kills": 3612
             },
             {
-                "kills": 3562,
-                "__cname__": "BestiaryInfo"
+                "kills": 3562
             },
             {
-                "kills": 3530,
-                "__cname__": "BestiaryInfo"
+                "kills": 3530
             },
             {
-                "kills": 3655,
-                "__cname__": "BestiaryInfo"
+                "kills": 3655
             },
             {
-                "kills": 3553,
-                "__cname__": "BestiaryInfo"
+                "kills": 3553
             },
             {
-                "kills": 4939,
-                "__cname__": "BestiaryInfo"
+                "kills": 4939
             },
             {
-                "kills": 5137,
-                "__cname__": "BestiaryInfo"
+                "kills": 5137
             },
             {
-                "kills": 4960,
-                "__cname__": "BestiaryInfo"
+                "kills": 4960
             },
             {
-                "kills": 5057,
-                "__cname__": "BestiaryInfo"
+                "kills": 5057
             },
             {
-                "kills": 5164,
-                "__cname__": "BestiaryInfo"
+                "kills": 5164
             },
             {
-                "kills": 5077,
-                "__cname__": "BestiaryInfo"
+                "kills": 5077
             },
             {
-                "kills": 4942,
-                "__cname__": "BestiaryInfo"
+                "kills": 4942
             },
             {
-                "kills": 5150,
-                "__cname__": "BestiaryInfo"
+                "kills": 5150
             },
             {
-                "kills": 7016,
-                "__cname__": "BestiaryInfo"
+                "kills": 7016
             },
             {
-                "kills": 6959,
-                "__cname__": "BestiaryInfo"
+                "kills": 6959
             },
             {
-                "kills": 6844,
-                "__cname__": "BestiaryInfo"
+                "kills": 6844
             },
             {
-                "kills": 6782,
-                "__cname__": "BestiaryInfo"
+                "kills": 6782
             },
             {
-                "kills": 6958,
-                "__cname__": "BestiaryInfo"
+                "kills": 6958
             },
             {
-                "kills": 6908,
-                "__cname__": "BestiaryInfo"
+                "kills": 6908
             },
             {
-                "kills": 7038,
-                "__cname__": "BestiaryInfo"
+                "kills": 7038
             },
             {
-                "kills": 6945,
-                "__cname__": "BestiaryInfo"
+                "kills": 6945
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 13722,
-                "__cname__": "BestiaryInfo"
+                "kills": 13722
             },
             {
-                "kills": 4470,
-                "__cname__": "BestiaryInfo"
+                "kills": 4470
             },
             {
-                "kills": 4473,
-                "__cname__": "BestiaryInfo"
+                "kills": 4473
             },
             {
-                "kills": 4601,
-                "__cname__": "BestiaryInfo"
+                "kills": 4601
             },
             {
-                "kills": 4517,
-                "__cname__": "BestiaryInfo"
+                "kills": 4517
             },
             {
-                "kills": 4363,
-                "__cname__": "BestiaryInfo"
+                "kills": 4363
             },
             {
-                "kills": 4574,
-                "__cname__": "BestiaryInfo"
+                "kills": 4574
             },
             {
-                "kills": 4450,
-                "__cname__": "BestiaryInfo"
+                "kills": 4450
             },
             {
-                "kills": 4457,
-                "__cname__": "BestiaryInfo"
+                "kills": 4457
             },
             {
-                "kills": 5171,
-                "__cname__": "BestiaryInfo"
+                "kills": 5171
             },
             {
-                "kills": 5372,
-                "__cname__": "BestiaryInfo"
+                "kills": 5372
             },
             {
-                "kills": 5378,
-                "__cname__": "BestiaryInfo"
+                "kills": 5378
             },
             {
-                "kills": 5301,
-                "__cname__": "BestiaryInfo"
+                "kills": 5301
             },
             {
-                "kills": 5467,
-                "__cname__": "BestiaryInfo"
+                "kills": 5467
             },
             {
-                "kills": 5299,
-                "__cname__": "BestiaryInfo"
+                "kills": 5299
             },
             {
-                "kills": 5372,
-                "__cname__": "BestiaryInfo"
+                "kills": 5372
             },
             {
-                "kills": 5337,
-                "__cname__": "BestiaryInfo"
+                "kills": 5337
             },
             {
-                "kills": 3528,
-                "__cname__": "BestiaryInfo"
+                "kills": 3528
             },
             {
-                "kills": 3531,
-                "__cname__": "BestiaryInfo"
+                "kills": 3531
             },
             {
-                "kills": 3454,
-                "__cname__": "BestiaryInfo"
+                "kills": 3454
             },
             {
-                "kills": 3599,
-                "__cname__": "BestiaryInfo"
+                "kills": 3599
             },
             {
-                "kills": 3519,
-                "__cname__": "BestiaryInfo"
+                "kills": 3519
             },
             {
-                "kills": 3507,
-                "__cname__": "BestiaryInfo"
+                "kills": 3507
             },
             {
-                "kills": 3620,
-                "__cname__": "BestiaryInfo"
+                "kills": 3620
             },
             {
-                "kills": 7158,
-                "__cname__": "BestiaryInfo"
+                "kills": 7158
             },
             {
-                "kills": 1774,
-                "__cname__": "BestiaryInfo"
+                "kills": 1774
             },
             {
-                "kills": 1768,
-                "__cname__": "BestiaryInfo"
+                "kills": 1768
             },
             {
-                "kills": 1731,
-                "__cname__": "BestiaryInfo"
+                "kills": 1731
             },
             {
-                "kills": 1768,
-                "__cname__": "BestiaryInfo"
+                "kills": 1768
             },
             {
-                "kills": 1714,
-                "__cname__": "BestiaryInfo"
+                "kills": 1714
             },
             {
-                "kills": 1782,
-                "__cname__": "BestiaryInfo"
+                "kills": 1782
             },
             {
-                "kills": 1830,
-                "__cname__": "BestiaryInfo"
+                "kills": 1830
             },
             {
-                "kills": 1739,
-                "__cname__": "BestiaryInfo"
+                "kills": 1739
             },
             {
-                "kills": 1721,
-                "__cname__": "BestiaryInfo"
+                "kills": 1721
             },
             {
-                "kills": 1775,
-                "__cname__": "BestiaryInfo"
+                "kills": 1775
             },
             {
-                "kills": 1746,
-                "__cname__": "BestiaryInfo"
+                "kills": 1746
             },
             {
-                "kills": 1820,
-                "__cname__": "BestiaryInfo"
+                "kills": 1820
             },
             {
-                "kills": 1746,
-                "__cname__": "BestiaryInfo"
+                "kills": 1746
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 2733,
-                "__cname__": "BestiaryInfo"
+                "kills": 2733
             },
             {
-                "kills": 2567,
-                "__cname__": "BestiaryInfo"
+                "kills": 2567
             },
             {
-                "kills": 2188,
-                "__cname__": "BestiaryInfo"
+                "kills": 2188
             },
             {
-                "kills": 2060,
-                "__cname__": "BestiaryInfo"
+                "kills": 2060
             },
             {
-                "kills": 1,
-                "__cname__": "BestiaryInfo"
+                "kills": 1
             },
             {
-                "kills": 1,
-                "__cname__": "BestiaryInfo"
+                "kills": 1
             },
             {
-                "kills": 1,
-                "__cname__": "BestiaryInfo"
+                "kills": 1
             },
             {
-                "kills": 1,
-                "__cname__": "BestiaryInfo"
+                "kills": 1
             },
             {
-                "kills": 1517,
-                "__cname__": "BestiaryInfo"
+                "kills": 1517
             },
             {
-                "kills": 1,
-                "__cname__": "BestiaryInfo"
+                "kills": 1
             },
             {
-                "kills": 71,
-                "__cname__": "BestiaryInfo"
+                "kills": 71
             },
             {
-                "kills": 244,
-                "__cname__": "BestiaryInfo"
+                "kills": 244
             },
             {
-                "kills": 111,
-                "__cname__": "BestiaryInfo"
+                "kills": 111
             },
             {
-                "kills": 692,
-                "__cname__": "BestiaryInfo"
+                "kills": 692
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
-        ],
-        "__cname__": "Bestiary"
+                "kills": 0
+            }
+        ]
     },
     "cards": {
         "cards": [],
@@ -16417,49 +13914,35 @@ const lateNormal = {
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
+                "running": false
             },
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
+                "running": false
             },
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
+                "running": false
             },
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
+                "running": false
             },
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
+                "running": false
             },
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "running": false
+            }
         ],
-        "cardsOn": 0,
+        "cardsOn": false,
         "bonuses": [
             1,
             1,
@@ -16482,39 +13965,34 @@ const lateNormal = {
             "s0": 1400715221,
             "s1": 1444611082,
             "s2": -1038618125,
-            "s3": -2053996576,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": -2053996576
         },
         "chonkerState": {
             "s0": 1400715221,
             "s1": 1444611082,
             "s2": -1038618125,
-            "s3": -2053996576,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": -2053996576
         },
         "cardSpawnTimer": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "chonkerSpawnTimer": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "taggedBonuses": [],
         "cardsGenerated": 0,
-        "extraDeckSpace": 0,
-        "__cname__": "Cards"
+        "extraDeckSpace": 0
     },
     "cooking": {
-        "unlocked": 0,
+        "unlocked": false,
         "cookTimer": 172800,
         "ingredients": [
             {
@@ -16524,8 +14002,7 @@ const lateNormal = {
                 "pairedIngred": 4,
                 "weight": 13.759220123291016,
                 "pairedWeight": 14.361936569213867,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 10,
@@ -16534,8 +14011,7 @@ const lateNormal = {
                 "pairedIngred": 2,
                 "weight": 4.9456562995910645,
                 "pairedWeight": 22.743022918701172,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 12,
@@ -16544,8 +14020,7 @@ const lateNormal = {
                 "pairedIngred": 1,
                 "weight": 7.548192024230957,
                 "pairedWeight": 11.517534255981445,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 2,
@@ -16554,8 +14029,7 @@ const lateNormal = {
                 "pairedIngred": 5,
                 "weight": 10.800426483154297,
                 "pairedWeight": 12.174480438232422,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 3,
@@ -16564,8 +14038,7 @@ const lateNormal = {
                 "pairedIngred": 0,
                 "weight": 8.416291236877441,
                 "pairedWeight": 26.353334426879883,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 9,
@@ -16574,8 +14047,7 @@ const lateNormal = {
                 "pairedIngred": 3,
                 "weight": 13.004239082336426,
                 "pairedWeight": 12.339900970458984,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 11,
@@ -16584,8 +14056,7 @@ const lateNormal = {
                 "pairedIngred": 7,
                 "weight": 9.646751403808594,
                 "pairedWeight": 11.94106674194336,
-                "unlocked": 0,
-                "__cname__": "Ingredient"
+                "unlocked": false
             },
             {
                 "propertyIndex": 15,
@@ -16594,8 +14065,7 @@ const lateNormal = {
                 "pairedIngred": 6,
                 "weight": 12.56015396118164,
                 "pairedWeight": 11.453746795654297,
-                "unlocked": 0,
-                "__cname__": "Ingredient"
+                "unlocked": false
             }
         ],
         "pair1": [
@@ -16627,10 +14097,8 @@ const lateNormal = {
         "pair3Target": 33,
         "pair4Target": 22,
         "expBonus": 1,
-        "curDishIndex": 8,
-        "__cname__": "Cooking"
-    },
-    "__cname__": "PlayerData"
+        "curDishIndex": 8
+    }
 }
 
 export default lateNormal;

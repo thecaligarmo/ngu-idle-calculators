@@ -32,7 +32,7 @@ import {
 } from "@/helpers/calculators";
 import { useLocalStorage, useLocalStorageObject } from "@/helpers/localStorage";
 import { bd } from "@/helpers/numbers";
-import { playerImportType } from "@/helpers/types";
+import { playerImportType, yggdrasilFruitPermaImportType } from "@/helpers/types";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { AdvTraining, ADVTRAININGS } from "./advTraining";
@@ -193,18 +193,8 @@ export default class Player {
         this.set("baseRes3Cap", playerData.res3.capRes3);
         this.set("baseRes3Power", playerData.res3.res3Power);
         this.set("beastMode", playerData.adventure.beastModeOn);
-        this.set(
-            "beefyWish",
-            playerData.wishes.wishes[162].level +
-                playerData.wishes.wishes[220].level +
-                playerData.wishes.wishes[227].level
-        );
-        this.set(
-            "bloodMagicDropChance",
-            playerData.bloodMagic.lootSpellBlood == 0
-                ? 0
-                : Math.ceil(Math.log2(playerData.bloodMagic.lootSpellBlood / 10000))
-        );
+        this.set("beefyWish", playerData.wishes.wishes[162].level + playerData.wishes.wishes[220].level + playerData.wishes.wishes[227].level);
+        this.set("bloodMagicDropChance", playerData.bloodMagic.lootSpellBlood == 0 ? 0 : Math.ceil(Math.log2(playerData.bloodMagic.lootSpellBlood / 10000)));
         this.set("bloodMagicTimeMachine", Math.ceil(Math.log2(playerData.bloodMagic.goldSpellBlood / 1000000) ** 2));
         this.set("blueHeart", playerData.inventory.itemList.blueHeartComplete);
         this.set("bonusPP", playerData.beastQuest.quirkLevel[70] * 10 + playerData.wishes.wishes[79].level * 50);
@@ -702,12 +692,7 @@ export default class Player {
         this.set("wandoosEnergyAllocated", playerData.wandoos98.wandoosEnergy);
         this.set("wandoosMagicAllocated", playerData.wandoos98.wandoosMagic);
 
-        this.set(
-            "wimpyWish",
-            playerData.wishes.wishes[163].level +
-                playerData.wishes.wishes[221].level +
-                playerData.wishes.wishes[228].level
-        );
+        this.set("wimpyWish", playerData.wishes.wishes[163].level + playerData.wishes.wishes[221].level + playerData.wishes.wishes[228].level);
         this.set(
             "wishSlots",
             1 +
@@ -824,8 +809,7 @@ export default class Player {
         if (playerData.arbitrary.lootFilter) apToAdd["improvedLootFilter"] = 1;
         if (playerData.arbitrary.improvedAutoBoostMerge) apToAdd["autoMergeandBoostTimers"] = 1;
         if (playerData.arbitrary.instaTrain) apToAdd["instaTrainingCap"] = 1;
-        if (playerData.arbitrary.inventorySpaces > 0)
-            apToAdd["extraInventorySpace"] = playerData.arbitrary.inventorySpaces;
+        if (playerData.arbitrary.inventorySpaces > 0) apToAdd["extraInventorySpace"] = playerData.arbitrary.inventorySpaces;
         if (playerData.arbitrary.hasAcc4) apToAdd["extraAccessorySlot"] = 1;
         if (playerData.arbitrary.hasAcc5) apToAdd["anotherExtraAccessorySlot"] = 1;
         if (playerData.arbitrary.hasAcc6) apToAdd["anotherExtraAccessorySlot2"] = 1;
@@ -1002,20 +986,18 @@ export default class Player {
         this.set("equipmentBoots", bootsItem);
     }
     setEquipmentAccesories(playerData: playerImportType): void {
-        const accesories = playerData.inventory.accs.filter(
-            (acc) => !_.isNull(acc) && !_.isUndefined(acc.id) && !_.isNaN(acc.id)
-        );
+        const accesories = playerData.inventory.accs.filter((acc) => !_.isNull(acc) && !_.isUndefined(acc.id) && !_.isNaN(acc.id));
         const acc = accesories.map((acc) => {
-            const accItem: Item = _.cloneDeep(ITEMS[acc.id]);
-            accItem.importStats(acc);
-            return accItem;
+            if (!_.isNull(acc)) {
+                const accItem: Item = _.cloneDeep(ITEMS[acc.id]);
+                accItem.importStats(acc);
+                return accItem;
+            }
         });
         this.set("equipmentAccesories", acc);
     }
     setEquipmentTest(playerData: playerImportType): void {
-        const items = playerData.inventory.inventory.filter(
-            (it) => !_.isUndefined(it.id) && !_.isNaN(it.id) && it.id > 0
-        );
+        const items = playerData.inventory.inventory.filter((it) => !_.isUndefined(it.id) && !_.isNaN(it.id) && it.id > 0);
 
         items.map((it) => {
             if (!_.isUndefined(ITEMS[it.id])) {
@@ -1080,7 +1062,7 @@ export default class Player {
             }
         }
         playerData.inventory.macguffins.forEach((macguffin) => {
-            if (macguffin.id > 0) {
+            if (!_.isNull(macguffin) && macguffin.id > 0) {
                 let macID = 0;
                 switch (macguffin.id) {
                     case 228:
@@ -1187,10 +1169,13 @@ export default class Player {
     setYggdrasil(playerData: playerImportType): void {
         const yggdrasil: Yggdrasil[] = _.cloneDeep(Object.values(FRUITS));
         yggdrasil.forEach((fruit) => {
-            const f = playerData.yggdrasil.fruits[fruit.id];
-            f["totalPermStatBonus"] = playerData.yggdrasil.totalPermStatBonus;
-            f["totalPermStatBonus2"] = playerData.yggdrasil.totalPermStatBonus2;
-            f["totalPermNumberBonus"] = playerData.yggdrasil.totalPermNumberBonus;
+            const f: yggdrasilFruitPermaImportType = {
+                ...playerData.yggdrasil.fruits[fruit.id],
+                totalPermStatBonus: playerData.yggdrasil.totalPermStatBonus,
+                totalPermStatBonus2: playerData.yggdrasil.totalPermStatBonus2,
+                totalPermNumberBonus: playerData.yggdrasil.totalPermNumberBonus,
+            };
+
             fruit.importStats(f);
         });
         this.set("yggdrasil", yggdrasil);

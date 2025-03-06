@@ -271,8 +271,8 @@ type inventoryImportType = {
     accessories: itemImportType[];
     boostCombineState: stateImportType;
     inventory: itemImportType[];
-    accs: itemImportType[];
-    macguffins: itemImportType[];
+    accs: (itemImportType | null)[];
+    macguffins: (itemImportType | null)[];
     daycare: itemImportType[];
     daycareTimers: timeImportType[];
     itemList: itemListImportType;
@@ -866,7 +866,7 @@ export type playerImportType = {
         statFruit: yggdrasilFruitImportType;
         knowledgeFruit: yggdrasilFruitImportType;
         pomegranate: yggdrasilFruitImportType;
-        fruits: yggdrasilFruitPermaImportType[];
+        fruits: (yggdrasilFruitImportType | yggdrasilFruitPermaImportType)[];
         resetFactor: number;
         statBonus: number;
         seeds: number;
@@ -1002,7 +1002,7 @@ export type playerImportType = {
         res3Gained: number;
         res3Power: number;
         res3BarProgress: number;
-        res3Name: "Unicorn tears";
+        res3Name: string;
         res3R: number;
         res3G: number;
         res3B: number;

@@ -1,11 +1,12 @@
-const earlyNormalTwo = {
+import { playerImportType } from "@/helpers/types";
+
+const earlyNormalTwo : playerImportType= {
     "playerName": "x",
-    "firstTimePlaying": 0,
+    "firstTimePlaying": false,
     "version": 1260,
     "lastTime": 1716923330,
     "nextRebirthDifficulty": {
-        "value__": 0,
-        "__cname__": "difficulty"
+        "value__": 0
     },
     "maxHP": 2.002482222950942e+94,
     "curHP": 3.340461510296031e+93,
@@ -125,9 +126,8 @@ const earlyNormalTwo = {
             50000,
             200000
         ],
-        "_hasAutoAdvance": 0,
-        "_autoAdvanceToggle": 0,
-        "__cname__": "Training"
+        "_hasAutoAdvance": false,
+        "_autoAdvanceToggle": false
     },
     "bossID": 85,
     "bossAttack": 1.9836425781250006e+83,
@@ -139,7 +139,7 @@ const earlyNormalTwo = {
     "highestBoss": 85,
     "highestHardBoss": 1,
     "highestSadisticBoss": 1,
-    "firstBossEver": 0,
+    "firstBossEver": false,
     "currentHighestBoss": 85,
     "adventure": {
         "attack": 280,
@@ -150,56 +150,51 @@ const earlyNormalTwo = {
         "respawnRate": 5,
         "attackSpeed": 1,
         "zone": -1,
-        "autoattacking": 1,
+        "autoattacking": true,
         "boss1Spawn": {
             "totalseconds": 2175.0840735364472,
             "seconds": 15.08407353644725,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss1Defeated": 0,
+        "boss1Defeated": false,
         "titan1Kills": 2804,
         "boss2Spawn": {
             "totalseconds": 279.08407353644725,
             "seconds": 39.08407353644725,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss2Defeated": 0,
+        "boss2Defeated": false,
         "titan2Kills": 2804,
         "boss3Spawn": {
             "totalseconds": 7200,
             "seconds": 0,
             "minutes": 0,
             "hours": 2,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss3Defeated": 0,
+        "boss3Defeated": false,
         "titan3Kills": 0,
         "boss4Spawn": {
             "totalseconds": 7200,
             "seconds": 0,
             "minutes": 0,
             "hours": 2,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss4Defeated": 0,
+        "boss4Defeated": false,
         "titan4Kills": 0,
         "boss5Spawn": {
             "totalseconds": 10800,
             "seconds": 0,
             "minutes": 0,
             "hours": 3,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss5Defeated": 0,
+        "boss5Defeated": false,
         "waldoDefeats": 0,
         "waldoFinds": 0,
         "boss5Kills": 0,
@@ -209,16 +204,15 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 3,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss6Defeated": 0,
+        "boss6Defeated": false,
         "titan6Kills": 0,
-        "clue1Complete": 0,
-        "clue2Complete": 0,
-        "clue3Complete": 0,
-        "clue4Complete": 0,
-        "titan6Unlocked": 0,
+        "clue1Complete": false,
+        "clue2Complete": false,
+        "clue3Complete": false,
+        "clue4Complete": false,
+        "titan6Unlocked": false,
         "titan6Version": 0,
         "boss6Kills": 0,
         "titan6V1Kills": 0,
@@ -230,15 +224,14 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 4,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss7Defeated": 0,
-        "titan7questStarted": 0,
+        "boss7Defeated": false,
+        "titan7questStarted": false,
         "titan7QuestSequence": 0,
-        "titan7questComplete": 0,
+        "titan7questComplete": false,
         "titan7Kills": 0,
-        "titan7Unlocked": 0,
+        "titan7Unlocked": false,
         "titan7Version": 0,
         "boss7Kills": 0,
         "titan7V1Kills": 0,
@@ -250,40 +243,38 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 5,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss8Defeated": 0,
-        "titan8questStarted": 0,
+        "boss8Defeated": false,
+        "titan8questStarted": false,
         "titan8QuestSequence": 0,
-        "titan8questComplete": 0,
+        "titan8questComplete": false,
         "titan8Kills": 0,
-        "titan8Unlocked": 0,
+        "titan8Unlocked": false,
         "titan8Version": 0,
         "boss8Kills": 0,
         "titan8V1Kills": 0,
         "titan8V2Kills": 0,
         "titan8V3Kills": 0,
         "titan8V4Kills": 0,
-        "skeletonWhacked": 0,
-        "icarusWhacked": 0,
-        "emptyNameWhacked": 0,
-        "kingCircleWhacked": 0,
-        "robBossWhacked": 0,
+        "skeletonWhacked": false,
+        "icarusWhacked": false,
+        "emptyNameWhacked": false,
+        "kingCircleWhacked": false,
+        "robBossWhacked": false,
         "boss9Spawn": {
             "totalseconds": 19800,
             "seconds": 0,
             "minutes": 0,
             "hours": 5,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss9Defeated": 0,
-        "titan9questStarted": 0,
-        "titan9questComplete": 0,
-        "titan9SpecialReward": 0,
+        "boss9Defeated": false,
+        "titan9questStarted": false,
+        "titan9questComplete": false,
+        "titan9SpecialReward": false,
         "titan9Kills": 0,
-        "titan9Unlocked": 0,
+        "titan9Unlocked": false,
         "titan9Version": 0,
         "boss9Kills": 0,
         "titan9V1Kills": 0,
@@ -295,14 +286,13 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 6,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss10Defeated": 0,
-        "titan10questStarted": 0,
-        "titan10SpecialReward": 0,
+        "boss10Defeated": false,
+        "titan10questStarted": false,
+        "titan10SpecialReward": false,
         "titan10Kills": 0,
-        "titan10Unlocked": 1,
+        "titan10Unlocked": true,
         "titan10Version": 0,
         "boss10Kills": 0,
         "titan10V1Kills": 0,
@@ -314,12 +304,11 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 7,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss11Defeated": 0,
+        "boss11Defeated": false,
         "titan11Kills": 0,
-        "titan11Unlocked": 1,
+        "titan11Unlocked": true,
         "titan11Version": 0,
         "boss11Kills": 0,
         "titan11V1Kills": 0,
@@ -331,35 +320,32 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 7,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boss12Defeated": 0,
+        "boss12Defeated": false,
         "titan12Kills": 0,
-        "titan12Unlocked": 1,
+        "titan12Unlocked": true,
         "titan12Version": 0,
         "boss12Kills": 0,
         "titan12V1Kills": 0,
         "titan12V2Kills": 0,
         "titan12V3Kills": 0,
         "titan12V4Kills": 0,
-        "ratTitanDefeated": 0,
+        "ratTitanDefeated": false,
         "boss13Spawn": {
             "totalseconds": 27000,
             "seconds": 18.13522099459078,
             "minutes": 0,
             "hours": 4,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "finalTitanDefeated": 0,
+        "finalTitanDefeated": false,
         "boss14Spawn": {
             "totalseconds": 27000,
             "seconds": 18.13522099459078,
             "minutes": 0,
             "hours": 4,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "itopodStart": 70,
         "itopodEnd": 150,
@@ -629,20 +615,17 @@ const earlyNormalTwo = {
             "enemiesKilled": 2180818,
             "poopProgress": 0,
             "buffedKills": 0,
-            "filterDiff": 1,
-            "filterAfford": 0,
-            "filterMaxxed": 0,
+            "filterDiff": true,
+            "filterAfford": false,
+            "filterMaxxed": false,
             "orderType": {
-                "value__": 0,
-                "__cname__": "orderPerks"
-            },
-            "__cname__": "ITOPOD"
+                "value__": 0
+            }
         },
-        "beastModeOn": 0,
-        "didAdvAdvance": 0,
-        "move69Unlocked": 0,
-        "move69Used": 0,
-        "__cname__": "Adventure"
+        "beastModeOn": false,
+        "didAdvAdvance": false,
+        "move69Unlocked": false,
+        "move69Used": 0
     },
     "inventory": {
         "spaces": 60,
@@ -651,8 +634,7 @@ const earlyNormalTwo = {
         "head": {
             "id": 95,
             "type": {
-                "value__": 0,
-                "__cname__": "part"
+                "value__": 0
             },
             "bossRequired": 58,
             "capAttack": 50,
@@ -660,32 +642,27 @@ const earlyNormalTwo = {
             "capDefense": 600,
             "curDefense": 1035,
             "spec1Type": {
-                "value__": 16,
-                "__cname__": "specType"
+                "value__": 16
             },
             "spec1Cur": 1363.9000244140625,
             "spec1Cap": 950,
             "spec2Type": {
-                "value__": 18,
-                "__cname__": "specType"
+                "value__": 18
             },
             "spec2Cur": 429,
             "spec2Cap": 300,
             "spec3Type": {
-                "value__": 12,
-                "__cname__": "specType"
+                "value__": 12
             },
             "spec3Cur": 446.2198181152344,
             "spec3Cap": 1000,
-            "removable": 0,
-            "level": 99,
-            "__cname__": "Equipment"
+            "removable": false,
+            "level": 99
         },
         "chest": {
             "id": 96,
             "type": {
-                "value__": 1,
-                "__cname__": "part"
+                "value__": 1
             },
             "bossRequired": 58,
             "capAttack": 50,
@@ -693,32 +670,27 @@ const earlyNormalTwo = {
             "capDefense": 645,
             "curDefense": 919.5999755859375,
             "spec1Type": {
-                "value__": 17,
-                "__cname__": "specType"
+                "value__": 17
             },
             "spec1Cur": 712,
             "spec1Cap": 400,
             "spec2Type": {
-                "value__": 16,
-                "__cname__": "specType"
+                "value__": 16
             },
             "spec2Cur": 734,
             "spec2Cap": 500,
             "spec3Type": {
-                "value__": 18,
-                "__cname__": "specType"
+                "value__": 18
             },
             "spec3Cur": 611.539794921875,
             "spec3Cap": 500,
-            "removable": 0,
-            "level": 91,
-            "__cname__": "Equipment"
+            "removable": false,
+            "level": 91
         },
         "legs": {
             "id": 97,
             "type": {
-                "value__": 2,
-                "__cname__": "part"
+                "value__": 2
             },
             "bossRequired": 58,
             "capAttack": 70,
@@ -726,32 +698,27 @@ const earlyNormalTwo = {
             "capDefense": 760,
             "curDefense": 1010,
             "spec1Type": {
-                "value__": 16,
-                "__cname__": "specType"
+                "value__": 16
             },
             "spec1Cur": 570,
             "spec1Cap": 500,
             "spec2Type": {
-                "value__": 20,
-                "__cname__": "specType"
+                "value__": 20
             },
             "spec2Cur": 286.6599426269531,
             "spec2Cap": 700,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 0,
-            "level": 84,
-            "__cname__": "Equipment"
+            "removable": false,
+            "level": 84
         },
         "boots": {
             "id": 98,
             "type": {
-                "value__": 3,
-                "__cname__": "part"
+                "value__": 3
             },
             "bossRequired": 58,
             "capAttack": 60,
@@ -759,32 +726,27 @@ const earlyNormalTwo = {
             "capDefense": 700,
             "curDefense": 1106.900146484375,
             "spec1Type": {
-                "value__": 16,
-                "__cname__": "specType"
+                "value__": 16
             },
             "spec1Cur": 714.0598754882812,
             "spec1Cap": 500,
             "spec2Type": {
-                "value__": 18,
-                "__cname__": "specType"
+                "value__": 18
             },
             "spec2Cur": 355,
             "spec2Cap": 700,
             "spec3Type": {
-                "value__": 20,
-                "__cname__": "specType"
+                "value__": 20
             },
             "spec3Cur": 200,
             "spec3Cap": 500,
-            "removable": 0,
-            "level": 100,
-            "__cname__": "Equipment"
+            "removable": false,
+            "level": 100
         },
         "weapon": {
             "id": 99,
             "type": {
-                "value__": 4,
-                "__cname__": "part"
+                "value__": 4
             },
             "bossRequired": 58,
             "capAttack": 4600,
@@ -792,32 +754,27 @@ const earlyNormalTwo = {
             "capDefense": 300,
             "curDefense": 396,
             "spec1Type": {
-                "value__": 16,
-                "__cname__": "specType"
+                "value__": 16
             },
             "spec1Cur": 733,
             "spec1Cap": 450,
             "spec2Type": {
-                "value__": 18,
-                "__cname__": "specType"
+                "value__": 18
             },
             "spec2Cur": 709.800048828125,
             "spec2Cap": 500,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 0,
-            "level": 79,
-            "__cname__": "Equipment"
+            "removable": false,
+            "level": 79
         },
         "weapon2": {
             "id": 0,
             "type": {
-                "value__": 9,
-                "__cname__": "part"
+                "value__": 9
             },
             "bossRequired": -1,
             "capAttack": 0,
@@ -825,32 +782,27 @@ const earlyNormalTwo = {
             "capDefense": 0,
             "curDefense": 0,
             "spec1Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec1Cur": 0,
             "spec1Cap": 0,
             "spec2Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec2Cur": 0,
             "spec2Cap": 0,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 0,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 0
         },
         "acc1": {
             "id": 0,
             "type": {
-                "value__": 9,
-                "__cname__": "part"
+                "value__": 9
             },
             "bossRequired": -1,
             "capAttack": 0,
@@ -858,32 +810,27 @@ const earlyNormalTwo = {
             "capDefense": 0,
             "curDefense": 0,
             "spec1Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec1Cur": 0,
             "spec1Cap": 0,
             "spec2Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec2Cur": 0,
             "spec2Cap": 0,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 0,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 0
         },
         "acc2": {
             "id": 0,
             "type": {
-                "value__": 9,
-                "__cname__": "part"
+                "value__": 9
             },
             "bossRequired": -1,
             "capAttack": 0,
@@ -891,32 +838,27 @@ const earlyNormalTwo = {
             "capDefense": 0,
             "curDefense": 0,
             "spec1Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec1Cur": 0,
             "spec1Cap": 0,
             "spec2Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec2Cur": 0,
             "spec2Cap": 0,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 0,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 0
         },
         "acc3": {
             "id": 0,
             "type": {
-                "value__": 9,
-                "__cname__": "part"
+                "value__": 9
             },
             "bossRequired": -1,
             "capAttack": 0,
@@ -924,32 +866,27 @@ const earlyNormalTwo = {
             "capDefense": 0,
             "curDefense": 0,
             "spec1Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec1Cur": 0,
             "spec1Cap": 0,
             "spec2Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec2Cur": 0,
             "spec2Cap": 0,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 0,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 0
         },
         "temp": {
             "id": 53,
             "type": {
-                "value__": 5,
-                "__cname__": "part"
+                "value__": 5
             },
             "bossRequired": 0,
             "capAttack": 0,
@@ -957,32 +894,27 @@ const earlyNormalTwo = {
             "capDefense": 0,
             "curDefense": 0,
             "spec1Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec1Cur": 0,
             "spec1Cap": 0,
             "spec2Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec2Cur": 0,
             "spec2Cap": 0,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 0,
-            "level": 50,
-            "__cname__": "Equipment"
+            "removable": false,
+            "level": 50
         },
         "trash": {
             "id": 81,
             "type": {
-                "value__": 3,
-                "__cname__": "part"
+                "value__": 3
             },
             "bossRequired": 33,
             "capAttack": 20,
@@ -990,33 +922,28 @@ const earlyNormalTwo = {
             "capDefense": 250,
             "curDefense": 272,
             "spec1Type": {
-                "value__": 11,
-                "__cname__": "specType"
+                "value__": 11
             },
             "spec1Cur": 32,
             "spec1Cap": 30,
             "spec2Type": {
-                "value__": 1,
-                "__cname__": "specType"
+                "value__": 1
             },
             "spec2Cur": 70,
             "spec2Cap": 65,
             "spec3Type": {
-                "value__": 0,
-                "__cname__": "specType"
+                "value__": 0
             },
             "spec3Cur": 0,
             "spec3Cap": 0,
-            "removable": 1,
-            "level": 100,
-            "__cname__": "Equipment"
+            "removable": true,
+            "level": 100
         },
         "items": [
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1024,34 +951,29 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             }
         ],
         "accessories": [
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1059,32 +981,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1092,32 +1009,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1125,32 +1037,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1158,32 +1065,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1191,32 +1093,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1224,41 +1121,35 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             }
         ],
         "boostCombineState": {
             "s0": 1400715221,
             "s1": 1444611082,
             "s2": -1038618125,
-            "s3": -2053996576,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": -2053996576
         },
         "inventory": [
             {
                 "id": 18,
                 "type": {
-                    "value__": 7,
-                    "__cname__": "part"
+                    "value__": 7
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -1266,32 +1157,27 @@ const earlyNormalTwo = {
                 "capDefense": 20,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1299,32 +1185,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1332,32 +1213,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1365,32 +1241,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1398,32 +1269,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1431,32 +1297,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1464,32 +1325,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1497,32 +1353,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1530,32 +1381,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1563,32 +1409,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1596,32 +1437,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1629,32 +1465,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1662,32 +1493,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1695,32 +1521,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1728,32 +1549,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1761,32 +1577,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1794,32 +1605,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1827,32 +1633,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1860,32 +1661,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1893,32 +1689,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1926,32 +1717,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1959,32 +1745,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -1992,32 +1773,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2025,32 +1801,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2058,32 +1829,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2091,32 +1857,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2124,32 +1885,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2157,32 +1913,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2190,32 +1941,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2223,32 +1969,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2256,32 +1997,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2289,32 +2025,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2322,32 +2053,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2355,32 +2081,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2388,32 +2109,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 78,
                 "type": {
-                    "value__": 0,
-                    "__cname__": "part"
+                    "value__": 0
                 },
                 "bossRequired": 33,
                 "capAttack": 250,
@@ -2421,32 +2137,27 @@ const earlyNormalTwo = {
                 "capDefense": 250,
                 "curDefense": 290,
                 "spec1Type": {
-                    "value__": 11,
-                    "__cname__": "specType"
+                    "value__": 11
                 },
                 "spec1Cur": 35,
                 "spec1Cap": 30,
                 "spec2Type": {
-                    "value__": 1,
-                    "__cname__": "specType"
+                    "value__": 1
                 },
                 "spec2Cur": 59,
                 "spec2Cap": 50,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 98,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 98
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2454,32 +2165,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2487,32 +2193,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2520,32 +2221,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2553,32 +2249,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2586,32 +2277,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 17,
                 "type": {
-                    "value__": 7,
-                    "__cname__": "part"
+                    "value__": 7
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -2619,32 +2305,27 @@ const earlyNormalTwo = {
                 "capDefense": 10,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 85,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 85
             },
             {
                 "id": 4,
                 "type": {
-                    "value__": 6,
-                    "__cname__": "part"
+                    "value__": 6
                 },
                 "bossRequired": 0,
                 "capAttack": 10,
@@ -2652,32 +2333,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 72,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 72
             },
             {
                 "id": 30,
                 "type": {
-                    "value__": 8,
-                    "__cname__": "part"
+                    "value__": 8
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -2685,32 +2361,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 10,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 10,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 10,
-                "removable": 0,
-                "level": 73,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 73
             },
             {
                 "id": 53,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -2718,32 +2389,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 50,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 50
             },
             {
                 "id": 437,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -2751,32 +2417,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 21,
-                    "__cname__": "specType"
+                    "value__": 21
                 },
                 "spec1Cur": 250,
                 "spec1Cap": 700,
                 "spec2Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
+                    "value__": 20
                 },
                 "spec2Cur": 250,
                 "spec2Cap": 700,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 81,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 81
             },
             {
                 "id": 91,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -2784,32 +2445,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 14,
-                    "__cname__": "specType"
+                    "value__": 14
                 },
                 "spec1Cur": 1013.6199340820312,
                 "spec1Cap": 1000,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 100
             },
             {
                 "id": 101,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 58,
                 "capAttack": 0,
@@ -2817,32 +2473,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 12,
-                    "__cname__": "specType"
+                    "value__": 12
                 },
                 "spec1Cur": 1000,
                 "spec1Cap": 3000,
                 "spec2Type": {
-                    "value__": 13,
-                    "__cname__": "specType"
+                    "value__": 13
                 },
                 "spec2Cur": 1000,
                 "spec2Cap": 4000,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 100
             },
             {
                 "id": 60,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 1,
@@ -2850,32 +2501,27 @@ const earlyNormalTwo = {
                 "capDefense": 1,
                 "curDefense": 2,
                 "spec1Type": {
-                    "value__": 1,
-                    "__cname__": "specType"
+                    "value__": 1
                 },
                 "spec1Cur": 60,
                 "spec1Cap": 30,
                 "spec2Type": {
-                    "value__": 2,
-                    "__cname__": "specType"
+                    "value__": 2
                 },
                 "spec2Cur": 120,
                 "spec2Cap": 60,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 100,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 100
             },
             {
                 "id": 67,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 2,
@@ -2883,32 +2529,27 @@ const earlyNormalTwo = {
                 "capDefense": 2,
                 "curDefense": 2,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 107.36000061035156,
                 "spec1Cap": 100,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 13,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 13
             },
             {
                 "id": 83,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 33,
                 "capAttack": 250,
@@ -2916,32 +2557,27 @@ const earlyNormalTwo = {
                 "capDefense": 250,
                 "curDefense": 287,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 89,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 89
             },
             {
                 "id": 84,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 33,
                 "capAttack": 0,
@@ -2949,32 +2585,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 16,
-                    "__cname__": "specType"
+                    "value__": 16
                 },
                 "spec1Cur": 798,
                 "spec1Cap": 700,
                 "spec2Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
+                    "value__": 20
                 },
                 "spec2Cur": 282.5797119140625,
                 "spec2Cap": 500,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 58,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 58
             },
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -2982,32 +2613,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             },
             {
                 "id": 18,
                 "type": {
-                    "value__": 7,
-                    "__cname__": "part"
+                    "value__": 7
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -3015,32 +2641,27 @@ const earlyNormalTwo = {
                 "capDefense": 20,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 58,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 58
             },
             {
                 "id": 5,
                 "type": {
-                    "value__": 6,
-                    "__cname__": "part"
+                    "value__": 6
                 },
                 "bossRequired": 0,
                 "capAttack": 20,
@@ -3048,32 +2669,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 63,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 63
             },
             {
                 "id": 31,
                 "type": {
-                    "value__": 8,
-                    "__cname__": "part"
+                    "value__": 8
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -3081,32 +2697,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 20,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 20,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 20,
-                "removable": 0,
-                "level": 64,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 64
             },
             {
                 "id": 53,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -3114,32 +2725,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 86,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 86
             },
             {
                 "id": 66,
                 "type": {
-                    "value__": 10,
-                    "__cname__": "part"
+                    "value__": 10
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -3147,32 +2753,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 12,
-                    "__cname__": "specType"
+                    "value__": 12
                 },
                 "spec1Cur": 98,
                 "spec1Cap": 98,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 82,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 82
             },
             {
                 "id": 172,
                 "type": {
-                    "value__": 10,
-                    "__cname__": "part"
+                    "value__": 10
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -3180,32 +2781,27 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 25,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 25
             },
             {
                 "id": 92,
                 "type": {
-                    "value__": 10,
-                    "__cname__": "part"
+                    "value__": 10
                 },
                 "bossRequired": 0,
                 "capAttack": 0,
@@ -3213,114 +2809,29 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 9,
-                "__cname__": "Equipment"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "removable": false,
+                "level": 9
+            }
         ],
         "accs": [
             {
                 "id": 76,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 58,
                 "capAttack": 100,
@@ -3328,32 +2839,27 @@ const earlyNormalTwo = {
                 "capDefense": 100,
                 "curDefense": 120,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 248,
                 "spec1Cap": 200,
                 "spec2Type": {
-                    "value__": 7,
-                    "__cname__": "specType"
+                    "value__": 7
                 },
                 "spec2Cur": 243.8000030517578,
                 "spec2Cap": 200,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 47,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 47
             },
             {
                 "id": 100,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 58,
                 "capAttack": 650,
@@ -3361,32 +2867,27 @@ const earlyNormalTwo = {
                 "capDefense": 650,
                 "curDefense": 884,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 99,
-                "__cname__": "Equipment"
+                "removable": false,
+                "level": 99
             },
             {
                 "id": 436,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 150,
@@ -3394,62 +2895,29 @@ const earlyNormalTwo = {
                 "capDefense": 150,
                 "curDefense": 300,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 160,
                 "spec1Cap": 80,
                 "spec2Type": {
-                    "value__": 20,
-                    "__cname__": "specType"
+                    "value__": 20
                 },
                 "spec2Cur": 1000,
                 "spec2Cap": 500,
                 "spec3Type": {
-                    "value__": 21,
-                    "__cname__": "specType"
+                    "value__": 21
                 },
                 "spec3Cur": 1000,
                 "spec3Cap": 500,
-                "removable": 0,
-                "level": 100,
-                "__cname__": "Equipment"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "removable": false,
+                "level": 100
+            }
         ],
         "macguffins": [
             {
                 "id": 0,
                 "type": {
-                    "value__": 9,
-                    "__cname__": "part"
+                    "value__": 9
                 },
                 "bossRequired": -1,
                 "capAttack": 0,
@@ -3457,34 +2925,29 @@ const earlyNormalTwo = {
                 "capDefense": 0,
                 "curDefense": 0,
                 "spec1Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec1Cur": 0,
                 "spec1Cap": 0,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 1,
-                "level": 0,
-                "__cname__": "Equipment"
+                "removable": true,
+                "level": 0
             }
         ],
         "daycare": [
             {
                 "id": 67,
                 "type": {
-                    "value__": 5,
-                    "__cname__": "part"
+                    "value__": 5
                 },
                 "bossRequired": 0,
                 "capAttack": 2,
@@ -3492,39 +2955,23 @@ const earlyNormalTwo = {
                 "capDefense": 2,
                 "curDefense": 2,
                 "spec1Type": {
-                    "value__": 5,
-                    "__cname__": "specType"
+                    "value__": 5
                 },
                 "spec1Cur": 50,
                 "spec1Cap": 100,
                 "spec2Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec2Cur": 0,
                 "spec2Cap": 0,
                 "spec3Type": {
-                    "value__": 0,
-                    "__cname__": "specType"
+                    "value__": 0
                 },
                 "spec3Cur": 0,
                 "spec3Cap": 0,
-                "removable": 0,
-                "level": 0,
-                "__cname__": "Equipment"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "removable": false,
+                "level": 0
+            }
         ],
         "daycareTimers": [
             {
@@ -3532,3174 +2979,3160 @@ const earlyNormalTwo = {
                 "seconds": 17.210038863122463,
                 "minutes": 0,
                 "hours": 4,
-                "days": 0,
-                "__cname__": "PlayerTime"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "days": 0
+            }
         ],
         "itemList": {
             "itemDropped": [
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
             ],
             "itemMaxxed": [
-                0,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                1,
-                0,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
+                false,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                false,
+                false,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
             ],
             "itemFiltered": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
             ],
             "totalDiscovered": 89,
             "totalMaxxed": 64,
-            "trainingComplete": 1,
-            "sewersComplete": 1,
-            "forestComplete": 1,
-            "caveComplete": 1,
-            "skyComplete": 0,
-            "HSBComplete": 1,
-            "GRBComplete": 0,
-            "clockComplete": 1,
-            "twoDComplete": 0,
-            "ghostComplete": 0,
-            "jakeComplete": 0,
-            "gaudyComplete": 0,
-            "megaComplete": 0,
-            "beardverseComplete": 0,
-            "waldoComplete": 0,
-            "antiWaldoComplete": 0,
-            "badlyDrawnComplete": 0,
-            "stealthComplete": 0,
-            "beast1complete": 0,
-            "chocoComplete": 0,
-            "edgyComplete": 0,
-            "edgyBootsComplete": 0,
-            "prettyComplete": 0,
-            "nerdComplete": 0,
-            "metaComplete": 0,
-            "partyComplete": 0,
-            "godmotherComplete": 0,
-            "typoComplete": 0,
-            "fadComplete": 0,
-            "jrpgComplete": 0,
-            "exileComplete": 0,
-            "radComplete": 0,
-            "schoolComplete": 0,
-            "westernComplete": 0,
-            "spaceComplete": 0,
-            "breadverseComplete": 0,
-            "that70sComplete": 0,
-            "halloweeniesComplete": 0,
-            "rockLobsterComplete": 0,
-            "constructionComplete": 0,
-            "duckComplete": 0,
-            "netherComplete": 0,
-            "amalgamateComplete": 0,
-            "pirateComplete": 0,
-            "wandoosComplete": 1,
-            "tutorialCubeComplete": 1,
-            "numberComplete": 1,
-            "flubberComplete": 0,
-            "seedComplete": 0,
-            "uugComplete": 0,
-            "uugRingComplete": 0,
-            "redLiquidComplete": 0,
-            "brownHeartComplete": 0,
-            "xlComplete": 0,
-            "greenHeartComplete": 0,
-            "itopodKeyComplete": 0,
-            "purpleLiquidComplete": 0,
-            "blueHeartComplete": 0,
-            "jakeNoteComplete": 0,
-            "purpleHeartComplete": 0,
-            "orangeHeartComplete": 0,
-            "greyHeartComplete": 0,
-            "sigilComplete": 0,
-            "evidenceComplete": 0,
-            "pinkHeartComplete": 0,
-            "severedHeadComplete": 0,
-            "rainbowHeartComplete": 0,
-            "beatingHeartComplete": 0,
-            "normalBonusAccComplete": 0,
-            "evilBonusAccComplete": 0,
-            "__cname__": "ItemList"
+            "trainingComplete": true,
+            "sewersComplete": true,
+            "forestComplete": true,
+            "caveComplete": true,
+            "skyComplete": false,
+            "HSBComplete": true,
+            "GRBComplete": false,
+            "clockComplete": true,
+            "twoDComplete": false,
+            "ghostComplete": false,
+            "jakeComplete": false,
+            "gaudyComplete": false,
+            "megaComplete": false,
+            "beardverseComplete": false,
+            "waldoComplete": false,
+            "antiWaldoComplete": false,
+            "badlyDrawnComplete": false,
+            "stealthComplete": false,
+            "beast1complete": false,
+            "chocoComplete": false,
+            "edgyComplete": false,
+            "edgyBootsComplete": false,
+            "prettyComplete": false,
+            "nerdComplete": false,
+            "metaComplete": false,
+            "partyComplete": false,
+            "godmotherComplete": false,
+            "typoComplete": false,
+            "fadComplete": false,
+            "jrpgComplete": false,
+            "exileComplete": false,
+            "radComplete": false,
+            "schoolComplete": false,
+            "westernComplete": false,
+            "spaceComplete": false,
+            "breadverseComplete": false,
+            "that70sComplete": false,
+            "halloweeniesComplete": false,
+            "rockLobsterComplete": false,
+            "constructionComplete": false,
+            "duckComplete": false,
+            "netherComplete": false,
+            "amalgamateComplete": false,
+            "pirateComplete": false,
+            "wandoosComplete": true,
+            "tutorialCubeComplete": true,
+            "numberComplete": true,
+            "flubberComplete": false,
+            "seedComplete": false,
+            "uugComplete": false,
+            "uugRingComplete": false,
+            "redLiquidComplete": false,
+            "brownHeartComplete": false,
+            "xlComplete": false,
+            "greenHeartComplete": false,
+            "itopodKeyComplete": false,
+            "purpleLiquidComplete": false,
+            "blueHeartComplete": false,
+            "jakeNoteComplete": false,
+            "purpleHeartComplete": false,
+            "orangeHeartComplete": false,
+            "greyHeartComplete": false,
+            "sigilComplete": false,
+            "evidenceComplete": false,
+            "pinkHeartComplete": false,
+            "severedHeadComplete": false,
+            "rainbowHeartComplete": false,
+            "beatingHeartComplete": false,
+            "normalBonusAccComplete": false,
+            "evilBonusAccComplete": false
         },
         "autoMergeSlot1": 0,
         "mergeTime": {
@@ -6707,16 +6140,14 @@ const earlyNormalTwo = {
             "seconds": 3.8286545365699567,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "boostTime": {
             "totalseconds": 3600,
             "seconds": 0.0005508875474333763,
             "minutes": 0,
             "hours": 1,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "loadouts": [
             {
@@ -6737,8 +6168,7 @@ const earlyNormalTwo = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 1",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 1"
             },
             {
                 "head": -1000,
@@ -6758,8 +6188,7 @@ const earlyNormalTwo = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 2",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 2"
             },
             {
                 "head": -1000,
@@ -6779,8 +6208,7 @@ const earlyNormalTwo = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 3",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 3"
             },
             {
                 "head": -1000,
@@ -6800,8 +6228,7 @@ const earlyNormalTwo = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 4",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 4"
             },
             {
                 "head": -1000,
@@ -6821,8 +6248,7 @@ const earlyNormalTwo = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 5",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 5"
             },
             {
                 "head": -1000,
@@ -6842,8 +6268,7 @@ const earlyNormalTwo = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 6",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 6"
             },
             {
                 "head": -1000,
@@ -6863,8 +6288,7 @@ const earlyNormalTwo = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 7",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 7"
             },
             {
                 "head": -1000,
@@ -6884,8 +6308,7 @@ const earlyNormalTwo = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 8",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 8"
             },
             {
                 "head": -1000,
@@ -6905,8 +6328,7 @@ const earlyNormalTwo = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 9",
-                "__cname__": "Loadout"
+                "loadoutName": "Loadout 9"
             },
             {
                 "head": -1000,
@@ -6926,56 +6348,31 @@ const earlyNormalTwo = {
                     -1000
                 ],
                 "temp": -1000,
-                "loadoutName": "Loadout 10",
-                "__cname__": "Loadout"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "loadoutName": "Loadout 10"
+            }
         ],
         "cubePower": 20.041194915771484,
         "cubeToughness": 9.182998657226562,
         "selectedGraphic": 0,
-        "disabled": 0,
+        "disabled": false,
         "kittyArt": 0,
         "unlockedKittyArt": [
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
         ],
         "macguffinBonuses": [
             1,
@@ -7002,8 +6399,7 @@ const earlyNormalTwo = {
             1,
             1,
             1
-        ],
-        "__cname__": "Inventory"
+        ]
     },
     "advancedTraining": {
         "training": [
@@ -7078,9 +6474,8 @@ const earlyNormalTwo = {
             0,
             0
         ],
-        "transferredBankedLevels": 1,
-        "autoAdvance": 1,
-        "__cname__": "AdvancedTraining"
+        "transferredBankedLevels": true,
+        "autoAdvance": true
     },
     "augments": {
         "augs": [
@@ -7092,8 +6487,7 @@ const earlyNormalTwo = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": 0,
-                "upgradeTarget": 0,
-                "__cname__": "Aug"
+                "upgradeTarget": 0
             },
             {
                 "augLevel": 0,
@@ -7103,8 +6497,7 @@ const earlyNormalTwo = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             },
             {
                 "augLevel": 0,
@@ -7114,8 +6507,7 @@ const earlyNormalTwo = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             },
             {
                 "augLevel": 0,
@@ -7125,8 +6517,7 @@ const earlyNormalTwo = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             },
             {
                 "augLevel": 0,
@@ -7136,8 +6527,7 @@ const earlyNormalTwo = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             },
             {
                 "augLevel": 0,
@@ -7147,8 +6537,7 @@ const earlyNormalTwo = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             },
             {
                 "augLevel": 0,
@@ -7158,12 +6547,10 @@ const earlyNormalTwo = {
                 "augEnergy": 0,
                 "upgradeEnergy": 0,
                 "augmentTarget": -1,
-                "upgradeTarget": -1,
-                "__cname__": "Aug"
+                "upgradeTarget": -1
             }
         ],
-        "advanceEnergy": 1,
-        "__cname__": "Augmentation"
+        "advanceEnergy": true
     },
     "magic": {
         "capMagic": 300000,
@@ -7173,8 +6560,7 @@ const earlyNormalTwo = {
         "magicPerBar": 8,
         "magicGained": 0,
         "magicPower": 8,
-        "magicBarProgress": 0,
-        "__cname__": "Magic"
+        "magicBarProgress": 0
     },
     "machine": {
         "baseGold": 0,
@@ -7197,64 +6583,52 @@ const earlyNormalTwo = {
         "multiTarget": 2,
         "speedBankLevels": 0,
         "goldMultiBankLevels": 0,
-        "transferredBankLevels": 1,
-        "__cname__": "TimeMachine"
+        "transferredBankLevels": true
     },
     "bloodMagic": {
         "rituals": [
-            [
-                null,
-                null
-            ]
+            null
         ],
         "ritual": [
             {
                 "progress": 0.9861127734184265,
                 "magic": 0,
-                "level": 9856,
-                "__cname__": "Ritual"
+                "level": 9856
             },
             {
                 "progress": 0.48854005336761475,
                 "magic": 0,
-                "level": 209653,
-                "__cname__": "Ritual"
+                "level": 209653
             },
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 0,
-                "__cname__": "Ritual"
+                "level": 0
             },
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 0,
-                "__cname__": "Ritual"
+                "level": 0
             },
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 0,
-                "__cname__": "Ritual"
+                "level": 0
             },
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 0,
-                "__cname__": "Ritual"
+                "level": 0
             },
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 0,
-                "__cname__": "Ritual"
+                "level": 0
             },
             {
                 "progress": 0,
                 "magic": 0,
-                "level": 0,
-                "__cname__": "Ritual"
+                "level": 0
             }
         ],
         "bloodPoints": 0,
@@ -7264,102 +6638,93 @@ const earlyNormalTwo = {
             "seconds": 1.7353699039667845,
             "minutes": 0,
             "hours": 6,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "macguffin1Time": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "macguffin2Time": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "goldSpellBlood": 0,
         "lootSpellBlood": 0,
-        "rebirthAutoSpell": 1,
-        "lootAutoSpell": 0,
-        "goldAutoSpell": 0,
-        "__cname__": "BloodMagic"
+        "rebirthAutoSpell": true,
+        "lootAutoSpell": false,
+        "goldAutoSpell": false
     },
     "rebirthTime": {
         "totalseconds": 10110975.219294671,
         "seconds": 15.219294670969248,
         "minutes": 0,
         "hours": 0,
-        "days": 0,
-        "__cname__": "PlayerTime"
+        "days": 0
     },
     "totalPlaytime": {
         "totalseconds": 11575844.263761763,
         "seconds": 44.26376176252961,
         "minutes": 0,
         "hours": 23,
-        "days": 0,
-        "__cname__": "PlayerTime"
+        "days": 0
     },
     "lootState": {
         "s0": 1240938615,
         "s1": -1874633592,
         "s2": 225011904,
-        "s3": 699242234,
-        "__cname__": "UnityEngine.Random+State"
+        "s3": 699242234
     },
     "boostState": {
         "s0": 1715573728,
         "s1": 1488841304,
         "s2": 35873703,
-        "s3": 442978956,
-        "__cname__": "UnityEngine.Random+State"
+        "s3": 442978956
     },
     "purchases": {
-        "hasCustomEnergyButton1": 1,
-        "hasCustomEnergyButton2": 0,
-        "hasCustomMagicButton1": 1,
-        "hasCustomMagicButton2": 0,
-        "hasAutoAdvance": 1,
-        "hasFilter": 1,
-        "hasAcc3": 1,
+        "hasCustomEnergyButton1": true,
+        "hasCustomEnergyButton2": false,
+        "hasCustomMagicButton1": true,
+        "hasCustomMagicButton2": false,
+        "hasAutoAdvance": true,
+        "hasFilter": true,
+        "hasAcc3": true,
         "boost": 0.5,
         "boostCombineLevel": 0,
-        "hasAutoMerge": 1,
-        "hasAutoBoost": 0,
-        "hasCustomEnergyPercent1": 0,
-        "hasCustomEnergyPercent2": 0,
-        "hasCustomMagicPercent1": 0,
-        "hasCustomMagicPercent2": 0,
-        "hasCustomRes3Percent1": 0,
-        "hasCustomRes3Percent2": 0,
-        "hasCustomIdleEnergyPercent1": 0,
-        "hasCustomIdleEnergyPercent2": 0,
-        "hasCustomIdleMagicPercent1": 0,
-        "hasCustomIdleMagicPercent2": 0,
-        "hasCustomIdleRes3Percent1": 0,
-        "hasCustomIdleRes3Percent2": 0,
-        "hasAcc5": 0,
-        "hasloadout1": 0,
-        "hasloadout2": 0,
-        "hasBeardSlot1": 0,
-        "hasDaycare": 1,
-        "hasDaycareSlot2": 0,
-        "hasDaycareSlot3": 0,
-        "hasDiggerSlot1": 0,
-        "hasDiggerSlot2": 0,
-        "hasMacguffinSlot1": 0,
-        "hasMacguffinSlot2": 0,
-        "hasSpecialPrize1": 1,
-        "choseKitty": 1,
+        "hasAutoMerge": true,
+        "hasAutoBoost": false,
+        "hasCustomEnergyPercent1": false,
+        "hasCustomEnergyPercent2": false,
+        "hasCustomMagicPercent1": false,
+        "hasCustomMagicPercent2": false,
+        "hasCustomRes3Percent1": false,
+        "hasCustomRes3Percent2": false,
+        "hasCustomIdleEnergyPercent1": false,
+        "hasCustomIdleEnergyPercent2": false,
+        "hasCustomIdleMagicPercent1": false,
+        "hasCustomIdleMagicPercent2": false,
+        "hasCustomIdleRes3Percent1": false,
+        "hasCustomIdleRes3Percent2": false,
+        "hasAcc5": false,
+        "hasloadout1": false,
+        "hasloadout2": false,
+        "hasBeardSlot1": false,
+        "hasDaycare": true,
+        "hasDaycareSlot2": false,
+        "hasDaycareSlot3": false,
+        "hasDiggerSlot1": false,
+        "hasDiggerSlot2": false,
+        "hasMacguffinSlot1": false,
+        "hasMacguffinSlot2": false,
+        "hasSpecialPrize1": true,
+        "choseKitty": true,
         "holidayspins": 0,
-        "hasInvMerge": 0,
-        "__cname__": "Purchases"
+        "hasInvMerge": false
     },
     "stats": {
         "rebirthNumber": 112,
@@ -7373,8 +6738,7 @@ const earlyNormalTwo = {
         "titansDefeated": 5690,
         "bossesDefeated": 6766,
         "lastBloodMagic": 44764,
-        "poopUsed": 0,
-        "__cname__": "Stats"
+        "poopUsed": 0
     },
     "perks": {
         "statPerk": {
@@ -7382,211 +6746,179 @@ const earlyNormalTwo = {
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "advStat1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "lootPerk": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "energyPower1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "magicPower1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "energyBar1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "magicBar1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "discount1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "cooldown1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "goldBoost1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "recycleBonus1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "paralyze": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "wandoos1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "yggdrasil1": {
             "level": 0,
             "perLevelCost": 1,
             "levelCap": 5,
             "type": {
-                "value__": 0,
-                "__cname__": "perkType"
-            },
-            "__cname__": "Perk"
+                "value__": 0
+            }
         },
         "respecTime": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
-        },
-        "__cname__": "Perks"
+            "days": 0
+        }
     },
     "settings": {
         "numberDisplay": 2,
-        "tooltipsOn": 1,
-        "special1Bought": 1,
-        "special2Bought": 1,
-        "special3Bought": 1,
-        "specialAdvHpBars": 1,
-        "filterOn": 1,
-        "wandoos98On": 1,
+        "tooltipsOn": true,
+        "special1Bought": true,
+        "special2Bought": true,
+        "special3Bought": true,
+        "specialAdvHpBars": true,
+        "filterOn": true,
+        "wandoos98On": true,
         "customEnergy1": 10000,
         "customEnergy2": 0,
         "customMagic1": 100000,
         "customMagic2": 0,
-        "yggdrasilOn": 1,
-        "filterHead": 0,
-        "filterChest": 0,
-        "filterLegs": 0,
-        "filterBoots": 1,
-        "filterWeapon": 0,
-        "filterAccessory": 0,
-        "filterBoosts": 0,
-        "filterBoostAtk": 0,
-        "filterBoostDef": 0,
-        "filterBoostSpec": 0,
-        "filterMisc": 0,
-        "filterTitan": 0,
-        "syncTraining": 1,
-        "hasHyperRegen": 0,
+        "yggdrasilOn": true,
+        "filterHead": false,
+        "filterChest": false,
+        "filterLegs": false,
+        "filterBoots": true,
+        "filterWeapon": false,
+        "filterAccessory": false,
+        "filterBoosts": false,
+        "filterBoostAtk": false,
+        "filterBoostDef": false,
+        "filterBoostSpec": false,
+        "filterMisc": false,
+        "filterTitan": false,
+        "syncTraining": true,
+        "hasHyperRegen": false,
         "rebirthDifficulty": {
-            "value__": 0,
-            "__cname__": "difficulty"
+            "value__": 0
         },
         "rebirthLevels": 18537,
         "speedrunCount": 3,
-        "gotSpeedrunSecret": 1,
-        "nguOn": 1,
-        "inventoryOn": 1,
-        "antiFlickerBars": 1,
-        "autoAssignOn": 0,
+        "gotSpeedrunSecret": true,
+        "nguOn": true,
+        "inventoryOn": true,
+        "antiFlickerBars": true,
+        "autoAssignOn": false,
         "autoAssignTime": 0,
         "machineEnergyAmount": 0,
         "machineGoldMultiAmount": 0,
         "tutorialState": -1,
-        "tutorialOffForever": 0,
-        "tutorial1Complete": 0,
-        "expPopups": 1,
+        "tutorialOffForever": false,
+        "tutorial1Complete": false,
+        "expPopups": true,
         "dailySaveRewardTime": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "submitHighscores": 1,
-        "timedTooltipsOn": 1,
-        "autoMergeOn": 1,
+        "submitHighscores": true,
+        "timedTooltipsOn": true,
+        "autoMergeOn": true,
         "inputAmount": 100000,
-        "autoKillTitans": 1,
-        "autoBoostOn": 0,
+        "autoKillTitans": true,
+        "autoBoostOn": false,
         "customEnergyPercent1": 1,
         "customEnergyPercent2": 1,
         "customMagicPercent1": 1,
@@ -7599,19 +6931,19 @@ const earlyNormalTwo = {
         "customIdleMagicPercent2": 1,
         "customIdleRes3Percent1": 1,
         "customIdleRes3Percent2": 1,
-        "autoboostRecycledBoosts": 1,
-        "unassignWhenSwapping": 0,
-        "shakeySales": 0,
-        "beardsOn": 0,
-        "beardPopup": 0,
-        "checkForUpdates": 1,
-        "fancyYggBars": 1,
+        "autoboostRecycledBoosts": true,
+        "unassignWhenSwapping": false,
+        "shakeySales": false,
+        "beardsOn": false,
+        "beardPopup": false,
+        "checkForUpdates": true,
+        "fancyYggBars": true,
         "autoTransform": 0,
-        "simpleInvShortcuts": 0,
-        "poopOnlyMaxTier": 0,
-        "itopodOn": 1,
-        "itopodConfirmation": 1,
-        "buffedKillsOn": 0,
+        "simpleInvShortcuts": false,
+        "poopOnlyMaxTier": false,
+        "itopodOn": true,
+        "itopodConfirmation": true,
+        "buffedKillsOn": false,
         "customPowerAmount": 1,
         "customBarAmount": 1,
         "customCapAmount": 37500,
@@ -7627,326 +6959,286 @@ const earlyNormalTwo = {
         "customToughnessInput": 10000,
         "customHPInput": 100000,
         "customRegenInput": 10000,
-        "beastModeUnlocked": 0,
-        "diggersOn": 0,
+        "beastModeUnlocked": false,
+        "diggersOn": false,
         "nguLevelTrack": {
-            "value__": 0,
-            "__cname__": "difficulty"
+            "value__": 0
         },
-        "pitUnlocked": 1,
+        "pitUnlocked": true,
         "themeID": 0,
         "genericRes3ColourID": 0,
-        "beastConfirmation": 1,
-        "beastOn": 0,
-        "useMajorQuests": 1,
-        "autoNukeOn": 0,
+        "beastConfirmation": true,
+        "beastOn": false,
+        "useMajorQuests": true,
+        "autoNukeOn": false,
         "nguCapModifier": 1,
-        "idleQuestAutocycle": 1,
-        "res3NameGeneratorOn": 0,
-        "claimedKartPromo": 0,
-        "claimedSteamPromo": 1,
-        "assholeSetting": 1,
-        "badge1Complete": 0,
-        "badge2Started": 0,
-        "badge2Part1Complete": 0,
-        "badge2Part2Complete": 0,
-        "badge2Part3Complete": 0,
-        "badge2Part4Complete": 0,
-        "invAutoMergeOn": 1,
-        "invAutoBoostOn": 1,
-        "exilev4Defeated": 0,
+        "idleQuestAutocycle": true,
+        "res3NameGeneratorOn": false,
+        "claimedKartPromo": false,
+        "claimedSteamPromo": true,
+        "assholeSetting": true,
+        "badge1Complete": false,
+        "badge2Started": false,
+        "badge2Part1Complete": false,
+        "badge2Part2Complete": false,
+        "badge2Part3Complete": false,
+        "badge2Part4Complete": false,
+        "invAutoMergeOn": true,
+        "invAutoBoostOn": true,
+        "exilev4Defeated": false,
         "prizePicked": 0,
-        "picked2ndPrize": 0,
-        "isNaughty": 0,
-        "foilsOn": 1,
-        "__cname__": "PlayerSettings"
+        "picked2ndPrize": false,
+        "isNaughty": false,
+        "foilsOn": true
     },
     "challenges": {
         "basicChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 2147483647,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "noAugsChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 2147483647,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "hour24Challenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 0,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "levelChallenge10k": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 2147483647,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "noEquipmentChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 2147483647,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "noRebirthChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 0,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "trollChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 2147483647,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "laserSwordChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 2147483647,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "blindChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 2147483647,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "nguChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 2147483647,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
         "timeMachineChallenge": {
-            "inChallenge": 0,
+            "inChallenge": false,
             "curCompletions": 0,
             "curEvilCompletions": 0,
             "curSadisticCompletions": 0,
             "bestTime": 2147483647,
             "challengeType": {
-                "value__": 1,
-                "__cname__": "challengeType"
+                "value__": 1
             },
             "challengeTime": {
                 "totalseconds": 0,
                 "seconds": 0,
                 "minutes": 0,
                 "hours": 0,
-                "days": 0,
-                "__cname__": "PlayerTime"
+                "days": 0
             },
             "highScore": 0,
-            "unlocked": 0,
-            "__cname__": "Challenge"
+            "unlocked": false
         },
-        "unlocked": 1,
-        "inChallenge": 0,
+        "unlocked": true,
+        "inChallenge": false,
         "curChallengeType": {
-            "value__": 0,
-            "__cname__": "challengeType"
+            "value__": 0
         },
         "curPoints": 0,
         "maxPoints": 0,
         "trollCounter": 0,
-        "trollUnlocked": 1,
-        "trollDisplay": 0,
-        "trollMenuSwap": 0,
-        "trollDivided": 0,
-        "blindChallengeUnlocked": 0,
-        "laserSwordChallengeUnlocked": 0,
-        "__cname__": "Challenges"
+        "trollUnlocked": true,
+        "trollDisplay": false,
+        "trollMenuSwap": false,
+        "trollDivided": false,
+        "blindChallengeUnlocked": false,
+        "laserSwordChallengeUnlocked": false
     },
     "pit": {
         "totalGold": 4276723919170815.5,
         "highestTier": 0,
-        "tossedGold": 0,
+        "tossedGold": false,
         "pitState": {
             "s0": -814207804,
             "s1": -1556804669,
             "s2": 1828983007,
-            "s3": -506848000,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": -506848000
         },
         "pitTime": {
             "totalseconds": 10110981,
             "seconds": 21,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "tier1TRewarded": 1,
-        "tier2TRewarded": 1,
-        "tier3TRewarded": 1,
-        "tier4TRewarded": 1,
-        "tier5TRewarded": 1,
-        "tossCount": 0,
-        "__cname__": "Pit"
+        "tier1TRewarded": true,
+        "tier2TRewarded": true,
+        "tier3TRewarded": true,
+        "tier4TRewarded": true,
+        "tier5TRewarded": true,
+        "tossCount": 0
     },
     "lootBoxes": {
         "expBoxCount": 0,
@@ -7954,26 +7246,22 @@ const earlyNormalTwo = {
             "s0": 0,
             "s1": 0,
             "s2": 0,
-            "s3": 0,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": 0
         },
         "advBoxCount": 0,
         "advBoxState": {
             "s0": 0,
             "s1": 0,
             "s2": 0,
-            "s3": 0,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": 0
         },
         "dailyBoxCount": 0,
         "dailyBoxState": {
             "s0": 0,
             "s1": 0,
             "s2": 0,
-            "s3": 0,
-            "__cname__": "UnityEngine.Random+State"
-        },
-        "__cname__": "LootBoxes"
+            "s3": 0
+        }
     },
     "wandoos98": {
         "energyProgress": 0.013717557303607464,
@@ -7988,412 +7276,399 @@ const earlyNormalTwo = {
         "OSlevel": 21,
         "pitOSLevels": 0,
         "XLLevels": 0,
-        "installed": 1,
-        "disabled": 0,
+        "installed": true,
+        "disabled": false,
         "bootupTime": {
             "totalseconds": 3600,
             "seconds": 0,
             "minutes": 0,
             "hours": 1,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "installTime": {
             "totalseconds": 86400,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "os": {
-            "value__": 0,
-            "__cname__": "OSType"
-        },
-        "__cname__": "Wandoos98"
+            "value__": 0
+        }
     },
     "yggdrasil": {
         "goldFruit": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 1,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "adventureFruit": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 0,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "luckFruit": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 0,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "statFruit": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 0,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "knowledgeFruit": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 0,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "pomegranate": {
             "seconds": 0,
-            "activated": 0,
+            "activated": false,
             "unlockCost": 0,
             "totalLevels": 0,
             "maxTier": 0,
-            "permCostPaid": 0,
-            "usePoop": 0,
-            "eatFruit": 1,
-            "harvests": 0,
-            "__cname__": "Fruit"
+            "permCostPaid": false,
+            "usePoop": false,
+            "eatFruit": true,
+            "harvests": 0
         },
         "fruits": [
             {
                 "seconds": 28800,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 8,
-                "permCostPaid": 1,
-                "usePoop": 0,
-                "eatFruit": 0,
+                "permCostPaid": true,
+                "usePoop": false,
+                "eatFruit": false,
                 "harvests": 1,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 7200,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 2,
-                "permCostPaid": 1,
-                "usePoop": 0,
-                "eatFruit": 0,
+                "permCostPaid": true,
+                "usePoop": false,
+                "eatFruit": false,
                 "harvests": 1,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 3600,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 1,
-                "permCostPaid": 1,
-                "usePoop": 0,
-                "eatFruit": 0,
+                "permCostPaid": true,
+                "usePoop": false,
+                "eatFruit": false,
                 "harvests": 1,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 3600,
-                "activated": 1,
+                "activated": true,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 1,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 0,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": false,
                 "harvests": 1,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 0,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": false,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
             },
             {
                 "seconds": 0,
-                "activated": 0,
+                "activated": false,
                 "unlockCost": 0,
                 "totalLevels": 0,
                 "maxTier": 0,
-                "permCostPaid": 0,
-                "usePoop": 0,
-                "eatFruit": 1,
+                "permCostPaid": false,
+                "usePoop": false,
+                "eatFruit": true,
                 "harvests": 0,
-                "__cname__": "Fruit"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "totalPermStatBonus": 0,
+                "totalPermStatBonus2": 0,
+                "totalPermNumberBonus": 0
+            }
         ],
         "resetFactor": 0,
         "statBonus": 0,
         "seeds": 231,
         "totalLuck": 0,
         "totalPermStatBonus": 0,
-        "permBonusOn": 0,
+        "permBonusOn": false,
         "totalPermStatBonus2": 0,
         "totalPermNumberBonus": 0,
-        "permNumberBonusOn": 0,
-        "usePoop": 0,
-        "__cname__": "Yggdrasil"
+        "permNumberBonusOn": false,
+        "usePoop": false
     },
     "NGU": {
         "skills": [
@@ -8408,8 +7683,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8422,8 +7696,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8436,8 +7709,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0.000019718554540304467,
@@ -8450,8 +7722,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 200,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8464,8 +7735,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0.00002156807022402063,
@@ -8478,8 +7748,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 200,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8492,8 +7761,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8506,8 +7774,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8520,8 +7787,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8534,8 +7800,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8548,29 +7813,8 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "sadisticTarget": 0
+            }
         ],
         "magicSkills": [
             {
@@ -8584,8 +7828,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8598,8 +7841,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8612,8 +7854,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8626,8 +7867,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8640,8 +7880,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8654,8 +7893,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8668,8 +7906,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 100,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8682,8 +7919,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8696,8 +7932,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8710,8 +7945,7 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
+                "sadisticTarget": 0
             },
             {
                 "progress": 0,
@@ -8724,33 +7958,11 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "target": 0,
                 "evilTarget": 0,
-                "sadisticTarget": 0,
-                "__cname__": "NGU"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "sadisticTarget": 0
+            }
         ],
-        "autoAdvance": 0,
-        "disabled": 0,
-        "__cname__": "NUMBERSSGOUP"
+        "autoAdvance": false,
+        "disabled": false
     },
     "arbitrary": {
         "arbitraryPoints": 0,
@@ -8763,30 +7975,27 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "energyPotion2Count": 2,
-        "energyPotion2InUse": 0,
+        "energyPotion2InUse": false,
         "magicPotion1Count": 1,
         "magicPotion1Time": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "magicPotion2Count": 1,
-        "magicPotion2InUse": 0,
+        "magicPotion2InUse": false,
         "lootCharm1Count": 0,
         "lootcharm1Time": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "energyBarBar1Count": 2,
         "energyBarBar1Time": {
@@ -8794,8 +8003,7 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "magicBarBar1Count": 1,
         "magicBarBar1Time": {
@@ -8803,8 +8011,7 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "macGuffinBooster1Count": 0,
         "macGuffinBooster1Time": {
@@ -8812,75 +8019,72 @@ const earlyNormalTwo = {
             "seconds": -18,
             "minutes": 0,
             "hours": -19,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "macGuffinBooster1InUse": 0,
+        "macGuffinBooster1InUse": false,
         "nukeTimer": {
             "totalseconds": 50,
             "seconds": 50,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
-        "boughtAutoNuke": 0,
-        "lootFilter": 0,
-        "improvedAutoBoostMerge": 0,
-        "instaTrain": 0,
+        "boughtAutoNuke": false,
+        "lootFilter": false,
+        "improvedAutoBoostMerge": false,
+        "instaTrain": false,
         "inventorySpaces": 0,
-        "hasStarterPack": 0,
-        "hasAcc4": 0,
-        "hasAcc5": 0,
-        "hasAcc6": 0,
-        "hasAcc7": 0,
-        "hasAcc8": 0,
-        "hasAcc9": 0,
-        "hasYggdrasilReminder": 0,
-        "hasExtendedSpinBank": 0,
+        "hasStarterPack": false,
+        "hasAcc4": false,
+        "hasAcc5": false,
+        "hasAcc6": false,
+        "hasAcc7": false,
+        "hasAcc8": false,
+        "hasAcc9": false,
+        "hasYggdrasilReminder": false,
+        "hasExtendedSpinBank": false,
         "curLoadoutSlots": 0,
         "poop1Count": 1,
         "energyPotion3Count": 0,
         "magicPotion3Count": 0,
         "beardSlots": 0,
-        "hasCubeFilter": 0,
+        "hasCubeFilter": false,
         "lootCharm2Count": 0,
-        "hasDaycareSpeed": 0,
-        "boughtNewbiePack": 0,
-        "boughtAscendedNewbiePack": 0,
-        "boughtAscendedNewbiePack2": 0,
-        "boughtAscendedNewbiePack3": 0,
-        "boughtAscendedNewbiePack4": 0,
-        "boughtFashionPack1": 0,
-        "boughtLazyITOPOD": 0,
-        "lazyITOPODOn": 0,
-        "boughtRes3Pack": 0,
+        "hasDaycareSpeed": false,
+        "boughtNewbiePack": false,
+        "boughtAscendedNewbiePack": false,
+        "boughtAscendedNewbiePack2": false,
+        "boughtAscendedNewbiePack3": false,
+        "boughtAscendedNewbiePack4": false,
+        "boughtFashionPack1": false,
+        "boughtLazyITOPOD": false,
+        "lazyITOPODOn": false,
+        "boughtRes3Pack": false,
         "diggerSlots": 0,
         "macguffinSlots": 0,
         "nameSlotsBought": 0,
         "beastButterCount": 0,
-        "hasQuestLight": 0,
-        "hasFasterQuests": 0,
-        "hasExtendedQuestBank": 0,
-        "boughtDaycareArt": 0,
-        "hasNGUCapModifier": 0,
+        "hasQuestLight": false,
+        "hasFasterQuests": false,
+        "hasExtendedQuestBank": false,
+        "boughtDaycareArt": false,
+        "hasNGUCapModifier": false,
         "res3Potion1Count": 0,
         "res3Potion1Time": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "res3Potion2Count": 0,
-        "res3Potion2InUse": 0,
+        "res3Potion2InUse": false,
         "res3Potion3Count": 0,
-        "res3NameGeneratorBought": 0,
-        "wishSpeedBoster": 0,
+        "res3NameGeneratorBought": false,
+        "wishSpeedBoster": false,
         "wishSlotsBought": 0,
-        "boughtFoils": 0,
-        "gotTagslot1": 0,
+        "boughtFoils": false,
+        "gotTagslot1": false,
         "mayoGenSlots": 0,
         "deckSpaceBought": 0,
         "mayoSpeedPotCount": 0,
@@ -8889,278 +8093,275 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "cardTierUpperCount": 0,
         "invMergeSlots": 0,
-        "advLightBought": 0,
-        "advAdvancerBought": 0,
+        "advLightBought": false,
+        "advAdvancerBought": false,
         "advAdvancerZone": 0,
-        "goToQuestZoneBought": 0,
-        "__cname__": "Arbitrary"
+        "goToQuestZoneBought": false
     },
     "achievements": {
         "achievementComplete": [
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
         ],
-        "totalAchieves": 0,
-        "__cname__": "AchievementList"
+        "totalAchieves": 0
     },
     "daily": {
         "totalSpins": 24,
@@ -9169,280 +8370,225 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 12,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "dailyRewardState": {
             "s0": -346887427,
             "s1": -1217982176,
             "s2": -1857712250,
-            "s3": 1347659326,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": 1347659326
         },
-        "freeSpins": 0,
-        "__cname__": "DailyReward"
+        "freeSpins": 0
     },
     "beards": {
         "beards": [
             {
                 "progress": 0,
-                "active": 0,
+                "active": false,
                 "beardLevel": 0,
                 "permLevel": 0,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0,
-                "active": 0,
+                "active": false,
                 "beardLevel": 0,
                 "permLevel": 0,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0,
-                "active": 0,
+                "active": false,
                 "beardLevel": 0,
                 "permLevel": 0,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0,
-                "active": 0,
+                "active": false,
                 "beardLevel": 0,
                 "permLevel": 0,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0,
-                "active": 0,
+                "active": false,
                 "beardLevel": 0,
                 "permLevel": 0,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0,
-                "active": 0,
+                "active": false,
                 "beardLevel": 0,
                 "permLevel": 0,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
             {
                 "progress": 0,
-                "active": 0,
+                "active": false,
                 "beardLevel": 0,
                 "permLevel": 0,
-                "bankedLevel": 0,
-                "__cname__": "Beard"
+                "bankedLevel": 0
             },
-            [
-                null,
-                null
-            ]
+            null
         ],
         "activeBeards": [],
         "capBeards": 1,
         "energyBeardCount": 0,
         "magicBeardCount": 0,
-        "disabled": 0,
-        "transferredBankedLevels": 0,
-        "__cname__": "Beards"
+        "disabled": false,
+        "transferredBankedLevels": false
     },
     "diggers": {
         "diggers": [
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
+                    "days": 0
+                }
             },
             {
                 "curLevel": 0,
                 "maxLevel": 0,
-                "active": 0,
+                "active": false,
                 "cooldown": {
                     "totalseconds": 0,
                     "seconds": 0,
                     "minutes": 0,
                     "hours": 0,
-                    "days": 0,
-                    "__cname__": "PlayerTime"
-                },
-                "__cname__": "GoldDigger"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                    "days": 0
+                }
+            }
         ],
         "activeDiggers": [],
-        "loadoutDiggers": [],
-        "__cname__": "GoldDiggers"
+        "loadoutDiggers": []
     },
     "beastQuest": {
         "quirkLevel": [
@@ -9705,9 +8851,9 @@ const earlyNormalTwo = {
         ],
         "quirkPoints": 0,
         "lifetimePoints": 0,
-        "questsUnlocked": 0,
-        "inQuest": 0,
-        "idleMode": 0,
+        "questsUnlocked": false,
+        "inQuest": false,
+        "idleMode": false,
         "questID": 0,
         "targetDrops": 0,
         "curDrops": 0,
@@ -9716,8 +8862,7 @@ const earlyNormalTwo = {
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "curBankedQuests": 3,
         "maxBankedQuests": 10,
@@ -9725,21 +8870,18 @@ const earlyNormalTwo = {
             "s0": 1400715221,
             "s1": 1444611082,
             "s2": -1038618125,
-            "s3": -2053996576,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": -2053996576
         },
-        "reducedRewards": 0,
-        "allActive": 1,
-        "usedButter": 0,
+        "reducedRewards": false,
+        "allActive": true,
+        "usedButter": false,
         "idleProgress": 0,
-        "filterDiff": 0,
-        "filterAfford": 0,
-        "filterMaxxed": 0,
+        "filterDiff": false,
+        "filterAfford": false,
+        "filterMaxxed": false,
         "orderType": {
-            "value__": 0,
-            "__cname__": "orderQuirks"
-        },
-        "__cname__": "BeastQuest"
+            "value__": 0
+        }
     },
     "res3": {
         "capRes3": 0,
@@ -9754,8 +8896,7 @@ const earlyNormalTwo = {
         "res3R": 0.800000011920929,
         "res3G": 0.25,
         "res3B": 0,
-        "res3On": 0,
-        "__cname__": "Resource3"
+        "res3On": false
     },
     "hacks": {
         "hacks": [
@@ -9763,120 +8904,103 @@ const earlyNormalTwo = {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             },
             {
                 "res3": 0,
                 "progress": 0,
                 "level": 0,
-                "target": 0,
-                "__cname__": "Hack"
+                "target": 0
             }
         ],
-        "hacksOn": 0,
-        "autoAdvance": 1,
+        "hacksOn": false,
+        "autoAdvance": true,
         "target": 0,
-        "disabled": 0,
-        "__cname__": "Hacks"
+        "disabled": false
     },
     "wishes": {
         "wishes": [
@@ -9885,4146 +9009,2900 @@ const earlyNormalTwo = {
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
+                "progress": 0
             },
             {
                 "energy": 0,
                 "magic": 0,
                 "res3": 0,
                 "level": 0,
-                "progress": 0,
-                "__cname__": "Wish"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "progress": 0
+            }
         ],
-        "wishesOn": 0,
-        "filterDiff": 0,
-        "filterAfford": 0,
-        "filterMaxxed": 0,
+        "wishesOn": false,
+        "filterDiff": false,
+        "filterAfford": false,
+        "filterMaxxed": false,
         "orderType": {
-            "value__": 0,
-            "__cname__": "orderWish"
-        },
-        "__cname__": "Wishes"
+            "value__": 0
+        }
     },
     "portraits": {
         "portraitUnlocked": [
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
         ],
-        "curPortrait": 51,
-        "__cname__": "PlayerPortraits"
+        "curPortrait": 51
     },
     "bestiary": {
         "enemies": [
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 66,
-                "__cname__": "BestiaryInfo"
+                "kills": 66
             },
             {
-                "kills": 112,
-                "__cname__": "BestiaryInfo"
+                "kills": 112
             },
             {
-                "kills": 94,
-                "__cname__": "BestiaryInfo"
+                "kills": 94
             },
             {
-                "kills": 1147,
-                "__cname__": "BestiaryInfo"
+                "kills": 1147
             },
             {
-                "kills": 1000,
-                "__cname__": "BestiaryInfo"
+                "kills": 1000
             },
             {
-                "kills": 950,
-                "__cname__": "BestiaryInfo"
+                "kills": 950
             },
             {
-                "kills": 988,
-                "__cname__": "BestiaryInfo"
+                "kills": 988
             },
             {
-                "kills": 853,
-                "__cname__": "BestiaryInfo"
+                "kills": 853
             },
             {
-                "kills": 870,
-                "__cname__": "BestiaryInfo"
+                "kills": 870
             },
             {
-                "kills": 782,
-                "__cname__": "BestiaryInfo"
+                "kills": 782
             },
             {
-                "kills": 815,
-                "__cname__": "BestiaryInfo"
+                "kills": 815
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 851,
-                "__cname__": "BestiaryInfo"
+                "kills": 851
             },
             {
-                "kills": 829,
-                "__cname__": "BestiaryInfo"
+                "kills": 829
             },
             {
-                "kills": 836,
-                "__cname__": "BestiaryInfo"
+                "kills": 836
             },
             {
-                "kills": 791,
-                "__cname__": "BestiaryInfo"
+                "kills": 791
             },
             {
-                "kills": 836,
-                "__cname__": "BestiaryInfo"
+                "kills": 836
             },
             {
-                "kills": 630,
-                "__cname__": "BestiaryInfo"
+                "kills": 630
             },
             {
-                "kills": 623,
-                "__cname__": "BestiaryInfo"
+                "kills": 623
             },
             {
-                "kills": 620,
-                "__cname__": "BestiaryInfo"
+                "kills": 620
             },
             {
-                "kills": 590,
-                "__cname__": "BestiaryInfo"
+                "kills": 590
             },
             {
-                "kills": 604,
-                "__cname__": "BestiaryInfo"
+                "kills": 604
             },
             {
-                "kills": 604,
-                "__cname__": "BestiaryInfo"
+                "kills": 604
             },
             {
-                "kills": 580,
-                "__cname__": "BestiaryInfo"
+                "kills": 580
             },
             {
-                "kills": 575,
-                "__cname__": "BestiaryInfo"
+                "kills": 575
             },
             {
-                "kills": 612,
-                "__cname__": "BestiaryInfo"
+                "kills": 612
             },
             {
-                "kills": 639,
-                "__cname__": "BestiaryInfo"
+                "kills": 639
             },
             {
-                "kills": 602,
-                "__cname__": "BestiaryInfo"
+                "kills": 602
             },
             {
-                "kills": 598,
-                "__cname__": "BestiaryInfo"
+                "kills": 598
             },
             {
-                "kills": 634,
-                "__cname__": "BestiaryInfo"
+                "kills": 634
             },
             {
-                "kills": 622,
-                "__cname__": "BestiaryInfo"
+                "kills": 622
             },
             {
-                "kills": 615,
-                "__cname__": "BestiaryInfo"
+                "kills": 615
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 663,
-                "__cname__": "BestiaryInfo"
+                "kills": 663
             },
             {
-                "kills": 1504,
-                "__cname__": "BestiaryInfo"
+                "kills": 1504
             },
             {
-                "kills": 1552,
-                "__cname__": "BestiaryInfo"
+                "kills": 1552
             },
             {
-                "kills": 1511,
-                "__cname__": "BestiaryInfo"
+                "kills": 1511
             },
             {
-                "kills": 1463,
-                "__cname__": "BestiaryInfo"
+                "kills": 1463
             },
             {
-                "kills": 1482,
-                "__cname__": "BestiaryInfo"
+                "kills": 1482
             },
             {
-                "kills": 1458,
-                "__cname__": "BestiaryInfo"
+                "kills": 1458
             },
             {
-                "kills": 1506,
-                "__cname__": "BestiaryInfo"
+                "kills": 1506
             },
             {
-                "kills": 1509,
-                "__cname__": "BestiaryInfo"
+                "kills": 1509
             },
             {
-                "kills": 1453,
-                "__cname__": "BestiaryInfo"
+                "kills": 1453
             },
             {
-                "kills": 1454,
-                "__cname__": "BestiaryInfo"
+                "kills": 1454
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 2279,
-                "__cname__": "BestiaryInfo"
+                "kills": 2279
             },
             {
-                "kills": 2289,
-                "__cname__": "BestiaryInfo"
+                "kills": 2289
             },
             {
-                "kills": 2230,
-                "__cname__": "BestiaryInfo"
+                "kills": 2230
             },
             {
-                "kills": 2340,
-                "__cname__": "BestiaryInfo"
+                "kills": 2340
             },
             {
-                "kills": 2285,
-                "__cname__": "BestiaryInfo"
+                "kills": 2285
             },
             {
-                "kills": 2255,
-                "__cname__": "BestiaryInfo"
+                "kills": 2255
             },
             {
-                "kills": 2259,
-                "__cname__": "BestiaryInfo"
+                "kills": 2259
             },
             {
-                "kills": 2319,
-                "__cname__": "BestiaryInfo"
+                "kills": 2319
             },
             {
-                "kills": 2260,
-                "__cname__": "BestiaryInfo"
+                "kills": 2260
             },
             {
-                "kills": 2312,
-                "__cname__": "BestiaryInfo"
+                "kills": 2312
             },
             {
-                "kills": 1229,
-                "__cname__": "BestiaryInfo"
+                "kills": 1229
             },
             {
-                "kills": 1204,
-                "__cname__": "BestiaryInfo"
+                "kills": 1204
             },
             {
-                "kills": 1208,
-                "__cname__": "BestiaryInfo"
+                "kills": 1208
             },
             {
-                "kills": 1191,
-                "__cname__": "BestiaryInfo"
+                "kills": 1191
             },
             {
-                "kills": 1145,
-                "__cname__": "BestiaryInfo"
+                "kills": 1145
             },
             {
-                "kills": 1147,
-                "__cname__": "BestiaryInfo"
+                "kills": 1147
             },
             {
-                "kills": 1152,
-                "__cname__": "BestiaryInfo"
+                "kills": 1152
             },
             {
-                "kills": 2389,
-                "__cname__": "BestiaryInfo"
+                "kills": 2389
             },
             {
-                "kills": 1039,
-                "__cname__": "BestiaryInfo"
+                "kills": 1039
             },
             {
-                "kills": 1056,
-                "__cname__": "BestiaryInfo"
+                "kills": 1056
             },
             {
-                "kills": 1042,
-                "__cname__": "BestiaryInfo"
+                "kills": 1042
             },
             {
-                "kills": 1031,
-                "__cname__": "BestiaryInfo"
+                "kills": 1031
             },
             {
-                "kills": 1001,
-                "__cname__": "BestiaryInfo"
+                "kills": 1001
             },
             {
-                "kills": 1030,
-                "__cname__": "BestiaryInfo"
+                "kills": 1030
             },
             {
-                "kills": 1120,
-                "__cname__": "BestiaryInfo"
+                "kills": 1120
             },
             {
-                "kills": 1017,
-                "__cname__": "BestiaryInfo"
+                "kills": 1017
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 2978,
-                "__cname__": "BestiaryInfo"
+                "kills": 2978
             },
             {
-                "kills": 2825,
-                "__cname__": "BestiaryInfo"
+                "kills": 2825
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
+                "kills": 0
             },
             {
-                "kills": 0,
-                "__cname__": "BestiaryInfo"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
-        ],
-        "__cname__": "Bestiary"
+                "kills": 0
+            }
+        ]
     },
     "cards": {
         "cards": [],
@@ -14032,49 +11910,35 @@ const earlyNormalTwo = {
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
+                "running": false
             },
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
+                "running": false
             },
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
+                "running": false
             },
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
+                "running": false
             },
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
+                "running": false
             },
             {
                 "progress": 0,
                 "amount": 0,
-                "running": 0,
-                "__cname__": "Mana"
-            },
-            [
-                null,
-                null
-            ],
-            [
-                null,
-                null
-            ]
+                "running": false
+            }
         ],
-        "cardsOn": 0,
+        "cardsOn": false,
         "bonuses": [
             1,
             1,
@@ -14097,39 +11961,34 @@ const earlyNormalTwo = {
             "s0": 1400715221,
             "s1": 1444611082,
             "s2": -1038618125,
-            "s3": -2053996576,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": -2053996576
         },
         "chonkerState": {
             "s0": 1400715221,
             "s1": 1444611082,
             "s2": -1038618125,
-            "s3": -2053996576,
-            "__cname__": "UnityEngine.Random+State"
+            "s3": -2053996576
         },
         "cardSpawnTimer": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "chonkerSpawnTimer": {
             "totalseconds": 0,
             "seconds": 0,
             "minutes": 0,
             "hours": 0,
-            "days": 0,
-            "__cname__": "PlayerTime"
+            "days": 0
         },
         "taggedBonuses": [],
         "cardsGenerated": 0,
-        "extraDeckSpace": 0,
-        "__cname__": "Cards"
+        "extraDeckSpace": 0
     },
     "cooking": {
-        "unlocked": 0,
+        "unlocked": false,
         "cookTimer": 172800,
         "ingredients": [
             {
@@ -14139,8 +11998,7 @@ const earlyNormalTwo = {
                 "pairedIngred": 4,
                 "weight": 13.759220123291016,
                 "pairedWeight": 14.361936569213867,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 10,
@@ -14149,8 +12007,7 @@ const earlyNormalTwo = {
                 "pairedIngred": 2,
                 "weight": 4.9456562995910645,
                 "pairedWeight": 22.743022918701172,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 12,
@@ -14159,8 +12016,7 @@ const earlyNormalTwo = {
                 "pairedIngred": 1,
                 "weight": 7.548192024230957,
                 "pairedWeight": 11.517534255981445,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 2,
@@ -14169,8 +12025,7 @@ const earlyNormalTwo = {
                 "pairedIngred": 5,
                 "weight": 10.800426483154297,
                 "pairedWeight": 12.174480438232422,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 3,
@@ -14179,8 +12034,7 @@ const earlyNormalTwo = {
                 "pairedIngred": 0,
                 "weight": 8.416291236877441,
                 "pairedWeight": 26.353334426879883,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 9,
@@ -14189,8 +12043,7 @@ const earlyNormalTwo = {
                 "pairedIngred": 3,
                 "weight": 13.004239082336426,
                 "pairedWeight": 12.339900970458984,
-                "unlocked": 1,
-                "__cname__": "Ingredient"
+                "unlocked": true
             },
             {
                 "propertyIndex": 11,
@@ -14199,8 +12052,7 @@ const earlyNormalTwo = {
                 "pairedIngred": 7,
                 "weight": 9.646751403808594,
                 "pairedWeight": 11.94106674194336,
-                "unlocked": 0,
-                "__cname__": "Ingredient"
+                "unlocked": false
             },
             {
                 "propertyIndex": 15,
@@ -14209,8 +12061,7 @@ const earlyNormalTwo = {
                 "pairedIngred": 6,
                 "weight": 12.56015396118164,
                 "pairedWeight": 11.453746795654297,
-                "unlocked": 0,
-                "__cname__": "Ingredient"
+                "unlocked": false
             }
         ],
         "pair1": [
@@ -14242,10 +12093,8 @@ const earlyNormalTwo = {
         "pair3Target": 33,
         "pair4Target": 22,
         "expBonus": 1,
-        "curDishIndex": 8,
-        "__cname__": "Cooking"
-    },
-    "__cname__": "PlayerData"
+        "curDishIndex": 8
+    }
 }
 
 export default earlyNormalTwo;
