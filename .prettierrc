@@ -1,0 +1,13 @@
+{
+    "tabWidth": 4,
+    "useTabs": false,
+    "printWidth": 120,
+    "overrides": [
+        {
+            "files": "src/assets/*.ts",
+            "options": {
+                "printWidth": 180
+            }
+        }
+    ]
+}

@@ -13,260 +13,362 @@ import { InputSelect } from "@/components/selects/InputSelect";
 export default function RatiosPage() {
     const player = getPlayer();
     const fmt = getNumberFormat();
-    const res3Active = player.get("res3Active")
-    
+    const res3Active = player.get("res3Active");
+
     // Set data required (from playerData)
-    const infoRequired : requiredDataType = [
+    const infoRequired: requiredDataType = [
         ["baseEnergyPower", "baseEnergyCap", "baseEnergyBar"],
         ["baseMagicPower", "baseMagicCap", "baseMagicBar"],
-        ["baseRes3Power", "baseRes3Cap", "baseRes3Bar"]
-    ]
+        ["baseRes3Power", "baseRes3Cap", "baseRes3Bar"],
+    ];
     // Set extra required (not from playerData)
-    const extraRequired : requiredDataType = [
+    const extraRequired: requiredDataType = [
         ["energyRatio", "energyPowerRatio", "energyCapRatio", "energyBarRatio"],
         ["magicRatio", "magicPowerRatio", "magicCapRatio", "magicBarRatio"],
-        ["res3Ratio", "res3PowerRatio", "res3CapRatio", "res3BarRatio"]
-    ]
-    const goRequired : requiredDataType = [[]]
-    
+        ["res3Ratio", "res3PowerRatio", "res3CapRatio", "res3BarRatio"],
+    ];
+    const goRequired: requiredDataType = [[]];
 
     // Get required data
-    let infoReq = getPlayerDataInfo(infoRequired)
-    let extraReq = getPlayerDataInfo(extraRequired)
-    const goReq = getPlayerDataInfo(goRequired)
+    let infoReq = getPlayerDataInfo(infoRequired);
+    let extraReq = getPlayerDataInfo(extraRequired);
+    const goReq = getPlayerDataInfo(goRequired);
 
-    const [desired, buy, cost, suggestedBuy] = getRatioInfo(player)
-
+    const [desired, buy, cost, suggestedBuy] = getRatioInfo(player);
 
     if (!res3Active) {
-        extraReq = disableItem(extraReq, ["res3Ratio", "res3PowerRatio", "res3CapRatio", "res3BarRatio"])
-        infoReq = disableItem(infoReq, ["baseRes3Power", "baseRes3Cap", "baseRes3Bar"])
+        extraReq = disableItem(extraReq, ["res3Ratio", "res3PowerRatio", "res3CapRatio", "res3BarRatio"]);
+        infoReq = disableItem(infoReq, ["baseRes3Power", "baseRes3Cap", "baseRes3Bar"]);
     }
 
     // Children of the extra information
     const extraChildren = (
-        <ChoiceButton
-            text={res3Active ? "Hide R3" : "Show R3"}
-            onClick={() => player.set('res3Active', !res3Active)}
-            />
-    )
+        <ChoiceButton text={res3Active ? "Hide R3" : "Show R3"} onClick={() => player.set("res3Active", !res3Active)} />
+    );
 
     // Children of the extra inputs
-    let selectBoxCSS = "inline-block align-top my-2 "
-    selectBoxCSS += res3Active ? 'w-1/3' : 'w-1/2'
+    let selectBoxCSS = "inline-block align-top my-2 ";
+    selectBoxCSS += res3Active ? "w-1/3" : "w-1/2";
     const ratioOptions = (
         <>
-            <option key="131" value="1:37500:1">1:37500:1</option>
-            <option key="514" value="5:160000:4">5:160000:4</option>
-            <option key="411" value="4:150000:1">4:150000:1</option>
+            <option key="131" value="1:37500:1">
+                1:37500:1
+            </option>
+            <option key="514" value="5:160000:4">
+                5:160000:4
+            </option>
+            <option key="411" value="4:150000:1">
+                4:150000:1
+            </option>
         </>
-    )
+    );
 
     const extraInputChildren = (
         <>
             <div className="mt-2">
                 <p>Quick Selectors:</p>
                 <div className={selectBoxCSS}>
-                    <InputSelect value={player.get('emRatio')} id="emRatio"  onChange={(e) => {
-                    if (e.target.value){
-                        const [energy, magic] = e.target.value.split(":")
+                    <InputSelect
+                        value={player.get("emRatio")}
+                        id="emRatio"
+                        onChange={(e) => {
+                            if (e.target.value) {
+                                const [energy, magic] = e.target.value.split(":");
 
-                        const erRatio : HTMLSelectElement | null = document.querySelector('select#erRatio')
-                        const [energyRes, res3] = (!_.isNull(erRatio) && erRatio.value)
-                                                ? erRatio.value.split(":")
-                                                : [0, 0]
+                                const erRatio: HTMLSelectElement | null = document.querySelector("select#erRatio");
+                                const [energyRes, res3] =
+                                    !_.isNull(erRatio) && erRatio.value ? erRatio.value.split(":") : [0, 0];
 
-                        if(Number(energyRes) > 0) {
-                            setInputValue(document.getElementById('res3Ratio'), res3)
-                            setInputValue(document.getElementById('energyRatio'), energyRes)
-                            setInputValue(document.getElementById('magicRatio'), Math.floor(Number(magic) * Number(energyRes) / Number(energy)))
-
-                        } else {
-                            setInputValue(document.getElementById('energyRatio'), energy)
-                            setInputValue(document.getElementById('magicRatio'), magic)
-                        }
-                        player.set('emRatio', e.target.value)
-                    }
-                    }}>
-                    <option key="1" value=''>Energy to Magic Ratio</option>
-                    <option key="10" value="10:1">10:1</option>
-                    <option key="5" value="5:1">5:1</option>
-                    <option key="3" value="3:1">3:1</option>
-                    <option key="2" value="2:1">2:1</option>
-                </InputSelect>
+                                if (Number(energyRes) > 0) {
+                                    setInputValue(document.getElementById("res3Ratio"), res3);
+                                    setInputValue(document.getElementById("energyRatio"), energyRes);
+                                    setInputValue(
+                                        document.getElementById("magicRatio"),
+                                        Math.floor((Number(magic) * Number(energyRes)) / Number(energy))
+                                    );
+                                } else {
+                                    setInputValue(document.getElementById("energyRatio"), energy);
+                                    setInputValue(document.getElementById("magicRatio"), magic);
+                                }
+                                player.set("emRatio", e.target.value);
+                            }
+                        }}
+                    >
+                        <option key="1" value="">
+                            Energy to Magic Ratio
+                        </option>
+                        <option key="10" value="10:1">
+                            10:1
+                        </option>
+                        <option key="5" value="5:1">
+                            5:1
+                        </option>
+                        <option key="3" value="3:1">
+                            3:1
+                        </option>
+                        <option key="2" value="2:1">
+                            2:1
+                        </option>
+                    </InputSelect>
                 </div>
                 <div className={selectBoxCSS}></div>
-                {res3Active
-                ? 
-                <div className={selectBoxCSS}>
-                    <InputSelect value={player.get('erRatio')} id='erRatio' onChange={(e) => {
-                    if (e.target.value){
-                        const [energy, res3] = e.target.value.split(":")
-                        const emRatio : HTMLSelectElement | null = document.querySelector('select#emRatio')
-                        const [energyMagic, magic] = (!_.isNull(emRatio) && emRatio.value)
-                                                ? emRatio.value.split(":")
-                                                : [0, 0]
-                        
-                        setInputValue(document.getElementById('res3Ratio'), res3)
-                        setInputValue(document.getElementById('energyRatio'), energy)
-                        if(Number(energyMagic) > 0) {
-                            setInputValue(document.getElementById('magicRatio'), Math.round(Number(magic) * Number(energy) / Number(energyMagic)))
-                        }
-                        player.set('erRatio', e.target.value)
-                    }
-                    }}>
-                        <option key="0" value=''>Energy to Resource 3 Ratio</option>
-                        <option key="100" value="100000:1">100,000:1</option>
-                        <option key="200" value="200000:1">200,000:1</option>
-                        <option key="250" value="250000:1">250,000:1</option>
-                        <option key="300" value="300000:1">300,000:1</option>
-                        <option key="400" value="400000:1">400,000:1</option>
-                        <option key="500" value="500000:1">500,000:1</option>
-                        <option key="600" value="600000:1">600,000:1</option>
-                        <option key="750" value="750000:1">750,000:1</option>
-                        <option key="1000" value="1000000:1">1,000,000:1</option>
-                    </InputSelect>
+                {res3Active ? (
+                    <div className={selectBoxCSS}>
+                        <InputSelect
+                            value={player.get("erRatio")}
+                            id="erRatio"
+                            onChange={(e) => {
+                                if (e.target.value) {
+                                    const [energy, res3] = e.target.value.split(":");
+                                    const emRatio: HTMLSelectElement | null = document.querySelector("select#emRatio");
+                                    const [energyMagic, magic] =
+                                        !_.isNull(emRatio) && emRatio.value ? emRatio.value.split(":") : [0, 0];
+
+                                    setInputValue(document.getElementById("res3Ratio"), res3);
+                                    setInputValue(document.getElementById("energyRatio"), energy);
+                                    if (Number(energyMagic) > 0) {
+                                        setInputValue(
+                                            document.getElementById("magicRatio"),
+                                            Math.round((Number(magic) * Number(energy)) / Number(energyMagic))
+                                        );
+                                    }
+                                    player.set("erRatio", e.target.value);
+                                }
+                            }}
+                        >
+                            <option key="0" value="">
+                                Energy to Resource 3 Ratio
+                            </option>
+                            <option key="100" value="100000:1">
+                                100,000:1
+                            </option>
+                            <option key="200" value="200000:1">
+                                200,000:1
+                            </option>
+                            <option key="250" value="250000:1">
+                                250,000:1
+                            </option>
+                            <option key="300" value="300000:1">
+                                300,000:1
+                            </option>
+                            <option key="400" value="400000:1">
+                                400,000:1
+                            </option>
+                            <option key="500" value="500000:1">
+                                500,000:1
+                            </option>
+                            <option key="600" value="600000:1">
+                                600,000:1
+                            </option>
+                            <option key="750" value="750000:1">
+                                750,000:1
+                            </option>
+                            <option key="1000" value="1000000:1">
+                                1,000,000:1
+                            </option>
+                        </InputSelect>
                     </div>
-                : null
-                }
+                ) : null}
                 <div className={selectBoxCSS}>
-                    <InputSelect value={player.get('eratio')} id="eratio" onChange={(e) => {
-                    if (e.target.value){
-                        const [power, cap, bar] = e.target.value.split(":")
-                        setInputValue(document.getElementById('energyPowerRatio'), power)
-                        setInputValue(document.getElementById('energyCapRatio'), cap)
-                        setInputValue(document.getElementById('energyBarRatio'), bar)
-                        player.set('eratio', e.target.value)
-                    }
-                    }}>
-                        <option key="00" value=''>Energy Ratio quick select</option>
+                    <InputSelect
+                        value={player.get("eratio")}
+                        id="eratio"
+                        onChange={(e) => {
+                            if (e.target.value) {
+                                const [power, cap, bar] = e.target.value.split(":");
+                                setInputValue(document.getElementById("energyPowerRatio"), power);
+                                setInputValue(document.getElementById("energyCapRatio"), cap);
+                                setInputValue(document.getElementById("energyBarRatio"), bar);
+                                player.set("eratio", e.target.value);
+                            }
+                        }}
+                    >
+                        <option key="00" value="">
+                            Energy Ratio quick select
+                        </option>
                         {ratioOptions}
                     </InputSelect>
                 </div>
                 <div className={selectBoxCSS}>
-                    <InputSelect value={player.get('mratio')} id="mratio" onChange={(e) => {
-                    if (e.target.value){
-                        const [power, cap, bar] = e.target.value.split(":")
-                        setInputValue(document.getElementById('magicPowerRatio'), power)
-                        setInputValue(document.getElementById('magicCapRatio'), cap)
-                        setInputValue(document.getElementById('magicBarRatio'), bar)
-                        player.set('mratio', e.target.value)
-                    }
-                    }}>
-                        <option key="00" value=''>Magic Ratio quick select</option>
+                    <InputSelect
+                        value={player.get("mratio")}
+                        id="mratio"
+                        onChange={(e) => {
+                            if (e.target.value) {
+                                const [power, cap, bar] = e.target.value.split(":");
+                                setInputValue(document.getElementById("magicPowerRatio"), power);
+                                setInputValue(document.getElementById("magicCapRatio"), cap);
+                                setInputValue(document.getElementById("magicBarRatio"), bar);
+                                player.set("mratio", e.target.value);
+                            }
+                        }}
+                    >
+                        <option key="00" value="">
+                            Magic Ratio quick select
+                        </option>
                         {ratioOptions}
                     </InputSelect>
                 </div>
-                {res3Active
-                ? 
-                <div className={selectBoxCSS}>
-                    <InputSelect value={player.get('rratio')} id="rratio" onChange={(e) => {
-                    if (e.target.value){
-                        const [power, cap, bar] = e.target.value.split(":")
-                        setInputValue(document.getElementById('res3PowerRatio'), power)
-                        setInputValue(document.getElementById('res3CapRatio'), cap)
-                        setInputValue(document.getElementById('res3BarRatio'), bar)
-                        player.set('rratio', e.target.value)
-                    }
-                    }}>
-                    <option key="00" value=''>Resource 3 Ratio quick select</option>
-                    {ratioOptions}
-                    </InputSelect>
+                {res3Active ? (
+                    <div className={selectBoxCSS}>
+                        <InputSelect
+                            value={player.get("rratio")}
+                            id="rratio"
+                            onChange={(e) => {
+                                if (e.target.value) {
+                                    const [power, cap, bar] = e.target.value.split(":");
+                                    setInputValue(document.getElementById("res3PowerRatio"), power);
+                                    setInputValue(document.getElementById("res3CapRatio"), cap);
+                                    setInputValue(document.getElementById("res3BarRatio"), bar);
+                                    player.set("rratio", e.target.value);
+                                }
+                            }}
+                        >
+                            <option key="00" value="">
+                                Resource 3 Ratio quick select
+                            </option>
+                            {ratioOptions}
+                        </InputSelect>
                     </div>
-                : null
-                }
+                ) : null}
             </div>
         </>
-    )
+    );
 
     // Children that comes before the containers
     const prechildren = (
-        <p>Calculate how much Energy/Magic{res3Active ? "/Resource 3" : null} you need in order to have the proper ratios.</p>
-    )
+        <p>
+            Calculate how much Energy/Magic{res3Active ? "/Resource 3" : null} you need in order to have the proper
+            ratios.
+        </p>
+    );
 
     return (
-        <Content prechildren={prechildren} title="Ratio Calculator" infoRequired={infoReq} extraRequired={extraReq} extraChildren={extraChildren} extraInputChildren={extraInputChildren} goRequired={goReq}>
-        <div className="flex">
-            <div className="mr-10">
-            <h4 className="text-xl">What base amounts should be</h4>
-            <table className="table-auto mt-2 bg-red-500/50">
-                <thead>
-                <tr>
-                    <th className="w-24"></th>
-                    <th className="px-2">Energy</th>
-                    <th className="px-2">Magic</th>
-                    {res3Active ? <th className="px-2">Resource 3</th> :null}
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td className="text-right pr-2"><strong>Power</strong></td>
-                    <td className="text-center px-2">{pn(desired['energy']['power'], fmt)}</td>
-                    <td className="text-center px-2">{pn(desired['magic']['power'], fmt)}</td>
-                    {res3Active ? <td className="text-center px-2">{pn(desired['res3']['power'], fmt)}</td> : null}
-                </tr>
-                <tr>
-                    <td className="text-right pr-2"><strong>Cap</strong></td>
-                    <td className="text-center px-2">{pn(desired['energy']['cap'], fmt)}</td>
-                    <td className="text-center px-2">{pn(desired['magic']['cap'], fmt)}</td>
-                    {res3Active ? <td className="text-center px-2">{pn(desired['res3']['cap'], fmt)}</td> : null }
-                </tr>
-                <tr>
-                    <td className="text-right pr-2"><strong>Bar</strong></td>
-                    <td className="text-center px-2">{pn(desired['energy']['bar'], fmt)}</td>
-                    <td className="text-center px-2">{pn(desired['magic']['bar'], fmt)}</td>
-                    {res3Active ? <td className="text-center px-2">{pn(desired['res3']['bar'], fmt)}</td>: null}
-                </tr>
-                </tbody>
-            </table>
+        <Content
+            prechildren={prechildren}
+            title="Ratio Calculator"
+            infoRequired={infoReq}
+            extraRequired={extraReq}
+            extraChildren={extraChildren}
+            extraInputChildren={extraInputChildren}
+            goRequired={goReq}
+        >
+            <div className="flex">
+                <div className="mr-10">
+                    <h4 className="text-xl">What base amounts should be</h4>
+                    <table className="table-auto mt-2 bg-red-500/50">
+                        <thead>
+                            <tr>
+                                <th className="w-24"></th>
+                                <th className="px-2">Energy</th>
+                                <th className="px-2">Magic</th>
+                                {res3Active ? <th className="px-2">Resource 3</th> : null}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="text-right pr-2">
+                                    <strong>Power</strong>
+                                </td>
+                                <td className="text-center px-2">{pn(desired["energy"]["power"], fmt)}</td>
+                                <td className="text-center px-2">{pn(desired["magic"]["power"], fmt)}</td>
+                                {res3Active ? (
+                                    <td className="text-center px-2">{pn(desired["res3"]["power"], fmt)}</td>
+                                ) : null}
+                            </tr>
+                            <tr>
+                                <td className="text-right pr-2">
+                                    <strong>Cap</strong>
+                                </td>
+                                <td className="text-center px-2">{pn(desired["energy"]["cap"], fmt)}</td>
+                                <td className="text-center px-2">{pn(desired["magic"]["cap"], fmt)}</td>
+                                {res3Active ? (
+                                    <td className="text-center px-2">{pn(desired["res3"]["cap"], fmt)}</td>
+                                ) : null}
+                            </tr>
+                            <tr>
+                                <td className="text-right pr-2">
+                                    <strong>Bar</strong>
+                                </td>
+                                <td className="text-center px-2">{pn(desired["energy"]["bar"], fmt)}</td>
+                                <td className="text-center px-2">{pn(desired["magic"]["bar"], fmt)}</td>
+                                {res3Active ? (
+                                    <td className="text-center px-2">{pn(desired["res3"]["bar"], fmt)}</td>
+                                ) : null}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div className="ml-10">
+                    <h4 className="text-xl">What to buy to achieve ratio</h4>
+                    <table className="table-auto mt-2 bg-blue-500/50">
+                        <thead>
+                            <tr>
+                                <th className="w-24"></th>
+                                <th className="px-2">Energy</th>
+                                <th className="px-2">Magic</th>
+                                {res3Active ? <th className="px-2">Resource 3</th> : null}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="text-right pr-2">
+                                    <strong>Power</strong>
+                                </td>
+                                <td className="text-center px-2">{pn(buy["energy"]["power"], fmt)}</td>
+                                <td className="text-center px-2">{pn(buy["magic"]["power"], fmt)}</td>
+                                {res3Active ? (
+                                    <td className="text-center px-2">{pn(buy["res3"]["power"], fmt)}</td>
+                                ) : null}
+                            </tr>
+                            <tr>
+                                <td className="text-right pr-2">
+                                    <strong>Cap</strong>
+                                </td>
+                                <td className="text-center px-2">{pn(buy["energy"]["cap"], fmt)}</td>
+                                <td className="text-center px-2">{pn(buy["magic"]["cap"], fmt)}</td>
+                                {res3Active ? (
+                                    <td className="text-center px-2">{pn(buy["res3"]["cap"], fmt)}</td>
+                                ) : null}
+                            </tr>
+                            <tr>
+                                <td className="text-right pr-2">
+                                    <strong>Bar</strong>
+                                </td>
+                                <td className="text-center px-2">{pn(buy["energy"]["bar"], fmt)}</td>
+                                <td className="text-center px-2">{pn(buy["magic"]["bar"], fmt)}</td>
+                                {res3Active ? (
+                                    <td className="text-center px-2">{pn(buy["res3"]["bar"], fmt)}</td>
+                                ) : null}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div className="ml-10">
-            <h4 className="text-xl">What to buy to achieve ratio</h4>
-            <table className="table-auto mt-2 bg-blue-500/50">
-                <thead>
-                <tr>
-                    <th className="w-24"></th>
-                    <th className="px-2">Energy</th>
-                    <th className="px-2">Magic</th>
-                    {res3Active ? <th className="px-2">Resource 3</th> :null}
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td className="text-right pr-2"><strong>Power</strong></td>
-                    <td className="text-center px-2">{pn(buy['energy']['power'], fmt)}</td>
-                    <td className="text-center px-2">{pn(buy['magic']['power'], fmt)}</td>
-                    {res3Active ? <td className="text-center px-2">{pn(buy['res3']['power'], fmt)}</td> : null}
-                </tr>
-                <tr>
-                    <td className="text-right pr-2"><strong>Cap</strong></td>
-                    <td className="text-center px-2">{pn(buy['energy']['cap'], fmt)}</td>
-                    <td className="text-center px-2">{pn(buy['magic']['cap'], fmt)}</td>
-                    {res3Active ? <td className="text-center px-2">{pn(buy['res3']['cap'], fmt)}</td> : null }
-                </tr>
-                <tr>
-                    <td className="text-right pr-2"><strong>Bar</strong></td>
-                    <td className="text-center px-2">{pn(buy['energy']['bar'], fmt)}</td>
-                    <td className="text-center px-2">{pn(buy['magic']['bar'], fmt)}</td>
-                    {res3Active ? <td className="text-center px-2">{pn(buy['res3']['bar'], fmt)}</td>: null}
-                </tr>
-                </tbody>
-            </table>
-            </div>
-        </div>
 
-        <ContentSubsection title="How much EXP do I need to achieve ratio?">
-            <ul>
-                <li key="energy"><strong>Energy:</strong> {pn(cost['energy'], fmt)} exp</li>
-                <li key="magic"><strong>Magic:</strong> {pn(cost['magic'], fmt)} exp</li>
-                {res3Active ? <li key="resource"><strong>Resource 3:</strong> {pn(cost['res3'], fmt)} exp</li> : null}
-                <li key="total">
-                <span className="border-t-2 border-white border-solid"><strong>Total Amount:</strong> {pn(cost['total'], fmt)} exp</span>
-                </li>
-            </ul>
-            <p><strong>Suggested next thing to buy:</strong> {suggestedBuy}</p>
-        </ContentSubsection>
+            <ContentSubsection title="How much EXP do I need to achieve ratio?">
+                <ul>
+                    <li key="energy">
+                        <strong>Energy:</strong> {pn(cost["energy"], fmt)} exp
+                    </li>
+                    <li key="magic">
+                        <strong>Magic:</strong> {pn(cost["magic"], fmt)} exp
+                    </li>
+                    {res3Active ? (
+                        <li key="resource">
+                            <strong>Resource 3:</strong> {pn(cost["res3"], fmt)} exp
+                        </li>
+                    ) : null}
+                    <li key="total">
+                        <span className="border-t-2 border-white border-solid">
+                            <strong>Total Amount:</strong> {pn(cost["total"], fmt)} exp
+                        </span>
+                    </li>
+                </ul>
+                <p>
+                    <strong>Suggested next thing to buy:</strong> {suggestedBuy}
+                </p>
+            </ContentSubsection>
         </Content>
-    )
+    );
 }
-

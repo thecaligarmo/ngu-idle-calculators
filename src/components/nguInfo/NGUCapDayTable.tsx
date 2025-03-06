@@ -6,26 +6,25 @@ import { StandardTable, StandardTableRowType } from "../StandardTable";
 
 interface NGUProps {
     type: string;
-    NGUs : NGU[];
+    NGUs: NGU[];
     speedFactor: bigDecimal;
-    fmt : string
+    fmt: string;
 }
 
-export default function NGUCapDayTable({type, NGUs, speedFactor, fmt} : NGUProps) : ReactElement {
-    const order = ["type", "cap"]
+export default function NGUCapDayTable({ type, NGUs, speedFactor, fmt }: NGUProps): ReactElement {
+    const order = ["type", "cap"];
     const header = {
-        "type": <span>{type} NGU</span>,
-        "cap": "Cap",
-    }
-    const dataRows : StandardTableRowType = {}
+        type: <span>{type} NGU</span>,
+        cap: "Cap",
+    };
+    const dataRows: StandardTableRowType = {};
     for (const index in NGUs) {
-        const ngu = NGUs[index]
+        const ngu = NGUs[index];
         dataRows[ngu.key] = {
-            "type": ngu.name,
-            "cap" : <span className="text-red-500">{pn(ngu.capToReachMaxInDay(speedFactor), fmt)}</span>,
-        }
+            type: ngu.name,
+            cap: <span className="text-red-500">{pn(ngu.capToReachMaxInDay(speedFactor), fmt)}</span>,
+        };
     }
 
-    return <StandardTable order={order} header={header} rows={dataRows} fullWidth={false} />
+    return <StandardTable order={order} header={header} rows={dataRows} fullWidth={false} />;
 }
-

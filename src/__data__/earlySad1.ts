@@ -1,4 +1,6 @@
-const earlySad = {
+import { playerImportType } from "@/helpers/types"
+
+const earlySad : playerImportType = {
     "playerName": "thecaligarmo",
     "firstTimePlaying": false,
     "version": 1260,

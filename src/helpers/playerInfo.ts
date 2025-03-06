@@ -4,20 +4,20 @@ import { requiredDataType } from "../components/Content";
 import { camelToTitle } from "./strings";
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-export function getPlayerDataInfo(data : requiredDataType) : any {
-    const ir = []
+export function getPlayerDataInfo(data: requiredDataType): any {
+    const ir = [];
     for (const col of data) {
-        const colDr = []
+        const colDr = [];
         for (const k of col) {
-            const kName : string = _.isArray(k) ? k[0] : k;
+            const kName: string = _.isArray(k) ? k[0] : k;
             if (_.isUndefined(playerDataInfo[kName])) {
-                console.log('Player Data missing: ', kName)
-            } 
+                console.log("Player Data missing: ", kName);
+            }
             const pi = playerDataInfo[kName];
 
             let name = camelToTitle(kName);
-            if(!_.isUndefined(pi['percent']) && pi['percent']){
-                name = camelToTitle(kName + '%')
+            if (!_.isUndefined(pi["percent"]) && pi["percent"]) {
+                name = camelToTitle(kName + "%");
             }
 
             colDr.push({
@@ -26,11 +26,11 @@ export function getPlayerDataInfo(data : requiredDataType) : any {
                 ...pi,
                 key: kName,
                 disabled: false,
-                id: kName.replace(/[?%^-]/g, ''),
-            })
+                id: kName.replace(/[?%^-]/g, ""),
+            });
         }
-        ir.push(colDr)
+        ir.push(colDr);
     }
 
-    return ir
+    return ir;
 }
