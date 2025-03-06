@@ -172,15 +172,15 @@ export default function RatiosPage() {
                 ) : null}
                 <div className={selectBoxCSS}>
                     <InputSelect
-                        value={player.get("eratio")}
-                        id="eratio"
+                        value={player.get("eRatio")}
+                        id="eRatio"
                         onChange={(e) => {
                             if (e.target.value) {
                                 const [power, cap, bar] = e.target.value.split(":");
                                 setInputValue(document.getElementById("energyPowerRatio"), power);
                                 setInputValue(document.getElementById("energyCapRatio"), cap);
                                 setInputValue(document.getElementById("energyBarRatio"), bar);
-                                player.set("eratio", e.target.value);
+                                player.set("eRatio", e.target.value);
                             }
                         }}
                     >
@@ -192,15 +192,15 @@ export default function RatiosPage() {
                 </div>
                 <div className={selectBoxCSS}>
                     <InputSelect
-                        value={player.get("mratio")}
-                        id="mratio"
+                        value={player.get("mRatio")}
+                        id="mRatio"
                         onChange={(e) => {
                             if (e.target.value) {
                                 const [power, cap, bar] = e.target.value.split(":");
                                 setInputValue(document.getElementById("magicPowerRatio"), power);
                                 setInputValue(document.getElementById("magicCapRatio"), cap);
                                 setInputValue(document.getElementById("magicBarRatio"), bar);
-                                player.set("mratio", e.target.value);
+                                player.set("mRatio", e.target.value);
                             }
                         }}
                     >
@@ -213,15 +213,15 @@ export default function RatiosPage() {
                 {res3Active ? (
                     <div className={selectBoxCSS}>
                         <InputSelect
-                            value={player.get("rratio")}
-                            id="rratio"
+                            value={player.get("rRatio")}
+                            id="rRatio"
                             onChange={(e) => {
                                 if (e.target.value) {
                                     const [power, cap, bar] = e.target.value.split(":");
                                     setInputValue(document.getElementById("res3PowerRatio"), power);
                                     setInputValue(document.getElementById("res3CapRatio"), cap);
                                     setInputValue(document.getElementById("res3BarRatio"), bar);
-                                    player.set("rratio", e.target.value);
+                                    player.set("rRatio", e.target.value);
                                 }
                             }}
                         >
