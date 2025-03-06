@@ -3,8 +3,7 @@ import { ReactNode } from "react";
 import Container from "./Container";
 import ContentSection from "./ContentSection";
 import ContentSectionWithData from "./ContentSectionWithData";
-
-export type requiredDataType = (string | [string, number])[][];
+import { requiredDataType } from "@/helpers/types";
 
 interface ContentProps {
     children: ReactNode;

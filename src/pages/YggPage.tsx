@@ -1,9 +1,11 @@
 import { Stat } from "@/assets/stat";
 import { Yggdrasil } from "@/assets/yggdrasil";
-import Content, { requiredDataType } from "../components/Content";
+import Content from "../components/Content";
+import { requiredDataType } from "@/helpers/types";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
-import { StandardTable, StandardTableRowType } from "../components/StandardTable";
+import { StandardTable } from "../components/StandardTable";
+import { StandardTableRowType } from "@/helpers/types";
 import { pn, toNum } from "@/helpers/numbers";
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
 import { nguInfo } from "@/helpers/resourceInfo";

@@ -1,4 +1,31 @@
+import bigDecimal from "js-big-decimal";
+import { ReactNode } from "react";
+
 export type propType = [string, number][] | [string, number, number][];
+export type bigDecimalObj = { [key: string]: bigDecimal };
+
+export type resKeyType = "power" | "cap" | "bar";
+export type resType = {
+    power: bigDecimal;
+    cap: bigDecimal;
+    bar: bigDecimal;
+};
+
+export type mainGensKeyType = "energy" | "magic";
+export type gensKeyType = mainGensKeyType | "res3";
+export type gensType = {
+    energy: resType;
+    magic: resType;
+    res3: resType;
+};
+
+export type gensBDType = { energy: bigDecimal; magic: bigDecimal; res3: bigDecimal; total: bigDecimal };
+
+/*
+Content
+*/
+export type requiredDataType = (string | [string, number])[][];
+export type StandardTableRowType = { [key: string]: { [k: string]: string | ReactNode } };
 
 /*
 Player Import Types

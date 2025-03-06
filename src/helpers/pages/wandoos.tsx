@@ -2,9 +2,9 @@ import bigDecimal from "js-big-decimal";
 import { WANDOOS_OS, WANDOOSLIST, Wandoos } from "@/assets/wandoos";
 import { isNormalMode } from "../gameMode";
 import { bd, bigdec_min, greaterThan, bigdec_max, bigdec_equals } from "../numbers";
+import { mainGensKeyType } from "../types";
 
 export type wandoosNames = "98" | "meh" | "xl";
-type resourceTypes = "energy" | "magic";
 
 type wandoosType = {
     energy: bigDecimal;
@@ -89,7 +89,7 @@ export function getLevelsGainedInWandoos({
 
     const fillsPerMinute: wandoosOsType = {} as wandoosOsType; // : {[key : 'energy' | 'magic'] : bigDecimal }
     let os: wandoosNames;
-    let ty: resourceTypes;
+    let ty: mainGensKeyType;
     for (os in wandoosRatios) {
         fillsPerMinute[os] = {} as wandoosType;
         for (ty in fillRatio) {

@@ -2,27 +2,7 @@ import Player from "@/assets/player";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { bd, bigdec_max, bigdec_min } from "../numbers";
-
-type gsType = "power" | "cap" | "bar";
-type gensType = {
-    energy: {
-        power: bigDecimal;
-        cap: bigDecimal;
-        bar: bigDecimal;
-    };
-    magic: {
-        power: bigDecimal;
-        cap: bigDecimal;
-        bar: bigDecimal;
-    };
-    res3: {
-        power: bigDecimal;
-        cap: bigDecimal;
-        bar: bigDecimal;
-    };
-};
-
-type gensBDType = { energy: bigDecimal; magic: bigDecimal; res3: bigDecimal; total: bigDecimal };
+import { gensBDType, gensType, resKeyType } from "../types";
 
 const basicGens: gensType = {
     energy: { power: bd(0), cap: bd(0), bar: bd(0) },
@@ -88,7 +68,7 @@ export function getRatioInfo(player: Player): [gensType, gensType, gensBDType, s
     const res3Active = player.get("res3Active");
 
     let ty: keyof typeof ratMax;
-    let elt: gsType;
+    let elt: resKeyType;
     for (ty in basicGens) {
         if (ty == "res3" && !res3Active) {
             for (elt in basicGens[ty as keyof gensType]) {

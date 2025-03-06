@@ -34,7 +34,8 @@ import {
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
 import { nguInfo } from "@/helpers/resourceInfo";
 import _ from "lodash";
-import Content, { requiredDataType } from "../components/Content";
+import Content from "../components/Content";
+import { requiredDataType } from "@/helpers/types";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";

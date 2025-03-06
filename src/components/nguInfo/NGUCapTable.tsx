@@ -2,7 +2,8 @@ import { NGU } from "@/assets/ngus";
 import { pn } from "@/helpers/numbers";
 import bigDecimal from "js-big-decimal";
 import { ReactElement } from "react";
-import { StandardTable, StandardTableRowType } from "../StandardTable";
+import { StandardTable } from "../StandardTable";
+import { StandardTableRowType } from "@/helpers/types";
 
 interface NGUProps {
     type: string;

@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { playerDataInfo } from "@/assets/playerData";
-import { requiredDataType } from "../components/Content";
+import { requiredDataType } from "./types";
 import { camelToTitle } from "./strings";
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any

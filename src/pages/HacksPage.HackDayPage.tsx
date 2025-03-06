@@ -1,11 +1,13 @@
 import { Hack, HackKeys } from "@/assets/hacks";
 import { Stat } from "@/assets/stat";
 import { PlusMinusButtons } from "../components/buttons/PlusMinusButtons";
-import Content, { requiredDataType } from "../components/Content";
+import Content from "../components/Content";
+import { requiredDataType } from "@/helpers/types";
 import ContentSubsection from "../components/ContentSubsection";
 import { getPlayer, getNumberFormat } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
-import { StandardTableRowType, StandardTable } from "../components/StandardTable";
+import { StandardTable } from "../components/StandardTable";
+import { StandardTableRowType } from "@/helpers/types";
 import { bd, lessThan, isZero, toNum, pn, dn } from "@/helpers/numbers";
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
 

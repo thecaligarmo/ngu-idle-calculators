@@ -2,7 +2,8 @@ import { Dish, Ingredient } from "@/assets/cooking";
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
 import _ from "lodash";
 import { ReactElement } from "react";
-import Content, { requiredDataType } from "../components/Content";
+import Content from "../components/Content";
+import { requiredDataType } from "@/helpers/types";
 import ContentSubsection from "../components/ContentSubsection";
 import { getPlayer } from "../components/Context";
 

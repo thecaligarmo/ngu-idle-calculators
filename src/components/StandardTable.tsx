@@ -1,7 +1,6 @@
+import { StandardTableRowType } from "@/helpers/types";
 import _ from "lodash";
 import { ReactNode } from "react";
-
-export type StandardTableRowType = { [key: string]: { [k: string]: string | ReactNode } };
 
 export function StandardTable({
     order,

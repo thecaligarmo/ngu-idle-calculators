@@ -1,10 +1,12 @@
 import bigDecimal from "js-big-decimal";
 import { ReactElement, useState } from "react";
 import { Wish, WISHES } from "@/assets/wish";
-import Content, { requiredDataType } from "../components/Content";
+import Content from "../components/Content";
+import { requiredDataType } from "@/helpers/types";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
-import { StandardTable, StandardTableRowType } from "../components/StandardTable";
+import { StandardTable } from "../components/StandardTable";
+import { StandardTableRowType } from "@/helpers/types";
 import { bd, dn, pn, toNum } from "@/helpers/numbers";
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
 import { InputSelect } from "@/components/selects/InputSelect";

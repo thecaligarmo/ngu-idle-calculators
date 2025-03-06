@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Hack } from "@/assets/hacks";
 import { ChoiceButton } from "../components/buttons/ChoiceButton";
 import { PlusMinusButtons } from "../components/buttons/PlusMinusButtons";
-import Content, { requiredDataType } from "../components/Content";
+import Content from "../components/Content";
+import { requiredDataType } from "@/helpers/types";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
-import { StandardTable, StandardTableRowType } from "../components/StandardTable";
+import { StandardTable } from "../components/StandardTable";
+import { StandardTableRowType } from "@/helpers/types";
 import { bd, dn, isZero, pn, toNum } from "@/helpers/numbers";
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
 
