@@ -61,12 +61,10 @@ export function getChonksRecycled(recycleChonk: bigDecimal, chonksPerDay: bigDec
     return recycleChonk.subtract(bd(1)).multiply(chonksPerDay).divide(bd(-4));
 }
 
-// TODO - Fix the any below
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function getMayoFromFruit(
     withLeftovers: boolean,
     fruits: Yggdrasil[],
-    fruitYieldData: any,
+    fruitYieldData: any, // eslint-disable-line
     poopLeftovers: boolean
 ): [bigDecimal, bigDecimal] {
     let mayoFromFruit = bd(0);
