@@ -41,14 +41,14 @@ function dataToList(player: Player, d: any, input: boolean = false): ReactNode {
                         {d.name}:
                         <ChoiceButton
                             text="Yes"
-                            active={player.get(d.key)}
+                            active={player.get(d.key, true)}
                             onClick={() => {
                                 player.set(d.key, true);
                             }}
                         />
                         <ChoiceButton
                             text="No"
-                            active={!player.get(d.key)}
+                            active={!player.get(d.key, true)}
                             onClick={() => {
                                 player.set(d.key, false);
                             }}
@@ -66,21 +66,21 @@ function dataToList(player: Player, d: any, input: boolean = false): ReactNode {
                         {d.name}:
                         <ChoiceButton
                             text="Normal"
-                            active={player.get(d.key).getValue() == "0"}
+                            active={player.get(d.key, true).getValue() == "0"}
                             onClick={() => {
                                 player.set(d.key, 0);
                             }}
                         />
                         <ChoiceButton
                             text="Evil"
-                            active={player.get(d.key).getValue() == "1"}
+                            active={player.get(d.key, true).getValue() == "1"}
                             onClick={() => {
                                 player.set(d.key, 1);
                             }}
                         />
                         <ChoiceButton
                             text="Sadistic"
-                            active={player.get(d.key).getValue() == "2"}
+                            active={player.get(d.key, true).getValue() == "2"}
                             onClick={() => {
                                 player.set(d.key, 2);
                             }}
@@ -149,7 +149,7 @@ function dataToList(player: Player, d: any, input: boolean = false): ReactNode {
                     type="number"
                     name={d.id}
                     id={d.id}
-                    value={player.get(d.key).getValue() === "0" ? "" : toNum(player.get(d.key))}
+                    value={player.get(d.key, true).getValue() === "0" ? "" : toNum(player.get(d.key, true))}
                     onChange={(e) => {
                         player.set(d.key, e.target.value);
                     }}
@@ -159,28 +159,28 @@ function dataToList(player: Player, d: any, input: boolean = false): ReactNode {
     } else {
         let dVal: string | ReactNode = "";
         if (d.type == "boolean") {
-            dVal = player.get(d.key) ? "Yes" : "No";
+            dVal = player.get(d.key, true) ? "Yes" : "No";
         } else if (d.type == "number") {
-            dVal = pn(player.get(d.key), fmt);
+            dVal = pn(player.get(d.key, true), fmt);
         } else {
-            dVal = player.get(d.key);
+            dVal = player.get(d.key, true);
         }
 
         if (d.key == "gameMode") {
-            if (player.get(d.key) == "0") {
+            if (player.get(d.key, true) == "0") {
                 dVal = "Normal";
             }
-            if (player.get(d.key) == "1") {
+            if (player.get(d.key, true) == "1") {
                 dVal = "Evil";
             }
-            if (player.get(d.key) == "2") {
+            if (player.get(d.key, true) == "2") {
                 dVal = "Sadistic";
             }
         }
         if (d.key.startsWith("cardRarity")) {
             dVal = (
-                <span className={CardRarityColor[toNum(player.get(d.key))]}>
-                    {CardRarityText[toNum(player.get(d.key))]}
+                <span className={CardRarityColor[toNum(player.get(d.key, true))]}>
+                    {CardRarityText[toNum(player.get(d.key, true))]}
                 </span>
             );
         }
