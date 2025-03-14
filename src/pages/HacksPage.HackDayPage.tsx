@@ -116,7 +116,7 @@ export default function HackDayPage() {
         let i = 0;
         while (!doneFindingOptimal && i < 20) {
             i = i + 1;
-            newHackHackLvl = hackHack.getNextMilestone(newHackHackLvl);
+            newHackHackLvl = hackHack.getNextMilestoneLvl(newHackHackLvl);
             const newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, newHackHackLvl);
             const newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal));
             let newHackDayTime = bd(0); //hackHack.getTimeBetweenLevels(res3pow, res3cap, hackSpeed, newHackHackLvl)

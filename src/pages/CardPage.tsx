@@ -2,14 +2,14 @@ import bigDecimal from "js-big-decimal";
 import { Card, CardRarity, cardRarityRange } from "@/assets/cards";
 import { FruitOfMayo, Yggdrasil } from "@/assets/yggdrasil";
 import Content from "../components/Content";
-import { requiredDataType } from "@/helpers/types";
+import { bigDecimalObj, requiredDataType } from "@/helpers/types";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
 import { StandardTable } from "../components/StandardTable";
 import { StandardTableRowType } from "@/helpers/types";
 import { bd, greaterThan, isZero, lessThan, pn, toNum } from "@/helpers/numbers";
-import { bigDecimalObj, toObjectMap } from "@/helpers/objects";
+import { toObjectMap } from "@/helpers/objects";
 import {
     cardReqChonkers,
     cardReqFruit,
@@ -163,7 +163,7 @@ export default function CardsPage() {
         }
     });
 
-    // H_i / cardsPeraDay
+    // H_i / cardsPerDay
     const cardTypeRarityRates: bigDecimalObj = toObjectMap(
         cards,
         (card) => card.key,

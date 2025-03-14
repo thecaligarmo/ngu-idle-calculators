@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { GameMode } from "./mode";
 import Resource, { ResourceContainer } from "./resource";
-import { propType } from "@/helpers/types";
+import { beardImportType, propType } from "@/helpers/types";
 import { Stat } from "./stat";
 
 export class Beard extends Resource {
@@ -18,12 +18,8 @@ export class Beard extends Resource {
         this.permLevel = permLevel;
         this.updateStats();
     }
-    setActive(active: boolean | number) {
-        if (typeof active == "boolean") {
-            this.active = active;
-        } else {
-            this.active = active == 1;
-        }
+    setActive(active: boolean) {
+        this.active = active;
     }
     getTempStatValue(prop: string, pretendOn: boolean = false): number {
         if ((this.active || pretendOn) && !_.isUndefined(this[prop])) {
@@ -36,6 +32,11 @@ export class Beard extends Resource {
             return this[prop]["perm"];
         }
         return 0;
+    }
+    importStats(data: beardImportType) {
+        this.setActive(data.active);
+        this.setLevel(data.beardLevel);
+        this.setPermLevel(data.permLevel);
     }
     updateStats() {
         for (const prop of this.statnames) {

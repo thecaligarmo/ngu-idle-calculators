@@ -117,9 +117,12 @@ export function bd(num: number | bigDecimal | string): bigDecimal {
     return new bigDecimal(num);
 }
 
-export function toNum(bigDec: bigDecimal | number): number {
+export function toNum(bigDec: bigDecimal | number | string): number {
     if (bigDec instanceof bigDecimal) {
         return Number(bigDec.getValue());
+    }
+    if (typeof bigDec == "string") {
+        return Number(bigDec);
     }
     return bigDec;
 }
@@ -155,57 +158,4 @@ export function dn(num: bigDecimal | number): string {
         }
     }
     return str;
-}
-
-export function factorial(n: number): number {
-    let x = 1;
-    for (let i = 1; i <= n; i++) {
-        x *= i;
-    }
-    return x;
-}
-
-export class Polynomial {
-    coefficients: bigDecimal[];
-    constructor(coefficients: (number | bigDecimal)[]) {
-        this.coefficients = coefficients.map((e) => bd(e));
-    }
-    length() {
-        return this.coefficients.length;
-    }
-    coefficient(i: number): bigDecimal {
-        if (i < this.length()) {
-            return this.coefficients[i];
-        }
-        return bd(0);
-    }
-    round(r: number) {
-        this.coefficients = this.coefficients.map((c) => c.round(r));
-    }
-
-    isZero() {
-        return this.length() == 0;
-    }
-    add(other: Polynomial): Polynomial {
-        const n = Math.max(this.length(), other.length());
-        const coefficients: bigDecimal[] = [];
-        for (let i = 0; i < n; i++) {
-            coefficients.push(this.coefficient(i).add(other.coefficient(i)));
-        }
-        return new Polynomial(coefficients);
-    }
-    multiply(other: Polynomial): Polynomial {
-        const tl = this.length();
-        const ol = other.length();
-        const coefficients: bigDecimal[] = Array(tl + ol - 1).fill(bd(0));
-
-        for (let i = 0; i < tl; i++) {
-            for (let j = 0; j < ol; j++) {
-                const c = this.coefficient(i).multiply(other.coefficient(j));
-                coefficients[i + j] = coefficients[i + j].add(c);
-            }
-        }
-
-        return new Polynomial(coefficients);
-    }
 }

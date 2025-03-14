@@ -1,3 +1,4 @@
+import { Stat } from "@/assets/stat";
 import {
     totalAPBonus,
     totalAugmentSpeed,
@@ -34,15 +35,13 @@ import {
     totalToughness,
     totalWishSpeed,
 } from "@/helpers/calculators";
-import { cardsUnlocked, questsUnlocked } from "@/helpers/gameMode";
 import { bd, pn } from "@/helpers/numbers";
 import { describeStat, getStatInfo } from "@/helpers/pages/stat";
+import { cubeInfo, equipmentInfo } from "@/helpers/resourceInfo";
 import Container from "../components/Container";
 import ContentSection from "../components/ContentSection";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
-import { Stat } from "@/assets/stat";
-import { cubeInfo, equipmentInfo } from "@/helpers/resourceInfo";
 
 export default function StatsPage() {
     const player = getPlayer();
@@ -343,7 +342,7 @@ export default function StatsPage() {
                     {describeStat(pageData["eWandoos"], fmt)}
                 </ContentSubsection>
             </ContentSection>
-            {questsUnlocked(curTitan) ? (
+            {player.questsUnlocked() ? (
                 <ContentSection title="Quest Stats">
                     <ul>
                         <li key="questRewards">
@@ -360,7 +359,7 @@ export default function StatsPage() {
                     </ContentSubsection>
                 </ContentSection>
             ) : null}
-            {cardsUnlocked(curTitan) ? (
+            {player.cardsUnlocked() ? (
                 <ContentSection title="Card Stats">
                     <ul>
                         <li key="mayoSpeed">

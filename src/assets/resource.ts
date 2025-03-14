@@ -37,6 +37,9 @@ export default class Resource {
             this[prop] = this.level > 0 ? this.base[prop] : 0;
         }
     }
+    getFirstProp() {
+        return this.statnames[0];
+    }
 
     //@ts-expect-error ts(6133)
     // eslint-disable-next-line

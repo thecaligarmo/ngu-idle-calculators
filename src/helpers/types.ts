@@ -1,6 +1,45 @@
 import bigDecimal from "js-big-decimal";
 import { ReactNode } from "react";
 
+type fourNumber = [number, number, number, number];
+export type fiveNumber = [number, number, number, number, number];
+export type sevenNumber = [number, number, number, number, number, number, number];
+export type tenNumber = [number, number, number, number, number, number, number, number, number, number];
+export type fourteenNumber = [
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number
+];
+export type sixteenNumber = [
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number
+];
+
 export type propType = [string, number][] | [string, number, number][];
 export type bigDecimalObj = { [key: string]: bigDecimal };
 
@@ -46,7 +85,7 @@ type augmentImportType = {
     upgradeTarget: number;
 };
 
-type beardImportType = {
+export type beardImportType = {
     progress: number;
     active: boolean;
     beardLevel: number;
@@ -116,10 +155,10 @@ export type cookingImportType = {
     pair4Target: number;
     expBonus: number;
     curDishIndex: number;
-    pair1: [number, number, number, number];
-    pair2: [number, number, number, number];
-    pair3: [number, number, number, number];
-    pair4: [number, number, number, number];
+    pair1: fourNumber;
+    pair2: fourNumber;
+    pair3: fourNumber;
+    pair4: fourNumber;
     ingredients: ingredientsType[];
 };
 
@@ -567,7 +606,7 @@ export type playerImportType = {
     inventory: inventoryImportType;
     advancedTraining: {
         training: number[];
-        level: number[];
+        level: tenNumber;
         bankedLevel: number[];
         energy: number[];
         barProgress: number[];
@@ -1061,7 +1100,7 @@ export type playerImportType = {
         cards: cardImportType[];
         manas: cardManaImportType[];
         cardsOn: boolean;
-        bonuses: number[];
+        bonuses: sixteenNumber;
         cardState: stateImportType;
         chonkerState: stateImportType;
         cardSpawnTimer: timeImportType;

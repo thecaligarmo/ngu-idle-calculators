@@ -1,4 +1,4 @@
-import { bd, bigdec_max, isZero, lessThan } from "@/helpers/numbers";
+import { bd, bigdec_max, isZero, lessThanOrEqual } from "@/helpers/numbers";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
 import { Wish } from "./wish";
@@ -19,18 +19,17 @@ export class AttackStat {
 
     oneHitPower(attackModifier: bigDecimal = bd(1)): bigDecimal {
         return this.hp
-            .divide(bd(0.8))
-            .divide(attackModifier)
+            .divide(bd(0.8).multiply(attackModifier))
             .add(this.toughness.divide(bd(2)));
     }
 
     isWeaker(other: AttackStat) {
         return (
-            this.attackRate < other.attackRate &&
-            lessThan(this.power, other.power) &&
-            lessThan(this.toughness, other.toughness) &&
-            lessThan(this.regen, other.regen) &&
-            lessThan(this.hp, other.hp)
+            this.attackRate <= other.attackRate &&
+            lessThanOrEqual(this.power, other.power) &&
+            lessThanOrEqual(this.toughness, other.toughness) &&
+            lessThanOrEqual(this.regen, other.regen) &&
+            lessThanOrEqual(this.hp, other.hp)
         );
     }
 }

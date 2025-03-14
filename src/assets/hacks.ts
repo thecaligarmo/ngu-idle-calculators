@@ -1,4 +1,4 @@
-import { bd, lessThan } from "@/helpers/numbers";
+import { bd, isOne, lessThan, toNum } from "@/helpers/numbers";
 import { hackImportType, playerImportType, propType } from "@/helpers/types";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
@@ -115,12 +115,32 @@ export class Hack extends Resource {
             level = this.level;
         }
         if (prop == "") {
-            prop = Object.keys(this.base)[0];
+            prop = this.getFirstProp();
         }
         if (!_.isUndefined(this[prop])) {
-            return (100 + this.base[prop] * level) * this.getMilestoneBonus(level);
+            return toNum(((100 + this.base[prop] * level) * this.getMilestoneBonus(level)).toFixed(2));
         }
         return 100;
+    }
+
+    getLevelFromVal(value: number): number {
+        // Due to the milestones, there's no "nice" way to do this other than looping.
+        const prop = Object.keys(this.base)[0];
+        let level = this.level;
+        let val = this.getStatValue(prop);
+
+        // First go down
+        while (val > value) {
+            level = level - 1;
+            val = this.getStatValue(prop, level);
+        }
+        // Then go up
+        while (val < value) {
+            level = level + 1;
+            val = this.getStatValue(prop, level);
+        }
+
+        return level;
     }
 
     getStatAtMilestone(milestone: number): number {
@@ -147,12 +167,13 @@ export class Hack extends Resource {
         return this.milestoneBonus ** numMilestones;
     }
 
-    getMilestoneLevel(milestone: number = -1) {
+    getMilestoneLevel(milestone: number = -1): number {
         if (milestone == -1) {
             milestone = this.getMilestone();
         }
         return milestone * this.levelsPerMilestone();
     }
+    /* istanbul ignore next */
     getMilestoneReductionName(): string {
         // Milestone reduction is dependent on key
         switch (this.key) {
@@ -190,6 +211,7 @@ export class Hack extends Resource {
         return "";
     }
 
+    /* istanbul ignore next */
     getMilestoneExtraName(): string {
         // Milestone extra is dependent on key
         switch (this.key) {
@@ -226,6 +248,7 @@ export class Hack extends Resource {
         }
         return "";
     }
+    /* istanbul ignore next */
     getTargetName(): string {
         // Milestone reduction is dependent on key
         switch (this.key) {
@@ -263,42 +286,45 @@ export class Hack extends Resource {
         return "";
     }
 
-    getLevelFromVal(value: number): number {
-        // Due to the milestones, there's no "nice" way to do this other than looping.
-        const prop = Object.keys(this.base)[0];
-        let level = this.level;
-        let val = this.getStatValue(prop);
-        // First go down
-        while (val > value) {
-            level = level - 1;
-            val = this.getStatValue(prop, level);
-        }
-        // Then go up
-        while (val < value) {
-            level = level + 1;
-            val = this.getStatValue(prop, level);
-        }
-
-        return level;
-    }
-
-    getSpeed(res3cap: bigDecimal, res3pow: bigDecimal, hackSpeed: bigDecimal, level: number = -1): bigDecimal {
+    getTimeBetweenLevels(res3cap: bigDecimal, res3pow: bigDecimal, hackSpeed: bigDecimal, targetLevel: number, level: number = -1, withSpeedChange: boolean = false): bigDecimal {
         if (level == -1) {
             level = this.level;
         }
+
+        const a = 1.0078;
+        const base = toNum(this.baseSpeedDivider);
+        const partDenom = toNum(res3cap.multiply(res3pow));
+        const hs = toNum(hackSpeed);
+        let time = 0;
+
         try {
-            const denominator = res3cap.multiply(res3pow).multiply(hackSpeed);
-            return bd(this.baseSpeedDivider)
-                .multiply(bd(1.0078 ** level))
-                .multiply(bd(level + 1))
-                .multiply(bd(100 / 50)) // 50 ticks per seconds
-                .divide(denominator);
+            // If we're doing with a speed change, we go one at a time
+            if (this.key == HackKeys.HACK && withSpeedChange) {
+                const bonusHackSpeed = toNum(hackSpeed.divide(bd(this.getStatValue(Stat.HACK_SPEED))));
+                for (let i = level; i < targetLevel; i++) {
+                    time += Math.ceil((base * 100 * a ** i * (i + 1)) / (partDenom * bonusHackSpeed * this.getStatValue("", i))) / 100;
+                }
+            } else {
+                for (let i = level; i < targetLevel; i++) {
+                    time += Math.ceil((base * 100 * a ** i * (i + 1)) / (partDenom * hs)) / 100;
+                }
+            }
+
+            return bd(time).multiply(bd(2)).floor();
         } catch {
             return bd(1);
         }
     }
 
-    getTimeBetweenLevels(res3cap: bigDecimal, res3pow: bigDecimal, hackSpeed: bigDecimal, targetLevel: number, level: number = -1, withSpeedChange: boolean = false): bigDecimal {
+    /*
+    getEstimateTimeBetweenLevels(
+        res3cap: bigDecimal,
+        res3pow: bigDecimal,
+        hackSpeed: bigDecimal,
+        targetLevel: number,
+        level: number = -1,
+        withSpeedChange: boolean = false
+    ): bigDecimal {
         if (level == -1) {
             level = this.level;
         }
@@ -336,8 +362,9 @@ export class Hack extends Resource {
         const a = 1.0078;
         return bd(1 + (a * level + a - level - 2) * a ** (level + 1)).divide(bd((1 - a) ** 2));
     }
+    */
 
-    getNextMilestone(level: number = -1): number {
+    getNextMilestoneLvl(level: number = -1): number {
         if (level == -1) {
             level = this.level;
         }
@@ -347,7 +374,7 @@ export class Hack extends Resource {
         return (milestones + 1) * levelsPerMilestone;
     }
 
-    getPreviousMilestone(level: number = -1): number {
+    getPreviousMilestoneLvl(level: number = -1): number {
         if (level == -1) {
             level = this.level;
         }
@@ -362,43 +389,24 @@ export class Hack extends Resource {
     }
 
     getMaxLevelHackDay(res3cap: bigDecimal, res3pow: bigDecimal, hackSpeed: bigDecimal): number {
-        let level = this.getNextMilestone();
+        let targetLevel = this.getNextMilestoneLvl();
 
         const maxTime = bd(this.getMaxTimeHackDay());
 
-        // var t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, level)
-        // if(isOne(t)) {
-        //     return level - levelsPerMilestone
-        // }
-        // while (lessThan(t, maxTime)) {
-        //     level = level + levelsPerMilestone
-        //     t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, level)
-        // }
-
-        // return level - levelsPerMilestone
-
-        // We use math to find a smaller equation.
-        const a = 1.0078;
-        const sigfig = 12;
-        const gt = maxTime
-            .multiply(res3cap)
-            .multiply(res3pow)
-            .multiply(hackSpeed)
-            .multiply(bd(50 / 100))
-            .multiply(bd((1 - a) ** 2))
-            .divide(bd(this.baseSpeedDivider), sigfig)
-            .add(bd((a * this.level - this.level - 1) * a ** this.level));
-
-        // var level = this.level + levelsPerMilestone
-        let t = bd((a * level - 1 - level) * a ** level);
-        while (lessThan(t, gt)) {
-            level = this.getNextMilestone(level);
-            t = bd((a * level - 1 - level) * a ** level);
+        let curLevel = this.level;
+        var t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, targetLevel, curLevel);
+        if (isOne(t)) {
+            return curLevel;
         }
-
-        return this.getPreviousMilestone(level);
+        while (lessThan(t, maxTime)) {
+            curLevel = targetLevel;
+            targetLevel = this.getNextMilestoneLvl(targetLevel);
+            t = t.add(this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, targetLevel, curLevel));
+        }
+        return curLevel;
     }
 
+    /* istanbul ignore next */
     getMaxTimeHackDay(): number {
         // Milestone reduction is dependent on key
         // We go a little bit over as it's easier to go down than to go up

@@ -31,7 +31,7 @@ import {
     totalYggdrasilYieldBonus,
 } from "@/helpers/calculators";
 import { useLocalStorage, useLocalStorageObject } from "@/helpers/localStorage";
-import { bd } from "@/helpers/numbers";
+import { bd, toNum } from "@/helpers/numbers";
 import { playerImportType, yggdrasilFruitPermaImportType } from "@/helpers/types";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
@@ -86,7 +86,7 @@ export default class Player {
         }
     }
 
-    get(key: string): any {
+    get(key: string, noGo: boolean = false): any {
         const calcToGo: { [k: string]: string } = {
             totalAPBonus: "goAP",
             totalDropChance: "goDropChance",
@@ -124,7 +124,7 @@ export default class Player {
 
             // Handle gear optimizer stuff
             val = bd(val);
-            if (key in calcToGo) {
+            if (key in calcToGo && !noGo) {
                 val = val.multiply(this.get(calcToGo[key]).divide(bd(100)).add(bd(1)));
             }
             return val;
@@ -853,9 +853,7 @@ export default class Player {
         playerData.beards.beards.forEach((beard, index) => {
             if (!_.isUndefined(BEARDS[index]) && !_.isNull(beard)) {
                 const b = _.cloneDeep(BEARDS[index]);
-                b.setLevel(beard.beardLevel);
-                b.setPermLevel(beard.permLevel);
-                b.setActive(beard.active);
+                b.importStats(beard);
                 beards.push(b);
             }
         });
@@ -1196,5 +1194,49 @@ export default class Player {
             }
         });
         this.set("maxxedItems", maxxedItemIds);
+    }
+
+    // Unlocked stuff
+    titanKilled(testTitan: Titan | number | bigDecimal): boolean {
+        let curTitan = this.get("highestTitanKilledId");
+        if (curTitan instanceof Titan) {
+            curTitan = curTitan.id;
+        }
+        if (testTitan instanceof Titan) {
+            testTitan = testTitan.id;
+        }
+
+        return toNum(curTitan) >= toNum(testTitan);
+    }
+
+    beardsUnlocked(): boolean {
+        return this.titanKilled(Titans.UUG);
+    }
+    cardsUnlocked(): boolean {
+        return this.titanKilled(Titans.EXILE);
+    }
+    cookingUnlocked(): boolean {
+        return this.titanKilled(Titans.IT_HUNGERS);
+    }
+    diggersUnlocked(): boolean {
+        return this.titanKilled(Titans.JAKE);
+    }
+    hacksUnlocked(): boolean {
+        return this.titanKilled(Titans.NERD);
+    }
+    macguffinUnlocked(): boolean {
+        return this.titanKilled(Titans.WALDERP);
+    }
+    questsUnlocked(): boolean {
+        return this.titanKilled(Titans.BEAST);
+    }
+    wandoosUnlocked(): boolean {
+        return this.titanKilled(Titans.GORDON_RAMSEY);
+    }
+    wishesUnlocked(): boolean {
+        return this.titanKilled(Titans.GODMOTHER);
+    }
+    yggUnlocked(): boolean {
+        return this.titanKilled(Titans.GRAND_TREE);
     }
 }

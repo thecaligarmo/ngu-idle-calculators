@@ -1,14 +1,4 @@
-import {
-    cardsUnlocked,
-    cookingUnlocked,
-    getGameMode,
-    hacksUnlocked,
-    isAtLeastEvilMode,
-    isSadMode,
-    wandoosUnlocked,
-    wishesUnlocked,
-    yggUnlocked,
-} from "@/helpers/gameMode";
+import { getGameMode, isAtLeastEvilMode, isSadMode } from "@/helpers/gameMode";
 import { ReactNode } from "react";
 import { NavLink, useLocation } from "react-router";
 import { getPlayer, useNumberFormatContext } from "./Context";
@@ -74,8 +64,6 @@ export default function Nav() {
     }
 
     const player = getPlayer();
-
-    const curTitan = player.get("highestTitanKilledId");
     const gameMode = getGameMode(player.get("gameMode"));
 
     return (
@@ -84,7 +72,7 @@ export default function Nav() {
                 <NavElt href="/" keyName="home">
                     Home
                 </NavElt>
-                {cardsUnlocked(curTitan) ? (
+                {player.cardsUnlocked() ? (
                     <NavElt href="/cards" keyName="cards">
                         Cards
                     </NavElt>
@@ -93,7 +81,7 @@ export default function Nav() {
                         <>T9</>
                     </NavUnclickable>
                 )}
-                {cookingUnlocked(curTitan) ? (
+                {player.cookingUnlocked() ? (
                     <NavElt href="/cooking" keyName="cooking">
                         Cooking
                     </NavElt>
@@ -105,7 +93,7 @@ export default function Nav() {
                 <NavElt href="/daily" keyName="daily">
                     Daily
                 </NavElt>
-                {hacksUnlocked(curTitan) ? (
+                {player.hacksUnlocked() ? (
                     <NavElt href="/hacks" keyName="hacks" hasChildren={true}>
                         Hacks
                     </NavElt>
@@ -120,7 +108,7 @@ export default function Nav() {
                 <NavElt href="/ratios" keyName="ratios">
                     Ratios
                 </NavElt>
-                {wandoosUnlocked(curTitan) ? (
+                {player.wandoosUnlocked() ? (
                     <NavElt href="/wandoos" keyName="wandoos">
                         Wandoos
                     </NavElt>
@@ -129,7 +117,7 @@ export default function Nav() {
                         <>T1</>
                     </NavUnclickable>
                 )}
-                {wishesUnlocked(curTitan) ? (
+                {player.wishesUnlocked() ? (
                     <NavElt href="/wishes" keyName="wishes">
                         Wishes
                     </NavElt>
@@ -138,7 +126,7 @@ export default function Nav() {
                         <>T8</>
                     </NavUnclickable>
                 )}
-                {yggUnlocked(curTitan) ? (
+                {player.yggUnlocked() ? (
                     <NavElt href="/ygg" keyName="ygg">
                         Ygg
                     </NavElt>

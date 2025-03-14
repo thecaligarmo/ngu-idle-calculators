@@ -7,6 +7,7 @@ export const Stat: { [k: string]: string } = {
     TOUGHNESS: "toughness",
     HEALTH: "health",
     REGEN: "regen",
+    BLOCK_REDUCTION: "blockReduction",
     MOVE_COOLDOWN: "moveCooldown",
     RESPAWN: "respawn",
     DAYCARE_SPEED: "daycareSpeed",

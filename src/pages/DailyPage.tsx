@@ -12,15 +12,7 @@ import {
 import { Zones } from "@/assets/zones";
 import { TitanSelect } from "@/components/selects/TitanSelect";
 import { getIdleAttackModifier } from "@/helpers/calculators";
-import {
-    getGameMode,
-    isEvilMode,
-    isNormalMode,
-    questsUnlocked,
-    titanKilled,
-    wishesUnlocked,
-    yggUnlocked,
-} from "@/helpers/gameMode";
+import { getGameMode, isEvilMode, isNormalMode } from "@/helpers/gameMode";
 import { bd, pn, toNum } from "@/helpers/numbers";
 import {
     getDailySaveAP,
@@ -33,9 +25,9 @@ import {
 } from "@/helpers/pages/daily";
 import { getPlayerDataInfo } from "@/helpers/playerInfo";
 import { nguInfo } from "@/helpers/resourceInfo";
+import { requiredDataType } from "@/helpers/types";
 import _ from "lodash";
 import Content from "../components/Content";
-import { requiredDataType } from "@/helpers/types";
 import ContentSubsection from "../components/ContentSubsection";
 import { getNumberFormat, getPlayer } from "../components/Context";
 import { disableItem } from "../components/dataListColumns";
@@ -110,7 +102,6 @@ export default function Page() {
     ];
 
     const gameMode = getGameMode(player);
-    const curTitan = player.get("highestTitanKilledId");
 
     // Get required data
     let infoReq = getPlayerDataInfo(infoRequired);
@@ -118,7 +109,7 @@ export default function Page() {
     const goReq = getPlayerDataInfo(goRequired);
 
     // Hide unecessary stuff
-    if (!questsUnlocked(curTitan)) {
+    if (!player.questsUnlocked()) {
         infoReq = disableItem(infoReq, [
             "questMinorQP",
             "questMajorQP",
@@ -132,14 +123,14 @@ export default function Page() {
         ]);
         extraReq = disableItem(extraReq, ["includeMajorQuests", "idleMajorQuests"]);
     }
-    if (!yggUnlocked(curTitan)) {
+    if (!player.yggUnlocked()) {
         infoReq = disableItem(infoReq, [
             "fruitOfKnowledgeSucks",
             "fruitOfKnowledgeSTILLSucks",
             "totalYggdrasilYieldBonus",
         ]);
     }
-    if (!wishesUnlocked(curTitan)) {
+    if (!player.wishesUnlocked()) {
         infoReq = disableItem(infoReq, [
             "wishTitansHadBetterRewards",
             "wishBeastDropQP",
@@ -151,25 +142,25 @@ export default function Page() {
             "wishTitan12DropQP",
         ]);
     }
-    if (!titanKilled(curTitan, Titans.BEAST)) {
+    if (!player.titanKilled(Titans.BEAST)) {
         infoReq = disableItem(infoReq, ["wishBeastDropQP"]);
     }
-    if (!titanKilled(curTitan, Titans.NERD)) {
+    if (!player.titanKilled(Titans.NERD)) {
         infoReq = disableItem(infoReq, ["wishNerdDropQP"]);
     }
-    if (!titanKilled(curTitan, Titans.GODMOTHER)) {
+    if (!player.titanKilled(Titans.GODMOTHER)) {
         infoReq = disableItem(infoReq, ["wishGodmotherDropQP"]);
     }
-    if (!titanKilled(curTitan, Titans.EXILE)) {
+    if (!player.titanKilled(Titans.EXILE)) {
         infoReq = disableItem(infoReq, ["wishExileDropQP"]);
     }
-    if (!titanKilled(curTitan, Titans.IT_HUNGERS)) {
+    if (!player.titanKilled(Titans.IT_HUNGERS)) {
         infoReq = disableItem(infoReq, ["wishTitan10DropQP"]);
     }
-    if (!titanKilled(curTitan, Titans.ROCK_LOBSTER)) {
+    if (!player.titanKilled(Titans.ROCK_LOBSTER)) {
         infoReq = disableItem(infoReq, ["wishTitan11DropQP"]);
     }
-    if (!titanKilled(curTitan, Titans.AMALGAMATE)) {
+    if (!player.titanKilled(Titans.AMALGAMATE)) {
         infoReq = disableItem(infoReq, ["wishTitan12DropQP"]);
     }
     if (isNormalMode(gameMode)) {
@@ -544,7 +535,7 @@ export default function Page() {
             <ContentSubsection title={"How many PP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
                 <StandardTable order={tableOrder} header={ppTableHeader} rows={ppTableDataRows} />
             </ContentSubsection>
-            {questsUnlocked(curTitan) ? ( // Must have beaten the Beast
+            {player.questsUnlocked() ? ( // Must have beaten the Beast
                 <ContentSubsection title={"How many QP do I get in " + pn(hoursPerDay, fmt) + " hours?"}>
                     <StandardTable order={tableOrder} header={qpTableHeader} rows={qpTableDataRows} />
                 </ContentSubsection>

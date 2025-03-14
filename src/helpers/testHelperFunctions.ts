@@ -36,17 +36,22 @@ export interface infoObjType {
     ygg?: number;
 }
 
-export function expectClose(value: number | bigDecimal, expect: number | bigDecimal, range?: number): number[] {
+export function expectClose(
+    value: number | bigDecimal,
+    expectVal: number | bigDecimal,
+    range?: number | null,
+    precision: number = 0
+): void {
     value = toNum(value);
-    expect = toNum(expect);
+    expectVal = toNum(expectVal);
 
     if (range == null) {
-        range = Math.max(bd(expect).floor().getValue().length - 3, 0);
+        range = Math.max(bd(expectVal).floor().getValue().length - 3, 0);
     }
 
     const v = value / 10 ** range;
-    const e = expect / 10 ** range;
-    return [v, e];
+    const e = expectVal / 10 ** range;
+    expect(v).toBeCloseTo(e, precision);
 }
 
 // export function toDataObj(playerData : any, extraRequired : any[] = []) : {[key:string] : any}{

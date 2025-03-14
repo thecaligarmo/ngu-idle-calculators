@@ -247,10 +247,6 @@ export function totalAPBonus(player: Player): bigDecimal {
     const yellowHeartBonus: bigDecimal = isMaxxedItemSet(player, ItemSets.YELLOW_HEART) ? bd(1.2) : bd(1);
     const achievBonus = achievementAPBonus(player);
 
-    if (isInitilizing(player)) {
-        return bd(0);
-    }
-
     return bd(1).multiply(gen).multiply(yellowHeartBonus).multiply(achievBonus).divide(bd(100));
 }
 

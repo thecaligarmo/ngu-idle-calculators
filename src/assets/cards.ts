@@ -1,7 +1,7 @@
 import bigDecimal from "js-big-decimal";
 import { GameMode } from "./mode";
 import Resource, { ResourceContainer } from "./resource";
-import { propType } from "@/helpers/types";
+import { propType, sixteenNumber } from "@/helpers/types";
 import { Stat } from "./stat";
 import { bd } from "@/helpers/numbers";
 
@@ -58,6 +58,7 @@ export const CardRarityColor: { [key: number]: string } = {
     8: "text-fuchsia-700",
 } as const satisfies { [key: number]: string };
 
+/* istanbul ignore next */
 export function cardRarityRange(rarity: number, seventiesSet: boolean = false): [number, number] {
     switch (rarity) {
         case CardRarity.CRAPPY:
@@ -94,7 +95,7 @@ export class Card extends Resource {
         this.minCastRarity = 0;
         this.constants = constants;
     }
-    importStats(data: number[]) {
+    importStats(data: sixteenNumber) {
         this.setLevel(data[this.id]);
     }
     updateStats() {
@@ -193,7 +194,7 @@ export const CARDLIST = [
     ),
     new Card(10, CardKeys.DROP_CHANCE, "Drop Chance Card", [[Stat.DROP_CHANCE, 1]], [0.02, 0.1, 1, 1.15]),
     new Card(11, CardKeys.GOLD_DROP, "Gold Drop Card", [[Stat.GOLD_DROP, 1]], [0.1, 0.5, 0.8, 1.15]),
-    new Card(12, CardKeys.DAYCARE_SPEED, "Daycare Speed Card", [[Stat.DAYCARE_SPEED, 1]], [0.005, 0.002, 0.4, 1.04]),
+    new Card(12, CardKeys.DAYCARE_SPEED, "Daycare Speed Card", [[Stat.DAYCARE_SPEED, 1]], [0.005, 0.02, 0.4, 1.04]),
 
     new Card(13, CardKeys.PP, "PP Card", [[Stat.PP, 1]], [0.01, 0.02, 0.6, 1.11]),
     new Card(14, CardKeys.QP, "QP Card", [[Stat.QUEST_REWARD, 1]], [0.01, 0.02, 0.6, 1.08]),
