@@ -1,4 +1,4 @@
-import { bd, bigdec_max, isZero, toNum } from "@/helpers/numbers";
+import { bd, isZero, toNum } from "@/helpers/numbers";
 import { propType } from "@/helpers/types";
 import bigDecimal from "js-big-decimal";
 import _ from "lodash";
@@ -41,11 +41,11 @@ export class Wish extends Resource {
             return bd(1);
         }
 
-        return bd(Math.pow(toNum(epower.multiply(ecap).multiply(mpower).multiply(mcap).multiply(rpower).multiply(rcap)), 0.17))
-            .multiply(wishSpeed)
-            .divide(bd(100))
-            .multiply(bd(50)) // 50 per tick
-            .divide(this.baseSpeedDivider.multiply(bd(level + 1)), 100);
+        return bd(
+            (Math.pow(toNum(epower.multiply(ecap).multiply(mpower).multiply(mcap).multiply(rpower).multiply(rcap)), 0.17) * toNum(wishSpeed)) /
+                (100 / 50) / // 50 ticks per second
+                (toNum(this.baseSpeedDivider) * (level + 1))
+        );
     }
     timeToFinish(
         epower: bigDecimal,
@@ -64,16 +64,17 @@ export class Wish extends Resource {
             return bd(0);
         }
 
-        const speed = this.speed(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, level);
-        let timeTaken = bd(0);
-        if (!isZero(speed)) {
+        const speed = toNum(this.speed(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, level));
+        let timeTaken = 0;
+        if (speed != 0) {
             const prog = this.level == level ? this.progress : 0;
-            timeTaken = bigdec_max(bd(1 - prog).divide(speed, 100), bd(4 * 60 * 60).subtract(bd(4 * 60 * 60 * prog)));
+            timeTaken = Math.max((1 - prog) / speed, 4 * 60 * 60 - 4 * 60 * 60 * prog);
         }
         if (level > this.level) {
-            timeTaken = timeTaken.add(this.timeToFinish(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, level - 1));
+            timeTaken += toNum(this.timeToFinish(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, level - 1));
         }
-        return timeTaken;
+
+        return bd(timeTaken);
     }
     capToMaxLevel(
         epower: bigDecimal,
@@ -98,23 +99,13 @@ export class Wish extends Resource {
             return capsNeeded;
         }
 
-        const speedNeeded = bd(1).divide(bd(4 * 60 * 60), 100);
-        const rootNeeded = speedNeeded
-            .multiply(this.baseSpeedDivider.multiply(bd(level + 1)))
-            .divide(wishSpeed)
-            .multiply(bd(100))
-            .divide(bd(50)); // 50 per tick
-        const allCapsNeeded = bd(Math.pow(toNum(rootNeeded), 1 / 0.17))
-            .divide(epower)
-            .divide(mpower)
-            .divide(rpower);
+        const speedNeeded = 1 / (4 * 60 * 60);
+        const rootNeeded = ((100 / 50) * speedNeeded * toNum(this.baseSpeedDivider) * (level + 1)) / toNum(wishSpeed);
+        const allCapsNeeded = Math.pow(rootNeeded, 1 / 0.17) / (toNum(epower) * toNum(mpower) * toNum(rpower));
 
-        const ecapNeeded = bd(Math.pow(toNum(allCapsNeeded.multiply(ecap).multiply(ecap).divide(mcap).divide(rcap)), 1 / 3)).ceil();
-
-        const mcapNeeded = bd(Math.pow(toNum(allCapsNeeded.multiply(mcap).multiply(mcap).divide(ecap).divide(rcap)), 1 / 3)).ceil();
-
-        const rcapNeeded = bd(Math.pow(toNum(allCapsNeeded.multiply(rcap).multiply(rcap).divide(mcap).divide(ecap)), 1 / 3)).ceil();
-
+        const ecapNeeded = bd(Math.pow((allCapsNeeded * toNum(ecap) * toNum(ecap)) / (toNum(mcap) * toNum(rcap)), 1 / 3)).ceil();
+        const mcapNeeded = bd(Math.pow((allCapsNeeded * toNum(mcap) * toNum(mcap)) / (toNum(ecap) * toNum(rcap)), 1 / 3)).ceil();
+        const rcapNeeded = bd(Math.pow((allCapsNeeded * toNum(rcap) * toNum(rcap)) / (toNum(mcap) * toNum(ecap)), 1 / 3)).ceil();
         return { energy: ecapNeeded, magic: mcapNeeded, res3: rcapNeeded };
     }
 }
