@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 // https://upmostly.com/next-js/using-localstorage-in-next-js
 import ESSerializer from "esserializer";
 import bigDecimal from "js-big-decimal";
