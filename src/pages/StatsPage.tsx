@@ -47,7 +47,6 @@ export default function StatsPage() {
     const player = getPlayer();
     const fmt = getNumberFormat();
     const res3Active = player.get("res3Active");
-    const curTitan = player.get("highestTitanKilledId");
 
     const pageData = getStatInfo(player);
 
