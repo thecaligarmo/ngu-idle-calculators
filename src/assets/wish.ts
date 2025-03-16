@@ -9,6 +9,7 @@ import { Stat } from "./stat";
 export class Wish extends Resource {
     baseSpeedDivider: bigDecimal;
     maxLevel: number;
+    maxTime: number = 4 * 60 * 60;
     constructor(id: number, key: string, name: string, mode: number, maxLevel: number, props: propType, baseSpeedDivider: bigDecimal) {
         // level always 0
         super(id, key, name, mode, 0, props);
@@ -68,13 +69,16 @@ export class Wish extends Resource {
         let timeTaken = 0;
         if (speed != 0) {
             const prog = this.level == level ? this.progress : 0;
-            timeTaken = Math.max((1 - prog) / speed, 4 * 60 * 60 - 4 * 60 * 60 * prog);
+            timeTaken = Math.max((1 - prog) / speed, this.maxTime - this.maxTime * prog);
         }
         if (level > this.level) {
             timeTaken += toNum(this.timeToFinish(epower, ecap, mpower, mcap, rpower, rcap, wishSpeed, level - 1));
         }
 
         return bd(timeTaken);
+    }
+    setMaxTime(lowerNum: number = 0): void {
+        this.maxTime = 4 * 60 * 60 - 24 * lowerNum;
     }
     capToMaxLevel(
         epower: bigDecimal,

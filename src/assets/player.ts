@@ -1151,12 +1151,14 @@ export default class Player {
     }
     setWishes(playerData: playerImportType): void {
         const wishes: Wish[] = [];
+        let wishTimeReduction = playerData.adventure.itopod.perkLevel[109] + playerData.adventure.itopod.perkLevel[110] + playerData.beastQuest.quirkLevel[54];
         playerData.wishes.wishes.forEach((wish, index) => {
             if (!_.isUndefined(wish)) {
                 if (!_.isUndefined(WISHES[index])) {
                     const w = _.cloneDeep(WISHES[index]);
                     w.setLevel(wish.level);
                     w.setProgress(wish.progress);
+                    w.setMaxTime(wishTimeReduction);
                     wishes.push(w);
                 }
             }
