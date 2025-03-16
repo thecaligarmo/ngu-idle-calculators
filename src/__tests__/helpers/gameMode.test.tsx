@@ -50,7 +50,7 @@ describe("GameMode Helper", () => {
         ["Early Sad 1", earlySadPlayer, [false, false, true, true]],
     ];
     test.each(cases)("Game Mode - %s", (_name, player, expectedValues) => {
-        let gameMode = getGameMode(player.get("gameMode"));
+        const gameMode = getGameMode(player.get("gameMode"));
         expect(isNormalMode(gameMode)).toBe(expectedValues[0]);
         expect(isEvilMode(gameMode)).toBe(expectedValues[1]);
         expect(isAtLeastEvilMode(gameMode)).toBe(expectedValues[2]);

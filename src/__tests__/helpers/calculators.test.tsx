@@ -78,7 +78,7 @@ earlySadPlayer.importPlayerData(earlySad);
 
 describe("Calculators Helper", () => {
     describe("Initializing", () => {
-        let player = new Player(false, true);
+        const player = new Player(false, true);
         expect(isInitilizing(player)).toBeTruthy();
 
         expectClose(totalEnergyPower(player), 0);

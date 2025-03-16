@@ -27,7 +27,7 @@ earlySadPlayer.importPlayerData(earlySad);
 describe("Cards Page Helper", () => {
     describe("Cards Info", () => {
         const cases: [Player, any, any][] = [
-            // eslint-disable-line
+             
             [
                 lateEvilPlayer,
                 {

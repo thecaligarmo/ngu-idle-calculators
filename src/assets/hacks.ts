@@ -369,9 +369,9 @@ export class Hack extends Resource {
         if (level == -1) {
             level = this.level;
         }
-        let cur = this.getMilestone(level);
+        const cur = this.getMilestone(level);
         let max = this.getMilestone(this.hardCap);
-        let maxLvl = this.getMilestoneLevel(max);
+        const maxLvl = this.getMilestoneLevel(max);
         if (maxLvl < this.hardCap && level < maxLvl) {
             max++;
         }
@@ -425,7 +425,7 @@ export class Hack extends Resource {
         const maxTime = bd(this.getMaxTimeHackDay());
 
         let curLevel = this.level;
-        var t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, targetLevel, curLevel);
+        let t = this.getTimeBetweenLevels(res3cap, res3pow, hackSpeed, targetLevel, curLevel);
         if (isOne(t)) {
             return curLevel;
         }

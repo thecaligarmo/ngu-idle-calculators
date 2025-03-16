@@ -162,7 +162,7 @@ export default function HackDayPage() {
         const newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal));
         hacks.forEach((hack) => {
             const curVal = hack.getStatValue();
-            let hackTargetInit = hackDayTargets[hack.key];
+            const hackTargetInit = hackDayTargets[hack.key];
             let hackTarget = hackTargetInit;
             let targetMilestone = hack.getMilestone(hackTarget);
 
