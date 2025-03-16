@@ -6,6 +6,7 @@ import { ReactNode } from "react";
 import { ChoiceButton } from "./buttons/ChoiceButton";
 import { getNumberFormat } from "./Context";
 import { CardRaritySelect } from "./selects/CardRaritySelect";
+import { playerDataInfo } from "@/assets/playerData";
 
 // TODO - Fix the `any` in this page
 
@@ -151,6 +152,10 @@ function dataToList(player: Player, d: any, input: boolean = false): ReactNode {
                     id={d.id}
                     value={player.get(d.key, true).getValue() === "0" ? "" : toNum(player.get(d.key, true))}
                     onChange={(e) => {
+                        const max = playerDataInfo[d.key]["max"];
+                        if (!_.isUndefined(max) && Number(e.target.value) > max) {
+                            return;
+                        }
                         player.set(d.key, e.target.value);
                     }}
                 />

@@ -171,7 +171,8 @@ export class Hack extends Resource {
         if (milestone == -1) {
             milestone = this.getMilestone();
         }
-        return milestone * this.levelsPerMilestone();
+        const lvl = milestone * this.levelsPerMilestone();
+        return lvl > this.hardCap ? this.hardCap : lvl;
     }
     /* istanbul ignore next */
     getMilestoneReductionName(): string {
@@ -364,6 +365,36 @@ export class Hack extends Resource {
     }
     */
 
+    getMaxExtra(level: number = -1): number {
+        if (level == -1) {
+            level = this.level;
+        }
+        let cur = this.getMilestone(level);
+        let max = this.getMilestone(this.hardCap);
+        let maxLvl = this.getMilestoneLevel(max);
+        if (maxLvl < this.hardCap && level < maxLvl) {
+            max++;
+        }
+        return max - cur;
+    }
+
+    getExtraMilestoneLvl(num: number, level: number = -1): number {
+        if (level == -1) {
+            level = this.level;
+        }
+        if (num < 0) {
+            while (num < 0) {
+                level = this.getPreviousMilestoneLvl(level);
+                num++;
+            }
+        } else {
+            while (num > 0) {
+                level = this.getNextMilestoneLvl(level);
+                num--;
+            }
+        }
+        return level;
+    }
     getNextMilestoneLvl(level: number = -1): number {
         if (level == -1) {
             level = this.level;
@@ -371,7 +402,7 @@ export class Hack extends Resource {
 
         const levelsPerMilestone = this.levelsPerMilestone();
         const milestones = this.getMilestone(level);
-        return (milestones + 1) * levelsPerMilestone;
+        return Math.min(this.hardCap, (milestones + 1) * levelsPerMilestone);
     }
 
     getPreviousMilestoneLvl(level: number = -1): number {
@@ -385,7 +416,7 @@ export class Hack extends Resource {
         if (lvl == level) {
             return (milestones - 1) * levelsPerMilestone;
         }
-        return lvl;
+        return Math.max(lvl, 0);
     }
 
     getMaxLevelHackDay(res3cap: bigDecimal, res3pow: bigDecimal, hackSpeed: bigDecimal): number {

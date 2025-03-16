@@ -104,22 +104,23 @@ export default function HacksPage() {
         hack.milestoneReduction = toNum(player.get(hack.getMilestoneReductionName()));
         const curVal = hack.getStatValue();
         const milestone = hack.getMilestone();
-        let target: number;
+        let targetInit: number;
         if (calcType == HACKS_PERCENTAGE) {
             const targetVal = curVal * (toNum(player.get("percentIncrease")) / 100 + 1);
-            target = hack.getLevelFromVal(targetVal);
+            targetInit = hack.getLevelFromVal(targetVal);
         } else if (calcType == HACKS_MILESTONE) {
-            target = hack.getMilestoneLevel(milestone + toNum(player.get("milestoneIncrease")));
+            targetInit = hack.getMilestoneLevel(milestone + toNum(player.get("milestoneIncrease")));
         } else if (calcType == HACKS_TARGET) {
-            target = toNum(player.get(hack.getTargetName()));
+            targetInit = toNum(player.get(hack.getTargetName()));
         } else {
-            target = hack.level;
+            targetInit = hack.level;
         }
+        let target = targetInit;
 
         let targetMilestone = hack.getMilestone(target);
         if (!isZero(player.get(hack.getMilestoneExtraName()))) {
-            targetMilestone = targetMilestone + toNum(player.get(hack.getMilestoneExtraName()));
-            target = hack.getMilestoneLevel(targetMilestone);
+            target = hack.getExtraMilestoneLvl(toNum(player.get(hack.getMilestoneExtraName())), target);
+            targetMilestone = hack.getMilestone(target);
         }
 
         const newTargetVal = hack.getStatValue("", target); // Not necessarily the same as tVal since levels are discrete
@@ -138,7 +139,15 @@ export default function HacksPage() {
                 <>
                     {milestoneChange > 0 ? "+" : ""}
                     {pn(milestoneChange, fmt, 0)}
-                    <PlusMinusButtons player={player} keyName={hack.getMilestoneExtraName()} />
+                    <PlusMinusButtons
+                        player={player}
+                        keyName={hack.getMilestoneExtraName()}
+                        onFinish={() => {
+                            if (toNum(player.get(hack.getMilestoneExtraName())) > hack.getMaxExtra(targetInit)) {
+                                player.set(hack.getMilestoneExtraName(), hack.getMaxExtra(targetInit).toString());
+                            }
+                        }}
+                    />
                 </>
             ),
             time: <>{dn(time)}</>,

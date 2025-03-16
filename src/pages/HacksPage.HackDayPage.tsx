@@ -153,19 +153,22 @@ export default function HackDayPage() {
         const hackHackVal = hackHack.getStatValue(Stat.HACK_SPEED);
         let hackHackTarget = hackDayTargets[hackHack.key];
         if (!isZero(player.get(hackHack.getMilestoneExtraName()))) {
-            const targetMilestone =
-                hackHack.getMilestone(hackHackTarget) + toNum(player.get(hackHack.getMilestoneExtraName()));
-            hackHackTarget = hackHack.getMilestoneLevel(targetMilestone);
+            hackHackTarget = hackHack.getExtraMilestoneLvl(
+                toNum(player.get(hackHack.getMilestoneExtraName())),
+                hackHackTarget
+            );
         }
         const newHackHackVal = hackHack.getStatValue(Stat.HACK_SPEED, hackHackTarget);
         const newHackSpeed = hackSpeed.divide(bd(hackHackVal)).multiply(bd(newHackHackVal));
         hacks.forEach((hack) => {
             const curVal = hack.getStatValue();
-            let hackTarget = hackDayTargets[hack.key];
+            let hackTargetInit = hackDayTargets[hack.key];
+            let hackTarget = hackTargetInit;
+            let targetMilestone = hack.getMilestone(hackTarget);
 
             if (!isZero(player.get(hack.getMilestoneExtraName()))) {
-                const targetMilestone = hack.getMilestone(hackTarget) + toNum(player.get(hack.getMilestoneExtraName()));
-                hackTarget = hack.getMilestoneLevel(targetMilestone);
+                hackTarget = hack.getExtraMilestoneLvl(toNum(player.get(hack.getMilestoneExtraName())), hackTarget);
+                targetMilestone = hack.getMilestone(hackTarget);
             }
 
             const newHackVal = hack.getStatValue("", hackTarget);
@@ -174,7 +177,7 @@ export default function HackDayPage() {
             const minHackTime = hack.getTimeBetweenLevels(res3pow, res3cap, newHackSpeed, hackTarget);
             totalHackDayTimeMin = totalHackDayTimeMin.add(minHackTime);
             totalHackDayTimeMax = totalHackDayTimeMax.add(hackTime);
-            const milestoneChange = Math.ceil((hackTarget - hack.level) / hack.levelsPerMilestone());
+            const milestoneChange = targetMilestone - hack.getMilestone();
 
             hackDayRows[hack.key] = {
                 name: hack.name,
@@ -186,7 +189,20 @@ export default function HackDayPage() {
                     <>
                         {milestoneChange > 0 ? "+" : ""}
                         {pn(milestoneChange, fmt, 0)}
-                        <PlusMinusButtons player={player} keyName={hack.getMilestoneExtraName()} />
+                        <PlusMinusButtons
+                            player={player}
+                            keyName={hack.getMilestoneExtraName()}
+                            onFinish={() => {
+                                if (
+                                    toNum(player.get(hack.getMilestoneExtraName())) > hack.getMaxExtra(hackTargetInit)
+                                ) {
+                                    player.set(
+                                        hack.getMilestoneExtraName(),
+                                        hack.getMaxExtra(hackTargetInit).toString()
+                                    );
+                                }
+                            }}
+                        />
                     </>
                 ),
                 time: <>{dn(hackTime)}</>,
